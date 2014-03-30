@@ -1,4 +1,4 @@
 # XiongJia's Pages 
 
-This site is based on Jekyll-bootstrap & 'the-program' theme.
+This site is based on Jekyll-bootstrap.
  
