@@ -2,7 +2,7 @@
 layout: post
 title: "Ractive.js"
 description: ""
-category: 
+category: dev
 tags: [dev, js]
 ---
 {% include JB/setup %}

@@ -2,7 +2,7 @@
 layout: post
 title: "电影 《熔炉》"
 description: "我们一路奋战，不是为了改变世界，而是为了不让世界改变我们。"
-category: 
+category: misc
 tags: [Movie, Korean]
 ---
 {% include JB/setup %}
@@ -39,6 +39,6 @@ tags: [Movie, Korean]
 * 记得最清楚的那句台词:
   > 我们一路奋战，不是为了改变世界，而是为了不让世界改变我们。
  
-* 整部电影唯一让人舒缓的，可能就是下面这个截图的镜头了。
+* 整部电影唯一让人舒缓的镜头，可能就是下面这个截图处了:
 ![熔炉]({{ site.url }}/assets/res/img/mv-silenced-01.png)
 
