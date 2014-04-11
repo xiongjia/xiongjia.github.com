@@ -20,13 +20,15 @@ Backend 为了测试方便自己也维护了一个简单的 .html + jQuery 的 A
 - Backbone.js, 这个也不错。从一个非 Front end 的开发来说, Backbone 很容易学习。
 而且他的 MVC 也很不错。但是他的 HTML Template 可能不够方便。
 
-相对来说 [Ractive.js](http://www.ractivejs.org/) 的优势:
+相对来说 [Ractive.js](http://www.ractivejs.org/) 的优势: 
+
 - 阅读他的Tutorials , 可能可以在几十钟内初步掌握使用。
 - 已经有了我基本需要的几点: HTML Template; 2 way bind; MVC.
 
 我目前没全部看完他手册的打算，列一下我用到的:
+
  -  [Hello world](http://learn.ractivejs.org/hello-world/)
  -  [List sections](http://learn.ractivejs.org/list-sections/)
  -  [Two-way binding](http://learn.ractivejs.org/two-way-binding/)
- -  [ractive.observe()](http://docs.ractivejs.org/latest/ractive-observe)可以用于监视数据改动。
+ -  [ractive.observe()](http://docs.ractivejs.org/latest/ractive-observe) - 可以用于监视数据改动。
  
