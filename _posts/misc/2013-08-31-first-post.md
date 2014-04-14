@@ -10,3 +10,5 @@ tags: [misc, test, junk, sandbox]
 这只是一个测试 Page.   
 刚用 Jekyll + 'the-program' theme 配置了 github page.
 
+Douban RSS identity: doubanclaim90ad7264fff5b778
+
