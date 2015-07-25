@@ -42,7 +42,7 @@ tsunami 的基本原理和 FTP 的 passive mode 基本一樣。總共有 2 條�
 - Client (tsunami) 通過 tcp command channel 連接到 server ，告訴 server 需要的 file blocks 
 - Server (tsunamid) 通過 client 發過來的命令的 client 的 udp 端口，
   並且把文件按 file blocks 發送到這個 udp 鏈路上。
-- Client 收到會，合併數據到對應文件。如果有失敗丟包，則再讓 server 發送一次。
+- Client 收到數據后,會合併數據到對應文件。如果有失敗丟包，則再讓 server 發送一次。
 
 ![tsunami]({{ site.url }}/assets/res/img/dev-tsunami-udp.png)
 
