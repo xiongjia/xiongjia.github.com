@@ -25,8 +25,13 @@ tags: [dev, tips, udp, transfer, tsunami]
 - 即使是 Regions 閒用的是 Internet 鏈路，udp transfer 工具本事也有失敗重發，
   應該也是好于用 ftp / http / scp 之類的工具去傳送的。
 
-tsunami udp - [http://tsunami-udp.sourceforge.net/](http://tsunami-udp.sourceforge.net/)   
-就是為這樣一個網絡環境而實現的簡單文件傳輸工具。下面列一下, 基本原理，基本使用和常見問題。
+tsunami udp - [http://tsunami-udp.sourceforge.net/](http://tsunami-udp.sourceforge.net/) 
+就是為這樣一個網絡環境而實現的簡單文件傳輸工具。     
+
+`tsunami` 這個詞好像是出自日語，應該是海嘯之類的意思。
+它的基本原理也比較形象，一旦開始傳輸就會有一般的 udp 包沖過來，當然不少包是被 "浪費" 掉的。
+
+下面列一下, 基本原理，基本使用和常見問題。
 
 ----
 
@@ -56,6 +61,7 @@ tsunami 的基本原理和 FTP 的 passive mode 基本一樣。總共有 2 條�
 - 下載 tsunami 比如: 
   `wget 'http://sourceforge.net/projects/tsunami-udp/files/tsunami-udp/tsunami-v1.1-cvsbuild42/tsunami-v1.1-cvsbuild42.tar.gz/download' -O tsunami-udp.tgz`
 - 解開 `tsunami-udp.tgz` 后用，`recompile.sh` 隨用用 `sudo make install` 來安裝。
+  ( 在有些系統上 build 可能失敗/出錯，原因是 `automake` 失敗了。需要修改 recompile.sh 把 `automake` 變成 `automake --add-missing` )
 
 安裝之後會有 tsunamid （server) 和 tsunami (client) 這兩個部分。
 
