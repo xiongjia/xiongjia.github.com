@@ -12,7 +12,7 @@ tags: [dev, tips, udp, transfer, tsunami]
 不能用 aws 自己的工具 copy。)
 
 爲了加快這個 copy 過程，特意去咨詢了一下 aws 的 supporter。
-推薦了這種 udp transfer 的方式在 aws 的 Regions / Availability Zones  (尤其是 AZ ) 閒
+推薦了這種 udp transfer 的方式在 aws 的 Regions / Availability Zones  (尤其是 AZ ) 間
 會發揮出最大的帶寬優勢。
 
 - aws 的 regions 是指不同地區的機房如 aws China, aws US East
