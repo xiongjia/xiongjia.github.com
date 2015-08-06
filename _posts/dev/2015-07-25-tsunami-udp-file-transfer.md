@@ -26,7 +26,7 @@ tags: [dev, tips, udp, transfer, tsunami]
   應該也是好于用 ftp / http / scp 之類的工具去傳送的。
 
 tsunami udp - [http://tsunami-udp.sourceforge.net/](http://tsunami-udp.sourceforge.net/) 
-就是為這樣一個網絡環境而實現的簡單文件傳輸工具。     
+就是為這樣一個網絡環境而實現的簡單文件傳輸工具。(它有點像 tftp 不過實現更簡單些)         
 
 `tsunami` 這個詞好像是出自日語，應該是海嘯之類的意思。
 它的基本原理也比較形象，一旦開始傳輸就會有一般的 udp 包沖過來，當然不少包是被 "浪費" 掉的。
