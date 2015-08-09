@@ -8,7 +8,7 @@ tags: [dev, tips, udp, transfer, tsunami]
 {% include JB/setup %}
 
 這星期工作需要把一個巨大的文件整個從 aws 的一個 region copy 到另外一個 region 去。   
-(其實一個 os 的 dump。只是牽涉到 china region ,受到 "某接界" 的限制導致
+(其實一個 os 的 dump。只是牽涉到 china region ,受到某 "結界" 的限制導致
 不能用 aws 自己的工具 copy。)
 
 爲了加快這個 copy 過程，特意去咨詢了一下 aws 的 supporter。
