@@ -3,7 +3,7 @@ layout: post
 title: "Windows Job Objects"
 description: ""
 category: dev
-tags: [dev, windows]
+tags: [dev, windows, gist, scratch]
 ---
 {% include JB/setup %}
 
@@ -16,19 +16,19 @@ tags: [dev, windows]
 -  由於某些原因 Master processe 可能會意外 crash 或者 termiated。
    在 Master process 終止時，希望所有 Worker processes 同時被釋放。
 
-下面列一下, Job objects  的基本說明和一個 Sample .
+下面列一下, Job objects  的基本說明和一個 Sample 。
 
 ----
 
 # 什麼是 Job Objects
-在 msdn 上的說明: [A job object allows groups of processes to be managed as a unit.](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684161(v=vs.85).aspx) 可以將一組 processes 關聯道一個 Job object 上進行管理。   
+在 msdn 上的說明: [A job object allows groups of processes to be managed as a unit.](https://msdn.microsoft.com/en-us/library/windows/desktop/ms684161(v=vs.85).aspx){:target="_blank"} 可以將一組 processes 關聯道一個 Job object 上進行管理。   
 
 Job Objects 提供了 "JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE" 設置。可以在 Job Object 關閉時，去殺死關聯的 processes 。
 
 
 # 基本使用
 
-在 gist 裡寫了一個基本使用的 **Sample**: [gist](https://gist.github.com/xiongjia/a2ba02188674f74c489a)
+在 gist 裡寫了一個基本使用的 **Sample**: [gist](https://gist.github.com/xiongjia/a2ba02188674f74c489a){:target="_blank"}
 
 - 通過 CMake 可以直接編譯這個 Sample
 - 一個 process 只能關聯一個 Job。否則會 Windows API 會直接失敗。

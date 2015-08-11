@@ -43,7 +43,7 @@ tags: [dev, tips, aws, ec2]
 3. 導出的文件會比較大, Windows OS ~12G+ (壓縮后), Linux ~4G+ (壓縮后)。
    在傳到 China 時會過某 "結界"。如果用 `scp` 感覺幾天都 copy 不完。 `ftp` 可能好一點。    
    還有一種加速方法是用，`tsunami` 快速的 udp transfer 。
-   (會造成大量帶寬浪費，參考我之前記錄的 [tsunami udp file transfer]({% post_url dev/2015-07-25-tsunami-udp-file-transfer %}) )
+   (會造成大量帶寬浪費，參考我之前記錄的 [tsunami udp file transfer]({% post_url dev/2015-07-25-tsunami-udp-file-transfer %}){:target="_blank"} )
 
 # Linux AMI 的遷移
 

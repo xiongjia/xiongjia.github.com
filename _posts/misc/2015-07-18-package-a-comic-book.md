@@ -26,13 +26,13 @@ tags: [comic, tips]
 # 工具 
 用到的工具主要有:
 
-- [ChainLP](http://no722.cocolog-nifty.com/blog/chainlp/) - 最主要的工具。將一組圖片生成 PDF 格式 。
-- [briss](http://sourceforge.net/projects/briss/) - PDF 裁減 (cropping) 工具。
+- [ChainLP](http://no722.cocolog-nifty.com/blog/chainlp/){:target="_blank"} - 最主要的工具。將一組圖片生成 PDF 格式 。
+- [briss](http://sourceforge.net/projects/briss/){:target="_blank"} - PDF 裁減 (cropping) 工具。
 - Multiple Files Renamer - 
   Windows 上基本使用 PowerShell 就大概夠了。*nix 可以用 shell 裏的一些工具。
 
 ## ChainLP
-- 下載 [http://no722.cocolog-nifty.com/blog/chainlp/](http://no722.cocolog-nifty.com/blog/chainlp/)
+- 下載 [http://no722.cocolog-nifty.com/blog/chainlp/](http://no722.cocolog-nifty.com/blog/chainlp/){:target="_blank"}
 - 使用方式如下圖: (其核心是 2 點輸入和輸出)
   1. 決定輸入的圖片組:    
      按右側紅框標出的 **Input** 按鈕。選擇漫畫圖片所在的目錄。
@@ -51,7 +51,7 @@ tags: [comic, tips]
 这步操作不是必須的，但是它可以使得圖片佔屏幕更大比例。
 對於 Kindle 閲讀有比較大的幫助。
 
-- 下載 briss : [http://sourceforge.net/projects/briss/](http://sourceforge.net/projects/briss/) 
+- 下載 briss : [http://sourceforge.net/projects/briss/](http://sourceforge.net/projects/briss/){:target="_blank"} 
   (注: briss 本身是 Java 實現，所以運行環境必須有 Java runtime。)
 - 使用: 
   1. 運行 briss-0.9.exe (這裏用的是 version 0.9)  

@@ -25,7 +25,9 @@ tags: [dev, tips, udp, transfer, tsunami]
 - 即使是 Regions 閒用的是 Internet 鏈路，udp transfer 工具本事也有失敗重發，
   應該也是好于用 ftp / http / scp 之類的工具去傳送的。
 
-tsunami udp - [http://tsunami-udp.sourceforge.net/](http://tsunami-udp.sourceforge.net/) 
+tsunami udp - 
+[http://tsunami-udp.sourceforge.net/](http://tsunami-udp.sourceforge.net/){:target="_blank"}
+ 
 就是為這樣一個網絡環境而實現的簡單文件傳輸工具。(它有點像 tftp 不過實現更簡單些)         
 
 `tsunami` 這個詞好像是出自日語，應該是海嘯之類的意思。

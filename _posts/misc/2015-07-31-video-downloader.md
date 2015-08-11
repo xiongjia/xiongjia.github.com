@@ -30,22 +30,22 @@ tags: [comic, tips]
 
 # 用到的工具
 
-- youtube-dl: [https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl)     
+- youtube-dl: [https://github.com/rg3/youtube-dl](https://github.com/rg3/youtube-dl){:target="_blank"}
   - 不要被名字欺騙。這個工具可以下載很多主流網站的視頻，不光是"油管"。   
-  它的 docs 裏有列出當前的支持的 sites: [docs/supportedsites.md](https://github.com/rg3/youtube-dl/blob/master/docs/supportedsites.md)
+  它的 docs 裏有列出當前的支持的 sites: [docs/supportedsites.md](https://github.com/rg3/youtube-dl/blob/master/docs/supportedsites.md){:target="_blank"}
   - 這是一個用 python 實現的 tool， 可以用 pip 來安裝。
     (Windows 可以直接在 releases 裏找 .exe; OS X 可以用 Homebrew 安裝)
-  - 另外有一個 [you-get](https://github.com/soimort/you-get) 是類似實現，
+  - 另外有一個 [you-get](https://github.com/soimort/you-get){:target="_blank"} 是類似實現，
     只是依賴 python 3 ，我切換不便所以目前沒有使用過。不過看 readme 應該也是不錯得。
-- ffmpeg: [https://www.ffmpeg.org/](https://www.ffmpeg.org/)
+- ffmpeg: [https://www.ffmpeg.org/](https://www.ffmpeg.org/){:target="_blank"}
   - 主要用來，合併多個 videos 或者是轉換 videos 格式
   - Windows 直接下載 releases 版本，OS X 用 Homebrew。
     Linux 上方法更多就不列舉了，可參考 ffmpeg 網站上的説明
-- Biligrab: [https://github.com/cnbeining/Biligrab](https://github.com/cnbeining/Biligrab)   
+- Biligrab: [https://github.com/cnbeining/Biligrab](https://github.com/cnbeining/Biligrab){:target="_blank"}   
   這是國人做的一個工具，主要有 2 個作用: 
   1. 下載 "彈幕"
   2. 將 "彈幕"  轉化成 .ass 支持位置、色彩的字幕文件
-- bypy: [https://github.com/houtianze/bypy](https://github.com/houtianze/bypy)   
+- bypy: [https://github.com/houtianze/bypy](https://github.com/houtianze/bypy){:target="_blank"}   
   Baidu "网盘" 的 client。python 實現可以在 *nix 上用 command line 來操作。
 
 # 基本使用
