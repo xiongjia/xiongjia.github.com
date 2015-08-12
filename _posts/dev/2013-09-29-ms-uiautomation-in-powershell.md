@@ -56,7 +56,7 @@ $client = [System.Reflection.Assembly]::LoadWithPartialName("UIAutomationClients
 {% endhighlight %} 
 
 ### Sample
-下面是一个简单的 Sample。内容也可以在 Gist 上找到：[https://gist.github.com/xiongjia/6749035](https://gist.github.com/xiongjia/6749035) 。  
+下面是一个简单的 Sample。内容也可以在 Gist 上找到：[https://gist.github.com/xiongjia/6749035](https://gist.github.com/xiongjia/6749035){:target="_blank"} 。  
 在这个 Sample 中：  
 
 1. 用 PowerShell 的 ```Start-Process``` 开启一个 Calc.exe ( Windows 默认计算器 ) 程序。  
@@ -72,21 +72,21 @@ $client = [System.Reflection.Assembly]::LoadWithPartialName("UIAutomationClients
     PowerShell 提供一些模块化的方式。可以自己扩展 PowerShell 的 cmdlet。随后 Import 到 PowerShell 去。
     (可以参考 Appendix 里提到的书籍 "Windows PowerShell Cookbook")    
 2. UI Automation PowerShell Extensions:  
-    CodePlex 上有一个开源 PowerShell Extenstion，封装了很多方便的 UIA 方法。[http://uiautomation.codeplex.com/](http://uiautomation.codeplex.com/)    
+    CodePlex 上有一个开源 PowerShell Extenstion，封装了很多方便的 UIA 方法。[http://uiautomation.codeplex.com/](http://uiautomation.codeplex.com/){:target="_blank"}    
     我看了一下这个实现，个人不太喜欢的是这个实现基本是 .NET C# 的 Managed code 依赖一些外部的 Assembly。
 
 ## Appendix 
-1. PowerShell 参考书籍 ["Windows PowerShell Cookbook"](http://book.douban.com/subject/2081681/) 这本书以实例为主。(总体不错，但个人觉得稍微缺乏对 PowerShell 原理解释。)  
+1. PowerShell 参考书籍 ["Windows PowerShell Cookbook"](http://book.douban.com/subject/2081681/) 这本书以实例为主。(总体不错，但个人觉得稍微缺乏对 PowerShell 原理解释。){:target="_blank"}  
 2. MS UIAutomation:   
 
     - MSDN 上的解释比较全面。 目前 Link 是 http://msdn.microsoft.com/en-us/library/ms747327.aspx ，以后可能会变。可以自行在 MSDN 中 Search UIAutomation 来找到对应 Page。   
     - MSDN UIA Blog ，在上面可以找到一些 Sample 和其他文章。不过不经常更新。 http://blogs.msdn.com/b/winuiautomation/   
-    - Li Xiong 先生的 Blog 上有多篇解释 UIA 的文章。例如 [UI Automation -- Under the Hood](http://blogs.msdn.com/b/lixiong/archive/2009/12/05/ui-automation-under-the-hood.aspx)   
+    - Li Xiong 先生的 Blog 上有多篇解释 UIA 的文章。例如 [UI Automation -- Under the Hood](http://blogs.msdn.com/b/lixiong/archive/2009/12/05/ui-automation-under-the-hood.aspx){:target="_blank"}   
 3. UI Automation Tools:   
 
     - UISpy, Inspect 这两个是 Microsoft 提供的，也是最常用的。可以用这个 2个工具去查看，操作，监视你要控制的控件。  
       比如我在 Sample 里使用的 ClassName, Name Properties 都是用 UISpy 查看得到的。  
       可以上 MSDN 上 Search UISpy 或 Inspect 来找下载资源，因为 MS 经常改变下载地址。所以我就不贴地址了。
-    - UIA Verify 这个一个开源版本的实现。可以达到类似 UI Spy 的功能。具体可以上 CodePlex 上查找相关资源： [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/)   
+    - UIA Verify 这个一个开源版本的实现。可以达到类似 UI Spy 的功能。具体可以上 CodePlex 上查找相关资源： [http://uiautomationverify.codeplex.com/](http://uiautomationverify.codeplex.com/){:target="_blank"}   
       UIA Verify 是开源的所以代码本身也是一个良好的 UIA 参考资源。可以从中找到一些 UIA 的使用方法。
 

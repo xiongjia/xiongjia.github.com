@@ -3,7 +3,7 @@ layout: post
 title: "Shell problems"
 description: ""
 category: dev
-tags: [dev, shell, script, leetcode]
+tags: [dev, shell, script, leetcode, scratch]
 ---
 {% include JB/setup %}
 

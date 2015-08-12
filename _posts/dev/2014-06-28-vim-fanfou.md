@@ -7,23 +7,24 @@ tags: [dev, vim, python]
 ---
 {% include JB/setup %}
 
-如同 Fanfoun 是 Twitter 的山寨， [vim-fanfou](https://github.com/xiongjia/vim-fanfou) 也只是我對 [TwitVim](https://github.com/vim-scripts/TwitVim) 一次初級山寨。 
+如同 Fanfoun 是 Twitter 的山寨， [vim-fanfou](https://github.com/xiongjia/vim-fanfou){:target="_blank"} 
+也只是我對 [TwitVim](https://github.com/vim-scripts/TwitVim){:target="_blank"} 一次初級山寨。 
 
 下午标记了第一个 Release 的 Tag ：
 
-- 在 Github 上: [vim-fanfou](https://github.com/xiongjia/vim-fanfou/)
-- 在 Vim.org 上: [vim-fanfou](http://www.vim.org/scripts/script.php?script_id=4972)
+- 在 Github 上: [vim-fanfou](https://github.com/xiongjia/vim-fanfou/){:target="_blank"}
+- 在 Vim.org 上: [vim-fanfou](http://www.vim.org/scripts/script.php?script_id=4972){:target="_blank"}
 
 ### 原型
-这个 Plugin 使用方式基本是参考 [TwitVim](https://github.com/vim-scripts/TwitVim) 的。    
+这个 Plugin 使用方式基本是参考 [TwitVim](https://github.com/vim-scripts/TwitVim){:target="_blank"} 的。    
 实现的原型则是我早先 Gist 上的 2 个 Tests 的改进、修正和整合:
 
-- Vim Script 中使用 Python: [gist](https://gist.github.com/xiongjia/64e1353afb9415e85479)
-- Python Fanfou API Tests: [gist](https://gist.github.com/xiongjia/b8893dc5eb5bbb04cfbc)
+- Vim Script 中使用 Python: [gist](https://gist.github.com/xiongjia/64e1353afb9415e85479){:target="_blank"}
+- Python Fanfou API Tests: [gist](https://gist.github.com/xiongjia/b8893dc5eb5bbb04cfbc){:target="_blank"}
 
 ### 代码和文档
-- 代码目前都在 github 上: [vim-fanfou](https://github.com/xiongjia/vim-fanfou/)
-- 开发总结的 Wiki: [Vim-Fanfou Wiki](http://xj-labs.net/dev/vim-fanfou.html)
+- 代码目前都在 github 上: [vim-fanfou](https://github.com/xiongjia/vim-fanfou/){:target="_blank"}
+- 开发总结的 Wiki: [Vim-Fanfou Wiki](http://xj-labs.net/dev/vim-fanfou.html){:target="_blank"}
 
 ### 目前的版本
 
