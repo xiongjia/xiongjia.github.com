@@ -36,3 +36,11 @@ b2 link=static runtime-link=static --build-type=complete
 只是爲了試驗 Boost ASIO 為下一步工作做些準備。
 很多 Protocol 的細節都沒有實現出來，有些異常處理也有問題。
 
+----
+
+#### 附 Boost ASIO 的参考资料
+
+- [Boost 1.58 的 ASIO Examples](http://www.boost.org/doc/libs/1_58_0/doc/html/boost_asio/examples.html){:target="_blank"}
+- 还有其他的 ASIO tutorials 可以参考一个 stackoverflow 上的回答:
+  [Best documentation for Boost:asio?](http://stackoverflow.com/questions/244453/best-documentation-for-boostasio){:target="_blank"}
+
