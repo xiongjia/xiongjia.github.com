@@ -18,7 +18,7 @@ tags: [dev, Boost, gist, scratch]
 
 ## 基本結構
 
-目前的實現: [gazlowe](https://github.com/xiongjia/scratch/tree/master/gazlowe){:target="_blank"}
+目前的實現，放在 github 上: [gazlowe](https://github.com/xiongjia/scratch/tree/master/gazlowe){:target="_blank"}
 
 {% highlight bash %}
 |~gazlowe/
@@ -56,6 +56,9 @@ Sources 都放在了 `src` folder 中, 基本上一個練習就是一個 unit te
 - `g_leetcode.cxx` : 準備放 LeetCode 的刷的題 (目前只寫了 3 道簡單的，慢慢來)
 - other files: 一些單獨的實現(抄)的算法放在單獨的文件中。目前放了一個 
   `g_sorting_qsort.cxx` 是 Quicksort 的實現。
+
+**注:** 這個結構是暫時的，以後可以會分到一個小 `.cxx` 裏, 比如 `g_leetcode.cxx` 如果過長的話。
+具體應該會被 update 在 `README.md` 中。
 
 ## 如何使用
 
