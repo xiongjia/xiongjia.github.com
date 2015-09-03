@@ -7,11 +7,11 @@ tagline: Supporting tagline
 
 ## About
 
+- Github: [https://github.com/xiongjia](https://github.com/xiongjia){:target="_blank"} 
+- Wiki: [http://xj-labs.net/](http://xj-labs.net/){:target="_blank"} 
+- G+: [https://plus.google.com/+XiongJiaLe](https://plus.google.com/+XiongJiaLe){:target="_blank"} 
 - Mail: <a href="mailto:lexiongjia@gmail.com">lexiongjia@gmail.com</a> 
-- Github: [https://github.com/xiongjia](https://github.com/xiongjia)
-- Wiki: [http://xj-labs.net/](http://xj-labs.net/) 
-- G+: [https://plus.google.com/+XiongJiaLe](https://plus.google.com/+XiongJiaLe) 
- 
+
 ## Posts
 
 <ul class="posts">
