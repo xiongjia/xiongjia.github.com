@@ -84,6 +84,7 @@ DBG wget -v http://localhost/dbg_file
 
 ### 減少不必要的 command
 盡量挖掘 command 自身的功能，如無必要則不使用多餘的 command。比如:
+
 - `cat <file> | grep <pattern>` - 不好，因爲 `cat` 是多餘的
 - `grep <pattern> <file>` - 比之前好，因爲減少了不必要的 `cat` 和用 pipe 傳送數據的開銷。
 
