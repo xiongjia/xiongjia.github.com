@@ -105,7 +105,8 @@ src_str=123abc
 echo "${src_str//[0-9]/}"
 {% endhighlight %}
 - `sed`, `awk`, `tr` 等都是很強的文本操作，如果不是必須，就不要用。
-- 更多 strings 操作的例子很長，就不列了可以參考我的 [shell 的日常備忘](http://xj-labs.net/dev/shell.html){:target="_blank"} 
+- strings 操作的例子篇幅很長，就不列在这里了，
+  可以參考我的 [shell 的日常備忘](http://xj-labs.net/dev/shell.html){:target="_blank"}  里有一些这方面的例子。
 
 ### `[` vs `[[`
 `[` 和 `[[` 都可以用作 shell script 的表達式判斷。區別在於:
@@ -136,12 +137,11 @@ echo "${src_str//[0-9]/}"
 ## Archiving with tar
 
 `tar` 是常用的打包工具。日常最重要的注意事項是做好 `exclude`。
-
 不需要和不能打包的文件不要打包。常見的問題:  
 
 * 不小心把機器上的 private key 或 password 打包發佈了造成安全隱患。
   有時候這件事的發生是很間接的，難以被察覺。比如: 
-  - 把本地 `.git` 目錄打包了，目錄裏的證書雖然被排除了可是 git repository 裏有。
+  - 把本地 `.git` 目錄打包了，外面目錄裏的證書雖然被排除了可是 git repository 裏有。
   - 打包了 log file, 在 log file 裏有些特殊的 debug logging 把口令留在了那裏。
 * 把自己平台特殊的 modules 打包了(比如: node 的 node_modules )，造成其它系統不能正確運行。
 * 把 log files 或者臨時數據文件打包了造成，tar 文件的大小增大。
@@ -189,7 +189,7 @@ Desktop.ini
 
 # 最後
 
-這次給厰裏做的調整時間人力都有限，還有些像改的都沒時間。比如:
+這次給厰裏做的調整時間人力都有限，還有些想要改的都沒時間。比如:
 
 * 原先的代碼結構差，導致代碼多份冗餘。
 * 如果改善代碼結構。希望能用一個 unit test framework 
@@ -197,3 +197,4 @@ Desktop.ini
 
 其他一些 shell 的日常備忘或資源，以後會繼續提交的我的 
 [shell 的日常備忘](http://xj-labs.net/dev/shell.html){:target="_blank"}。 
+
