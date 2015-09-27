@@ -42,7 +42,7 @@ wait ${first_sleep}
 {% endhighlight %}
 
 舉一個實際工作中的簡單例子。copy 比較大的 files。
-如果正常 copy 是一個完成后再另一個。 
+如果正常 copy 是串行執行的就是一個完成后再另一個。 
 可以多個文件同時 copy 最大程度的發揮出 disk 的 I/O 吞吐量。
 比如下面這個例子，從一個列表裏讀出源，執行 `cp`，
 最後在用 `wait` 等待所有 copy 任務結束:
@@ -60,7 +60,8 @@ wait
 
 ## debugging methods
 
-實際腳本中，會加一些臨時的調試方法 (比如輸出些只有調試用的 log 或是生成些調試文件）。 實踐中較好的習慣是保留這些代碼。而不是每次在需要時臨時添加。比如某 test.sh 内容如下:
+實際腳本中，會加一些臨時的調試方法 (比如輸出些只有調試用的 log 或是生成些調試文件）。 
+實踐中較好的習慣是保留這些代碼。而不是每次在需要時臨時添加。比如某 test.sh 内容如下:
 {% highlight bash %}
 #!/bin/bash
 function DBG()
@@ -122,7 +123,7 @@ echo "${src_str//[0-9]/}"
 - 更多 `[` 與 `[[` 的比較參考:  [BashFAQ](http://mywiki.wooledge.org/BashFAQ/031){:target="_blank"} 
 
 ## 使用 mirrors 
-自動部署的腳本，經常是需要平凡訪問網絡資源。比如: `apt-get`, `npm` , `gradle` , `maven` 等。
+自動部署的腳本，經常是需要頻繁訪問網絡資源。比如: `apt-get`, `npm` , `gradle` , `maven` 等。
 調整到正確的 mirror sites 可以大大加快整個 script 的過程。 
 但是一定要用可信任的站點，否則甘願慢一點。比如下面一些用到過的對 China 的 mirrors:
 
