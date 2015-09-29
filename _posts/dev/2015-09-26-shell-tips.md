@@ -23,7 +23,8 @@ Shell Script 的主要工作基本都是去調用各個 commands 去完成的。
 `wait` 沒有參數表示等待 2 個 `sleep` 都結束。`sleep` 只是個例子， 
 也可以是從網上下載數據或是其他操作。由於並行執行所以應該會快出很多。
 {% highlight bash %}
-#!/bin/sh
+#!/usr/bin/env sh
+
 sleep 100 &
 sleep 200 &
 wait
@@ -34,7 +35,8 @@ wait
 加在 `wait` 的參數裏表示只等待 某個 process。
 這 shell script 應該在 100 秒后退出而，第二個 sleep 在 script 退出時還在運行。
 {% highlight bash %}
-#!/bin/sh
+#!/usr/bin/env sh
+
 sleep 100 &
 first_sleep=$!
 sleep 1000 &
@@ -47,8 +49,8 @@ wait ${first_sleep}
 比如下面這個例子，從一個列表裏讀出源，執行 `cp`，
 最後在用 `wait` 等待所有 copy 任務結束:
 {% highlight bash %}
-#!/bin/sh
- 
+#!/usr/bin/env sh
+
 dest=/your_dest_folder
  
 for file in "bigfile1" "bigfile2" "bigfile3"
@@ -63,7 +65,8 @@ wait
 實際腳本中，會加一些臨時的調試方法 (比如輸出些只有調試用的 log 或是生成些調試文件）。 
 實踐中較好的習慣是保留這些代碼。而不是每次在需要時臨時添加。比如某 test.sh 内容如下:
 {% highlight bash %}
-#!/bin/bash
+#!/usr/bin/env bash
+
 function DBG()
 {
     [[ "$_DEBUG" == "on" ]] && $@ || :
@@ -114,7 +117,8 @@ echo "${src_str//[0-9]/}"
 
 - `[` 其實是一個 command 會有一次 fork。`[[` 是 shell 内部操作不需要 fork 一個 process。
 - `[[` 並不是 posix 標準，默認 shell 應該是不支持的。但目前流行的 bash, zsh 肯定是支持的。
-  所以在用 `[[` 時應該把 `.sh` 的第一行 (hashbang) 改爲 `#!/bin/bash`。
+  所以在用 `[[` 時應該把 `.sh` 的第一行 (shebang / hashbang) 改爲 `#!/usr/bin/env bash` 
+   或者 `#!/bin/bash`。
 - `[[` 支持更多的比較方式，如 RegularExpression & Pattern  matching 只有 `[[` 支持。
   * RegularExpression matching: <br>
     `[[ $name = a* ]] || echo "name does not start with an 'a': $name"`
