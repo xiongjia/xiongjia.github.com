@@ -65,8 +65,6 @@ $client = [System.Reflection.Assembly]::LoadWithPartialName("UIAutomationClients
 4. 用 Invoke Pattern 按照顺序 Click 这些 Buttons。   
 5. 最后在 Calc 上应该会得到计算结果 '2'。  
 
-{% gist 6749035 %}
-
 ## Misc 
 1. 代码重用:   
     PowerShell 提供一些模块化的方式。可以自己扩展 PowerShell 的 cmdlet。随后 Import 到 PowerShell 去。
