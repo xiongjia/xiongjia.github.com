@@ -7,9 +7,7 @@ tagline: Supporting tagline
 
 ## About
 
-- Wiki: [http://xj-labs.net/](http://xj-labs.net/){:target="_blank"} 
 - Github: [https://github.com/xiongjia](https://github.com/xiongjia){:target="_blank"} 
-- G+: [https://plus.google.com/+XiongJiaLe](https://plus.google.com/+XiongJiaLe){:target="_blank"} 
 - Mail: <a href="mailto:lexiongjia@gmail.com">lexiongjia@gmail.com</a> 
 
 ## Posts
@@ -23,4 +21,3 @@ tagline: Supporting tagline
     </li>
   {% endfor %}
 </ul>
-
