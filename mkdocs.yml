@@ -1,0 +1,54 @@
+site_name: recycle.bin
+site_url: https://xj-labs.net
+site_author: xiongjia
+site_description: recycle.bin
+repo_name: recycle.bin
+repo_url: https://github.com/xiongjia/recycle.bin
+copyright: Copyright &copy; 2022 - present <a href="https://github.com/xiongjia/recycle.bin" target="_blank" rel="noopener noreferrer">recycle.bin</a>
+
+markdown_extensions:
+  - attr_list
+
+plugins:
+  - minify: { minify_html: true }
+  - search: { lang: js }
+  - mermaid2
+  - drawio
+
+
+theme:
+  name: material
+  nav_style: light
+  include_search_page: false
+  search_index_only: true
+  icon: { repo: fontawesome/brands/github }
+  features:
+    - header.autohide
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+nav:
+  - home: "index.md"
+  - dev:
+      - boost: "tech/dev/boost.md"
+      - protobuf: "tech/dev/protobuf.md"
+  - oss:
+      - vnStat: "tech/oss/vnstat.md"
