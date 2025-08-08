@@ -1,0 +1,126 @@
+# site settings
+site_name: recycle.bin
+site_url: https://xiongjia.github.io
+site_author: xiongjia
+site_description: recycle.bin
+repo_name: recycle.bin
+repo_url: https://github.com/xiongjia/xiongjia.github.com
+copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/xiongjia.github.com" target="_blank" rel="noopener noreferrer">recycle.bin</a>
+
+extra:
+  analytics:
+    provider: google
+    property: UA-7661871-5
+
+# plugins
+plugins:
+  - minify: { minify_html: true }
+  - search: { lang: js }
+  - mermaid2
+  - drawio
+  - glightbox
+  - meta
+  - rss:
+      enabled: true
+      match_path: notes/posts/tests/.* 
+      date_from_meta:
+        as_creation: date
+  - tags:
+      tags_hierarchy: true
+      listings_map:
+        scoped:
+          scope: true
+  - blog: 
+      blog_dir: notes
+      blog_toc: true
+      pagination_if_single_page: true
+      pagination_per_page: 5
+      pagination_url_format: "{page}"
+      pagination_keep_content: false
+
+
+# theme setting
+theme:
+  name: material
+  nav_style: light
+  include_search_page: false
+  search_index_only: true
+  icon: { repo: fontawesome/brands/github }
+  features:
+    - header.autohide
+    # - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    # - navigation.instant
+    # - navigation.instant.prefetch
+    # - navigation.instant.progress
+    # - navigation.prune
+    - navigation.sections
+    - navigation.tabs
+    # - navigation.tabs.sticky
+    - navigation.top
+    - navigation.tracking
+    - toc.follow
+    - search.highlight
+    - search.share
+    - search.suggest
+    - content.code.copy
+    - content.code.annotate
+    - content.code.select
+    - content.tooltips
+    - content.footnote.tooltips
+    - content.tabs.link
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue grey
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: deep purple
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to light mode
+
+# Extensions settings
+markdown_extensions:
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.snippets
+  - pymdownx.inlinehilite
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+# Page tree
+nav:
+  - HOME: index.md
+  - NOTES:
+    - notes/index.md
+  - TECH:
+    - general:
+      - collection: tech/collection.md
+
