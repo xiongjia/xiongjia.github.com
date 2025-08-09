@@ -5,6 +5,7 @@ authors: [xiongjia]
 tags:
   - py
   - dev
+slug: pdm-config
 description: >
   PDM 设置
 categories:
@@ -30,15 +31,19 @@ pdm config cache_dir
 ```
 
 设置 pdm cache 目录的位置 (通关环境变量临时修改)
-```bash
-# 在 Unix OS
-export PDM_CACHE_DIR="/new/cache/path"
-pdm install
 
-# 在 Windows Powershell 上
-$env:PDM_CACHE_DIR = "D:\new\cache\path"
-pdm install
-```
+=== "Unix Shell"
+    ```bash
+    # 在 Unix OS
+    export PDM_CACHE_DIR="/new/cache/path"
+    pdm install
+    ```
+=== "Windows PowerShell"
+    ```bash
+    # 在 Windows Powershell 上
+    $env:PDM_CACHE_DIR = "D:\new\cache\path"
+    pdm install
+    ```
 
 ### 镜像设置
 
@@ -60,8 +65,12 @@ pdm config pypi.url https://mirrors.cloud.tencent.com/pypi/simple
 # 这样 pdm 会生成一个配置文件在 pdm 工程目录，该设置只影响当前工程。
 # 比如 为当前工程设置 pypi.url 到腾讯
 # (建议不做此设置，因为可能会影响 CI 环境和别的开发的环境)
-pdm config pypi.url https://mirrors.cloud.tencent.com/pypi/simple
+pdm config -l pypi.url https://mirrors.cloud.tencent.com/pypi/simple
 ```
+
+???+ info "note"
+    阿里云、腾讯 或者其他镜像。地址和设置方式可能会在以后改变，设置前检查对应镜像网站的设置说明。
+
 
 ### package 安装设置
 
