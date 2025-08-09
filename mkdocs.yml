@@ -13,6 +13,16 @@ plugins:
   - search: { lang: js }
   - mermaid2
   - drawio
+  - rss:
+      enabled: true
+      match_path: notes/posts/tests/.* 
+      date_from_meta:
+        as_creation: date
+  - tags:
+      tags_hierarchy: true
+      listings_map:
+        scoped:
+          scope: true
   - blog: 
       blog_dir: notes
       blog_toc: true
@@ -20,6 +30,7 @@ plugins:
       pagination_per_page: 5
       pagination_url_format: "{page}"
       pagination_keep_content: false
+
 
 # theme setting
 theme:
@@ -66,9 +77,9 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: index.md
-  - Tech:
+  - HOME: index.md
+  - NOTES:
+    - notes/index.md    
+  - TECH:
     - Index: tech/index.md
     - Tech1: tech/tech1.md
-  - Notes:
-    - notes/index.md

@@ -5,7 +5,7 @@
 groups = ["default"]
 strategy = ["inherit_metadata"]
 lock_version = "4.5.0"
-content_hash = "sha256:a77e8399f450fa0ab1845cb02b94507c4c85e643664e08f239644d509b24fbec"
+content_hash = "sha256:782e3c9805ab15d838f18fcaeacc15a1e9136add33a61c6baff68c534c68a757"
 
 [[metadata.targets]]
 requires_python = "==3.13.*"
@@ -48,6 +48,37 @@ dependencies = [
 files = [
     {file = "beautifulsoup4-4.13.4-py3-none-any.whl", hash = "sha256:9bbbb14bfde9d79f38b8cd5f8c7c85f4b8f2523190ebed90e950a8dea4cb1c4b"},
     {file = "beautifulsoup4-4.13.4.tar.gz", hash = "sha256:dbb3c4e1ceae6aefebdaf2423247260cd062430a410e38c66f2baa50a8437195"},
+]
+
+[[package]]
+name = "cachecontrol"
+version = "0.14.3"
+requires_python = ">=3.9"
+summary = "httplib2 caching for requests"
+groups = ["default"]
+dependencies = [
+    "msgpack<2.0.0,>=0.5.2",
+    "requests>=2.16.0",
+]
+files = [
+    {file = "cachecontrol-0.14.3-py3-none-any.whl", hash = "sha256:b35e44a3113f17d2a31c1e6b27b9de6d4405f84ae51baa8c1d3cc5b633010cae"},
+    {file = "cachecontrol-0.14.3.tar.gz", hash = "sha256:73e7efec4b06b20d9267b441c1f733664f989fb8688391b670ca812d70795d11"},
+]
+
+[[package]]
+name = "cachecontrol"
+version = "0.14.3"
+extras = ["filecache"]
+requires_python = ">=3.9"
+summary = "httplib2 caching for requests"
+groups = ["default"]
+dependencies = [
+    "cachecontrol==0.14.3",
+    "filelock>=3.8.0",
+]
+files = [
+    {file = "cachecontrol-0.14.3-py3-none-any.whl", hash = "sha256:b35e44a3113f17d2a31c1e6b27b9de6d4405f84ae51baa8c1d3cc5b633010cae"},
+    {file = "cachecontrol-0.14.3.tar.gz", hash = "sha256:73e7efec4b06b20d9267b441c1f733664f989fb8688391b670ca812d70795d11"},
 ]
 
 [[package]]
@@ -131,6 +162,17 @@ files = [
 ]
 
 [[package]]
+name = "filelock"
+version = "3.18.0"
+requires_python = ">=3.9"
+summary = "A platform independent file lock."
+groups = ["default"]
+files = [
+    {file = "filelock-3.18.0-py3-none-any.whl", hash = "sha256:c401f4f8377c4464e6db25fff06205fd89bdd83b65eb0488ed1b160f780e21de"},
+    {file = "filelock-3.18.0.tar.gz", hash = "sha256:adbc88eabb99d2fec8c9c1b229b171f18afa655400173ddc653d5d01501fb9f2"},
+]
+
+[[package]]
 name = "ghp-import"
 version = "2.1.0"
 summary = "Copy your docs directly to the gh-pages branch."
@@ -141,6 +183,35 @@ dependencies = [
 files = [
     {file = "ghp-import-2.1.0.tar.gz", hash = "sha256:9c535c4c61193c2df8871222567d7fd7e5014d835f97dc7b7439069e2413d343"},
     {file = "ghp_import-2.1.0-py3-none-any.whl", hash = "sha256:8337dd7b50877f163d4c0289bc1f1c7f127550241988d568c1db512c4324a619"},
+]
+
+[[package]]
+name = "gitdb"
+version = "4.0.12"
+requires_python = ">=3.7"
+summary = "Git Object Database"
+groups = ["default"]
+dependencies = [
+    "smmap<6,>=3.0.1",
+]
+files = [
+    {file = "gitdb-4.0.12-py3-none-any.whl", hash = "sha256:67073e15955400952c6565cc3e707c554a4eea2e428946f7a4c162fab9bd9bcf"},
+    {file = "gitdb-4.0.12.tar.gz", hash = "sha256:5ef71f855d191a3326fcfbc0d5da835f26b13fbcba60c32c21091c349ffdb571"},
+]
+
+[[package]]
+name = "gitpython"
+version = "3.1.45"
+requires_python = ">=3.7"
+summary = "GitPython is a Python library used to interact with Git repositories"
+groups = ["default"]
+dependencies = [
+    "gitdb<5,>=4.0.1",
+    "typing-extensions>=3.10.0.2; python_version < \"3.10\"",
+]
+files = [
+    {file = "gitpython-3.1.45-py3-none-any.whl", hash = "sha256:8908cb2e02fb3b93b7eb0f2827125cb699869470432cc885f019b8fd0fccff77"},
+    {file = "gitpython-3.1.45.tar.gz", hash = "sha256:85b0ee964ceddf211c41b9f27a49086010a190fd8132a24e21f362a4b36a791c"},
 ]
 
 [[package]]
@@ -451,6 +522,44 @@ files = [
 ]
 
 [[package]]
+name = "mkdocs-rss-plugin"
+version = "1.17.3"
+requires_python = "<4,>=3.9"
+summary = "MkDocs plugin which generates a static RSS feed using git log and page.meta."
+groups = ["default"]
+dependencies = [
+    "GitPython<3.2,>=3.1.43",
+    "cachecontrol[filecache]<1,>=0.14",
+    "mkdocs<2,>=1.6.1",
+    "requests<3,>=2.31",
+    "tzdata==2024.*; python_version >= \"3.9\" and sys_platform == \"win32\"",
+]
+files = [
+    {file = "mkdocs_rss_plugin-1.17.3-py2.py3-none-any.whl", hash = "sha256:15b99c6b3370f50503fe189e814600b375e5a0d8f99d19f6d8d9b80c1aa56f5c"},
+    {file = "mkdocs_rss_plugin-1.17.3.tar.gz", hash = "sha256:0a5b3e03dd68cc6b94feb50fc2e47fd427d39c452affe0fc3135289da9810a6d"},
+]
+
+[[package]]
+name = "msgpack"
+version = "1.1.1"
+requires_python = ">=3.8"
+summary = "MessagePack serializer"
+groups = ["default"]
+files = [
+    {file = "msgpack-1.1.1-cp313-cp313-macosx_10_13_x86_64.whl", hash = "sha256:3765afa6bd4832fc11c3749be4ba4b69a0e8d7b728f78e68120a157a4c5d41f0"},
+    {file = "msgpack-1.1.1-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:8ddb2bcfd1a8b9e431c8d6f4f7db0773084e107730ecf3472f1dfe9ad583f3d9"},
+    {file = "msgpack-1.1.1-cp313-cp313-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:196a736f0526a03653d829d7d4c5500a97eea3648aebfd4b6743875f28aa2af8"},
+    {file = "msgpack-1.1.1-cp313-cp313-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:9d592d06e3cc2f537ceeeb23d38799c6ad83255289bb84c2e5792e5a8dea268a"},
+    {file = "msgpack-1.1.1-cp313-cp313-manylinux_2_5_i686.manylinux1_i686.manylinux_2_17_i686.manylinux2014_i686.whl", hash = "sha256:4df2311b0ce24f06ba253fda361f938dfecd7b961576f9be3f3fbd60e87130ac"},
+    {file = "msgpack-1.1.1-cp313-cp313-musllinux_1_2_aarch64.whl", hash = "sha256:e4141c5a32b5e37905b5940aacbc59739f036930367d7acce7a64e4dec1f5e0b"},
+    {file = "msgpack-1.1.1-cp313-cp313-musllinux_1_2_i686.whl", hash = "sha256:b1ce7f41670c5a69e1389420436f41385b1aa2504c3b0c30620764b15dded2e7"},
+    {file = "msgpack-1.1.1-cp313-cp313-musllinux_1_2_x86_64.whl", hash = "sha256:4147151acabb9caed4e474c3344181e91ff7a388b888f1e19ea04f7e73dc7ad5"},
+    {file = "msgpack-1.1.1-cp313-cp313-win32.whl", hash = "sha256:500e85823a27d6d9bba1d057c871b4210c1dd6fb01fbb764e37e4e8847376323"},
+    {file = "msgpack-1.1.1-cp313-cp313-win_amd64.whl", hash = "sha256:6d489fba546295983abd142812bda76b57e33d0b9f5d5b71c09a583285506f69"},
+    {file = "msgpack-1.1.1.tar.gz", hash = "sha256:77b79ce34a2bdab2594f490c8e80dd62a02d650b91a75159a63ec413b8d104cd"},
+]
+
+[[package]]
 name = "packaging"
 version = "25.0"
 requires_python = ">=3.8"
@@ -606,6 +715,17 @@ files = [
 ]
 
 [[package]]
+name = "smmap"
+version = "5.0.2"
+requires_python = ">=3.7"
+summary = "A pure Python implementation of a sliding window memory map manager"
+groups = ["default"]
+files = [
+    {file = "smmap-5.0.2-py3-none-any.whl", hash = "sha256:b30115f0def7d7531d22a0fb6502488d879e75b260a9db4d0819cfb25403af5e"},
+    {file = "smmap-5.0.2.tar.gz", hash = "sha256:26ea65a03958fa0c8a1c7e8c7a58fdc77221b8910f6be2131affade476898ad5"},
+]
+
+[[package]]
 name = "soupsieve"
 version = "2.7"
 requires_python = ">=3.8"
@@ -646,6 +766,18 @@ groups = ["default"]
 files = [
     {file = "typing_extensions-4.14.1-py3-none-any.whl", hash = "sha256:d1e1e3b58374dc93031d6eda2420a48ea44a36c2b4766a4fdeb3710755731d76"},
     {file = "typing_extensions-4.14.1.tar.gz", hash = "sha256:38b39f4aeeab64884ce9f74c94263ef78f3c22467c8724005483154c26648d36"},
+]
+
+[[package]]
+name = "tzdata"
+version = "2024.2"
+requires_python = ">=2"
+summary = "Provider of IANA time zone data"
+groups = ["default"]
+marker = "python_version >= \"3.9\" and sys_platform == \"win32\""
+files = [
+    {file = "tzdata-2024.2-py2.py3-none-any.whl", hash = "sha256:a48093786cdcde33cad18c2555e8532f34422074448fbc874186f0abd79565cd"},
+    {file = "tzdata-2024.2.tar.gz", hash = "sha256:7d85cc416e9382e69095b7bdf4afd9e3880418a2413feec7069d533d6b4e31cc"},
 ]
 
 [[package]]

@@ -1,9 +1,11 @@
 ---
-pin: true
 title: Test
 date: 2025-08-09
 authors: [xiongjia]
 slug: slug1
+tags:
+  - HTML5
+  - JS
 description: >
   Share the love – you can now add a badge to your README, showing that your
   project is built with Material for MkDocs
