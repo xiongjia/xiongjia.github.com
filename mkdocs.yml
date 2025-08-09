@@ -1,21 +1,27 @@
+# site settings
 site_name: recycle.bin
-site_url: https://xj-labs.net
+site_url: https://xiongjia.github.io
 site_author: xiongjia
 site_description: recycle.bin
 repo_name: recycle.bin
-repo_url: https://github.com/xiongjia/recycle.bin
-copyright: Copyright &copy; 2022 - present <a href="https://github.com/xiongjia/recycle.bin" target="_blank" rel="noopener noreferrer">recycle.bin</a>
+repo_url: https://github.com/xiongjia/xiongjia.github.com
+copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/xiongjia.github.com" target="_blank" rel="noopener noreferrer">recycle.bin</a>
 
-markdown_extensions:
-  - attr_list
-
+# plugins
 plugins:
   - minify: { minify_html: true }
   - search: { lang: js }
   - mermaid2
   - drawio
+  - blog: 
+      blog_dir: notes
+      blog_toc: true
+      pagination_if_single_page: true
+      pagination_per_page: 5
+      pagination_url_format: "{page}"
+      pagination_keep_content: false
 
-
+# theme setting
 theme:
   name: material
   nav_style: light
@@ -24,11 +30,20 @@ theme:
   icon: { repo: fontawesome/brands/github }
   features:
     - header.autohide
+    - navigation.sections
+    - navigation.tabs
     - navigation.top
     - navigation.tracking
+    - navigation.footer
+    - navigation.indexes
+    - navigation.tracking
+    - navigation.prune
+    - toc.follow
     - search.highlight
     - search.share
     - search.suggest
+    - content.code.copy
+    - content.code.annotate
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -45,10 +60,15 @@ theme:
         icon: material/toggle-switch-off-outline
         name: Switch to light mode
 
+# Extensions settings
+markdown_extensions:
+  - attr_list
+
+# Page tree
 nav:
-  - home: "index.md"
-  - dev:
-      - boost: "tech/dev/boost.md"
-      - protobuf: "tech/dev/protobuf.md"
-  - oss:
-      - vnStat: "tech/oss/vnstat.md"
+  - Home: index.md
+  - Tech:
+    - Index: tech/index.md
+    - Tech1: tech/tech1.md
+  - Notes:
+    - notes/index.md
