@@ -13,7 +13,6 @@ Tools + Frameworks + others
 
 ### C / C++
 
-- [boost](tech/dev/boost.md) - boost 日常使用
 - [abseil](https://abseil.io/){:target="\_blank"} - [abseil-github](https://github.com/abseil/abseil-cpp); [abseil-blog](https://abseil.io/blog/)
 
 ### Java
@@ -110,7 +109,6 @@ Tools + Frameworks + others
 
 ## 🍎 Serialization Frameworks
 
-- [protobuf](tech/dev/protobuf.md) - 速度比较快
 - [msgpack](https://msgpack.org/){:target="\_blank"} - 和 JSON 差不多。压缩版 JSON
 - [pickle](https://docs.python.org/3/library/pickle.html){:target="\_blank"} - Python 自带。二进制序列号格式
 - [cbor](https://cbor.io/){:target="\_blank"} - binary object, 能用的库不多
@@ -181,7 +179,6 @@ Tools + Frameworks + others
 - [sysstat](https://github.com/sysstat/sysstat){:target="\_blank"} - Performance monitoring tools for Linux
 - [Server Status Rust](https://github.com/zdz/ServerStatus-Rust){:target="\_blank"} - Rust 实现的服务器监测
 - [uptime kuma](https://github.com/louislam/uptime-kuma){:target="\_blank"} - A fancy self-hosted monitoring tool
-- [vnStat](tech/oss/vnstat.md) - a network traffic monitor for Linux and BSD
 - [btop](https://github.com/aristocratos/bpytop){:target="\_blank"} - 改良版本 top
 - [netdata](https://github.com/netdata/netdata){:target="\_blank"} - Real-time performance monitoring 是 c / c++ 实现，也支持自己写 Collector 扩展。(比较适合做单机的时时检查用)
 - [nmon](https://nmon.sourceforge.net/pmwiki.php) - 用 cli 也支持 csv 导出后的分析。适合单机检查、分析具体问题。
