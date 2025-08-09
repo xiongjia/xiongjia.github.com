@@ -13,7 +13,7 @@ categories:
   - dev
 ---
 
-PDM 的镜像设置和全局配置
+PDM 的镜像设置和其他配置
 
 <!-- more -->
 
