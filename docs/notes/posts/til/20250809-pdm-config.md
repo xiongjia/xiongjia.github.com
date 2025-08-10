@@ -48,10 +48,12 @@ pdm config cache_dir
 ### 镜像设置
 
 设置 pypi 镜像站点。可以选择
-- 腾讯云的镜像: https://mirrors.cloud.tencent.com/
-- 阿里云的镜像: https://developer.aliyun.com/mirror/
 
-设置对应的 pypi 仓库
+- 腾讯云的镜像: [https://mirrors.cloud.tencent.com/](https://mirrors.cloud.tencent.com/){:target="\_blank"}
+- 阿里云的镜像: [https://developer.aliyun.com/mirror/](https://mirrors.cloud.tencent.com/){:target="\_blank"}
+
+
+设置对应的 pypi 
 
 ```bash
 # 查看当前配置
@@ -88,4 +90,10 @@ pdm config global_project.fallback
 pdm config python.use_venv
 ```
 
+---
+
+
+???+ info "appendix"
+    - PDM 文档: [https://pdm-project.org/](https://pdm-project.org/){:target="\_blank"}
+    - PDM Config 说明书: [https://pdm-project.org/latest/usage/config/](https://pdm-project.org/){:target="\_blank"}
 

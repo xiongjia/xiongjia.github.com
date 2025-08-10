@@ -70,6 +70,9 @@ theme:
     - content.tooltips
     - content.footnote.tooltips
     - content.tabs.link
+  font:
+    text: Roboto
+    code: Roboto Mono
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
