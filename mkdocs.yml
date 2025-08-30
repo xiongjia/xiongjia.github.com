@@ -1,6 +1,6 @@
 # site settings
-site_name: recycle.bin
-site_url: https://xiongjia.github.io
+site_name: !ENV [SITE_NAME, 'recycle.bin']
+site_url: !ENV [SITE_URL, 'https://xiongjia.github.io']
 site_author: xiongjia
 site_description: recycle.bin
 repo_name: recycle.bin
@@ -48,16 +48,10 @@ theme:
   icon: { repo: fontawesome/brands/github }
   features:
     - header.autohide
-    # - navigation.expand
     - navigation.footer
     - navigation.indexes
-    # - navigation.instant
-    # - navigation.instant.prefetch
-    # - navigation.instant.progress
-    # - navigation.prune
     - navigation.sections
     - navigation.tabs
-    # - navigation.tabs.sticky
     - navigation.top
     - navigation.tracking
     - toc.follow
@@ -126,4 +120,3 @@ nav:
   - TECH:
     - general:
       - collection: tech/collection.md
-
