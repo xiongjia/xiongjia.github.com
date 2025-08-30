@@ -23,5 +23,7 @@ license = { text = "MIT" }
 distribution = false
 
 [tool.pdm.scripts]
-server = { cmd = "mkdocs serve" }
-build = { cmd = "mkdocs build" }
+server.cmd = "mkdocs serve"
+build.cmd = "mkdocs build"
+build-selfhost.cmd = "mkdocs build --site-dir site-selfhost"
+build-selfhost.env_file = "env-siteselfhost"

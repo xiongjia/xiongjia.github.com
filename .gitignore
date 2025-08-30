@@ -8,3 +8,4 @@ __pycache__/
 
 # mkdocs folders
 site/
+site-selfhost/

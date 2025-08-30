@@ -10,8 +10,8 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 extra:
   analytics:
     provider: google
-    property: UA-7661871-5
-
+    property:  !ENV [G_ANALYTICS_ID, 'UA-7661871-5']
+    
 # plugins
 plugins:
   - minify: { minify_html: true }
