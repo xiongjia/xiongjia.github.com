@@ -41,6 +41,7 @@ plugins:
 
 # theme setting
 theme:
+  custom_dir: overrides
   name: material
   nav_style: light
   include_search_page: false
