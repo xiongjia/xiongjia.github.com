@@ -121,3 +121,4 @@ nav:
   - TECH:
     - general:
       - collection: tech/collection.md
+      - frontend: tech/frontend.md

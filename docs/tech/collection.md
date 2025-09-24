@@ -5,7 +5,7 @@ hide:
 tags: [tech]
 ---
 
-# 📦 Collection
+# :material-source-repository-multiple: Collection
 
 Tools + Frameworks + others
 
