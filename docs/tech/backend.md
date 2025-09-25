@@ -177,3 +177,4 @@ tags: [tech,backend,database,java,golang]
 - [coreutils rust](https://github.com/uutils/coreutils){:target="\_blank"} - unix core utils 的 rust 实现版本
 - [podman](https://podman.io/){:target="\_blank"} - daemonless container engine
 - [ttar](https://github.com/ideaship/ttar){:target="\_blank"} - 文本文件打包工具
+- [vegeta](https://github.com/tsenart/vegeta){:target="\_blank"} - golang library HTTP API 压测工具
