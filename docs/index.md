@@ -11,7 +11,7 @@ hide:
 某码农的笔记网站，包含以下内容:
 
 - [Blogs & TILs (Today I learned)](/notes/)
-- [Tech Notes](/tech/collection/)
+- [Tech Notes](/tech/backend/)
 
 
 ## :material-information-variant: About me
