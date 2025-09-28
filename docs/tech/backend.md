@@ -134,6 +134,8 @@ tags: [tech,backend,database,java,golang]
 - [go-prompt](https://github.com/c-bata/go-prompt){:target="\_blank"} - python-prompt-toolkit 的 golang 平替。tui library
 - [bubbletea](https://github.com/charmbracelet/bubbletea){:target="\_blank"} - golang tui library
 - [cobra](https://github.com/spf13/cobra){:target="\_blank"} - command 解析库。类似 hugao 的命令行解析就用了这个实现。
+- [gnet](https://github.com/panjf2000/gnet){:target="\_blank"} - gnet is a high-performance, lightweight, non-blocking, event-driven networking framework written in pure Go.
+- [ants](https://github.com/panjf2000/ants){:target="\_blank"} - a goroutine pool library
 
 ---
 
@@ -158,6 +160,7 @@ tags: [tech,backend,database,java,golang]
 - [CS DIY](https://csdiy.wiki/){:target="\_blank"} - Computer science 自学目录
 - [µGo 语言实现(从头开发一个迷你 Go 语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="\_blank"} - go 编译器学习
 - [Go 语言定制指南](https://github.com/chai2010/go-ast-book){:target="\_blank"} - Go 语法树入门
+- [Go Optimization Guide](https://goperf.dev/){:target="\_blank"} - Common Performance Patterns & Practical Networking Patterns
 
 ---
 
