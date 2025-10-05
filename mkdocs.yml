@@ -26,7 +26,6 @@ plugins:
       date_from_meta:
         as_creation: date
   - tags:
-      tags_hierarchy: true
       listings_map:
         scoped:
           scope: true

@@ -60,7 +60,7 @@ tags: [tech,backend,database,java,golang]
 
 - [node_exporter](https://github.com/prometheus/node_exporter){:target="\_blank"} - Exporter for machine metrics
 - [alertmanager](https://github.com/prometheus/alertmanager){:target="\_blank"} - Prometheus Alertmanager
-- [ethtool golang](github.com/safchain/ethtool){:target="\_blank"} - ethtool 的 golang 实现 Prometheus 内部调用
+- [ethtool golang](https://github.com/safchain/ethtool){:target="\_blank"} - ethtool 的 golang 实现 Prometheus 内部调用
 - [proc fs](https://github.com/prometheus/procfs){:target="\_blank"} - golang 实现的 proc fs 解析工具。 Prometheus 内部组件
 
 #### Application Performance Monitoring
@@ -120,6 +120,7 @@ tags: [tech,backend,database,java,golang]
 
 - [jodd](https://github.com/oblac/jodd){:target="\_blank"} - 各种工具库的独立实现，不一定最好但都比较小巧。
 - [byte-buddy](https://github.com/raphw/byte-buddy){:target="\_blank"} - Runtime code generation
+- [oshi](https://github.com/oshi/oshi){:target="\_blank"} - 获取 os 或者 hardware 信息的跨平台封装 （通过解析 sysfs, procfs 或者解析命令行输出、也有用 JNI 调用或者 Windows 上 WMI) 
 
 ---
 
