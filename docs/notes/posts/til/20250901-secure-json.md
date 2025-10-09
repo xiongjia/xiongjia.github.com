@@ -1,6 +1,8 @@
 ---
 title: SecureJSON 的作用
-date: 2025-09-01
+date:
+  created: 2025-09-01
+  updated: 2025-09-01
 authors: [xiongjia]
 tags:
   - general

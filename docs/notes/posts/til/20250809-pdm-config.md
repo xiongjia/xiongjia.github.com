@@ -1,6 +1,8 @@
 ---
 title: PDM 设置
-date: 2025-08-09
+date:
+  created: 2025-08-09
+  updated: 2025-08-09
 authors: [xiongjia]
 tags:
   - py

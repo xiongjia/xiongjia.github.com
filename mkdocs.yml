@@ -21,10 +21,25 @@ plugins:
   - glightbox
   - meta
   - rss:
+      rss_feed_enabled: true
       enabled: true
-      match_path: notes/posts/tests/.* 
+      abstract_chars_count: 160
+      abstract_delimiter: <!-- more -->
+      feed_description: recycle.bin
+      feeds_filenames:
+        json_created: feed_json_created.json
+        json_updated: feed_json_updated.json
+        rss_created: feed_rss_created.xml
+        rss_updated: feed_rss_updated.xml      
+      match_path: "notes/posts/.*"
+      use_git: true
+      pretty_print: true
+      use_material_social_cards: true
       date_from_meta:
-        as_creation: date
+        as_creation: date.created
+        as_update: date.updated
+        datetime_format: "%Y-%m-%d %H:%M"
+        default_time: "22:00"
   - tags:
       listings_map:
         scoped:

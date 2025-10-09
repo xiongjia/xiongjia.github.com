@@ -16,7 +16,7 @@ hide:
 
 ## :material-information-variant: About me
 
-- :material-github: Github: [xiongjia](https://github.com/xiongjia)
-- :octicons-mail-24: Mail: [lexiongjia@gmail.com](mailto:lexiongjia@gmail.com)
-
+- :material-github: [xiongjia](https://github.com/xiongjia)
+- :octicons-mail-24: [lexiongjia@gmail.com](mailto:lexiongjia@gmail.com)
+- :material-rss: [RSS](/feed_rss_created.xml){:target="\_blank"}
 
