@@ -67,5 +67,5 @@ fetch("https://your-api")
 
 ## 其他
 
-- 过大多数情况浏览器提供跨域保护，SecureJSON 增加 Server & Client 的负担。不建议启用。
+- 不过大多数情况浏览器提供跨域保护，SecureJSON 增加 Server & Client 的负担。不建议启用。
 - Gin [:simple-github:](https://github.com/gin-gonic/gin){:target="\_blank"} 有提供对应的 SecureJSON 编码方式。

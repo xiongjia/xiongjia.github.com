@@ -18,7 +18,7 @@ tags: [tech,backend,database,java,golang]
 
 集群系统相关知识工具
 
-#### Services discovery
+#### Service Discovery
 
 - [zookeeper](https://github.com/apache/zookeeper){:target="\_blank"}
 - [etcd](https://github.com/etcd-io/etcd){:target="\_blank"}
@@ -27,7 +27,7 @@ tags: [tech,backend,database,java,golang]
 #### RPC
 
 - [ZMQ](https://zeromq.org/){:target="\_blank"} - [zmq-github](https://github.com/zeromq) 不需要额外部署 (Zero)
-- [d-bus](https://github.com/freedesktop/dbus){:target="\_blank"} - IPC 通信
+- [D-Bus](https://github.com/freedesktop/dbus){:target="\_blank"} - IPC 通信
 - [gRPC](https://grpc.io/){:target="\_blank"} - HTTP2 + protobuf
 - [RSocket](https://rsocket.io/){:target="\_blank"} - 有浏览器支持
 - [thrift](https://thrift.apache.org/){:target="\_blank"}
@@ -74,7 +74,7 @@ tags: [tech,backend,database,java,golang]
 - [Server Status Rust](https://github.com/zdz/ServerStatus-Rust){:target="\_blank"} - Rust 实现的服务器监测
 - [uptime kuma](https://github.com/louislam/uptime-kuma){:target="\_blank"} - A fancy self-hosted monitoring tool
 - [btop](https://github.com/aristocratos/bpytop){:target="\_blank"} - 改良版本 top
-- [netdata](https://github.com/netdata/netdata){:target="\_blank"} - Real-time performance monitoring 是 c / c++ 实现，也支持自己写 Collector 扩展。(比较适合做单机的时时检查用)
+- [netdata](https://github.com/netdata/netdata){:target="\_blank"} - Real-time performance monitoring 是 C / C++ 实现，也支持自己写 Collector 扩展。(比较适合做单机的时时检查用)
 - [nmon](https://nmon.sourceforge.net/pmwiki.php) - 用 cli 也支持 csv 导出后的分析。适合单机检查、分析具体问题。
 
 ---
@@ -87,7 +87,7 @@ tags: [tech,backend,database,java,golang]
 
 - [Dragon Fly DB](https://dragonflydb.io/){:target="\_blank"} - 类 redis ，看统计比 redis 快，占内存少
 
-#### Time series database
+#### Time-series database
 
 - [GrepTimeDb](https://github.com/GreptimeTeam/greptimedb){:target="\_blank"} - rust 实现的 TS DB
 
@@ -144,14 +144,14 @@ tags: [tech,backend,database,java,golang]
 
 - [Open Source Software Insight](https://ossinsight.io/){:target="\_blank"} - github 的一些统计
 - [giscus](https://giscus.app/){:target="\_blank"} - 基于 github discussions 做的 BLOG 留言系统
-- [utteranc](https://utteranc.es/){:target="\_blank"} - 基于 github issue 做的 BLOG 留言系统
+- [utterances](https://utteranc.es/){:target="\_blank"} - 基于 github issue 做的 BLOG 留言系统
 
 ---
 
 ### OS distribution
 
 - [AlmaLinux](https://almalinux.org/){:target="\_blank"} - CentOS 替代
-- [Clear os](https://www.clearos.com/){:target="\_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
+- [ClearOS](https://www.clearos.com/){:target="\_blank"} - 类似 Redhat, CentOS 不过适合 NAS 管理，有一些远程管理工具。
 - [scoop](https://scoop.sh/){:target="\_blank"} - Windows package management 
 
 ---
@@ -159,13 +159,13 @@ tags: [tech,backend,database,java,golang]
 ### Tutorials
 
 - [CS DIY](https://csdiy.wiki/){:target="\_blank"} - Computer science 自学目录
-- [µGo 语言实现(从头开发一个迷你 Go 语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="\_blank"} - go 编译器学习
+- [µGo 语言实现(从头开发一个迷你 Go 语言编译器)](https://github.com/wa-lang/ugo-compiler-book){:target="\_blank"} - Go 编译器学习
 - [Go 语言定制指南](https://github.com/chai2010/go-ast-book){:target="\_blank"} - Go 语法树入门
 - [Go Optimization Guide](https://goperf.dev/){:target="\_blank"} - Common Performance Patterns & Practical Networking Patterns
 
 ---
 
-###  Dev-Ops
+### DevOps
 
 - [ntfy](https://ntfy.sh/){:target="\_blank"} - 通知系统
 - [gotify](https://gotify.net/){:target="\_blank"} - 通知系统

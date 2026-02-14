@@ -32,7 +32,7 @@ pdm config cache_dir "/new/cache/path"
 pdm config cache_dir
 ```
 
-设置 pdm cache 目录的位置 (通关环境变量临时修改)
+设置 pdm cache 目录的位置 (通过环境变量临时修改)
 
 === "Unix Shell"
     ```bash
@@ -42,7 +42,7 @@ pdm config cache_dir
     ```
 === "Windows PowerShell"
     ```bash
-    # 在 Windows Powershell 上
+    # 在 Windows PowerShell 上
     $env:PDM_CACHE_DIR = "D:\new\cache\path"
     pdm install
     ```
@@ -78,7 +78,7 @@ pdm config -l pypi.url https://mirrors.cloud.tencent.com/pypi/simple
 
 ### package 安装设置
 
-启用以下设置后 PDM 会把对应的 python pacakges 装在对应的工程目录里的 `__pypackages__` 。
+启用以下设置后 PDM 会把对应的 python packages 装在对应的工程目录里的 `__pypackages__` 。
 这个做法可以避免污染 venv 里的 python 环境，不过会导致占用更多磁盘空间。
 
 ```bash

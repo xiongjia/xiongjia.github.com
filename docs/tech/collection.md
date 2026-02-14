@@ -22,7 +22,7 @@ tags: [tech]
 ### trackers / radarr
 
 - [Sonarr](https://github.com/Sonarr/Sonarr){:target="\_blank"} -  自动下载找源 (电视剧管理与自动下载)
-- [Radarr](https://github.com/Radarr/Radarr){:target="\_blank"} - sonarr 复刻 (电影管理与自动下载)
+- [Radarr](https://github.com/Radarr/Radarr){:target="\_blank"} - Sonarr 复刻 (电影管理与自动下载)
 - [Jackett](https://github.com/Jackett/Jackett){:target="\_blank"} - 找源工具
 
 ### Movie DB
@@ -38,7 +38,7 @@ tags: [tech]
 ## 🤖 Tools
 
 - [trickle](https://github.com/mariusae/trickle){:target="\_blank"} - 带宽限速
-- [mitmproxy](https://mitmproxy.org/){:target="\_blank"} - 解析 http / https 协议用的反向工程工具
+- [mitmproxy](https://mitmproxy.org/){:target="\_blank"} - 解析 HTTP / HTTPS 协议用的反向工程工具
 - [flameshot](https://github.com/flameshot-org/flameshot){:target="\_blank"} - 截屏工具
-- [ledger-cli](https://ledger-cli.org/){:target="\_blank"} - 复式记账工具。可以和 Emacs, Obsidian 等工具组合使用
+- [Ledger CLI](https://ledger-cli.org/){:target="\_blank"} - 复式记账工具。可以和 Emacs, Obsidian 等工具组合使用
 - [Beancount](https://beancount.github.io/){:target="\_blank"} - 类似 ledger 。使用入门更方便可以结合 [Fava](https://github.com/beancount/fava){:target="\_blank"} 的 web 界面使用。

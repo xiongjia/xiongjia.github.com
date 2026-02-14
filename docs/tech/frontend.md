@@ -33,11 +33,11 @@ seedling [:simple-github:](https://github.com/xiongjia/seedling){:target="\_blan
 - [prettier](https://prettier.io/){:target="\_blank"} - 统一代码风格。提供命令行操作和各种编辑器的 plugins (比如：vim, vscode)，在编辑器里按保存时会自动整理代码，避免开发时风格的不统一。[prettier Github](https://github.com/prettier/prettier){:target="\_blank"}
 - [lint-staged](https://github.com/okonet/lint-staged){:target="\_blank"} - 通过 npm 生态安装。在 git commit 时触发，一般用于执行 lint 命令。（也可以做其他)
 - [Mostly adequate guide to FP (in javascript)](https://github.com/MostlyAdequate/mostly-adequate-guide){:target="\_blank"} - 通用 FP 教程
-- [storybook.js](https://storybook.js.org/){:target="\_blank"} - UI compoents 文档生成工具
+- [storybook.js](https://storybook.js.org/){:target="\_blank"} - UI components 文档生成工具
 - [playwright](https://github.com/microsoft/playwright){:target="\_blank"} - UI Automation testing framework ( MS 维护，文档全面。提供 VS Extension 帮助脚本开发)
 
 
-### react
+### React
 
 - [mui](https://github.com/mui/material-ui){:target="\_blank"} - Public UI Components
 - [awesome mui (nadunindunil)](https://github.com/nadunindunil/awesome-material-ui){:target="\_blank"} - awesome 系
@@ -49,4 +49,4 @@ seedling [:simple-github:](https://github.com/xiongjia/seedling){:target="\_blan
 
 ### Samples
 
-- [React Board](https://github.com/aditya0929/reactBoard){:target="\_blank"} - Dash board sample. [Demo APP](https://advance-dash.netlify.app/){:target="\_blank"}
+- [React Board](https://github.com/aditya0929/reactBoard){:target="\_blank"} - Dashboard sample. [Demo APP](https://advance-dash.netlify.app/){:target="\_blank"}
