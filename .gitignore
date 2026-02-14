@@ -1,11 +1,18 @@
 # python
-.py[cod]
+*.py[cod]
+*.pyc
+*.pyo
 __pycache__/
 .mypy_cache/
 .pytest_cache/
 .ruff_cache/
 .pdm-python
+__pypackages__/
 
 # mkdocs folders
 site/
 site-selfhost/
+
+# env files
+.env
+env-*
