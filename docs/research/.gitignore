@@ -1,0 +1,3 @@
+# external source code
+external/*
+!external/.keep
