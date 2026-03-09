@@ -77,6 +77,26 @@ lux/
 - **Data**: 提取的完整数据 (包含多个 Stream)
 - **Mux**: 音视频合并 (使用 ffmpeg)
 
+## 第三方库
+
+| 库 | 用途 |
+|---|---|
+| **urfave/cli/v2** | CLI 框架，构建命令行应用 |
+| **gocolly/colly/v2** | 网页爬虫框架，用于抓取网页内容 |
+| **PuerkitoBio/goquery** | HTML 解析库，类似 jQuery 的 DOM 操作 |
+| **kkdai/youtube/v2** | YouTube 专用提取器 |
+| **dop251/goja** | JavaScript 引擎，用于执行 JS 代码 |
+| **robertkrimen/otto** | 另一个 JavaScript 引擎 |
+| **fatih/color** | 彩色终端输出 |
+| **cheggaaa/pb/v3** | 终端进度条 |
+| **buger/jsonparser** | 高性能 JSON 解析 |
+| **json-iterator/go** | 高性能 JSON 序列化/反序列化 |
+| **itchyny/gojq** | jq 风格的 JSON 查询 |
+| **EDDYCJY/fake-useragent** | 随机 User-Agent 生成 |
+| **MercuryEngineering/CookieMonster** | Cookie 管理 |
+| **kr/pretty** | 格式化输出 (用于调试) |
+| **pkg/errors** | 错误处理增强 |
+
 ## 参考资源
 
 - [README.md](docs/research/external/lux/README.md) - 项目文档
