@@ -1,3 +1,14 @@
 # external source code
 external/*
 !external/.keep
+
+# Go projects
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+go.sum
+vendor/
