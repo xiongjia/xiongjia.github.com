@@ -37,17 +37,19 @@ lux/
 
 ### 阶段 2: 核心模块
 
-3. **下载器模块** (`downloader/`)
-   - [downloader.go](docs/research/external/lux/downloader/downloader.go) - 下载核心逻辑
-   - [types.go](docs/research/external/lux/downloader/types.go) - 数据结构
+> 建议学习顺序: **request → extractors → downloader** (由底层到上层)
+
+3. **网络请求** (`request/`)
+   - 了解如何封装 HTTP 请求
+   - 处理 cookie、proxy 等
 
 4. **提取器模块** (`extractors/`)
    - [extractors.go](docs/research/external/lux/extractors/extractors.go) - 提取器接口
    - [types.go](docs/research/external/lux/extractors/types.go) - 数据类型定义
 
-5. **网络请求** (`request/`)
-   - 了解如何封装 HTTP 请求
-   - 处理 cookie、proxy 等
+5. **下载器模块** (`downloader/`)
+   - [downloader.go](docs/research/external/lux/downloader/downloader.go) - 下载核心逻辑
+   - [types.go](docs/research/external/lux/downloader/types.go) - 数据结构
 
 ### 阶段 3: 深入理解
 
