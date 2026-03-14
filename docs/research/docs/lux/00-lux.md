@@ -101,3 +101,273 @@ lux/
 
 - [README.md](docs/research/external/lux/README.md) - 项目文档
 - [CONTRIBUTING.md](docs/research/external/lux/CONTRIBUTING.md) - 贡献指南
+
+---
+
+# Downloader 模块流程分析
+
+本文档分析 lux 项目中 downloader 包的主要下载流程。
+
+## 1. 核心数据结构
+
+### Downloader 结构体
+```go
+type Downloader struct {
+    Bar    *pb.ProgressBar  // 进度条
+    option Options         // 下载选项
+}
+```
+
+### Options 配置项
+| 字段 | 说明 |
+|------|------|
+| `InfoOnly` | 仅显示信息，不下载 |
+| `Silent` | 静默模式，不输出信息 |
+| `Stream` | 指定要下载的流类型 |
+| `AudioOnly` | 仅下载音频 |
+| `MultiThread` | 是否启用多线程下载 |
+| `ThreadNumber` | 线程数量 |
+| `ChunkSizeMB` | 分块大小（MB） |
+| `UseAria2RPC` | 使用 Aria2 RPC 下载 |
+| `EmbedSubtitle` | 内嵌字幕到视频 |
+
+---
+
+## 2. 主要下载流程
+
+### 入口方法: `Download()`
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                      Download(data)                         │
+├─────────────────────────────────────────────────────────────┤
+│ 1. 验证 streams 不为空                                       │
+│ 2. 按 Size 排序所有 streams                                  │
+│ 3. 如果 InfoOnly: 打印信息后返回                              │
+│ 4. 获取输出文件名 (title)                                     │
+│ 5. 选择要下载的 stream                                        │
+│ 6. 下载字幕 (Caption)                                        │
+│ 7. 检查是否使用 Aria2 RPC                                    │
+│ 8. 检查文件是否已存在                                         │
+│ 9. 初始化进度条                                              │
+│ 10. 下载视频/音频                                             │
+│ 11. 合并分片 (如果有多个 parts)                                │
+│ 12. 内嵌字幕 (如果启用)                                        │
+└─────────────────────────────────────────────────────────────┘
+```
+
+### 单文件 vs 多分片下载
+
+#### 单文件流程 (len(stream.Parts) == 1)
+```
+┌─────────────────────────────────────┐
+│           单文件下载                  │
+├─────────────────────────────────────┤
+│ if MultiThread:                     │
+│     multiThreadSave()               │
+│ else:                               │
+│     save()                          │
+└─────────────────────────────────────┘
+```
+
+#### 多分片流程 (len(stream.Parts) > 1)
+```
+┌─────────────────────────────────────────────┐
+│              多分片下载                       │
+├─────────────────────────────────────────────┤
+│ 1. 使用 WaitGroupPool 并行下载各分片          │
+│ 2. 每个分片调用 save() 或 multiThreadSave() │
+│ 3. 等待所有分片下载完成                       │
+│ 4. 合并所有分片为完整文件                      │
+│ 5. 内嵌字幕 (可选)                           │
+└─────────────────────────────────────────────┘
+```
+
+---
+
+## 3. 核心下载方法
+
+### 3.1 `save()` - 单线程下载
+
+```go
+func (downloader *Downloader) save(part *extractors.Part, refer, fileName string) error
+```
+
+**流程:**
+```
+┌─────────────────────────────────────────────────────────┐
+│                      save()                             │
+├─────────────────────────────────────────────────────────┤
+│ 1. 生成最终文件路径                                       │
+│ 2. 检查文件是否已完整下载 (跳过)                           │
+│ 3. 创建临时文件 (xxx.download)                            │
+│ 4. 检查临时文件是否已存在 (断点续传)                       │
+│ 5. 设置 HTTP Headers (Referer, Range)                    │
+│ 6. 下载数据到临时文件                                     │
+│    - 如果 ChunkSizeMB > 0: 分块下载                        │
+│    - 否则: 单次下载                                       │
+│ 7. 支持重试 (RetryTimes)                                 │
+│ 8. 关闭文件并重命名为最终文件名                            │
+└─────────────────────────────────────────────────────────┘
+```
+
+**断点续传支持:**
+- 下载前检查 `xxx.download` 临时文件是否存在
+- 如果存在，读取已下载大小，设置 `Range: bytes={size}-` 头部
+- 从断点位置继续下载
+
+### 3.2 `multiThreadSave()` - 多线程下载
+
+```go
+func (downloader *Downloader) multiThreadSave(dataPart *extractors.Part, refer, fileName string) error
+```
+
+**流程:**
+```
+┌─────────────────────────────────────────────────────────────┐
+│                  multiThreadSave()                         │
+├─────────────────────────────────────────────────────────────┤
+│ 1. 检查最终文件和临时文件是否存在                           │
+│ 2. 扫描已有的分片文件 (.part0, .part1, ...)                │
+│ 3. 分析已下载状态:                                          │
+│    - 找出已完成的分片                                       │
+│    - 找出未完成的分片                                       │
+│    - 计算已下载总大小                                       │
+│ 4. 如果已下载大小 == 总大小: 合并并返回                      │
+│ 5. 使用 WaitGroupPool 并行下载未完成的分片                  │
+│ 6. 每个分片独立下载，支持断点续传                           │
+│ 7. 合并所有分片                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+
+**分片文件结构:**
+- 每个分片存储为 `xxx.part{index}` 文件
+- 文件头包含 `FilePartMeta` 元数据 (Index, Start, End, Cur)
+- 实际数据从元数据之后开始
+
+### 3.3 `writeFile()` - HTTP 写入文件
+
+```go
+func (downloader *Downloader) writeFile(url string, file *os.File, headers map[string]string) (int64, error)
+```
+
+- 发起 HTTP GET 请求
+- 使用 progress bar 包装 writer 追踪进度
+- 返回写入的字节数
+
+---
+
+## 4. 字幕下载
+
+```go
+func (downloader *Downloader) caption(url, fileName, ext string, transform func([]byte) ([]byte, error)) error
+```
+
+- 下载字幕/弹幕文件
+- 支持格式转换 (如 XML -> SRT)
+- 如果启用 `EmbedSubtitle`: 内嵌到视频中
+
+---
+
+## 5. Aria2 RPC 支持
+
+```go
+func (downloader *Downloader) aria2(title string, stream *extractors.Stream) error
+```
+
+- 通过 Aria2 JSON-RPC 接口添加下载任务
+- 支持分片并行下载
+- 需要配置 `Aria2Token`, `Aria2Method`, `Aria2Addr`
+
+---
+
+## 6. 文件合并
+
+当视频有多个分片时，需要合并:
+
+```go
+// 通用合并
+utils.MergeFilesWithSameExtension(parts, mergedFilePath)
+
+// MP4 合并
+utils.MergeToMP4(parts, mergedFilePath, title)
+```
+
+---
+
+## 7. 关键文件
+
+| 文件 | 说明 |
+|------|------|
+| [downloader.go](../external/lux/downloader/downloader.go) | 主下载逻辑 |
+| [types.go](../external/lux/downloader/types.go) | 类型定义 |
+| [utils.go](../external/lux/downloader/utils.go) | 辅助函数 |
+| [downloader_test.go](../external/lux/downloader/downloader_test.go) | 测试用例 |
+
+---
+
+## 8. 流程图
+
+```
+用户调用 Download()
+       │
+       ▼
+┌──────────────────┐
+│  检查 InfoOnly   │
+└────────┬─────────┘
+         │ 是
+         ▼
+┌──────────────────┐
+│   打印视频信息    │
+└────────┬─────────┘
+         │ 否
+         ▼
+┌──────────────────┐
+│  下载字幕文件    │
+└────────┬─────────┘
+         │
+         ▼
+┌──────────────────┐
+│ 检查 Aria2 RPC   │
+└────────┬─────────┘
+         │ 是
+         ▼
+┌──────────────────┐
+│  调用 aria2()    │
+└────────┬─────────┘
+         │ 否
+         ▼
+┌──────────────────┐
+│ 检查文件已存在   │
+└────────┬─────────┘
+         │ 是
+         ▼
+┌──────────────────┐
+│    跳过下载      │
+└──────────────────┘
+         │ 否
+         ▼
+┌──────────────────┐
+│ 初始化进度条     │
+└────────┬─────────┘
+         │
+    ┌────┴────┐
+    │         │
+  单文件    多分片
+    │         │
+    ▼         ▼
+┌────────┐  ┌────────────────┐
+│ save() │  │ 并行下载各分片 │
+│ 或     │  │   (WaitGroup)  │
+│multi   │  └────────┬───────┘
+│Thread  │           │
+│Save()  │           ▼
+└────────┘  ┌────────────────┐
+           │  合并分片文件   │
+           └────────┬───────┘
+                    │
+                    ▼
+           ┌────────────────┐
+           │  内嵌字幕(可选)│
+           └────────────────┘
+```
