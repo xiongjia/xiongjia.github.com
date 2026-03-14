@@ -1,4 +1,32 @@
-# Nest Commander 工程分析报告
+---
+title: Nest Commander 学习资料
+tags:
+  - research
+  - tech
+  - cli
+categories:
+  - dev
+---
+
+> **⚠️ 免责声明**: 本文档由 AI 自动生成，仅供参考学习使用。
+
+## 学习前置准备
+
+在学习本课程之前，请先将 nest-commander 仓库克隆到本地 external 目录：
+
+```bash
+# 使用 depth=1 减少克隆时间
+git clone --depth=1 https://github.com/jmcdo29/nest-commander.git docs/research/external/nest-commander
+```
+
+**当前文档信息：**
+- 研究分支 (Branch): `master`
+- Git SHA1: `b0493c16e52636fc05edf6dcb7d42c573bbbd0a3`
+- 外部仓库位置: `docs/research/external/nest-commander/`
+
+---
+
+# Nest Commander 学习资料
 
 ## 1. 项目概述
 

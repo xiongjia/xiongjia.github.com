@@ -1,3 +1,12 @@
+---
+title: Lux 资料整理
+tags:
+  - research
+  - tech
+categories:
+  - dev
+---
+
 # Lux 资料整理
 
 > ⚠️ **本文档由 AI 自动整理**
