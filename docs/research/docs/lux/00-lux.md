@@ -1,4 +1,15 @@
-# Lux 学习计划
+# Lux 资料整理
+
+> ⚠️ **本文档由 AI 自动整理**
+> - 依据 lux 仓库: branch `master` (`dd00f6d`)
+
+> **学习前先克隆项目:**
+> ```bash
+> cd docs/research/external
+> git clone --depth 1 https://github.com/iawia002/lux.git
+> ```
+
+---
 
 ## 项目概述
 
@@ -32,8 +43,8 @@ lux/
    - `go run . --help` 查看帮助
 
 2. **理解程序入口**
-   - 阅读 [main.go](docs/research/external/lux/main.go)
-   - 阅读 [app/app.go](docs/research/external/lux/app/app.go) 了解 CLI 结构
+   - 阅读 `docs/research/external/lux/main.go`
+   - 阅读 `docs/research/external/lux/app/app.go` 了解 CLI 结构
 
 ### 阶段 2: 核心模块
 
@@ -44,12 +55,12 @@ lux/
    - 处理 cookie、proxy 等
 
 4. **提取器模块** (`extractors/`)
-   - [extractors.go](docs/research/external/lux/extractors/extractors.go) - 提取器接口
-   - [types.go](docs/research/external/lux/extractors/types.go) - 数据类型定义
+   - `docs/research/external/lux/extractors/extractors.go` - 提取器接口
+   - `docs/research/external/lux/extractors/types.go` - 数据类型定义
 
 5. **下载器模块** (`downloader/`)
-   - [downloader.go](docs/research/external/lux/downloader/downloader.go) - 下载核心逻辑
-   - [types.go](docs/research/external/lux/downloader/types.go) - 数据结构
+   - `docs/research/external/lux/downloader/downloader.go` - 下载核心逻辑
+   - `docs/research/external/lux/downloader/types.go` - 数据结构
 
 ### 阶段 3: 深入理解
 
@@ -97,10 +108,14 @@ lux/
 | **kr/pretty** | 格式化输出 (用于调试) |
 | **pkg/errors** | 错误处理增强 |
 
+## 本地实验
+
+- [go-cli-urfave 实验代码](https://github.com/xiongjia/xiongjia.github.com/tree/master/docs/research/experiments/go-cli-urfave/main.go){:target="\_blank"} - Lux 使用 urfave/cli 框架的实验项目
+
 ## 参考资源
 
-- [README.md](docs/research/external/lux/README.md) - 项目文档
-- [CONTRIBUTING.md](docs/research/external/lux/CONTRIBUTING.md) - 贡献指南
+- `docs/research/external/lux/README.md` - 项目文档
+- `docs/research/external/lux/CONTRIBUTING.md` - 贡献指南
 
 ---
 
@@ -120,7 +135,7 @@ type Downloader struct {
 
 ### Options 配置项
 | 字段 | 说明 |
-|------|------|
+|---|---|
 | `InfoOnly` | 仅显示信息，不下载 |
 | `Silent` | 静默模式，不输出信息 |
 | `Stream` | 指定要下载的流类型 |
@@ -141,18 +156,18 @@ type Downloader struct {
 ┌─────────────────────────────────────────────────────────────┐
 │                      Download(data)                         │
 ├─────────────────────────────────────────────────────────────┤
-│ 1. 验证 streams 不为空                                       │
-│ 2. 按 Size 排序所有 streams                                  │
-│ 3. 如果 InfoOnly: 打印信息后返回                              │
-│ 4. 获取输出文件名 (title)                                     │
-│ 5. 选择要下载的 stream                                        │
-│ 6. 下载字幕 (Caption)                                        │
-│ 7. 检查是否使用 Aria2 RPC                                    │
-│ 8. 检查文件是否已存在                                         │
-│ 9. 初始化进度条                                              │
-│ 10. 下载视频/音频                                             │
-│ 11. 合并分片 (如果有多个 parts)                                │
-│ 12. 内嵌字幕 (如果启用)                                        │
+│  1. 验证 streams 不为空                                     │
+│  2. 按 Size 排序所有 streams                                │
+│  3. 如果 InfoOnly: 打印信息后返回                            │
+│  4. 获取输出文件名 (title)                                   │
+│  5. 选择要下载的 stream                                      │
+│  6. 下载字幕 (Caption)                                      │
+│  7. 检查是否使用 Aria2 RPC                                  │
+│  8. 检查文件是否已存在                                       │
+│  9. 初始化进度条                                            │
+│ 10. 下载视频/音频                                           │
+│ 11. 合并分片 (如果有多个 parts)                              │
+│ 12. 内嵌字幕 (如果启用)                                     │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -175,11 +190,11 @@ type Downloader struct {
 ┌─────────────────────────────────────────────┐
 │              多分片下载                       │
 ├─────────────────────────────────────────────┤
-│ 1. 使用 WaitGroupPool 并行下载各分片          │
-│ 2. 每个分片调用 save() 或 multiThreadSave() │
-│ 3. 等待所有分片下载完成                       │
-│ 4. 合并所有分片为完整文件                      │
-│ 5. 内嵌字幕 (可选)                           │
+│  1. 使用 WaitGroupPool 并行下载各分片         │
+│  2. 每个分片调用 save() 或 multiThreadSave() │
+│  3. 等待所有分片下载完成                       │
+│  4. 合并所有分片为完整文件                      │
+│  5. 内嵌字幕 (可选)                           │
 └─────────────────────────────────────────────┘
 ```
 
@@ -198,16 +213,16 @@ func (downloader *Downloader) save(part *extractors.Part, refer, fileName string
 ┌─────────────────────────────────────────────────────────┐
 │                      save()                             │
 ├─────────────────────────────────────────────────────────┤
-│ 1. 生成最终文件路径                                       │
-│ 2. 检查文件是否已完整下载 (跳过)                           │
-│ 3. 创建临时文件 (xxx.download)                            │
-│ 4. 检查临时文件是否已存在 (断点续传)                       │
-│ 5. 设置 HTTP Headers (Referer, Range)                    │
-│ 6. 下载数据到临时文件                                     │
-│    - 如果 ChunkSizeMB > 0: 分块下载                        │
-│    - 否则: 单次下载                                       │
-│ 7. 支持重试 (RetryTimes)                                 │
-│ 8. 关闭文件并重命名为最终文件名                            │
+│  1. 生成最终文件路径                                      │
+│  2. 检查文件是否已完整下载 (跳过)                          │
+│  3. 创建临时文件 (xxx.download)                           │
+│  4. 检查临时文件是否已存在 (断点续传)                       │
+│  5. 设置 HTTP Headers (Referer, Range)                   │
+│  6. 下载数据到临时文件                                    │
+│     - 如果 ChunkSizeMB > 0: 分块下载                       │
+│     - 否则: 单次下载                                      │
+│  7. 支持重试 (RetryTimes)                                │
+│  8. 关闭文件并重命名为最终文件名                           │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -227,16 +242,16 @@ func (downloader *Downloader) multiThreadSave(dataPart *extractors.Part, refer, 
 ┌─────────────────────────────────────────────────────────────┐
 │                  multiThreadSave()                         │
 ├─────────────────────────────────────────────────────────────┤
-│ 1. 检查最终文件和临时文件是否存在                           │
-│ 2. 扫描已有的分片文件 (.part0, .part1, ...)                │
-│ 3. 分析已下载状态:                                          │
-│    - 找出已完成的分片                                       │
-│    - 找出未完成的分片                                       │
-│    - 计算已下载总大小                                       │
-│ 4. 如果已下载大小 == 总大小: 合并并返回                      │
-│ 5. 使用 WaitGroupPool 并行下载未完成的分片                  │
-│ 6. 每个分片独立下载，支持断点续传                           │
-│ 7. 合并所有分片                                             │
+│  1. 检查最终文件和临时文件是否存在                           │
+│  2. 扫描已有的分片文件 (.part0, .part1, ...)               │
+│  3. 分析已下载状态:                                         │
+│     - 找出已完成的分片                                      │
+│     - 找出未完成的分片                                      │
+│     - 计算已下载总大小                                      │
+│  4. 如果已下载大小 == 总大小: 合并并返回                     │
+│  5. 使用 WaitGroupPool 并行下载未完成的分片                 │
+│  6. 每个分片独立下载，支持断点续传                          │
+│  7. 合并所有分片                                            │
 └─────────────────────────────────────────────────────────────┘
 ```
 
@@ -281,28 +296,43 @@ func (downloader *Downloader) aria2(title string, stream *extractors.Stream) err
 
 ---
 
-## 6. 文件合并
+## 6. 文件合并 (FFmpeg)
 
-当视频有多个分片时，需要合并:
+当视频有多个分片时，需要调用 `utils` 包的 ffmpeg 函数合并:
 
 ```go
-// 通用合并
+// 通用合并 (支持音视频合并)
+// 使用 ffmpeg: -c:v copy -c:a copy
 utils.MergeFilesWithSameExtension(parts, mergedFilePath)
 
-// MP4 合并
+// MP4 合并 (使用 concat demuxer)
+// 使用 ffmpeg concat 模式，自动处理 aac_adtstoasc bitstream filter
 utils.MergeToMP4(parts, mergedFilePath, title)
+
+// 内嵌字幕到视频
+// 根据容器格式选择字幕 codec (mp4 -> mov_text, webm -> webvtt)
+utils.EmbedSubtitles(mergedFilePath, subtitlePaths, subtitleLangs)
 ```
+
+**FFmpeg 相关函数位于 `utils/ffmpeg.go`:**
+
+| 函数 | 用途 |
+|---|---|
+| `MergeFilesWithSameExtension()` | 合并相同扩展名文件，音视频合成 |
+| `MergeToMP4()` | 合并 MP4 分片，添加 aac_adtstoasc 滤镜 |
+| `EmbedSubtitles()` | 内嵌字幕到视频容器 |
 
 ---
 
 ## 7. 关键文件
 
 | 文件 | 说明 |
-|------|------|
-| [downloader.go](../external/lux/downloader/downloader.go) | 主下载逻辑 |
-| [types.go](../external/lux/downloader/types.go) | 类型定义 |
-| [utils.go](../external/lux/downloader/utils.go) | 辅助函数 |
-| [downloader_test.go](../external/lux/downloader/downloader_test.go) | 测试用例 |
+|---|---|
+| `../external/lux/downloader/downloader.go` | 主下载逻辑 |
+| `../external/lux/downloader/types.go` | 类型定义 |
+| `../external/lux/downloader/utils.go` | 辅助函数 |
+| `../external/lux/downloader/downloader_test.go` | 测试用例 |
+| `../external/lux/utils/ffmpeg.go` | FFmpeg 合并/转码 |
 
 ---
 
@@ -344,7 +374,7 @@ utils.MergeToMP4(parts, mergedFilePath, title)
          ▼
 ┌──────────────────┐
 │    跳过下载      │
-└──────────────────┘
+└────────┬─────────┘
          │ 否
          ▼
 ┌──────────────────┐
@@ -363,11 +393,11 @@ utils.MergeToMP4(parts, mergedFilePath, title)
 │Thread  │           │
 │Save()  │           ▼
 └────────┘  ┌────────────────┐
-           │  合并分片文件   │
-           └────────┬───────┘
-                    │
-                    ▼
-           ┌────────────────┐
-           │  内嵌字幕(可选)│
-           └────────────────┘
+            │  合并分片文件   │
+            └────────┬───────┘
+                     │
+                     ▼
+            ┌────────────────┐
+            │  内嵌字幕(可选) │
+            └────────────────┘
 ```
