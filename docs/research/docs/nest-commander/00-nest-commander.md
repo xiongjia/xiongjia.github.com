@@ -3,7 +3,6 @@ title: Nest Commander 学习资料
 tags:
   - research
   - tech
-  - cli
 categories:
   - dev
 ---
