@@ -22,4 +22,6 @@ tags: [tech,research]
 
 - [nest-commander](./docs/nest-commander/00-nest-commander.md): 是一个为 NestJS 框架设计的 CLI (命令行界面) 构建工具。
 - [Better Auth](./docs/better-auth/00-better-auth.md): Better Auth 源码阅读指南
+- [NestJS](./docs/nestjs/00-nestjs.md): NestJS Module 注入原理与核心源码分析
+- [Jellyfin](./docs/jellyfin/00-jellyfin.md): Jellyfin 源码阅读指南，视频流播放原理与 Rust 最小原型
 
