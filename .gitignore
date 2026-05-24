@@ -16,3 +16,6 @@ site-selfhost/
 # env files
 .env
 env-*
+
+# claude code local settings
+.claude/settings.local.json
