@@ -33,6 +33,19 @@ Personal notes & research log — built with [MkDocs](https://www.mkdocs.org/) +
 
 ## Local Development
 
+### Prerequisites (Conda)
+
+```bash
+# Create conda environment with Python 3.13
+conda create -n mkdocs-env python=3.13 -y
+conda activate mkdocs-env
+
+# Install PDM
+pip install pdm
+```
+
+### Setup & Run
+
 ```bash
 # Install dependencies
 pdm install
