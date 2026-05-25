@@ -28,4 +28,5 @@ tags: [tech,research]
 - [Better Auth](./docs/better-auth/00-better-auth.md): Better Auth 源码阅读指南
 - [NestJS](./docs/nestjs/00-nestjs.md): NestJS Module 注入原理与核心源码分析
 - [Jellyfin](./docs/jellyfin/00-jellyfin.md): Jellyfin 源码阅读指南，视频流播放原理与 Rust 最小原型
+- [shadcn/ui](./docs/shadcn-ui/00-shadcn-ui.md): shadcn/ui CLI 工具源码阅读指南，Registry 组件分发系统
 
