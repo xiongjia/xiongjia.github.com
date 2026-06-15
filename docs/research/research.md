@@ -16,6 +16,7 @@ tags: [tech,research]
 ## Tools 
 
 - [lux](./docs/lux/00-lux.md)： Lux 是一个用 Go 编写的快速、简单的视频下载器，支持从多个视频网站下载视频和音频。
+- [Redash](./docs/redash/00-redash.md)： Redash 源码阅读指南，查询结果缓存机制与 Dashboard 自定义布局实现原理
 - [trip](./docs/trip/00-trip.md): TRIP 项目核心原理与代码阅读指南
 
 ## Learning Plans
