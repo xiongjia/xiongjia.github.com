@@ -8,6 +8,7 @@ repo_url: https://github.com/xiongjia/xiongjia.github.com
 copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/xiongjia.github.com" target="_blank" rel="noopener noreferrer">recycle.bin</a>
 
 extra:
+  git_hash: !ENV [GIT_HASH, '']
   analytics:
     provider: google
     property:  !ENV [G_ANALYTICS_ID, 'UA-7661871-5']

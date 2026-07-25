@@ -2,5 +2,8 @@
 
 {% block extrahead %}
   <meta name="google-site-verification" content="google-site-verification=kBaHBr-cch2FLMAWSHfasu_DIUXGakIH2i2pIStoROc" />
+  {% if config.extra.git_hash %}
+    <meta name="git-hash" content="{{ config.extra.git_hash }}">
+  {% endif %}
   {{ super() }}
 {% endblock %}
