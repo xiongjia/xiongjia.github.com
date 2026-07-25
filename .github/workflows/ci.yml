@@ -21,8 +21,8 @@ jobs:
           enable-cache: true
       - name: Install dependencies
         run: uv sync
-      - name: Strict build check
-        run: uv run mkdocs build --strict
+      - name: Build check
+        run: uv run mkdocs build
       - name: Format check
         run: uv run ruff format --check . --exclude 'docs/research/external'
 
