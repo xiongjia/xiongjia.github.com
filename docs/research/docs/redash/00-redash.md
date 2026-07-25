@@ -89,8 +89,8 @@ def gen_query_hash(sql):
     """Return hash of the given query after stripping all comments, line breaks
     and multiple spaces.
     """
-    sql = COMMENTS_REGEX.sub("", sql)   # 去除 /* ... */ 注释
-    sql = "".join(sql.split())          # 去除所有空白字符
+    sql = COMMENTS_REGEX.sub("", sql)  # 去除 /* ... */ 注释
+    sql = "".join(sql.split())  # 去除所有空白字符
     return hashlib.md5(sql.encode("utf-8"), usedforsecurity=False).hexdigest()
 ```
 
@@ -428,18 +428,14 @@ def get_latest(cls, data_source, query, max_age=0):
 
     if max_age == -1:
         # 不限时间：找最新的匹配结果
-        query = cls.query.filter(
-            cls.query_hash == query_hash,
-            cls.data_source == data_source
-        )
+        query = cls.query.filter(cls.query_hash == query_hash, cls.data_source == data_source)
     else:
         # 限 max_age：结果 retrieved_at 必须在 max_age 秒内
         query = cls.query.filter(
             cls.query_hash == query_hash,
             cls.data_source == data_source,
-            db.func.timezone("utc", cls.retrieved_at) 
-                + datetime.timedelta(seconds=max_age)
-                >= db.func.timezone("utc", db.func.now())
+            db.func.timezone("utc", cls.retrieved_at) + datetime.timedelta(seconds=max_age)
+            >= db.func.timezone("utc", db.func.now()),
         )
 
     return query.order_by(cls.retrieved_at.desc()).first()
@@ -515,9 +511,7 @@ def cleanup_query_results():
     每次最多删除 QUERY_RESULTS_CLEANUP_COUNT (默认 100) 条，
     且只删除 QUERY_RESULTS_CLEANUP_MAX_AGE (默认 7 天) 之前的。
     """
-    unused_query_results = models.QueryResult.unused(
-        settings.QUERY_RESULTS_CLEANUP_MAX_AGE
-    )
+    unused_query_results = models.QueryResult.unused(settings.QUERY_RESULTS_CLEANUP_MAX_AGE)
     deleted_count = models.QueryResult.query.filter(
         models.QueryResult.id.in_(
             unused_query_results.limit(settings.QUERY_RESULTS_CLEANUP_COUNT).subquery()
@@ -633,6 +627,7 @@ class Dashboard(db.Model):
     layout = Column(MutableList.as_mutable(JSONB), default=[])
     # layout 是旧版格式: [[widget_id_1, widget_id_2], [widget_id_3]]
     # 新版中，位置信息存储在 Widget.options.position 中
+
 
 # Widget 模型
 class Widget(db.Model):

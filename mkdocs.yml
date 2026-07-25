@@ -15,7 +15,7 @@ extra:
 # plugins
 plugins:
   - minify: { minify_html: true }
-  - search: { lang: js }
+  - search:
   - mermaid2
   - drawio
   - glightbox

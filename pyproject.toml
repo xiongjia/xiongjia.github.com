@@ -1,7 +1,7 @@
 [project]
 name = "xiongjia.github.com"
 version = "0.1.0"
-description = "Default template for PDM package"
+description = "Personal notes & research log"
 authors = [{ name = "xiongjia", email = "lexiongjia@gmail.com" }]
 dependencies = [
     "mkdocs>=1.6.1",
@@ -13,17 +13,28 @@ dependencies = [
     "mkdocs-drawio>=1.11.2",
     "mkdocs-rss-plugin>=1.17.3",
     "mkdocs-glightbox>=0.4.0",
+    "poethepoet>=0.34.0",
+    "ruff>=0.11.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
 license = { text = "MIT" }
 
+[tool.poe.tasks]
+server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1" } }
+build = "mkdocs build"
+build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
+format-py = "ruff format . --exclude 'docs/research/external'"
+format = "ruff format . --exclude 'docs/research/external'"
+fmt = "ruff format . --exclude 'docs/research/external'"
+lint-py = "ruff check ."
 
-[tool.pdm]
-distribution = false
+[tool.ruff]
+line-length = 100
+target-version = "py313"
 
-[tool.pdm.scripts]
-server.cmd = "mkdocs serve"
-build.cmd = "mkdocs build"
-build-selfhost.cmd = "mkdocs build --site-dir site-selfhost"
-build-selfhost.env_file = "env-siteselfhost"
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W"]
