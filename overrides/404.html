@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block site_nav %}{% endblock %}
+{% block toc %}{% endblock %}
+
+{% block content %}
+  <style>
+    .md-typeset .page-404 {
+      padding: 4rem 0;
+    }
+    .md-typeset .page-404 .title-404 {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+    .md-typeset .page-404 .body-text {
+      text-align: left;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .md-typeset .page-404 .home-link {
+      margin-top: 2rem;
+    }
+  </style>
+  <div class="page-404">
+    <h1 class="title-404">404</h1>
+    <div class="body-text">
+      <p><strong>Knowledge not found.</strong></p>
+      <p>The page you're looking for doesn't exist.</p>
+      <p>Try searching for a related topic or return to the homepage.</p>
+      <p class="home-link">
+        <a href="{{ base_url }}" class="md-button md-button--primary">
+          Homepage
+        </a>
+      </p>
+    </div>
+  </div>
+{% endblock %}
