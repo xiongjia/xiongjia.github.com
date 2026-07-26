@@ -36,6 +36,10 @@ fmt = [
     { cmd = "ruff format . --exclude 'docs/research/external'" },
     { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules'" },
 ]
+check-fmt = [
+    { cmd = "ruff format --check . --exclude 'docs/research/external'" },
+    { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules' --check" },
+]
 lint-py = "ruff check . --exclude 'docs/research/external'"
 
 [tool.ruff]

@@ -26,9 +26,7 @@ jobs:
       - name: Build check
         run: uv run mkdocs build
       - name: Format check
-        run: |
-          uv run ruff format --check . --exclude 'docs/research/external'
-          uv run mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules' --check
+        run: uv run poe check-fmt
 
   deploy:
     if: github.ref == 'refs/heads/master'
