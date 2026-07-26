@@ -36,3 +36,9 @@ hide:
 - [Go 语言定制指南](https://github.com/chai2010/go-ast-book) - Go 语法树入门
 - [Go Optimization Guide](https://goperf.dev/) - Go 性能优化
 - [CS DIY](https://csdiy.wiki/) - 计算机自学目录
+- [Project-Based Learning](https://github.com/practical-tutorials/project-based-learning) - 项目驱动教程合集
+- [RustTraining](https://github.com/microsoft/RustTraining) - Microsoft Rust 培训
+- [Awesome Math](https://github.com/rossant/awesome-math) - 数学资源汇总
+- [System Design Notes](https://github.com/liquidslr/system-design-notes) - 系统设计笔记
+- [Container Filesystem from Scratch](https://labs.iximiuz.com/tutorials/container-filesystem-from-scratch) - 容器文件系统原理
+- [Harness Engineering (马书)](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding) - C/C++ 到 AI 编程

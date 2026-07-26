@@ -28,3 +28,4 @@ hide:
 ## DB Tools
 
 - [dbeaver](https://dbeaver.io) - 跨平台数据库管理工具 (Java, JDBC)
+- [tabularis](https://github.com/TabularisDB/tabularis) - Rust + TypeScript 数据库客户端

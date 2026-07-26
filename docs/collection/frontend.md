@@ -13,6 +13,9 @@ hide:
 - [storybook.js](https://storybook.js.org/) - UI 组件文档生成
 - [playwright](https://github.com/microsoft/playwright) - UI 自动化测试
 - [Mostly adequate guide to FP (in javascript)](https://github.com/MostlyAdequate/mostly-adequate-guide) - FP 教程
+- [hono](https://github.com/honojs/hono) - 轻量级 Web 框架
+- [animejs](https://animejs.com/) - JavaScript 动画库
+- [markdown-online-editor](https://github.com/nicejade/markdown-online-editor) - Markdown 在线编辑器
 
 ## React
 
@@ -24,6 +27,22 @@ hide:
 - [React Pro Sidebar](https://github.com/azouaoui-med/react-pro-sidebar)
 - [jotai](https://github.com/pmndrs/jotai) - State management
 
+## Maps
+
+- [Leaflet](https://leafletjs.com/) - 开源地图库
+- [Protomaps](https://docs.protomaps.com/) - 自托管地图瓦片
+
+## UI Design Resources
+
+- [Behance](https://www.behance.net/search/projects/dribbble) - 设计作品集
+- [Dribbble](https://dribbble.com/tags/behance) - UI 设计参考
+- [Mobbin](https://mobbin.com/) - App UI 截图库
+- [Navbar Gallery](https://www.navbar.gallery/) - 导航栏设计参考
+- [AdminLTE](https://adminlte.io/) - 后台模板
+- [TailAdmin](https://tailadmin.com/) - Tailwind 后台模板
+- [coss.com/ui](https://coss.com/ui) - UI 资源
+
 ## Samples
 
 - [React Board](https://github.com/aditya0929/reactBoard) - Dashboard sample
+- [FinceptTerminal](https://github.com/Fincept-Corporation/FinceptTerminal) - QT Dashboard
