@@ -16,6 +16,10 @@ hide:
 - [coreutils rust](https://github.com/uutils/coreutils) - unix core utils 的 rust 实现
 - [podman](https://podman.io/) - daemonless container engine
 - [ttar](https://github.com/ideaship/ttar) - 文本文件打包工具
+- [jmespath](https://jmespath.org/) - JSON 查询语言
+- [mole](https://github.com/tw93/Mole) - macOS 端口转发工具
+- [csvq](https://github.com/mithrandie/csvq) - CLI CSV 数据库查询
+- [tini](https://github.com/krallin/tini) - 容器 init 进程
 
 ## RPC / Communication
 
@@ -44,6 +48,7 @@ hide:
 
 - [ntfy](https://ntfy.sh/) - 通知系统
 - [gotify](https://gotify.net/) - 通知系统
+- [winboat](https://github.com/TibixDev/winboat) - Docker 中运行 Windows
 - 分发部署: saltstack, ansible, puppet, chef, rudder, fabric, Terraform
 
 ## GitHub Tools
@@ -56,6 +61,22 @@ hide:
 
 - [ddosify](https://github.com/ddosify/ddosify) - Load testing framework
 - [vegeta](https://github.com/tsenart/vegeta) - HTTP API 压测工具
+
+## Data / ETL
+
+- [awesome-etl](https://github.com/pawl/awesome-etl) - ETL 资源汇总
+- [meltano](https://meltano.com/) - ELT 平台
+- [mockaroo](https://mockaroo.com/) - Mock 数据生成 (schema → CSV → DB)
+
+## BI / Charts
+
+- [sampler](https://github.com/sqshq/sampler) - Go 终端图表工具
+- [shaper](https://github.com/taleshape-com/shaper) - 数据可视化
+
+## Browser & Headless
+
+- [BYOB](https://github.com/wxtsky/byob) - Bring Your Own Browser
+- [obscura](https://github.com/h4ckf0r0day/obscura) - Headless 浏览器
 
 ## Misc
 

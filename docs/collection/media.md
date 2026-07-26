@@ -19,6 +19,7 @@ hide:
 - [Sonarr](https://github.com/Sonarr/Sonarr) - 电视剧管理与自动下载
 - [Radarr](https://github.com/Radarr/Radarr) - 电影管理与自动下载
 - [Jackett](https://github.com/Jackett/Jackett) - 找源工具
+- [seerr](https://github.com/seerr-team/seerr) - 媒体请求管理
 
 ## Movie DB
 

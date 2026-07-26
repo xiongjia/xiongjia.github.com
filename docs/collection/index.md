@@ -18,6 +18,7 @@ ______________________________________________________________________
 | [:material-movie-open-play: Media](./media.md)         | Streaming, trackers, automation            |
 | [:material-wrench: Dev Tools](./dev-tools.md)          | CLI, RPC, serialization, DevOps            |
 | [:material-monitor-dashboard: Frontend](./frontend.md) | React, UI tools, frameworks                |
+| [:material-robot: AI](./ai.md)                         | Local AI, AI Skills, MCP, AI CLI           |
 | [:material-code-tags: Languages](./languages.md)       | Go, Java, C/C++ toolchains                 |
 
 ______________________________________________________________________

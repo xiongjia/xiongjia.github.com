@@ -6,11 +6,21 @@ hide:
 
 # :material-flask: Projects
 
-从收集知识到深入研究再到动手产出的成果汇总。
+从收集知识到深入研究再到动手的练习记录。
+
+## Overview
+
+| Project                         | Status      | Category           |
+| ------------------------------- | ----------- | ------------------ |
+| [seedling](#seedling)           | 🟢 Active   | Frontend & UI      |
+| [vine](#vine)                   | 🟢 Active   | Frontend & UI      |
+| [playground](#playground)       | 🟢 Active   | Automation Toolkit |
+| [mung](#mung)                   | 🟢 Active   | AI & Skills        |
+| [Running Otaku](#running-otaku) | 📦 Archived | Health & Sports    |
 
 ______________________________________________________________________
 
-## 🟢 Active
+## Frontend & UI
 
 ### seedling
 
@@ -22,9 +32,41 @@ React 写的 Dashboard Demo UI，支持多语言、多皮肤模式，用来整�
 
 **Pipeline**: Collection(frontend) → Research(shadcn/ui CLI) → Side Project
 
+### vine
+
+静态地图 Web 应用（MapLibre GL + React），在地图上标记产品位置并生成旅行笔记。
+
+- :simple-github: [Source](https://github.com/xiongjia/vine)
+
+**Pipeline**: Collection(map visualization) → React + MapLibre GL → Side Project
+
 ______________________________________________________________________
 
-## 📦 Archived
+## Automation Toolkit
+
+### playground
+
+个人自动化工具集：加密增量备份（restic）、yt-dlp 视频下载与管理、通知 CLI、beancount 记账查账等模块。
+
+- :simple-github: [Source](https://github.com/xiongjia/playground)
+
+**Pipeline**: Collection(backup/video/notification) → Rust CLI → Side Project
+
+______________________________________________________________________
+
+## AI & Skills
+
+### mung
+
+个人 AI Skills 管理器——在 Claude Code 和 Pi Agent 之间创建、管理和分发 AI agent skill。
+
+- :simple-github: [Source](https://github.com/xiongjia/mung)
+
+**Pipeline**: Collection(AI agent workflow) → TypeScript CLI → Side Project
+
+______________________________________________________________________
+
+## Health & Sports
 
 ### Running Otaku
 
