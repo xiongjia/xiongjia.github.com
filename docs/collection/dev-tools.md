@@ -1,0 +1,66 @@
+---
+icon: material/wrench
+hide:
+  - tags
+---
+
+# :material-wrench: Dev Tools
+
+## CLI & System Tools
+
+- [trickle](https://github.com/mariusae/trickle) - 带宽限速
+- [mitmproxy](https://mitmproxy.org/) - HTTP/HTTPS 反向工程工具
+- [flameshot](https://github.com/flameshot-org/flameshot) - 截屏工具
+- [Ledger CLI](https://ledger-cli.org/) - 复式记账工具，可与 Emacs, Obsidian 组合使用
+- [Beancount](https://beancount.github.io/) - 复式记账，结合 [Fava](https://github.com/beancount/fava) Web 界面使用
+- [coreutils rust](https://github.com/uutils/coreutils) - unix core utils 的 rust 实现
+- [podman](https://podman.io/) - daemonless container engine
+- [ttar](https://github.com/ideaship/ttar) - 文本文件打包工具
+
+## RPC / Communication
+
+- [ZMQ](https://zeromq.org/) - 不需要额外部署的消息队列
+- [D-Bus](https://github.com/freedesktop/dbus) - IPC 通信
+- [gRPC](https://grpc.io/) - HTTP2 + protobuf
+- [RSocket](https://rsocket.io/) - 有浏览器支持
+- [thrift](https://thrift.apache.org/)
+- [avro](https://avro.apache.org/)
+
+## Serialization
+
+- [msgpack](https://msgpack.org/) - 类 JSON 压缩格式
+- [pickle](https://docs.python.org/3/library/pickle.html) - Python 二进制序列化
+- [cbor](https://cbor.io/) - binary object
+- [bson](https://bsonspec.org/) - binary JSON (MongoDB)
+- [Json Lines](https://jsonlines.org/)
+- [FlatBuffers](https://google.github.io/flatbuffers/) - 为游戏设计
+- [parquet](https://parquet.apache.org/) - Columnar storage
+- [srsly](https://github.com/explosion/srsly) - Python 序列化库
+- [ion](https://amzn.github.io/ion-docs/) - Amazon 开发
+- [npy](https://numpy.org/devdocs/reference/generated/numpy.lib.format.html) - NumPy 格式
+- [Json LD](https://json-ld.org/) - 适合重复数据多的场景
+
+## DevOps
+
+- [ntfy](https://ntfy.sh/) - 通知系统
+- [gotify](https://gotify.net/) - 通知系统
+- 分发部署: saltstack, ansible, puppet, chef, rudder, fabric, Terraform
+
+## GitHub Tools
+
+- [Open Source Software Insight](https://ossinsight.io/) - GitHub 统计
+- [giscus](https://giscus.app/) - 基于 GitHub Discussions 的留言系统
+- [utterances](https://utteranc.es/) - 基于 GitHub Issue 的留言系统
+
+## Stress Testing
+
+- [ddosify](https://github.com/ddosify/ddosify) - Load testing framework
+- [vegeta](https://github.com/tsenart/vegeta) - HTTP API 压测工具
+
+## Misc
+
+- [xxHash](https://cyan4973.github.io/xxHash/) - 快速 hash 算法
+- [go-guerrilla](https://github.com/flashmob/go-guerrilla) - Mini SMTP server in Go
+- [scoop](https://scoop.sh/) - Windows package management
+- [AlmaLinux](https://almalinux.org/) - CentOS 替代
+- [ClearOS](https://www.clearos.com/) - NAS 管理 Linux

@@ -29,18 +29,22 @@ packages/
 ## 核心入口路径
 
 ### 1. 库入口（了解整体结构）
+
 - [packages/better-auth/src/index.ts](packages/better-auth/src/index.ts) — 主导出
 - [packages/better-auth/src/auth/full.ts](packages/better-auth/src/auth/full.ts) — `betterAuth()` 函数入口
 - [packages/better-auth/src/auth/base.ts](packages/better-auth/src/auth/base.ts) — `createBetterAuth()` 核心逻辑
 
 ### 2. 请求处理流程
+
 - [packages/better-auth/src/api/index.ts](packages/better-auth/src/api/index.ts) — 路由注册 (`getEndpoints`, `router`)
 - [packages/better-auth/src/api/routes/](packages/better-auth/src/api/routes/) — 所有 endpoint handler（signInSocial, signOut, getSession 等）
 
 ### 3. Context 初始化
+
 - `packages/better-auth/src/context/` — 请求上下文解析
 
 ### 4. 核心类型定义
+
 - [packages/better-auth/src/types/](packages/better-auth/src/types/) — 主库类型
 - [packages/core/src/types/](packages/core/src/types/) — 核心共享类型（BetterAuthOptions 等）
 
@@ -109,15 +113,15 @@ packages/
 
 ## 关键文件速查
 
-| 功能 | 文件 |
-|------|------|
-| 主入口 | `better-auth/src/auth/full.ts` |
-| 请求路由 | `better-auth/src/api/index.ts` |
-| Session 读取 | `better-auth/src/api/routes/getSession.ts` |
-| 登录注册 | `better-auth/src/api/routes/signUpEmail.ts` |
+| 功能         | 文件                                         |
+| ------------ | -------------------------------------------- |
+| 主入口       | `better-auth/src/auth/full.ts`               |
+| 请求路由     | `better-auth/src/api/index.ts`               |
+| Session 读取 | `better-auth/src/api/routes/getSession.ts`   |
+| 登录注册     | `better-auth/src/api/routes/signUpEmail.ts`  |
 | Social Login | `better-auth/src/api/routes/signInSocial.ts` |
-| CSRF 防护 | `better-auth/src/api/middlewares/` |
-| 类型定义 | `core/src/types/` |
+| CSRF 防护    | `better-auth/src/api/middlewares/`           |
+| 类型定义     | `core/src/types/`                            |
 
 ## 开发测试命令
 
@@ -153,14 +157,14 @@ validateApiKey() 验证 key
 
 ### 核心文件
 
-| 文件 | 用途 |
-|------|------|
-| `src/index.ts` | 插件主入口，定义 before hook |
-| `src/schema.ts` | 数据库模型定义 |
-| `src/routes/verify-api-key.ts` | `validateApiKey()` 验证逻辑 |
-| `src/routes/create-api-key.ts` | 创建 API Key endpoint |
-| `src/routes/list-api-keys.ts` | 列出 API Keys |
-| `src/routes/delete-api-key.ts` | 删除 API Key |
+| 文件                           | 用途                         |
+| ------------------------------ | ---------------------------- |
+| `src/index.ts`                 | 插件主入口，定义 before hook |
+| `src/schema.ts`                | 数据库模型定义               |
+| `src/routes/verify-api-key.ts` | `validateApiKey()` 验证逻辑  |
+| `src/routes/create-api-key.ts` | 创建 API Key endpoint        |
+| `src/routes/list-api-keys.ts`  | 列出 API Keys                |
+| `src/routes/delete-api-key.ts` | 删除 API Key                 |
 
 ### 密钥存储模型
 
@@ -205,6 +209,7 @@ console.log(result.key.metadata);
 ```
 
 典型用途:
+
 - 环境标识 (`{ env: "production" }`)
 - 负责人记录 (`{ owner: "john@company.com" }`)
 - 成本中心 (`{ costCenter: "CC-1234" }`)
@@ -289,14 +294,14 @@ const session = await auth.api.getSession({
 
 ### Endpoints
 
-| Endpoint | Method | 用途 |
-|----------|--------|------|
-| `/api-key/create` | POST | 创建 API Key |
-| `/api-key/get` | GET | 获取单个 Key |
-| `/api-key/list` | GET | 列出所有 Key |
-| `/api-key/update` | POST | 更新 Key |
-| `/api-key/delete` | POST | 删除 Key |
-| `/api-key/verify` | POST | 验证 Key |
+| Endpoint          | Method | 用途         |
+| ----------------- | ------ | ------------ |
+| `/api-key/create` | POST   | 创建 API Key |
+| `/api-key/get`    | GET    | 获取单个 Key |
+| `/api-key/list`   | GET    | 列出所有 Key |
+| `/api-key/update` | POST   | 更新 Key     |
+| `/api-key/delete` | POST   | 删除 Key     |
+| `/api-key/verify` | POST   | 验证 Key     |
 
 ## 开发约束（来自 CLAUDE.md）
 
