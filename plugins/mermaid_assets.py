@@ -16,8 +16,8 @@ Usage in mkdocs.yml:
 import logging
 import os
 
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
 
 log = logging.getLogger("mkdocs.plugins.mermaid_assets")
 
@@ -96,7 +96,7 @@ def on_post_page(output, page, config, **kwargs):
     # Quick pre-filter using the src attribute pattern to avoid BS4 parsing
     # on pages without mermaid (mermaid2 only injects the script on pages
     # that have diagrams).
-    mermaid_src = f"src=\"{_MERMAID_JS_TAG}\""
+    mermaid_src = f'src="{_MERMAID_JS_TAG}"'
     if mermaid_src not in output:
         return output
 
