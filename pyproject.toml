@@ -27,14 +27,14 @@ build = "mkdocs build"
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create-post.py", help = "Create a new blog post: uv run poe create-post \"Title\" --category bits" }
 format-py = "ruff format . --exclude 'docs/research/external'"
-format-md = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude 'node_modules'"
+format-md = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules'"
 format = [
     { cmd = "ruff format . --exclude 'docs/research/external'" },
-    { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude 'node_modules'" },
+    { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules'" },
 ]
 fmt = [
     { cmd = "ruff format . --exclude 'docs/research/external'" },
-    { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude 'node_modules'" },
+    { cmd = "mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules'" },
 ]
 lint-py = "ruff check . --exclude 'docs/research/external'"
 

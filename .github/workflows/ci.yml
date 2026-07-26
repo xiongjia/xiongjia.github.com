@@ -28,7 +28,7 @@ jobs:
       - name: Format check
         run: |
           uv run ruff format --check . --exclude 'docs/research/external'
-          uv run mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude 'node_modules' --check
+          uv run mdformat . --exclude 'docs/research/external' --exclude '.venv' --exclude '.pi' --exclude '.claude' --exclude 'node_modules' --check
 
   deploy:
     if: github.ref == 'refs/heads/master'
