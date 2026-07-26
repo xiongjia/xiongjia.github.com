@@ -2,17 +2,14 @@
 site_name: !ENV [SITE_NAME, 'recycle.bin']
 site_url: !ENV [SITE_URL, 'https://xiongjia.github.io']
 site_author: xiongjia
-site_description: recycle.bin
+site_description: Engineering Workspace - Build -> Learn -> Share
 repo_name: recycle.bin
 repo_url: https://github.com/xiongjia/xiongjia.github.com
 copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/xiongjia.github.com" target="_blank" rel="noopener noreferrer">recycle.bin</a>
 
 extra:
   git_hash: !ENV [GIT_HASH, '']
-  analytics:
-    provider: google
-    property:  !ENV [G_ANALYTICS_ID, 'UA-7661871-5']
-    
+  
 # plugins
 plugins:
   - minify: { minify_html: true }
@@ -62,6 +59,8 @@ theme:
   include_search_page: false
   search_index_only: true
   icon: { repo: fontawesome/brands/github }
+  cache:
+    path: .cache/mkdocs
   features:
     - header.autohide
     - navigation.footer
@@ -108,7 +107,6 @@ markdown_extensions:
   - admonition
   - pymdownx.superfences
   - pymdownx.details
-  - pymdownx.superfences
   - pymdownx.snippets
   - pymdownx.inlinehilite
   - pymdownx.tabbed:

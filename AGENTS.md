@@ -51,14 +51,15 @@ Site runs at `http://localhost:8000` by default.
 
 ## Coding Principles
 
+1. **Developer approval required before executing a plan**: AI must not initiate any execution plan (batch edits, refactoring, multi-file changes, or state-altering commands) without explicit developer approval. Simple Q&A, file inspection, or single edits (e.g., fixing a typo) are exempt.
+1. **Developer approval required before committing**: AI must not execute `git commit` unless the developer explicitly approves. All changes must remain in the working directory for developer review first.
+1. **Never push**: AI **must never** execute `git push` or any equivalent remote push operation. Push can only be performed manually by the developer.
 1. **Code review required before push**: All changes must be reviewed and approved by a human before pushing to remote branches.
 1. **Research notes use AI assistance disclaimer**: All files under `docs/research/` must include the AI-generated disclaimer frontmatter.
 1. **Chinese content for research docs**: Research notes are written in Chinese; blog posts and tech reference pages may be in either language.
 1. **Use relative links**: All internal links between docs pages should use relative paths (e.g. `./docs/lux/00-lux.md`).
 1. **Frontmatter required for research docs**: Each research doc must have `title`, `tags`, and `categories` frontmatter.
 1. **Conventional commits**: Follow `type(scope): description` format (e.g. `docs: add Jellyfin research notes`).
-1. **Do not commit without approval**: AI must not commit or push code without
-   explicit user permission. All changes must be reviewed and confirmed first.
 1. **Local draft files are ephemeral**: Files matching `*-draft.md` are local AI
    collaboration plans and must not be committed or referenced in any committed
    documentation. They are already git-ignored (see `.gitignore`).
