@@ -27,18 +27,18 @@ build = "mkdocs build"
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create-post.py", help = "Create a new blog post: uv run poe create-post \"Title\" --category bits" }
 format-py = "ruff format . --exclude 'docs/research/external'"
-format-md = "mdformat README.md docs/ .pi/skills/ .claude/skills/"
+format-md = "mdformat README.md docs/"
 format = [
     { cmd = "ruff format . --exclude 'docs/research/external'" },
-    { cmd = "mdformat README.md docs/ .pi/skills/ .claude/skills/" },
+    { cmd = "mdformat README.md docs/" },
 ]
 fmt = [
     { cmd = "ruff format . --exclude 'docs/research/external'" },
-    { cmd = "mdformat README.md docs/ .pi/skills/ .claude/skills/" },
+    { cmd = "mdformat README.md docs/" },
 ]
 check-fmt = [
     { cmd = "ruff format --check . --exclude 'docs/research/external'" },
-    { cmd = "mdformat README.md docs/ .pi/skills/ .claude/skills/ --check" },
+    { cmd = "mdformat README.md docs/ --check" },
 ]
 lint-py = "ruff check . --exclude 'docs/research/external'"
 
