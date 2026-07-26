@@ -1,0 +1,2 @@
+# Vendored third-party research docs – exclude from language stats
+docs/research/external/** linguist-vendored
