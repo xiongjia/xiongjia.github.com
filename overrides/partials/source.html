@@ -1,0 +1,15 @@
+{#-
+  Override (written against mkdocs-material 9.7.7):
+  removes data-md-component="source" to prevent the Material theme JS
+  from fetching GitHub API stats (repo releases/latest, stargazers, forks).
+  Keeps the source link but eliminates unnecessary API calls.
+-#}
+<a href="{{ config.repo_url }}" title="{{ lang.t('source') }}" class="md-source">
+  <div class="md-source__icon md-icon">
+    {% set icon = config.theme.icon.repo or "fontawesome/brands/git-alt" %}
+    {% include ".icons/" ~ icon ~ ".svg" %}
+  </div>
+  <div class="md-source__repository">
+    {{ config.repo_name }}
+  </div>
+</a>
