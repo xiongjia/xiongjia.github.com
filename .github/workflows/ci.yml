@@ -26,8 +26,10 @@ jobs:
         run: echo "GIT_HASH=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Build check
         run: uv run mkdocs build
-      - name: Format check
-        run: uv run poe check-fmt
+      - name: Lint & Format check
+        run: |
+          uv run poe lint-py
+          uv run poe check-fmt
 
   deploy:
     if: github.ref == 'refs/heads/master'
