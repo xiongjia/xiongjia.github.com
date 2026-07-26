@@ -17,9 +17,13 @@ site-selfhost/
 .env
 env-*
 
-# claude code local settings
-.claude/
-*-draft.md
+# claude code — track skills, ignore local settings
+.claude/*
+!.claude/skills/
 
-# pi coding agent
-.pi/
+# pi coding agent — track skills, ignore local settings
+.pi/*
+!.pi/skills/
+
+# local draft files
+*-draft.md

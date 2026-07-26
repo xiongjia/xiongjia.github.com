@@ -4,8 +4,8 @@ hide:
   - path
 ---
 
-#  :fontawesome-solid-note-sticky: NOTES
+# :fontawesome-solid-note-sticky: NOTES
 
-Blogs & TILs (Today I learned)
+笔记 & 知识碎片
 
-----
+______________________________________________________________________

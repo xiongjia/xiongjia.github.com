@@ -17,13 +17,13 @@ NestJS 的依赖注入（DI）系统是其核心特性，基于 TypeScript 装�
 
 ### 主要组件
 
-| 组件 | 文件 | 职责 |
-|------|------|------|
-| `NestContainer` | `injector/container.ts` | 全局容器，管理所有模块 |
-| `Module` | `injector/module.ts` | 单个模块，管理其 providers/controllers |
-| `Injector` | `injector/injector.ts` | 依赖解析和实例化 |
-| `InstanceWrapper` | `injector/instance-wrapper.ts` | Provider 的包装器，包含实例元数据 |
-| `InstanceLoader` | `injector/instance-loader.ts` | 批量创建实例 |
+| 组件              | 文件                           | 职责                                   |
+| ----------------- | ------------------------------ | -------------------------------------- |
+| `NestContainer`   | `injector/container.ts`        | 全局容器，管理所有模块                 |
+| `Module`          | `injector/module.ts`           | 单个模块，管理其 providers/controllers |
+| `Injector`        | `injector/injector.ts`         | 依赖解析和实例化                       |
+| `InstanceWrapper` | `injector/instance-wrapper.ts` | Provider 的包装器，包含实例元数据      |
+| `InstanceLoader`  | `injector/instance-loader.ts`  | 批量创建实例                           |
 
 ## 整体流程
 
@@ -63,6 +63,7 @@ Reflect.defineMetadata(OPTIONAL_DEPS_METADATA, [false, false], UsersService);
 ```
 
 关键常量 (from `@nestjs/common/constants`):
+
 - `PARAMTYPES_METADATA` — 构造函数参数类型
 - `OPTIONAL_DEPS_METADATA` — 可选依赖标记
 - `SELF_DECLARED_DEPS_METADATA` — 自定义注入 token
@@ -135,11 +136,11 @@ providers: [{
 
 ## 实例作用域 (Scope)
 
-| Scope | 说明 |
-|-------|------|
-| `DEFAULT` | 单例，整个应用共享 |
-| `REQUEST` | 每个请求创建一个实例 |
-| `TRANSIENT` | 每次注入创建一个新实例 |
+| Scope       | 说明                       |
+| ----------- | -------------------------- |
+| `DEFAULT`   | 单例，整个应用共享         |
+| `REQUEST`   | 每个请求创建一个实例       |
+| `TRANSIENT` | 每次注入创建一个新实例     |
 | `SINGLETON` | 应用启动时创建，只创建一次 |
 
 ## Module 之间的关系
@@ -199,11 +200,11 @@ export class InstanceWrapper<T = any> {
 }
 ```
 
-| 标识 | 用途 |
-|------|------|
-| `token` | Provider 的唯一标识，用于 Map 查找 |
-| `name` | 人类可读的名称 (通常是 token 的 name) |
-| `id` | 内部生成的 UUID，用于追踪 |
+| 标识    | 用途                                  |
+| ------- | ------------------------------------- |
+| `token` | Provider 的唯一标识，用于 Map 查找    |
+| `name`  | 人类可读的名称 (通常是 token 的 name) |
+| `id`    | 内部生成的 UUID，用于追踪             |
 
 ### 防重复初始化机制
 
@@ -302,13 +303,13 @@ NestContainer (全局容器)
 
 ## 核心文件
 
-| 文件 | 说明 |
-|------|------|
-| `injector/container.ts` | 全局容器，模块注册 |
-| `injector/injector.ts` | 依赖解析核心逻辑 |
-| `injector/instance-loader.ts` | 批量实例加载 |
-| `injector/instance-wrapper.ts` | 实例包装器 |
-| `injector/module.ts` | 模块定义和管理 |
+| 文件                           | 说明               |
+| ------------------------------ | ------------------ |
+| `injector/container.ts`        | 全局容器，模块注册 |
+| `injector/injector.ts`         | 依赖解析核心逻辑   |
+| `injector/instance-loader.ts`  | 批量实例加载       |
+| `injector/instance-wrapper.ts` | 实例包装器         |
+| `injector/module.ts`           | 模块定义和管理     |
 
 ## 调试技巧
 
@@ -328,6 +329,6 @@ console.log(moduleRef.providers);
 ## 总结
 
 1. **元数据驱动** — 通过 `reflect-metadata` 在编译时存储依赖信息
-2. **递归解析** — 类似树的先序遍历，解析完依赖才实例化
-3. **容器管理** — `NestContainer` 管理所有模块，`Module` 管理单个模块的 providers
-4. **作用域控制** — 通过 `ContextId` 隔离不同请求的实例
+1. **递归解析** — 类似树的先序遍历，解析完依赖才实例化
+1. **容器管理** — `NestContainer` 管理所有模块，`Module` 管理单个模块的 providers
+1. **作用域控制** — 通过 `ContextId` 隔离不同请求的实例

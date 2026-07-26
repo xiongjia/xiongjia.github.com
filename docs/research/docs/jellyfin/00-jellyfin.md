@@ -8,15 +8,17 @@ categories:
 ---
 
 > **⚠️ 免责声明**: 本文档由 AI 自动生成，仅供参考学习使用。
+>
 > - 依据 jellyfin 仓库: branch `master`
 
 > **学习前先克隆项目:**
+>
 > ```bash
 > cd docs/research/external
 > git clone --depth 1 https://github.com/jellyfin/jellyfin.git
 > ```
 
----
+______________________________________________________________________
 
 ## 项目概述
 
@@ -87,15 +89,18 @@ Jellyfin 采用**接口-实现分离**的分层架构:
 ### 阶段 2: 理解核心机制
 
 2. **应用主机 (ApplicationHost)**
+
    - `docs/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` — 核心生命周期管理
    - 了解 DI 容器注册流程
    - 了解插件加载机制
 
-3. **依赖注入**
+1. **依赖注入**
+
    - `docs/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` 中的 `RegisterServices()` 方法
    - 使用 ASP.NET Core 内置 DI (`Microsoft.Extensions.DependencyInjection`)
 
-4. **插件系统**
+1. **插件系统**
+
    - `docs/research/external/jellyfin/MediaBrowser.Common.Plugins.IPlugin` — 插件接口
    - `docs/research/external/jellyfin/Emby.Server.Implementations/Plugins/` — 插件加载和发现
    - `docs/research/external/jellyfin/MediaBrowser.Common.Plugins.BasePlugin` — 插件基类
@@ -103,41 +108,46 @@ Jellyfin 采用**接口-实现分离**的分层架构:
 ### 阶段 3: 理解核心业务
 
 5. **媒体库系统**
+
    - `docs/research/external/jellyfin/Emby.Server.Implementations/Library/` — 媒体库扫描和管理
    - `docs/research/external/jellyfin/MediaBrowser.Controller.Entities/` — 媒体实体 (Movie, Series, Episode 等)
 
-6. **API 层**
+1. **API 层**
+
    - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/ItemsController.cs` — 媒体项 API
    - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/UserController.cs` — 用户管理
    - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/VideosController.cs` — 视频流
 
-7. **元数据提供者**
+1. **元数据提供者**
+
    - `docs/research/external/jellyfin/MediaBrowser.Providers/` — 从 TMDB, IMDB 等获取元数据
    - `docs/research/external/jellyfin/MediaBrowser.LocalMetadata/` — 从本地文件 (NFO) 解析元数据
 
 ### 阶段 4: 深入功能
 
 8. **媒体编码和流媒体**
+
    - `docs/research/external/jellyfin/MediaBrowser.MediaEncoding/` — FFmpeg 集成
    - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/DynamicHlsController.cs` — HLS 流
 
-9. **会话和播放状态**
+1. **会话和播放状态**
+
    - `docs/research/external/jellyfin/Emby.Server.Implementations/Session/` — 会话管理
    - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/PlaystateController.cs` — 播放状态上报
 
 ## 关键概念
 
-| 概念 | 说明 |
-|------|------|
-| **ApplicationHost** | 应用主机，管理 DI、插件、生命周期 |
-| **IPlugin** | 插件接口，所有功能模块都通过插件集成 |
-| **BaseItem** | 媒体实体基类 (Movie, Series, Episode 等) |
-| **Resolver** | 媒体文件识别器，从文件名/目录结构确定媒体类型 |
-| **Provider** | 元数据提供者，从外部获取/本地解析媒体信息 |
-| **DLNA** | 数字生活网络联盟协议，流媒体发现和播放 |
-| **HLS** | HTTP Live Streaming，动态转码和分段传输 |
-| **Trickplay** | 视频缩略图预览条 |
-| **SyncPlay** | 多人同步播放 |
+| 概念                | 说明                                          |
+| ------------------- | --------------------------------------------- |
+| **ApplicationHost** | 应用主机，管理 DI、插件、生命周期             |
+| **IPlugin**         | 插件接口，所有功能模块都通过插件集成          |
+| **BaseItem**        | 媒体实体基类 (Movie, Series, Episode 等)      |
+| **Resolver**        | 媒体文件识别器，从文件名/目录结构确定媒体类型 |
+| **Provider**        | 元数据提供者，从外部获取/本地解析媒体信息     |
+| **DLNA**            | 数字生活网络联盟协议，流媒体发现和播放        |
+| **HLS**             | HTTP Live Streaming，动态转码和分段传输       |
+| **Trickplay**       | 视频缩略图预览条                              |
+| **SyncPlay**        | 多人同步播放                                  |
 
 ## 核心流程图
 
@@ -200,21 +210,21 @@ StreamingHelpers.GetStreamingState() → 决定 Direct Play / Remux / Transcode
 
 #### 三种播放模式
 
-| 模式 | 说明 | 触发条件 |
-|------|------|----------|
-| **Direct Play** | 原文件直接输出 | 浏览器支持原始编码格式 |
-| **Direct Stream** | 重新封装容器，不重新编码 | 编码兼容但容器不兼容 |
-| **Transcode** | FFmpeg 实时转码 | 编码/分辨率/码率不兼容 |
+| 模式              | 说明                     | 触发条件               |
+| ----------------- | ------------------------ | ---------------------- |
+| **Direct Play**   | 原文件直接输出           | 浏览器支持原始编码格式 |
+| **Direct Stream** | 重新封装容器，不重新编码 | 编码兼容但容器不兼容   |
+| **Transcode**     | FFmpeg 实时转码          | 编码/分辨率/码率不兼容 |
 
 #### 核心端点
 
-| Endpoint | 用途 |
-|----------|------|
-| `GET /Videos/{id}/master.m3u8` | 自适应码率主播放列表 (多码率) |
-| `GET /Videos/{id}/main.m3u8` | 单一码率播放列表 |
-| `GET /Videos/{id}/live.m3u8` | Live 模式播放列表 (低延迟) |
-| `GET /Audio/{id}/universal` | 音频通用播放 |
-| `GET /Videos/{id}/hls1/{segId}` | HLS 分段数据 (.ts/.mp4) |
+| Endpoint                        | 用途                          |
+| ------------------------------- | ----------------------------- |
+| `GET /Videos/{id}/master.m3u8`  | 自适应码率主播放列表 (多码率) |
+| `GET /Videos/{id}/main.m3u8`    | 单一码率播放列表              |
+| `GET /Videos/{id}/live.m3u8`    | Live 模式播放列表 (低延迟)    |
+| `GET /Audio/{id}/universal`     | 音频通用播放                  |
+| `GET /Videos/{id}/hls1/{segId}` | HLS 分段数据 (.ts/.mp4)       |
 
 #### 详细播放流程
 
@@ -308,12 +318,12 @@ main.m3u8?videoBitRate=8000000&maxWidth=1920
 
 #### 浏览器兼容性
 
-| 编码格式 | Chrome | Firefox | Safari | Edge |
-|----------|--------|---------|--------|------|
-| H.264 + AAC + .ts | ✅ | ✅ | ✅ | ✅ |
-| H.265 + fMP4 | ❌ | ❌ | ✅ | 部分 |
-| VP9 | ✅ | ✅ | ❌ | ✅ |
-| AV1 | ✅ | ✅ | ❌ | ✅ |
+| 编码格式          | Chrome | Firefox | Safari | Edge |
+| ----------------- | ------ | ------- | ------ | ---- |
+| H.264 + AAC + .ts | ✅     | ✅      | ✅     | ✅   |
+| H.265 + fMP4      | ❌     | ❌      | ✅     | 部分 |
+| VP9               | ✅     | ✅      | ❌     | ✅   |
+| AV1               | ✅     | ✅      | ❌     | ✅   |
 
 Jellyfin 通过设备配置文件自动选择浏览器支持的编码格式，不兼容时自动启动 FFmpeg 转码。
 
@@ -461,14 +471,14 @@ fn start_transcode(input_path: &str, output_dir: &str) {
 
 ### 与 Jellyfin 的架构对比
 
-| 维度 | Jellyfin | 最小原型 |
-|------|----------|----------|
-| 浏览器请求 | REST API Controller | Axum route handler |
-| 播放列表生成 | DynamicHlsHelper | 预生成 .m3u8 |
-| 分段管理 | transcodeManager | FFmpeg 输出到磁盘 |
-| 转码 | FFmpeg 子进程 | FFmpeg 子进程 |
-| 设备兼容检测 | DLNA Profile | 跳过 (假设 H.264) |
-| 认证 | JWT / API Key | 跳过 |
+| 维度         | Jellyfin            | 最小原型           |
+| ------------ | ------------------- | ------------------ |
+| 浏览器请求   | REST API Controller | Axum route handler |
+| 播放列表生成 | DynamicHlsHelper    | 预生成 .m3u8       |
+| 分段管理     | transcodeManager    | FFmpeg 输出到磁盘  |
+| 转码         | FFmpeg 子进程       | FFmpeg 子进程      |
+| 设备兼容检测 | DLNA Profile        | 跳过 (假设 H.264)  |
+| 认证         | JWT / API Key       | 跳过               |
 
 ### 关键注意事项
 
@@ -479,29 +489,29 @@ fn start_transcode(input_path: &str, output_dir: &str) {
 
 ## 关键文件
 
-| 文件 | 说明 |
-|------|------|
-| `Jellyfin.Server/Program.cs` | 程序入口 |
-| `Jellyfin.Server/CoreAppHost.cs` | 应用主机 |
+| 文件                                             | 说明                  |
+| ------------------------------------------------ | --------------------- |
+| `Jellyfin.Server/Program.cs`                     | 程序入口              |
+| `Jellyfin.Server/CoreAppHost.cs`                 | 应用主机              |
 | `Emby.Server.Implementations/ApplicationHost.cs` | 核心 DI/插件/生命周期 |
-| `Jellyfin.Api/Controllers/ItemsController.cs` | 媒体项 API |
-| `Jellyfin.Api/Controllers/VideosController.cs` | 视频流 API |
-| `Jellyfin.Api/Controllers/UserController.cs` | 用户管理 API |
-| `Emby.Server.Implementations/Library/` | 媒体库管理 |
-| `Emby.Server.Implementations/Session/` | 会话管理 |
-| `MediaBrowser.Controller/Entities/` | 媒体实体模型 |
-| `MediaBrowser.Controller/Plugins/` | 插件接口定义 |
-| `MediaBrowser.Providers/` | 元数据提供者 |
-| `MediaBrowser.MediaEncoding/` | FFmpeg 编码集成 |
-| `MediaBrowser.Model/` | 数据模型和 DTO |
+| `Jellyfin.Api/Controllers/ItemsController.cs`    | 媒体项 API            |
+| `Jellyfin.Api/Controllers/VideosController.cs`   | 视频流 API            |
+| `Jellyfin.Api/Controllers/UserController.cs`     | 用户管理 API          |
+| `Emby.Server.Implementations/Library/`           | 媒体库管理            |
+| `Emby.Server.Implementations/Session/`           | 会话管理              |
+| `MediaBrowser.Controller/Entities/`              | 媒体实体模型          |
+| `MediaBrowser.Controller/Plugins/`               | 插件接口定义          |
+| `MediaBrowser.Providers/`                        | 元数据提供者          |
+| `MediaBrowser.MediaEncoding/`                    | FFmpeg 编码集成       |
+| `MediaBrowser.Model/`                            | 数据模型和 DTO        |
 
 ## 技术栈
 
-| 技术 | 用途 |
-|------|------|
-| **ASP.NET Core** | Web 框架 |
+| 技术                      | 用途                    |
+| ------------------------- | ----------------------- |
+| **ASP.NET Core**          | Web 框架                |
 | **Entity Framework Core** | ORM (SQLite/PostgreSQL) |
-| **FFmpeg** | 媒体转码和编码 |
-| **SkiaSharp** | 图片处理 (缩略图生成) |
-| **Serilog** | 日志框架 |
-| **CommandLine** | CLI 参数解析 |
+| **FFmpeg**                | 媒体转码和编码          |
+| **SkiaSharp**             | 图片处理 (缩略图生成)   |
+| **Serilog**               | 日志框架                |
+| **CommandLine**           | CLI 参数解析            |

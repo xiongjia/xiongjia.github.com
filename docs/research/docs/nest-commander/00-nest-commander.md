@@ -19,11 +19,12 @@ git clone --depth=1 https://github.com/jmcdo29/nest-commander.git docs/research/
 ```
 
 **当前文档信息：**
+
 - 研究分支 (Branch): `master`
 - Git SHA1: `b0493c16e52636fc05edf6dcb7d42c573bbbd0a3`
 - 外部仓库位置: `docs/research/external/nest-commander/`
 
----
+______________________________________________________________________
 
 # Nest Commander 学习资料
 
@@ -42,11 +43,11 @@ git clone --depth=1 https://github.com/jmcdo29/nest-commander.git docs/research/
 
 该项目使用 **Nx** 作为 Monorepo 管理工具，包含以下主要包：
 
-| 包名 | 版本 | 描述 |
-|------|------|------|
-| `nest-commander` | 3.20.1 | 核心包，提供 CLI 构建能力 |
-| `nest-commander-testing` | 3.5.1 | 测试工具包 |
-| `nest-commander-schematics` | 3.2.0 | Angular Schematics 代码生成工具 |
+| 包名                        | 版本   | 描述                            |
+| --------------------------- | ------ | ------------------------------- |
+| `nest-commander`            | 3.20.1 | 核心包，提供 CLI 构建能力       |
+| `nest-commander-testing`    | 3.5.1  | 测试工具包                      |
+| `nest-commander-schematics` | 3.2.0  | Angular Schematics 代码生成工具 |
 
 ### 2.2 目录结构
 
@@ -66,6 +67,7 @@ nest-commander/
 ### 2.3 核心依赖
 
 **主要依赖**:
+
 - `commander`: 11.1.0 - CLI 参数解析
 - `@golevelup/nestjs-discovery`: 5.0.0 - NestJS 服务发现
 - `inquirer`: 8.2.7 - 交互式命令行提示
@@ -73,6 +75,7 @@ nest-commander/
 - `@fig/complete-commander`: 3.0.0 - 命令补全
 
 **对等依赖 (Peer Dependencies)**:
+
 - `@nestjs/common`: ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
 - `@nestjs/core`: ^8.0.0 || ^9.0.0 || ^10.0.0 || ^11.0.0
 
@@ -122,52 +125,56 @@ async function bootstrap() {
 
 项目包含 21 个集成测试用例，覆盖以下功能场景：
 
-| 测试目录 | 功能描述 |
-|----------|----------|
-| `basic` | 基础命令功能 |
-| `multiple` | 多命令支持 |
-| `sub-commands` | 子命令 |
-| `default-sub-commands` | 默认子命令 |
-| `root-command` | 根命令 |
-| `this-command` | 命令嵌套 |
-| `this-handler` | 自定义处理器 |
-| `dot-command` | 点命令 |
-| `help-tests` | 帮助信息 |
-| `version-option` | 版本选项 |
-| `option-choices` | 选项可选值 |
-| `output-config` | 输出配置 |
-| `pizza` | Inquirer 交互式提问 |
-| `with-questions` | 交互式问题 |
-| `plugins` | 插件系统 |
-| `register-provider` | 自定义 Provider |
-| `request-provider-override` | Provider 覆盖 |
+| 测试目录                    | 功能描述            |
+| --------------------------- | ------------------- |
+| `basic`                     | 基础命令功能        |
+| `multiple`                  | 多命令支持          |
+| `sub-commands`              | 子命令              |
+| `default-sub-commands`      | 默认子命令          |
+| `root-command`              | 根命令              |
+| `this-command`              | 命令嵌套            |
+| `this-handler`              | 自定义处理器        |
+| `dot-command`               | 点命令              |
+| `help-tests`                | 帮助信息            |
+| `version-option`            | 版本选项            |
+| `option-choices`            | 选项可选值          |
+| `output-config`             | 输出配置            |
+| `pizza`                     | Inquirer 交互式提问 |
+| `with-questions`            | 交互式问题          |
+| `plugins`                   | 插件系统            |
+| `register-provider`         | 自定义 Provider     |
+| `request-provider-override` | Provider 覆盖       |
 
 ## 5. 学习计划
 
 ### 5.1 入门阶段 (预计 2-3 小时)
 
 1. **环境准备**
+
    - 安装 Node.js (推荐 LTS 版本)
    - 克隆项目仓库
    - 安装 pnpm 依赖: `pnpm install`
 
-2. **基础概念学习**
+1. **基础概念学习**
+
    - 阅读官方文档: https://nest-commander.jaymcdoniel.dev
    - 理解 `@Command()` 装饰器
    - 理解 `@Option()` 装饰器
    - 了解 `CommandRunner` 接口
 
-3. **Hello World 示例**
+1. **Hello World 示例**
+
    - 创建第一个命令
    - 使用 `CommandFactory` 启动
 
 ### 5.2 进阶阶段 (预计 3-4 小时)
 
 4. **依赖注入**
+
    - 在命令中使用 NestJS 依赖注入
    - 自定义 Provider 注册
 
-5. **子命令与嵌套**
+1. **子命令与嵌套**
 
    #### 5.1 子命令基础用法
 
@@ -231,6 +238,7 @@ async function bootstrap() {
    ```
 
    运行效果：
+
    - `top` → 执行 TopCommand
    - `top mid-1` → 执行 Mid1Command
    - `top mid-1 bottom` → 执行 BottomCommand
@@ -312,15 +320,16 @@ async function bootstrap() {
 
    命令调用对照表：
 
-   | 命令 | 执行结果 |
-   |------|----------|
-   | `top` | Mid1Command（默认）→ BottomCommand（默认） |
-   | `top mid-1` | Mid1Command |
-   | `top mid-1 bottom` | BottomCommand |
-   | `top mid-2` | Mid2Command |
-   | `top m` | Mid2Command（别名） |
+   | 命令               | 执行结果                                   |
+   | ------------------ | ------------------------------------------ |
+   | `top`              | Mid1Command（默认）→ BottomCommand（默认） |
+   | `top mid-1`        | Mid1Command                                |
+   | `top mid-1 bottom` | BottomCommand                              |
+   | `top mid-2`        | Mid2Command                                |
+   | `top m`            | Mid2Command（别名）                        |
 
-6. **选项处理**
+1. **选项处理**
+
    - 必选选项 vs 可选选项
    - 选项类型转换 (boolean, number, array)
 
@@ -370,15 +379,15 @@ async function bootstrap() {
 
    **常用问题类型**：
 
-   | 类型 | 描述 | 适用场景 |
-   |------|------|----------|
-   | `input` | 文本输入 | 姓名、地址等 |
-   | `confirm` | 是/否确认 | 布尔值选项 |
-   | `list` | 列表选择 | 单选 |
-   | `rawlist` | 数字索引列表 | 单选（带编号） |
-   | `expand` | 展开列表 | 单选（带快捷键） |
-   | `checkbox` | 复选框 | 多选 |
-   | `editor` | 编辑器 | 长文本输入 |
+   | 类型       | 描述         | 适用场景         |
+   | ---------- | ------------ | ---------------- |
+   | `input`    | 文本输入     | 姓名、地址等     |
+   | `confirm`  | 是/否确认    | 布尔值选项       |
+   | `list`     | 列表选择     | 单选             |
+   | `rawlist`  | 数字索引列表 | 单选（带编号）   |
+   | `expand`   | 展开列表     | 单选（带快捷键） |
+   | `checkbox` | 复选框       | 多选             |
+   | `editor`   | 编辑器       | 长文本输入       |
 
    #### 7.3 问题验证 - @ValidateFor 装饰器
 
@@ -499,6 +508,7 @@ async function bootstrap() {
    ```
 
    **执行效果**：
+
    ```bash
    $ my-cli pizza
    ? What about the toppings? (p) Pepperoni and cheese, (a) All dressed, (w) Hawaiian
@@ -527,7 +537,7 @@ async function bootstrap() {
    export class PizzaModule {}
    ```
 
-8. **配置管理**
+1. **配置管理**
 
    #### 8.1 cosmiconfig 集成
 
@@ -535,24 +545,25 @@ async function bootstrap() {
 
    **支持的配置文件格式**：
 
-   | 文件名 | 格式 |
-   |--------|------|
-   | `.myclirc` | JavaScript |
-   | `.myclirc.json` | JSON |
-   | `.myclirc.yaml` | YAML |
-   | `.myclirc.yml` | YAML |
-   | `myclirc.json` | JSON |
-   | `myclirc.yaml` | YAML |
-   | `myclirc.yml` | YAML |
-   | `package.json` | 包含 `mycli` 字段 |
+   | 文件名          | 格式              |
+   | --------------- | ----------------- |
+   | `.myclirc`      | JavaScript        |
+   | `.myclirc.json` | JSON              |
+   | `.myclirc.yaml` | YAML              |
+   | `.myclirc.yml`  | YAML              |
+   | `myclirc.json`  | JSON              |
+   | `myclirc.yaml`  | YAML              |
+   | `myclirc.yml`   | YAML              |
+   | `package.json`  | 包含 `mycli` 字段 |
 
    （假设 CLI 名称为 `mycli`）
 
    #### 8.2 配置文件位置搜索顺序
 
    cosmiconfig 从项目根目录开始搜索：
+
    1. 当前目录
-   2. 逐级向上查找直到根目录
+   1. 逐级向上查找直到根目录
 
    #### 8.3 插件配置
 
@@ -576,10 +587,11 @@ async function bootstrap() {
    ```
 
    **工作原理**：
+
    1. `CommandFactory.run()` 调用 `cosmiconfig` 搜索配置文件
-   2. 读取配置中的 `plugins` 数组
-   3. 使用 `import()` 动态加载插件模块
-   4. 将插件模块添加到 NestJS 应用上下文中
+   1. 读取配置中的 `plugins` 数组
+   1. 使用 `import()` 动态加载插件模块
+   1. 将插件模块添加到 NestJS 应用上下文中
 
    #### 8.4 环境变量处理
 
@@ -645,9 +657,10 @@ async function bootstrap() {
    ```
 
    执行时，Nest Commander 会自动：
+
    1. 搜索 `.myapprc.json` 配置文件
-   2. 加载 `auth-plugin` 和 `logger-plugin` 模块
-   3. 将它们注册到 NestJS 应用中
+   1. 加载 `auth-plugin` 和 `logger-plugin` 模块
+   1. 将它们注册到 NestJS 应用中
 
    #### 8.6 自定义配置加载位置
 
@@ -663,35 +676,39 @@ async function bootstrap() {
 
    但通常不需要这样做，默认的 cosmiconfig 集成已足够满足大多数场景。
 
-9. **测试**
+1. **测试**
+
    - 使用 `nest-commander-testing` 进行单元测试
    - 集成测试编写
 
 ### 5.4 生产实践 (预计 2-3 小时)
 
 10. **插件系统**
+
     - 理解 Commander 插件机制
     - 自定义插件开发
 
-11. **Schematics**
+01. **Schematics**
+
     - 使用 `nest-commander-schematics` 生成代码
     - 自定义 schematics 开发
 
-12. **最佳实践**
+01. **最佳实践**
+
     - 错误处理
     - 日志记录
     - 构建与发布
 
 ## 6. 关键文件索引
 
-| 文件路径 | 描述 |
-|----------|------|
-| `packages/nest-commander/src/command.decorators.ts` | @Command() 和 @Option() 装饰器实现 |
-| `packages/nest-commander/src/command.factory.ts` | CommandFactory 核心类 |
-| `packages/nest-commander/src/command-runner.service.ts` | 命令执行服务 |
-| `packages/nest-commander/src/inquirer.service.ts` | Inquirer 集成服务 |
-| `packages/nest-commander-testing/src/command-test.factory.ts` | 测试工具工厂 |
-| `integration/basic/src/basic.command.ts` | 基础命令示例 |
+| 文件路径                                                      | 描述                               |
+| ------------------------------------------------------------- | ---------------------------------- |
+| `packages/nest-commander/src/command.decorators.ts`           | @Command() 和 @Option() 装饰器实现 |
+| `packages/nest-commander/src/command.factory.ts`              | CommandFactory 核心类              |
+| `packages/nest-commander/src/command-runner.service.ts`       | 命令执行服务                       |
+| `packages/nest-commander/src/inquirer.service.ts`             | Inquirer 集成服务                  |
+| `packages/nest-commander-testing/src/command-test.factory.ts` | 测试工具工厂                       |
+| `integration/basic/src/basic.command.ts`                      | 基础命令示例                       |
 
 ## 7. 相关资源
 

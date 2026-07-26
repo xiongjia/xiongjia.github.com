@@ -124,16 +124,20 @@ markdown_extensions:
       custom_fences:
         - name: mermaid
           class: mermaid
-          format: !!python/name:pymdownx.superfences.fence_code_format
+          format: !!python/name:mermaid2.fence_mermaid_custom
 
 # Page tree
 nav:
   - HOME: index.md
   - NOTES:
     - notes/index.md
-  - TECH:
-    - general:
-      - backend: tech/backend.md
-      - collection: tech/collection.md
-      - frontend: tech/frontend.md
-      - Research: research/research.md
+  - COLLECTION:
+    - collection/index.md
+    - Database: collection/database.md
+    - Monitor: collection/monitor.md
+    - Media: collection/media.md
+    - Dev Tools: collection/dev-tools.md
+    - Frontend: collection/frontend.md
+    - Languages: collection/languages.md
+  - RESEARCH: research/research.md
+  - PROJECTS: side-projects/side-projects.md
