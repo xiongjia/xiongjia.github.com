@@ -10,11 +10,17 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 extra:
   git_hash: !ENV [GIT_HASH, '']
   
+# hooks (custom Python modules treated as plugins)
+hooks:
+  - plugins/mermaid_assets.py
+
 # plugins
 plugins:
   - minify: { minify_html: true }
   - search:
-  - mermaid2
+  - mermaid2:
+      # version auto-derived from mermaid2's JAVASCRIPT_VERSION constant
+      javascript: assets/javascripts/mermaid.min.js
   - drawio
   - glightbox
   - meta
