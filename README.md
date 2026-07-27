@@ -26,14 +26,14 @@ GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server
 
 ## Commands
 
-| Command                          | Description                    |
-| -------------------------------- | ------------------------------ |
-| `uv run poe server`              | Start dev server (hot-reload)  |
-| `uv run poe build`               | Build static site              |
-| `uv run poe build-selfhost`      | Build self-hosted version      |
-| `uv run poe create-post "Title"` | Create a new timeline post     |
-| `uv run poe fmt`                 | Format Python & Markdown files |
-| `uv run poe lint-py`             | Python lint check (ruff)       |
+| Command                             | Description                                           |
+| ----------------------------------- | ----------------------------------------------------- |
+| `uv run poe server`                 | Start dev server (hot-reload)                         |
+| `uv run poe build`                  | Build static site                                     |
+| `uv run poe build-selfhost`         | Build self-hosted version                             |
+| `uv run poe create-post "Title"`    | Create a new timeline post                            |
+| `uv run poe fmt`                    | Format Python & Markdown files                        |
+| `uv run poe lint-py`                | Python lint check (ruff)                              |
 | `uv run poe optimize-images <path>` | Convert PNG/JPG/JPEG → WebP and update .md references |
 
 ## Writing Posts

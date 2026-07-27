@@ -99,13 +99,13 @@ def update_md_references(src: Path, dst: Path, *, dry_run: bool = False) -> None
             # Markdown: ![alt](path) or ![alt](path "title")
             changed = re.sub(
                 rf'(!\[.*?\]\s*\(\s*){re.escape(old)}\s*(".*?")?\s*\)',
-                rf'\1{rel_dst}\2)',
+                rf"\1{rel_dst}\2)",
                 changed,
             )
             # HTML: <img ... src="path" ...>
             changed = re.sub(
                 rf'(<img\s[^>]*?src\s*=\s*["\']){re.escape(old)}(["\'][^>]*?/?>)',
-                rf'\1{rel_dst}\2',
+                rf"\1{rel_dst}\2",
                 changed,
             )
 
