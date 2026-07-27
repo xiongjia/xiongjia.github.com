@@ -134,10 +134,10 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - HOME: index.md
-  - NOTES:
+  - Home: index.md
+  - Notes:
     - notes/index.md
-  - COLLECTION:
+  - Collection:
     - collection/index.md
     - Database: collection/database.md
     - Monitor: collection/monitor.md
@@ -146,5 +146,5 @@ nav:
     - Frontend: collection/frontend.md
     - AI: collection/ai.md
     - Languages: collection/languages.md
-  - RESEARCH: research/research.md
-  - PROJECTS: side-projects/side-projects.md
+  - Research: research/index.md
+  - Projects: side-projects/index.md

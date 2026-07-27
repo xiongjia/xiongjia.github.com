@@ -24,4 +24,4 @@ ______________________________________________________________________
 ______________________________________________________________________
 
 > Collection is the first stage of the knowledge pipeline.
-> Interesting topics move on to [Research](../research/research.md) for deep dives.
+> Interesting topics move on to [Research](../research/) for deep dives.
