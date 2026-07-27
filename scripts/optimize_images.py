@@ -181,7 +181,8 @@ def main() -> None:
             update_md_references(img, dst, dry_run=args.dry_run)
             converted += 1
 
-    print(f"\nDone — {converted} image(s) converted to WebP{' (dry-run, no changes written)' if args.dry_run else ''}")
+    suffix = " (dry-run, no changes written)" if args.dry_run else ""
+    print(f"\nDone — {converted} image(s) converted to WebP{suffix}")
 
 
 if __name__ == "__main__":
