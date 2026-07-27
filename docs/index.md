@@ -1,5 +1,6 @@
 ---
 title: recycle.bin
+icon: material/home
 hide:
   - navigation
   - toc
@@ -21,8 +22,8 @@ graph LR
 
   click A "/notes/" "Notes"
   click B "/collection/" "Collection"
-  click C "/research/research/" "Research"
-  click D "/side-projects/side-projects/" "Projects"
+  click C "/research/" "Research"
+  click D "/side-projects/" "Projects"
 ```
 
 ______________________________________________________________________
