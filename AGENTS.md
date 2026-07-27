@@ -19,6 +19,9 @@ xiongjia.github.com/
 │   │       ├── nest-commander/
 │   │       └── trip/
 │   └── tech/                      # Tech reference pages
+├── scripts/                       # Utility scripts
+│   ├── create-post.py             #   New blog post scaffolding
+│   └── optimize_images.py         #   PNG/JPG/JPEG → WebP converter (keeps originals)
 ├── overrides/                     # MkDocs Material theme overrides
 └── site/                          # Build output (gitignored)
 ```
@@ -45,6 +48,11 @@ uv run poe build
 
 # Build self-hosted version
 uv run poe build-selfhost
+
+# Optimise images (convert PNG/JPG/JPEG to WebP, keeps originals)
+#   Single:  uv run poe optimize-images docs/path/to/img.png
+#   Batch:   uv run poe optimize-images docs/research/docs/lux/
+#   All:     uv run poe optimize-images --all
 ```
 
 Site runs at `http://localhost:8000` by default.

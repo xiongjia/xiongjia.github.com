@@ -1,2 +1,9 @@
 # Vendored third-party research docs – exclude from language stats
 docs/research/external/** linguist-vendored
+
+# Images – mark as binary to avoid diff noise
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary

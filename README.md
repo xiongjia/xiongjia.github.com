@@ -34,6 +34,7 @@ GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server
 | `uv run poe create-post "Title"` | Create a new timeline post     |
 | `uv run poe fmt`                 | Format Python & Markdown files |
 | `uv run poe lint-py`             | Python lint check (ruff)       |
+| `uv run poe optimize-images <path>` | Convert PNG/JPG/JPEG → WebP and update .md references |
 
 ## Writing Posts
 
@@ -51,6 +52,24 @@ uv run poe create-post "中文标题" --category thought --slug my-thought
 ```
 
 Creates `docs/notes/posts/{category}/YYYYMMDD-slug.md` with frontmatter, RSS, and category archive support.
+
+### Optimize Images
+
+Convert PNG/JPG/JPEG images to WebP for smaller file sizes:
+
+```bash
+# Single image
+uv run poe optimize-images docs/path/to/img.png
+
+# Multiple images or a directory
+uv run poe optimize-images docs/research/docs/lux/*.png
+
+# Everything under docs/
+uv run poe optimize-images --all
+```
+
+This converts each image to WebP (quality=85) and updates all `.md` files that reference it.
+Originals are left untouched.
 
 ### Study Notes (long-form, multi-day)
 
