@@ -18,6 +18,7 @@ dependencies = [
     "mdformat>=0.7.0",
     "mdformat-gfm>=1.0.0",
     "mdformat-frontmatter>=2.0.0",
+    "pillow>=10.0.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
@@ -43,6 +44,7 @@ check-fmt = [
     { cmd = "mdformat README.md docs/ --check" },
 ]
 lint-py = "ruff check . --exclude 'docs/research/external'"
+optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 
 [tool.ruff]
 line-length = 100

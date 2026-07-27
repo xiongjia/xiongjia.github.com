@@ -70,7 +70,7 @@ ______________________________________________________________________
 
 ### Running Otaku
 
-![Running Otaku](../assets/running-otaku.png) 用来同步展示自己 Garmin 手表的跑步数据。
+![Running Otaku](../assets/running-otaku.webp) 用来同步展示自己 Garmin 手表的跑步数据。
 基于 [@yihong0618](https://github.com/yihong0618) 的 [Running Page](https://github.com/yihong0618/running_page)。
 
 - :simple-github: [Source](https://github.com/xiongjia/running_page)
