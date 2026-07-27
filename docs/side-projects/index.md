@@ -46,11 +46,11 @@ ______________________________________________________________________
 
 ### playground
 
-个人自动化工具集：加密增量备份（restic）、yt-dlp 视频下载与管理、通知 CLI、beancount 记账查账等模块。
+个人自动化工具集：加密增量备份（restic）、yt-dlp 视频下载与管理、通知 CLI、beancount 记账查账、Markdown 导出（PDF/EPUB/DOCX）、桌面自动化（防睡眠/点击器）等模块。
 
 - :simple-github: [Source](https://github.com/xiongjia/playground)
 
-**Pipeline**: Collection(backup/video/notification) → Rust CLI → Side Project
+**Pipeline**: Collection(automation/backup/media/finance) → Rust CLI → Side Project
 
 ______________________________________________________________________
 
