@@ -57,8 +57,7 @@ def main() -> None:
             )
         else:
             new_entries.append(
-                f"  # Week {week_num}\n"
-                f"  - days: [null, null, null, null, null, null, null]"
+                f"  # Week {week_num}\n  - days: [null, null, null, null, null, null, null]"
             )
 
     # Append after last line

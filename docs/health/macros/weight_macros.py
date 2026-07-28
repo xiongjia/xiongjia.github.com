@@ -227,6 +227,3 @@ def define_env(env):
             f"    line [{', '.join(map(str, avgs))}]\n"
             "```"
         )
-
-
-
