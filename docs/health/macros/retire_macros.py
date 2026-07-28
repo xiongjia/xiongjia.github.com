@@ -378,8 +378,7 @@ def define_env(env):
             f"{labels.get('legend_pre_work', 'Pre-work')}</span>\n",
         )
         html_parts.append(
-            '  <span><span class="legend-dot current-dot"></span> '
-            f"{labels.get('legend_now', 'Now')}</span>\n",
+            f"  <span>🚶‍➡️ {labels.get('legend_now', 'Now')}</span>\n",
         )
         html_parts.append(
             '  <span><span class="legend-dot"></span> '
