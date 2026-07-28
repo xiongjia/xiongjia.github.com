@@ -26,10 +26,12 @@ readme = "README.md"
 license = { text = "MIT" }
 
 [tool.poe.tasks]
-server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1" } }
+server = { cmd = "mkdocs serve --drafts", env = { NO_MKDOCS_2_WARNING = "1" }, help = "Dev server WITH drafts (draft blog posts visible)" }
+server-prod = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1" }, help = "Dev server WITHOUT drafts (mirrors production build)" }
 build = "mkdocs build"
+build-drafts = { cmd = "mkdocs build --drafts", help = "Build static site INCLUDING drafts" }
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
-create-post = { cmd = "python scripts/create-post.py", help = "Create a new blog post: uv run poe create-post \"Title\" --category bits" }
+create-post = { cmd = "python scripts/create-post.py", help = "Create a new blog post (defaults to draft): uv run poe create-post \"Title\" --category bits" }
 format-py = "ruff format . --exclude 'docs/research/external'"
 format-md = "mdformat README.md docs/"
 format = [
