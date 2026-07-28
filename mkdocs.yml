@@ -18,8 +18,12 @@ hooks:
 plugins:
   - minify: { minify_html: true }
   - search:
+  - macros:
+      module_name: docs/health/macros/weight_macros
+      render_by_default: false
+      force_render_paths: "health/*"
   - mermaid2:
-      # version auto-derived from mermaid2's JAVASCRIPT_VERSION constant
+      version: 10.9.0
       javascript: assets/javascripts/mermaid.min.js
   - drawio
   - glightbox
@@ -148,3 +152,5 @@ nav:
     - Languages: collection/languages.md
   - Research: research/index.md
   - Projects: side-projects/index.md
+  - Health:
+    - health/index.md

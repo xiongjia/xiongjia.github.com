@@ -1,0 +1,12 @@
+# Height: set once
+cm: 176
+
+# Anchor date: Monday of week 1
+# Subsequent weeks are auto-calculated from this anchor
+start_date: "2026-07-27"
+
+# 7 days per week; use null for missed days
+# Week start dates are shown in comments to help identify each week
+weeks:
+  # Week 1 — Mon 2026-07-27
+  - days: [82.5, null, null, null, null, null, null]

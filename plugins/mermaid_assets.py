@@ -27,13 +27,21 @@ _MERMAID_JS_TAG = "mermaid.min.js"
 VERSION_LOCK_FILE = ".mermaid-version"
 
 
-def _get_mermaid_version():
+def _get_mermaid_version(config=None):
+    """Read mermaid version from mermaid2 plugin config, falling back to JAVASCRIPT_VERSION."""
+    # Check if mkdocs config has a version override in the mermaid2 plugin
+    if config and "plugins" in config:
+        for plugin_name, plugin_cfg in config["plugins"].items():
+            if plugin_name == "mermaid2" and hasattr(plugin_cfg, "config"):
+                ver = plugin_cfg.config.get("version")
+                if ver:
+                    return ver
     try:
         from mermaid2.plugin import JAVASCRIPT_VERSION
 
         return JAVASCRIPT_VERSION
     except (ImportError, AttributeError):
-        return "10.4.0"
+        return "10.9.0"
 
 
 def on_pre_build(config, **kwargs):
@@ -51,7 +59,7 @@ def on_pre_build(config, **kwargs):
         with open(version_lock_path) as f:
             cached_version = f.read().strip()
 
-    mermaid_version = _get_mermaid_version()
+    mermaid_version = _get_mermaid_version(config)
 
     if cached_version == mermaid_version and os.path.exists(mermaid_js_path):
         log.info(
@@ -96,13 +104,13 @@ def on_post_page(output, page, config, **kwargs):
     # Quick pre-filter using the src attribute pattern to avoid BS4 parsing
     # on pages without mermaid (mermaid2 only injects the script on pages
     # that have diagrams).
-    mermaid_src = f'src="{_MERMAID_JS_TAG}"'
-    if mermaid_src not in output:
+    # Check for mermaid script tag using basename match (works with any relative path)
+    if _MERMAID_JS_TAG not in output:
         return output
 
     soup = BeautifulSoup(output, "html.parser")
     for script in soup.find_all("script", src=True):
-        if _MERMAID_JS_TAG in script["src"]:
+        if script["src"] and _MERMAID_JS_TAG in script["src"]:
             script["async"] = ""
             script["defer"] = ""
             break
