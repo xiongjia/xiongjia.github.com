@@ -46,6 +46,7 @@
         cell.classList.add('filled');
       } else if (idx === currentIdx) {
         cell.classList.add('current');
+        cell.textContent = '🚶‍➡️';
       }
       // idx > currentIdx → leave empty (default transparent)
     });

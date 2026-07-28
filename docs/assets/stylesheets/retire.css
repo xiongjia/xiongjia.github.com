@@ -109,36 +109,8 @@
     background: #546e7a;
     border-color: #546e7a;
 }
-.retire-cell.current {
-    background: #7c4dff;
-    border-color: #7c4dff;
-    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.3);
-}
-.retire-cell.retired {
-    background: #4caf50;
-    border-color: #4caf50;
-}
-[data-md-color-scheme="slate"] .retire-cell.current {
-    background: #b388ff;
-    border-color: #b388ff;
-    box-shadow: 0 0 0 2px rgba(179, 136, 255, 0.3);
-}
-[data-md-color-scheme="slate"] .retire-cell.retired {
-    background: #66bb6a;
-    border-color: #66bb6a;
-}
-.retire-cell-last {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 18px;
-    border: none;
-    background: transparent;
-    overflow: visible;
-    flex-shrink: 0;
-    box-sizing: border-box;
-}
+.retire-cell.current,
+.retire-cell-last,
 .retire-cell-expected {
     display: inline-flex;
     align-items: center;
@@ -147,9 +119,19 @@
     height: 18px;
     border: none;
     background: transparent;
-    overflow: visible;
     flex-shrink: 0;
-    box-sizing: border-box;
+}
+.retire-cell.current {
+    font-size: 1em;
+    line-height: 1;
+}
+.retire-cell.retired {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+[data-md-color-scheme="slate"] .retire-cell.retired {
+    background: #66bb6a;
+    border-color: #66bb6a;
 }
 .retire-month-header {
     display: flex;
@@ -213,14 +195,6 @@
 [data-md-color-scheme="slate"] .retire-progress-bar .fill.expected {
     background: #b388ff;
 }
-.retire-legend .legend-dot.current-dot {
-    background: #7c4dff;
-    border-color: #7c4dff;
-}
-[data-md-color-scheme="slate"] .retire-legend .legend-dot.current-dot {
-    background: #b388ff;
-    border-color: #b388ff;
-}
 .retire-legend .legend-dot.pre-work-dot {
     background: #cfd8dc;
     border-color: #cfd8dc;
@@ -233,6 +207,7 @@
     .retire-cell { width: 28px; height: 14px; box-sizing: border-box; }
     .retire-month-header .m-label { width: 28px; font-size: 0.45em; box-sizing: border-box; }
     .retire-year-label { width: 2.2em; font-size: 0.6em; }
+    .retire-cell.current,
     .retire-cell-last,
     .retire-cell-expected { width: 28px; height: 14px; }
 }
