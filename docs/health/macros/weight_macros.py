@@ -55,6 +55,17 @@ def _bmi_status(bmi: float) -> str:
     return "Obese"
 
 
+def _bmi_color(bmi: float) -> str:
+    """Return a CSS color for the BMI status."""
+    if bmi < 18.5:
+        return "#2196f3"  # Blue
+    if bmi < 24:
+        return "#4caf50"  # Green
+    if bmi < 28:
+        return "#ff9800"  # Orange
+    return "#f44336"  # Red
+
+
 def define_env(env):
 
     @env.macro
@@ -79,13 +90,25 @@ def define_env(env):
 
         bmi = _bmi(latest, h)
         status = _bmi_status(bmi)
-        info = f"**Height**: {h} cm　|　**Latest**: {latest} kg　|　**BMI**: {bmi:.1f} ({status})"
+        color = _bmi_color(bmi)
+        info = (
+            f"**Height**: {h} cm　|　**Latest**: {latest} kg　|　"
+            f'**BMI**: {bmi:.1f} <span style="color:{color}">({status})</span>'
+        )
         info += "\n\n"
         info += (
-            "> BMI = weight(kg) ÷ (height(m))².  "
-            "Chinese standard: Underweight < 18.5 | Normal 18.5–23.9 | "
-            "Overweight 24–27.9 | Obese ≥ 28"
+            "> BMI = weight(kg) ÷ (height(m))²\n\n"
+            "> Chinese standard: "
+            '<span style="color:#2196f3">Underweight &lt; 18.5</span> | '
+            '<span style="color:#4caf50">Normal 18.5–23.9</span> | '
+            '<span style="color:#ff9800">Overweight 24–27.9</span> | '
+            '<span style="color:#f44336">Obese ≥ 28</span>'
         )
+        # Calculate healthy weight range for Normal BMI (18.5–23.9)
+        hm = h / 100.0
+        w_min = 18.5 * hm * hm
+        w_max = 23.9 * hm * hm
+        info += f"\n\n> Your healthy weight range: **{w_min:.1f} kg – {w_max:.1f} kg**"
         return info
 
     @env.macro
@@ -144,7 +167,12 @@ def define_env(env):
 
             avg = week_avgs[idx]
             avg_str = f"**{avg:.2f}**" if avg else "—"
-            bmi_str = f"**{_bmi(avg, h):.1f}**" if (avg and h) else "—"
+            bmi_val = _bmi(avg, h)
+            bmi_str = (
+                (f'<span style="color:{_bmi_color(bmi_val)}">**{bmi_val:.1f}**</span>')
+                if (avg and h)
+                else "—"
+            )
 
             # Merge all 7 daily values into one cell, separated by " / "
             daily_cells = []
@@ -177,7 +205,12 @@ def define_env(env):
             date_range = f"{_date_str(week_start)}-{_date_str(week_end)}"
             avg = week_avgs[i]
             avg_str = f"**{avg:.2f}**" if avg else "—"
-            bmi_str = f"**{_bmi(avg, h):.1f}**" if (avg and h) else "—"
+            bmi_val = _bmi(avg, h)
+            bmi_str = (
+                (f'<span style="color:{_bmi_color(bmi_val)}">**{bmi_val:.1f}**</span>')
+                if (avg and h)
+                else "—"
+            )
 
             change = "—"
             if avg is not None and i > 0 and week_avgs[i - 1] is not None:

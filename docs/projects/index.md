@@ -30,7 +30,7 @@ React 写的 Dashboard Demo UI，支持多语言、多皮肤模式，用来整�
 - :material-web: [Demo](https://xiongjia.github.io/seedling/)
 - :material-file-document: [Docs](https://xiongjia.github.io/seedling/docs/)
 
-**Pipeline**: Collection(frontend) → Research(shadcn/ui CLI) → Side Project
+**Pipeline**: Collection(frontend) → Research(shadcn/ui CLI) → Project
 
 ### vine
 
@@ -38,7 +38,7 @@ React 写的 Dashboard Demo UI，支持多语言、多皮肤模式，用来整�
 
 - :simple-github: [Source](https://github.com/xiongjia/vine)
 
-**Pipeline**: Collection(map visualization) → React + MapLibre GL → Side Project
+**Pipeline**: Collection(map visualization) → React + MapLibre GL → Project
 
 ______________________________________________________________________
 
@@ -50,7 +50,7 @@ ______________________________________________________________________
 
 - :simple-github: [Source](https://github.com/xiongjia/playground)
 
-**Pipeline**: Collection(automation/backup/media/finance) → Rust CLI → Side Project
+**Pipeline**: Collection(automation/backup/media/finance) → Rust CLI → Project
 
 ______________________________________________________________________
 
@@ -62,7 +62,7 @@ ______________________________________________________________________
 
 - :simple-github: [Source](https://github.com/xiongjia/mung)
 
-**Pipeline**: Collection(AI agent workflow) → TypeScript CLI → Side Project
+**Pipeline**: Collection(AI agent workflow) → TypeScript CLI → Project
 
 ______________________________________________________________________
 
