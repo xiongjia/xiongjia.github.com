@@ -10,6 +10,12 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 extra:
   git_hash: !ENV [GIT_HASH, '']
   
+# extra CSS
+extra_css:
+  - assets/stylesheets/retire.css
+extra_javascript:
+  - assets/javascripts/retire.js
+  
 # hooks (custom Python modules treated as plugins)
 hooks:
   - plugins/mermaid_assets.py
@@ -20,7 +26,7 @@ plugins:
   - minify: { minify_html: true }
   - search:
   - macros:
-      module_name: docs/health/macros/weight_macros
+      module_name: docs/health/macros/health_macros
       render_by_default: false
       force_render_paths: "health/*"
   - mermaid2:
@@ -155,3 +161,4 @@ nav:
   - Projects: projects/index.md
   - Health:
     - health/index.md
+    - Retirement Countdown: health/retire.md

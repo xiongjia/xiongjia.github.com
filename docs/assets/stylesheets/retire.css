@@ -1,0 +1,238 @@
+/* Retirement countdown grid styles */
+
+.retire-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 1em 0;
+}
+.retire-card {
+    flex: 1 1 140px;
+    background: var(--md-default-fg-color--lightest);
+    border-radius: 8px;
+    padding: 10px 14px;
+    text-align: center;
+    min-width: 120px;
+}
+.retire-card .label {
+    font-size: 0.78em;
+    color: var(--md-default-fg-color--light);
+    margin-bottom: 4px;
+}
+.retire-card .value {
+    font-size: 1.25em;
+    font-weight: 700;
+    color: var(--md-primary-fg-color);
+}
+.retire-banner {
+    text-align: center;
+    padding: 2em 1em;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #fff9c4 0%, #fff176 100%);
+    margin: 1em 0;
+}
+.retire-banner .emoji-line { font-size: 2.8em; }
+.retire-banner .title { font-size: 2em; font-weight: 800; margin: 0.3em 0 0.1em; }
+.retire-banner .subtitle { font-size: 1.1em; color: #555; }
+[data-md-color-scheme="slate"] .retire-banner {
+    background: linear-gradient(135deg, #5d4e37 0%, #3e3525 100%);
+}
+[data-md-color-scheme="slate"] .retire-banner .subtitle { color: #bbb; }
+.retire-progress-bar {
+    width: 100%;
+    height: 10px;
+    background: var(--md-default-fg-color--lightest);
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0.6em 0 1.2em;
+}
+.retire-progress-bar .fill {
+    height: 100%;
+    width: 0%;
+    background: var(--md-primary-fg-color);
+    border-radius: 5px;
+    transition: width 0.6s ease;
+}
+.retire-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 0 0 0.8em;
+}
+.retire-year-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.retire-year-label {
+    width: 2.6em;
+    font-size: 0.7em;
+    color: var(--md-default-fg-color--light);
+    text-align: right;
+    flex-shrink: 0;
+    font-variant-numeric: tabular-nums;
+}
+.retire-cells {
+    display: flex;
+    gap: 1px;
+    flex-wrap: nowrap;
+}
+.retire-cell {
+    display: inline-block;
+    width: 36px;
+    height: 18px;
+    border-radius: 2px;
+    background: transparent;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    cursor: default;
+    flex-shrink: 0;
+    transition: background 0.15s;
+    box-sizing: border-box;
+}
+.retire-cell.filled {
+    background: #546e7a;
+    border-color: #546e7a;
+}
+.retire-cell.pre-work {
+    background: var(--md-default-fg-color--lightest);
+    border-color: var(--md-default-fg-color--lightest);
+}
+.retire-cell.pre-work.filled {
+    background: #cfd8dc;
+    border-color: #cfd8dc;
+}
+[data-md-color-scheme="slate"] .retire-cell.filled {
+    background: #78909c;
+    border-color: #78909c;
+}
+[data-md-color-scheme="slate"] .retire-cell.pre-work.filled {
+    background: #546e7a;
+    border-color: #546e7a;
+}
+.retire-cell.current {
+    background: #7c4dff;
+    border-color: #7c4dff;
+    box-shadow: 0 0 0 2px rgba(124, 77, 255, 0.3);
+}
+.retire-cell.retired {
+    background: #4caf50;
+    border-color: #4caf50;
+}
+[data-md-color-scheme="slate"] .retire-cell.current {
+    background: #b388ff;
+    border-color: #b388ff;
+    box-shadow: 0 0 0 2px rgba(179, 136, 255, 0.3);
+}
+[data-md-color-scheme="slate"] .retire-cell.retired {
+    background: #66bb6a;
+    border-color: #66bb6a;
+}
+.retire-cell-last {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    overflow: visible;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+.retire-cell-expected {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 18px;
+    border: none;
+    background: transparent;
+    overflow: visible;
+    flex-shrink: 0;
+    box-sizing: border-box;
+}
+.retire-month-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.retire-month-header .spacer {
+    width: 2.6em;
+    font-size: 0.7em;
+    flex-shrink: 0;
+}
+.retire-month-header .cells {
+    display: flex;
+    gap: 1px;
+}
+.retire-month-header .m-label {
+    width: 36px;
+    flex-shrink: 0;
+    font-size: 0.55em;
+    text-align: center;
+    color: var(--md-default-fg-color--light);
+    box-sizing: border-box;
+}
+.retire-legend {
+    display: flex;
+    gap: 18px;
+    margin: 0 0 0.6em;
+    font-size: 0.82em;
+    flex-wrap: wrap;
+}
+.retire-progress-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light);
+}
+.retire-progress-heading {
+    margin-top: 1em;
+    font-size: 0.9em;
+}
+.retire-legend .legend-dot {
+    display: inline-block;
+    width: 11px;
+    height: 11px;
+    border-radius: 2px;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    vertical-align: middle;
+    margin-right: 4px;
+}
+.retire-legend .legend-dot.filled {
+    background: #546e7a;
+    border-color: #546e7a;
+}
+[data-md-color-scheme="slate"] .retire-legend .legend-dot.filled {
+    background: #78909c;
+    border-color: #78909c;
+}
+.retire-progress-bar .fill.expected {
+    background: #7c4dff;
+}
+[data-md-color-scheme="slate"] .retire-progress-bar .fill.expected {
+    background: #b388ff;
+}
+.retire-legend .legend-dot.current-dot {
+    background: #7c4dff;
+    border-color: #7c4dff;
+}
+[data-md-color-scheme="slate"] .retire-legend .legend-dot.current-dot {
+    background: #b388ff;
+    border-color: #b388ff;
+}
+.retire-legend .legend-dot.pre-work-dot {
+    background: #cfd8dc;
+    border-color: #cfd8dc;
+}
+[data-md-color-scheme="slate"] .retire-legend .legend-dot.pre-work-dot {
+    background: #546e7a;
+    border-color: #546e7a;
+}
+@media (max-width: 600px) {
+    .retire-cell { width: 28px; height: 14px; box-sizing: border-box; }
+    .retire-month-header .m-label { width: 28px; font-size: 0.45em; box-sizing: border-box; }
+    .retire-year-label { width: 2.2em; font-size: 0.6em; }
+    .retire-cell-last,
+    .retire-cell-expected { width: 28px; height: 14px; }
+}

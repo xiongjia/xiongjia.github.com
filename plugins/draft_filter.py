@@ -2,7 +2,7 @@
 Draft Filter Hook
 
 Filters out non-blog pages with `draft: true` in frontmatter during production
-builds, while keeping them visible during local dev (`mkdocs serve --drafts`).
+builds, while keeping them visible during local dev (`MKDOCS_INCLUDE_DRAFTS=true mkdocs serve`).
 
 Blog posts under the blog_dir (e.g., notes/posts/) are already handled by the
 blog plugin's built-in draft support — this hook only targets regular pages.
@@ -19,7 +19,7 @@ To mark any regular page as draft, add to frontmatter:
 """
 
 import logging
-import sys
+import os
 
 log = logging.getLogger("mkdocs.hooks.draft_filter")
 
@@ -71,12 +71,14 @@ def _get_blog_dir(config) -> str:
 
 
 def on_files(files, config, **kwargs):
-    """Remove draft pages unless --drafts flag is present."""
-    include_drafts = "--drafts" in sys.argv
+    """Remove draft pages unless MKDOCS_INCLUDE_DRAFTS env var is set."""
+    include_drafts = os.environ.get("MKDOCS_INCLUDE_DRAFTS", "").lower() in ("true", "1", "yes")
 
     if include_drafts:
         log.info("Draft mode enabled — keeping draft pages visible")
         return files
+
+    log.info("Draft mode disabled — draft pages will be excluded")
 
     blog_dir = _get_blog_dir(config)
 
