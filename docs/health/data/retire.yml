@@ -1,0 +1,53 @@
+# Nationality: only china (Chinese retirement policy) supported
+nationality: china
+# Birth date (YYYY-MM-DD)
+birth_date: "1981-08-12"
+# Gender: male | female_cadre | female_worker
+#   male           = male (retire at 60->63)
+#   female_cadre   = female executive (retire at 55->58)
+#   female_worker  = female worker (retire at 50->55)
+gender: male
+# Age when started working (default 22 = after bachelor's degree)
+work_start_age: 22
+
+# Expected retirement age (optional, user's own plan). Falls back to legal retirement if unset.
+expected_retire_age: 55
+
+# Display labels (i18n) — values use Chinese for the UI
+labels:
+  # Gender names
+  gender_male: 男性
+  gender_female_cadre: 女干部
+  gender_female_worker: 女工人
+  # Card labels
+  birth: 出生年月
+  identity: 身份
+  work_start: 开始工作
+  original_retire_age: 原退休年龄
+  delay_months: 延迟月数
+  final_retire_age: 最终退休年龄
+  retire_date: 退休日期
+  work_years: 工龄
+  expected_retire_age: 预期提前退休年龄
+  legal_retire_age: 法定退休年龄
+  # Units
+  year: 年
+  month: 个月
+  age: 岁
+  # Progress
+  progress_passed: 已过
+  progress_total: 总计
+  progress_progress: 进度
+  progress_remaining: 剩余
+  # Banner
+  retired_title: 已退休！
+  retired_duration: 已退休
+  date_format: "%Y 年 %m 月"
+  # Legend
+  legend_worked: 已过（工作）
+  legend_pre_work: 工作前
+  legend_worked_short: 工作
+  legend_now: 现在
+  legend_future: 未到
+  legend_expected: 预期
+  legend_legal: 法定
