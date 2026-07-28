@@ -12,7 +12,7 @@ docs/
 │   └── study/            # Long-form study notes (multi-day)
 ├── collection/           # Curated links by domain
 ├── research/             # Deep-dive source code analysis
-├── side-projects/        # Tangible project outputs
+├── projects/             # Tangible project outputs
 └── health/               # Personal health tracking
     ├── index.md          # Health dashboard (weight, later running, etc.)
     ├── data/
@@ -21,7 +21,7 @@ docs/
         └── weight_macros.py  # Jinja2 macros for tables & charts
 ```
 
-**Knowledge pipeline**: Notes → Collection → Research → Side Projects.
+**Knowledge pipeline**: Notes → Collection → Research → Projects.
 
 ## Quick Start
 

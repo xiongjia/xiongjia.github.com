@@ -23,7 +23,7 @@ graph LR
   click A "/notes/" "Notes"
   click B "/collection/" "Collection"
   click C "/research/" "Research"
-  click D "/side-projects/" "Projects"
+  click D "/projects/" "Projects"
 ```
 
 ______________________________________________________________________
