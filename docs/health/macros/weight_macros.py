@@ -108,7 +108,7 @@ def define_env(env):
             return "> ⚠️ Set `start_date` in `weight.yml` (e.g. `2026-07-28`)"
 
         total_weeks = len(weeks)
-        RECENT_WEEKS = 4
+        recent_weeks = 4
 
         # Pre-compute weekly averages for week-over-week comparison
         week_avgs = []
@@ -121,7 +121,7 @@ def define_env(env):
         # ----------------------------------------------------------------
         # Part 1: Recent 4 Weeks merged into ONE compact table, expanded by default
         # ----------------------------------------------------------------
-        recent_start = max(0, total_weeks - RECENT_WEEKS)
+        recent_start = max(0, total_weeks - recent_weeks)
 
         # Compute date range for Last 4 Weeks
         l4w_start = start + timedelta(days=recent_start * 7)

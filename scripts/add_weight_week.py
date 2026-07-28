@@ -69,7 +69,7 @@ def main() -> None:
 
     total = existing + args.count
     print(f"✅ Added {args.count} week(s) — now {total} week(s) in {DATA_PATH}")
-    print(f"   Run `uv run poe server` to preview")
+    print("   Run `uv run poe server` to preview")
 
 
 if __name__ == "__main__":
