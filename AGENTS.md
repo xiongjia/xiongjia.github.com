@@ -18,10 +18,17 @@ xiongjia.github.com/
 │   │       ├── nestjs/
 │   │       ├── nest-commander/
 │   │       └── trip/
-│   └── tech/                      # Tech reference pages
+│   ├── tech/                      # Tech reference pages
+│   └── health/                    # Personal health tracking
+│       ├── index.md               # Dashboard (auto-populated by macros)
+│       ├── data/
+│       │   └── weight.yml         # Weight data (the only file to maintain)
+│       └── macros/
+│           └── weight_macros.py   # Jinja2 macros for tables & charts
 ├── scripts/                       # Utility scripts
 │   ├── create-post.py             #   New blog post scaffolding
-│   └── optimize_images.py         #   PNG/JPG/JPEG → WebP converter (keeps originals)
+│   ├── optimize_images.py         #   PNG/JPG/JPEG → WebP converter (keeps originals)
+│   └── add_weight_week.py         #   Add empty week to health weight data
 ├── overrides/                     # MkDocs Material theme overrides
 └── site/                          # Build output (gitignored)
 ```
@@ -32,7 +39,7 @@ xiongjia.github.com/
 - **Python**: 3.13
 - **Package manager**: [uv](https://docs.astral.sh/uv/)
 - **CI/CD**: GitHub Actions → GitHub Pages
-- **Key plugins**: mermaid2 (diagrams), drawio (diagrams), rss (feed), glightbox (images), minify
+- **Key plugins**: macros (jinja2 templates), mermaid2 (diagrams), drawio (diagrams), rss (feed), glightbox (images), minify
 
 ## DEV environment tips
 
@@ -53,6 +60,10 @@ uv run poe build-selfhost
 #   Single:  uv run poe optimize-images docs/path/to/img.png
 #   Batch:   uv run poe optimize-images docs/research/docs/lux/
 #   All:     uv run poe optimize-images --all
+
+# Health tracking — add an empty week
+uv run poe add-weight-week          # add 1 week
+uv run poe add-weight-week -- 3     # add 3 weeks at once
 ```
 
 Site runs at `http://localhost:8000` by default.

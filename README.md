@@ -12,7 +12,13 @@ docs/
 │   └── study/            # Long-form study notes (multi-day)
 ├── collection/           # Curated links by domain
 ├── research/             # Deep-dive source code analysis
-└── side-projects/        # Tangible project outputs
+├── side-projects/        # Tangible project outputs
+└── health/               # Personal health tracking
+    ├── index.md          # Health dashboard (weight, later running, etc.)
+    ├── data/
+    │   └── weight.yml    # Weight data (the only file to maintain)
+    └── macros/
+        └── weight_macros.py  # Jinja2 macros for tables & charts
 ```
 
 **Knowledge pipeline**: Notes → Collection → Research → Side Projects.
@@ -26,15 +32,16 @@ GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server
 
 ## Commands
 
-| Command                             | Description                                           |
-| ----------------------------------- | ----------------------------------------------------- |
-| `uv run poe server`                 | Start dev server (hot-reload)                         |
-| `uv run poe build`                  | Build static site                                     |
-| `uv run poe build-selfhost`         | Build self-hosted version                             |
-| `uv run poe create-post "Title"`    | Create a new timeline post                            |
-| `uv run poe fmt`                    | Format Python & Markdown files                        |
-| `uv run poe lint-py`                | Python lint check (ruff)                              |
-| `uv run poe optimize-images <path>` | Convert PNG/JPG/JPEG → WebP and update .md references |
+| Command                              | Description                                           |
+| ------------------------------------ | ----------------------------------------------------- |
+| `uv run poe server`                  | Start dev server (hot-reload)                         |
+| `uv run poe build`                   | Build static site                                     |
+| `uv run poe build-selfhost`          | Build self-hosted version                             |
+| `uv run poe create-post "Title"`     | Create a new timeline post                            |
+| `uv run poe fmt`                     | Format Python & Markdown files                        |
+| `uv run poe lint-py`                 | Python lint check (ruff)                              |
+| `uv run poe optimize-images <path>`  | Convert PNG/JPG/JPEG → WebP and update .md references |
+| `uv run poe add-weight-week [count]` | Add empty week(s) to health weight data               |
 
 ## Writing Posts
 
@@ -94,6 +101,40 @@ nav:
 ```
 
 They coexist with timeline posts — `posts/` is managed by the blog plugin, `study/` is just regular pages.
+
+## Health Tracking
+
+Weight tracking with macros-generated tables and Mermaid trend charts.
+
+### Structure
+
+```
+docs/health/
+├── index.md              # Dashboard — auto-populated by macros
+├── data/
+│   └── weight.yml        # Weight data (the only file to maintain)
+└── macros/
+    └── weight_macros.py  # Jinja2 macros for tables & charts
+```
+
+### Daily Use
+
+Open `docs/health/data/weight.yml` and fill in today's weight:
+
+```yaml
+weeks:
+  # Week 4 — Mon 2026-08-17
+  - days: [null, null, null, null, 69.0, null, null]
+```
+
+Keep `null` for skipped days. `mkdocs serve` auto-refreshes the page.
+
+To start a new week:
+
+```bash
+uv run poe add-weight-week        # add 1 week
+uv run poe add-weight-week -- 3   # add 3 weeks at once
+```
 
 ## CI / Deployment
 

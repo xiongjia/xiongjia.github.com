@@ -19,6 +19,7 @@ dependencies = [
     "mdformat-gfm>=1.0.0",
     "mdformat-frontmatter>=2.0.0",
     "pillow>=10.0.0",
+    "mkdocs-macros-plugin>=1.5.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
@@ -45,6 +46,7 @@ check-fmt = [
 ]
 lint-py = "ruff check . --exclude 'docs/research/external'"
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
+add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
 
 [tool.ruff]
 line-length = 100
