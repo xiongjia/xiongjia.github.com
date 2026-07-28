@@ -9,4 +9,4 @@ start_date: "2026-07-27"
 # Week start dates are shown in comments to help identify each week
 weeks:
   # Week 1 — Mon 2026-07-27
-  - days: [82.5, null, null, null, null, null, null]
+  - days: [null, 82.35, null, null, null, null, null]

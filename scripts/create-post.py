@@ -63,6 +63,11 @@ def main() -> None:
         default=None,
         help="Post description. Reuses title if omitted",
     )
+    parser.add_argument(
+        "--no-draft",
+        action="store_true",
+        help="Publish immediately instead of creating as draft",
+    )
 
     args = parser.parse_args()
     today = datetime.date.today()
@@ -86,12 +91,14 @@ def main() -> None:
     if args.category != "dev":
         categories.append("dev")
 
+    draft_line = "draft: true\n" if not args.no_draft else ""
+
     content = f"""---
 title: {args.title}
 date:
   created: {today.isoformat()}
   updated: {today.isoformat()}
-authors: [xiongjia]
+{draft_line}authors: [xiongjia]
 tags:
 {chr(10).join(f"  - {tag}" for tag in tags)}
 slug: {slug}

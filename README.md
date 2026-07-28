@@ -27,17 +27,18 @@ docs/
 
 ```bash
 uv sync                                    # install dependencies
-GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server
+GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server (with drafts)
 ```
 
 ## Commands
 
 | Command                              | Description                                           |
 | ------------------------------------ | ----------------------------------------------------- |
-| `uv run poe server`                  | Start dev server (hot-reload)                         |
-| `uv run poe build`                   | Build static site                                     |
-| `uv run poe build-selfhost`          | Build self-hosted version                             |
-| `uv run poe create-post "Title"`     | Create a new timeline post                            |
+| `uv run poe server`                  | Dev server WITH drafts (hot-reload)                   |
+| `uv run poe server-prod`             | Dev server WITHOUT drafts (mirrors production)        |
+| `uv run poe build`                   | Build static site (excludes drafts)                   |
+| `uv run poe build-selfhost`          | Build self-hosted version (excludes drafts)           |
+| `uv run poe create-post "Title"`     | Create a new timeline post (defaults to draft)        |
 | `uv run poe fmt`                     | Format Python & Markdown files                        |
 | `uv run poe lint-py`                 | Python lint check (ruff)                              |
 | `uv run poe optimize-images <path>`  | Convert PNG/JPG/JPEG → WebP and update .md references |
@@ -48,8 +49,11 @@ GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server
 ### Timeline Posts (short, single-day)
 
 ```bash
-# Default category: bits
+# Default category: bits, as draft
 uv run poe create-post "Your Title"
+
+# Publish immediately (skip draft)
+uv run poe create-post "Your Title" --no-draft
 
 # Specify category and tags
 uv run poe create-post "Your Title" --category dev --tags go,testing
@@ -59,6 +63,58 @@ uv run poe create-post "中文标题" --category thought --slug my-thought
 ```
 
 Creates `docs/notes/posts/{category}/YYYYMMDD-slug.md` with frontmatter, RSS, and category archive support.
+
+New posts default to **draft** (`draft: true` in frontmatter). They appear in `uv run poe server` (local dev) but are **excluded** from `uv run poe build` / CI deployment. Remove `draft: true` from the frontmatter or pass `--no-draft` to publish immediately.
+
+### Drafts
+
+#### Blog posts (via blog plugin)
+
+Add `draft: true` to the frontmatter:
+
+```yaml
+---
+title: My Draft Post
+draft: true
+---
+```
+
+- `mkdocs serve --drafts` / `uv run poe server` — **includes** drafts
+- `mkdocs build` / `uv run poe build` — **excludes** drafts
+
+#### Non-blog pages (research, tech, health, etc.)
+
+This project uses a **custom MkDocs hook** (`plugins/draft_filter.py`) that
+works the same way as the blog plugin — just add `draft: true` to any page's
+frontmatter:
+
+```yaml
+---
+title: WIP Research
+draft: true
+---
+```
+
+- `uv run poe server` (with `--drafts`) — **includes** draft pages
+- `uv run poe build` / `uv run poe server-prod` (without `--drafts`) — **excludes** draft pages
+
+The hook skips blog posts (`notes/posts/`), which are already handled by the
+blog plugin's built-in draft support.
+
+**Manual alternatives** (if you prefer not to use the hook):
+
+1. **Don't add to `nav`** — file still builds at its `docs/` path, but won't appear in navigation. Useful for quick experiments.
+
+1. **Add `robots: noindex`** to prevent search indexing:
+
+   ```yaml
+   ---
+   title: Draft
+   robots: noindex, nofollow
+   ---
+   ```
+
+1. **Rename with `-draft.md` suffix** — already gitignored per project convention (see `.gitignore`), so it won't be committed.
 
 ### Optimize Images
 

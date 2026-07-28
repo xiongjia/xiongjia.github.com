@@ -1,0 +1,97 @@
+"""
+Draft Filter Hook
+
+Filters out non-blog pages with `draft: true` in frontmatter during production
+builds, while keeping them visible during local dev (`mkdocs serve --drafts`).
+
+Blog posts under the blog_dir (e.g., notes/posts/) are already handled by the
+blog plugin's built-in draft support — this hook only targets regular pages.
+
+Usage in mkdocs.yml:
+  hooks:
+    - plugins/draft_filter.py
+
+To mark any regular page as draft, add to frontmatter:
+  ---
+  title: My WIP Page
+  draft: true
+  ---
+"""
+
+import logging
+import sys
+
+log = logging.getLogger("mkdocs.hooks.draft_filter")
+
+# Default blog directory (Material for MkDocs blog plugin default)
+_DEFAULT_BLOG_DIR = "notes/posts"
+
+
+def _has_draft_frontmatter(abs_path: str) -> bool:
+    """Check if a file has `draft: true` in its YAML frontmatter (first 2KB)."""
+    try:
+        with open(abs_path, "r", encoding="utf-8") as f:
+            head = f.read(2048)
+    except (IOError, OSError) as e:
+        log.warning("Cannot read %s: %s", abs_path, e)
+        return False
+
+    # Must start with --- (frontmatter delimiter)
+    stripped = head.lstrip()
+    if not stripped.startswith("---"):
+        return False
+
+    # Find closing ---
+    end = stripped.find("---", 3)
+    if end == -1:
+        return False
+
+    frontmatter = stripped[3:end]
+
+    # Look for draft: true (handles extra spaces, single True/true)
+    for line in frontmatter.split("\n"):
+        line = line.strip()
+        if line.startswith("draft:"):
+            value = line.split(":", 1)[1].strip().lower()
+            if value in ("true", "yes", "1"):
+                return True
+
+    return False
+
+
+def _get_blog_dir(config) -> str:
+    """Read blog_dir from blog plugin config, falling back to default."""
+    try:
+        blog_plugin = config["plugins"].get("blog")
+        if blog_plugin is not None and hasattr(blog_plugin, "config"):
+            return blog_plugin.config.get("blog_dir", _DEFAULT_BLOG_DIR)
+    except Exception:
+        pass
+    return _DEFAULT_BLOG_DIR
+
+
+def on_files(files, config, **kwargs):
+    """Remove draft pages unless --drafts flag is present."""
+    include_drafts = "--drafts" in sys.argv
+
+    if include_drafts:
+        log.info("Draft mode enabled — keeping draft pages visible")
+        return files
+
+    blog_dir = _get_blog_dir(config)
+
+    to_remove = []
+    for file in files:
+        if not file.is_documentation_page():
+            continue
+        # Skip blog posts — blog plugin handles its own draft logic
+        if file.src_path.startswith(blog_dir):
+            continue
+        if _has_draft_frontmatter(file.abs_src_path):
+            to_remove.append(file)
+
+    for file in to_remove:
+        log.info("Excluding draft: %s", file.src_path)
+        files.remove(file)
+
+    return files

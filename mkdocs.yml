@@ -13,6 +13,7 @@ extra:
 # hooks (custom Python modules treated as plugins)
 hooks:
   - plugins/mermaid_assets.py
+  - plugins/draft_filter.py
 
 # plugins
 plugins:

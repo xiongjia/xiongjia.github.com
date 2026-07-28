@@ -47,14 +47,21 @@ xiongjia.github.com/
 # Install dependencies
 uv sync
 
-# Start local dev server (hot reload)
+# Start local dev server WITH drafts (hot reload)
 uv run poe server
 
-# Build for production
+# Start local dev server WITHOUT drafts (mirrors production)
+uv run poe server-prod
+
+# Build for production (excludes drafts)
 uv run poe build
 
-# Build self-hosted version
+# Build self-hosted version (excludes drafts)
 uv run poe build-selfhost
+
+# Create a new blog post (defaults to draft)
+uv run poe create-post "Your Title"         # as draft
+uv run poe create-post "Your Title" --no-draft  # publish immediately
 
 # Optimise images (convert PNG/JPG/JPEG to WebP, keeps originals)
 #   Single:  uv run poe optimize-images docs/path/to/img.png
