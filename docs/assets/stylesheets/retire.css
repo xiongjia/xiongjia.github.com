@@ -65,7 +65,7 @@
     gap: 6px;
 }
 .retire-year-label {
-    width: 2.6em;
+    width: 3.5em;
     font-size: 0.7em;
     color: var(--md-default-fg-color--light);
     text-align: right;
@@ -139,7 +139,7 @@
     gap: 6px;
 }
 .retire-month-header .spacer {
-    width: 2.6em;
+    width: 3.5em;
     font-size: 0.7em;
     flex-shrink: 0;
 }
@@ -206,7 +206,8 @@
 @media (max-width: 600px) {
     .retire-cell { width: 28px; height: 14px; box-sizing: border-box; }
     .retire-month-header .m-label { width: 28px; font-size: 0.45em; box-sizing: border-box; }
-    .retire-year-label { width: 2.2em; font-size: 0.6em; }
+    .retire-year-label { width: 3em; font-size: 0.6em; }
+    .retire-month-header .spacer { width: 3em; font-size: 0.6em; }
     .retire-cell.current,
     .retire-cell-last,
     .retire-cell-expected { width: 28px; height: 14px; }
