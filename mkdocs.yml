@@ -24,6 +24,7 @@ extra:
 # extra CSS
 extra_css:
   - assets/stylesheets/retire.css
+  - assets/stylesheets/weight.css
 extra_javascript:
   - assets/javascripts/retire.js
   
@@ -173,4 +174,5 @@ nav:
   - Health:
     - health/index.md
     - Retirement Countdown: health/retire.md
+    - Weight Track: health/weight.md
   - Discuss: discuss/index.md

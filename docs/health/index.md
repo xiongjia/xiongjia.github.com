@@ -6,18 +6,9 @@ hide:
 
 # 📊 Health
 
-## 🏋️ Weight Track
+👋 **Welcome to My Health Hub!** 🎯
 
-{{ weight_info() }}
+---
 
-______________________________________________________________________
-
-## 📋 Weekly Details
-
-{{ weight_table() }}
-
-______________________________________________________________________
-
-## 📈 Trend Charts
-
-{{ weight_chart() }}
+- [🏋️ **Weight Track**](./weight.md) — track my weight, BMI, and daily grid
+- [🕰️ **Retirement Countdown**](./retire.md) — countdown to retirement

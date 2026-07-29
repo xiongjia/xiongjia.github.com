@@ -10,3 +10,52 @@ start_date: "2026-07-27"
 weeks:
   # Week 1 — Mon 2026-07-27
   - days: [null, 82.35, 81.50, null, null, null, null]
+
+# Display labels (i18n) — values use Chinese for the UI
+labels:
+  # Card labels
+  height: 身高
+  latest: 最新体重
+  bmi: BMI
+  healthy_range: 健康体重范围
+  # Units
+  unit_kg: kg
+  unit_cm: cm
+  # BMI status
+  underweight: 偏瘦
+  normal: 正常
+  overweight: 超重
+  obese: 肥胖
+  # BMI formula
+  bmi_formula: BMI = 体重(kg) ÷ 身高(m)²
+  # Separator (override from default ': ')
+  colon_sep: ：
+  # Chinese BMI standard
+  bmi_standard_underweight: 偏瘦 < 18.5
+  bmi_standard_normal: 正常 18.5–23.9
+  bmi_standard_overweight: 超重 24–27.9
+  bmi_standard_obese: 肥胖 ≥ 28
+  # Progress labels
+  progress: 进度
+  current: 当前
+  # Chart title
+  chart_title: 体重趋势（周平均）
+  # Day-of-week labels (used in table headers)
+  grid_mon: 一
+  grid_tue: 二
+  grid_wed: 三
+  grid_thu: 四
+  grid_fri: 五
+  grid_sat: 六
+  grid_sun: 日
+  # Table accordion headings
+  table_recent_heading: 📋 最近四周
+  table_all_heading: 📊 所有周
+  # Table column headers
+  table_col_week: 周
+  table_col_dates: 日期
+  table_col_daily_values: 每日数值
+  table_col_avg: 平均
+  table_col_bmi: BMI
+  table_col_vs_last: 较上周
+  table_row_prefix: 周
