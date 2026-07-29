@@ -192,6 +192,62 @@ uv run poe add-weight-week        # add 1 week
 uv run poe add-weight-week -- 3   # add 3 weeks at once
 ```
 
+## Comments
+
+Comments powered by [Giscus](https://giscus.app/) — a comment system built on GitHub Discussions.
+
+### Prerequisites (one-time)
+
+1. **Enable GitHub Discussions** on the repository:
+   https://github.com/xiongjia/xiongjia.github.com/settings → Features → check **Discussions**
+
+1. **Install the [Giscus GitHub App](https://github.com/apps/giscus)**
+   and grant access to `xiongjia/xiongjia.github.com`.
+
+1. **Obtain `repo_id` and `category_id`**:
+
+   Visit [giscus.app](https://giscus.app/), enter the repository name, and follow
+   the guided form. The page generates a complete embed script at the bottom —
+   copy the `data-repo-id` and `data-category-id` values.
+
+   Alternatively, query via the [GitHub GraphQL API](https://docs.github.com/en/graphql/overview/explorer):
+
+   ```graphql
+   { repository(owner: "xiongjia", name: "xiongjia.github.com") { id } }
+   { repository(owner: "xiongjia", name: "xiongjia.github.com") {
+       discussionCategory(name: "General") { id }
+     }
+   }
+   ```
+
+1. **Update `mkdocs.yml`**:
+   Fill in `repo_id` and `category_id` under `extra.comments`.
+
+### Testing
+
+```bash
+# Start dev server
+uv run poe server
+
+# Open http://localhost:8000/discuss/
+# You should see the Giscus comment box at the bottom of the page.
+
+# Post a test comment (requires GitHub login via Giscus).
+
+# Toggle light/dark theme — the Giscus widget should follow.
+
+# Visit a different page (e.g. http://localhost:8000/notes/) — comments should NOT appear.
+
+# Clean up test comments at:
+# https://github.com/xiongjia/xiongjia.github.com/discussions
+```
+
+### How it works
+
+- Comment area only appears on pages with `comments: true` in frontmatter
+- [Discuss](docs/discuss/index.md) page is the dedicated comments page
+- Theme (light/dark) syncs automatically with the site palette
+
 ## CI / Deployment
 
 `.github/workflows/ci.yml` — lint all branches, deploy to GitHub Pages on push to `master`.
