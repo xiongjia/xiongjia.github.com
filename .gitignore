@@ -25,6 +25,9 @@ env-*
 .pi/*
 !.pi/skills/
 
+# pi subagents (auto-generated workspace)
+.pi-subagents/
+
 # local draft files
 *-draft.md
 

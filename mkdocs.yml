@@ -9,6 +9,17 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 
 extra:
   git_hash: !ENV [GIT_HASH, '']
+  comments:
+    enabled: true
+    # provider: giscus (reserved for future use)
+    repo: xiongjia/xiongjia.github.com
+    repo_id: MDEwOlJlcG9zaXRvcnkxMjM4MjI0NQ==
+    category: General
+    category_id: DIC_kwDOALzwJc4DCO5O
+    mapping: pathname
+    lang: en
+    light_theme: light
+    dark_theme: dark
   
 # extra CSS
 extra_css:
@@ -162,3 +173,4 @@ nav:
   - Health:
     - health/index.md
     - Retirement Countdown: health/retire.md
+  - Discuss: discuss/index.md
