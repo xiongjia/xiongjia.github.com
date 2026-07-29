@@ -60,8 +60,16 @@ def main() -> None:
                 f"  # Week {week_num}\n  - days: [null, null, null, null, null, null, null]"
             )
 
-    # Append after last line
-    content = content.rstrip("\n") + "\n" + "\n".join(new_entries) + "\n"
+    # Insert before the labels: section (if it exists) or append at end
+    labels_marker = "\n# Display labels (i18n)"
+    if labels_marker in content:
+        content = content.replace(
+            labels_marker,
+            "\n".join(new_entries) + "\n" + labels_marker,
+            1,
+        )
+    else:
+        content = content.rstrip("\n") + "\n" + "\n".join(new_entries) + "\n"
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(content)
