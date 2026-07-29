@@ -201,10 +201,10 @@ Comments powered by [Giscus](https://giscus.app/) — a comment system built on 
 1. **Enable GitHub Discussions** on the repository:
    https://github.com/xiongjia/xiongjia.github.com/settings → Features → check **Discussions**
 
-2. **Install the [Giscus GitHub App](https://github.com/apps/giscus)**
+1. **Install the [Giscus GitHub App](https://github.com/apps/giscus)**
    and grant access to `xiongjia/xiongjia.github.com`.
 
-3. **Obtain `repo_id` and `category_id`**:
+1. **Obtain `repo_id` and `category_id`**:
 
    Visit [giscus.app](https://giscus.app/), enter the repository name, and follow
    the guided form. The page generates a complete embed script at the bottom —
@@ -220,7 +220,7 @@ Comments powered by [Giscus](https://giscus.app/) — a comment system built on 
    }
    ```
 
-4. **Update `mkdocs.yml`**:
+1. **Update `mkdocs.yml`**:
    Fill in `repo_id` and `category_id` under `extra.comments`.
 
 ### Testing
