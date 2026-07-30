@@ -5,4 +5,4 @@ hide:
   - path
 ---
 
---8\<-- "docs/notes/\_index_content.md"
+<!-- include: notes/_index_content.md -->
