@@ -25,7 +25,8 @@ xiongjia.github.com/
 ├── .github/workflows/ci.yml        # CI: lint & deploy to GitHub Pages
 ├── mkdocs.yml                     # MkDocs configuration
 ├── pyproject.toml                 # Python project config & dependencies
-├── dev/                           # Design documents (this directory)
+├── dev/                           # Design documents & plans
+│   └── plans/                     # Implementation plans / task tracking (see plan-index.md)
 ├── docs/                          # All site content (Markdown)
 │   ├── index.md                   # Home page
 │   ├── notes/                     # Blog posts (MkDocs blog plugin)
@@ -96,25 +97,21 @@ Hooks are custom Python modules registered via `mkdocs.yml` → `hooks`. They
 register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 `on_post_page`).
 
-| Hook                | Events                         | Responsibility                                                                                                                                                                                                                                                                                | Configuration                               |
-| ------------------- | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `draft_filter.py`   | `on_files`                     | Removes pages with `draft: true` frontmatter during production builds. Skipped for blog posts (handled by blog plugin). Controlled by `MKDOCS_INCLUDE_DRAFTS` env var.                                                                                                                        | None (env-driven)                           |
-| `mermaid_assets.py` | `on_pre_build`, `on_post_page` | Downloads self-contained Mermaid UMD bundle from unpkg CDN to `docs/assets/javascripts/` during build, caches it by version. Injects `async defer` on the `<script>` tag to avoid blocking page render (2.8 MB bundle). Falls back to a stub file on download failure (graceful degradation). | `version` reads from mermaid2 plugin config |
+- **`draft_filter.py`** — Filters out `draft: true` pages in production (env-driven)
+- **`mermaid_assets.py`** — Downloads & injects self-hosted Mermaid JS bundle
 
 ### MkDocs Plugins (`mkdocs.yml` → `plugins`)
 
-| Plugin      | Type                                   | Responsibility                                                                                                                                                               | Key Config                                                                                                    |
-| ----------- | -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| `minify`    | Third-party (`mkdocs-minify-plugin`)   | Minifies HTML output (`minify_html: true`) for smaller deployment size                                                                                                       | —                                                                                                             |
-| `search`    | Built-in                               | Full-text site search via lunr.js                                                                                                                                            | Defaults                                                                                                      |
-| `macros`    | Third-party (`mkdocs-macros-plugin`)   | Jinja2 template macro engine. Executes `health_macros.py` Python functions to dynamically generate health dashboard, weight tables/charts, and retirement countdown content. | `module_name: docs/health/macros/health_macros`, `render_by_default: false`, `force_render_paths: "health/*"` |
-| `mermaid2`  | Third-party (`mkdocs-mermaid2-plugin`) | Renders Mermaid diagrams from ```` ```mermaid ```` fenced blocks. Uses locally cached JS bundle.                                                                             | `version: 10.9.0`, `javascript: assets/javascripts/mermaid.min.js`                                            |
-| `drawio`    | Third-party (`mkdocs-drawio`)          | Embeds drawio diagrams via `![alt](file.drawio)` Markdown syntax.                                                                                                            | Defaults                                                                                                      |
-| `glightbox` | Third-party (`mkdocs-glightbox`)       | Lightbox image viewer — click to enlarge images in-page.                                                                                                                     | Defaults                                                                                                      |
-| `meta`      | Built-in                               | Allows frontmatter metadata to control page title, description, navigation hiding, etc.                                                                                      | Defaults                                                                                                      |
-| `rss`       | Third-party (`mkdocs-rss-plugin`)      | Generates RSS and JSON feeds for blog posts.                                                                                                                                 | `match_path: "notes/posts/.*"`, `use_git: true`, `pretty_print: true`                                         |
-| `tags`      | Built-in                               | Tag index pages and category listings with scope-based grouping.                                                                                                             | `listings_map.scoped.scope: true`                                                                             |
-| `blog`      | Built-in                               | Full blogging engine: manages post directory, pagination, archives, authors, RSS integration, draft support.                                                                 | `blog_dir: notes`, `pagination_per_page: 5`, `blog_toc: true`                                                 |
+- **`minify`** — Minifies HTML output (`minify_html: true`). `mkdocs-minify-plugin` (third-party)
+- **`search`** — Full-text site search via lunr.js. Built-in
+- **`macros`** — Jinja2 template engine (runs `health_macros.py`). Config: `module_name: docs/health/macros/health_macros`, `render_by_default: false`, `force_render_paths: "health/*"`. `mkdocs-macros-plugin` (third-party)
+- **`mermaid2`** — Renders Mermaid diagrams from fenced code blocks. Config: `version: 10.9.0`, `javascript: assets/javascripts/mermaid.min.js`. `mkdocs-mermaid2-plugin` (third-party)
+- **`drawio`** — Embeds drawio diagrams via `![alt](file.drawio)`. `mkdocs-drawio` (third-party)
+- **`glightbox`** — Lightbox image viewer. `mkdocs-glightbox` (third-party)
+- **`meta`** — Frontmatter metadata for page title, description, nav hiding, etc. Built-in
+- **`rss`** — RSS & JSON feeds for blog posts. Config: `match_path: "notes/posts/.*"`, `use_git: true`, `pretty_print: true`. `mkdocs-rss-plugin` (third-party)
+- **`tags`** — Tag index pages with scope-based grouping. Built-in
+- **`blog`** — Full blogging engine (pagination, archives, drafts). Config: `blog_dir: notes`, `pagination_per_page: 5`. Built-in
 
 **Load order**: hooks (`on_*` events) → plugins (in `mkdocs.yml` order) → markdown_extensions (during Markdown rendering).
 
