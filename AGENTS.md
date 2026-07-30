@@ -5,7 +5,7 @@ xiongjia.github.com/
 ├── .github/          # CI workflow
 ├── dev/              # Design documents & plans (see dev/plans/)
 ├── docs/             # Site content (notes, research, health, etc.)
-├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets)
+├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
 ├── scripts/          # Utility scripts (create-post, md2wechat, optimize-images, etc.)
 ├── overrides/        # Theme overrides (comments, meta tags, external links)
 └── site/             # Build output (gitignored)
@@ -28,6 +28,7 @@ uv run poe server-prod           # dev server WITHOUT drafts (mirrors production
 uv run poe build                 # production build
 uv run poe build-selfhost        # self-hosted build
 uv run poe create-post "Title"   # new blog post (default: draft)
+uv run poe create-moment "Text"  # new Moment micro-post
 uv run poe fmt                   # format Python + Markdown
 uv run poe lint-py               # Python lint check (ruff)
 uv run poe optimize-images <path> # convert PNG/JPG/JPEG to WebP

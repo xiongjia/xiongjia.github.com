@@ -1,0 +1,44 @@
+{# moment_detail.html #}
+{% extends "main.html" %}
+{% set moment_base = "/moment" %}
+
+{% block content %}
+<article class="moment-detail">
+    <a href="{{ moment.permalink }}" class="moment-detail__time"
+       title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">
+        {{ moment.date.strftime("%b %d, %Y · %H:%M") }} 🔗
+    </a>
+
+    <div class="moment-detail__content">
+        {{ moment.html | safe }}
+    </div>
+
+    {% if moment.tags %}
+    <div class="moment-detail__tags">
+        {% for tag in moment.tags %}
+        <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <nav class="moment-detail__nav">
+        {% if prev_moment %}
+        <a href="{{ prev_moment.permalink }}" class="moment-detail__prev">
+            ← {{ prev_moment.date.strftime("%b %d, %H:%M") }}
+        </a>
+        {% endif %}
+
+        <a href="{{ timeline_url }}" class="moment-detail__back">
+            {{ labels.get("back_to_timeline", "↑ Timeline") }}
+        </a>
+
+        {% if next_moment %}
+        <a href="{{ next_moment.permalink }}" class="moment-detail__next">
+            {{ next_moment.date.strftime("%b %d, %H:%M") }} →
+        </a>
+        {% endif %}
+    </nav>
+</article>
+
+{% include "partials/comments.html" %}
+{% endblock %}

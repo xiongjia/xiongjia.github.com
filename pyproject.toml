@@ -52,6 +52,7 @@ lint-py = "ruff check . --exclude 'docs/research/external'"
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
+create-moment = { cmd = "python scripts/create-moment.py", help = "Create a new Moment: uv run poe create-moment 'Content'" }
 
 [project.optional-dependencies]
 test = ["pytest>=9.1.1"]

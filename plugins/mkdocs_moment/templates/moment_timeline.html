@@ -1,0 +1,54 @@
+{# moment_timeline.html #}
+{% extends "main.html" %}
+{% set moment_base = "/moment" %}
+
+{% block content %}
+<article class="moment-timeline">
+    <h1>🕐 {{ page.title | default(labels.get("timeline_title", "Moment")) }}</h1>
+    {% if labels.get("timeline_description") %}
+    <p class="moment-timeline__desc">{{ labels.timeline_description }}</p>
+    {% endif %}
+
+    {% if pagination.items %}
+    {% if all_tags %}
+    <p class="moment-tagcloud-label">All tags</p>
+    <div class="moment-tagcloud">
+        {% for tag in all_tags %}
+        <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+        {% endfor %}
+    </div>
+    <hr class="moment-divider">
+    {% endif %}
+    <div class="moment-list">
+        {% for moment in pagination.items %}
+        <div class="moment-entry">
+            <a href="{{ moment.permalink }}" class="moment-entry__time"
+               title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">
+                {{ moment.date.strftime("%b %d, %Y · %H:%M") }} 🔗
+            </a>
+
+            <div class="moment-entry__content">
+                {{ moment.html | safe }}
+            </div>
+
+            {% if moment.tags %}
+            <div class="moment-entry__tags">
+                {% for tag in moment.tags %}
+                <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+
+        {% if not loop.last %}
+        <hr class="moment-divider">
+        {% endif %}
+        {% endfor %}
+    </div>
+
+    {% include "moment_pagination.html" %}
+    {% else %}
+    <p class="moment-empty">{{ labels.get("empty_state", "No moments yet.") }}</p>
+    {% endif %}
+</article>
+{% endblock %}

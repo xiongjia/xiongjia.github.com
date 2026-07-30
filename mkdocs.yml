@@ -32,6 +32,7 @@ extra_javascript:
 hooks:
   - plugins/mermaid_assets.py
   - plugins/draft_filter.py
+  - plugins/moment_hook.py
 
 # plugins
 plugins:
@@ -79,8 +80,6 @@ plugins:
       pagination_url_format: "{page}"
       pagination_keep_content: false
 
-
-# theme setting
 theme:
   custom_dir: overrides
   name: material
@@ -160,6 +159,7 @@ nav:
   - Home: index.md
   - Notes:
     - notes/index.md
+  - Moment: moment/index.md
   - Collection:
     - collection/index.md
     - Database: collection/database.md

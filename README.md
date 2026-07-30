@@ -23,6 +23,7 @@ Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 | `uv run poe fmt`                    | Format Python & Markdown                       |
 | `uv run poe lint-py`                | Python lint check (ruff)                       |
 | `uv run poe create-post "Title"`    | New blog post (defaults to draft)              |
+| `uv run poe create-moment "Text"`   | New Moment entry (short micro-post)            |
 | `uv run poe optimize-images <path>` | PNG/JPG/JPEG → WebP                            |
 | `uv run poe add-weight-week [n]`    | Add empty week(s) to weight data               |
 | `uv run poe md2wechat [path]`       | Convert post to WeChat HTML                    |
@@ -37,6 +38,7 @@ hash into the page HTML.
 
 Detailed documentation moved to `dev/`:
 
+- [Moment Design](dev/moment-design.md) — Micro-post timeline plugin (hooks, templates, tags, pagination, RSS planned)
 - [Architecture](dev/architecture.md) — project structure, plugins, hooks, env vars, draft system
 - [md2wechat Design](dev/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](dev/optimize-images-design.md) — WebP conversion pipeline
@@ -50,6 +52,7 @@ Detailed documentation moved to `dev/`:
 docs/
 ├── index.md         # Home
 ├── notes/           # Blog posts + study notes
+├── moment/          # Short micro-posts (Moment plugin)
 ├── collection/      # Curated links
 ├── research/        # Source code analysis
 ├── projects/        # Project outputs
