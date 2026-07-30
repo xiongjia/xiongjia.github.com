@@ -6,8 +6,8 @@
 
 Four-tier architecture:
 
-- **Data layer**: YAML file (`docs/health/data/weight.yml`) — the only file to maintain
-- **Macro layer**: Python module (`docs/health/macros/weight_macros.py`) — renders info cards, tables, charts
+- **Data layer**: YAML file (`docs/notes/health/data/weight.yml`) — the only file to maintain
+- **Macro layer**: Python module (`docs/notes/health/macros/weight_macros.py`) — renders info cards, tables, charts
 - **Aggregator**: `health_macros.py` — combines weight and retirement macros into one entry point for MkDocs macros plugin
 - **Tool layer**: `scripts/add_weight_week.py` — adds new empty weeks to the YAML file
 

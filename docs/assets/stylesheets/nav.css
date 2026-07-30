@@ -1,0 +1,27 @@
+/* ── Sidebar navigation hierarchy ──────────────────────
+   Increases visual distinction between nesting levels.
+   Uses border guide + deeper indent (like VS Code).
+   Applies to desktop sidebar (.md-sidebar--primary).
+   ─────────────────────────────────────────────────── */
+
+/* All nested navs get deeper indent */
+.md-sidebar--primary .md-nav .md-nav .md-nav__list {
+  padding-left: 0.6rem;
+}
+
+/* Subtle left border as indent guide */
+.md-sidebar--primary .md-nav .md-nav {
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+  margin-left: 0;
+}
+
+/* Nested sections: section title normal weight, items slightly lighter */
+.md-sidebar--primary .md-nav .md-nav .md-nav__link {
+  font-size: 0.78rem;
+}
+
+/* Active/current item highlight */
+.md-sidebar--primary .md-nav__item--active > .md-nav__link {
+  font-weight: 600;
+  color: var(--md-primary-fg-color);
+}

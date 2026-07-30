@@ -14,7 +14,7 @@ categories:
 > **学习前先克隆项目:**
 >
 > ```bash
-> cd docs/research/external
+> cd docs/notes/research/external
 > git clone --depth 1 https://github.com/shadcn-ui/ui.git shadcn-ui
 > ```
 
@@ -26,7 +26,7 @@ shadcn/ui 不是传统的 npm 组件库，而是一个 **CLI 工具**，它将�
 
 - GitHub: https://github.com/shadcn-ui/ui
 - 官网: https://ui.shadcn.com
-- 本地路径: `docs/research/external/shadcn-ui`
+- 本地路径: `docs/notes/research/external/shadcn-ui`
 - 核心依赖: Radix UI (无样式行为基元) + Tailwind CSS (样式)
 
 ## 核心理念

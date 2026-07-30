@@ -15,14 +15,14 @@ categories:
 
 ```bash
 # 使用 depth=1 减少克隆时间
-git clone --depth=1 https://github.com/jmcdo29/nest-commander.git docs/research/external/nest-commander
+git clone --depth=1 https://github.com/jmcdo29/nest-commander.git docs/notes/research/external/nest-commander
 ```
 
 **当前文档信息：**
 
 - 研究分支 (Branch): `master`
 - Git SHA1: `b0493c16e52636fc05edf6dcb7d42c573bbbd0a3`
-- 外部仓库位置: `docs/research/external/nest-commander/`
+- 外部仓库位置: `docs/notes/research/external/nest-commander/`
 
 ______________________________________________________________________
 

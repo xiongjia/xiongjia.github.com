@@ -13,7 +13,7 @@ support, converting them to plain-text or emoji-based equivalents.
 
 - **Input**: Any Markdown file with YAML frontmatter. Supports:
   - Direct file path argument
-  - Interactive selection (lists published non-draft posts from `docs/notes/posts/`)
+  - Interactive selection (lists published non-draft posts from `docs/notes/posts/posts/`)
   - `--open` flag to preview in browser
 - **Output**: Multiple output modes:
   - Rich-text clipboard (macOS `textutil` + `pbcopy`) — paste directly into WeChat editor
@@ -137,7 +137,7 @@ After rendering, `get_warnings()` aggregates:
 uv run poe md2wechat
 
 # Direct file path
-uv run poe md2wechat docs/notes/posts/dev/20260101-my-post.md
+uv run poe md2wechat docs/notes/posts/posts/bits/20260101-my-post.md
 
 # Preview only (no clipboard)
 uv run poe md2wechat path/to/file.md --preview-only

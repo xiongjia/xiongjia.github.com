@@ -50,14 +50,14 @@ Detailed documentation moved to `dev/`:
 
 ```
 docs/
-├── index.md         # Home
-├── notes/           # Blog posts + study notes
-├── moment/          # Short micro-posts (Moment plugin)
-├── collection/      # Curated links
-├── research/        # Source code analysis
+├── index.md         # Redirect → /notes/
+├── moments/         # Short micro-posts (Moment plugin)
+├── notes/
+│   ├── index.md     # Landing page (mermaid + about)
+│   ├── collection/  # Curated links by domain
+│   ├── research/    # Source code analysis
+│   ├── health/      # Weight & retirement tracking
+│   └── posts/       # Blog archive (MkDocs blog plugin)
 ├── projects/        # Project outputs
-├── health/          # Weight & retirement tracking
 └── discuss/         # Giscus comment page
 ```
-
-**Knowledge pipeline**: Notes → Collection → Research → Projects.

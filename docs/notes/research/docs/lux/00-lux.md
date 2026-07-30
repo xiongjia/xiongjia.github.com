@@ -16,7 +16,7 @@ categories:
 > **学习前先克隆项目:**
 >
 > ```bash
-> cd docs/research/external
+> cd docs/notes/research/external
 > git clone --depth 1 https://github.com/iawia002/lux.git
 > ```
 
@@ -27,7 +27,7 @@ ______________________________________________________________________
 Lux 是一个用 Go 编写的快速、简单的视频下载器，支持从多个视频网站下载视频和音频。
 
 - GitHub: https://github.com/iawia002/lux
-- 本地路径: `docs/research/external/lux`
+- 本地路径: `docs/notes/research/external/lux`
 
 ## 项目结构
 
@@ -51,13 +51,13 @@ lux/
 1. **运行项目**
 
    - 安装 Go 1.21+
-   - `cd docs/research/external/lux`
+   - `cd docs/notes/research/external/lux`
    - `go run . --help` 查看帮助
 
 1. **理解程序入口**
 
-   - 阅读 `docs/research/external/lux/main.go`
-   - 阅读 `docs/research/external/lux/app/app.go` 了解 CLI 结构
+   - 阅读 `docs/notes/research/external/lux/main.go`
+   - 阅读 `docs/notes/research/external/lux/app/app.go` 了解 CLI 结构
 
 ### 阶段 2: 核心模块
 
@@ -70,13 +70,13 @@ lux/
 
 1. **提取器模块** (`extractors/`)
 
-   - `docs/research/external/lux/extractors/extractors.go` - 提取器接口
-   - `docs/research/external/lux/extractors/types.go` - 数据类型定义
+   - `docs/notes/research/external/lux/extractors/extractors.go` - 提取器接口
+   - `docs/notes/research/external/lux/extractors/types.go` - 数据类型定义
 
 1. **下载器模块** (`downloader/`)
 
-   - `docs/research/external/lux/downloader/downloader.go` - 下载核心逻辑
-   - `docs/research/external/lux/downloader/types.go` - 数据结构
+   - `docs/notes/research/external/lux/downloader/downloader.go` - 下载核心逻辑
+   - `docs/notes/research/external/lux/downloader/types.go` - 数据结构
 
 ### 阶段 3: 深入理解
 
@@ -128,12 +128,12 @@ lux/
 
 ## 本地实验
 
-- [go-cli-urfave 实验代码](https://github.com/xiongjia/xiongjia.github.com/tree/master/docs/research/experiments/go-cli-urfave/main.go){:target="\_blank"} - Lux 使用 urfave/cli 框架的实验项目
+- [go-cli-urfave 实验代码](https://github.com/xiongjia/xiongjia.github.com/tree/master/docs/notes/research/experiments/go-cli-urfave/main.go){:target="\_blank"} - Lux 使用 urfave/cli 框架的实验项目
 
 ## 参考资源
 
-- `docs/research/external/lux/README.md` - 项目文档
-- `docs/research/external/lux/CONTRIBUTING.md` - 贡献指南
+- `docs/notes/research/external/lux/README.md` - 项目文档
+- `docs/notes/research/external/lux/CONTRIBUTING.md` - 贡献指南
 
 ______________________________________________________________________
 

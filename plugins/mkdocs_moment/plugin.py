@@ -50,7 +50,7 @@ class MomentPlugin(BasePlugin):
         config.theme.dirs.insert(0, template_dir)
 
         # register CSS
-        config["extra_css"].append("moment/moment.css")
+        config["extra_css"].append(f"{self.config['path']}/moment.css")
 
         # load labels (Chinese UI strings)
         self._labels = self._load_labels(config)
@@ -123,7 +123,7 @@ class MomentPlugin(BasePlugin):
                 has_prev=False,
                 has_next=total > per_page,
                 prev_url=None,
-                next_url="/moment/page/2/" if total > per_page else None,
+                next_url=f"/{self.config['path']}/page/2/" if total > per_page else None,
                 items=items,
             )
             context["labels"] = self._labels
@@ -136,7 +136,7 @@ class MomentPlugin(BasePlugin):
                 idx = self._moments.index(moment)
                 context["moment"] = moment
                 context["labels"] = self._labels
-                context["timeline_url"] = "/moment/"
+                context["timeline_url"] = f"/{self.config['path']}/"
                 if idx > 0:
                     context["prev_moment"] = self._moments[idx - 1]
                 if idx < len(self._moments) - 1:
@@ -150,7 +150,7 @@ class MomentPlugin(BasePlugin):
 
         # copy CSS
         css_src = Path(__file__).parent / "assets" / "css" / "moment.css"
-        css_dst = Path(config["site_dir"]) / "moment" / "moment.css"
+        css_dst = Path(config["site_dir"]) / self.config["path"] / "moment.css"
         css_dst.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy(css_src, css_dst)
 
@@ -174,7 +174,7 @@ class MomentPlugin(BasePlugin):
             start = (page_num - 1) * self.config["posts_per_page"]
             end = start + self.config["posts_per_page"]
             page_items = self._moments[start:end]
-            page_url = f"/moment/page/{page_num}/"
+            page_url = f"/{self.config['path']}/page/{page_num}/"
             page_proxy = _Page(f"Moment — Page {page_num}", page_url)
 
             pagination = Pagination(
@@ -184,8 +184,16 @@ class MomentPlugin(BasePlugin):
                 page_size=self.config["posts_per_page"],
                 has_prev=True,
                 has_next=page_num < total_pages,
-                prev_url=f"/moment/page/{page_num - 1}/" if page_num > 2 else "/moment/",
-                next_url=f"/moment/page/{page_num + 1}/" if page_num < total_pages else None,
+                prev_url=(
+                    f"/{self.config['path']}/page/{page_num - 1}/"
+                    if page_num > 2
+                    else f"/{self.config['path']}/"
+                ),
+                next_url=(
+                    f"/{self.config['path']}/page/{page_num + 1}/"
+                    if page_num < total_pages
+                    else None
+                ),
                 items=page_items,
             )
 
@@ -198,7 +206,7 @@ class MomentPlugin(BasePlugin):
                 labels=self._labels,
             )
 
-            output_dir = site_dir / "moment" / "page" / str(page_num)
+            output_dir = site_dir / self.config["path"] / "page" / str(page_num)
             output_dir.mkdir(parents=True, exist_ok=True)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
@@ -210,7 +218,7 @@ class MomentPlugin(BasePlugin):
 
         for tag, items in tag_moments.items():
             tag_slug = quote(tag, safe="")
-            tag_url = f"/moment/tag/{tag_slug}/"
+            tag_url = f"/{self.config['path']}/tag/{tag_slug}/"
             page_proxy = _Page(f"#{tag} — Moment", tag_url)
             tag_pagination = Pagination(
                 current_page=1,
@@ -231,7 +239,7 @@ class MomentPlugin(BasePlugin):
                 pagination=tag_pagination,
                 labels=self._labels,
             )
-            output_dir = site_dir / "moment" / "tag" / tag_slug
+            output_dir = site_dir / self.config["path"] / "tag" / tag_slug
             output_dir.mkdir(parents=True, exist_ok=True)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 

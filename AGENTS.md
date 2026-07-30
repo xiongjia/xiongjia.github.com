@@ -47,7 +47,7 @@ See [dev/architecture.md](dev/architecture.md) for full command reference.
 - **Developer approval required before committing**: AI must not execute `git commit` unless the developer explicitly approves. All changes must remain in the working directory for developer review first.
 - **Never push**: AI **must never** execute `git push` or any equivalent remote push operation. Push can only be performed manually by the developer.
 - **Code review required before push**: All changes must be reviewed and approved by a human before pushing to remote branches.
-- **Research notes use AI assistance disclaimer**: All files under `docs/research/` must include the AI-generated disclaimer frontmatter.
+- **Research notes use AI assistance disclaimer**: All files under `docs/notes/research/` must include the AI-generated disclaimer frontmatter.
 - **Chinese content for research docs**: Research notes are written in Chinese; blog posts and tech reference pages may be in either language.
 - **Use relative links**: All internal links between docs pages should use relative paths (e.g. `./docs/lux/00-lux.md`).
 - **Frontmatter required for research docs**: Each research doc must have `title`, `tags`, and `categories` frontmatter.

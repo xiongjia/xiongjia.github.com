@@ -1,4 +1,4 @@
-"""Add a new (empty) week to docs/health/data/weight.yml.
+"""Add a new (empty) week to docs/notes/health/data/weight.yml.
 
 Usage:
     uv run poe add-weight-week          # add one empty week
@@ -12,7 +12,7 @@ from datetime import datetime, timedelta
 
 import yaml
 
-DATA_PATH = "docs/health/data/weight.yml"
+DATA_PATH = "docs/notes/health/data/weight.yml"
 
 
 def main() -> None:

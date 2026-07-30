@@ -28,15 +28,15 @@ Redash 的查询结果缓存是一个多层级的系统，涵盖 hash 去重、R
 
 ### 主要组件
 
-| 组件                       | 文件                                                                                                                | 职责                           |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
-| `gen_query_hash`           | [`redash/utils/__init__.py:54`](docs/research/external/redash/redash/utils/__init__.py#L54)                         | 生成查询文本的 MD5 hash        |
-| `QueryResult.get_latest`   | [`redash/models/__init__.py:348`](docs/research/external/redash/redash/models/__init__.py#L348)                     | 按 hash + max_age 查找最新缓存 |
-| `QueryResult.store_result` | [`redash/models/__init__.py:369`](docs/research/external/redash/redash/models/__init__.py#L369)                     | 持久化查询结果到 PostgreSQL    |
-| `enqueue_query`            | [`redash/tasks/queries/execution.py:32`](docs/research/external/redash/redash/tasks/queries/execution.py#L32)       | 入队任务，含 hash 去重逻辑     |
-| `QueryExecutor`            | [`redash/tasks/queries/execution.py:174`](docs/research/external/redash/redash/tasks/queries/execution.py#L174)     | 执行查询并将结果存储           |
-| `run_query`                | [`redash/handlers/query_results.py:59`](docs/research/external/redash/redash/handlers/query_results.py#L59)         | API 层缓存命中检查入口         |
-| `cleanup_query_results`    | [`redash/tasks/queries/maintenance.py:120`](docs/research/external/redash/redash/tasks/queries/maintenance.py#L120) | 定期清理未使用的查询结果       |
+| 组件                       | 文件                                                                                                                      | 职责                           |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------- | ------------------------------ |
+| `gen_query_hash`           | [`redash/utils/__init__.py:54`](docs/notes/research/external/redash/redash/utils/__init__.py#L54)                         | 生成查询文本的 MD5 hash        |
+| `QueryResult.get_latest`   | [`redash/models/__init__.py:348`](docs/notes/research/external/redash/redash/models/__init__.py#L348)                     | 按 hash + max_age 查找最新缓存 |
+| `QueryResult.store_result` | [`redash/models/__init__.py:369`](docs/notes/research/external/redash/redash/models/__init__.py#L369)                     | 持久化查询结果到 PostgreSQL    |
+| `enqueue_query`            | [`redash/tasks/queries/execution.py:32`](docs/notes/research/external/redash/redash/tasks/queries/execution.py#L32)       | 入队任务，含 hash 去重逻辑     |
+| `QueryExecutor`            | [`redash/tasks/queries/execution.py:174`](docs/notes/research/external/redash/redash/tasks/queries/execution.py#L174)     | 执行查询并将结果存储           |
+| `run_query`                | [`redash/handlers/query_results.py:59`](docs/notes/research/external/redash/redash/handlers/query_results.py#L59)         | API 层缓存命中检查入口         |
+| `cleanup_query_results`    | [`redash/tasks/queries/maintenance.py:120`](docs/notes/research/external/redash/redash/tasks/queries/maintenance.py#L120) | 定期清理未使用的查询结果       |
 
 ### 整体流程
 
@@ -82,7 +82,7 @@ QueryResult.get_latest()    enqueue_query()
 
 #### 1. 生成查询 Hash
 
-[`redash/utils/__init__.py:54-64`](docs/research/external/redash/redash/utils/__init__.py#L54-L64):
+[`redash/utils/__init__.py:54-64`](docs/notes/research/external/redash/redash/utils/__init__.py#L54-L64):
 
 ```python
 def gen_query_hash(sql):
@@ -102,7 +102,7 @@ def gen_query_hash(sql):
 
 #### 2. Redis 分布式锁防止重复执行
 
-[`redash/tasks/queries/execution.py:32-123`](docs/research/external/redash/redash/tasks/queries/execution.py#L32-L123):
+[`redash/tasks/queries/execution.py:32-123`](docs/notes/research/external/redash/redash/tasks/queries/execution.py#L32-L123):
 
 ```python
 def enqueue_query(query, data_source, user_id, ...):
@@ -419,7 +419,7 @@ CREATE TABLE visualizations (
 
 #### 缓存查找 SQL 详解
 
-[`redash/models/__init__.py:348-366`](docs/research/external/redash/redash/models/__init__.py#L348-L366) — `QueryResult.get_latest()`:
+[`redash/models/__init__.py:348-366`](docs/notes/research/external/redash/redash/models/__init__.py#L348-L366) — `QueryResult.get_latest()`:
 
 ```python
 @classmethod
@@ -465,7 +465,7 @@ LIMIT 1;
 
 #### store_result 存储逻辑
 
-[`redash/models/__init__.py:369-383`](docs/research/external/redash/redash/models/__init__.py#L369-L383):
+[`redash/models/__init__.py:369-383`](docs/notes/research/external/redash/redash/models/__init__.py#L369-L383):
 
 ```python
 @classmethod
@@ -505,7 +505,7 @@ RETURNING id;
 
 ### 缓存清理机制
 
-[`redash/tasks/queries/maintenance.py:120-140`](docs/research/external/redash/redash/tasks/queries/maintenance.py#L120-L140):
+[`redash/tasks/queries/maintenance.py:120-140`](docs/notes/research/external/redash/redash/tasks/queries/maintenance.py#L120-L140):
 
 ```python
 def cleanup_query_results():
@@ -567,16 +567,16 @@ Redash 的 Dashboard 基于 `react-grid-layout` 实现响应式网格布局，�
 
 ### 主要组件
 
-| 组件                     | 文件                                                                                                                                                 | 职责                                 |
-| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
-| `Dashboard` (Model)      | [`redash/models/__init__.py:1116`](docs/research/external/redash/redash/models/__init__.py#L1116)                                                    | Dashboard 数据模型                   |
-| `Widget` (Model)         | [`redash/models/__init__.py:1270`](docs/research/external/redash/redash/models/__init__.py#L1270)                                                    | Widget 数据模型，含 width 和 options |
-| `DashboardPage`          | [`client/app/pages/dashboards/DashboardPage.jsx`](docs/research/external/redash/client/app/pages/dashboards/DashboardPage.jsx)                       | Dashboard 页面组件                   |
-| `DashboardGrid`          | [`client/app/components/dashboards/DashboardGrid.jsx`](docs/research/external/redash/client/app/components/dashboards/DashboardGrid.jsx)             | 网格布局核心组件                     |
-| `AutoHeightController`   | [`client/app/components/dashboards/AutoHeightController.js`](docs/research/external/redash/client/app/components/dashboards/AutoHeightController.js) | 自适应高度控制器                     |
-| `Widget` (Service)       | [`client/app/services/widget.js`](docs/research/external/redash/client/app/services/widget.js)                                                       | 前端 Widget 数据模型                 |
-| `Dashboard` (Service)    | [`client/app/services/dashboard.js`](docs/research/external/redash/client/app/services/dashboard.js)                                                 | 前端 Dashboard 数据模型              |
-| `dashboard-grid-options` | [`client/app/config/dashboard-grid-options.js`](docs/research/external/redash/client/app/config/dashboard-grid-options.js)                           | 网格配置常量                         |
+| 组件                     | 文件                                                                                                                                                       | 职责                                 |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------ |
+| `Dashboard` (Model)      | [`redash/models/__init__.py:1116`](docs/notes/research/external/redash/redash/models/__init__.py#L1116)                                                    | Dashboard 数据模型                   |
+| `Widget` (Model)         | [`redash/models/__init__.py:1270`](docs/notes/research/external/redash/redash/models/__init__.py#L1270)                                                    | Widget 数据模型，含 width 和 options |
+| `DashboardPage`          | [`client/app/pages/dashboards/DashboardPage.jsx`](docs/notes/research/external/redash/client/app/pages/dashboards/DashboardPage.jsx)                       | Dashboard 页面组件                   |
+| `DashboardGrid`          | [`client/app/components/dashboards/DashboardGrid.jsx`](docs/notes/research/external/redash/client/app/components/dashboards/DashboardGrid.jsx)             | 网格布局核心组件                     |
+| `AutoHeightController`   | [`client/app/components/dashboards/AutoHeightController.js`](docs/notes/research/external/redash/client/app/components/dashboards/AutoHeightController.js) | 自适应高度控制器                     |
+| `Widget` (Service)       | [`client/app/services/widget.js`](docs/notes/research/external/redash/client/app/services/widget.js)                                                       | 前端 Widget 数据模型                 |
+| `Dashboard` (Service)    | [`client/app/services/dashboard.js`](docs/notes/research/external/redash/client/app/services/dashboard.js)                                                 | 前端 Dashboard 数据模型              |
+| `dashboard-grid-options` | [`client/app/config/dashboard-grid-options.js`](docs/notes/research/external/redash/client/app/config/dashboard-grid-options.js)                           | 网格配置常量                         |
 
 ### 整体架构
 
@@ -604,7 +604,7 @@ Redash 的 Dashboard 基于 `react-grid-layout` 实现响应式网格布局，�
 
 ### 网格配置
 
-[`client/app/config/dashboard-grid-options.js`](docs/research/external/redash/client/app/config/dashboard-grid-options.js):
+[`client/app/config/dashboard-grid-options.js`](docs/notes/research/external/redash/client/app/config/dashboard-grid-options.js):
 
 ```javascript
 export default {
@@ -705,7 +705,7 @@ static normalizeFrom(widget) {
 
 #### 2. 新 Widget 自动计算位置
 
-[`client/app/services/dashboard.js:83-127`](docs/research/external/redash/client/app/services/dashboard.js#L83-L127):
+[`client/app/services/dashboard.js:83-127`](docs/notes/research/external/redash/client/app/services/dashboard.js#L83-L127):
 
 ```javascript
 function calculateNewWidgetPosition(existingWidgets, newWidget) {
@@ -772,7 +772,7 @@ normalizeTo = layout => ({
 
 某些可视化组件（如 Table）的内容高度可能动态变化。Redash 实现了 `AutoHeightController` 来自动调整 Widget 的行高。
 
-[`client/app/components/dashboards/AutoHeightController.js`](docs/research/external/redash/client/app/components/dashboards/AutoHeightController.js):
+[`client/app/components/dashboards/AutoHeightController.js`](docs/notes/research/external/redash/client/app/components/dashboards/AutoHeightController.js):
 
 ```javascript
 export default class AutoHeightController {
@@ -883,7 +883,7 @@ ParameterMappingType = {
 };
 ```
 
-[`client/app/services/dashboard.js:190-233`](docs/research/external/redash/client/app/services/dashboard.js#L190-L233) — `Dashboard.prototype.getParametersDefs()` 收集所有标记为 `DashboardLevel` 的参数，合并同名参数，生成全局参数列表。
+[`client/app/services/dashboard.js:190-233`](docs/notes/research/external/redash/client/app/services/dashboard.js#L190-L233) — `Dashboard.prototype.getParametersDefs()` 收集所有标记为 `DashboardLevel` 的参数，合并同名参数，生成全局参数列表。
 
 ______________________________________________________________________
 
@@ -891,30 +891,30 @@ ______________________________________________________________________
 
 ### 后端 (Python)
 
-| 文件                                                                                                       | 说明                                                     |
-| ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [`redash/utils/__init__.py`](docs/research/external/redash/redash/utils/__init__.py)                       | `gen_query_hash` — 查询 hash 生成                        |
-| [`redash/models/__init__.py`](docs/research/external/redash/redash/models/__init__.py)                     | `QueryResult`, `Query`, `Dashboard`, `Widget` 等核心模型 |
-| [`redash/handlers/query_results.py`](docs/research/external/redash/redash/handlers/query_results.py)       | API 层缓存命中与查询执行入口                             |
-| [`redash/handlers/dashboards.py`](docs/research/external/redash/redash/handlers/dashboards.py)             | Dashboard CRUD API                                       |
-| [`redash/handlers/widgets.py`](docs/research/external/redash/redash/handlers/widgets.py)                   | Widget CRUD API                                          |
-| [`redash/tasks/queries/execution.py`](docs/research/external/redash/redash/tasks/queries/execution.py)     | 查询执行、job lock、结果存储                             |
-| [`redash/tasks/queries/maintenance.py`](docs/research/external/redash/redash/tasks/queries/maintenance.py) | 缓存清理、定时查询刷新                                   |
-| [`redash/serializers/__init__.py`](docs/research/external/redash/redash/serializers/__init__.py)           | `serialize_dashboard` — Dashboard 序列化                 |
-| [`redash/settings/__init__.py`](docs/research/external/redash/redash/settings/__init__.py)                 | 缓存和 Job 相关配置项                                    |
-| [`redash/__init__.py`](docs/research/external/redash/redash/__init__.py)                                   | `redis_connection` — Redis 连接初始化                    |
+| 文件                                                                                                             | 说明                                                     |
+| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------- |
+| [`redash/utils/__init__.py`](docs/notes/research/external/redash/redash/utils/__init__.py)                       | `gen_query_hash` — 查询 hash 生成                        |
+| [`redash/models/__init__.py`](docs/notes/research/external/redash/redash/models/__init__.py)                     | `QueryResult`, `Query`, `Dashboard`, `Widget` 等核心模型 |
+| [`redash/handlers/query_results.py`](docs/notes/research/external/redash/redash/handlers/query_results.py)       | API 层缓存命中与查询执行入口                             |
+| [`redash/handlers/dashboards.py`](docs/notes/research/external/redash/redash/handlers/dashboards.py)             | Dashboard CRUD API                                       |
+| [`redash/handlers/widgets.py`](docs/notes/research/external/redash/redash/handlers/widgets.py)                   | Widget CRUD API                                          |
+| [`redash/tasks/queries/execution.py`](docs/notes/research/external/redash/redash/tasks/queries/execution.py)     | 查询执行、job lock、结果存储                             |
+| [`redash/tasks/queries/maintenance.py`](docs/notes/research/external/redash/redash/tasks/queries/maintenance.py) | 缓存清理、定时查询刷新                                   |
+| [`redash/serializers/__init__.py`](docs/notes/research/external/redash/redash/serializers/__init__.py)           | `serialize_dashboard` — Dashboard 序列化                 |
+| [`redash/settings/__init__.py`](docs/notes/research/external/redash/redash/settings/__init__.py)                 | 缓存和 Job 相关配置项                                    |
+| [`redash/__init__.py`](docs/notes/research/external/redash/redash/__init__.py)                                   | `redis_connection` — Redis 连接初始化                    |
 
 ### 前端 (JavaScript/React)
 
-| 文件                                                                                                                                                 | 说明                                     |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
-| [`client/app/config/dashboard-grid-options.js`](docs/research/external/redash/client/app/config/dashboard-grid-options.js)                           | 网格配置（列数、行高、断点等）           |
-| [`client/app/components/dashboards/DashboardGrid.jsx`](docs/research/external/redash/client/app/components/dashboards/DashboardGrid.jsx)             | 响应式网格布局核心                       |
-| [`client/app/components/dashboards/AutoHeightController.js`](docs/research/external/redash/client/app/components/dashboards/AutoHeightController.js) | 自适应高度控制器                         |
-| [`client/app/services/dashboard.js`](docs/research/external/redash/client/app/services/dashboard.js)                                                 | Dashboard 前端模型（布局计算、参数收集） |
-| [`client/app/services/widget.js`](docs/research/external/redash/client/app/services/widget.js)                                                       | Widget 前端模型（位置计算、参数映射）    |
-| [`client/app/pages/dashboards/DashboardPage.jsx`](docs/research/external/redash/client/app/pages/dashboards/DashboardPage.jsx)                       | Dashboard 页面入口                       |
-| [`client/app/pages/dashboards/hooks/useDashboard.js`](docs/research/external/redash/client/app/pages/dashboards/hooks/useDashboard.js)               | Dashboard 状态管理 Hook                  |
+| 文件                                                                                                                                                       | 说明                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- |
+| [`client/app/config/dashboard-grid-options.js`](docs/notes/research/external/redash/client/app/config/dashboard-grid-options.js)                           | 网格配置（列数、行高、断点等）           |
+| [`client/app/components/dashboards/DashboardGrid.jsx`](docs/notes/research/external/redash/client/app/components/dashboards/DashboardGrid.jsx)             | 响应式网格布局核心                       |
+| [`client/app/components/dashboards/AutoHeightController.js`](docs/notes/research/external/redash/client/app/components/dashboards/AutoHeightController.js) | 自适应高度控制器                         |
+| [`client/app/services/dashboard.js`](docs/notes/research/external/redash/client/app/services/dashboard.js)                                                 | Dashboard 前端模型（布局计算、参数收集） |
+| [`client/app/services/widget.js`](docs/notes/research/external/redash/client/app/services/widget.js)                                                       | Widget 前端模型（位置计算、参数映射）    |
+| [`client/app/pages/dashboards/DashboardPage.jsx`](docs/notes/research/external/redash/client/app/pages/dashboards/DashboardPage.jsx)                       | Dashboard 页面入口                       |
+| [`client/app/pages/dashboards/hooks/useDashboard.js`](docs/notes/research/external/redash/client/app/pages/dashboards/hooks/useDashboard.js)               | Dashboard 状态管理 Hook                  |
 
 ______________________________________________________________________
 
