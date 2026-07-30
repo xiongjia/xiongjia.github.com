@@ -9,6 +9,8 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 
 extra:
   git_hash: !ENV [GIT_HASH, '']
+  moment:
+    path: moments
   comments:
     enabled: true
     # provider: giscus (reserved for future use)
@@ -25,6 +27,7 @@ extra:
 extra_css:
   - assets/stylesheets/retire.css
   - assets/stylesheets/weight.css
+  - assets/stylesheets/nav.css
 extra_javascript:
   - assets/javascripts/retire.js
   
@@ -39,9 +42,9 @@ plugins:
   - minify: { minify_html: true }
   - search:
   - macros:
-      module_name: docs/health/macros/health_macros
+      module_name: docs/notes/health/macros/health_macros
       render_by_default: false
-      force_render_paths: "health/*"
+      force_render_paths: "notes/health/*"
   - mermaid2:
       version: 10.9.0
       javascript: assets/javascripts/mermaid.min.js
@@ -59,7 +62,7 @@ plugins:
         json_updated: feed_json_updated.json
         rss_created: feed_rss_created.xml
         rss_updated: feed_rss_updated.xml      
-      match_path: "notes/posts/.*"
+      match_path: "notes/posts/posts/.*"
       use_git: true
       pretty_print: true
       use_material_social_cards: true
@@ -73,7 +76,7 @@ plugins:
         scoped:
           scope: true
   - blog: 
-      blog_dir: notes
+      blog_dir: notes/posts
       blog_toc: true
       pagination_if_single_page: true
       pagination_per_page: 5
@@ -156,23 +159,23 @@ markdown_extensions:
 
 # Page tree
 nav:
-  - Home: index.md
   - Notes:
     - notes/index.md
-  - Moment: moment/index.md
-  - Collection:
-    - collection/index.md
-    - Database: collection/database.md
-    - Monitor: collection/monitor.md
-    - Media: collection/media.md
-    - Dev Tools: collection/dev-tools.md
-    - Frontend: collection/frontend.md
-    - AI: collection/ai.md
-    - Languages: collection/languages.md
-  - Research: research/index.md
+    - Collection:
+      - notes/collection/index.md
+      - Database: notes/collection/database.md
+      - Monitor: notes/collection/monitor.md
+      - Media: notes/collection/media.md
+      - Dev Tools: notes/collection/dev-tools.md
+      - Frontend: notes/collection/frontend.md
+      - AI: notes/collection/ai.md
+      - Languages: notes/collection/languages.md
+    - Research: notes/research/index.md
+    - Health Monitor:
+      - notes/health/index.md
+      - Retirement Countdown: notes/health/retire.md
+      - Weight Track: notes/health/weight.md
+    - Posts: notes/posts/index.md
   - Projects: projects/index.md
-  - Health:
-    - health/index.md
-    - Retirement Countdown: health/retire.md
-    - Weight Track: health/weight.md
+  - Moments: moments/index.md
   - Discuss: discuss/index.md

@@ -81,7 +81,7 @@ uv run poe optimize-images docs/path/to/img.png
 uv run poe optimize-images img1.png img2.jpg
 
 # Directory (recursive)
-uv run poe optimize-images docs/research/docs/lux/
+uv run poe optimize-images docs/notes/research/docs/lux/
 
 # Everything under docs/
 uv run poe optimize-images --all

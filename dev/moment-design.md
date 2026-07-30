@@ -14,14 +14,13 @@ CMS, no JavaScript runtime.
 Markdown                         Static HTML
   │                                  │
 ```text
-Source (docs/moment/)
+Source (docs/moments/)
 ├── moment-data.yaml        ← UI labels
 ├── index.md                ← Timeline placeholder
 └── 2026-07/
-    ├── 30-1430.md          ← One moment
-    └── 30-2130.md
+    ├── 30-2136.md          ← One moment
 
-Built (site/moment/)
+Built (site/moments/)
 ├── moment.css
 ├── index.html              ← Timeline
 ├── 2026-07/
@@ -61,10 +60,10 @@ tags:
 ### File naming
 
 ```
-docs/moment/YYYY-MM/DD-HHMM.md                  # standard
-docs/moment/YYYY-MM/DD-HHMM-slug.md             # with optional slug
-docs/moment/YYYY-MM/DD-HHMM-SS.md               # precise to seconds
-docs/moment/YYYY-MM/DD.md                        # pure date (one per day)
+docs/moments/YYYY-MM/DD-HHMM.md                  # standard
+docs/moments/YYYY-MM/DD-HHMM-slug.md             # with optional slug
+docs/moments/YYYY-MM/DD-HHMM-SS.md               # precise to seconds
+docs/moments/YYYY-MM/DD.md                        # pure date (one per day)
 ```
 
 Year and month come from the directory name; filename only contains
@@ -132,7 +131,7 @@ extra:
 ### UI Labels (Chinese/English separation)
 
 No Chinese text in Python code. All UI strings are in
-`docs/moment/moment-data.yaml`:
+`docs/moments/moment-data.yaml`:
 
 ```yaml
 labels:
@@ -287,13 +286,11 @@ extra:
 ## File Tree
 
 ```
-docs/moment/
+docs/moments/
 ├── index.md                         # Timeline placeholder
 ├── moment-data.yaml                 # UI labels (i18n)
 ├── 2026-07/
-│   ├── 30-1430.md
-│   ├── 30-2130.md
-│   ├── 29-1800.md
+│   ├── 30-2136.md
 │   └── screenshot.webp
 └── 2026-06/
     └── ...

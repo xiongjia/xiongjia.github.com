@@ -14,7 +14,7 @@ categories:
 > **学习前先克隆项目:**
 >
 > ```bash
-> cd docs/research/external
+> cd docs/notes/research/external
 > git clone --depth 1 https://github.com/jellyfin/jellyfin.git
 > ```
 
@@ -25,7 +25,7 @@ ______________________________________________________________________
 Jellyfin 是一个用 C# (.NET) 编写的开源媒体服务器，是 Emby 的一个 fork。它可以让你收集、管理和流式传输你的媒体文件。
 
 - GitHub: https://github.com/jellyfin/jellyfin
-- 本地路径: `docs/research/external/jellyfin`
+- 本地路径: `docs/notes/research/external/jellyfin`
 
 ## 项目结构
 
@@ -82,58 +82,58 @@ Jellyfin 采用**接口-实现分离**的分层架构:
 ```
 
 1. **理解入口点**
-   - 阅读 `docs/research/external/jellyfin/Jellyfin.Server/Program.cs` — 了解启动流程
-   - 阅读 `docs/research/external/jellyfin/Jellyfin.Server/CoreAppHost.cs` — 应用主机
-   - 阅读 `docs/research/external/jellyfin/Jellyfin.Server/Startup.cs` — ASP.NET Core 配置
+   - 阅读 `docs/notes/research/external/jellyfin/Jellyfin.Server/Program.cs` — 了解启动流程
+   - 阅读 `docs/notes/research/external/jellyfin/Jellyfin.Server/CoreAppHost.cs` — 应用主机
+   - 阅读 `docs/notes/research/external/jellyfin/Jellyfin.Server/Startup.cs` — ASP.NET Core 配置
 
 ### 阶段 2: 理解核心机制
 
 2. **应用主机 (ApplicationHost)**
 
-   - `docs/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` — 核心生命周期管理
+   - `docs/notes/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` — 核心生命周期管理
    - 了解 DI 容器注册流程
    - 了解插件加载机制
 
 1. **依赖注入**
 
-   - `docs/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` 中的 `RegisterServices()` 方法
+   - `docs/notes/research/external/jellyfin/Emby.Server.Implementations/ApplicationHost.cs` 中的 `RegisterServices()` 方法
    - 使用 ASP.NET Core 内置 DI (`Microsoft.Extensions.DependencyInjection`)
 
 1. **插件系统**
 
-   - `docs/research/external/jellyfin/MediaBrowser.Common.Plugins.IPlugin` — 插件接口
-   - `docs/research/external/jellyfin/Emby.Server.Implementations/Plugins/` — 插件加载和发现
-   - `docs/research/external/jellyfin/MediaBrowser.Common.Plugins.BasePlugin` — 插件基类
+   - `docs/notes/research/external/jellyfin/MediaBrowser.Common.Plugins.IPlugin` — 插件接口
+   - `docs/notes/research/external/jellyfin/Emby.Server.Implementations/Plugins/` — 插件加载和发现
+   - `docs/notes/research/external/jellyfin/MediaBrowser.Common.Plugins.BasePlugin` — 插件基类
 
 ### 阶段 3: 理解核心业务
 
 5. **媒体库系统**
 
-   - `docs/research/external/jellyfin/Emby.Server.Implementations/Library/` — 媒体库扫描和管理
-   - `docs/research/external/jellyfin/MediaBrowser.Controller.Entities/` — 媒体实体 (Movie, Series, Episode 等)
+   - `docs/notes/research/external/jellyfin/Emby.Server.Implementations/Library/` — 媒体库扫描和管理
+   - `docs/notes/research/external/jellyfin/MediaBrowser.Controller.Entities/` — 媒体实体 (Movie, Series, Episode 等)
 
 1. **API 层**
 
-   - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/ItemsController.cs` — 媒体项 API
-   - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/UserController.cs` — 用户管理
-   - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/VideosController.cs` — 视频流
+   - `docs/notes/research/external/jellyfin/Jellyfin.Api/Controllers/ItemsController.cs` — 媒体项 API
+   - `docs/notes/research/external/jellyfin/Jellyfin.Api/Controllers/UserController.cs` — 用户管理
+   - `docs/notes/research/external/jellyfin/Jellyfin.Api/Controllers/VideosController.cs` — 视频流
 
 1. **元数据提供者**
 
-   - `docs/research/external/jellyfin/MediaBrowser.Providers/` — 从 TMDB, IMDB 等获取元数据
-   - `docs/research/external/jellyfin/MediaBrowser.LocalMetadata/` — 从本地文件 (NFO) 解析元数据
+   - `docs/notes/research/external/jellyfin/MediaBrowser.Providers/` — 从 TMDB, IMDB 等获取元数据
+   - `docs/notes/research/external/jellyfin/MediaBrowser.LocalMetadata/` — 从本地文件 (NFO) 解析元数据
 
 ### 阶段 4: 深入功能
 
 8. **媒体编码和流媒体**
 
-   - `docs/research/external/jellyfin/MediaBrowser.MediaEncoding/` — FFmpeg 集成
-   - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/DynamicHlsController.cs` — HLS 流
+   - `docs/notes/research/external/jellyfin/MediaBrowser.MediaEncoding/` — FFmpeg 集成
+   - `docs/notes/research/external/jellyfin/Jellyfin.Api/Controllers/DynamicHlsController.cs` — HLS 流
 
 1. **会话和播放状态**
 
-   - `docs/research/external/jellyfin/Emby.Server.Implementations/Session/` — 会话管理
-   - `docs/research/external/jellyfin/Jellyfin.Api/Controllers/PlaystateController.cs` — 播放状态上报
+   - `docs/notes/research/external/jellyfin/Emby.Server.Implementations/Session/` — 会话管理
+   - `docs/notes/research/external/jellyfin/Jellyfin.Api/Controllers/PlaystateController.cs` — 播放状态上报
 
 ## 关键概念
 

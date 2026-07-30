@@ -439,7 +439,7 @@ def copy_rich_text(html_content: str) -> bool:
 
 def find_published_posts() -> list[str]:
     """List published (non-draft) blog posts under docs/notes/posts/."""
-    posts_dir = Path("docs/notes/posts")
+    posts_dir = Path("docs/notes/posts/posts")
     if not posts_dir.exists():
         return []
 

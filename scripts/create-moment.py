@@ -20,7 +20,7 @@ def main():
     parser.add_argument("--image", help="Reference an existing image path")
     parser.add_argument("--slug", help="Custom slug for the filename")
     parser.add_argument(
-        "--dir", default="docs/moment", help="Moment data directory (default: docs/moment)"
+        "--dir", default="docs/moments", help="Moment data directory (default: docs/moments)"
     )
     args = parser.parse_args()
 

@@ -34,21 +34,21 @@ build = "mkdocs build"
 build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Build static site INCLUDING drafts" }
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create-post.py", help = "Create a new blog post (defaults to draft): uv run poe create-post \"Title\" --category bits" }
-format-py = "ruff format . --exclude 'docs/research/external'"
+format-py = "ruff format . --exclude 'docs/notes/research/external'"
 format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ dev/"
 format = [
-    { cmd = "ruff format . --exclude 'docs/research/external'" },
+    { cmd = "ruff format . --exclude 'docs/notes/research/external'" },
     { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ dev/" },
 ]
 fmt = [
-    { cmd = "ruff format . --exclude 'docs/research/external'" },
+    { cmd = "ruff format . --exclude 'docs/notes/research/external'" },
     { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ dev/" },
 ]
 check-fmt = [
-    { cmd = "ruff format --check . --exclude 'docs/research/external'" },
+    { cmd = "ruff format --check . --exclude 'docs/notes/research/external'" },
     { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ dev/ --check" },
 ]
-lint-py = "ruff check . --exclude 'docs/research/external'"
+lint-py = "ruff check . --exclude 'docs/notes/research/external'"
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }

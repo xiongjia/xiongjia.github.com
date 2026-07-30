@@ -22,7 +22,7 @@ ______________________________________________________________________
 ## 目录结构
 
 ```
-docs/research/external/trip/
+docs/notes/research/external/trip/
 ├── src/                          # Angular 前端
 │   ├── src/app/                  # Angular 组件、服务
 │   └── ...

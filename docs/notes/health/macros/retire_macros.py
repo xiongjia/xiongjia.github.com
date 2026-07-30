@@ -36,7 +36,7 @@ _MONTH_LABELS = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"]
 
 def _load_data(env):
     docs_dir = env.conf.get("docs_dir", "docs")
-    data_path = os.path.join(docs_dir, "health", "data", "retire.yml")
+    data_path = os.path.join(docs_dir, "notes", "health", "data", "retire.yml")
     if not os.path.exists(data_path):
         return {}
     with open(data_path, "r", encoding="utf-8") as f:
@@ -313,7 +313,7 @@ def define_env(env):
         """Retirement summary — banner (if retired) or info cards + progress."""
         data = _load_data(env)
         if not data:
-            return "> config `docs/health/data/retire.yml` not found"
+            return "> config `docs/notes/health/data/retire.yml` not found"
         nationality = data.get("nationality", "china")
         if nationality != "china":
             return f"> only china nationality supported, got `{nationality}`"

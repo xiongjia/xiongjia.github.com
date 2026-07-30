@@ -13,7 +13,7 @@ import re
 import sys
 
 DOCS_DIR = "docs"
-DEFAULT_POST_DIR = "notes/posts"
+DEFAULT_POST_DIR = "notes/posts/posts"
 
 
 def slugify(text: str, *, fallback: str = "post") -> str:
@@ -115,7 +115,7 @@ categories:
         f.write(content)
 
     # Compute URL path (matches blog plugin's default post_url_format)
-    url_path = f"/{DEFAULT_POST_DIR}/{args.category}/{today.strftime('%Y/%m/%d')}/{slug}/"
+    url_path = f"/notes/posts/{today.strftime('%Y/%m/%d')}/{slug}/"
 
     print(f"Created: {filepath}")
     print(f"URL:     {url_path}")

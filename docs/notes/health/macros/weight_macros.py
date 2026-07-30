@@ -16,7 +16,7 @@ _DAY_KEYS = ["grid_mon", "grid_tue", "grid_wed", "grid_thu", "grid_fri", "grid_s
 def _load_data(env: Any) -> dict:
     """Load weight.yml relative to the docs directory."""
     docs_dir = env.conf.get("docs_dir", "docs")
-    data_path = os.path.join(docs_dir, "health", "data", "weight.yml")
+    data_path = os.path.join(docs_dir, "notes", "health", "data", "weight.yml")
     if not os.path.exists(data_path):
         return {}
     with open(data_path, "r", encoding="utf-8") as f:
@@ -116,7 +116,7 @@ def _get_labels(data: dict) -> dict:
 def _ensure_data_valid(data: dict) -> str | None:
     """Return error string if data is invalid, else None."""
     if not data:
-        return "> Config `docs/health/data/weight.yml` not found"
+        return "> Config `docs/notes/health/data/weight.yml` not found"
     if not data.get("cm"):
         return "> `cm` (height) required in weight.yml"
     return None

@@ -12,10 +12,10 @@ Notes → Collection → Research → Projects
 ```
 
 - **Notes** (`docs/notes/`): Blog posts (timeline-based, RSS feed) and study notes (long-form)
-- **Collection** (`docs/collection/`): Curated links by domain (database, dev tools, AI, etc.)
-- **Research** (`docs/research/`): Deep-dive source code analysis (open-source projects)
+- **Collection** (`docs/notes/collection/`): Curated links by domain (database, dev tools, AI, etc.)
+- **Research** (`docs/notes/research/`): Deep-dive source code analysis (open-source projects)
 - **Projects** (`docs/projects/`): Tangible project outputs
-- **Health** (`docs/health/`): Personal health tracking (weight, retirement countdown)
+- **Health Monitor** (`docs/notes/health/`): Personal health tracking (weight, retirement countdown)
 - **Discuss** (`docs/discuss/`): Giscus-powered comment page
 
 ## Directory Structure
@@ -28,30 +28,56 @@ xiongjia.github.com/
 ├── dev/                           # Design documents & plans
 │   └── plans/                     # Implementation plans / task tracking (see plan-index.md)
 ├── docs/                          # All site content (Markdown)
-│   ├── index.md                   # Home page
-│   ├── notes/                     # Blog posts (MkDocs blog plugin)
-│   │   └── posts/
-│   ├── research/                  # Research notes
-│   │   ├── research.md            # Index of research topics
-│   │   └── docs/
-│   │       ├── better-auth/
-│   │       ├── jellyfin/
-│   │       ├── lux/
-│   │       ├── nestjs/
-│   │       ├── nest-commander/
-│   │       └── trip/
-│   ├── tech/                      # Tech reference pages
-│   ├── health/                    # Personal health tracking
-│   │   ├── index.md               # Health dashboard
-│   │   ├── weight.md              # Weight tracking (macros-generated)
-│   │   ├── retire.md              # Retirement countdown (macros-generated)
-│   │   ├── data/
-│   │   │   ├── weight.yml         # Weight data
-│   │   │   └── retire.yml         # Retirement config
-│   │   └── macros/
-│   │       ├── health_macros.py   # Aggregate macros module
-│   │       ├── weight_macros.py   # Weight tracking macros
-│   │       └── retire_macros.py   # Retirement countdown macros
+│   ├── index.md                   # Redirect → /notes/
+│   ├── moments/                   # Short-form timeline (Moment plugin)
+│   │   ├── index.md               # Timeline archive
+│   │   └── 2026-07/               # Monthly moment posts
+│   ├── notes/                     # Landing page + sub-sections
+│   │   ├── index.md               # Notes landing (mermaid diagram + about)
+│   │   ├── collection/            # Curated links by domain
+│   │   │   ├── index.md
+│   │   │   ├── database.md
+│   │   │   ├── monitor.md
+│   │   │   ├── media.md
+│   │   │   ├── dev-tools.md
+│   │   │   ├── frontend.md
+│   │   │   ├── ai.md
+│   │   │   └── languages.md
+│   │   ├── research/              # Deep-dive source code analysis
+│   │   │   ├── index.md
+│   │   │   ├── external/          # Vendored research code (linguist-vendored)
+│   │   │   └── docs/
+│   │   │       ├── better-auth/
+│   │   │       ├── jellyfin/
+│   │   │       ├── lux/
+│   │   │       ├── nestjs/
+│   │   │       ├── nest-commander/
+│   │   │       ├── redash/
+│   │   │       ├── rust/
+│   │   │       ├── shadcn-ui/
+│   │   │       └── trip/
+│   │   ├── health/                # Personal health tracking
+│   │   │   ├── index.md           # Health Monitor dashboard (mermaid)
+│   │   │   ├── weight.md          # Weight tracking (macros-generated)
+│   │   │   ├── retire.md          # Retirement countdown (macros-generated)
+│   │   │   ├── data/
+│   │   │   │   ├── weight.yml     # Weight data
+│   │   │   │   └── retire.yml     # Retirement config
+│   │   │   └── macros/
+│   │   │       ├── health_macros.py
+│   │   │       ├── weight_macros.py
+│   │   │       └── retire_macros.py
+│   │   └── posts/                 # Blog archive (MkDocs blog plugin)
+│   │       ├── index.md           # Posts archive
+│   │       └── posts/             # Blog posts (organized by category)
+│   │           └── bits/
+│   │               ├── 20250809-pdm-config.md
+│   │               ├── 20250826-gops.md
+│   │               ├── 20250830-upx.md
+│   │               ├── 20250901-secure-json.md
+│   │               └── 20260730-restic-backup-guide.md
+│   ├── projects/
+│   │   └── index.md
 │   └── discuss/
 │       └── index.md               # Dedicated comment page
 ├── scripts/                       # Utility scripts
@@ -104,7 +130,7 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 
 - **`minify`** — Minifies HTML output (`minify_html: true`). `mkdocs-minify-plugin` (third-party)
 - **`search`** — Full-text site search via lunr.js. Built-in
-- **`macros`** — Jinja2 template engine (runs `health_macros.py`). Config: `module_name: docs/health/macros/health_macros`, `render_by_default: false`, `force_render_paths: "health/*"`. `mkdocs-macros-plugin` (third-party)
+- **`macros`** — Jinja2 template engine (runs `health_macros.py`). Config: `module_name: docs/notes/health/macros/health_macros`, `render_by_default: false`, `force_render_paths: "notes/health/*"`. `mkdocs-macros-plugin` (third-party)
 - **`mermaid2`** — Renders Mermaid diagrams from fenced code blocks. Config: `version: 10.9.0`, `javascript: assets/javascripts/mermaid.min.js`. `mkdocs-mermaid2-plugin` (third-party)
 - **`drawio`** — Embeds drawio diagrams via `![alt](file.drawio)`. `mkdocs-drawio` (third-party)
 - **`glightbox`** — Lightbox image viewer. `mkdocs-glightbox` (third-party)
@@ -158,7 +184,7 @@ Available `poe` commands:
 
 Two layers of draft support:
 
-1. **Blog posts** (`docs/notes/posts/`): Handled natively by the blog plugin.
+1. **Blog posts** (`docs/notes/posts/posts/`): Handled natively by the blog plugin.
    Add `draft: true` to frontmatter. Included when `mkdocs serve --drafts` or
    `MKDOCS_INCLUDE_DRAFTS=true`, excluded in production `mkdocs build`.
 
