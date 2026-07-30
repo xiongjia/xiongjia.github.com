@@ -1,9 +1,8 @@
 ---
-title: redirect
+icon: material/book-open-variant
 hide:
-  - navigation
   - toc
   - path
 ---
 
-<meta http-equiv="refresh" content="0; url=/notes/" />
+--8\<-- "docs/notes/\_index_content.md"
