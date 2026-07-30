@@ -5,12 +5,6 @@ cm: 176
 # Subsequent weeks are auto-calculated from this anchor
 start_date: "2026-07-27"
 
-# 7 days per week; use null for missed days
-# Week start dates are shown in comments to help identify each week
-weeks:
-  # Week 1 — Mon 2026-07-27
-  - days: [null, 82.35, 81.50, null, null, null, null]
-
 # Display labels (i18n) — values use Chinese for the UI
 labels:
   # Card labels
@@ -59,3 +53,11 @@ labels:
   table_col_bmi: BMI
   table_col_vs_last: 较上周
   table_row_prefix: 周
+
+# 7 days per week; use null for missed days
+# Week start dates are shown in comments to help identify each week
+weeks:
+  # Week 1 — Mon 2026-07-27
+  - days: [null, 82.35, 81.50, 82.90, null, null, null]
+
+
