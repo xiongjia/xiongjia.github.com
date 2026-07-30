@@ -1,0 +1,114 @@
+/* moment.css — Phase 1 */
+.moment-timeline { max-width: none; }
+.moment-timeline__desc {
+    color: var(--md-default-fg-color--light, #757575);
+    margin-bottom: 1.5em;
+}
+.moment-empty {
+    color: var(--md-default-fg-color--light, #757575);
+    text-align: center;
+    padding: 2em 0;
+}
+
+.moment-entry { margin-bottom: 1.5em; }
+.moment-entry__time {
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light, #757575);
+    display: block;
+    margin-bottom: 0.3em;
+    text-decoration: none;
+}
+.moment-entry__time:hover {
+    text-decoration: underline;
+    color: var(--md-typeset-a-color, #448aff);
+}
+.moment-entry__content { line-height: 1.6; }
+.moment-entry__content img { max-width: 100%; border-radius: 4px; }
+
+.moment-entry__tags {
+    margin-top: 0.5em;
+}
+.moment-tag {
+    display: inline-block;
+    font-size: 0.8em;
+    color: var(--md-typeset-a-color, #448aff);
+    text-decoration: none;
+    margin-right: 0.4em;
+}
+.moment-tag:hover { text-decoration: underline; }
+
+.moment-tagcloud {
+    margin-bottom: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4em;
+}
+.moment-tagcloud-label {
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light, #757575);
+    margin-bottom: 0.3em;
+}
+
+.moment-detail__tags {
+    margin-top: 1em;
+    padding-top: 0.5em;
+    border-top: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+
+.moment-divider {
+    border: none;
+    border-top: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    margin: 1.5em 0;
+}
+
+.moment-pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+.moment-pagination__info {
+    color: var(--md-default-fg-color--light, #757575);
+    font-size: 0.9em;
+}
+.moment-pagination__link {
+    text-decoration: none;
+    color: var(--md-typeset-a-color, #448aff);
+}
+.moment-pagination__link:hover { text-decoration: underline; }
+
+/* detail page */
+.moment-detail { max-width: none; }
+.moment-detail__time {
+    font-size: 0.9em;
+    color: var(--md-default-fg-color--light, #757575);
+    display: block;
+    margin-bottom: 1em;
+    text-decoration: none;
+}
+.moment-detail__time:hover {
+    text-decoration: underline;
+    color: var(--md-typeset-a-color, #448aff);
+}
+.moment-detail__content { line-height: 1.7; font-size: 1.05em; }
+.moment-detail__content img { max-width: 100%; border-radius: 4px; }
+.moment-detail__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2.5em;
+    padding-top: 1em;
+    border-top: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+.moment-detail__prev,
+.moment-detail__next,
+.moment-detail__back {
+    text-decoration: none;
+    color: var(--md-typeset-a-color, #448aff);
+    font-size: 0.9em;
+}
+.moment-detail__prev:hover,
+.moment-detail__next:hover,
+.moment-detail__back:hover { text-decoration: underline; }

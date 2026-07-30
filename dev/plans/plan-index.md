@@ -42,4 +42,5 @@ Additional context, references, etc.
 
 <!-- Manually maintained — add new plans here -->
 
-- (none yet)
+- [moment-phase2-usability.md](./moment-phase2-usability.md) — Moment Plugin Phase 2: RSS, Archive, OpenGraph
+- [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location, Map, Gallery, Search, Stats

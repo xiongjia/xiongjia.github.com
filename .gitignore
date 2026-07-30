@@ -34,3 +34,5 @@ env-*
 # downloaded mermaid assets (auto-downloaded during build)
 docs/assets/javascripts/mermaid.*
 docs/.mermaid-version
+# Build metadata
+*.egg-info/

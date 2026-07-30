@@ -1,0 +1,7 @@
+labels:
+  timeline_title: Moment
+  timeline_description: 日常记录
+  empty_state: 暂无内容
+  older: ← Older
+  newer: Newer →
+  back_to_timeline: ↑ Timeline

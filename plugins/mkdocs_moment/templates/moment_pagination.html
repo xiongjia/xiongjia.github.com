@@ -1,0 +1,20 @@
+{# moment_pagination.html #}
+{% if pagination.total_pages > 1 %}
+<nav class="moment-pagination" role="navigation">
+    {% if pagination.has_prev %}
+    <a href="{{ pagination.prev_url }}" class="moment-pagination__link moment-pagination__link--prev">
+        {{ labels.get("newer", "← Newer") }}
+    </a>
+    {% endif %}
+
+    <span class="moment-pagination__info">
+        {{ labels.get("page_prefix", "Page") }} {{ pagination.current_page }} {{ labels.get("page_suffix", "of") }} {{ pagination.total_pages }}
+    </span>
+
+    {% if pagination.has_next %}
+    <a href="{{ pagination.next_url }}" class="moment-pagination__link moment-pagination__link--next">
+        {{ labels.get("older", "Older →") }}
+    </a>
+    {% endif %}
+</nav>
+{% endif %}
