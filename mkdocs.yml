@@ -34,6 +34,7 @@ extra_javascript:
 # hooks (custom Python modules treated as plugins)
 hooks:
   - plugins/mermaid_assets.py
+  - plugins/snippet_include.py
   - plugins/draft_filter.py
   - plugins/moment_hook.py
 
