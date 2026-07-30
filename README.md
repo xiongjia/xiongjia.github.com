@@ -1,255 +1,60 @@
 # recycle.bin
 
-Personal notes & research log — built with [MkDocs](https://www.mkdocs.org/) + [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), deployed to GitHub Pages.
-
-## Structure
-
-```
-docs/
-├── index.md              # Home page
-├── notes/
-│   ├── posts/{category}/ # Timeline posts (bits, dev, thought)
-│   └── study/            # Long-form study notes (multi-day)
-├── collection/           # Curated links by domain
-├── research/             # Deep-dive source code analysis
-├── projects/             # Tangible project outputs
-└── health/               # Personal health tracking
-    ├── index.md          # Health dashboard (weight, later running, etc.)
-    ├── data/
-    │   └── weight.yml    # Weight data (the only file to maintain)
-    └── macros/
-        └── weight_macros.py  # Jinja2 macros for tables & charts
-```
-
-**Knowledge pipeline**: Notes → Collection → Research → Projects.
+Personal notes & research log — built with [MkDocs](https://www.mkdocs.org/) +
+[Material for MkDocs](https://squidfunk.github.io/mkdocs-material/), deployed
+to GitHub Pages.
 
 ## Quick Start
 
 ```bash
-uv sync                                    # install dependencies
-GIT_HASH=$(git rev-parse --short HEAD) uv run poe server  # start dev server (with drafts)
+uv sync
+GIT_HASH=$(git rev-parse --short HEAD) uv run poe server
 ```
+
+Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 
 ## Commands
 
-| Command                              | Description                                           |
-| ------------------------------------ | ----------------------------------------------------- |
-| `uv run poe server`                  | Dev server WITH drafts (hot-reload)                   |
-| `uv run poe server-prod`             | Dev server WITHOUT drafts (mirrors production)        |
-| `uv run poe build`                   | Build static site (excludes drafts)                   |
-| `uv run poe build-selfhost`          | Build self-hosted version (excludes drafts)           |
-| `uv run poe create-post "Title"`     | Create a new timeline post (defaults to draft)        |
-| `uv run poe fmt`                     | Format Python & Markdown files                        |
-| `uv run poe lint-py`                 | Python lint check (ruff)                              |
-| `uv run poe optimize-images <path>`  | Convert PNG/JPG/JPEG → WebP and update .md references |
-| `uv run poe add-weight-week [count]` | Add empty week(s) to health weight data               |
-
-## Writing Posts
-
-### Timeline Posts (short, single-day)
-
-```bash
-# Default category: bits, as draft
-uv run poe create-post "Your Title"
-
-# Publish immediately (skip draft)
-uv run poe create-post "Your Title" --no-draft
-
-# Specify category and tags
-uv run poe create-post "Your Title" --category dev --tags go,testing
-
-# Custom slug (for Chinese titles)
-uv run poe create-post "中文标题" --category thought --slug my-thought
-```
-
-Creates `docs/notes/posts/{category}/YYYYMMDD-slug.md` with frontmatter, RSS, and category archive support.
-
-New posts default to **draft** (`draft: true` in frontmatter). They appear in `uv run poe server` (local dev) but are **excluded** from `uv run poe build` / CI deployment. Remove `draft: true` from the frontmatter or pass `--no-draft` to publish immediately.
-
-### Drafts
-
-#### Blog posts (via blog plugin)
-
-Add `draft: true` to the frontmatter:
-
-```yaml
----
-title: My Draft Post
-draft: true
----
-```
-
-- `mkdocs serve --drafts` / `uv run poe server` — **includes** drafts
-- `mkdocs build` / `uv run poe build` — **excludes** drafts
-
-#### Non-blog pages (research, tech, health, etc.)
-
-This project uses a **custom MkDocs hook** (`plugins/draft_filter.py`) that
-works the same way as the blog plugin — just add `draft: true` to any page's
-frontmatter:
-
-```yaml
----
-title: WIP Research
-draft: true
----
-```
-
-- `uv run poe server` (with `--drafts`) — **includes** draft pages
-- `uv run poe build` / `uv run poe server-prod` (without `--drafts`) — **excludes** draft pages
-
-The hook skips blog posts (`notes/posts/`), which are already handled by the
-blog plugin's built-in draft support.
-
-**Manual alternatives** (if you prefer not to use the hook):
-
-1. **Don't add to `nav`** — file still builds at its `docs/` path, but won't appear in navigation. Useful for quick experiments.
-
-1. **Add `robots: noindex`** to prevent search indexing:
-
-   ```yaml
-   ---
-   title: Draft
-   robots: noindex, nofollow
-   ---
-   ```
-
-1. **Rename with `-draft.md` suffix** — already gitignored per project convention (see `.gitignore`), so it won't be committed.
-
-### Optimize Images
-
-Convert PNG/JPG/JPEG images to WebP for smaller file sizes:
-
-```bash
-# Single image
-uv run poe optimize-images docs/path/to/img.png
-
-# Multiple images or a directory
-uv run poe optimize-images docs/research/docs/lux/*.png
-
-# Everything under docs/
-uv run poe optimize-images --all
-```
-
-This converts each image to WebP (quality=85) and updates all `.md` files that reference it.
-Originals are left untouched.
-
-### Study Notes (long-form, multi-day)
-
-For topics that evolve over multiple days (e.g. English learning, system design):
-
-```bash
-# Create a study note manually
-touch docs/notes/study/english.md
-```
-
-Study notes live under `docs/notes/study/` as plain MkDocs pages:
-
-- No date frontmatter required
-- No RSS (they are not blog posts)
-- Add to nav in `mkdocs.yml` if desired:
-
-```yaml
-nav:
-  - NOTES:
-    - notes/index.md
-    - English: notes/study/english.md
-```
-
-They coexist with timeline posts — `posts/` is managed by the blog plugin, `study/` is just regular pages.
-
-## Health Tracking
-
-Weight tracking with macros-generated tables and Mermaid trend charts.
-
-### Structure
-
-```
-docs/health/
-├── index.md              # Dashboard — auto-populated by macros
-├── data/
-│   └── weight.yml        # Weight data (the only file to maintain)
-└── macros/
-    └── weight_macros.py  # Jinja2 macros for tables & charts
-```
-
-### Daily Use
-
-Open `docs/health/data/weight.yml` and fill in today's weight:
-
-```yaml
-weeks:
-  # Week 4 — Mon 2026-08-17
-  - days: [null, null, null, null, 69.0, null, null]
-```
-
-Keep `null` for skipped days. `mkdocs serve` auto-refreshes the page.
-
-To start a new week:
-
-```bash
-uv run poe add-weight-week        # add 1 week
-uv run poe add-weight-week -- 3   # add 3 weeks at once
-```
-
-## Comments
-
-Comments powered by [Giscus](https://giscus.app/) — a comment system built on GitHub Discussions.
-
-### Prerequisites (one-time)
-
-1. **Enable GitHub Discussions** on the repository:
-   https://github.com/xiongjia/xiongjia.github.com/settings → Features → check **Discussions**
-
-1. **Install the [Giscus GitHub App](https://github.com/apps/giscus)**
-   and grant access to `xiongjia/xiongjia.github.com`.
-
-1. **Obtain `repo_id` and `category_id`**:
-
-   Visit [giscus.app](https://giscus.app/), enter the repository name, and follow
-   the guided form. The page generates a complete embed script at the bottom —
-   copy the `data-repo-id` and `data-category-id` values.
-
-   Alternatively, query via the [GitHub GraphQL API](https://docs.github.com/en/graphql/overview/explorer):
-
-   ```graphql
-   { repository(owner: "xiongjia", name: "xiongjia.github.com") { id } }
-   { repository(owner: "xiongjia", name: "xiongjia.github.com") {
-       discussionCategory(name: "General") { id }
-     }
-   }
-   ```
-
-1. **Update `mkdocs.yml`**:
-   Fill in `repo_id` and `category_id` under `extra.comments`.
-
-### Testing
-
-```bash
-# Start dev server
-uv run poe server
-
-# Open http://localhost:8000/discuss/
-# You should see the Giscus comment box at the bottom of the page.
-
-# Post a test comment (requires GitHub login via Giscus).
-
-# Toggle light/dark theme — the Giscus widget should follow.
-
-# Visit a different page (e.g. http://localhost:8000/notes/) — comments should NOT appear.
-
-# Clean up test comments at:
-# https://github.com/xiongjia/xiongjia.github.com/discussions
-```
-
-### How it works
-
-- Comment area only appears on pages with `comments: true` in frontmatter
-- [Discuss](docs/discuss/index.md) page is the dedicated comments page
-- Theme (light/dark) syncs automatically with the site palette
+| Command                             | Description                                    |
+| ----------------------------------- | ---------------------------------------------- |
+| `uv run poe server`                 | Dev server WITH drafts                         |
+| `uv run poe server-prod`            | Dev server WITHOUT drafts (mirrors production) |
+| `uv run poe build`                  | Production build (excludes drafts)             |
+| `uv run poe fmt`                    | Format Python & Markdown                       |
+| `uv run poe lint-py`                | Python lint check (ruff)                       |
+| `uv run poe create-post "Title"`    | New blog post (defaults to draft)              |
+| `uv run poe optimize-images <path>` | PNG/JPG/JPEG → WebP                            |
+| `uv run poe add-weight-week [n]`    | Add empty week(s) to weight data               |
+| `uv run poe md2wechat [path]`       | Convert post to WeChat HTML                    |
 
 ## CI / Deployment
 
-`.github/workflows/ci.yml` — lint all branches, deploy to GitHub Pages on push to `master`.
+`.github/workflows/ci.yml` — lint (ruff + mdformat) on all branches, deploy
+to GitHub Pages on push to `master`. Set `GIT_HASH` env var to embed commit
+hash into the page HTML.
 
-Set `GIT_HASH` env var to embed the current commit hash into the page HTML.
+## Design Documents
+
+Detailed documentation moved to `dev/`:
+
+- [Architecture](dev/architecture.md) — project structure, plugins, hooks, env vars, draft system
+- [md2wechat Design](dev/md2wechat-design.md) — WeChat HTML converter
+- [optimize-images Design](dev/optimize-images-design.md) — WebP conversion pipeline
+- [Weight Tracker Design](dev/weight-tracker-design.md) — weight data format, macros, tooling
+- [Discuss System Design](dev/discuss-design.md) — Giscus comment system setup & configuration
+- [Retirement Countdown Design](dev/retirement-countdown-design.md) — retirement policy calculator & visualization
+
+## Structure (top-level)
+
+```
+docs/
+├── index.md         # Home
+├── notes/           # Blog posts + study notes
+├── collection/      # Curated links
+├── research/        # Source code analysis
+├── projects/        # Project outputs
+├── health/          # Weight & retirement tracking
+└── discuss/         # Giscus comment page
+```
+
+**Knowledge pipeline**: Notes → Collection → Research → Projects.
