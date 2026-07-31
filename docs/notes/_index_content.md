@@ -14,6 +14,7 @@ graph TD
   A --> E["📰 Posts"]
   A --> F["⏰ Moments"]
   A --> G["❤️ Health Monitor"]
+  A --> H["🧪 Prototypes"]
 
   click A "/notes/" "Notes"
   click B "/notes/collection/" "Collection"
@@ -22,6 +23,7 @@ graph TD
   click E "/notes/posts/" "Posts"
   click F "/moments/" "Moments"
   click G "/notes/health/" "Health Monitor"
+  click H "/notes/prototypes/" "Prototypes"
 ```
 
 ______________________________________________________________________

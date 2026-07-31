@@ -59,6 +59,16 @@ uv run poe create-moment "Backfill" --time "30 9pm"
 to GitHub Pages on push to `master`. Set `GIT_HASH` env var to embed commit
 hash into the page HTML.
 
+## Prototypes
+
+Experimental mini-projects live in `prototypes/<name>/` — committed with the
+repo, each with its own English `README.md` and `.gitignore`, skipped by the
+main Python/markdown toolchain (`poe fmt` / `poe lint-py` / CI).
+
+- Index: [prototypes/README.md](prototypes/README.md)
+- Site page: [Prototypes](docs/notes/prototypes.md)
+- Convention details: `AGENTS.md` → Prototype Convention
+
 ## Design Documents
 
 Detailed documentation moved to `internal/`:
@@ -76,6 +86,7 @@ Detailed documentation moved to `internal/`:
 ```
 internal/          # Dev docs & plans: design docs, architecture.md,
                    #   plans/plan-index.md, archived plans in plans/arch/
+prototypes/        # Experimental mini-projects (index: prototypes/README.md)
 shared/            # Shared Python utilities for plugins & scripts (strings, frontmatter, date, io)
 scripts/           # CLI utility scripts (create_post, create_moment, optimize_images, …)
 plugins/           # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
@@ -85,11 +96,12 @@ docs/
 ├── index.md         # Redirect → /notes/
 ├── moments/         # Short micro-posts (Moment plugin)
 ├── notes/
-│   ├── index.md     # Landing page (mermaid + about)
-│   ├── collection/  # Curated links by domain
-│   ├── research/    # Source code analysis
-│   ├── health/      # Weight & retirement tracking
-│   └── posts/       # Blog archive (MkDocs blog plugin)
+│   ├── index.md      # Landing page (mermaid + about)
+│   ├── collection/   # Curated links by domain
+│   ├── research/     # Source code analysis
+│   ├── prototypes.md # Prototype index page (GitHub jumps)
+│   ├── health/       # Weight & retirement tracking
+│   └── posts/        # Blog archive (MkDocs blog plugin)
 ├── projects/        # Project outputs
 └── discuss/         # Giscus comment page
 ```
