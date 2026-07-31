@@ -22,6 +22,7 @@ ______________________________________________________________________
 | [:material-code-tags: Languages](./languages.md)       | Go, Java, C/C++ toolchains                 |
 | [:material-gamepad-variant: Game Dev](./game-dev.md)   | Godot, Krita, LDTK, 2D game dev tools      |
 | [:material-map: Maps](./maps.md)                       | MapLibre, Protomaps, PMTiles, Tippecanoe   |
+| [:material-emoticon-happy-outline: Emoji](./emoji.md)  | 常用 emoji 复制清单                        |
 
 ______________________________________________________________________
 

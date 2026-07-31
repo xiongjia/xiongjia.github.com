@@ -1,11 +1,11 @@
 # Plan Index
 
 > Track implementation plans, feature work, refactoring, research tasks, and
-> their progress. Each plan is a separate file under `dev/plans/`.
+> their progress. Each plan is a separate file under `internal/plans/`.
 
 ## Creating a New Plan
 
-Create `<plan-name>.md` under `dev/plans/` using the template below.
+Create `<plan-name>.md` under `internal/plans/` using the template below.
 
 ## Template
 
@@ -35,8 +35,26 @@ Additional context, references, etc.
 
 ## Lifecycle
 
-- **Plan**: create the `.md` file under `dev/plans/`
-- **Done / Cancelled**: delete the file — that's it
+- **Plan**: create the `.md` file under `internal/plans/`
+- **Done / Cancelled**: move the file to `internal/plans/arch/` (git mv keeps history)
+  and remove its entry from the Plan List below
+
+### Archive Convention
+
+Archived plans live in `internal/plans/arch/<plan-name>.md` and carry frontmatter
+for future auditing:
+
+```yaml
+---
+created: 2026-07-31        # when the plan was created
+archived: 2026-08-01       # when it was archived
+status: completed          # completed | cancelled
+tags: [refactor, mkdocs]
+---
+```
+
+- `status: completed` — all tasks done
+- `status: cancelled` — abandoned / superseded (note the reason in the body)
 
 ## Plan List
 
@@ -70,4 +88,10 @@ Additional context, references, etc.
 
 ### Refactor
 
-- [plugins-scripts-shared-module.md](./plugins-scripts-shared-module.md) — MkDocs plugins & scripts: extract shared utilities, reduce duplication
+### Workflow
+
+- [prototypes-mechanism.md](./prototypes-mechanism.md) — Prototype mechanism: repo-level `prototypes/` dir, index README, gitignore + fmt/lint skip rules
+
+### Learning
+
+- [hollow-knight-english-learning.md](./hollow-knight-english-learning.md) — Hollow Knight 英语学习计划：阅读、词汇、发音、Shadowing、口语、写作（内容落在 `docs/notes/research/english/`）

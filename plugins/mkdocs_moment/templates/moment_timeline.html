@@ -3,6 +3,28 @@
 {% set moment_base = "/moment" %}
 
 {% block content %}
+<style>
+    /* timeline: images render as thumbnails, click opens full-size via glightbox */
+    .moment-entry__content {
+        /* collapse whitespace gaps between inline-block thumbnails */
+        font-size: 0;
+    }
+    .moment-entry__content p {
+        font-size: var(--md-typeset-font-size, 1rem);
+    }
+    .moment-entry__content p:has(> a.glightbox) {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-entry__content a.glightbox img {
+        height: 150px;
+        width: auto;
+        max-width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+</style>
 <article class="moment-timeline">
     <h1>🕐 {{ page.title | default(labels.get("timeline_title", "Moment")) }}</h1>
     {% if labels.get("timeline_description") %}

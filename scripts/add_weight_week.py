@@ -8,9 +8,15 @@ Usage:
 import argparse
 import os
 import sys
-from datetime import datetime, timedelta
+from datetime import timedelta
+from pathlib import Path
 
 import yaml
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.date import parse_date_strict
 
 DATA_PATH = "docs/notes/health/data/weight.yml"
 
@@ -47,7 +53,13 @@ def main() -> None:
     for offset in range(1, args.count + 1):
         week_num = existing + offset
         if start_str:
-            start = datetime.strptime(str(start_str), "%Y-%m-%d")
+            start = parse_date_strict(str(start_str))
+            if start is None:
+                print(
+                    f"Error: unparseable start_date {start_str!r} in {DATA_PATH}",
+                    file=sys.stderr,
+                )
+                sys.exit(1)
             start = start - timedelta(days=start.weekday())  # align to Monday
             week_start = start + timedelta(weeks=existing + offset - 1)
             date_label = week_start.strftime("%Y-%m-%d")

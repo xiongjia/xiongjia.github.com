@@ -204,4 +204,4 @@ extra:
 - [plugins/](../../plugins/) — existing hook pattern (`draft_filter.py`, `snippet_include.py`)
 - [mermaid2 plugin](https://github.com/fralau/mkdocs-mermaid2-plugin) — mermaid rendering, click support
 - [Mermaid flowchart syntax](https://mermaid.js.org/syntax/flowchart.html) — subgraphs, click events
-- [dev/architecture.md](../architecture.md) — build & server commands
+- [internal/architecture.md](../architecture.md) — build & server commands
