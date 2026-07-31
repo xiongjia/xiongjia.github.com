@@ -7,6 +7,7 @@ xiongjia.github.com/
 ├── internal/         # Dev docs & plans: design docs, architecture.md,
 │   └── plans/        #   plan-index.md; archived plans in plans/arch/
 ├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
+├── prototypes/       # Experimental mini-projects (committed; per-prototype .gitignore, see Convention)
 ├── scripts/          # Utility scripts (create_post, md2wechat, optimize_images, etc.)
 ├── shared/           # Shared utilities for plugins & scripts (strings, frontmatter, date, io)
 ├── tests/            # Unit & integration tests (pytest)
@@ -42,7 +43,67 @@ uv run poe md2wechat [path]      # convert post to WeChat HTML
 
 Site runs at `http://localhost:8000` by default.
 
+## Network / Proxy tips
+
+访问 GitHub 等外部资源失败时，优先使用环境变量中已有的代理：
+
+```bash
+curl -x "$https_proxy" ...   # 或 $http_proxy / $HTTPS_PROXY
+```
+
+若 `$http_proxy` / `$https_proxy` 未设置，可尝试默认本地代理 `http://127.0.0.1:1095`：
+
+```bash
+curl -x http://127.0.0.1:1095 ...
+```
+
 See [internal/architecture.md](internal/architecture.md) for full command reference.
+
+## Prototype Convention
+
+- **Location**: experimental mini-projects live in `prototypes/<name>/`
+  (kebab-case), one subdirectory per prototype, each with its own `README.md`
+  (purpose, usage, current status) and its own environment (Rust cargo,
+  Python `.venv`, Node, etc.)
+
+- **English content**: everything under `prototypes/` (index README,
+  per-prototype READMEs, code comments) is written in English; the site
+  listing page `docs/notes/prototypes.md` is in Chinese (it is a `docs/`
+  page, not prototype content)
+
+- **Prototypes are committed**: unlike agent-tool dirs (`.claude/*`, `.pi/*`),
+  prototype code goes into the repo — no root-level ignore rules for
+  `prototypes/`
+
+- **Per-prototype `.gitignore`**: each prototype ignores its own build
+  artifacts (e.g. Rust `/target`, Python `.venv/`, Node `node_modules/`)
+  inside its own `.gitignore`
+
+- **Index**: `prototypes/README.md` lists all prototypes (name, description,
+  created, status) — always update it when a prototype is added/removed
+
+- **fmt / lint skip**: `prototypes` is in ruff's `extend-exclude`
+  (`pyproject.toml`), so the main Python toolchain never formats/lints
+  prototype code; mdformat already skips it via explicit path args
+
+- **AI / dev tooling still works on prototypes**: the exclude only affects
+  repo-wide automation (`poe fmt`, `poe lint-py`, CI). Reading, editing, and
+  building prototype code (AI or manual) is unaffected. For a Python
+  prototype that needs manual lint/format, pass explicit paths —
+  `extend-exclude` does not block them:
+
+  ```bash
+  uv run ruff check prototypes/<name>/        # lint one prototype
+  uv run ruff format prototypes/<name>/       # format one prototype
+  uv run mdformat prototypes/<name>/README.md # format its markdown
+  ```
+
+  A prototype may also carry its own `pyproject.toml`/config to override
+  repo-wide rules for its own code.
+
+- **Prototypes are not part of the MkDocs build** (not registered in
+  `mkdocs.yml`); a validated prototype can be promoted to a real project
+  (plan in `internal/plans/` or a standalone repo)
 
 ## Coding Principles
 

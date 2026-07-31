@@ -65,6 +65,7 @@ tags: [refactor, mkdocs]
 - [moment-phase2-usability.md](./moment-phase2-usability.md) — Moment Plugin Phase 2: RSS, Archive, OpenGraph
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location, Map, Gallery, Search, Stats
 - [mkdocs-backlinks-topology.md](./mkdocs-backlinks-topology.md) — MkDocs bidirectional links & link topology graph (backlinks + Mermaid graph)
+- [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data
 
 ### Research
 
@@ -77,21 +78,13 @@ tags: [refactor, mkdocs]
 - [post-weight-track.md](./post-weight-track.md) — Blog post: Weight Track implementation
 - [post-retirement-countdown.md](./post-retirement-countdown.md) — Blog post: Retirement Countdown implementation
 
-### Site Feature
-
-- [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data
-
 ### Projects
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
 - [city-log-design-plan.md](./city-log-design-plan.md) — City Log design document (archived)
 
-### Refactor
-
-### Workflow
-
-- [prototypes-mechanism.md](./prototypes-mechanism.md) — Prototype mechanism: repo-level `prototypes/` dir, index README, gitignore + fmt/lint skip rules
-
 ### Learning
 
 - [hollow-knight-english-learning.md](./hollow-knight-english-learning.md) — Hollow Knight 英语学习计划：阅读、词汇、发音、Shadowing、口语、写作（内容落在 `docs/notes/research/english/`）
+- [duckdb-internals-learning.md](./duckdb-internals-learning.md) — DuckDB Internals 学习计划（Greybeam 系列）：查询生命周期、列式存储、向量化执行（内容落在 `docs/notes/research/docs/duckdb/`）
+- [pgsimcity-learning.md](./pgsimcity-learning.md) — PGSimCity 学习计划：PostgreSQL 内部机制 3D 可视化（缓冲池、WAL、检查点、autovacuum、复制）（内容落在 `docs/notes/research/docs/pgsimcity/`）
