@@ -22,11 +22,36 @@ Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 | `uv run poe build`                  | Production build (excludes drafts)             |
 | `uv run poe fmt`                    | Format Python & Markdown                       |
 | `uv run poe lint-py`                | Python lint check (ruff)                       |
+| `uv run poe test`                   | Run unit tests (pytest, `tests/`)              |
 | `uv run poe create-post "Title"`    | New blog post (defaults to draft)              |
 | `uv run poe create-moment "Text"`   | New Moment entry (short micro-post)            |
 | `uv run poe optimize-images <path>` | PNG/JPG/JPEG → WebP                            |
 | `uv run poe add-weight-week [n]`    | Add empty week(s) to weight data               |
 | `uv run poe md2wechat [path]`       | Convert post to WeChat HTML                    |
+
+## Common Examples
+
+```bash
+# Blog post (draft by default, publish with --no-draft)
+uv run poe create-post "My Post Title"
+uv run poe create-post "My Post" --category dev --tags go,cli
+uv run poe create-post "My Post" --no-draft
+
+# Backdate a post — --time accepts 9am/9pm/21:30, yesterday, day+time, full date
+uv run poe create-post "My Post" --time "9:30am"       # today 09:30
+uv run poe create-post "My Post" --time "yesterday"    # yesterday, same time
+uv run poe create-post "My Post" --time "yesterday 9am"
+uv run poe create-post "My Post" --time "30 9am"       # this month, 30th 09:00
+uv run poe create-post "My Post" --time "2026-07-30 21:36"
+
+# Moment (short micro-post)
+uv run poe create-moment "Hello 👋"
+uv run poe create-moment "With image" --image photo.webp
+
+# Backdate a moment
+uv run poe create-moment "Backfill" --time "9pm"
+uv run poe create-moment "Backfill" --time "30 9pm"
+```
 
 ## CI / Deployment
 
@@ -36,19 +61,26 @@ hash into the page HTML.
 
 ## Design Documents
 
-Detailed documentation moved to `dev/`:
+Detailed documentation moved to `internal/`:
 
-- [Moment Design](dev/moment-design.md) — Micro-post timeline plugin (hooks, templates, tags, pagination, RSS planned)
-- [Architecture](dev/architecture.md) — project structure, plugins, hooks, env vars, draft system
-- [md2wechat Design](dev/md2wechat-design.md) — WeChat HTML converter
-- [optimize-images Design](dev/optimize-images-design.md) — WebP conversion pipeline
-- [Weight Tracker Design](dev/weight-tracker-design.md) — weight data format, macros, tooling
-- [Discuss System Design](dev/discuss-design.md) — Giscus comment system setup & configuration
-- [Retirement Countdown Design](dev/retirement-countdown-design.md) — retirement policy calculator & visualization
+- [Moment Design](internal/moment-design.md) — Micro-post timeline plugin (hooks, templates, tags, pagination, RSS planned)
+- [Architecture](internal/architecture.md) — project structure, plugins, hooks, env vars, draft system
+- [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
+- [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline
+- [Weight Tracker Design](internal/weight-tracker-design.md) — weight data format, macros, tooling
+- [Discuss System Design](internal/discuss-design.md) — Giscus comment system setup & configuration
+- [Retirement Countdown Design](internal/retirement-countdown-design.md) — retirement policy calculator & visualization
 
 ## Structure (top-level)
 
 ```
+internal/          # Dev docs & plans: design docs, architecture.md,
+                   #   plans/plan-index.md, archived plans in plans/arch/
+shared/            # Shared Python utilities for plugins & scripts (strings, frontmatter, date, io)
+scripts/           # CLI utility scripts (create_post, create_moment, optimize_images, …)
+plugins/           # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
+tests/             # pytest unit & integration tests
+overrides/         # Theme overrides (comments, meta tags, external links)
 docs/
 ├── index.md         # Redirect → /notes/
 ├── moments/         # Short micro-posts (Moment plugin)

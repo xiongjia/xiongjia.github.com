@@ -15,6 +15,13 @@ Usage in mkdocs.yml:
 import logging
 import os
 import re
+import sys
+from pathlib import Path
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.io import resolve_within, safe_read
 
 log = logging.getLogger("mkdocs.plugins.snippet_include")
 
@@ -27,12 +34,8 @@ def on_page_markdown(markdown, page, config, **kwargs):
 
     def _replace(match):
         rel_path = match.group(1).strip()
-        abs_path = os.path.normpath(os.path.join(docs_dir, rel_path))
-
-        # Security: ensure the resolved path is within docs_dir
-        # Append os.sep to prevent prefix matching attacks (e.g. /docs vs /docs-extra)
-        docs_dir_norm = os.path.normpath(docs_dir) + os.sep
-        if not abs_path.startswith(docs_dir_norm):
+        abs_path = resolve_within(docs_dir, rel_path)
+        if abs_path is None:
             log.warning(
                 "Snippet include path '%s' resolved outside docs_dir, skipping.",
                 rel_path,
@@ -47,8 +50,10 @@ def on_page_markdown(markdown, page, config, **kwargs):
             )
             return match.group(0)
 
-        with open(abs_path, encoding="utf-8") as f:
-            content = f.read()
+        content = safe_read(abs_path)
+        if content is None:
+            log.warning("Snippet include unreadable: %s", rel_path)
+            return match.group(0)
 
         log.debug("Included snippet: %s into %s", rel_path, page.file.src_uri)
         return content

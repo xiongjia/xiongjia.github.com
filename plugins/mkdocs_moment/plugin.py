@@ -4,23 +4,28 @@ import logging
 import os
 import re
 import shutil
-from datetime import datetime
+import sys
 from math import ceil
 from pathlib import Path
 from typing import Optional
 from urllib.parse import quote
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+# (mkdocs hook loader only puts plugins/ on sys.path, see shared/__init__.py)
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 import markdown as md_lib
 import yaml
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 
+from shared.date import parse_date_strict
+from shared.frontmatter import parse_frontmatter
+from shared.strings import slug_from_filename
+
 from .models import Moment, PageType, Pagination
 
 log = logging.getLogger("mkdocs.plugins.moment")
-
-# pre-compiled
-_RE_FILENAME_DATE = re.compile(r"^(\d{2})-(\d{4})(?:-(\S+))?$")  # 30-1430 or 30-1430-home-lab
 
 
 class MomentPlugin(BasePlugin):
@@ -262,34 +267,24 @@ class MomentPlugin(BasePlugin):
             return None
 
         # split frontmatter
-        if not text.startswith("---"):
-            log.warning("No frontmatter in %s", rel)
+        parsed = parse_frontmatter(text)
+        if parsed is None:
+            if not text.startswith("---"):
+                log.warning("No frontmatter in %s", rel)
+            elif text.find("---", 3) == -1:
+                log.warning("Unclosed frontmatter in %s", rel)
+            else:
+                log.warning("Invalid or empty frontmatter in %s", rel)
             return None
 
-        end = text.find("---", 3)
-        if end == -1:
-            log.warning("Unclosed frontmatter in %s", rel)
-            return None
-
-        fm_text = text[3:end]
-        content = text[end + 3 :].strip()
-
-        try:
-            fm = yaml.safe_load(fm_text)
-        except yaml.YAMLError as e:
-            log.warning("Invalid YAML frontmatter in %s: %s", rel, e)
-            return None
-
-        if not fm or not isinstance(fm, dict):
-            log.warning("Empty frontmatter in %s", rel)
-            return None
+        fm, content = parsed
 
         # date
         date_raw = fm.get("date")
         if date_raw is None:
             log.warning("Missing date in %s", rel)
             return None
-        date = self._parse_date(date_raw)
+        date = parse_date_strict(date_raw)
         if date is None:
             log.warning("Unparseable date '%s' in %s", date_raw, rel)
             return None
@@ -300,7 +295,7 @@ class MomentPlugin(BasePlugin):
 
         # slug
         stem = md_path.stem  # "30-1430" or "30-1430-home-lab"
-        slug = self._extract_slug(stem)
+        slug = slug_from_filename(stem)
 
         # id
         dir_name = md_path.parent.name  # "2026-07"
@@ -328,36 +323,6 @@ class MomentPlugin(BasePlugin):
             has_images=has_images,
         )
 
-    def _parse_date(self, raw) -> Optional[datetime]:
-        if isinstance(raw, datetime):
-            return raw
-        if not isinstance(raw, str):
-            return None
-        raw = raw.strip()
-        formats = [
-            "%Y-%m-%d %H:%M:%S",
-            "%Y-%m-%d %H:%M",
-            "%Y-%m-%dT%H:%M:%S%z",
-            "%Y-%m-%dT%H:%M:%S",
-            "%Y-%m-%dT%H:%M%z",
-            "%Y-%m-%dT%H:%M",
-            "%Y-%m-%d",
-        ]
-        for fmt in formats:
-            try:
-                return datetime.strptime(raw, fmt)
-            except ValueError:
-                continue
-        return None
-
-    def _extract_slug(self, stem: str) -> str:
-        m = _RE_FILENAME_DATE.match(stem)
-        if m and m.group(3):
-            return m.group(3)  # e.g. "home-lab"
-        if m and m.group(2):
-            return m.group(2)  # e.g. "1430"
-        return stem
-
     def _strip_frontmatter(self, markdown: str) -> str:
         if not markdown.startswith("---"):
             return markdown
@@ -380,7 +345,34 @@ class MomentPlugin(BasePlugin):
         content = re.sub(r"!\[([^\]]*)\]\(([^)]+)\)", _fix_img_path, content)
         exts = config.get("markdown_extensions", [])
         ext_configs = config.get("mdx_configs", {})
-        return md_lib.markdown(content, extensions=exts, extension_configs=ext_configs)
+        html = md_lib.markdown(content, extensions=exts, extension_configs=ext_configs)
+        return self._wrap_glightbox(html)
+
+    def _wrap_glightbox(self, html: str) -> str:
+        """Wrap <img> in <a class="glightbox"> so mkdocs-glightbox can open full-size.
+
+        Moment pages render content at runtime via md_lib, bypassing glightbox's
+        on_page_content post-processing, so we wrap images here ourselves.
+        Images already inside a link (e.g. `[![img](src)](url)`) are left alone
+        to avoid invalid nested <a> tags.
+        """
+        out: list[str] = []
+        last = 0
+        for m in re.finditer(r"<img\b[^>]*?>", html):
+            out.append(html[last : m.start()])
+            tag = m.group(0)
+            before = html[last : m.start()]
+            # if an <a ...> was opened after the last </a>, the img is inside a link
+            inside_a = before.rfind("<a ") > before.rfind("</a>")
+            src = re.search(r'src="([^"]+)"', tag)
+            if not inside_a and src:
+                url = src.group(1)
+                if not url.startswith(("data:", "#", "javascript:")):
+                    tag = f'<a class="glightbox" href="{url}">{tag}</a>'
+            out.append(tag)
+            last = m.end()
+        out.append(html[last:])
+        return "".join(out)
 
     def _sort_moments(self):
         reverse = self.config["sort"] == "desc"

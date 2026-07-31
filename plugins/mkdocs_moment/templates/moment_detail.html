@@ -3,6 +3,16 @@
 {% set moment_base = "/moment" %}
 
 {% block content %}
+<style>
+    /* detail: images render at a sensible size, click opens full-size via glightbox */
+    .moment-detail__content img {
+        max-width: 480px;
+        height: auto;
+        border-radius: 8px;
+        display: block;
+        margin: 12px 0;
+    }
+</style>
 <article class="moment-detail">
     <a href="{{ moment.permalink }}" class="moment-detail__time"
        title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">

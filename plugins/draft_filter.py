@@ -20,6 +20,13 @@ To mark any regular page as draft, add to frontmatter:
 
 import logging
 import os
+import sys
+from pathlib import Path
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.frontmatter import has_draft_flag
 
 log = logging.getLogger("mkdocs.hooks.draft_filter")
 
@@ -35,28 +42,7 @@ def _has_draft_frontmatter(abs_path: str) -> bool:
     except (IOError, OSError) as e:
         log.warning("Cannot read %s: %s", abs_path, e)
         return False
-
-    # Must start with --- (frontmatter delimiter)
-    stripped = head.lstrip()
-    if not stripped.startswith("---"):
-        return False
-
-    # Find closing ---
-    end = stripped.find("---", 3)
-    if end == -1:
-        return False
-
-    frontmatter = stripped[3:end]
-
-    # Look for draft: true (handles extra spaces, single True/true)
-    for line in frontmatter.split("\n"):
-        line = line.strip()
-        if line.startswith("draft:"):
-            value = line.split(":", 1)[1].strip().lower()
-            if value in ("true", "yes", "1"):
-                return True
-
-    return False
+    return has_draft_flag(head)
 
 
 def _get_blog_dir(config) -> str:

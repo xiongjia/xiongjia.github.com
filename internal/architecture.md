@@ -25,8 +25,11 @@ xiongjia.github.com/
 ├── .github/workflows/ci.yml        # CI: lint & deploy to GitHub Pages
 ├── mkdocs.yml                     # MkDocs configuration
 ├── pyproject.toml                 # Python project config & dependencies
-├── dev/                           # Design documents & plans
-│   └── plans/                     # Implementation plans / task tracking (see plan-index.md)
+├── internal/                     # Design documents & plans
+│   ├── architecture.md           # This document
+│   └── plans/                    # Implementation plans / task tracking (see plan-index.md)
+│       └── arch/                 # Archived (done/cancelled) plans
+├── shared/                       # Shared utilities for plugins & scripts
 ├── docs/                          # All site content (Markdown)
 │   ├── index.md                   # Redirect → /notes/
 │   ├── moments/                   # Short-form timeline (Moment plugin)
@@ -81,10 +84,15 @@ xiongjia.github.com/
 │   └── discuss/
 │       └── index.md               # Dedicated comment page
 ├── scripts/                       # Utility scripts
-│   ├── create-post.py             # Blog post scaffolding
+│   ├── create_post.py             # Blog post scaffolding
+│   ├── create_moment.py           # Moment micro-post scaffolding
+│   ├── time_arg.py                # Shared --time date/time parser
 │   ├── optimize_images.py         # PNG/JPG/JPEG → WebP converter
 │   ├── add_weight_week.py         # Add empty week to weight data
 │   └── md2wechat.py               # MkDocs → WeChat HTML converter
+├── tests/                         # Unit tests (pytest)
+│   ├── test_md2wechat.py
+│   └── test_time_arg.py
 ├── plugins/                       # Custom MkDocs hooks
 │   ├── draft_filter.py            # Draft page filter
 │   └── mermaid_assets.py          # Mermaid JS local downloader
@@ -175,6 +183,7 @@ Available `poe` commands:
 | `uv run poe build-selfhost`          | Self-hosted build (separate `site-selfhost/` dir) |
 | `uv run poe fmt`                     | Format Python (ruff) + Markdown (mdformat)        |
 | `uv run poe lint-py`                 | Python lint check (ruff)                          |
+| `uv run poe test`                    | Run unit tests (pytest, `tests/`)                 |
 | `uv run poe create-post "Title"`     | New blog post scaffolding                         |
 | `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP conversion                    |
 | `uv run poe add-weight-week [count]` | Add empty week(s) to weight data                  |

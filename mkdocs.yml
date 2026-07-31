@@ -28,6 +28,7 @@ extra_css:
   - assets/stylesheets/retire.css
   - assets/stylesheets/weight.css
   - assets/stylesheets/nav.css
+  - assets/stylesheets/hr.css
 extra_javascript:
   - assets/javascripts/retire.js
   
@@ -173,6 +174,7 @@ nav:
       - Languages: notes/collection/languages.md
       - Game Dev: notes/collection/game-dev.md
       - Maps: notes/collection/maps.md
+      - Emoji: notes/collection/emoji.md
     - Research: notes/research/index.md
     - Health Monitor:
       - notes/health/index.md

@@ -1,0 +1,8 @@
+/* Short divider: <hr class="short"> renders as a small left-aligned line
+   instead of a full-width rule. */
+hr.short {
+    width: 4rem;
+    margin: 1.5rem 0;
+    border: 0;
+    border-top: 2px solid var(--md-default-fg-color--lightest);
+}

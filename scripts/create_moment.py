@@ -1,15 +1,24 @@
 """Create a new Moment entry.
 
 Usage:
-    uv run python scripts/create-moment.py "Content text"
-    uv run python scripts/create-moment.py "Content text" --image photo.jpg
-    uv run python scripts/create-moment.py "Content text" --slug my-slug
+    uv run python scripts/create_moment.py "Content text"
+    uv run python scripts/create_moment.py "Content text" --image photo.jpg
+    uv run python scripts/create_moment.py "Content text" --slug my-slug
+    uv run python scripts/create_moment.py "Content text" --time "9am"
+    uv run python scripts/create_moment.py "Content text" --time "yesterday 9am"
+    uv run python scripts/create_moment.py "Content text" --time "30 9pm"
 """
 
 import argparse
 import os
 import subprocess
-from datetime import datetime
+import sys
+from pathlib import Path
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.date import parse_datetime_arg
 
 EDITOR = os.environ.get("EDITOR", "vim")
 
@@ -20,13 +29,20 @@ def main():
     parser.add_argument("--image", help="Reference an existing image path")
     parser.add_argument("--slug", help="Custom slug for the filename")
     parser.add_argument(
+        "--time",
+        help=(
+            "Publish date/time (default: now). Examples: 9am, 21:30, "
+            "yesterday 9am, 30 9pm, 2026-07-30 21:36"
+        ),
+    )
+    parser.add_argument(
         "--dir", default="docs/moments", help="Moment data directory (default: docs/moments)"
     )
     args = parser.parse_args()
 
-    now = datetime.now()
-    month_dir = now.strftime("%Y-%m")
-    time_slug = now.strftime("%d-%H%M")
+    dt = parse_datetime_arg(args.time)
+    month_dir = dt.strftime("%Y-%m")
+    time_slug = dt.strftime("%d-%H%M")
     filename = f"{time_slug}{'-' + args.slug if args.slug else ''}.md"
 
     full_dir = os.path.join(args.dir, month_dir)
@@ -36,7 +52,7 @@ def main():
 
     lines = [
         "---",
-        f"date: {now.strftime('%Y-%m-%d %H:%M')}",
+        f"date: {dt.strftime('%Y-%m-%d %H:%M')}",
         "tags:",
         "  - general",
         "---",

@@ -4,29 +4,22 @@ Usage:
     uv run poe create-post "Post Title"
     uv run poe create-post "Post Title" --category dev
     uv run poe create-post "Post Title" --category thought --tags life,mood
+    uv run poe create-post "Post Title" --time "yesterday 9am"
 """
 
 import argparse
-import datetime
 import os
-import re
 import sys
+from pathlib import Path
+
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.date import parse_datetime_arg
+from shared.strings import slugify_title
 
 DOCS_DIR = "docs"
 DEFAULT_POST_DIR = "notes/posts/posts"
-
-
-def slugify(text: str, *, fallback: str = "post") -> str:
-    """Generate a URL-friendly slug from text.
-
-    Strips non-ASCII characters, lowercases, and replaces spaces with hyphens.
-    If the result is empty (e.g. purely Chinese title), uses the fallback.
-    """
-    slug = text.lower()
-    slug = re.sub(r"[^a-z0-9\s-]", " ", slug)
-    slug = re.sub(r"[\s-]+", "-", slug)
-    slug = slug.strip("-")
-    return slug if slug else fallback
 
 
 def parse_tags(raw: str | None) -> list[str]:
@@ -68,16 +61,37 @@ def main() -> None:
         action="store_true",
         help="Publish immediately instead of creating as draft",
     )
+    parser.add_argument(
+        "--time",
+        help=(
+            "Publish date/time for backdating (default: now). Examples: 9am, "
+            "yesterday, yesterday 9am, 30 9am, 2026-07-30 21:36"
+        ),
+    )
+    parser.add_argument(
+        "--dir",
+        default=DOCS_DIR,
+        help=f"Docs root directory (default: {DOCS_DIR})",
+    )
 
     args = parser.parse_args()
-    today = datetime.date.today()
+    dt = parse_datetime_arg(args.time)
 
     # Determine slug — fallback to category name for Chinese-only titles
-    slug = args.slug or slugify(args.title, fallback=args.category)
+    slug = args.slug or slugify_title(args.title, fallback=args.category)
+    # pure-digit slugs would be parsed as int by YAML — guard against it
+    if slug.isdigit():
+        if args.slug is not None:
+            print(
+                "Error: --slug cannot be a pure number (YAML would parse it as int)",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        slug = f"post-{slug}"
 
     # Build file path
-    filename = f"{today.strftime('%Y%m%d')}-{slug}.md"
-    post_dir = os.path.join(DOCS_DIR, DEFAULT_POST_DIR, args.category)
+    filename = f"{dt.strftime('%Y%m%d')}-{slug}.md"
+    post_dir = os.path.join(args.dir, DEFAULT_POST_DIR, args.category)
     os.makedirs(post_dir, exist_ok=True)
     filepath = os.path.join(post_dir, filename)
 
@@ -92,12 +106,14 @@ def main() -> None:
         categories.append("dev")
 
     draft_line = "draft: true\n" if not args.no_draft else ""
+    # seconds required so PyYAML parses it as a timestamp (not a string)
+    created_iso = dt.strftime("%Y-%m-%d %H:%M:%S")
 
     content = f"""---
 title: {args.title}
 date:
-  created: {today.isoformat()}
-  updated: {today.isoformat()}
+  created: {created_iso}
+  updated: {created_iso}
 {draft_line}authors: [xiongjia]
 tags:
 {chr(10).join(f"  - {tag}" for tag in tags)}
@@ -115,7 +131,7 @@ categories:
         f.write(content)
 
     # Compute URL path (matches blog plugin's default post_url_format)
-    url_path = f"/notes/posts/{today.strftime('%Y/%m/%d')}/{slug}/"
+    url_path = f"/notes/posts/{dt.strftime('%Y/%m/%d')}/{slug}/"
 
     print(f"Created: {filepath}")
     print(f"URL:     {url_path}")
