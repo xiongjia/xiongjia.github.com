@@ -20,6 +20,8 @@ ______________________________________________________________________
 | [:material-monitor-dashboard: Frontend](./frontend.md) | React, UI tools, frameworks                |
 | [:material-robot: AI](./ai.md)                         | Local AI, AI Skills, MCP, AI CLI           |
 | [:material-code-tags: Languages](./languages.md)       | Go, Java, C/C++ toolchains                 |
+| [:material-gamepad-variant: Game Dev](./game-dev.md)   | Godot, Krita, LDTK, 2D game dev tools      |
+| [:material-map: Maps](./maps.md)                       | MapLibre, Protomaps, PMTiles, Tippecanoe   |
 
 ______________________________________________________________________
 

@@ -27,11 +27,6 @@ hide:
 - [React Pro Sidebar](https://github.com/azouaoui-med/react-pro-sidebar)
 - [jotai](https://github.com/pmndrs/jotai) - State management
 
-## Maps
-
-- [Leaflet](https://leafletjs.com/) - 开源地图库
-- [Protomaps](https://docs.protomaps.com/) - 自托管地图瓦片
-
 ## UI Design Resources
 
 - [Behance](https://www.behance.net/search/projects/dribbble) - 设计作品集

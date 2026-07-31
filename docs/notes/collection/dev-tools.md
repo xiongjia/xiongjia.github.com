@@ -66,12 +66,14 @@ hide:
 
 - [awesome-etl](https://github.com/pawl/awesome-etl) - ETL 资源汇总
 - [meltano](https://meltano.com/) - ELT 平台
+- [dbt](https://github.com/dbt-labs/dbt-core) - SQL 数据转换工具 (ELT 中的 T，dbt = data build tool)
 - [mockaroo](https://mockaroo.com/) - Mock 数据生成 (schema → CSV → DB)
 
 ## BI / Charts
 
 - [sampler](https://github.com/sqshq/sampler) - Go 终端图表工具
 - [shaper](https://github.com/taleshape-com/shaper) - 数据可视化
+- [Hands-On Data Visualization](https://handsondataviz.org/) - 数据可视化互动书籍 (免费在线，图表/地图/表格，从电子表格到代码)
 
 ## Browser & Headless
 

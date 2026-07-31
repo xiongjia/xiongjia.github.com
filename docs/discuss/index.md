@@ -3,7 +3,8 @@ title: Discuss
 icon: material/message-text-outline
 comments: true
 hide:
-  - path
+  - navigation
+  - toc
 ---
 
 # :material-message-text-outline: Discuss
