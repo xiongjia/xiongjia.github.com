@@ -1,7 +1,9 @@
 ---
 icon: material/flask
 hide:
+  - navigation
   - tags
+  - toc
 ---
 
 # :material-flask: Projects

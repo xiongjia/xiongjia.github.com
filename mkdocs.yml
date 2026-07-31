@@ -171,6 +171,8 @@ nav:
       - Frontend: notes/collection/frontend.md
       - AI: notes/collection/ai.md
       - Languages: notes/collection/languages.md
+      - Game Dev: notes/collection/game-dev.md
+      - Maps: notes/collection/maps.md
     - Research: notes/research/index.md
     - Health Monitor:
       - notes/health/index.md

@@ -42,5 +42,32 @@ Additional context, references, etc.
 
 <!-- Manually maintained — add new plans here -->
 
+### Site Feature
+
 - [moment-phase2-usability.md](./moment-phase2-usability.md) — Moment Plugin Phase 2: RSS, Archive, OpenGraph
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location, Map, Gallery, Search, Stats
+- [mkdocs-backlinks-topology.md](./mkdocs-backlinks-topology.md) — MkDocs bidirectional links & link topology graph (backlinks + Mermaid graph)
+
+### Research
+
+- [indie-game-tool-research.md](./indie-game-tool-research.md) — Indie Game Tool Research: Godot, Krita, LDTK, Tiled, Blender
+- [maplibre-research.md](./maplibre-research.md) — MapLibre GL JS & Protomaps Research: MapLibre, PMTiles, Tippecanoe
+- [hands-on-data-viz-reading.md](./hands-on-data-viz-reading.md) — Hands-On Data Visualization Reading Plan: data viz from spreadsheets to code
+
+### Posts
+
+- [post-weight-track.md](./post-weight-track.md) — Blog post: Weight Track implementation
+- [post-retirement-countdown.md](./post-retirement-countdown.md) — Blog post: Retirement Countdown implementation
+
+### Site Feature
+
+- [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data
+
+### Projects
+
+- [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
+- [city-log-design-plan.md](./city-log-design-plan.md) — City Log design document (archived)
+
+### Refactor
+
+- [plugins-scripts-shared-module.md](./plugins-scripts-shared-module.md) — MkDocs plugins & scripts: extract shared utilities, reduce duplication
