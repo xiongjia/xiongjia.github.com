@@ -10,25 +10,65 @@
 
 {% block content %}
 <style>
-    /* timeline: images render as thumbnails, click opens full-size via glightbox */
+    /* timeline: images render as a horizontal thumbnail row (each image in its
+       own paragraph, i.e. blank-line separated), click opens full-size via
+       glightbox. Requires :has() support (modern browsers, 2023+). Container
+       font stays small (0.7rem) so the whitespace between inline-block tiles
+       is tiny; text paragraphs, lists and blockquotes restore the normal size
+       below. */
     .moment-entry__content {
-        /* collapse whitespace gaps between inline-block thumbnails */
-        font-size: 0;
+        font-size: 0.7rem;
     }
-    .moment-entry__content p {
+    /* no-:has() fallback: keep text readable on ~2020-2022 browsers, i.e. ones
+       with selector() in @supports but without :has() (older browsers fall
+       through to the small font - acceptable for a personal site); tiles
+       degrade to stacked images at natural size */
+    @supports not selector(:has(*)) {
+        .moment-entry__content {
+            font-size: var(--md-typeset-font-size, 1rem);
+        }
+    }
+    .moment-entry__content p:not(:has(> a.glightbox:only-child)),
+    .moment-entry__content blockquote,
+    .moment-entry__content li {
         font-size: var(--md-typeset-font-size, 1rem);
     }
-    .moment-entry__content p:has(> a.glightbox) {
+    /* image-only paragraphs (blank-line separated images) become inline tiles;
+       paragraphs mixing text and an image stay block-level with restored text */
+    .moment-entry__content p:has(> a.glightbox:only-child) {
         display: inline-block;
         vertical-align: top;
         margin: 0 8px 8px 0;
     }
     .moment-entry__content a.glightbox img {
-        height: 150px;
+        /* max-height (not fixed height) so wide/panoramic images never distort */
+        max-height: 150px;
         width: auto;
+        height: auto;
         max-width: 100%;
         border-radius: 8px;
         display: block;
+    }
+    /* captioned images (plugin figure-caption extension) join the thumbnail
+       row; glightbox wraps their img in <a>, which the rule above sizes, and
+       the figure img rule covers the non-wrapped case (e.g. inside a link). */
+    .moment-entry__content figure {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-entry__content figure img {
+        display: block;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .moment-entry__content figure figcaption {
+        font-size: 0.75rem;
+        color: var(--md-default-fg-color--light, #757575);
+        text-align: center;
     }
 </style>
 <article class="moment-timeline">

@@ -52,7 +52,8 @@ labels:
   table_col_avg: 平均
   table_col_bmi: BMI
   table_col_vs_last: 较上周
-  table_row_prefix: 周
+  table_row_prefix: 第
+  table_row_suffix: 周
 
 # 7 days per week; use null for missed days
 # Week start dates are shown in comments to help identify each week
