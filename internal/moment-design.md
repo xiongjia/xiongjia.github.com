@@ -30,7 +30,9 @@ Built (site/moments/)
 ├── tag/
 │   ├── rust/index.html     ← Tag filter
 │   └── general/index.html
-└── feed.xml                ← RSS (Phase 2)
+├── archive/index.html      ← Year/month archive
+├── 2026/07/index.html      ← Per-month page
+└── feed.xml                ← RSS
 ````
 
 ````
@@ -52,10 +54,15 @@ tags:
 ![Screenshot](./screenshot.webp)
 ````
 
-| Field  | Required | Format                                     |
-| ------ | -------- | ------------------------------------------ |
-| `date` | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601 |
-| `tags` | ❌       | YAML list (displayed as `#tag` links)      |
+| Field   | Required | Format                                     |
+| ------- | -------- | ------------------------------------------ |
+| `date`  | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601 |
+| `tags`  | ❌       | YAML list (displayed as `#tag` links)      |
+| `draft` | ❌       | `true` — hidden in production builds       |
+
+Draft moments follow the same `MKDOCS_INCLUDE_DRAFTS` env convention as
+`plugins/draft_filter.py`: excluded in production builds, kept in dev
+(`MKDOCS_INCLUDE_DRAFTS=true mkdocs serve`).
 
 ### File naming
 
@@ -75,6 +82,10 @@ keeping the directory per-month for manageable file counts.
 Images go in the same month directory, referenced with `./` paths.
 Plugin auto-converts relative paths to site-absolute URLs during
 Markdown -> HTML rendering.
+
+A caption is added by putting a plain-text line right after the image
+line — the plugin's custom markdown extension wraps the pair in
+`<figure><figcaption>` (inline text on the same line is not a caption).
 
 ```
 moment/2026-07/
@@ -121,11 +132,14 @@ Config is read from `extra.moment`:
 ```yaml
 extra:
   moment:
-    path: moment
+    path: moments
     posts_per_page: 20
     timeline_title: Moment
     timeline_description: 日常记录
     sort: desc
+    feed: true              # RSS feed at /moments/feed.xml (default: true)
+    feed_description: ''    # RSS channel description (falls back to timeline_description)
+    timezone: Asia/Shanghai # RSS pubDate tz; wall-clock times are authored in this zone
 ```
 
 ### UI Labels (Chinese/English separation)
@@ -147,16 +161,15 @@ Labels are loaded in `on_config` and injected into template context.
 
 ## MkDocs Lifecycle
 
-| Event              | Role                                                           |
-| ------------------ | -------------------------------------------------------------- |
-| `on_config`        | Read config, register templates + CSS, load labels, init state |
-| `on_files`         | Scan `moment/` recursively, parse all `.md` files              |
-| `on_pre_page`      | Classify page type (Timeline / Detail / Unrelated)             |
-| `on_page_markdown` | Strip frontmatter, render HTML, set template, hide sidebar     |
-| `on_page_context`  | Inject pagination/moment data into template context            |
-| `on_post_build`    | Generate pagination pages, tag pages, copy CSS                 |
+| Event              | Role                                                             |
+| ------------------ | ---------------------------------------------------------------- |
+| `on_config`        | Read config, register templates + CSS, load labels, init state   |
+| `on_files`         | Scan `moment/` recursively, parse all `.md` files (skip drafts)  |
+| `on_page_markdown` | Classify page type, strip frontmatter, render HTML, hide sidebar |
+| `on_page_context`  | Inject pagination / moment / feed / archive / OG data            |
+| `on_post_build`    | Generate pagination/tag/archive pages + RSS feed, copy CSS       |
 
-### Classifying pages (`on_pre_page`)
+### Classifying pages (in `on_page_markdown`)
 
 ```
 moment/index.md                   → PageType.TIMELINE
@@ -175,37 +188,49 @@ on_page_markdown
     ├── Converts Markdown → HTML via markdown library
     │   (same extensions as mkdocs.yml)
     ├── Auto-rewrites relative image paths → absolute URLs
-    │   (./screenshot.webp → /moment/2026-07/screenshot.webp)
+    │   (./screenshot.webp → /moments/2026-07/screenshot.webp)
     └── Stores HTML in Moment.html for Timeline/tag reuse
 ```
 
 ## Pages
 
-### Timeline (`/moment/`)
+### Timeline (`/moments/`)
 
 - Sorted by date DESC (newest first)
 - Shows time → content → tags per entry
 - Tag cloud at top showing all available tags
+- RSS icon link next to the title (when the feed is enabled)
 - Pagination at bottom when count > posts_per_page
 
-### Detail (`/moment/YYYY-MM/DD-HHMM/`)
+### Detail (`/moments/YYYY-MM/DD-HHMM/`)
 
 - Single moment view with prev/next navigation
 - Tags displayed below content
 - Giscus comments via `{% include "partials/comments.html" %}`
 - Sidebar hidden via `page.meta.hide = ["navigation"]`
+- OpenGraph meta in `<head>` (`og:title` / `og:description` / `og:image` when
+  the moment has one, `twitter:card`: `summary_large_image` or `summary`)
 
-### Tag filter (`/moment/tag/{tag}/`)
+### Tag filter (`/moments/tag/{tag}/`)
 
 - Generated in `on_post_build` for each unique tag
 - Reuses `moment_timeline.html` template with filtered items
 - Shows only moments with that tag
 
-### Pagination (`/moment/page/N/`)
+### Pagination (`/moments/page/N/`)
 
 - Generated in `on_post_build` when total > posts_per_page
 - Reuses `moment_timeline.html` with paginated items
 - Uses cached `_jinja_env` from `on_page_context`
+
+### Archive
+
+- `moment_archive.html` index at `/moments/archive/`, groups moments by
+  year/month (newest first)
+- Per-month pages at `/moments/<YYYY>/<MM>/` reuse `moment_timeline.html`;
+  the slash-separated path does not collide with hyphenated detail URLs
+  (`/moments/2026-07/30-1430/`)
+- Entry link shown under the tag cloud on the Timeline page
 
 ## Template System
 
@@ -215,8 +240,10 @@ ensuring theme consistency (header, footer, search, palette).
 ```
 main.html (Material)
     │
-    ├── moment_timeline.html    (Timeline, tag, pagination pages)
+    ├── moment_timeline.html    (Timeline, tag, pagination, month pages)
     │       └── moment_pagination.html  (included fragment)
+    │
+    ├── moment_archive.html     (Archive index)
     │
     └── moment_detail.html      (Detail page)
             └── partials/comments.html  (Giscus)
@@ -228,7 +255,7 @@ Templates are registered by setting `page.meta["template"]` in
 
 ## CSS
 
-Single file `moment.css`, auto-copied to `site/moment/moment.css` during
+Single file `moment.css`, auto-copied to `site/moments/moment.css` during
 `on_post_build`. Uses `.moment-*` namespace to avoid conflicts with
 Material theme. CSS variables reference Material's theme variables for
 automatic light/dark mode support.
@@ -245,8 +272,10 @@ thread = no GitHub Discussion created (zero overhead).
 - Parsed from frontmatter `tags:` list
 - Displayed as `#tagname` links on Timeline and Detail pages
 - Tag cloud at top of Timeline showing all tags
-- Tag pages generated at `/moment/tag/{tag}/` via `on_post_build`
-- Sidebar nav lists tags under the Moment entry (via `on_nav`)
+- Tag pages generated at `/moments/tag/{tag}/` via `on_post_build`
+- Tag URLs use literal tag names (no percent-encoding) — links in templates
+  use the same `tag_segment()` helper as the generator, so Chinese/emoji tags
+  resolve as literal dirs
 
 ## Pagination
 
@@ -267,21 +296,25 @@ self._base_url = context.get("base_url", "")
 ```yaml
 extra:
   moment:
-    path: moment                    # Source directory under docs/
+    path: moments                   # Source directory under docs/
     posts_per_page: 20              # Timeline entries per page
     timeline_title: Moment          # Timeline page <h1>
     timeline_description: 日常记录  # Timeline page subtitle
     sort: desc                      # desc / asc
+    feed: true                      # RSS feed at /moments/feed.xml (default: true)
+    feed_description: ''            # RSS channel description (falls back to timeline_description)
+    timezone: Asia/Shanghai         # RSS pubDate tz (default: Asia/Shanghai)
 ```
 
 ## Dependencies
 
-| Package    | Usage                                    |
-| ---------- | ---------------------------------------- |
-| mkdocs     | Static site generator                    |
-| PyYAML     | Parse frontmatter and labels             |
-| (built-in) | Python `pathlib`, `re`, `shutil`, `math` |
-| Giscus     | Comment system (loaded client-side)      |
+| Package    | Usage                                                      |
+| ---------- | ---------------------------------------------------------- |
+| mkdocs     | Static site generator                                      |
+| PyYAML     | Parse frontmatter and labels                               |
+| markdown   | Runtime rendering (moment HTML) + caption extension        |
+| (built-in) | `pathlib`, `re`, `shutil`, `math`, `xml.etree`, `zoneinfo` |
+| Giscus     | Comment system (loaded client-side)                        |
 
 ## File Tree
 
@@ -302,9 +335,10 @@ docs/moments/
 # Create a new moment
 uv run poe create-moment "Content text"
 uv run poe create-moment "Content" --image photo.jpg
+uv run poe create-moment "Content" --draft   # hidden in production
 
 # Preview
-uv run poe server       # http://localhost:8000/moment/
+uv run poe server       # http://localhost:8000/moments/
 
 # Build
 uv run poe build

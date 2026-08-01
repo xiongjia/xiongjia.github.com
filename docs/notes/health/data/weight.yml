@@ -58,4 +58,4 @@ labels:
 # Week start dates are shown in comments to help identify each week
 weeks:
   # Week 1 — Mon 2026-07-27
-  - days: [null, 82.35, 81.50, 82.90, 82.40, null, null]
+  - days: [null, 82.35, 81.50, 82.90, 82.40, 82.40, null]

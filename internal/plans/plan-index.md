@@ -62,7 +62,6 @@ tags: [refactor, mkdocs]
 
 ### Site Feature
 
-- [moment-phase2-usability.md](./moment-phase2-usability.md) — Moment Plugin Phase 2: RSS, Archive, OpenGraph
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location, Map, Gallery, Search, Stats
 - [mkdocs-backlinks-topology.md](./mkdocs-backlinks-topology.md) — MkDocs bidirectional links & link topology graph (backlinks + Mermaid graph)
 - [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data

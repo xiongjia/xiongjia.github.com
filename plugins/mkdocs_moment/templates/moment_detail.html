@@ -1,6 +1,17 @@
 {# moment_detail.html #}
 {% extends "main.html" %}
-{% set moment_base = "/moment" %}
+
+{% block extrahead %}
+{{ super() }}
+{% if og %}
+<meta property="og:title" content="{{ og.title }}">
+<meta property="og:description" content="{{ og.description }}">
+{% if og.image %}
+<meta property="og:image" content="{{ og.image }}">
+{% endif %}
+<meta name="twitter:card" content="{{ og.card }}">
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <style>
@@ -26,7 +37,7 @@
     {% if moment.tags %}
     <div class="moment-detail__tags">
         {% for tag in moment.tags %}
-        <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+        <a href="{{ moment_base }}/tag/{{ tag_segment(tag) }}/" class="moment-tag">#{{ tag }}</a>
         {% endfor %}
     </div>
     {% endif %}
