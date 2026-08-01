@@ -20,9 +20,10 @@ class Moment:
     date: datetime  # from frontmatter
     slug: str  # e.g. "1430" or "home-lab"
     source_path: str  # relative to docs/, e.g. "moment/2026-07/30-1430.md"
-    permalink: str  # e.g. "/moment/2026-07/30-1430/"
+    permalink: str  # e.g. "/moments/2026-07/30-1430/"
     content: str  # raw markdown (no frontmatter)
     html: str = ""  # rendered HTML, filled during on_page_markdown
+    title: str = ""  # optional frontmatter title (used by RSS title fallback)
     tags: list[str] = field(default_factory=list)
     has_images: bool = False
 

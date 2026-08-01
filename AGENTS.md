@@ -32,7 +32,7 @@ uv run poe server-prod           # dev server WITHOUT drafts (mirrors production
 uv run poe build                 # production build
 uv run poe build-selfhost        # self-hosted build
 uv run poe create-post "Title"   # new blog post (default: draft)
-uv run poe create-moment "Text"  # new Moment micro-post
+uv run poe create-moment "Text"   # new Moment micro-post (--draft hides in prod)
 uv run poe fmt                   # format Python + Markdown
 uv run poe lint-py               # Python lint check (ruff)
 uv run poe test                  # run unit tests (pytest, tests/)

@@ -4,6 +4,7 @@ Usage:
     uv run python scripts/create_moment.py "Content text"
     uv run python scripts/create_moment.py "Content text" --image photo.jpg
     uv run python scripts/create_moment.py "Content text" --slug my-slug
+    uv run python scripts/create_moment.py "Content text" --draft
     uv run python scripts/create_moment.py "Content text" --time "9am"
     uv run python scripts/create_moment.py "Content text" --time "yesterday 9am"
     uv run python scripts/create_moment.py "Content text" --time "30 9pm"
@@ -28,6 +29,11 @@ def main():
     parser.add_argument("content", nargs="?", help="Moment content (opens editor if empty)")
     parser.add_argument("--image", help="Reference an existing image path")
     parser.add_argument("--slug", help="Custom slug for the filename")
+    parser.add_argument(
+        "--draft",
+        action="store_true",
+        help="Mark as draft (hidden in production builds, kept in dev)",
+    )
     parser.add_argument(
         "--time",
         help=(
@@ -55,9 +61,10 @@ def main():
         f"date: {dt.strftime('%Y-%m-%d %H:%M')}",
         "tags:",
         "  - general",
-        "---",
-        "",
     ]
+    if args.draft:
+        lines.append("draft: true")
+    lines += ["---", ""]
     if args.content:
         lines.append(args.content)
     if args.image:

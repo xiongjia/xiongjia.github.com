@@ -1,6 +1,12 @@
 {# moment_timeline.html #}
 {% extends "main.html" %}
-{% set moment_base = "/moment" %}
+
+{% block extrahead %}
+{{ super() }}
+{% if feed_url %}
+<link rel="alternate" type="application/rss+xml" title="{{ labels.get('timeline_title', 'Moment') }} RSS" href="{{ feed_url }}">
+{% endif %}
+{% endblock %}
 
 {% block content %}
 <style>
@@ -26,7 +32,13 @@
     }
 </style>
 <article class="moment-timeline">
-    <h1>🕐 {{ page.title | default(labels.get("timeline_title", "Moment")) }}</h1>
+    <h1>🕐 {{ page.title | default(labels.get("timeline_title", "Moment")) }}
+    {% if feed_url %}
+    <a href="{{ feed_url }}" class="moment-rss" title="RSS feed" aria-label="RSS feed">
+        {% include ".icons/fontawesome/solid/rss.svg" %}
+    </a>
+    {% endif %}
+    </h1>
     {% if labels.get("timeline_description") %}
     <p class="moment-timeline__desc">{{ labels.timeline_description }}</p>
     {% endif %}
@@ -36,9 +48,12 @@
     <p class="moment-tagcloud-label">All tags</p>
     <div class="moment-tagcloud">
         {% for tag in all_tags %}
-        <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+        <a href="{{ moment_base }}/tag/{{ tag_segment(tag) }}/" class="moment-tag">#{{ tag }}</a>
         {% endfor %}
     </div>
+    {% if archive_url %}
+    <p class="moment-archive-link"><a href="{{ archive_url }}">📚 Archive</a></p>
+    {% endif %}
     <hr class="moment-divider">
     {% endif %}
     <div class="moment-list">
@@ -56,7 +71,7 @@
             {% if moment.tags %}
             <div class="moment-entry__tags">
                 {% for tag in moment.tags %}
-                <a href="{{ moment_base }}/tag/{{ tag }}/" class="moment-tag">#{{ tag }}</a>
+                <a href="{{ moment_base }}/tag/{{ tag_segment(tag) }}/" class="moment-tag">#{{ tag }}</a>
                 {% endfor %}
             </div>
             {% endif %}

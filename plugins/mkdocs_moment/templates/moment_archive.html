@@ -1,0 +1,63 @@
+{# moment_archive.html #}
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    .moment-archive__month {
+        font-size: 1.2em;
+        margin: 1.5em 0 0.5em;
+    }
+    .moment-archive__month a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .moment-archive__month a:hover {
+        color: var(--md-typeset-a-color, #448aff);
+    }
+    .moment-archive__entry {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25em 1em;
+        align-items: baseline;
+        padding: 0.25em 0;
+    }
+    .moment-archive__time {
+        flex: 0 0 5.5em;
+        font-size: 0.85em;
+        color: var(--md-default-fg-color--light, #757575);
+        text-decoration: none;
+    }
+    .moment-archive__time:hover {
+        text-decoration: underline;
+        color: var(--md-typeset-a-color, #448aff);
+    }
+    .moment-archive__content {
+        line-height: 1.6;
+    }
+    .moment-archive__content img {
+        max-width: 120px;
+        height: auto;
+        border-radius: 4px;
+        vertical-align: middle;
+    }
+</style>
+<article class="moment-archive">
+    <h1>📚 {{ page.title }}</h1>
+    {% for group in archive_groups %}
+    <h2 class="moment-archive__month">
+        <a href="{{ group.url }}">{{ group.label }}</a>
+    </h2>
+    {% for moment in group.entries %}
+    <div class="moment-archive__entry">
+        <a href="{{ moment.permalink }}" class="moment-archive__time"
+           title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">
+            {{ moment.date.strftime("%b %d, %H:%M") }}
+        </a>
+        <div class="moment-archive__content">
+            {{ moment.html | safe }}
+        </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+</article>
+{% endblock %}

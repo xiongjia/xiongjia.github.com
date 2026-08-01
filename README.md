@@ -47,6 +47,7 @@ uv run poe create-post "My Post" --time "2026-07-30 21:36"
 # Moment (short micro-post)
 uv run poe create-moment "Hello 👋"
 uv run poe create-moment "With image" --image photo.webp
+uv run poe create-moment "Draft idea" --draft   # hidden in production
 
 # Backdate a moment
 uv run poe create-moment "Backfill" --time "9pm"
@@ -73,7 +74,7 @@ main Python/markdown toolchain (`poe fmt` / `poe lint-py` / CI).
 
 Detailed documentation moved to `internal/`:
 
-- [Moment Design](internal/moment-design.md) — Micro-post timeline plugin (hooks, templates, tags, pagination, RSS planned)
+- [Moment Design](internal/moment-design.md) — Micro-post timeline plugin (RSS feed, archive, tags, OpenGraph, drafts)
 - [Architecture](internal/architecture.md) — project structure, plugins, hooks, env vars, draft system
 - [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline

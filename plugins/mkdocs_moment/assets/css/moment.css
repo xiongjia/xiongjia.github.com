@@ -4,6 +4,36 @@
     color: var(--md-default-fg-color--light, #757575);
     margin-bottom: 1.5em;
 }
+
+/* RSS entry next to the timeline title */
+.moment-rss {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.5em;
+    line-height: 0;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-rss svg {
+    width: 1.1em;
+    height: 1.1em;
+    fill: currentColor;
+}
+.moment-rss:hover {
+    color: var(--md-typeset-a-color, #448aff);
+}
+
+/* archive entry link below the tag cloud */
+.moment-archive-link {
+    margin: 0.5em 0;
+    font-size: 0.9em;
+}
+.moment-archive-link a {
+    color: var(--md-typeset-a-color, #448aff);
+    text-decoration: none;
+}
+.moment-archive-link a:hover {
+    text-decoration: underline;
+}
 .moment-empty {
     color: var(--md-default-fg-color--light, #757575);
     text-align: center;
@@ -53,6 +83,26 @@
     margin-top: 1em;
     padding-top: 0.5em;
     border-top: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+}
+
+/* figure captions (image line + caption line) — captioned images take
+   their own line instead of joining the thumbnail row */
+.moment-entry__content figure,
+.moment-detail__content figure {
+    margin: 0 0 0.8em;
+    display: block;
+}
+.moment-entry__content figure a.glightbox img,
+.moment-detail__content figure a.glightbox img {
+    max-width: 100%;
+    border-radius: 4px;
+}
+.moment-entry__content figcaption,
+.moment-detail__content figcaption {
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light, #757575);
+    text-align: center;
+    margin-top: 0.4em;
 }
 
 .moment-divider {
