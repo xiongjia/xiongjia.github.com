@@ -106,6 +106,7 @@ def _get_labels(data: dict) -> dict:
         "table_col_bmi": "BMI",
         "table_col_vs_last": "vs Last Week",
         "table_row_prefix": "W",
+        "table_row_suffix": "",
     }
     labels = data.get("labels", {})
     merged = dict(defaults)
@@ -336,8 +337,14 @@ def _table(data: dict) -> str:
             daily_cells.append(str(d) if d is not None else "—")
         daily_str = " / ".join(daily_cells)
 
-        row = "| {}{} ({}) | {} | {} | {} |\n".format(
-            labels["table_row_prefix"], idx + 1, date_range, daily_str, avg_str, bmi_str
+        row = "| {}{}{} ({}) | {} | {} | {} |\n".format(
+            labels["table_row_prefix"],
+            idx + 1,
+            labels["table_row_suffix"],
+            date_range,
+            daily_str,
+            avg_str,
+            bmi_str,
         )
         for line in row.rstrip("\n").split("\n"):
             md += f"    {line}\n"
@@ -377,7 +384,7 @@ def _table(data: dict) -> str:
             change = f"**{diff:+.2f} {arrow}**"
 
         row = (
-            f"| {labels['table_col_week']} {i + 1} | {date_range} "
+            f"| {labels['table_row_prefix']}{i + 1}{labels['table_row_suffix']} | {date_range} "
             f"| {avg_str} | {bmi_str} | {change} |\n"
         )
         for line in row.rstrip("\n").split("\n"):

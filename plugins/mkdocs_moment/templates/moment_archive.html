@@ -15,14 +15,23 @@
         color: var(--md-typeset-a-color, #448aff);
     }
     .moment-archive__entry {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.25em 1em;
+        display: grid;
+        grid-template-columns: 7.5em 1fr;
+        column-gap: 1em;
+        row-gap: 0.25em;
         align-items: baseline;
         padding: 0.25em 0;
     }
+    /* narrow screens: stack time above content. Grid (not flex-wrap) so a long
+       moment's max-content width never pushes the whole content block to a new
+       line on desktop — text wraps inside its 1fr column instead. */
+    @media (max-width: 640px) {
+        .moment-archive__entry {
+            grid-template-columns: 1fr;
+        }
+    }
     .moment-archive__time {
-        flex: 0 0 5.5em;
+        white-space: nowrap;
         font-size: 0.85em;
         color: var(--md-default-fg-color--light, #757575);
         text-decoration: none;
@@ -33,12 +42,65 @@
     }
     .moment-archive__content {
         line-height: 1.6;
+        /* images render as a horizontal thumbnail row: each image in its own
+           paragraph (blank-line separated) becomes an inline-block tile;
+           container font stays small (0.8rem) so the tiles' whitespace gap
+           is tiny; text paragraphs restore the normal size below. */
+        font-size: 0.8rem;
+    }
+    /* no-:has() fallback: keep text readable on ~2020-2022 browsers, i.e. ones
+       with selector() in @supports but without :has() (older browsers fall
+       through to the small font - acceptable for a personal site); tiles
+       degrade to stacked images at natural size */
+    @supports not selector(:has(*)) {
+        .moment-archive__content {
+            font-size: var(--md-typeset-font-size, 1rem);
+        }
+    }
+    .moment-archive__content p:not(:has(> a.glightbox:only-child)),
+    .moment-archive__content blockquote,
+    .moment-archive__content li {
+        font-size: var(--md-typeset-font-size, 1rem);
     }
     .moment-archive__content img {
-        max-width: 120px;
+        max-width: 100%;
         height: auto;
-        border-radius: 4px;
-        vertical-align: middle;
+        border-radius: 8px;
+    }
+    /* image-only paragraphs (blank-line separated images) become inline tiles;
+       paragraphs mixing text and an image stay block-level with restored text */
+    .moment-archive__content p:has(> a.glightbox:only-child) {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-archive__content a.glightbox img {
+        /* max-height (not fixed height) so wide/panoramic images never distort */
+        max-height: 120px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        display: block;
+    }
+    /* image + caption in the same paragraph → <figure> (plugin figure-caption
+       extension): keep tiles inline so captioned images stay in the row; cap
+       at the same height as plain thumbnails. */
+    .moment-archive__content figure {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-archive__content figure img {
+        display: block;
+        max-height: 120px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+    }
+    .moment-archive__content figure figcaption {
+        font-size: 0.75rem;
+        color: var(--md-default-fg-color--light, #757575);
+        text-align: center;
     }
 </style>
 <article class="moment-archive">

@@ -105,10 +105,16 @@ See [internal/architecture.md](internal/architecture.md) for full command refere
   `mkdocs.yml`); a validated prototype can be promoted to a real project
   (plan in `internal/plans/` or a standalone repo)
 
+- **No GitHub CI for prototypes**: CI (`.github/workflows/ci.yml`) only runs
+  the main repo checks — pytest, ruff, format checks, and the MkDocs build.
+  Prototypes are excluded by design and never built or tested by CI; verify
+  them locally (e.g. `cargo build` / `cargo test` for Rust, `pnpm build` /
+  `pnpm test` for Node) in the prototype's own environment
+
 ## Coding Principles
 
 - **Never switch or create branches**: AI must not `git checkout`, `git switch`, `git branch`, `git rebase`, or create any new branch without explicit developer approval. Work only on the current branch.
-- **Developer approval required before executing a plan**: AI must not initiate any execution plan (batch edits, refactoring, multi-file changes, or state-altering commands) without explicit developer approval. Simple Q&A, file inspection, or single edits (e.g., fixing a typo) are exempt.
+- **Developer approval required before executing a plan**: AI must not begin executing any plan — whether a plan file under `internal/plans/`, or any multi-step execution (batch edits, refactoring, multi-file changes, or state-altering commands) — without explicit developer approval. Creating or updating a plan file is exempt; executing it is not. Simple Q&A, file inspection, or single edits (e.g., fixing a typo) are exempt.
 - **Developer approval required before committing**: AI must not execute `git commit` unless the developer explicitly approves. All changes must remain in the working directory for developer review first.
 - **Never push**: AI **must never** execute `git push` or any equivalent remote push operation. Push can only be performed manually by the developer.
 - **Code review required before push**: All changes must be reviewed and approved by a human before pushing to remote branches.

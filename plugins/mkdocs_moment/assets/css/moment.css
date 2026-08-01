@@ -142,7 +142,9 @@
     text-decoration: underline;
     color: var(--md-typeset-a-color, #448aff);
 }
-.moment-detail__content { line-height: 1.7; font-size: 1.05em; }
+/* detail content font-size is set by the detail template's inline <style>
+   (container-level, inherited by all content) — keep this rule font-size-free */
+.moment-detail__content { line-height: 1.7; }
 .moment-detail__content img { max-width: 100%; border-radius: 4px; }
 .moment-detail__nav {
     display: flex;
