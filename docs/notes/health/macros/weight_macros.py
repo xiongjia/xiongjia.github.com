@@ -155,7 +155,7 @@ def _cards(data: dict) -> str:
         f"</div>\n"
     )
 
-    if latest is not None:
+    if latest is not None and h:
         bmi = _bmi(latest, h)
         status_key = _bmi_status_key(bmi)
         status_label = labels.get(status_key, status_key)
@@ -325,7 +325,7 @@ def _table(data: dict) -> str:
 
         avg = week_avgs[idx]
         avg_str = f"**{avg:.2f}**" if avg else "—"
-        bmi_val = _bmi(avg, h)
+        bmi_val = _bmi(avg, h) if (avg and h) else None
         bmi_str = (
             (f'<span style="color:{_bmi_color(bmi_val)}">**{bmi_val:.1f}**</span>')
             if (avg and h)
@@ -370,7 +370,7 @@ def _table(data: dict) -> str:
         date_range = f"{_date_str(week_start)}-{_date_str(week_end)}"
         avg = week_avgs[i]
         avg_str = f"**{avg:.2f}**" if avg else "—"
-        bmi_val = _bmi(avg, h)
+        bmi_val = _bmi(avg, h) if (avg and h) else None
         bmi_str = (
             (f'<span style="color:{_bmi_color(bmi_val)}">**{bmi_val:.1f}**</span>')
             if (avg and h)
