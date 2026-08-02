@@ -51,6 +51,7 @@ check-fmt = [
 lint-py = "ruff check ."
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
+sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
 test = { cmd = "uv run --extra test pytest -q", help = "Run unit tests (pytest, test extras): uv run poe test" }

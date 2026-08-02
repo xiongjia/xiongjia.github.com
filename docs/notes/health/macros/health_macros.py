@@ -1,6 +1,6 @@
 """Combined macros module for health tracking.
 
-Loads and combines macros from weight_macros and retire_macros.
+Loads and combines macros from weight, retire, and running modules.
 """
 
 import importlib.util
@@ -21,9 +21,11 @@ def _load_from_file(filename):
 
 _weight_mod = _load_from_file("weight_macros.py")
 _retire_mod = _load_from_file("retire_macros.py")
+_running_mod = _load_from_file("running_macros.py")
 
 
 def define_env(env):
-    """Register all health macros from weight and retire modules."""
+    """Register all health macros from weight, retire, and running modules."""
     _weight_mod.define_env(env)
     _retire_mod.define_env(env)
+    _running_mod.define_env(env)

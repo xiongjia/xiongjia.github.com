@@ -45,3 +45,6 @@ docs/assets/javascripts/mermaid.*
 docs/.mermaid-version
 # Build metadata
 *.egg-info/
+# Python coverage artifacts
+.coverage
+.coverage.*
