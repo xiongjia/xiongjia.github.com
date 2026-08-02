@@ -95,7 +95,11 @@ xiongjia.github.com/
 │   └── test_time_arg.py
 ├── plugins/                       # Custom MkDocs hooks
 │   ├── draft_filter.py            # Draft page filter
-│   └── mermaid_assets.py          # Mermaid JS local downloader
+│   ├── snippet_include.py         # `<!-- include: -->` snippet expansion
+│   ├── moment_hook.py             # Moment micro-post timeline (delegates to mkdocs_moment)
+│   ├── backlinks.py               # Bidirectional links & topology graphs
+│   ├── mermaid_assets.py          # Mermaid JS local downloader
+│   └── mkdocs_moment/             # Moment plugin package
 ├── overrides/                     # MkDocs Material theme overrides
 │   ├── main.html                  # Extra meta tags & external link handling
 │   ├── 404.html                   # Custom 404 page
@@ -132,6 +136,9 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 `on_post_page`).
 
 - **`draft_filter.py`** — Filters out `draft: true` pages in production (env-driven)
+- **`snippet_include.py`** — Expands `<!-- include: path -->` snippet markers
+- **`moment_hook.py`** — Moment micro-post timeline (delegates to `plugins/mkdocs_moment/`)
+- **`backlinks.py`** — Bidirectional links: backlinks + topology graphs (see below)
 - **`mermaid_assets.py`** — Downloads & injects self-hosted Mermaid JS bundle
 
 ### MkDocs Plugins (`mkdocs.yml` → `plugins`)
@@ -147,11 +154,92 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 - **`tags`** — Tag index pages with scope-based grouping. Built-in
 - **`blog`** — Full blogging engine (pagination, archives, drafts). Config: `blog_dir: notes`, `pagination_per_page: 5`. Built-in
 
-**Load order**: hooks (`on_*` events) → plugins (in `mkdocs.yml` order) → markdown_extensions (during Markdown rendering).
+**Load order**: plugins (in `mkdocs.yml` order) → hooks (registered via `hooks:`, appended after the yaml plugins) → markdown_extensions (during Markdown rendering).
 
 **Note**: `markdown_extensions` (e.g. `pymdownx.superfences`, `admonition`,
 `footnotes`) are Python-Markdown extensions, **not** MkDocs-level plugins,
 and operate at the Markdown rendering layer.
+
+## Bidirectional Links (双向链接)
+
+Bidirectional navigation is implemented by the custom hook
+[`plugins/backlinks.py`](../plugins/backlinks.py) (registered **last** in
+`mkdocs.yml` → `hooks`). Two features:
+
+1. **Backlinks (反向链接)** — pages with incoming links show a collapsed
+   `??? info "Backlinks (N)"` card listing every page that links to them, plus a
+   `??? info "Links (N)"` card for outgoing links when any exist (backlinks but
+   no outgoing links → Backlinks card only; no backlinks → one combined card;
+   no links at all → nothing) — readers can jump between linked docs in both
+   directions.
+1. **Topology graph (双向链拓扑图)** — interactive Mermaid flowcharts rendered by
+   the existing `mermaid2` + Material chain (no new JS): a per-page
+   *neighborhood* graph (BFS within `graph.depth` hops, capped by
+   `graph.max_nodes`) and a site-wide overview at `notes/link-graph.md` — a
+   committed stub whose content is generated at build time, with section-
+   clustered subgraphs.
+
+### Design: two passes over a single link index
+
+- **Pass A (`on_files`)** — after `draft_filter` removes drafts, build the page
+  map from the final `config.files`, then pre-scan every in-scope page's raw
+  markdown: expand `<!-- include: -->` snippets, strip code fences / inline
+  code / images / external & anchor-only links, resolve relative targets
+  against the page's `src_uri` (same semantics as MkDocs), normalize
+  (`index.md`, drop `#fragment` / `?query`), and record edges
+  `(source → target)`. Output: a complete, order-independent edge set.
+- **Pass B (`on_page_markdown`)** — pure injection, no accumulation: invert the
+  edge set into `target → [backlink sources]`, append the collapsed cards and
+  the neighborhood graph, or replace the whole global page body with the
+  site-wide graph.
+
+**Why pre-scan instead of accumulating while rendering**: MkDocs renders pages
+in a single sequential pass with no deferred injection point (`on_post_build`
+only receives `config`). Backlinks on an early page can depend on edges from
+pages rendered later, and the global graph needs the full edge set too — so the
+index must be complete *before* any page renders, i.e. in `on_files`.
+Accumulate-then-reorder only fixes the global page; an `on_post_build` HTML
+rewrite would bypass MkDocs' write logic. Full design, spike findings and
+rejected alternatives:
+[`internal/plans/arch/mkdocs-backlinks-topology.md`](./plans/arch/mkdocs-backlinks-topology.md)
+(completed 2026-08-02).
+
+### Rendering chain & ordering constraints
+
+- Injection happens at **markdown level** — never HTML in `on_post_page`,
+  because mermaid2's `on_post_page` runs before hooks' and HTML-level
+  injection would miss the self-hosted script tag / `mermaidConfig` and render
+  as raw text.
+- Generated graphs emit `flowchart {layout.upper()}` (lowercase `graph lr` is a
+  mermaid 10.9.0 parse quirk) with ASCII node ids, title labels, and
+  **relative** `click` URLs (per AGENTS.md relative-link convention).
+- Hook ordering: registered **last**, so `draft_filter` has already dropped
+  drafts and the `macros` plugin has already rendered jinja (plugins run before
+  hooks) — extracted edges are consistent with what pages actually show.
+- Macro-generated links are not in the pre-scan edge set; currently verified
+  empty (health macros emit no cross-page markdown links). If a future macro
+  emits links, per-page backlinks/graphs would miss them — revisit then.
+
+### Scope & non-goals
+
+Blog posts (`notes/posts/`) and moments are excluded by default. No WYSIWYG
+link editing, no force-directed layouts, no auto-repair of stale links (stale
+targets are skipped). `max_backlinks` caps each list with
+"… and N more"; `graph.max_nodes` caps BFS growth.
+
+### Config (`mkdocs.yml` → `extra.backlinks`)
+
+| Option                | Default                                                       | Purpose                                                       |
+| --------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `enabled`             | `true`                                                        | Master switch                                                 |
+| `include`             | `["notes/**"]`                                                | Gitignore-style globs (relative to docs_dir)                  |
+| `exclude`             | `["notes/posts/**", "moments/**", "notes/_index_content.md"]` | Pages excluded from the index                                 |
+| `max_backlinks`       | `20`                                                          | Cap per list (`all` = unlimited)                              |
+| `graph.depth`         | `5`                                                           | Neighborhood BFS depth (per-page graph)                       |
+| `graph.layout`        | `"lr"`                                                        | Per-page flowchart direction                                  |
+| `graph.global_layout` | `"lr"`                                                        | Global page: main+subgraph LR → portrait, avoids width-shrink |
+| `graph.max_nodes`     | `50`                                                          | Safety cap for BFS / graph size                               |
+| `graph.global_page`   | `"notes/link-graph.md"`                                       | Site-wide topology page (committed stub)                      |
 
 ## Environment Variables
 
