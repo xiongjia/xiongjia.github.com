@@ -16,10 +16,10 @@ hide:
 
 | Prototype                               | Status          | Created    |
 | --------------------------------------- | --------------- | ---------- |
-| [ali-oss-client](#ali-oss-client)       | 🟡 Experimental | 2026-08-01 |
+| [ali-oss-client](#ali-oss-client)       | 🟢 Working      | 2026-08-01 |
 | [prototype-example](#prototype-example) | 🟡 Experimental | 2026-08-01 |
 
-状态：🟡 Experimental（实验性，随时变化）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
+状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
 ______________________________________________________________________
 
@@ -29,7 +29,7 @@ ______________________________________________________________________
 
 TypeScript 原型，用官方 `ali-oss` SDK（pnpm 管理）演示阿里云 OSS 基本用法：
 环境变量配置、列 bucket / 对象、上传、下载、生成签名 URL、删除（demo 对象自动清理）。
-README 内含基本的阿里云 OSS 配置步骤（RAM 用户 + AccessKey、建 bucket、region/endpoint、`.env`）。
+README 内含基本的阿里云 OSS 配置步骤（RAM 用户 + AccessKey、建 bucket、region/endpoint、`.env.dev.local`）。
 
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/ali-oss-client)
 

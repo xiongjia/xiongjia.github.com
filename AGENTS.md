@@ -80,7 +80,9 @@ See [internal/architecture.md](internal/architecture.md) for full command refere
   inside its own `.gitignore`
 
 - **Index**: `prototypes/README.md` lists all prototypes (name, description,
-  created, status) — always update it when a prototype is added/removed
+  created, status) — always update it when a prototype is added/removed.
+  Status vocabulary: `experimental` (initial, not validated), `working`
+  (validated locally and usable) — avoid inventing new status words.
 
 - **fmt / lint skip**: `prototypes` is in ruff's `extend-exclude`
   (`pyproject.toml`), so the main Python toolchain never formats/lints

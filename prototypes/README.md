@@ -14,7 +14,7 @@ Python `.venv/`, Node `node_modules/`).
 - **[ali-oss-client](./ali-oss-client/README.md)** — Aliyun OSS client in
   TypeScript (official `ali-oss` SDK, pnpm): config via env vars, bucket/object
   listing, upload, download, signed URLs, delete · created 2026-08-01 · status
-  `experimental`
+  `working`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`

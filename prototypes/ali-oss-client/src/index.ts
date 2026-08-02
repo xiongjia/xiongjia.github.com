@@ -1,6 +1,10 @@
-import "dotenv/config";
+import dotenv from "dotenv";
 import OSS from "ali-oss";
 import { isConfigured, loadConfig, type OSSConfig } from "./config.js";
+
+// Load env before anything reads process.env (module top-level, not inside
+// main(), so future module-level code gets the variables too).
+dotenv.config({ path: [".env.dev.local", ".env"] });
 
 function createClient(cfg: OSSConfig): OSS {
   const options: OSS.Options = {
@@ -21,9 +25,19 @@ function section(title: string): void {
 
 async function listBuckets(client: OSS): Promise<void> {
   section("List buckets");
-  const buckets = await client.listBuckets(null);
+  // ali-oss 6.23 actually returns { buckets, owner, isTruncated, nextMarker, res },
+  // not an array; buckets is null when the account has none. @types/ali-oss
+  // declares the wrong return type, so cast to the real shape (see
+  // node_modules/ali-oss/lib/bucket.js → listBuckets).
+  const listResult = (await client.listBuckets({})) as unknown as {
+    buckets: OSS.Bucket[] | null;
+  };
+  const buckets = listResult.buckets ?? [];
   for (const b of buckets) {
     console.log(`  - ${b.name} (region: ${b.region}, created: ${b.creationDate})`);
+  }
+  if (buckets.length === 0) {
+    console.log("  (no buckets)");
   }
 }
 
@@ -86,7 +100,7 @@ async function main(): Promise<void> {
       [
         "Aliyun OSS demo is not configured (dry-run, nothing to do).",
         "",
-        "Copy .env.example to .env and fill in:",
+        "Copy .env.example to .env.dev.local and fill in:",
         "  ALIYUN_OSS_REGION             e.g. oss-cn-hangzhou",
         "  ALIYUN_OSS_BUCKET             your bucket name",
         "  ALIYUN_OSS_ACCESS_KEY_ID      RAM user AccessKey ID",
