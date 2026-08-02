@@ -14,7 +14,8 @@ graph TD
   A --> E["📰 Posts"]
   A --> F["⏰ Moments"]
   A --> G["❤️ Health Monitor"]
-  A --> H["🧪 Prototypes"]
+  B --> I["🛠️ Tools"]
+  B --> H["🧪 Prototypes"]
 
   click A "/notes/" "Notes"
   click B "/notes/collection/" "Collection"
@@ -24,6 +25,7 @@ graph TD
   click F "/moments/" "Moments"
   click G "/notes/health/" "Health Monitor"
   click H "/notes/prototypes/" "Prototypes"
+  click I "/notes/tools/" "Tools"
 ```
 
 ______________________________________________________________________
@@ -32,4 +34,5 @@ ______________________________________________________________________
 
 - :material-github: [xiongjia](https://github.com/xiongjia)
 - :octicons-mail-24: [lexiongjia@gmail.com](mailto:lexiongjia@gmail.com)
-- :material-rss: [RSS](/feed_rss_created.xml)
+- :material-rss: [Posts RSS](/feed_rss_created.xml)
+- :material-rss: [Moments RSS](/moments/feed.xml)

@@ -43,24 +43,12 @@
     .moment-archive__content {
         line-height: 1.6;
         /* images render as a horizontal thumbnail row: each image in its own
-           paragraph (blank-line separated) becomes an inline-block tile;
-           container font stays small (0.8rem) so the tiles' whitespace gap
-           is tiny; text paragraphs restore the normal size below. */
+           paragraph (blank-line separated) becomes an inline-block tile.
+           Font is the site typeset size (0.8rem, matching the .md-typeset
+           base) so text, headings and code — all em-relative to the
+           container — inherit the same scale as Notes pages; the whitespace
+           gap between tiles is negligible (tiles also carry 8px margins). */
         font-size: 0.8rem;
-    }
-    /* no-:has() fallback: keep text readable on ~2020-2022 browsers, i.e. ones
-       with selector() in @supports but without :has() (older browsers fall
-       through to the small font - acceptable for a personal site); tiles
-       degrade to stacked images at natural size */
-    @supports not selector(:has(*)) {
-        .moment-archive__content {
-            font-size: var(--md-typeset-font-size, 1rem);
-        }
-    }
-    .moment-archive__content p:not(:has(> a.glightbox:only-child)),
-    .moment-archive__content blockquote,
-    .moment-archive__content li {
-        font-size: var(--md-typeset-font-size, 1rem);
     }
     .moment-archive__content img {
         max-width: 100%;

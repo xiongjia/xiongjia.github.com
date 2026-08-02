@@ -17,25 +17,13 @@
 <style>
     /* detail: images render as a horizontal thumbnail row (like the timeline),
        click opens full-size via glightbox. Requires :has() support (modern
-       browsers, 2023+). Container font stays small (0.7rem) so the whitespace
-       between inline-block tiles is tiny; text paragraphs, lists and
-       blockquotes restore the normal size below. */
+       browsers, 2023+). Container font is the site typeset size (0.8rem,
+       matching the .md-typeset base) so text, headings and code — all
+       em-relative to the container — inherit the same scale as Notes pages;
+       the whitespace gap between inline-block image tiles at 0.8rem is
+       negligible (tiles also carry 8px margins). */
     .moment-detail__content {
-        font-size: 0.7rem;
-    }
-    /* no-:has() fallback: keep text readable on ~2020-2022 browsers, i.e. ones
-       with selector() in @supports but without :has() (older browsers fall
-       through to the small font - acceptable for a personal site); tiles
-       degrade to stacked images at natural size */
-    @supports not selector(:has(*)) {
-        .moment-detail__content {
-            font-size: var(--md-typeset-font-size, 1rem);
-        }
-    }
-    .moment-detail__content p:not(:has(> a.glightbox:only-child)),
-    .moment-detail__content blockquote,
-    .moment-detail__content li {
-        font-size: var(--md-typeset-font-size, 1rem);
+        font-size: 0.8rem;
     }
     /* image-only paragraphs (blank-line separated images) become inline tiles;
        paragraphs mixing text and an image stay block-level with restored text */
