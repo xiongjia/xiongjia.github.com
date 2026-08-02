@@ -9,6 +9,18 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 
 extra:
   git_hash: !ENV [GIT_HASH, '']
+  backlinks:
+    enabled: true
+    include: ["notes/**"]
+    exclude: ["notes/posts/**", "moments/**", "notes/_index_content.md"]
+    max_backlinks: 20
+    graph:
+      enabled: true
+      depth: 5
+      layout: "lr"
+      global_layout: "lr"   # main+subgraph LR -> portrait, avoids width-shrink
+      max_nodes: 50
+      global_page: "notes/link-graph.md"
   moment:
     path: moments
     # feed: enabled by default — generates /moments/feed.xml, which the
@@ -42,6 +54,7 @@ hooks:
   - plugins/snippet_include.py
   - plugins/draft_filter.py
   - plugins/moment_hook.py
+  - plugins/backlinks.py
 
 # plugins
 plugins:
@@ -102,7 +115,6 @@ theme:
     - header.autohide
     - navigation.footer
     - navigation.indexes
-    - navigation.sections
     - navigation.tabs
     - navigation.top
     - navigation.tracking
@@ -167,6 +179,7 @@ markdown_extensions:
 nav:
   - Notes:
     - index.md
+    - Link Graph: notes/link-graph.md
     - Collection:
       - notes/collection/index.md
       - Database: notes/collection/database.md
