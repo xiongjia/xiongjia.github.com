@@ -36,6 +36,12 @@ jobs:
   deploy:
     if: github.ref == 'refs/heads/master'
     needs: [lint]
+    # Serialize Pages deployments: deploy-pages is async and parallel runs
+    # can land out of order, making GitHub Pages serve an older artifact
+    # ("fallback to a historical version"). Cancel stale in-progress deploys.
+    concurrency:
+      group: pages
+      cancel-in-progress: true
     permissions:
       pages: write
       id-token: write
