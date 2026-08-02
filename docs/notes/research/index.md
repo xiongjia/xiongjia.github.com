@@ -22,6 +22,7 @@ ______________________________________________________________________
 ## Learning Plans
 
 - [Rust](./docs/rust/00-rust.md): Rust 学习计划 — 从基础语法到并发异步的 7 阶段路线图。
+- [English](./docs/english/00-english.md): Hollow Knight 英语学习计划 — 阅读、词汇、发音、Shadowing、口语、写作。
 
 ## Libraries or Frameworks
 

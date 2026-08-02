@@ -84,6 +84,6 @@ tags: [refactor, mkdocs]
 
 ### Learning
 
-- [hollow-knight-english-learning.md](./hollow-knight-english-learning.md) — Hollow Knight 英语学习计划：阅读、词汇、发音、Shadowing、口语、写作（内容落在 `docs/notes/research/english/`）
+- [hollow-knight-english-learning.md](./hollow-knight-english-learning.md) — Hollow Knight 英语学习计划：阅读、词汇、发音、Shadowing、口语、写作（内容落在 `docs/notes/research/docs/english/`）
 - [duckdb-internals-learning.md](./duckdb-internals-learning.md) — DuckDB Internals 学习计划（Greybeam 系列）：查询生命周期、列式存储、向量化执行（内容落在 `docs/notes/research/docs/duckdb/`）
 - [pgsimcity-learning.md](./pgsimcity-learning.md) — PGSimCity 学习计划：PostgreSQL 内部机制 3D 可视化（缓冲池、WAL、检查点、autovacuum、复制）（内容落在 `docs/notes/research/docs/pgsimcity/`）

@@ -26,11 +26,12 @@ tags: [english, learning, hollow-knight, pronunciation, vocabulary, shadowing]
 
 ## 内容位置
 
-知识库放在本仓库 **`docs/notes/research/english/`**（融入现有 MkDocs 站点，
-跟随 research 目录的既有约定），预计结构：
+知识库放在本仓库 **`docs/notes/research/docs/english/`**（融入现有 MkDocs
+站点，跟随 research 目录的既有约定 —— 与 `docs/rust/`、`docs/jellyfin/`
+等同级），预计结构：
 
 ```text
-docs/notes/research/english/
+docs/notes/research/docs/english/
 ├── 00-english.md                    # 学习总览 / Dashboard 入口
 ├── pronunciation.md                 # 发音体系（Ear / Mouth / Rhythm 三阶段）
 ├── pronunciation-mistakes-log.md    # 易错音长期记录
@@ -50,24 +51,25 @@ docs/notes/research/english/
 
 ### 项目搭建（贴合本仓库）
 
-- [ ] 在 `docs/notes/research/english/` 建立上述目录结构
-- [ ] `00-english.md` 遵循 research 命名惯例（`00-*.md`），作为总览 / Dashboard
+- [x] 在 `docs/notes/research/docs/english/` 建立上述目录结构
+- [x] `00-english.md` 遵循 research 命名惯例（`00-*.md`），作为总览 / Dashboard
   入口（Today's Practice / Hollow Knight / Vocabulary / Pronunciation /
   Shadowing / Speaking / Weekly Review 导航）
-- [ ] 所有页面补齐 research 约定 frontmatter：`title`、`tags`、`categories`，
+- [x] 所有页面补齐 research 约定 frontmatter：`title`、`tags`、`categories`，
   并带 AI 免责声明（参考 `docs/notes/research/docs/jellyfin/00-jellyfin.md`）
-- [ ] 在 `docs/notes/research/index.md` 的 **Learning Plans** 分类下注册
-  English 学习计划条目
-- [ ] 页面间使用相对链接（如 `./hollow-knight/lore.md`），遵循仓库约定
+- [x] 在 `docs/notes/research/index.md` 的 **Learning Plans** 分类下注册
+  English 学习计划条目（链接 `./docs/english/00-english.md`，与 Rust 条目
+  保持一致）
+- [x] 页面间使用相对链接（如 `./hollow-knight/lore.md`），遵循仓库约定
 
 ### 内容模板与体系
 
-- [ ] 建立统一内容模板（Original / Vocabulary / Grammar / Pronunciation /
+- [x] 建立统一内容模板（Original / Vocabulary / Grammar / Pronunciation /
   Shadowing / Summary / Speaking / Personal Notes）
-- [ ] 建立 Vocabulary 卡片体系：发音、重音、词性、常见含义、HK 中的含义、
+- [x] 建立 Vocabulary 卡片体系：发音、重音、词性、常见含义、HK 中的含义、
   游戏原句、自己造句
-- [ ] 建立 Pronunciation Mistakes Log（Problem / Reason / Practice / Result）
-- [ ] 建立 Weekly Review 模板（本周词汇 / 发音错误 / Shadowing 录音 / Summary）
+- [x] 建立 Pronunciation Mistakes Log（Problem / Reason / Practice / Result）
+- [x] 建立 Weekly Review 模板（本周词汇 / 发音错误 / Shadowing 录音 / Summary）
 
 ### Pronunciation 发音体系（三阶段）
 
@@ -117,7 +119,9 @@ docs/notes/research/english/
 
 - [ ] **draft 机制**：WIP 学习页面先加 `draft: true` frontmatter（本地
   `poe server` 可见，生产构建自动过滤，见 `plugins/draft_filter.py`），
-  完成后移除
+  完成后移除；注意 `*-draft.md` 草稿**必须同时加 `draft: true`** ——
+  draft_filter 只认 frontmatter、不认文件名，否则本地 `poe server-prod` /
+  `poe build` 会把草稿构建进站点（CI 无该文件，线上不受影响）
 - [ ] **AI 辅助落地**：学习笔记先以 `*-draft.md` 草稿形式在本地迭代，成熟后
   定稿；利用 pi 对话直接生成/复习内容（词汇卡片、复习题、口语纠错）
 - [ ] **格式规范**：笔记保持 mdformat 兼容（`poe fmt` 会格式化 docs/），
