@@ -38,6 +38,10 @@ extra:
     light_theme: light
     dark_theme: dark
   
+# docs fragments pulled in via `<!-- include: ... -->` — never built as pages
+exclude_docs: |
+  notes/health/_summary.md
+
 # extra CSS
 extra_css:
   - assets/stylesheets/retire.css

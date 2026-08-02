@@ -35,22 +35,23 @@ build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" },
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create_post.py", help = "Create a new blog post (defaults to draft): uv run poe create-post \"Title\" --category bits --time \"yesterday 9am\"" }
 format-py = "ruff format ."
-format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/"
+format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md"
 format = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md" },
 ]
 fmt = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md" },
 ]
 check-fmt = [
     { cmd = "ruff format --check ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --check" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md --check" },
 ]
 lint-py = "ruff check ."
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
+update-health-summary = { cmd = "python scripts/update_health_summary.py", help = "Regenerate the health status summary on the health index page (calls local pi CLI)" }
 sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }

@@ -22,6 +22,12 @@ graph TD
 
 ______________________________________________________________________
 
+## 💡 健康状态总结与建议
+
+<!-- include: notes/health/_summary.md -->
+
+______________________________________________________________________
+
 - [🏋️ **Weight Track**](./weight.md) — track my weight, BMI, and daily grid
 - [🕰️ **Retirement Countdown**](./retire.md) — countdown to retirement
 - [🏃 **Running Track**](./running.md) — running stats synced from running_page
