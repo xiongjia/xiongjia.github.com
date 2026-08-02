@@ -30,6 +30,7 @@ hide:
 
 - [bub](https://github.com/bubbuild/bub) - AI CLI 工具
 - [pinchtab](https://github.com/pinchtab/pinchtab) - AI Golang 工具
+- [RTK](https://github.com/rtk-ai/rtk) / [rtk-ai.app](https://www.rtk-ai.app/) - Rust Token Killer，将常见开发命令的 LLM token 消耗降低 60-90%，单 Rust 二进制、零依赖
 
 ## AI Audio
 
