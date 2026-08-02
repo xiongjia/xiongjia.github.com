@@ -8,7 +8,7 @@ xiongjia.github.com/
 │   └── plans/        #   plan-index.md; archived plans in plans/arch/
 ├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
 ├── prototypes/       # Experimental mini-projects (committed; per-prototype .gitignore, see Convention)
-├── scripts/          # Utility scripts (create_post, md2wechat, optimize_images, etc.)
+├── scripts/          # Utility scripts (create_post, sync_running, update_health_summary, etc.)
 ├── shared/           # Shared utilities for plugins & scripts (strings, frontmatter, date, io)
 ├── tests/            # Unit & integration tests (pytest)
 ├── overrides/        # Theme overrides (comments, meta tags, external links)
@@ -26,19 +26,22 @@ xiongjia.github.com/
 ## DEV environment tips
 
 ```bash
-uv sync                          # install dependencies
-uv run poe server                # dev server WITH drafts (hot reload)
-uv run poe server-prod           # dev server WITHOUT drafts (mirrors production)
-uv run poe build                 # production build
-uv run poe build-selfhost        # self-hosted build
-uv run poe create-post "Title"   # new blog post (default: draft)
-uv run poe create-moment "Text"   # new Moment micro-post (--draft hides in prod)
-uv run poe fmt                   # format Python + Markdown
-uv run poe lint-py               # Python lint check (ruff)
-uv run poe test                  # run unit tests (pytest, tests/)
-uv run poe optimize-images <path> # convert PNG/JPG/JPEG to WebP
-uv run poe add-weight-week [n]   # add empty week(s) to weight data
-uv run poe md2wechat [path]      # convert post to WeChat HTML
+uv sync                            # install dependencies
+uv run poe server                  # dev server WITH drafts (hot reload)
+uv run poe server-prod             # dev server WITHOUT drafts (mirrors production)
+uv run poe build                   # production build
+uv run poe build-drafts            # build including drafts (MKDOCS_INCLUDE_DRAFTS=true)
+uv run poe build-selfhost          # self-hosted build
+uv run poe create-post "Title"     # new blog post (default: draft)
+uv run poe create-moment "Text"    # new Moment micro-post (--draft hides in prod)
+uv run poe fmt                     # format Python + Markdown
+uv run poe lint-py                 # Python lint check (ruff)
+uv run poe test                    # run unit tests (pytest, tests/)
+uv run poe optimize-images <path>  # convert PNG/JPG/JPEG to WebP
+uv run poe add-weight-week [n]     # add empty week(s) to weight data
+uv run poe update-health-summary   # regenerate health index summary (calls local pi)
+uv run poe sync-running            # sync running data from running_page site
+uv run poe md2wechat [path]        # convert post to WeChat HTML
 ```
 
 Site runs at `http://localhost:8000` by default.

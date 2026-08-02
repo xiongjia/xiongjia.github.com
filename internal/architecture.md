@@ -60,16 +60,20 @@ xiongjia.github.com/
 │   │   │       ├── shadcn-ui/
 │   │   │       └── trip/
 │   │   ├── health/                # Personal health tracking
-│   │   │   ├── index.md           # Health Monitor dashboard (mermaid)
+│   │   │   ├── index.md           # Health Monitor dashboard (mermaid + AI summary)
+│   │   │   ├── _summary.md        # AI health summary fragment (poe update-health-summary)
 │   │   │   ├── weight.md          # Weight tracking (macros-generated)
 │   │   │   ├── retire.md          # Retirement countdown (macros-generated)
+│   │   │   ├── running.md         # Running stats (macros-generated)
 │   │   │   ├── data/
 │   │   │   │   ├── weight.yml     # Weight data
-│   │   │   │   └── retire.yml     # Retirement config
+│   │   │   │   ├── retire.yml     # Retirement config
+│   │   │   │   └── running.yml    # Running data (poe sync-running)
 │   │   │   └── macros/
 │   │   │       ├── health_macros.py
 │   │   │       ├── weight_macros.py
-│   │   │       └── retire_macros.py
+│   │   │       ├── retire_macros.py
+│   │   │       └── running_macros.py
 │   │   └── posts/                 # Blog archive (MkDocs blog plugin)
 │   │       ├── index.md           # Posts archive
 │   │       └── posts/             # Blog posts (organized by category)
@@ -89,10 +93,14 @@ xiongjia.github.com/
 │   ├── time_arg.py                # Shared --time date/time parser
 │   ├── optimize_images.py         # PNG/JPG/JPEG → WebP converter
 │   ├── add_weight_week.py         # Add empty week to weight data
+│   ├── sync_running.py            # Sync running data from running_page
+│   ├── update_health_summary.py   # Regenerate AI health summary (local pi CLI)
 │   └── md2wechat.py               # MkDocs → WeChat HTML converter
 ├── tests/                         # Unit tests (pytest)
 │   ├── test_md2wechat.py
-│   └── test_time_arg.py
+│   ├── test_sync_running.py
+│   ├── test_update_health_summary.py
+│   └── …                          # remaining test files
 ├── plugins/                       # Custom MkDocs hooks
 │   ├── draft_filter.py            # Draft page filter
 │   ├── snippet_include.py         # `<!-- include: -->` snippet expansion
@@ -268,13 +276,17 @@ Available `poe` commands:
 | `uv run poe server`                  | Dev server with drafts                            |
 | `uv run poe server-prod`             | Dev server without drafts                         |
 | `uv run poe build`                   | Production build                                  |
+| `uv run poe build-drafts`            | Production build including drafts                 |
 | `uv run poe build-selfhost`          | Self-hosted build (separate `site-selfhost/` dir) |
 | `uv run poe fmt`                     | Format Python (ruff) + Markdown (mdformat)        |
 | `uv run poe lint-py`                 | Python lint check (ruff)                          |
 | `uv run poe test`                    | Run unit tests (pytest, `tests/`)                 |
 | `uv run poe create-post "Title"`     | New blog post scaffolding                         |
+| `uv run poe create-moment "Text"`    | New Moment micro-post scaffolding                 |
 | `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP conversion                    |
 | `uv run poe add-weight-week [count]` | Add empty week(s) to weight data                  |
+| `uv run poe update-health-summary`   | Regenerate the health index summary (local pi AI) |
+| `uv run poe sync-running`            | Sync running data from the deployed running_page  |
 | `uv run poe md2wechat [path]`        | Convert blog post to WeChat HTML                  |
 
 ## Draft Mechanism
@@ -348,5 +360,6 @@ Content pages themselves are mixed Chinese/English depending on the section.
 - [Weight Tracker Design](./weight-tracker-design.md)
 - [Discuss System Design](./discuss-design.md)
 - [Retirement Countdown Design](./retirement-countdown-design.md)
+- [Health Summary Design](./health-summary-design.md)
 
 > This file is the architecture overview.

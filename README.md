@@ -20,6 +20,8 @@ Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 | `uv run poe server`                 | Dev server WITH drafts                         |
 | `uv run poe server-prod`            | Dev server WITHOUT drafts (mirrors production) |
 | `uv run poe build`                  | Production build (excludes drafts)             |
+| `uv run poe build-drafts`           | Build including drafts                         |
+| `uv run poe build-selfhost`         | Self-hosted build (separate `site-selfhost/`)  |
 | `uv run poe fmt`                    | Format Python & Markdown                       |
 | `uv run poe lint-py`                | Python lint check (ruff)                       |
 | `uv run poe test`                   | Run unit tests (pytest, `tests/`)              |
@@ -27,6 +29,8 @@ Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 | `uv run poe create-moment "Text"`   | New Moment entry (short micro-post)            |
 | `uv run poe optimize-images <path>` | PNG/JPG/JPEG → WebP                            |
 | `uv run poe add-weight-week [n]`    | Add empty week(s) to weight data               |
+| `uv run poe update-health-summary`  | Regenerate AI health summary (local pi CLI)    |
+| `uv run poe sync-running`           | Sync running data from running_page site       |
 | `uv run poe md2wechat [path]`       | Convert post to WeChat HTML                    |
 
 ## Common Examples
@@ -81,6 +85,8 @@ Detailed documentation moved to `internal/`:
 - [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline
 - [Weight Tracker Design](internal/weight-tracker-design.md) — weight data format, macros, tooling
+- [Running Track Design](internal/running-track-design.md) — running data sync & rendering
+- [Health Summary Design](internal/health-summary-design.md) — AI health summary via local `pi`
 - [Discuss System Design](internal/discuss-design.md) — Giscus comment system setup & configuration
 - [Retirement Countdown Design](internal/retirement-countdown-design.md) — retirement policy calculator & visualization
 
@@ -91,7 +97,7 @@ internal/          # Dev docs & plans: design docs, architecture.md,
                    #   plans/plan-index.md, archived plans in plans/arch/
 prototypes/        # Experimental mini-projects (index: prototypes/README.md)
 shared/            # Shared Python utilities for plugins & scripts (strings, frontmatter, date, io)
-scripts/           # CLI utility scripts (create_post, create_moment, optimize_images, …)
+scripts/           # CLI utility scripts (create_post, create_moment, sync_running, update_health_summary, …)
 plugins/           # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
 tests/             # pytest unit & integration tests
 overrides/         # Theme overrides (comments, meta tags, external links)
@@ -103,7 +109,7 @@ docs/
 │   ├── collection/   # Curated links by domain
 │   ├── research/     # Source code analysis
 │   ├── prototypes.md # Prototype index page (GitHub jumps)
-│   ├── health/       # Weight & retirement tracking
+│   ├── health/       # Health tracking (weight, retirement, running, AI summary)
 │   └── posts/        # Blog archive (MkDocs blog plugin)
 ├── projects/        # Project outputs
 └── discuss/         # Giscus comment page
