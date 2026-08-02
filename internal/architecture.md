@@ -215,9 +215,37 @@ Manual alternatives (without hooks):
 
 `.github/workflows/ci.yml`:
 
-- Runs on push to any branch and pull requests
-- Steps: lint (ruff format check + ruff lint + mdformat check) → build → deploy
-- Deploy to GitHub Pages only on push to `master`
+- **`lint`** — runs on push to any branch and pull requests: pytest, ruff
+  format/lint check, mdformat check, MkDocs build check
+- **`deploy`** — on push to `master` only: builds the site and publishes it
+  to GitHub Pages as a **workflow artifact** (`actions/deploy-pages`). The
+  Pages source is "GitHub Actions" (`build_type: workflow`), so the live
+  site is NOT served from the `gh-pages` branch.
+
+### No PR previews (why)
+
+There is deliberately no PR preview deployment. An earlier `deploy-preview`
+job pushed a full site copy into `gh-pages` → `pr-preview/<PR>/` on every PR
+push (peaceiris/actions-gh-pages, `keep_files: true`). Because Pages is
+artifact-served, those preview URLs (`https://xiongjia.github.io/pr-preview/<n>/`)
+were never reachable (404), while the branch accumulated ~79 commits /
+~86MB of history. The job was removed (2026-08) so CI no longer writes to
+`gh-pages` at all. If PR previews are ever wanted again, use a hosting
+provider with native per-PR preview deploys (Netlify / Vercel / Cloudflare
+Pages) instead of the `gh-pages` branch.
+
+### Cleaning up the legacy `gh-pages` branch
+
+The old branch is not used by the live site and can be safely deleted.
+Manual cleanup:
+
+```bash
+bash scripts/cleanup_gh_pages.sh   # checks Pages build_type, confirms, deletes branch + local refs
+```
+
+or manually: `git push origin --delete gh-pages && git fetch --prune`.
+After deletion, unreachable objects are garbage-collected by GitHub within
+a few days; the repo size shown in the UI drops accordingly.
 
 ## Localization / i18n
 
