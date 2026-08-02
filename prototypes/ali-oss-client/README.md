@@ -22,10 +22,10 @@ Status: `experimental`
 
 1. Open the RAM console: <https://ram.console.aliyun.com> (sign in with your
    Alibaba Cloud account).
-2. **Users** → **Create User** → give it a name (e.g. `oss-demo-user`), check
+1. **Users** → **Create User** → give it a name (e.g. `oss-demo-user`), check
    **OpenAPI calling access**, and record the generated **AccessKey ID** and
    **AccessKey Secret** (shown only once).
-3. Grant the user at least **AliyunOSSFullAccess** (or a tighter custom policy
+1. Grant the user at least **AliyunOSSFullAccess** (or a tighter custom policy
    scoped to one bucket). For local experiments, attaching the full policy to a
    dedicated RAM user is fine.
 
@@ -35,11 +35,11 @@ Status: `experimental`
 ### 2. Create a bucket
 
 1. Open the OSS console: <https://oss.console.aliyun.com>.
-2. **Bucket List** → **Create Bucket**.
-3. Pick a globally unique name (e.g. `my-demo-bucket`) and a **region**
+1. **Bucket List** → **Create Bucket**.
+1. Pick a globally unique name (e.g. `my-demo-bucket`) and a **region**
    (e.g. `cn-hangzhou`). The region string used in the SDK looks like
    `oss-cn-hangzhou` (region code with the `oss-` prefix).
-4. Keep the default access control (private) for a demo.
+1. Keep the default access control (private) for a demo.
 
 ### 3. Configure the prototype
 
@@ -81,6 +81,48 @@ pnpm dev       # tsx src/index.ts
 Without credentials the demo prints the setup instructions above (dry-run).
 With a configured `.env` it runs through: list buckets → list objects →
 put → get → signed URL → delete (the demo object is cleaned up afterwards).
+
+## Debugging with VS Code
+
+The repo root already ships a launch configuration for this prototype in
+`.vscode/launch.json` (named **Debug ali-oss-client (tsx)**). It runs the
+source directly with `tsx` — no build step needed:
+
+```jsonc
+{
+  "name": "Debug ali-oss-client (tsx)",
+  "type": "node",
+  "request": "launch",
+  "cwd": "${workspaceFolder}/prototypes/ali-oss-client",
+  "runtimeArgs": ["--import", "tsx"],
+  "program": "${workspaceFolder}/prototypes/ali-oss-client/src/index.ts",
+  "sourceMaps": true,
+  "skipFiles": ["<node_internals>/**"]
+}
+```
+
+### How it works
+
+- `--import tsx` is the Node-native equivalent of `pnpm dev`
+  (`tsx src/index.ts`); breakpoints map straight back to the TypeScript
+  sources via `sourceMap: true`.
+- `cwd` is the prototype directory, so `dotenv` picks up `.env` from there:
+  with credentials the debugger walks through the real OSS calls, without
+  them it hits the dry-run path.
+
+### Usage
+
+1. Make sure dependencies are installed: `pnpm install` (in
+   `prototypes/ali-oss-client/`).
+1. Open the **repo root** in VS Code, go to the **Run and Debug** panel,
+   select **Debug ali-oss-client (tsx)**, and press F5.
+
+To override environment variables without touching `.env` (e.g. for a
+different bucket), add an `env` block to the configuration:
+
+```jsonc
+"env": { "ALIYUN_OSS_BUCKET": "my-other-bucket" }
+```
 
 ## Project Layout
 

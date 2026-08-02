@@ -56,9 +56,11 @@ uv run poe create-moment "Backfill" --time "30 9pm"
 
 ## CI / Deployment
 
-`.github/workflows/ci.yml` — lint (ruff + mdformat) on all branches, deploy
-to GitHub Pages on push to `master`. Set `GIT_HASH` env var to embed commit
-hash into the page HTML.
+`.github/workflows/ci.yml` — `lint` job (pytest, ruff, mdformat, MkDocs
+build check) on all branches and pull requests; `deploy` job publishes the
+site to GitHub Pages on push to `master` as a **workflow artifact**
+(`actions/deploy-pages`) — the `gh-pages` branch is not used. Set
+`GIT_HASH` env var to embed the commit hash into the page HTML.
 
 ## Prototypes
 

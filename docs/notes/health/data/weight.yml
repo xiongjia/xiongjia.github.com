@@ -4,6 +4,8 @@ cm: 176
 # Anchor date: Monday of week 1
 # Subsequent weeks are auto-calculated from this anchor
 start_date: "2026-07-27"
+  # Week 2 — Mon 2026-08-03
+  - days: [null, null, null, null, null, null, null]
 
 # Display labels (i18n) — values use Chinese for the UI
 labels:
@@ -59,4 +61,4 @@ labels:
 # Week start dates are shown in comments to help identify each week
 weeks:
   # Week 1 — Mon 2026-07-27
-  - days: [null, 82.35, 81.50, 82.90, 82.40, 82.40, null]
+  - days: [null, 82.35, 81.50, 82.90, 82.40, 82.40, 81.90]
