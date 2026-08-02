@@ -6,6 +6,8 @@ import subprocess
 import sys
 from pathlib import Path
 
+import yaml
+
 from scripts import optimize_images
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -118,3 +120,167 @@ def test_optimize_images_update_md_refs_dry_run(tmp_path, monkeypatch):
 
     optimize_images.update_md_references(src, src.with_suffix(".webp"))
     assert "photo.webp" in md.read_text(encoding="utf-8")
+
+
+# --- add_weight_week ---
+
+
+_WEIGHT_YML = (
+    "# Height: set once\n"
+    "cm: 176\n\n"
+    'start_date: "2026-07-27"\n\n'
+    "# Display labels (i18n) — values use Chinese for the UI\n"
+    "labels:\n"
+    "  height: 身高\n\n"
+    "# 7 days per week; use null for missed days\n"
+    "weeks:\n"
+    "  # Week 1 — Mon 2026-07-27\n"
+    "  - days: [null, 82.35, 81.50, 82.90, 82.40, 82.40, 81.90]\n"
+)
+
+
+def _run_add_weight_week(tmp_path: Path, *args: str) -> subprocess.CompletedProcess:
+    return subprocess.run(
+        [sys.executable, str(REPO_ROOT / "scripts/add_weight_week.py"), *args],
+        capture_output=True,
+        text=True,
+        cwd=str(tmp_path),
+    )
+
+
+def test_add_weight_week_appends_into_weeks_list(tmp_path):
+    """New weeks must land inside `weeks:` (not before labels:), YAML stays valid."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(_WEIGHT_YML, encoding="utf-8")
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+
+    # YAML valid, weeks list grew by exactly one
+    assert len(data["weeks"]) == 2
+    assert data["weeks"][1]["days"] == [None] * 7
+    # Week 2 label computed from the anchor (2026-07-27 + 7 days)
+    assert "# Week 2 — Mon 2026-08-03" in content
+
+    # Regression: nothing inserted between start_date: and labels:
+    head = content.split("labels:", 1)[0]
+    assert "- days:" not in head
+
+
+def test_add_weight_week_multiple(tmp_path):
+    """Adding several weeks keeps numbering and YAML integrity."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(_WEIGHT_YML, encoding="utf-8")
+
+    proc = _run_add_weight_week(tmp_path, "2")
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+    assert len(data["weeks"]) == 3
+    assert "# Week 2 — Mon 2026-08-03" in content
+    assert "# Week 3 — Mon 2026-08-10" in content
+    assert "- days:" not in content.split("labels:", 1)[0]
+
+
+def test_add_weight_week_empty_weeks_key(tmp_path):
+    """`weeks:` present but empty parses to None — must not crash, list gets filled."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(
+        "# Height: set once\ncm: 176\n\n"
+        'start_date: "2026-07-27"\n\n'
+        "labels:\n  height: 身高\n\n"
+        # no trailing newline after `weeks:` — entry must still start on its own line
+        "weeks:",
+        encoding="utf-8",
+    )
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+    assert len(data["weeks"]) == 1
+    assert data["weeks"][0]["days"] == [None] * 7
+    assert "weeks:\n  # Week 1 — Mon 2026-07-27" in content
+
+
+def test_add_weight_week_no_weeks_key(tmp_path):
+    """File without any weeks: key gets a fresh weeks: block appended at the end."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(
+        '# Height: set once\ncm: 176\n\nstart_date: "2026-07-27"\n\nlabels:\n  height: 身高\n',
+        encoding="utf-8",
+    )
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+    assert len(data["weeks"]) == 1
+    assert "# Week 1 — Mon 2026-07-27" in content
+    assert content.rstrip().endswith("- days: [null, null, null, null, null, null, null]")
+
+
+def test_add_weight_week_corrupt_file_fails_cleanly(tmp_path):
+    """Corrupt YAML fails with a clean message, not a raw traceback."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(
+        'cm: 176\nstart_date: "2026-07-27"\n  - days: [null]\n',
+        encoding="utf-8",
+    )
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode != 0
+    assert "invalid YAML" in proc.stderr
+    assert "Traceback" not in proc.stderr
+
+
+def test_add_weight_week_weeks_key_first_line(tmp_path):
+    """`weeks:` as the very first line must be found, not treated as missing."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text("weeks:\n", encoding="utf-8")
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+    assert len(data["weeks"]) == 1
+    assert "weeks:\n  # Week 1\n  - days:" in content
+
+
+def test_add_weight_week_first_line_no_trailing_newline(tmp_path):
+    """`weeks:` first line AND no trailing newline — entry still on its own line."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text("weeks:", encoding="utf-8")
+
+    proc = _run_add_weight_week(tmp_path)
+    assert proc.returncode == 0, proc.stderr
+
+    content = data_file.read_text(encoding="utf-8")
+    data = yaml.safe_load(content)
+    assert len(data["weeks"]) == 1
+    assert content.startswith("weeks:\n  # Week 1\n  - days:")
+
+
+def test_add_weight_week_rejects_non_positive_count(tmp_path):
+    """count < 1 must fail with a clear message, not silently no-op."""
+    data_file = tmp_path / "docs" / "notes" / "health" / "data" / "weight.yml"
+    data_file.parent.mkdir(parents=True)
+    data_file.write_text(_WEIGHT_YML, encoding="utf-8")
+
+    proc = _run_add_weight_week(tmp_path, "0")
+    assert proc.returncode != 0
+    assert "positive" in proc.stderr
