@@ -21,9 +21,18 @@ env-*
 .claude/*
 !.claude/skills/
 
-# pi coding agent — track skills, ignore local settings
+# pi coding agent — commit shared skills/prompts, ignore personal config & artifacts
 .pi/*
 !.pi/skills/
+!.pi/prompts/
+!.pi/agents/
+!.pi/chains/
+
+# personal config & local artifacts (never commit)
+.pi/settings.json
+.pi/.mung/
+.pi/npm/
+.pi/sessions/
 
 # pi subagents (auto-generated workspace)
 .pi-subagents/
