@@ -1,0 +1,111 @@
+/* Tools: shared widget styles (docs/notes/tools/*) */
+
+/* ── Ramen Timer ────────────────────────────────────── */
+.rt-wrap {
+    max-width: 420px;
+    margin: 1.5rem auto;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 12px;
+    background: var(--md-default-bg-color);
+}
+
+.rt-display {
+    font-size: 4.5rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    color: var(--md-typeset-color);
+}
+
+.rt-done {
+    color: var(--md-typeset-a-color);
+    animation: rt-blink 0.6s step-start infinite;
+}
+
+@keyframes rt-blink {
+    50% { opacity: 0.25; }
+}
+
+.rt-set {
+    margin: 1rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.rt-set input {
+    width: 5.5rem;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.3rem 0.2rem;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 6px;
+    background: var(--md-default-bg-color);
+    color: var(--md-typeset-color);
+}
+
+.rt-set input:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.rt-set .rt-sep {
+    font-size: 1.2rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.rt-controls button {
+    margin: 0.3rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    background: var(--md-default-bg-color);
+    color: var(--md-typeset-color);
+    cursor: pointer;
+}
+
+.rt-controls button:hover:not(:disabled) {
+    border-color: var(--md-accent-fg-color);
+    color: var(--md-accent-fg-color);
+}
+
+.rt-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.rt-status {
+    min-height: 1.5em;
+    margin-top: 0.5rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.rt-sound {
+    margin-top: 0.75rem;
+    font-size: 0.9em;
+    color: var(--md-default-fg-color--light);
+}
+
+.rt-sound input {
+    margin-right: 0.35rem;
+    vertical-align: middle;
+    accent-color: var(--md-accent-fg-color);
+}
+
+.rt-set input:focus-visible,
+.rt-controls button:focus-visible,
+.rt-sound input:focus-visible {
+    outline: 2px solid var(--md-accent-fg-color);
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .rt-done {
+        animation: none;
+    }
+}

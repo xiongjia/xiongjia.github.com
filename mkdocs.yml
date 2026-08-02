@@ -11,6 +11,9 @@ extra:
   git_hash: !ENV [GIT_HASH, '']
   moment:
     path: moments
+    # feed: enabled by default — generates /moments/feed.xml, which the
+    # Notes index page (docs/notes/_index_content.md) links to directly;
+    # keep that link in sync if this feed config ever changes
   comments:
     enabled: true
     # provider: giscus (reserved for future use)
@@ -29,6 +32,7 @@ extra_css:
   - assets/stylesheets/weight.css
   - assets/stylesheets/nav.css
   - assets/stylesheets/hr.css
+  - assets/stylesheets/tools.css
 extra_javascript:
   - assets/javascripts/retire.js
   
@@ -175,6 +179,9 @@ nav:
       - Game Dev: notes/collection/game-dev.md
       - Maps: notes/collection/maps.md
       - Emoji: notes/collection/emoji.md
+    - Tools:
+      - notes/tools/index.md
+      - Ramen Timer: notes/tools/ramen-timer.md
     - Research: notes/research/index.md
     - Prototypes: notes/prototypes.md
     - Health Monitor:
