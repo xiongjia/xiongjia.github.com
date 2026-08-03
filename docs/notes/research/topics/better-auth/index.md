@@ -15,6 +15,15 @@ categories:
 
 Better Auth 是一个 **框架无关 (framework-agnostic)** 的 TypeScript 认证/授权框架，支持 Node.js、Bun、Deno 和 Cloudflare Workers。
 
+> **学习前先克隆项目:**
+>
+> ```bash
+> cd external
+> git clone --depth 1 https://github.com/better-auth/better-auth.git
+> ```
+
+- 本地路径: `external/better-auth`
+
 ## 核心包结构
 
 ```
@@ -30,14 +39,14 @@ packages/
 
 ### 1. 库入口（了解整体结构）
 
-- [packages/better-auth/src/index.ts](packages/better-auth/src/index.ts) — 主导出
-- [packages/better-auth/src/auth/full.ts](packages/better-auth/src/auth/full.ts) — `betterAuth()` 函数入口
-- [packages/better-auth/src/auth/base.ts](packages/better-auth/src/auth/base.ts) — `createBetterAuth()` 核心逻辑
+- `external/better-auth/packages/better-auth/src/index.ts` — 主导出
+- `external/better-auth/packages/better-auth/src/auth/full.ts` — `betterAuth()` 函数入口
+- `external/better-auth/packages/better-auth/src/auth/base.ts` — `createBetterAuth()` 核心逻辑
 
 ### 2. 请求处理流程
 
-- [packages/better-auth/src/api/index.ts](packages/better-auth/src/api/index.ts) — 路由注册 (`getEndpoints`, `router`)
-- [packages/better-auth/src/api/routes/](packages/better-auth/src/api/routes/) — 所有 endpoint handler（signInSocial, signOut, getSession 等）
+- `external/better-auth/packages/better-auth/src/api/index.ts` — 路由注册 (`getEndpoints`, `router`)
+- `external/better-auth/packages/better-auth/src/api/routes/` — 所有 endpoint handler（signInSocial, signOut, getSession 等）
 
 ### 3. Context 初始化
 
@@ -45,8 +54,8 @@ packages/
 
 ### 4. 核心类型定义
 
-- [packages/better-auth/src/types/](packages/better-auth/src/types/) — 主库类型
-- [packages/core/src/types/](packages/core/src/types/) — 核心共享类型（BetterAuthOptions 等）
+- `external/better-auth/packages/better-auth/src/types/` — 主库类型
+- `external/better-auth/packages/core/src/types/` — 核心共享类型（BetterAuthOptions 等）
 
 ## 推荐阅读顺序
 

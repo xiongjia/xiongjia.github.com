@@ -38,16 +38,25 @@ xiongjia.github.com/
 │   │   ├── index.md               # Timeline archive
 │   │   └── 2026-07/               # Monthly moment posts
 │   ├── notes/                     # Landing page + sub-sections
-│   │   ├── index.md               # Notes landing (mermaid diagram + about)
+│   │   ├── index.md               # Notes landing (includes _index_content.md)
+│   │   ├── _index_content.md      # Notes landing content fragment (mermaid + about)
+│   │   ├── link-graph.md          # Site-wide link topology (generated at build by plugins/backlinks.py)
+│   │   ├── prototypes.md          # Prototype index page (GitHub jumps)
 │   │   ├── collection/            # Curated links by domain
 │   │   │   ├── index.md
-│   │   │   ├── database.md
-│   │   │   ├── monitor.md
-│   │   │   ├── media.md
-│   │   │   ├── dev-tools.md
-│   │   │   ├── frontend.md
 │   │   │   ├── ai.md
-│   │   │   └── languages.md
+│   │   │   ├── database.md
+│   │   │   ├── dev-tools.md
+│   │   │   ├── emoji.md
+│   │   │   ├── frontend.md
+│   │   │   ├── game-dev.md
+│   │   │   ├── languages.md
+│   │   │   ├── maps.md
+│   │   │   ├── media.md
+│   │   │   └── monitor.md
+│   │   ├── tools/                 # Dev tool notes
+│   │   │   ├── index.md
+│   │   │   └── ramen-timer.md
 │   │   ├── research/              # Deep-dive source code analysis & learning plans
 │   │   │   ├── index.md
 │   │   │   └── topics/
@@ -62,7 +71,12 @@ xiongjia.github.com/
 │   │   │       ├── shadcn-ui/
 │   │   │       └── trip/
 │   │   ├── knowledge/             # Long-term knowledge base (topic dirs, sub-projects)
-│   │   │   └── index.md
+│   │   │   ├── index.md
+│   │   │   └── infrastructure/    # Cloud / Object Storage topics
+│   │   │       └── cloud/
+│   │   │           └── object-storage/
+│   │   │               ├── index.md
+│   │   │               └── signed-url.md
 │   │   ├── health/                # Personal health tracking
 │   │   │   ├── index.md           # Health Monitor dashboard (mermaid + AI summary)
 │   │   │   ├── _summary.md        # AI health summary fragment (poe update-health-summary)
@@ -94,12 +108,13 @@ xiongjia.github.com/
 ├── scripts/                       # Utility scripts
 │   ├── create_post.py             # Blog post scaffolding
 │   ├── create_moment.py           # Moment micro-post scaffolding
-│   ├── time_arg.py                # Shared --time date/time parser
+│   ├── cleanup_gh_pages.sh        # Delete stale gh-pages branch
 │   ├── optimize_images.py         # PNG/JPG/JPEG → WebP converter
 │   ├── add_weight_week.py         # Add empty week to weight data
 │   ├── sync_running.py            # Sync running data from running_page
 │   ├── update_health_summary.py   # Regenerate AI health summary (local pi CLI)
-│   └── md2wechat.py               # MkDocs → WeChat HTML converter
+│   ├── md2wechat.py               # MkDocs → WeChat HTML converter
+│   └── md2wechat/                 # Converter assets (sample.md)
 ├── tests/                         # Unit tests (pytest)
 │   ├── test_md2wechat.py
 │   ├── test_sync_running.py
@@ -117,13 +132,20 @@ xiongjia.github.com/
 │   ├── 404.html                   # Custom 404 page
 │   └── partials/
 │       ├── comments.html          # Giscus comment integration
+│       ├── back-link.html         # Topic/content back-link block
 │       └── source.html            # Source link override
 ├── docs/assets/
 │   ├── stylesheets/
 │   │   ├── retire.css             # Retirement grid/card styles
-│   │   └── weight.css             # Weight tracker styles
-│   └── javascripts/
-│       └── retire.js              # Monthly grid dynamic fill
+│   │   ├── weight.css             # Weight tracker styles
+│   │   ├── back-link.css          # Back-link styles
+│   │   ├── hr.css                 # Horizontal rule styles
+│   │   ├── nav.css                # Navigation styles
+│   │   └── tools.css              # Tools page styles
+│   ├── javascripts/
+│   │   ├── retire.js              # Monthly grid dynamic fill
+│   │   └── mermaid.min.js         # Bundled mermaid (auto-downloaded, gitignored)
+│   └── running-otaku.webp         # Running track header image
 └── site/                          # Build output (gitignored)
 ```
 

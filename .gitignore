@@ -13,6 +13,9 @@ site/
 site-selfhost/
 .cache/
 
+# research source clones (never committed; nested external/.gitignore kept as defense-in-depth)
+/external/
+
 # env files
 .env
 env-*

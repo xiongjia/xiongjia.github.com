@@ -50,7 +50,7 @@ Published under `docs/notes/posts/posts/`（建议 `bits` 分类）。
 
 - RTK 支持 100+ 常用命令，\<10ms 开销；官方宣称可削减 agent 读取的 bash 输出 60-90%
 - “token 节约”与“账单节约”不同：输出只是输入 token 的一部分，输入 token 又只是账单的一部分
-- 已在 Collection 中添加：[docs/notes/collection/ai.md](../notes/collection/ai.md)（AI CLI 分类）
+- 已在 Collection 中添加：[docs/notes/collection/ai.md](../../docs/notes/collection/ai.md)（AI CLI 分类）
 
 ## References
 

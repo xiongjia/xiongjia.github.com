@@ -197,7 +197,7 @@ summary untouched** — a stale-but-valid page beats a broken one.
 
 ## Related
 
-- [Health Monitor](../../docs/notes/health/index.md)
+- [Health Monitor](../docs/notes/health/index.md)
 - [Retirement Countdown Design](./retirement-countdown-design.md)
 - [Weight Tracker Design](./weight-tracker-design.md)
 - [Running Track Design](./running-track-design.md)

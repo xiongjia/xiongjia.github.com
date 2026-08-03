@@ -1,4 +1,14 @@
+---
+title: City Log — 城市打卡 App 设计文档
+created: 2026-07-31
+archived: 2026-08-04
+status: cancelled
+tags: [city-log, pwa, maplibre, pmtiles, offline-first]
+---
+
 # City Log — 城市打卡 App 设计文档
+
+> **归档说明**：设计文档已被 [city-log-project.md](../city-log-project.md) 取代（该计划沿用并细化本设计）。
 
 > **项目定位**：个人城市足迹记录工具，照片 + 地图双核心，支持离线使用。
 > **目标平台**：Web App（PWA），后续可扩展为 React Native / Flutter。
