@@ -200,6 +200,7 @@ nav:
     - Tools:
       - notes/tools/index.md
       - Ramen Timer: notes/tools/ramen-timer.md
+      - Med Tracker: notes/tools/med-tracker.md
     - Research: notes/research/index.md
     - Knowledge: notes/knowledge/index.md
     - Prototypes: notes/prototypes.md
