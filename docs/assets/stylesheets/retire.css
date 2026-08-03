@@ -22,7 +22,7 @@
 .retire-card .value {
     font-size: 1.25em;
     font-weight: 700;
-    color: var(--md-primary-fg-color);
+    color: var(--md-typeset-a-color);
 }
 .retire-banner {
     text-align: center;
@@ -49,9 +49,13 @@
 .retire-progress-bar .fill {
     height: 100%;
     width: 0%;
-    background: var(--md-primary-fg-color);
+    /* hardcoded blue-grey: --md-primary-fg-color is black in dark mode */
+    background: #546e7a;
     border-radius: 5px;
     transition: width 0.6s ease;
+}
+[data-md-color-scheme="slate"] .retire-progress-bar .fill {
+    background: #78909c;
 }
 .retire-grid {
     display: flex;

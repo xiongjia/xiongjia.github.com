@@ -6,7 +6,7 @@ CLI main() flow with run_pi/load_yaml monkeypatched.
 """
 
 import json
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 
 import pytest
 import update_health_summary as uhs
@@ -140,6 +140,7 @@ def test_compute_retire_stats_with_expected_age():
     data = {"birth_date": "1981-08-12", "gender": "male", "expected_retire_age": 55}
     stats = uhs.compute_retire_stats(data, date(2026, 8, 3))
     assert stats["gender"] == "男性"
+    assert stats["age"] == 44
     assert stats["expected_age"] == 55
     assert stats["target_date"] == date(2036, 8, 1)
     assert stats["remaining_years"] == 10
@@ -204,6 +205,21 @@ def test_compute_weight_stats_no_data_returns_empty():
     stats = uhs.compute_weight_stats({"cm": 176})
     assert stats["latest"] is None
     assert "bmi" not in stats
+
+
+def test_compute_weight_stats_includes_weekly_averages():
+    data = {
+        "cm": 176,
+        "start_date": "2026-07-27",
+        "weeks": [
+            {"days": [None, 82.35, 81.50, 82.90, 82.40, 82.40, 81.90]},
+            {"days": [82.40, None, None, None, None, None, None]},
+        ],
+    }
+    stats = uhs.compute_weight_stats(data)
+    assert [w["week_start"] for w in stats["weekly"]] == ["2026-07-27", "2026-08-03"]
+    assert stats["weekly"][0]["avg"] == pytest.approx(493.45 / 6)
+    assert stats["weekly"][1]["avg"] == pytest.approx(82.40)
 
 
 def test_compute_running_stats_aggregates():
@@ -309,6 +325,14 @@ def test_build_prompt_embeds_stats_and_requirements():
     assert "82.40" in prompt
     assert "6.5 km" in prompt
     assert "250–400 字" in prompt
+    # 模板结构：角色设定 / 基础信息 / 数据记录 / 分析要求 / 输出要求
+    assert "健康数据分析师" in prompt
+    assert "### 用户基础信息" in prompt
+    assert "- 性别：男性" in prompt
+    assert "### 体重变化记录" in prompt
+    assert "### 跑步运动记录" in prompt
+    assert "## 分析要求" in prompt
+    assert "**风险预警**" in prompt
 
 
 def test_build_prompt_handles_missing_sections():
@@ -317,6 +341,79 @@ def test_build_prompt_handles_missing_sections():
     assert "### 退休倒计时" not in prompt
     assert "### 跑步" not in prompt
     assert "### 体重" not in prompt
+    assert "### 用户基础信息" not in prompt
+    assert "## 分析要求" in prompt
+
+
+def test_build_prompt_includes_weekly_weight_record():
+    stats = {
+        "retire": {},
+        "weight": {
+            "cm": 176,
+            "latest": 81.90,
+            "latest_date": date(2026, 8, 3),
+            "bmi": 26.5,
+            "bmi_status": "超重",
+            "latest_week_avg": 81.90,
+            "delta": -0.34,
+            "healthy_min": 57.3,
+            "healthy_max": 74.0,
+            "weekly": [
+                {"week_start": "2026-07-27", "avg": 82.24},
+                {"week_start": "2026-08-03", "avg": 81.90},
+            ],
+        },
+        "running": {},
+    }
+    prompt = uhs.build_prompt(stats, date(2026, 8, 3))
+    assert "### 体重变化记录" in prompt
+    assert "2026-07-27 82.24 kg → 2026-08-03 81.90 kg" in prompt
+    assert "较上一周下降（-0.34 kg）" in prompt
+
+
+def test_build_prompt_skips_empty_weight_record_section():
+    # weight profile with height only — no weekly series and no delta yet,
+    # so the 「体重变化记录」 heading must not appear on its own
+    stats = {
+        "retire": {},
+        "weight": {"cm": 176, "healthy_min": 57.3, "healthy_max": 74.0},
+        "running": {},
+    }
+    prompt = uhs.build_prompt(stats, date(2026, 8, 3))
+    assert "### 用户基础信息" in prompt
+    assert "### 体重变化记录" not in prompt
+
+
+def test_build_prompt_caps_weekly_record_series():
+    # 15 weeks of data — only the most recent 12 are embedded
+    weekly = [
+        {
+            "week_start": (date(2025, 1, 6) + timedelta(days=7 * i)).isoformat(),
+            "avg": 80.0 + i * 0.1,
+        }
+        for i in range(15)
+    ]
+    stats = {
+        "retire": {},
+        "weight": {
+            "cm": 176,
+            "latest": 81.40,
+            "latest_date": date(2025, 4, 14),
+            "bmi": 26.3,
+            "bmi_status": "超重",
+            "latest_week_avg": 81.40,
+            "delta": 0.10,
+            "healthy_min": 57.3,
+            "healthy_max": 74.0,
+            "weekly": weekly,
+        },
+        "running": {},
+    }
+    prompt = uhs.build_prompt(stats, date(2025, 4, 14))
+    assert "2025-01-06" not in prompt  # oldest weeks truncated
+    assert "2025-01-20" not in prompt
+    assert "… 2025-01-27 80.30 kg" in prompt  # truncation marker + newest window
+    assert "2025-04-14 81.40 kg" in prompt  # newest week kept
 
 
 def test_build_prompt_retired_section():

@@ -64,6 +64,10 @@ _BRAND_LABELS = {
     "claude": "Claude",
 }
 
+# Only the most recent N weekly averages are embedded in the prompt, so the
+# weight section does not grow unboundedly as data accumulates over time.
+_WEEKLY_RECORD_LIMIT = 12
+
 
 # ---------------------------------------------------------------------------
 #  Data loading + statistics
@@ -85,7 +89,8 @@ def compute_retire_stats(data: dict, today: date) -> dict:
     if not birth_str or not gender:
         return {}
     try:
-        birth = datetime.strptime(str(birth_str), "%Y-%m-%d").date().replace(day=1)
+        raw_birth = datetime.strptime(str(birth_str), "%Y-%m-%d").date()
+        birth = raw_birth.replace(day=1)
     except (ValueError, TypeError):
         return {}
     ret = retire_macros._compute_retirement(
@@ -103,8 +108,13 @@ def compute_retire_stats(data: dict, today: date) -> dict:
     total_months = ret.get("expected_total_months") if target == expected else ret["total_months"]
     months_lived = ret["months_lived"]
     remaining = max(0, total_months - months_lived)
+    age = max(
+        0,
+        today.year - raw_birth.year - ((today.month, today.day) < (raw_birth.month, raw_birth.day)),
+    )
     return {
         "gender": _GENDER_LABELS.get(gender, gender),
+        "age": age,
         "expected_age": ret.get("expected_retire_age"),
         "target_date": target,
         "is_retired": ret["is_retired"],
@@ -117,11 +127,12 @@ def compute_retire_stats(data: dict, today: date) -> dict:
     }
 
 
-def _latest_weight_reading(data: dict) -> tuple[float | None, date | None]:
-    """Latest non-null weight plus its calendar date (None when absent)."""
-    start = weight_macros._parse_start(data)
-    if start is None:
-        return None, None
+def _latest_weight_reading(data: dict, start: datetime) -> tuple[float | None, date | None]:
+    """Latest non-null weight plus its calendar date (None when absent).
+
+    `start` is the anchor week (see `weight_macros._parse_start`), parsed once
+    by the caller and shared with the weekly-series computation.
+    """
     for i, week in reversed(list(enumerate(data.get("weeks", [])))):
         for j, value in reversed(list(enumerate(week.get("days", [])))):
             if value is not None:
@@ -140,7 +151,12 @@ def compute_weight_stats(data: dict) -> dict:
         "healthy_min": 18.5 * hm * hm,
         "healthy_max": 23.9 * hm * hm,
     }
-    latest, latest_date = _latest_weight_reading(data)
+    # parse the anchor week once — shared by the latest reading and the weekly series
+    start = weight_macros._parse_start(data)
+    if start is not None:
+        latest, latest_date = _latest_weight_reading(data, start)
+    else:
+        latest, latest_date = None, None
     stats["latest"] = latest
     stats["latest_date"] = latest_date
     if latest is not None:
@@ -156,6 +172,13 @@ def compute_weight_stats(data: dict) -> dict:
         stats["latest_week_avg"] = valid_avgs[-1]
         if len(valid_avgs) >= 2:
             stats["delta"] = valid_avgs[-1] - valid_avgs[-2]
+    # weekly averages with week-start dates, for the "体重变化记录" prompt section
+    if start is not None:
+        stats["weekly"] = [
+            {"week_start": (start + timedelta(days=i * 7)).date().isoformat(), "avg": a}
+            for i, a in enumerate(avgs)
+            if a is not None
+        ]
     return stats
 
 
@@ -216,79 +239,147 @@ def compute_running_stats(data: dict, today: date) -> dict:
 # ---------------------------------------------------------------------------
 
 
-def build_prompt(stats: dict, today: date) -> str:
-    """Build the AI prompt embedding the computed health statistics."""
-    retire, weight, running = stats.get("retire"), stats.get("weight"), stats.get("running")
-    lines = [
-        "你是我的健康数据助手。以下是截至 "
-        f"{today:%Y-%m-%d} 的健康数据摘要，请基于这些数据为我的个人健康监控页面",
-        "写一份简短、务实、可执行的「健康状态总结与建议」。",
-        "",
-        "## 数据摘要",
-    ]
+def _basic_info_lines(retire: dict, weight: dict) -> list[str]:
+    """「用户基础信息」 lines (empty when neither data source has entries).
 
+    Gender/age come from the retirement profile, height/weight from the
+    weight profile.
+    """
+    basic = []
     if retire:
-        target_label = ""
-        if retire.get("expected_age"):
-            target_label = f"（预期 {retire['expected_age']} 岁退休）"
-        if retire["is_retired"]:
-            status_line = "退休状态：已退休 🎉"
-            progress_line = "进度：100%"
-        else:
-            if retire["remaining_years"] and retire["remaining_months"]:
-                remaining_str = f"{retire['remaining_years']} 年 {retire['remaining_months']} 个月"
-            elif retire["remaining_years"]:
-                remaining_str = f"{retire['remaining_years']} 年"
-            else:
-                remaining_str = f"{retire['remaining_months']} 个月"
-            status_line = f"距离退休：{remaining_str}（约 {retire['days_remaining']} 天）"
-            progress_line = (
-                f"进度：{retire['progress_pct']:.1f}%（已过 {retire['months_lived']} 个月 / "
-                f"共 {retire['total_months']} 个月）"
-            )
-        lines += [
-            "### 退休倒计时",
-            f"- 目标退休日：{retire['target_date']}{target_label}",
-            f"- {status_line}",
-            f"- {progress_line}",
-        ]
-
+        if retire.get("gender"):
+            basic.append(f"- 性别：{retire['gender']}")
+        if retire.get("age"):
+            basic.append(f"- 年龄：{retire['age']} 岁")
     if weight:
-        lines.append("### 体重")
-        lines.append(f"- 身高：{weight['cm']} cm")
+        basic.append(f"- 身高：{weight['cm']} cm")
         if weight.get("latest") is not None:
             when = weight["latest_date"] or "最近"
-            lines.append(f"- 最新体重：{weight['latest']:.2f} kg（{when}）")
-            lines.append(f"- BMI：{weight['bmi']:.1f}（{weight['bmi_status']}）")
-        if weight.get("delta") is not None:
-            if weight["delta"] > 0.01:
-                trend = "上升"
-            elif weight["delta"] < -0.01:
-                trend = "下降"
-            else:
-                trend = "持平"
-            lines.append(
-                f"- 周均趋势：{weight['latest_week_avg']:.2f} kg，较上一周{trend}"
-                f"（{weight['delta']:+.2f} kg）",
-            )
-        lines.append(
+            basic.append(f"- 当前体重：{weight['latest']:.2f} kg（{when}）")
+            basic.append(f"- BMI：{weight['bmi']:.1f}（{weight['bmi_status']}）")
+        basic.append(
             f"- 健康体重范围：{weight['healthy_min']:.1f} – {weight['healthy_max']:.1f} kg"
             "（BMI 18.5–23.9）",
         )
+    return basic
 
-    if running:
-        lines += [
-            "### 跑步",
-            f"- 累计：{running['runs']} 次 / {running['total_km']:.1f} km / "
-            f"{running['total_time_h']:.1f} 小时 / 爬升 {running['elevation']:.0f} m",
-            f"- 最近 30 天：{running['recent30_runs']} 次 / {running['recent30_km']:.1f} km",
-            f"- 最近 7 天：{running['week7_runs']} 次",
-            f"- 最近一次跑步：{running['latest_date']}｜最近连续跑步：{running['streak']} 天",
-        ]
-        if running.get("avg_hr"):
-            lines.append(f"- 平均心率：{running['avg_hr']:.0f} bpm")
+
+def _weight_record_lines(weight: dict) -> list[str]:
+    """「体重变化记录」 lines: weekly-average series + week-over-week trend."""
+    if not weight or (not weight.get("weekly") and weight.get("delta") is None):
+        return []
+    lines = ["### 体重变化记录"]
+    if weight.get("weekly"):
+        weeks = weight["weekly"][-_WEEKLY_RECORD_LIMIT:]
+        series = " → ".join(f"{w['week_start']} {w['avg']:.2f} kg" for w in weeks)
+        if len(weight["weekly"]) > _WEEKLY_RECORD_LIMIT:
+            series = "… " + series
+        lines.append(f"- 周均记录：{series}")
+    if weight.get("delta") is not None:
+        if weight["delta"] > 0.01:
+            trend = "上升"
+        elif weight["delta"] < -0.01:
+            trend = "下降"
+        else:
+            trend = "持平"
+        lines.append(
+            f"- 周均趋势：{weight['latest_week_avg']:.2f} kg，较上一周{trend}"
+            f"（{weight['delta']:+.2f} kg）",
+        )
+    return lines
+
+
+def _running_record_lines(running: dict) -> list[str]:
+    """「跑步运动记录」 lines: aggregated stats (no per-run pace / max HR)."""
+    if not running:
+        return []
+    lines = [
+        "### 跑步运动记录",
+        f"- 累计：{running['runs']} 次 / {running['total_km']:.1f} km / "
+        f"{running['total_time_h']:.1f} 小时 / 爬升 {running['elevation']:.0f} m",
+        f"- 最近 30 天：{running['recent30_runs']} 次 / {running['recent30_km']:.1f} km",
+        f"- 最近 7 天：{running['week7_runs']} 次",
+        f"- 最近一次跑步：{running['latest_date']}｜最近连续跑步：{running['streak']} 天",
+    ]
+    if running.get("avg_hr"):
+        lines.append(f"- 平均心率：{running['avg_hr']:.0f} bpm")
+    return lines
+
+
+def _retire_countdown_lines(retire: dict) -> list[str]:
+    """「退休倒计时」 lines (site-specific data, empty when absent)."""
+    if not retire:
+        return []
+    target_label = ""
+    if retire.get("expected_age"):
+        target_label = f"（预期 {retire['expected_age']} 岁退休）"
+    if retire["is_retired"]:
+        status_line = "退休状态：已退休 🎉"
+        progress_line = "进度：100%"
+    else:
+        if retire["remaining_years"] and retire["remaining_months"]:
+            remaining_str = f"{retire['remaining_years']} 年 {retire['remaining_months']} 个月"
+        elif retire["remaining_years"]:
+            remaining_str = f"{retire['remaining_years']} 年"
+        else:
+            remaining_str = f"{retire['remaining_months']} 个月"
+        status_line = f"距离退休：{remaining_str}（约 {retire['days_remaining']} 天）"
+        progress_line = (
+            f"进度：{retire['progress_pct']:.1f}%（已过 {retire['months_lived']} 个月 / "
+            f"共 {retire['total_months']} 个月）"
+        )
+    return [
+        "### 退休倒计时",
+        f"- 目标退休日：{retire['target_date']}{target_label}",
+        f"- {status_line}",
+        f"- {progress_line}",
+    ]
+
+
+def build_prompt(stats: dict, today: date) -> str:
+    """Build the AI prompt embedding the computed health statistics.
+
+    Follows the shared health-analysis prompt template (role setting → basic
+    info → data records → analysis requirements → output format), keeping only
+    the data this site actually records: weight, running and the retirement
+    plan. Template sections this site has no data for — sleep, subjective
+    feelings, body composition, physiological metrics, target weight, per-run
+    pace / max heart rate — are deliberately omitted.
+    """
+    retire, weight, running = stats.get("retire"), stats.get("weight"), stats.get("running")
+    lines = [
+        "你是我的健康数据分析师，擅长结合体重变化与跑步数据进行综合健康评估。",
+        f"以下是截至 {today:%Y-%m-%d} 的健康数据，请为我的个人健康监控页面",
+        "写一份简短、务实、可执行的「健康状态总结与建议」，输出要具体、有数据支撑、避免空泛建议。",
+        "",
+        f"## 数据摘要（截至 {today:%Y-%m-%d}）",
+    ]
+
+    basic = _basic_info_lines(retire, weight)
+    if basic:
+        lines.append("### 用户基础信息")
+        lines += basic
+    lines += _weight_record_lines(weight)
+    lines += _running_record_lines(running)
+    lines += _retire_countdown_lines(retire)
 
     lines += [
+        "",
+        "## 分析要求",
+        "请基于以上数据完成以下分析：",
+        "1. **体重趋势分析**：结合 BMI 与周环比变化，判断当前体重区间",
+        "   （偏瘦 / 正常 / 超重 / 肥胖）与趋势方向（上升 / 下降 / 平台期）。",
+        "2. **跑步表现分析**：结合累计跑量、最近 30 天跑量、跑步频率与连续跑步天数，",
+        "   判断运动习惯的稳定性与趋势。",
+        "3. **体重与运动关联**：分析跑步频率 / 强度与体重变化之间的相关性，",
+        "   判断运动对体重管理的效果。",
+        "4. **饮食与生活方式建议**：如体重未按预期下降，从热量平衡角度",
+        "   给出具体可执行的饮食调整建议。",
+        "5. **里程碑设定**：根据当前进度设定合理的短期（1 个月）和中期（3–6 个月）",
+        "   体重目标，给出时间线。",
+        "6. **风险预警**：识别体重反弹信号、过度训练风险（如连续跑步天数过长、",
+        "   跑量突增）等潜在问题。",
+        "7. **一句话总结**：用一句话概括当前健康状态与核心建议。",
         "",
         "## 输出要求",
         "1. 使用简体中文，语气真诚、务实、不夸张、不说教，不做医疗诊断式的绝对结论。",
