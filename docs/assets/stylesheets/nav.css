@@ -20,8 +20,10 @@
   font-size: 0.78rem;
 }
 
-/* Active/current item highlight */
+/* Active/current item highlight
+   Use --md-typeset-a-color (not --md-primary-fg-color): the primary color
+   is black in dark mode, which would make the active item unreadable. */
 .md-sidebar--primary .md-nav__item--active > .md-nav__link {
   font-weight: 600;
-  color: var(--md-primary-fg-color);
+  color: var(--md-typeset-a-color);
 }

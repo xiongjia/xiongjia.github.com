@@ -23,7 +23,7 @@
 .weight-card .value {
     font-size: 1.25em;
     font-weight: 700;
-    color: var(--md-primary-fg-color);
+    color: var(--md-typeset-a-color);
 }
 
 /* ── Note / formula line ──────────────────────────────── */

@@ -67,12 +67,14 @@ running.yml─┘        │ 1. compute deterministic stats (reuse macros math)
 
 The prompt embeds concrete numbers, not raw YAML dumps:
 
-- **Retirement** — target date (expected if set and still in the future,
-  else legal), remaining years/months/days, progress %; reuses
-  `retire_macros._compute_retirement` (same Chinese delay-reform math as the
-  page)
-- **Weight** — latest weight + date, BMI + status, last-two-week delta,
-  healthy range; reuses `weight_macros` helpers
+- **Retirement** — gender, age (derived from the birth date), target date
+  (expected if set and still in the future, else legal), remaining
+  years/months/days, progress %; reuses `retire_macros._compute_retirement`
+  (same Chinese delay-reform math as the page)
+- **Weight** — latest weight + date, BMI + status, week-over-week delta,
+  healthy range, and a weekly-average series (the prompt embeds only the
+  most recent 12 weeks so it does not grow unboundedly); reuses
+  `weight_macros` helpers
 - **Running** — totals, last-30-days / last-7-days runs & km, last run date,
   most recent consecutive-day streak (ending at the latest run), avg HR;
   reuses `running_macros`
@@ -84,7 +86,11 @@ for missing/invalid data and the prompt simply skips that section.
 
 ### Prompt
 
-Structured Chinese prompt: intro + 「数据摘要」 (the stats) + 「输出要求」:
+The prompt follows the shared health-analysis template (role setting →
+「用户基础信息」 → 「体重变化记录」 → 「跑步运动记录」 → 「退休倒计时」 →
+「分析要求」 → 「输出要求」). Template sections this site has no data for —
+sleep, subjective feelings, body composition, physiological metrics, target
+weight, per-run pace / max heart rate — are deliberately omitted.
 
 - plain markdown body only — no `#`/`##` headings (it is embedded under an
   existing `##` heading), no code fences, no pleasantries
@@ -97,12 +103,14 @@ Structured Chinese prompt: intro + 「数据摘要」 (the stats) + 「输出要
 The fragment is a Material collapsible card, **expanded by default**:
 
 ```markdown
-???+ note "🤖 AI 健康建议 · DeepSeek V4 Flash · 2026-08-03 02:28"
-    运动习惯非常扎实，但体重停在超重区间……
-    ### 当前状态
-    - 体重：82.40 kg，BMI 26.6（超重）……
-    ### 建议
-    1. 给体重设一个具体台阶……
+???+ note "🤖 AI 健康建议 · DeepSeek V4 Flash · 2026-08-03 10:38"
+    体重趋势健康、跑步习惯优秀，核心矛盾是“跑得勤、瘦得慢”……
+    **当前状态**
+    - 体重：BMI 26.4（超重），本周 -0.34 kg……
+    - 跑步：近 30 天 30 次 / 129.4 km……连续 57 天无休息日是最大隐患
+    **建议**
+    1. 每周设 1–2 天休息，或改游泳、力量训练
+    1. 若体重连续 2 周回升，先核对该时段记录再调整
 ```
 
 - `???+` renders as `<details class="note" open>` — expanded, collapsible
