@@ -49,6 +49,7 @@ extra_css:
   - assets/stylesheets/nav.css
   - assets/stylesheets/hr.css
   - assets/stylesheets/tools.css
+  - assets/stylesheets/back-link.css
 extra_javascript:
   - assets/javascripts/retire.js
   
@@ -200,6 +201,7 @@ nav:
       - notes/tools/index.md
       - Ramen Timer: notes/tools/ramen-timer.md
     - Research: notes/research/index.md
+    - Knowledge: notes/knowledge/index.md
     - Prototypes: notes/prototypes.md
     - Health Monitor:
       - notes/health/index.md

@@ -1,0 +1,11 @@
+/* ── Content back-link ─────────────────────────
+   The "← 返回" link above the article on research
+   and knowledge topic pages (their sidebar
+   navigation is hidden; the link lives in the
+   content area, so it survives hide: toc).
+   ─────────────────────────────────────────── */
+
+.back-link {
+  margin-bottom: 0.6rem;
+  font-size: 0.8rem;
+}

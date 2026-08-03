@@ -17,3 +17,14 @@
     });
   </script>
 {% endblock %}
+
+{#-
+  Inject the "← 返回" back-link above the article content on pages whose
+  sidebar navigation is hidden (research/knowledge topics). It lives in the
+  content block — not the TOC — so it survives `hide: toc`; the partial
+  renders nothing on any other page.
+-#}
+{% block content %}
+  {% include "partials/back-link.html" %}
+  {{ super() }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{#-
+  Content-level "← 返回" link shown above the article on pages whose sidebar
+  navigation is hidden (research topics, knowledge topics). It lives in the
+  content area — not the TOC — so it keeps working even when a page hides
+  the table of contents.
+
+  Research pages (notes/research/topics/):
+  - topic root pages (topics/<topic>/index.md) go back to the Research
+    overview;
+  - any other topic page (topics/<topic>/<file>.md or deeper sub-directories)
+    goes back to its topic directory (topics/<topic>/, served by index.md).
+
+  Knowledge pages (notes/knowledge/, excluding the root overview):
+  - every level has an index.md, so a generic "back to parent directory"
+    rule covers all depths:
+    - knowledge/<topic>/index.md → Knowledge overview;
+    - deeper pages (sub-topics or knowledge-point docs) → their parent dir,
+      with the label title-cased (object-storage → "Object Storage").
+-#}
+{% if page.url.startswith('notes/research/topics/') %}
+  {% set parts = page.url.replace('notes/research/topics/', '', 1).split('/') %}
+  {% if parts | length > 2 %}
+    {# topic content page (topics/<topic>/<file>.md) or sub-directory:
+       back to the topic entry (topics/<topic>/, served by its index.md) #}
+    <div class="back-link"><a href="{{ base_url }}/notes/research/topics/{{ parts[0] }}/">← 返回 {{ parts[0] }}</a></div>
+  {% else %}
+    {# topic root page (topics/<topic>/index.md): back to Research overview #}
+    <div class="back-link"><a href="{{ base_url }}/notes/research/">← 返回 Research</a></div>
+  {% endif %}
+{% elif page.url.startswith('notes/knowledge/') and page.url != 'notes/knowledge/' %}
+  {% set kparts = page.url.replace('notes/knowledge/', '', 1).split('/') | reject('equalto', '') | list %}
+  {% if kparts | length == 1 %}
+    {# top-level topic (knowledge/<topic>/index.md): back to Knowledge overview #}
+    <div class="back-link"><a href="{{ base_url }}/notes/knowledge/">← 返回 Knowledge</a></div>
+  {% else %}
+    {# deeper page: back to its parent directory (see header for the rule) #}
+    <div class="back-link"><a href="{{ base_url }}/notes/knowledge/{{ kparts[:-1] | join('/') }}/">← 返回 {{ kparts[-2] | replace('-', ' ') | title }}</a></div>
+  {% endif %}
+{% endif %}

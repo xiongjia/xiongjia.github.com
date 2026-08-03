@@ -3,7 +3,7 @@
 ```
 xiongjia.github.com/
 ├── .github/          # CI workflow
-├── docs/             # Site content (notes, research, health, etc.)
+├── docs/             # Site content (notes, research, knowledge, health, etc.)
 ├── internal/         # Dev docs & plans: design docs, architecture.md,
 │   └── plans/        #   plan-index.md; archived plans in plans/arch/
 ├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)
@@ -123,9 +123,10 @@ See [internal/architecture.md](internal/architecture.md) for full command refere
 - **Developer approval required before committing**: AI must not execute `git commit` unless the developer explicitly approves. All changes must remain in the working directory for developer review first.
 - **Never push**: AI **must never** execute `git push` or any equivalent remote push operation. Push can only be performed manually by the developer.
 - **Code review required before push**: All changes must be reviewed and approved by a human before pushing to remote branches.
-- **Research notes use AI assistance disclaimer**: All files under `docs/notes/research/` must include the AI-generated disclaimer frontmatter.
-- **Chinese content for research docs**: Research notes are written in Chinese; blog posts and tech reference pages may be in either language.
-- **Use relative links**: All internal links between docs pages should use relative paths (e.g. `./docs/lux/00-lux.md`).
+- **AI assistance disclaimer (Notes-level)**: The Notes landing page (`docs/notes/_index_content.md`) carries a single "部分内容由 AI 生成" disclaimer; per-page disclaimers under `docs/notes/research/` and `docs/notes/knowledge/` are not required.
+- **Chinese content for research docs**: Research notes and knowledge docs are written in Chinese; blog posts and tech reference pages may be in either language.
+- **Knowledge topic structure**: Knowledge docs (`docs/notes/knowledge/`) are a long-term knowledge base organized as Topics. A Topic = a directory with an `index.md` entry (e.g. `infrastructure/`); sub-topics are subdirectories or docs inside it, and a topic may evolve into multiple files/layers over time. Each knowledge point is its own doc file under the topic dir (e.g. `object-storage/signed-url.md`), never the topic's `index.md`. Topics can incubate from Collection link pages or settle from Research reading notes.
+- **Use relative links**: All internal links between docs pages should use relative paths (e.g. `./topics/lux/`).
 - **Frontmatter required for research docs**: Each research doc must have `title`, `tags`, and `categories` frontmatter.
 - **Conventional commits**: Follow `type(scope): description` format (e.g. `docs: add Jellyfin research notes`).
 - **Local draft files are ephemeral**: Files matching `*-draft.md` are local AI collaboration plans and must not be committed or referenced in any committed documentation. They are already git-ignored (see `.gitignore`).

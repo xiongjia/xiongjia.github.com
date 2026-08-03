@@ -13,7 +13,8 @@ Status: `working`
 - List objects under a demo prefix
 - Put object (upload)
 - Get object (download)
-- Generate signed URL (time-limited access)
+- Generate signed URL for GET (time-limited download access)
+- Generate signed URL for PUT upload (time-limited upload access)
 - Delete object (with automatic cleanup of the demo object)
 
 ## Basic Aliyun OSS Configuration
@@ -62,7 +63,9 @@ ALIYUN_OSS_ACCESS_KEY_SECRET=your-secret     # your AccessKey Secret
 Optional: set `ALIYUN_OSS_ENDPOINT` to override the region-derived endpoint
 (e.g. a custom CNAME), and `ALIYUN_OSS_DEMO_PREFIX` to control where demo
 objects are written (`demo/ali-oss-client-prototype/` by default; the prefix
-must end with `/` — leaving it empty writes to the bucket root).
+must end with `/` — leaving it empty writes to the bucket root). Set
+`ALIYUN_OSS_KEEP_DEMO_OBJECT=true` to skip the demo's automatic cleanup of
+the demo object (needed for the curl test below).
 
 `.env`, `.env.local` and `.env.*.local` are gitignored — only `.env.example`
 is committed.
@@ -82,8 +85,42 @@ pnpm build && pnpm demo  # compile to dist/ first, then run the artifact
 
 Without credentials the demo prints the setup instructions above (dry-run).
 With configured credentials (in `.env.dev.local` or `.env`) it runs through:
-list buckets → list objects → put → get → signed URL → delete (the demo
-object is cleaned up afterwards).
+list buckets → list objects → put → get → signed URL (GET) → signed URL
+(PUT upload) → delete (the demo object is cleaned up afterwards; set
+`ALIYUN_OSS_KEEP_DEMO_OBJECT=true` to keep it).
+
+## Testing a signed upload URL with curl
+
+The demo prints a signed **PUT** URL for the demo object. The signature binds
+the HTTP method, the object key, and the `Content-Type` header — curl must
+send the exact same `Content-Type` that was used when the URL was generated
+(`text/plain` for the demo object), or OSS rejects the request with
+`403 SignatureDoesNotMatch`.
+
+The URL expires shortly after it is printed — the demo uses 60 seconds (the
+exact value is shown in each section title, e.g. `expires in 60s`). By
+default the demo deletes the object right after the run, so keep the object
+around to test end to end:
+
+```bash
+# 1. run the demo and keep the demo object
+ALIYUN_OSS_KEEP_DEMO_OBJECT=true pnpm dev
+
+# 2. within the expiry shown in the section title, copy the URL printed under
+#    the "Signed upload URL (PUT, ...)" heading and PUT content to it
+curl -X PUT \
+  -H "Content-Type: text/plain" \
+  --data-binary "hello from curl" \
+  "<signed upload URL>"
+
+# 3. verify with the signed GET URL printed by the demo
+curl "<signed GET URL>"
+```
+
+`--data-binary` is used instead of `--data` so curl does not strip trailing
+newlines. A wrong or missing `Content-Type` (or any other header change)
+makes the upload fail with `403 SignatureDoesNotMatch`. Re-running the demo
+overwrites the object again, so the test is repeatable.
 
 ## Debugging with VS Code
 

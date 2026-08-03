@@ -8,12 +8,13 @@
 A personal knowledge base with a knowledge pipeline:
 
 ```
-Notes → Collection → Research → Projects
+Notes → Collection → Research → Knowledge → Projects
 ```
 
 - **Notes** (`docs/notes/`): Blog posts (timeline-based, RSS feed) and study notes (long-form)
 - **Collection** (`docs/notes/collection/`): Curated links by domain (database, dev tools, AI, etc.)
-- **Research** (`docs/notes/research/`): Deep-dive source code analysis (open-source projects)
+- **Research** (`docs/notes/research/`): Deep-dive source code analysis & learning plans (per-topic dirs under `topics/`)
+- **Knowledge** (`docs/notes/knowledge/`): Long-term knowledge base — big topics with sub-projects, the output of Research
 - **Projects** (`docs/projects/`): Tangible project outputs
 - **Health Monitor** (`docs/notes/health/`): Personal health tracking (weight, retirement countdown)
 - **Discuss** (`docs/discuss/`): Giscus-powered comment page
@@ -30,6 +31,7 @@ xiongjia.github.com/
 │   └── plans/                    # Implementation plans / task tracking (see plan-index.md)
 │       └── arch/                 # Archived (done/cancelled) plans
 ├── shared/                       # Shared utilities for plugins & scripts
+├── external/                     # Research source clones (never committed)
 ├── docs/                          # All site content (Markdown)
 │   ├── index.md                   # Redirect → /notes/
 │   ├── moments/                   # Short-form timeline (Moment plugin)
@@ -46,19 +48,21 @@ xiongjia.github.com/
 │   │   │   ├── frontend.md
 │   │   │   ├── ai.md
 │   │   │   └── languages.md
-│   │   ├── research/              # Deep-dive source code analysis
+│   │   ├── research/              # Deep-dive source code analysis & learning plans
 │   │   │   ├── index.md
-│   │   │   ├── external/          # Vendored research code (linguist-vendored)
-│   │   │   └── docs/
+│   │   │   └── topics/
 │   │   │       ├── better-auth/
+│   │   │       ├── english/
 │   │   │       ├── jellyfin/
 │   │   │       ├── lux/
-│   │   │       ├── nestjs/
 │   │   │       ├── nest-commander/
+│   │   │       ├── nestjs/
 │   │   │       ├── redash/
 │   │   │       ├── rust/
 │   │   │       ├── shadcn-ui/
 │   │   │       └── trip/
+│   │   ├── knowledge/             # Long-term knowledge base (topic dirs, sub-projects)
+│   │   │   └── index.md
 │   │   ├── health/                # Personal health tracking
 │   │   │   ├── index.md           # Health Monitor dashboard (mermaid + AI summary)
 │   │   │   ├── _summary.md        # AI health summary fragment (poe update-health-summary)

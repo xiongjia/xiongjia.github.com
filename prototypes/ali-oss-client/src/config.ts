@@ -5,6 +5,12 @@ export interface OSSConfig {
   accessKeyId: string;
   accessKeySecret: string;
   demoPrefix: string;
+  keepDemoObject: boolean;
+}
+
+/** Parse a boolean-ish env value: true for "1", "true", "yes", "on". */
+function parseBoolEnv(value: string | undefined): boolean {
+  return value != null && ["1", "true", "yes", "on"].includes(value.toLowerCase());
 }
 
 /** Ensure a non-empty demo prefix ends with "/" so keys stay under it. */
@@ -22,6 +28,7 @@ export function loadConfig(env: NodeJS.ProcessEnv = process.env): OSSConfig {
     accessKeyId: env.ALIYUN_OSS_ACCESS_KEY_ID ?? "",
     accessKeySecret: env.ALIYUN_OSS_ACCESS_KEY_SECRET ?? "",
     demoPrefix: normalizePrefix(env.ALIYUN_OSS_DEMO_PREFIX ?? "demo/ali-oss-client-prototype/"),
+    keepDemoObject: parseBoolEnv(env.ALIYUN_OSS_KEEP_DEMO_OBJECT),
   };
 }
 

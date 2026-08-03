@@ -67,7 +67,7 @@ testpaths = ["tests"]
 line-length = 100
 target-version = "py313"
 # exclude build artifacts and vendored/external content from format + lint
-extend-exclude = ["docs/notes/research/external", "site", "site-selfhost", ".cache", "prototypes"]
+extend-exclude = ["external", "site", "site-selfhost", ".cache", "prototypes"]
 
 [tool.ruff.format]
 quote-style = "double"
