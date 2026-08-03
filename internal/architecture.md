@@ -387,5 +387,6 @@ Content pages themselves are mixed Chinese/English depending on the section.
 - [Discuss System Design](./discuss-design.md)
 - [Retirement Countdown Design](./retirement-countdown-design.md)
 - [Health Summary Design](./health-summary-design.md)
+- [Med Tracker Design](./med-tracker-design.md)
 
 > This file is the architecture overview.
