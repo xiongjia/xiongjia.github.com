@@ -13,7 +13,7 @@ dual core, fully offline-capable, no account needed, data owned entirely by the 
 Open the app → see the map → tap to mark a check-in → view it on map, timeline, and
 photo grid.
 
-Design document (archived): [city-log-design-plan.md](./city-log-design-plan.md)
+Design document (archived): [city-log-design-plan.md](./arch/city-log-design-plan.md)
 
 ______________________________________________________________________
 
@@ -161,7 +161,7 @@ ______________________________________________________________________
 
 ## References
 
-- [city-log-design-plan.md](./city-log-design-plan.md) — archived design document
+- [city-log-design-plan.md](./arch/city-log-design-plan.md) — archived design document
 - [maplibre-research.md](./maplibre-research.md) — MapLibre/PMTiles/Protomaps research plan
 - [Maps collection](../../docs/notes/collection/maps.md) — MapLibre, Protomaps, PMTiles links
 - [PMTiles docs](https://docs.protomaps.com/pmtiles/) — format & SW range caching

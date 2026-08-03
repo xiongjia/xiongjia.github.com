@@ -174,4 +174,4 @@ Mermaid graph. `force_render_paths: "notes/health/*"` already covers the page.
 
 - [Plan: Running Track health monitor](./plans/running-track-health-monitor.md)
 - [Weight Tracker design](./weight-tracker-design.md) — four-tier pattern
-- [Health Monitor](../../docs/notes/health/index.md)
+- [Health Monitor](../docs/notes/health/index.md)

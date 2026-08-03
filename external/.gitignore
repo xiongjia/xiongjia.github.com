@@ -1,3 +1,9 @@
-# Never commit external source code cloned for research
+# external/ is ignored repo-wide by the root .gitignore (`external/` entry) —
+# that is the primary mechanism.
+#
+# This nested file is defense-in-depth only: if the root `external/` entry is
+# ever removed, `*` still keeps cloned research repos out, and `!.gitignore`
+# keeps this file itself tracked. Anything placed here is never committed
+# (use `git add -f` only if you really mean it).
 *
 !.gitignore

@@ -80,7 +80,6 @@ tags: [refactor, mkdocs]
 ### Projects
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
-- [city-log-design-plan.md](./city-log-design-plan.md) — City Log design document (archived)
 
 ### Learning
 

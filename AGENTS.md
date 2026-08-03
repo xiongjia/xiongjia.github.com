@@ -4,6 +4,7 @@
 xiongjia.github.com/
 ├── .github/          # CI workflow
 ├── docs/             # Site content (notes, research, knowledge, health, etc.)
+├── external/         # Research source clones (never committed)
 ├── internal/         # Dev docs & plans: design docs, architecture.md,
 │   └── plans/        #   plan-index.md; archived plans in plans/arch/
 ├── plugins/          # Custom MkDocs hooks (draft_filter, mermaid_assets, mkdocs_moment)

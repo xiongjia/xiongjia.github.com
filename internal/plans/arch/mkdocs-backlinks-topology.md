@@ -342,10 +342,10 @@ extra:
 
 ## References
 
-- [mkdocs.yml](../../mkdocs.yml) — hooks & plugins list, mermaid2 config, macros force_render_paths
-- [plugins/](../../plugins/) — existing hook pattern (`draft_filter.py`, `snippet_include.py`, `mermaid_assets.py`)
-- [plugins/mkdocs_moment/plugin.py](../../plugins/mkdocs_moment/plugin.py) — `extra.moment` config pattern
-- [shared/frontmatter.py](../../shared/frontmatter.py) — `parse_frontmatter` helper
+- [mkdocs.yml](../../../mkdocs.yml) — hooks & plugins list, mermaid2 config, macros force_render_paths
+- [plugins/](../../../plugins/) — existing hook pattern (`draft_filter.py`, `snippet_include.py`, `mermaid_assets.py`)
+- [plugins/mkdocs_moment/plugin.py](../../../plugins/mkdocs_moment/plugin.py) — `extra.moment` config pattern
+- [shared/frontmatter.py](../../../shared/frontmatter.py) — `parse_frontmatter` helper
 - [mermaid2 plugin](https://github.com/fralau/mkdocs-mermaid2-plugin) — mermaid rendering, click support
 - [Mermaid flowchart syntax](https://mermaid.js.org/syntax/flowchart.html) — subgraphs, click events
-- [internal/architecture.md](../architecture.md) — build & server commands
+- [internal/architecture.md](../../architecture.md) — build & server commands
