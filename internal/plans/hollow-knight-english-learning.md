@@ -26,13 +26,13 @@ tags: [english, learning, hollow-knight, pronunciation, vocabulary, shadowing]
 
 ## 内容位置
 
-知识库放在本仓库 **`docs/notes/research/docs/english/`**（融入现有 MkDocs
+知识库放在本仓库 **`docs/notes/research/topics/english/`**（融入现有 MkDocs
 站点，跟随 research 目录的既有约定 —— 与 `docs/rust/`、`docs/jellyfin/`
 等同级），预计结构：
 
 ```text
-docs/notes/research/docs/english/
-├── 00-english.md                    # 学习总览 / Dashboard 入口
+docs/notes/research/topics/english/
+├── index.md                        # 学习总览 / Dashboard 入口
 ├── pronunciation.md                 # 发音体系（Ear / Mouth / Rhythm 三阶段）
 ├── pronunciation-mistakes-log.md    # 易错音长期记录
 ├── shadowing.md                     # Shadowing 方案与素材清单
@@ -51,14 +51,13 @@ docs/notes/research/docs/english/
 
 ### 项目搭建（贴合本仓库）
 
-- [x] 在 `docs/notes/research/docs/english/` 建立上述目录结构
-- [x] `00-english.md` 遵循 research 命名惯例（`00-*.md`），作为总览 / Dashboard
+- [x] 在 `docs/notes/research/topics/english/` 建立上述目录结构
+- [x] `index.md` 作为主题总览 / Dashboard（`00-*.md` 已统一改为 `index.md`）
   入口（Today's Practice / Hollow Knight / Vocabulary / Pronunciation /
   Shadowing / Speaking / Weekly Review 导航）
-- [x] 所有页面补齐 research 约定 frontmatter：`title`、`tags`、`categories`，
-  并带 AI 免责声明（参考 `docs/notes/research/docs/jellyfin/00-jellyfin.md`）
+- [x] 所有页面补齐 research 约定 frontmatter：`title`、`tags`、`categories`
 - [x] 在 `docs/notes/research/index.md` 的 **Learning Plans** 分类下注册
-  English 学习计划条目（链接 `./docs/english/00-english.md`，与 Rust 条目
+  English 学习计划条目（链接 `./topics/english/index.md`，与 Rust 条目
   保持一致）
 - [x] 页面间使用相对链接（如 `./hollow-knight/lore.md`），遵循仓库约定
 
@@ -157,7 +156,7 @@ docs/notes/research/docs/english/
   1. 不追求完美口音 — 目标是清晰、自然、容易被理解
 
 - 与仓库的结合点：research 目录已有成熟的 frontmatter / disclaimer / 命名
-  惯例（见 `docs/notes/research/docs/jellyfin/00-jellyfin.md` 与
+  惯例（见 `docs/notes/research/topics/jellyfin/index.md` 与
   `docs/notes/research/index.md` 的 Learning Plans 分类），英语学习直接复用
 
 - 源文件：`~/Work/tmp/hollow_knight_english_reader_plan.md`（详细设计参考）

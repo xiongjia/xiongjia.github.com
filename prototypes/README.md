@@ -11,6 +11,10 @@ Python `.venv/`, Node `node_modules/`).
 
 ## Index
 
+- **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
+  urfave/cli v2: `greet` command with `--name` flag (originally under
+  `research/experiments/`, migrated here; `go.sum` tracked for reproducible
+  builds) · created 2026-08-03 · status `experimental`
 - **[ali-oss-client](./ali-oss-client/README.md)** — Aliyun OSS client in
   TypeScript (official `ali-oss` SDK, pnpm): config via env vars, bucket/object
   listing, upload, download, signed URLs, delete · created 2026-08-01 · status

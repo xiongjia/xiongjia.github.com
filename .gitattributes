@@ -1,5 +1,5 @@
-# Vendored third-party research docs – exclude from language stats
-docs/notes/research/external/** linguist-vendored
+# Vendored third-party research code – exclude from language stats
+external/** linguist-vendored
 
 # Images – mark as binary to avoid diff noise
 *.png binary

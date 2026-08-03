@@ -124,7 +124,7 @@ def test_resolve_skips_non_internal():
 
 
 def test_resolve_skips_non_markdown():
-    assert bl._resolve_target("notes/a.md", "docs/notes/research/external/x.js") is None
+    assert bl._resolve_target("notes/a.md", "external/x.js") is None
     # trailing-slash dir normalizes to index.md (resolved relative to the page)
     assert (
         bl._resolve_target("notes/a.md", "packages/core/src/types/")

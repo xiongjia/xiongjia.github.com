@@ -1,0 +1,3 @@
+# Never commit external source code cloned for research
+*
+!.gitignore

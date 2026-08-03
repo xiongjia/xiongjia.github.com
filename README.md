@@ -107,10 +107,13 @@ docs/
 ├── notes/
 │   ├── index.md      # Landing page (mermaid + about)
 │   ├── collection/   # Curated links by domain
-│   ├── research/     # Source code analysis
+│   ├── research/     # Deep-dive notes (source code analysis, learning plans) under topics/
+│   ├── knowledge/    # Long-term knowledge base (topic dirs, sub-projects)
 │   ├── prototypes.md # Prototype index page (GitHub jumps)
 │   ├── health/       # Health tracking (weight, retirement, running, AI summary)
 │   └── posts/        # Blog archive (MkDocs blog plugin)
 ├── projects/        # Project outputs
 └── discuss/         # Giscus comment page
+
+external/           # Research source clones (never committed)
 ```

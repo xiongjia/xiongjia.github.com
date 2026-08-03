@@ -1,0 +1,13 @@
+# Go build artifacts
+# NOTE: go.sum is intentionally TRACKED (Go modules integrity checksum,
+# same rationale as Cargo.lock for Rust binary crates) — do not ignore it.
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+# Local build output (binary name matches the module directory)
+/go-cli-urfave

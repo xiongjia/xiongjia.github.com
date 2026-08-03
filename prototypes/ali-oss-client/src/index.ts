@@ -6,6 +6,10 @@ import { isConfigured, loadConfig, type OSSConfig } from "./config.js";
 // main(), so future module-level code gets the variables too).
 dotenv.config({ path: [".env.dev.local", ".env"] });
 
+// Signed URLs are short-lived by design; one constant keeps the two printed
+// section titles consistent (the README locates sections by title prefix).
+const SIGNED_URL_EXPIRES = 60; // seconds
+
 function createClient(cfg: OSSConfig): OSS {
   const options: OSS.Options = {
     region: cfg.region,
@@ -67,9 +71,23 @@ async function getObject(client: OSS, key: string): Promise<void> {
   console.log(`  content: ${content}`);
 }
 
-async function signedUrl(client: OSS, key: string): Promise<void> {
-  section(`Signed URL (GET, expires in 60s): ${key}`);
-  const url = client.signatureUrl(key, { expires: 60, method: "GET" });
+async function signedDownloadUrl(client: OSS, key: string): Promise<void> {
+  section(`Signed download URL (GET, expires in ${SIGNED_URL_EXPIRES}s): ${key}`);
+  const url = client.signatureUrl(key, { expires: SIGNED_URL_EXPIRES, method: "GET" });
+  console.log(`  ${url}`);
+}
+
+async function signedUploadUrl(client: OSS, key: string): Promise<void> {
+  // A signed PUT URL lets anyone with the link upload to this key until it
+  // expires. The signature binds method + key + Content-Type: the uploader
+  // must send the exact same Content-Type (text/plain for the demo object)
+  // or OSS answers 403 SignatureDoesNotMatch.
+  section(`Signed upload URL (PUT, expires in ${SIGNED_URL_EXPIRES}s): ${key}`);
+  const url = client.signatureUrl(key, {
+    expires: SIGNED_URL_EXPIRES,
+    method: "PUT",
+    "Content-Type": "text/plain",
+  });
   console.log(`  ${url}`);
 }
 
@@ -120,13 +138,20 @@ async function main(): Promise<void> {
     await listObjects(client, cfg.demoPrefix);
     await putObject(client, key);
     await getObject(client, key);
-    await signedUrl(client, key);
+    await signedDownloadUrl(client, key);
+    await signedUploadUrl(client, key);
   } finally {
-    // Clean up the demo object so repeated runs never accumulate files.
-    await deleteObject(client, key).catch((err: unknown) => {
-      const detail = describeError(err);
-      console.error(`  (cleanup failed: ${detail})`);
-    });
+    // Clean up the demo object so repeated runs never accumulate files
+    // (skip with ALIYUN_OSS_KEEP_DEMO_OBJECT=true, e.g. to curl-test the
+    // signed upload URL after the demo exits — see README).
+    if (cfg.keepDemoObject) {
+      console.log("\n(keeping demo object — ALIYUN_OSS_KEEP_DEMO_OBJECT is set)");
+    } else {
+      await deleteObject(client, key).catch((err: unknown) => {
+        const detail = describeError(err);
+        console.error(`  (cleanup failed: ${detail})`);
+      });
+    }
   }
 }
 

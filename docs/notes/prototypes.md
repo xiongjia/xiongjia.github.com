@@ -18,6 +18,7 @@ hide:
 | --------------------------------------- | --------------- | ---------- |
 | [ali-oss-client](#ali-oss-client)       | 🟢 Working      | 2026-08-01 |
 | [prototype-example](#prototype-example) | 🟡 Experimental | 2026-08-01 |
+| [go-cli-urfave](#go-cli-urfave)         | 🟡 Experimental | 2026-08-03 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -44,3 +45,16 @@ ______________________________________________________________________
 ruff / mdformat 格式化与 lint。
 
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
+
+______________________________________________________________________
+
+## Go
+
+### go-cli-urfave
+
+Go CLI 原型，用 `urfave/cli` v2 框架写的简单命令行程序（`greet` 命令，支持
+`--name` 参数）。原为研究 [Lux](https://github.com/iawia002/lux) 时在
+`research/experiments/` 下的实验代码，已迁移至此；`go.sum` 纳入版本控制以保证
+依赖可复现构建。
+
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/go-cli-urfave)

@@ -24,7 +24,7 @@ TPS、缓存命中率、WAL 流量等关键指标。
 - 对照官方文档验证模拟模型的准确性，能指出模型的简化之处
 - （进阶）阅读源码理解模拟如何构建，可选本地运行
 
-阅读笔记（中文）发布到 `docs/notes/research/docs/pgsimcity/`。
+阅读笔记（中文）发布到 `docs/notes/research/topics/pgsimcity/`。
 
 ## Tasks
 
@@ -37,7 +37,7 @@ TPS、缓存命中率、WAL 流量等关键指标。
   - 记录城市地图：Client sky / Postmaster / Backend row / Buffer pool /
     Storage / WAL district / Maintenance yard / Standbys / Continuity /
     Query lab 各自代表什么
-  - 发布阅读笔记到 `docs/notes/research/docs/pgsimcity/00-pgsimcity.md`
+  - 发布阅读笔记到 `docs/notes/research/topics/pgsimcity/index.md`
 
 - [ ] **深入城区：内存与进程模型**
 

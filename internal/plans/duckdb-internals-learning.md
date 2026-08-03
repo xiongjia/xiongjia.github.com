@@ -18,7 +18,7 @@ tags: [duckdb, database, learning, research, query-engine]
 - 向量化执行为何比 Volcano 逐行模型快：DataChunk/Vector、四种 Vector 格式、
   Selection Vector、解释执行 vs 查询编译
 
-阅读笔记（中文）发布到 `docs/notes/research/docs/duckdb/`。
+阅读笔记（中文）发布到 `docs/notes/research/topics/duckdb/`。
 
 ## Tasks
 
@@ -36,7 +36,7 @@ tags: [duckdb, database, learning, research, query-engine]
     CSV sniffer
   - 动手验证：`SELECT * FROM duckdb_optimizers()` 查看优化器列表；
     用 `SET disabled_optimizers = '...'` 关闭某 pass 观察计划变化
-  - 发布阅读笔记到 `docs/notes/research/docs/duckdb/00-duckdb.md`
+  - 发布阅读笔记到 `docs/notes/research/topics/duckdb/index.md`
 
 - [ ] **精读 Part 2：向量化执行**
 
@@ -50,7 +50,7 @@ tags: [duckdb, database, learning, research, query-engine]
     vs DuckDB 的解释执行（precompiled functions）
   - 动手验证：`SELECT ... FROM duckdb_functions() WHERE internal ...` 查看
     内置函数目录；用 Python 实测 flat vs constant vector 相关查询
-  - 发布阅读笔记到 `docs/notes/research/docs/duckdb/`（Part 2 部分）
+  - 发布阅读笔记到 `docs/notes/research/topics/duckdb/`（Part 2 部分）
 
 - [ ] **串联总结：Part 1 + Part 2 心智模型**
 

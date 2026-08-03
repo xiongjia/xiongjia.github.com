@@ -5,11 +5,14 @@
 Collect → Research → Build
 Posts · Moments · Health Monitor
 
+> ⚠️ 本站笔记**部分内容由 AI 生成**，仅供参考学习使用。
+
 ```mermaid
 graph TD
   A["📝 Notes"] --> B["📚 Collection"]
   B --> C["🔬 Research"]
-  C --> D["🛠️ Projects"]
+  C --> K["🧠 Knowledge"]
+  K --> D["🛠️ Projects"]
   D -.->|New Ideas| A
   A --> E["📰 Posts"]
   A --> F["⏰ Moments"]
@@ -20,6 +23,7 @@ graph TD
   click A "/notes/" "Notes"
   click B "/notes/collection/" "Collection"
   click C "/notes/research/" "Research"
+  click K "/notes/knowledge/" "Knowledge"
   click D "/projects/" "Projects"
   click E "/notes/posts/" "Posts"
   click F "/moments/" "Moments"
