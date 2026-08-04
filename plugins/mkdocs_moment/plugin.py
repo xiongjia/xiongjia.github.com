@@ -3,15 +3,17 @@
 import logging
 import os
 import re
-import shutil
 import sys
 from datetime import timedelta, timezone
 from email.utils import format_datetime
 from math import ceil
 from pathlib import Path
-from typing import Optional
+from typing import Literal, Optional
 from xml.etree import ElementTree as ET
 from zoneinfo import ZoneInfo
+
+import csscompressor
+import htmlmin
 
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 # (mkdocs hook loader only puts plugins/ on sys.path, see shared/__init__.py)
@@ -70,6 +72,86 @@ def _first_text_line(content: str) -> str:
         if text:
             return text
     return ""
+
+
+# htmlmin options mirror the mkdocs-minify-plugin defaults so generated
+# moment pages minify to the same degree as regular MkDocs pages; keep them
+# in sync if the minify plugin's defaults change (users can still override
+# per-option via extra.moment.htmlmin_opts)
+_HTMLMIN_OPTS = {
+    "remove_comments": False,
+    "remove_empty_space": False,
+    "remove_all_empty_space": False,
+    "reduce_empty_attributes": True,
+    "reduce_boolean_attributes": False,
+    "remove_optional_attribute_quotes": True,
+    "convert_charrefs": True,
+    "keep_pre": False,
+    "pre_tags": ("pre", "textarea"),
+    "pre_attr": "pre",
+}
+
+
+def _valid_htmlmin_value(key: str, value) -> bool:
+    """Whether an ``htmlmin_opts`` override value matches how htmlmin consumes it.
+
+    The bool flags are truthiness-checked by htmlmin, but YAML configs should
+    use real booleans; ``pre_tags`` must be a tag-name container (list/tuple/
+    set/frozenset) and ``pre_attr`` a string. Anything else is surfaced as a
+    warning instead of letting htmlmin fail — or silently behave oddly —
+    mid-build.
+    """
+    if key == "pre_tags":
+        return isinstance(value, (list, tuple, set, frozenset))
+    if key == "pre_attr":
+        return isinstance(value, str)
+    return isinstance(value, bool)
+
+
+def _resolve_htmlmin_opts(overrides: Optional[dict]) -> dict:
+    """Merge ``extra.moment.htmlmin_opts`` over the mirrored minify defaults.
+
+    ``None`` keeps the defaults; non-dict overrides, unknown keys and
+    ill-typed values are ignored with a warning rather than crashing the
+    build.
+    """
+    opts = dict(_HTMLMIN_OPTS)
+    if overrides is None:
+        return opts
+    if not isinstance(overrides, dict):
+        log.warning(
+            "extra.moment.htmlmin_opts must be a dict, got %s — ignored", type(overrides).__name__
+        )
+        return opts
+    for key, value in overrides.items():
+        if key not in opts:
+            log.warning("Unknown moment htmlmin option %r, ignored", key)
+        elif not _valid_htmlmin_value(key, value):
+            log.warning(
+                "Moment htmlmin option %r has an invalid value type (%s), ignored",
+                key,
+                type(value).__name__,
+            )
+        else:
+            opts[key] = value
+    return opts
+
+
+def _find_minify_plugin(config):
+    """The site's loaded minify plugin, or None.
+
+    Detected by its distinctive config keys (``minify_html`` + ``minify_css``)
+    rather than its registration name, so the lookup survives renames/aliases
+    in ``mkdocs.yml``.
+    """
+    plugins = config.get("plugins", {})
+    if not hasattr(plugins, "values"):
+        return None
+    for plugin in plugins.values():
+        cfg = getattr(plugin, "config", None)
+        if cfg is not None and "minify_html" in cfg and "minify_css" in cfg:
+            return plugin
+    return None
 
 
 def _tag_segment(tag: str) -> str:
@@ -148,7 +230,11 @@ class MomentPlugin(BasePlugin):
             "feed_enabled": moment_cfg.get("feed", True),
             "feed_description": moment_cfg.get("feed_description", ""),
             "timezone": moment_cfg.get("timezone", "Asia/Shanghai"),
+            "minify": moment_cfg.get("minify", True),
+            "htmlmin_opts": moment_cfg.get("htmlmin_opts", None),
         }
+        # resolved once per build — htmlmin_opts is static for the build
+        self._htmlmin_opts = _resolve_htmlmin_opts(self.config.get("htmlmin_opts"))
 
     # ------------------------------------------------------------------
     # MkDocs lifecycle hooks
@@ -275,11 +361,15 @@ class MomentPlugin(BasePlugin):
         site_dir = Path(config["site_dir"])
         template = self._jinja_env.get_template("moment_timeline.html")
 
-        # copy CSS
+        # copy CSS, minified in place: the minify plugin only handles files
+        # listed in its ``css_files``, and its on_post_build runs before this
+        # hook's, so moment.css never passes through it
         css_src = Path(__file__).parent / "assets" / "css" / "moment.css"
         css_dst = site_dir / self.config["path"] / "moment.css"
         css_dst.parent.mkdir(parents=True, exist_ok=True)
-        shutil.copy(css_src, css_dst)
+        css_dst.write_text(
+            self._minify_css(css_src.read_text(encoding="utf-8"), config), encoding="utf-8"
+        )
 
         # pagination pages (only when the timeline spans multiple pages)
         total_pages = ceil(len(self._moments) / self.config["posts_per_page"])
@@ -332,14 +422,17 @@ class MomentPlugin(BasePlugin):
                 items=page_items,
             )
 
-            html = template.render(
-                page=page_proxy,
-                config=config,
-                nav=self._nav,
-                base_url=self._base_url,
-                pagination=pagination,
-                labels=self._labels,
-                **helpers,
+            html = self._minify_html(
+                template.render(
+                    page=page_proxy,
+                    config=config,
+                    nav=self._nav,
+                    base_url=self._base_url,
+                    pagination=pagination,
+                    labels=self._labels,
+                    **helpers,
+                ),
+                config,
             )
 
             output_dir = site_dir / self.config["path"] / "page" / str(page_num)
@@ -365,14 +458,17 @@ class MomentPlugin(BasePlugin):
                 next_url=None,
                 items=items,
             )
-            html = template.render(
-                page=page_proxy,
-                config=config,
-                nav=self._nav,
-                base_url=self._base_url,
-                pagination=tag_pagination,
-                labels=self._labels,
-                **helpers,
+            html = self._minify_html(
+                template.render(
+                    page=page_proxy,
+                    config=config,
+                    nav=self._nav,
+                    base_url=self._base_url,
+                    pagination=tag_pagination,
+                    labels=self._labels,
+                    **helpers,
+                ),
+                config,
             )
             output_dir = site_dir / self.config["path"] / "tag" / segment
             output_dir.mkdir(parents=True, exist_ok=True)
@@ -408,14 +504,17 @@ class MomentPlugin(BasePlugin):
                 next_url=None,
                 items=items,
             )
-            html = timeline_template.render(
-                page=page_proxy,
-                config=config,
-                nav=self._nav,
-                base_url=self._base_url,
-                pagination=pagination,
-                labels=self._labels,
-                **helpers,
+            html = self._minify_html(
+                timeline_template.render(
+                    page=page_proxy,
+                    config=config,
+                    nav=self._nav,
+                    base_url=self._base_url,
+                    pagination=pagination,
+                    labels=self._labels,
+                    **helpers,
+                ),
+                config,
             )
             output_dir = site_dir / month_dir / month_path
             output_dir.mkdir(parents=True, exist_ok=True)
@@ -433,14 +532,17 @@ class MomentPlugin(BasePlugin):
             }
             for (year, month), items in groups.items()
         ]
-        html = archive_template.render(
-            page=page_proxy,
-            config=config,
-            nav=self._nav,
-            base_url=self._base_url,
-            archive_groups=archive_groups,
-            labels=self._labels,
-            **helpers,
+        html = self._minify_html(
+            archive_template.render(
+                page=page_proxy,
+                config=config,
+                nav=self._nav,
+                base_url=self._base_url,
+                archive_groups=archive_groups,
+                labels=self._labels,
+                **helpers,
+            ),
+            config,
         )
         output_dir = site_dir / month_dir / "archive"
         output_dir.mkdir(parents=True, exist_ok=True)
@@ -592,6 +694,44 @@ class MomentPlugin(BasePlugin):
     # ------------------------------------------------------------------
     # internal helpers
     # ------------------------------------------------------------------
+
+    def _is_minify_active(self, config, kind: Literal["html", "css"]) -> bool:
+        """Whether minification is on for a generated asset kind ("html" | "css").
+
+        Generated pages and moment.css bypass the minify plugin (its
+        on_post_build runs before this hook's), so the plugin minifies them
+        itself — and should follow the site-wide minify settings. The
+        moment-level ``minify`` toggle (extra.moment.minify, default true)
+        is an explicit override.
+        """
+        if not self.config.get("minify", True):
+            return False
+        site_plugin = _find_minify_plugin(config)
+        if site_plugin is not None:
+            return bool(site_plugin.config.get(f"minify_{kind}"))
+        return True
+
+    def _minify_html(self, html: str, config) -> str:
+        """Minify generated page HTML with the same options the minify plugin uses.
+
+        Pagination/tag/archive/month pages are rendered and written in
+        ``on_post_build``, which runs after the minify plugin's pass, so the
+        minify plugin never sees them — minify here instead. ``on_config``
+        precomputes the merged options in ``self._htmlmin_opts``; fall back
+        to the defaults if it never ran (defensive).
+        """
+        if not self._is_minify_active(config, "html"):
+            return html
+        opts = getattr(self, "_htmlmin_opts", None)
+        if opts is None:
+            opts = _HTMLMIN_OPTS
+        return htmlmin.minify(html, **opts)
+
+    def _minify_css(self, css: str, config) -> str:
+        """Minify moment.css with the same compressor the minify plugin uses."""
+        if not self._is_minify_active(config, "css"):
+            return css
+        return csscompressor.compress(css)
 
     def _inject_template_helpers(self, context):
         """Expose config-driven URL helpers to moment templates.

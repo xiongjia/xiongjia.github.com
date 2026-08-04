@@ -1,0 +1,29 @@
+{
+  "name": "supabase-storage-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TypeScript prototype: basic Supabase Storage usage against a local Supabase instance (official @supabase/supabase-js)",
+  "type": "module",
+  "packageManager": "pnpm@11.4.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsx src/index.ts",
+    "demo": "node dist/index.js",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.111.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}

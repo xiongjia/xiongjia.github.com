@@ -9,6 +9,10 @@ dependencies = [
     "mkdocs-material-extensions>=1.3.1",
     "mkdocs-mermaid2-plugin>=1.2.1",
     "mkdocs-minify-plugin>=0.8.0",
+    # minify toolchain — htmlmin2/csscompressor are also used directly by
+    # plugins/mkdocs_moment for generated pages and moment.css
+    "htmlmin2>=0.1.13",
+    "csscompressor>=0.9.5",
     "mkdocs-drawio-exporter>=0.10.2",
     "mkdocs-drawio>=1.11.2",
     "mkdocs-rss-plugin>=1.17.3",
