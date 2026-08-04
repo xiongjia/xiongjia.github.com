@@ -1,11 +1,52 @@
-/* ── Content back-link ─────────────────────────
-   The "← 返回" link above the article on research
-   and knowledge topic pages (their sidebar
-   navigation is hidden; the link lives in the
-   content area, so it survives hide: toc).
+/* ── Back-link ────────────────────────────────
+   The "← 返回" link on research / knowledge topic
+   pages (their sidebar navigation is hidden).
+   Two instances exist in the DOM:
+   - above the article (content area) — visible on
+     mobile/tablet, where the TOC sidebar is
+     hidden (< 1220px);
+   - below the table of contents (right sidebar) —
+     visible on desktop (≥ 1220px).
+   The instances are toggled at the same breakpoint
+   Material uses for the secondary sidebar
+   (1220px / 76.25em), so exactly one is visible at
+   a time. Note: with `hide: toc` the desktop
+   instance is gone (the whole sidebar is hidden);
+   the content instance still covers mobile. No
+   page uses `hide: toc` today.
    ─────────────────────────────────────────── */
 
 .back-link {
-  margin-bottom: 0.6rem;
   font-size: 0.8rem;
+}
+
+/* Content-area instance: above the article, mobile/tablet fallback */
+.md-content .back-link {
+  margin: 0 0 0.6rem;
+}
+
+/* Sidebar instance: below the TOC, desktop-only */
+.md-sidebar--secondary .back-link {
+  display: none;
+  margin-top: 0.8rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+@media screen and (min-width: 76.25em) {
+  .md-content .back-link {
+    display: none; /* sidebar instance takes over */
+  }
+  .md-sidebar--secondary .back-link {
+    display: block;
+  }
+}
+
+/* Link affordance: the sidebar anchor sits outside .md-typeset, which is
+   the only place Material applies link colors — mirror its rules. */
+.back-link a {
+  color: var(--md-typeset-a-color);
+}
+.back-link a:hover {
+  color: var(--md-accent-fg-color);
 }

@@ -1,8 +1,10 @@
 {#-
-  Content-level "← 返回" link shown above the article on pages whose sidebar
-  navigation is hidden (research topics, knowledge topics). It lives in the
-  content area — not the TOC — so it keeps working even when a page hides
-  the table of contents.
+  "← 返回" link rendered on pages whose sidebar navigation is hidden
+  (research topics, knowledge topics). It is included twice: below the
+  table of contents in the right sidebar (`partials/toc.html` override,
+  desktop ≥ 1220px) and above the article (main.html content block,
+  mobile/tablet fallback). back-link.css shows exactly one instance per
+  viewport; the partial renders nothing on any other page.
 
   Research pages (notes/research/topics/):
   - topic root pages (topics/<topic>/index.md) go back to the Research
