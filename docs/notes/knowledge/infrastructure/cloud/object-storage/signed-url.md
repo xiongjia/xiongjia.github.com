@@ -28,6 +28,24 @@ categories:
 
 S3 的 Presigned URL、OSS 的签名 URL、GCS 的 Signed URL 是同一个概念。
 
+#### 各厂商叫法对照
+
+「Presigned URL」与「Signed URL」没有本质区别，只是不同厂商的叫法：
+
+| 厂商                 | 叫法                     | SDK 方法                          |
+| -------------------- | ------------------------ | --------------------------------- |
+| AWS S3               | Presigned URL            | `getSignedUrl` / `presignedUrl`   |
+| MinIO                | Presigned URL（S3 兼容） | `presignedGetObject`              |
+| 阿里云 OSS           | 签名 URL                 | `signatureUrl` / `signatureUrlV4` |
+| Google Cloud Storage | Signed URL               | `sign`（v1）/ `signUrl`（v2）     |
+| 华为云 OBS           | 预签名 URL               | `createSignedUrl`                 |
+
+> 唯一需要区分的：在 **AWS 生态内部**，「S3 Presigned URL」与
+> 「CloudFront Signed URL」是两种不同的机制 —— 前者直接签名 S3 对象端点
+> （走 S3 本身、无 CDN 缓存），后者签的是 CloudFront 分发 URL（CDN 边缘
+> 节点，用 CloudFront key pair 签名，通常配合 OAC 让 S3 桶保持私有）。
+> 对象存储 SDK 语境下的 Presigned URL / Signed URL 均指前者。
+
 ### 什么情况下用签名 URL
 
 一句话判断标准：**操作方不持有 AccessKey（Secret），但你希望给 TA 一个

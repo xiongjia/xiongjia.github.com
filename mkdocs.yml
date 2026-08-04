@@ -63,7 +63,19 @@ hooks:
 
 # plugins
 plugins:
-  - minify: { minify_html: true }
+  - minify:
+      minify_html: true
+      minify_css: true
+      minify_js: true
+      css_files:
+        - assets/stylesheets/back-link.css
+        - assets/stylesheets/hr.css
+        - assets/stylesheets/nav.css
+        - assets/stylesheets/retire.css
+        - assets/stylesheets/tools.css
+        - assets/stylesheets/weight.css
+      js_files:
+        - assets/javascripts/retire.js
   - search:
   - macros:
       module_name: docs/notes/health/macros/health_macros

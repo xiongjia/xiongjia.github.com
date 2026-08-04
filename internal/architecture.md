@@ -133,6 +133,7 @@ xiongjia.github.com/
 │   └── partials/
 │       ├── comments.html          # Giscus comment integration
 │       ├── back-link.html         # Topic/content back-link block
+│       ├── toc.html               # TOC sidebar override (appends back-link, theme copy)
 │       └── source.html            # Source link override
 ├── docs/assets/
 │   ├── stylesheets/

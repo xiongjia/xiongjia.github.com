@@ -1,0 +1,37 @@
+{#-
+  Override of Material's templates/partials/toc.html (tracked copy —
+  last synced against Material 9.7.7; guarded by tests/test_toc_override.py,
+  whose failure message reports the installed theme version).
+  Adds a "← 返回" back-link below the table of contents in the right
+  sidebar on pages whose sidebar navigation is hidden (research / knowledge
+  topics). This is the desktop instance (≥ 1220px); the content block in
+  main.html renders a second instance that covers mobile/tablet, and
+  back-link.css shows exactly one per viewport.
+
+  Caveat: with `hide: toc` the whole secondary sidebar is hidden, so this
+  desktop instance disappears; the content-area instance still covers
+  mobile. No page uses `hide: toc` today.
+-#}
+{% set title = lang.t("toc") %}
+{% if config.mdx_configs.toc and config.mdx_configs.toc.title %}
+  {% set title = config.mdx_configs.toc.title %}
+{% endif %}
+<nav class="md-nav md-nav--secondary" aria-label="{{ title | e }}">
+  {% set toc = page.toc %}
+  {% set first = toc | first %}
+  {% if first and first.level == 1 %}
+    {% set toc = first.children %}
+  {% endif %}
+  {% if toc %}
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      {{ title }}
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      {% for toc_item in toc %}
+        {% include "partials/toc-item.html" %}
+      {% endfor %}
+    </ul>
+  {% endif %}
+</nav>
+{% include "partials/back-link.html" %}
