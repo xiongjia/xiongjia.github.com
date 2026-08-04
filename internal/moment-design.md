@@ -304,17 +304,21 @@ extra:
     feed: true                      # RSS feed at /moments/feed.xml (default: true)
     feed_description: ''            # RSS channel description (falls back to timeline_description)
     timezone: Asia/Shanghai         # RSS pubDate tz (default: Asia/Shanghai)
+    minify: true                    # Minify generated pages + moment.css; follows the site minify plugin flags when loaded (default: true)
+    htmlmin_opts: {}                # Per-option htmlmin overrides (default: mkdocs-minify-plugin defaults)
 ```
 
 ## Dependencies
 
-| Package    | Usage                                                      |
-| ---------- | ---------------------------------------------------------- |
-| mkdocs     | Static site generator                                      |
-| PyYAML     | Parse frontmatter and labels                               |
-| markdown   | Runtime rendering (moment HTML) + caption extension        |
-| (built-in) | `pathlib`, `re`, `shutil`, `math`, `xml.etree`, `zoneinfo` |
-| Giscus     | Comment system (loaded client-side)                        |
+| Package       | Usage                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| mkdocs        | Static site generator                                                                                         |
+| PyYAML        | Parse frontmatter and labels                                                                                  |
+| markdown      | Runtime rendering (moment HTML) + caption extension                                                           |
+| htmlmin2      | Minify generated pages (pagination/tag/archive/month)                                                         |
+| csscompressor | Minify moment.css                                                                                             |
+| (built-in)    | `pathlib`, `re`, `os`, `sys`, `math`, `datetime`, `email.utils`, `xml.etree`, `zoneinfo`, `logging`, `typing` |
+| Giscus        | Comment system (loaded client-side)                                                                           |
 
 ## File Tree
 

@@ -14,11 +14,12 @@ hide:
 
 ## Overview
 
-| Prototype                               | Status          | Created    |
-| --------------------------------------- | --------------- | ---------- |
-| [ali-oss-client](#ali-oss-client)       | 🟢 Working      | 2026-08-01 |
-| [prototype-example](#prototype-example) | 🟡 Experimental | 2026-08-01 |
-| [go-cli-urfave](#go-cli-urfave)         | 🟡 Experimental | 2026-08-03 |
+| Prototype                                           | Status          | Created    |
+| --------------------------------------------------- | --------------- | ---------- |
+| [ali-oss-client](#ali-oss-client)                   | 🟢 Working      | 2026-08-01 |
+| [prototype-example](#prototype-example)             | 🟡 Experimental | 2026-08-01 |
+| [go-cli-urfave](#go-cli-urfave)                     | 🟡 Experimental | 2026-08-03 |
+| [supabase-storage-client](#supabase-storage-client) | 🟡 Experimental | 2026-08-04 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -33,6 +34,16 @@ TypeScript 原型，用官方 `ali-oss` SDK（pnpm 管理）演示阿里云 OSS 
 README 内含基本的阿里云 OSS 配置步骤（RAM 用户 + AccessKey、建 bucket、region/endpoint、`.env.dev.local`）。
 
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/ali-oss-client)
+
+### supabase-storage-client
+
+TypeScript 原型，用官方 `@supabase/supabase-js` SDK（pnpm 管理）在**本地**测试 Supabase
+Storage 基本用法：自带 `supabase/` 项目配置（`supabase init`，storage 默认开启），anon key
+未配置时自动从 `supabase status -o env` 读取，实现零配置本地运行。操作覆盖：列 bucket、建
+私有 bucket、列对象、上传（upsert）、下载、签名 URL（GET / PUT 上传）、公开 URL、删除
+（demo 对象自动清理；bucket 仅当本次运行创建时才删除，已有 bucket 保留）。
+
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/supabase-storage-client)
 
 ______________________________________________________________________
 

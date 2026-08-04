@@ -19,6 +19,12 @@ Python `.venv/`, Node `node_modules/`).
   TypeScript (official `ali-oss` SDK, pnpm): config via env vars, bucket/object
   listing, upload, download, signed URLs, delete · created 2026-08-01 · status
   `working`
+- **[supabase-storage-client](./supabase-storage-client/README.md)** —
+  Supabase Storage client in TypeScript (official `@supabase/supabase-js`,
+  pnpm): local `supabase start` project config included, anon key auto-read
+  from the CLI, bucket/object listing, create bucket, upload, download,
+  signed URLs, public URL, delete · created 2026-08-04 · status
+  `experimental`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`

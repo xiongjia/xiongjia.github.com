@@ -6,6 +6,7 @@ Covers the three base bugs fixed before Phase 2 feature work:
   3. tag dirs used percent-encoding instead of literal names
 """
 
+import re
 import sys
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -19,10 +20,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "plugins"))
 
 from mkdocs_moment.models import Moment, PageType  # noqa: E402
 from mkdocs_moment.plugin import (  # noqa: E402
+    _HTMLMIN_OPTS,
     MomentPlugin,
     _first_text_line,
     _Page,
+    _resolve_htmlmin_opts,
     _tag_segment,
+    _valid_htmlmin_value,
 )
 
 
@@ -41,9 +45,9 @@ def _moment(i: int, tags=("general",)) -> Moment:
     )
 
 
-def _make_plugin(moments, posts_per_page=20):
+def _make_plugin(moments, posts_per_page=20, **extra):
     plugin = MomentPlugin()
-    plugin._load_config({"path": "moments", "posts_per_page": posts_per_page})
+    plugin._load_config({"path": "moments", "posts_per_page": posts_per_page, **extra})
     plugin._moments = moments
     plugin._labels = {}
     plugin._nav = None
@@ -149,6 +153,163 @@ def test_chinese_tag_uses_literal_dir(tmp_path):
 
     assert (tmp_path / "moments" / "tag" / "中文" / "index.html").exists()
     assert not (tmp_path / "moments" / "tag" / "%E4%B8%AD%E6%96%87" / "index.html").exists()
+
+
+# ---------------------------------------------------------------------------
+# Minification (generated pages + moment.css bypass the minify plugin)
+# ---------------------------------------------------------------------------
+
+
+def test_generated_pages_are_minified(tmp_path):
+    """Generated pages (tag/archive/month) are minified: the minify plugin's
+    on_post_build runs before this hook's, so these files never pass through
+    it — the plugin must minify them itself. Inline <script> bodies keep
+    their whitespace (htmlmin never rewrites script content), matching how
+    the minify plugin treats regular pages."""
+    moments = [_moment(0, tags=["general"])]
+    plugin, template = _make_plugin(moments, posts_per_page=20)
+    template.render.return_value = (
+        "<html>\n\n<body>\n<p>hi</p>\n<script>\n  var x = 1;\n</script>\n</body>\n</html>"
+    )
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    for rel in ("tag/general/index.html", "2026/07/index.html", "archive/index.html"):
+        html = (tmp_path / "moments" / rel).read_text(encoding="utf-8")
+        # htmlmin keeps <script> bodies verbatim (their whitespace is
+        # preserved), so strip them before asserting everything else
+        # collapsed to a single line
+        non_script = re.sub(r"<script>.*?</script>", "", html, flags=re.S)
+        assert "\n" not in non_script
+        assert "<body> <p>hi</p> " in html
+        assert "var x = 1;" in html  # script content untouched
+
+
+def test_moment_css_is_minified(tmp_path):
+    """moment.css is copied minified: the source keeps a leading comment and
+    line breaks, the site copy must be a single compressed line."""
+    moments = [_moment(0)]
+    plugin, _ = _make_plugin(moments)
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    css = (tmp_path / "moments" / "moment.css").read_text(encoding="utf-8")
+    assert "\n" not in css
+    assert css.startswith(".moment-timeline{")  # leading comment stripped
+
+
+def test_htmlmin_opts_passthrough(tmp_path):
+    """extra.moment.htmlmin_opts overrides the mirrored minify defaults."""
+    plugin, template = _make_plugin(
+        [_moment(0, tags=["general"])], htmlmin_opts={"remove_comments": True}
+    )
+    template.render.return_value = "<html>\n\n<body>\n<!-- note -->\n<p>hi</p>\n\n</body>\n</html>"
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "note" not in html  # comment stripped via override
+    assert "<body> <p>hi</p> </body>" in html
+
+
+def test_htmlmin_opts_unknown_key_warns(tmp_path, caplog):
+    """Unknown htmlmin_opts keys are ignored with a warning, not a crash."""
+    plugin, template = _make_plugin(
+        [_moment(0, tags=["general"])], htmlmin_opts={"bogus_option": True}
+    )
+    template.render.return_value = "<html>\n<body>\n<p>hi</p>\n</body>\n</html>"
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "<body> <p>hi</p> </body>" in html  # defaults still applied
+    assert any("bogus_option" in r.message for r in caplog.records)
+
+
+def test_htmlmin_opts_non_dict_ignored(tmp_path, caplog):
+    """A non-dict htmlmin_opts must not crash the build."""
+    plugin, template = _make_plugin([_moment(0, tags=["general"])], htmlmin_opts="oops")
+    template.render.return_value = "<html>\n<body>\n<p>hi</p>\n</body>\n</html>"
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "<body> <p>hi</p> </body>" in html
+    assert any("must be a dict" in r.message for r in caplog.records)
+
+
+def test_htmlmin_opts_invalid_value_type_warns(tmp_path, caplog):
+    """Ill-typed htmlmin_opts values (pre_tags as a string, numeric boolean)
+    are ignored with a warning instead of being handed to htmlmin and
+    breaking the build."""
+    plugin, template = _make_plugin(
+        [_moment(0, tags=["general"])],
+        htmlmin_opts={"pre_tags": "pre", "remove_comments": 1},
+    )
+    template.render.return_value = "<html>\n<body>\n<p>hi</p>\n</body>\n</html>"
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "<body> <p>hi</p> </body>" in html  # defaults still applied
+    assert any("invalid value type" in r.message for r in caplog.records)
+
+
+def test_valid_htmlmin_value():
+    """Type guard for htmlmin_opts overrides: bool flags need real booleans,
+    pre_tags a container, pre_attr a string."""
+    assert _valid_htmlmin_value("pre_tags", ("pre",)) is True
+    assert _valid_htmlmin_value("pre_tags", ["pre"]) is True
+    assert _valid_htmlmin_value("pre_tags", frozenset(["pre"])) is True
+    assert _valid_htmlmin_value("pre_tags", "pre") is False
+    assert _valid_htmlmin_value("pre_attr", "pre") is True
+    assert _valid_htmlmin_value("pre_attr", 1) is False
+    assert _valid_htmlmin_value("keep_pre", True) is True
+    assert _valid_htmlmin_value("keep_pre", 1) is False
+
+
+def test_minify_disabled_via_config(tmp_path):
+    """extra.moment.minify: false leaves generated pages and CSS uncompressed."""
+    plugin, template = _make_plugin([_moment(0, tags=["general"])], minify=False)
+    template.render.return_value = "<html>\n\n<body>\n<p>hi</p>\n\n</body>\n</html>"
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert html == "<html>\n\n<body>\n<p>hi</p>\n\n</body>\n</html>"
+    css = (tmp_path / "moments" / "moment.css").read_text(encoding="utf-8")
+    assert css.startswith("/* moment.css")  # copied verbatim
+
+
+def test_minify_follows_site_minify_plugin_config(tmp_path):
+    """When the site minify plugin disables minify_html, moment pages follow;
+    moment.css independently follows minify_css. The plugin is detected by
+    its config keys, not its registration name (registered under an alias)."""
+    plugin, template = _make_plugin([_moment(0, tags=["general"])])
+    template.render.return_value = "<html>\n\n<body>\n<p>hi</p>\n\n</body>\n</html>"
+    minify_plugin = SimpleNamespace(config={"minify_html": False, "minify_css": True})
+    plugin.on_post_build({"site_dir": str(tmp_path), "plugins": {"aliased-minify": minify_plugin}})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "\n" in html  # minify_html off → page uncompressed
+    css = (tmp_path / "moments" / "moment.css").read_text(encoding="utf-8")
+    assert "\n" not in css  # minify_css on → css still compressed
+
+
+def test_minify_follows_site_minify_css_off(tmp_path):
+    """The inverse: minify_css off keeps moment.css verbatim while HTML stays
+    minified — each asset kind follows its own site flag (alias-registered)."""
+    plugin, template = _make_plugin([_moment(0, tags=["general"])])
+    template.render.return_value = "<html>\n\n<body>\n<p>hi</p>\n\n</body>\n</html>"
+    minify_plugin = SimpleNamespace(config={"minify_html": True, "minify_css": False})
+    plugin.on_post_build({"site_dir": str(tmp_path), "plugins": {"aliased-minify": minify_plugin}})
+
+    html = (tmp_path / "moments" / "tag" / "general" / "index.html").read_text(encoding="utf-8")
+    assert "\n" not in html  # minify_html on → page compressed
+    css = (tmp_path / "moments" / "moment.css").read_text(encoding="utf-8")
+    assert css.startswith("/* moment.css")  # minify_css off → css verbatim
+
+
+def test_resolve_htmlmin_opts_merge_and_defaults():
+    """Overrides merge over the minify defaults; unknown keys are dropped."""
+    opts = _resolve_htmlmin_opts({"remove_comments": True, "bogus_option": 1})
+    assert opts["remove_comments"] is True
+    assert "bogus_option" not in opts
+    assert opts["keep_pre"] is False  # untouched default retained
+    assert _resolve_htmlmin_opts(None) == _HTMLMIN_OPTS  # None → defaults
 
 
 # ---------------------------------------------------------------------------
