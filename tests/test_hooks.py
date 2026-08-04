@@ -1,7 +1,8 @@
 """Integration tests for MkDocs hooks: draft_filter and snippet_include.
 
-mermaid_assets is intentionally not covered here (mock-HTTP cost outweighs
-value — see internal/plans/plugins-scripts-shared-module.md).
+mermaid_assets' download path (on_pre_build) is intentionally not covered here
+(mock-HTTP cost outweighs value — see internal/plans/arch/plugins-scripts-shared-module.md);
+the pure-HTML part (on_post_page) is covered in test_mermaid_assets.py.
 """
 
 from types import SimpleNamespace
