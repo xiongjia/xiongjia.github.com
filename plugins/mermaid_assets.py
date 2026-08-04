@@ -3,7 +3,8 @@ Mermaid Assets Hook
 
 Downloads mermaid JS locally during build (mirroring glightbox's approach
 of bundling assets locally). Removes CDN dependency for faster page loads.
-Also injects async/defer on the mermaid <script> tag for non-blocking load.
+Also injects defer (no async) on the mermaid <script> tag and moves it
+into <head>, so it runs before DOMContentLoaded without blocking parse.
 
 Usage in mkdocs.yml:
   hooks:
@@ -95,11 +96,22 @@ def on_pre_build(config, **kwargs):
 
 
 def on_post_page(output, page, config, **kwargs):
-    """Add async+defer to the mermaid <script> tag for non-blocking load.
+    """Make the self-hosted mermaid script defer-only and load it from <head>.
 
-    The 2.8MB mermaid bundle should not block rendering. The original ESM
-    import (type="module") had implicit defer; the UMD script tag does not,
-    so we inject the attributes here.
+    Material's own bundle.*.js contains a mermaid integration that, on
+    DOMContentLoaded, checks `typeof mermaid == "undefined"` and only then
+    dynamically fetches `https://unpkg.com/mermaid@11/dist/mermaid.min.js`.
+
+    The plain `async` attribute (which wins over `defer` per the HTML spec)
+    gives no ordering guarantee: the 2.8MB self-hosted bundle can still be
+    downloading when Material's check runs, so Material falls back to the
+    slow unpkg CDN (sometimes downloading the library twice).
+
+    A `defer`-only script is guaranteed by the spec to execute before
+    DOMContentLoaded, so `window.mermaid` always exists when Material's
+    integration initializes and the unpkg fetch never fires. defer still
+    downloads in parallel (no render blocking), and placing the tag in
+    <head> starts that download as early as possible.
     """
     # Quick pre-filter using the src attribute pattern to avoid BS4 parsing
     # on pages without mermaid (mermaid2 only injects the script on pages
@@ -111,8 +123,12 @@ def on_post_page(output, page, config, **kwargs):
     soup = BeautifulSoup(output, "html.parser")
     for script in soup.find_all("script", src=True):
         if script["src"] and _MERMAID_JS_TAG in script["src"]:
-            script["async"] = ""
             script["defer"] = ""
+            script.attrs.pop("async", None)
+            # move into <head> so the download starts in parallel with body
+            # parsing (mermaid2 appends the tag at the end of <body>)
+            if soup.head is not None:
+                soup.head.append(script.extract())
             break
 
     return str(soup)
