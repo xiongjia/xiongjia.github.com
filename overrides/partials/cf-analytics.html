@@ -1,0 +1,8 @@
+{# Cloudflare Web Analytics beacon (free tier, cookieless).
+   Injected from config so the token lives in mkdocs.yml, not the template.
+   Rendered only when enabled and a token is configured. #}
+{% if config.extra.cf_analytics.enabled and config.extra.cf_analytics.token %}
+  <!-- Cloudflare Web Analytics -->
+  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ config.extra.cf_analytics.token }}"}'></script>
+  <!-- End Cloudflare Web Analytics -->
+{% endif %}
