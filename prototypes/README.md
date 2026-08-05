@@ -9,12 +9,8 @@ with its own `README.md` (purpose, usage, current status) and its own
 `.gitignore` (ignoring its build artifacts, e.g. Rust `target/`,
 Python `.venv/`, Node `node_modules/`).
 
-## Index
+## Object Storage
 
-- **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
-  urfave/cli v2: `greet` command with `--name` flag (originally under
-  `research/experiments/`, migrated here; `go.sum` tracked for reproducible
-  builds) · created 2026-08-03 · status `experimental`
 - **[ali-oss-client](./ali-oss-client/README.md)** — Aliyun OSS client in
   TypeScript (official `ali-oss` SDK, pnpm): config via env vars, bucket/object
   listing, upload, download, signed URLs, delete · created 2026-08-01 · status
@@ -25,6 +21,18 @@ Python `.venv/`, Node `node_modules/`).
   from the CLI, bucket/object listing, create bucket, upload, download,
   signed URLs, public URL, delete · created 2026-08-04 · status
   `working`
+- **[r2-client](./r2-client/README.md)** — Cloudflare R2 client in
+  TypeScript (S3-compatible AWS SDK v3 `@aws-sdk/client-s3`, pnpm): config
+  via env vars, bucket/object listing, create bucket, upload, download,
+  presigned URLs, delete; local MinIO test included (no Cloudflare account
+  needed to try it) · created 2026-08-05 · status `working`
+
+## Others
+
+- **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
+  urfave/cli v2: `greet` command with `--name` flag (originally under
+  `research/experiments/`, migrated here; `go.sum` tracked for reproducible
+  builds) · created 2026-08-03 · status `experimental`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`
