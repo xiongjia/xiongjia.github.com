@@ -6,6 +6,7 @@
     <meta name="git-hash" content="{{ config.extra.git_hash }}">
   {% endif %}
   {{ super() }}
+  {% include "partials/cf-analytics.html" %}
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       document.querySelectorAll('a[href^="http"]').forEach(function(link) {

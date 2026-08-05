@@ -9,6 +9,13 @@ copyright: Copyright &copy; 2025 - present <a href="https://github.com/xiongjia/
 
 extra:
   git_hash: !ENV [GIT_HASH, '']
+  cf_analytics:
+    enabled: true
+    # Token is public by design (client-side beacon) — env override allows
+    # rotation without a git commit; fallback keeps local/CI builds working.
+    # Value is interpolated unescaped into the data-cf-beacon JSON attribute,
+    # so keep it hex ([0-9a-f]{32}); an empty value disables the beacon.
+    token: !ENV [CF_ANALYTICS_TOKEN, 'cd22530495334b6097e23e273034f4cd']
   backlinks:
     enabled: true
     include: ["notes/**"]
