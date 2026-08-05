@@ -51,18 +51,34 @@ async function listBuckets(client: SupabaseClient): Promise<void> {
  * pre-existing bucket is only ever written under the demo prefix and is
  * left in place.
  */
+/** True when the storage-api reports the bucket as missing. It signals this
+ * as HTTP 404, or as HTTP 400 whose JSON body carries `statusCode: "404"`
+ * — check both so the demo actually creates the bucket instead of
+ * crashing on a "Bucket not found" error. */
+function isBucketNotFound(error: unknown): boolean {
+  if (!error) return false;
+  const { status, statusCode } = error as { status?: number; statusCode?: string | number };
+  return status === 404 || String(statusCode) === "404";
+}
+
 async function createBucketIfMissing(client: SupabaseClient, bucket: string): Promise<boolean> {
   section(`Ensure bucket: ${bucket}`);
-  const { data: existing, error: getError } = await client.storage.getBucket(bucket);
+  // storage-js reports a missing bucket as `{ data: null, error }` by
+  // default, or as a thrown StorageApiError when `shouldThrowOnError` is
+  // enabled — normalize both so a missing bucket always falls through to
+  // createBucket below. Any other failure (network, auth, ...) is real and
+  // must not be masked.
+  let existing: Awaited<ReturnType<typeof client.storage.getBucket>>["data"] = null;
+  try {
+    const { data, error } = await client.storage.getBucket(bucket);
+    if (error && !isBucketNotFound(error)) throw error;
+    existing = data;
+  } catch (err) {
+    if (!isBucketNotFound(err)) throw err;
+  }
   if (existing) {
     console.log("  (already exists — left in place after the run)");
     return false;
-  }
-  // 404 = the bucket does not exist yet; any other failure (network, auth,
-  // ...) is real and must not fall through to createBucket with a confusing
-  // downstream error.
-  if (getError && getError.status !== 404) {
-    throw getError;
   }
   // Private by default — the demo never exposes objects to unauthenticated
   // GETs; access goes through signed URLs instead.
@@ -201,7 +217,7 @@ async function main(): Promise<void> {
         "2. Then run the demo — the anon key is auto-read from the CLI:",
         "     pnpm dev",
         "",
-        "The URL (SUPABASE_URL) defaults to http://127.0.0.1:54321 and the",
+        "The URL (SUPABASE_URL) defaults to http://127.0.0.1:64321 and the",
         "bucket (SUPABASE_BUCKET) to supabase-storage-demo, so no .env file",
         "is needed for a plain local test. Copy .env.example to .env.dev.local",
         "only when you must override these (e.g. a non-local project).",

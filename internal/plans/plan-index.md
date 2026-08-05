@@ -81,6 +81,10 @@ tags: [refactor, mkdocs]
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
 
+### Reading
+
+- [reading-list.md](./reading-list.md) — 阅读计划（定期维护清单）：理解 CloudFlare-ImgBed、阅读 Python for GIS 等
+
 ### Learning
 
 - [hollow-knight-english-learning.md](./hollow-knight-english-learning.md) — Hollow Knight 英语学习计划：阅读、词汇、发音、Shadowing、口语、写作（内容落在 `docs/notes/research/topics/english/`）
