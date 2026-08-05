@@ -1,0 +1,402 @@
+/* ============================================================
+ * fitness.css — 健身计数工具样式
+ * 配色遵循本站 Material for MkDocs 主题变量（primary: blue grey
+ * / accent: deep purple），亮暗主题自动切换；语义色（绿/红）
+ * 通过 [data-md-color-scheme="slate"] 覆盖。
+ * ============================================================ */
+
+/* ── 语义色（双套取值）────────────────────────────── */
+#fitness-app {
+  --fitness-positive: #2e7d32;   /* 达标绿（亮色） */
+  --fitness-danger: #d32f2f;     /* 删除红（亮色） */
+  --fitness-overlay: rgba(0, 0, 0, 0.4);
+}
+[data-md-color-scheme="slate"] #fitness-app {
+  --fitness-positive: #66bb6a;   /* 达标绿（暗色） */
+  --fitness-danger: #ef5350;     /* 删除红（暗色） */
+}
+
+/* ── 容器与模块间距 ───────────────────────────────── */
+#fitness-app {
+  font-variant-numeric: tabular-nums;
+  max-width: 420px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+#fitness-app button {
+  font: inherit;
+  cursor: pointer;
+  color: inherit;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+/* ── A. 今日概览：三格等宽卡片 ───────────────────── */
+.fitness-overview {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+.fitness-card {
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 14px 12px;
+  text-align: center;
+}
+.fitness-card-label {
+  font-size: 12px;
+  color: var(--md-default-fg-color--light);
+  margin-bottom: 4px;
+}
+.fitness-card-value {
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--md-default-fg-color);
+}
+.fitness-card-accent .fitness-card-value {
+  color: var(--md-accent-fg-color);
+}
+.fitness-card-value .fitness-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--md-default-fg-color--lighter);
+  margin-left: 2px;
+}
+
+/* ── B. 每日目标 ─────────────────────────────────── */
+.fitness-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+.fitness-section-head h2 {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--md-default-fg-color--light);
+  margin: 0;
+}
+.fitness-goal-set,
+.fitness-clear {
+  font-size: 12px;
+  color: var(--md-default-fg-color--light);
+  border-radius: 6px;
+  padding: 2px 8px;
+  transition: opacity 150ms ease-out, background-color 150ms ease-out;
+}
+.fitness-goal-set:hover,
+.fitness-goal-set:focus-visible {
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+}
+.fitness-progress {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--md-default-fg-color--lightest);
+  overflow: hidden;
+}
+.fitness-progress-fill {
+  height: 100%;
+  width: 0;
+  border-radius: 4px;
+  background: var(--md-default-fg-color);
+  transition: width 300ms ease-out, background-color 300ms ease-out;
+}
+.fitness-progress-fill.is-done {
+  background: var(--fitness-positive);
+}
+.fitness-progress-stats {
+  font-size: 12px;
+  color: var(--md-default-fg-color--light);
+  margin-top: 6px;
+}
+.fitness-progress-stats.is-done {
+  color: var(--fitness-positive);
+}
+
+/* ── C. 动作录入 ─────────────────────────────────── */
+.fitness-entry {
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.fitness-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.fitness-tab {
+  flex: 1;
+  padding: 8px 4px 10px;
+  font-size: 14px;
+  text-align: center;
+  color: var(--md-default-fg-color--lighter);
+  border-bottom: 3px solid transparent;
+  margin-bottom: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  line-height: 1.2;
+  transition: color 150ms ease-out, border-bottom-color 150ms ease-out, background-color 150ms ease-out, opacity 60ms ease-out;
+}
+.fitness-tab-emoji {
+  font-size: 22px;
+}
+.fitness-tab-name {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.fitness-tab:hover,
+.fitness-tab:focus-visible {
+  color: var(--md-default-fg-color);
+  background: var(--md-default-fg-color--lightest);
+}
+.fitness-tab.is-active {
+  background: var(--md-default-fg-color);   /* 反色实心填充：亮色黑底白字 / 暗色白底黑字 */
+  color: var(--md-default-bg-color);
+  border-bottom-color: var(--md-default-fg-color);
+  font-weight: 600;
+}
+
+/* ── 内联 SVG 图标 ─────────────────────────────────── */
+.fitness-icon {
+  width: 16px;
+  height: 16px;
+  vertical-align: -3px;
+  margin-right: 4px;
+}
+
+/* ── 重置今日（危险操作，通栏描边）───────────────── */
+.fitness-reset {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+  color: var(--fitness-danger);
+  border: 1px solid var(--fitness-danger);
+  transition: opacity 60ms ease-out;
+}
+.fitness-reset:hover,
+.fitness-reset:focus-visible {
+  opacity: 0.75;
+}
+.fitness-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.fitness-field-label {
+  font-size: 12px;
+  color: var(--md-default-fg-color--lighter);
+  flex-shrink: 0;
+}
+.fitness-stepper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.fitness-step-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 60ms ease-out;
+}
+.fitness-step-btn:hover,
+.fitness-step-btn:focus-visible {
+  opacity: 0.7;
+}
+.fitness-step-input {
+  width: 64px;
+  text-align: center;
+  font-size: 16px;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 6px 4px;
+  font-variant-numeric: tabular-nums;
+}
+.fitness-step-input:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 0;
+}
+.fitness-step-unit {
+  font-size: 12px;
+  color: var(--md-default-fg-color--lighter);
+  width: 20px;
+  text-align: left;
+}
+.fitness-add {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 16px;
+  background: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+  transition: opacity 60ms ease-out;
+}
+.fitness-add:hover,
+.fitness-add:focus-visible {
+  opacity: 0.85;
+}
+
+/* ── D. 记录列表 ─────────────────────────────────── */
+.fitness-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fitness-clear {
+  opacity: 0;
+}
+.fitness-list:hover .fitness-clear,
+.fitness-clear:focus-visible {
+  opacity: 1;
+}
+.fitness-clear:hover {
+  color: var(--fitness-danger);
+}
+.fitness-empty {
+  text-align: center;
+  font-size: 13px;
+  color: var(--md-default-fg-color--lighter);
+  padding: 24px 0;
+}
+.fitness-records {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.fitness-record {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+.fitness-record-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.fitness-record-name {
+  font-size: 14px;
+  color: var(--md-default-fg-color);
+}
+.fitness-record-meta {
+  font-size: 12px;
+  color: var(--md-default-fg-color--lighter);
+}
+.fitness-record-kcal {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--md-accent-fg-color);
+  white-space: nowrap;
+}
+.fitness-record-delete {
+  font-size: 14px;
+  color: var(--fitness-danger);
+  border-radius: 6px;
+  padding: 4px 6px;
+  opacity: 0;
+  transition: opacity 150ms ease-out;
+  flex-shrink: 0;
+}
+.fitness-record:hover .fitness-record-delete,
+.fitness-record:focus-within .fitness-record-delete {
+  opacity: 1;
+}
+
+/* ── 目标设置模态框 ──────────────────────────────── */
+.fitness-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: var(--fitness-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.fitness-modal {
+  background: var(--md-default-bg-color);
+  border-radius: 12px;
+  padding: 20px;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.fitness-modal h3 {
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--md-default-fg-color);
+}
+.fitness-modal-input {
+  font-size: 16px;
+  text-align: center;
+  color: var(--md-default-fg-color);
+  background: var(--md-default-bg-color);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.fitness-modal-input:focus {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 0;
+}
+.fitness-modal-actions {
+  display: flex;
+  gap: 8px;
+}
+.fitness-modal-actions button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: opacity 60ms ease-out;
+}
+.fitness-modal-save {
+  background: var(--md-default-fg-color);
+  color: var(--md-default-bg-color);
+}
+.fitness-modal-cancel {
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+}
+.fitness-modal-actions button:hover,
+.fitness-modal-actions button:focus-visible {
+  opacity: 0.85;
+}
+
+/* ── 响应式 ──────────────────────────────────────── */
+@media (max-width: 374px) {
+  .fitness-overview {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .fitness-card-accent {
+    grid-column: 1 / -1;
+  }
+}

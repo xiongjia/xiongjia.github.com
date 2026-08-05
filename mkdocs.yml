@@ -50,8 +50,10 @@ extra_css:
   - assets/stylesheets/hr.css
   - assets/stylesheets/tools.css
   - assets/stylesheets/back-link.css
+  - assets/stylesheets/fitness.css
 extra_javascript:
   - assets/javascripts/retire.js
+  - assets/javascripts/fitness.js
   
 # hooks (custom Python modules treated as plugins)
 hooks:
@@ -74,8 +76,10 @@ plugins:
         - assets/stylesheets/retire.css
         - assets/stylesheets/tools.css
         - assets/stylesheets/weight.css
+        - assets/stylesheets/fitness.css
       js_files:
         - assets/javascripts/retire.js
+        - assets/javascripts/fitness.js
   - search:
   - macros:
       module_name: docs/notes/health/macros/health_macros
@@ -211,6 +215,7 @@ nav:
       - notes/tools/index.md
       - Ramen Timer: notes/tools/ramen-timer.md
       - Med Tracker: notes/tools/med-tracker.md
+      - Fitness Counter: notes/tools/fitness.md
     - Research: notes/research/index.md
     - Knowledge: notes/knowledge/index.md
     - Prototypes: notes/prototypes.md
