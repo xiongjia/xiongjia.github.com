@@ -74,6 +74,7 @@ tags: [refactor, mkdocs]
 ### Posts
 
 - [post-weight-track.md](./post-weight-track.md) — Blog post: Weight Track implementation
+- [post-fitness-counter.md](./post-fitness-counter.md) — Blog post: Fitness Counter implementation
 - [post-retirement-countdown.md](./post-retirement-countdown.md) — Blog post: Retirement Countdown implementation
 - [post-rtk-token-saving.md](./post-rtk-token-saving.md) — Blog post: RTK usage & token saving
 

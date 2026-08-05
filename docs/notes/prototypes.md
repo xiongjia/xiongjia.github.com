@@ -19,7 +19,7 @@ hide:
 | [ali-oss-client](#ali-oss-client)                   | 🟢 Working      | 2026-08-01 |
 | [prototype-example](#prototype-example)             | 🟡 Experimental | 2026-08-01 |
 | [go-cli-urfave](#go-cli-urfave)                     | 🟡 Experimental | 2026-08-03 |
-| [supabase-storage-client](#supabase-storage-client) | 🟡 Experimental | 2026-08-04 |
+| [supabase-storage-client](#supabase-storage-client) | 🟢 Working      | 2026-08-04 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
