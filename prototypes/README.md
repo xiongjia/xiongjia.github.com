@@ -24,7 +24,7 @@ Python `.venv/`, Node `node_modules/`).
   pnpm): local `supabase start` project config included, anon key auto-read
   from the CLI, bucket/object listing, create bucket, upload, download,
   signed URLs, public URL, delete · created 2026-08-04 · status
-  `experimental`
+  `working`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`

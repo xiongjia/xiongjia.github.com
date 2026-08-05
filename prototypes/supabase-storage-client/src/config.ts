@@ -20,7 +20,7 @@ function normalizePrefix(prefix: string): string {
 /** Load Supabase Storage configuration from environment variables (see .env.example). */
 export function loadConfig(env: NodeJS.ProcessEnv = process.env): SupabaseStorageConfig {
   return {
-    url: env.SUPABASE_URL ?? "http://127.0.0.1:54321",
+    url: env.SUPABASE_URL ?? "http://127.0.0.1:64321",
     anonKey: env.SUPABASE_ANON_KEY ?? "",
     bucket: env.SUPABASE_BUCKET ?? "supabase-storage-demo",
     demoPrefix: normalizePrefix(env.SUPABASE_DEMO_PREFIX ?? "demo/supabase-storage-client/"),
