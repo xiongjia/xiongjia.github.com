@@ -1,0 +1,34 @@
+{
+  "name": "r2-client",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TypeScript prototype: basic Cloudflare R2 usage from Node.js via the S3-compatible AWS SDK v3 (@aws-sdk/client-s3)",
+  "type": "module",
+  "packageManager": "pnpm@11.4.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "dev": "tsx src/index.ts",
+    "demo": "node dist/index.js",
+    "minio:start": "bash scripts/minio_start.sh",
+    "minio:stop": "bash scripts/minio_stop.sh",
+    "minio:clean-volumes": "bash scripts/clean_volumes.sh",
+    "minio:clean-images": "bash scripts/clean_images.sh",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.1103.0",
+    "@aws-sdk/s3-request-presigner": "^3.1103.0",
+    "dotenv": "^16.4.5"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "prettier": "^3.9.6",
+    "tsx": "^4.23.0",
+    "typescript": "^5.7.0"
+  }
+}
