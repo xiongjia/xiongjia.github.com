@@ -28,6 +28,11 @@ ______________________________________________________________________
 
 ## Object Storage
 
+> 相关文档：[对象存储基本用法](./knowledge/infrastructure/cloud/object-storage/basic-usage.md) ·
+> [挂载 Bucket（FUSE Mount）](./knowledge/infrastructure/cloud/object-storage/mount-bucket.md) ·
+> [供应商对比](./knowledge/infrastructure/cloud/object-storage/vendors-comparison.md) ·
+> [签名 URL（Signed URL）](./knowledge/infrastructure/cloud/object-storage/signed-url.md)
+
 ### ali-oss-client
 
 TypeScript 原型，用官方 `ali-oss` SDK（pnpm 管理）演示阿里云 OSS 基本用法。
