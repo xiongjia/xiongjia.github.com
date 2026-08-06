@@ -375,3 +375,145 @@
         padding: 0.5rem 0.125rem;
     }
 }
+
+/* ── Coffee Flavor Wheel ─────────────────────────── */
+.cfw-wrap {
+    max-width: 640px;
+    margin: 1.5rem auto;
+    padding: 1.25rem 1rem 1rem;
+    text-align: center;
+    border: 1px solid var(--md-default-fg-color--lightest);
+    border-radius: 12px;
+    background: var(--md-default-bg-color);
+}
+
+.cfw-svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    cursor: pointer;
+    user-select: none;
+    filter: drop-shadow(0 4px 12px rgba(62, 39, 35, 0.08));
+}
+
+.cfw-sector {
+    transition: opacity 0.35s ease, filter 0.35s ease;
+    cursor: pointer;
+    stroke: var(--md-default-bg-color);
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+
+.cfw-sector:hover {
+    filter: brightness(1.12) drop-shadow(0 0 8px rgba(0, 0, 0, 0.15));
+}
+
+.cfw-sector.cfw-dimmed {
+    opacity: 0.22;
+}
+
+.cfw-label {
+    font-size: 11px;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none;
+    font-weight: 600;
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.cfw-center {
+    fill: var(--md-default-bg-color);
+    stroke: var(--md-default-fg-color--light);
+    stroke-width: 2;
+    cursor: pointer;
+}
+
+.cfw-center-text {
+    font-size: 15px;
+    fill: var(--md-typeset-color);
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-weight: bold;
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+.cfw-info {
+    margin-top: 1.25rem;
+    padding: 1rem 1.25rem;
+    text-align: left;
+    background: linear-gradient(135deg, var(--md-default-bg-color) 0%, var(--md-code-bg-color) 100%);
+    border-radius: 10px;
+    border-left: 5px solid var(--md-default-fg-color--light);
+    min-height: 5.5rem;
+    transition: all 0.3s ease;
+}
+
+.cfw-info-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--md-typeset-color);
+}
+
+.cfw-info-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--md-default-fg-color);
+}
+
+.cfw-info-path {
+    font-size: 0.82rem;
+    color: var(--md-default-fg-color--light);
+    margin-top: 0.5rem;
+    font-style: italic;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--md-default-fg-color--lightest);
+}
+
+.cfw-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: var(--md-code-bg-color);
+    border-radius: 8px;
+}
+
+.cfw-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--md-default-fg-color--light);
+}
+
+.cfw-legend-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    flex-shrink: 0;
+}
+
+.cfw-hint {
+    font-size: 0.78rem;
+    color: var(--md-default-fg-color--light);
+    margin-top: 0.75rem;
+}
+
+@media (max-width: 600px) {
+    .cfw-label {
+        font-size: 9px;
+    }
+    .cfw-info-title {
+        font-size: 1rem;
+    }
+    .cfw-legend {
+        gap: 0.5rem;
+    }
+}
