@@ -10,7 +10,7 @@ import plugins.mermaid_assets as mermaid_assets
 
 HTML_WITH_MERMAID = """<!DOCTYPE html>
 <html>
-  <head><title>t</title></head>
+  <head><meta charset="utf-8"/><title>t</title></head>
   <body>
     <h1>hello</h1>
     <pre class="mermaid"><code>flowchart LR</code></pre>
@@ -62,8 +62,9 @@ def test_on_post_page_keeps_other_scripts_untouched():
 
 def test_on_post_page_without_head_keeps_script_in_body():
     """Graceful degradation: if the page has no <head>, the defer-only script
-    stays in <body> and the unpkg fallback is still avoided (defer ordering is
-    independent of tag placement)."""
+    stays in <body>. Defer ordering is independent of tag placement for the
+    initial load (the CDN-failure fallback still carries the timing caveat
+    documented in the hook)."""
     html = '<html><body><script src="assets/javascripts/mermaid.min.js"></script></body></html>'
     out = mermaid_assets.on_post_page(html, page=None, config={})
     soup = BeautifulSoup(out, "html.parser")
@@ -83,3 +84,97 @@ def test_on_post_page_ignores_page_without_injected_script():
     )
     out = mermaid_assets.on_post_page(html, page=None, config={})
     assert out == html
+
+
+def test_cdn_primary_with_local_fallback_by_default():
+    """CDN is on by default: script src points at the China CDN, keeps defer,
+    and carries an onerror that falls back to the page-relative local copy;
+    a preconnect hint for the CDN origin is added to <head>."""
+    out = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    soup = BeautifulSoup(out, "html.parser")
+    script = _mermaid_script(soup)
+    assert script["src"].startswith("https://registry.npmmirror.com/mermaid/")
+    assert script["src"].endswith("/dist/mermaid.min.js")
+    assert script.has_attr("defer")
+    assert script["onerror"] == 'this.onerror=null;this.src="assets/javascripts/mermaid.min.js"'
+    preconnect = soup.find("link", rel="preconnect")
+    assert preconnect is not None
+    assert preconnect["href"] == "https://registry.npmmirror.com"
+    # preconnect must not displace <meta charset>
+    charset_meta = soup.head.find("meta", charset=True)
+    assert charset_meta is not None
+    children = [c for c in soup.head.contents if getattr(c, "name", None)]
+    assert children.index(charset_meta) < children.index(preconnect)
+
+
+def test_on_post_page_is_idempotent():
+    """Re-processing an already-rewritten output must not replace the local
+    fallback with the CDN URL, nor duplicate the preconnect hint (guard
+    against double invocation)."""
+    once = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    twice = mermaid_assets.on_post_page(once, page=None, config={})
+    soup = BeautifulSoup(twice, "html.parser")
+    script = _mermaid_script(soup)
+    assert script["onerror"] == 'this.onerror=null;this.src="assets/javascripts/mermaid.min.js"'
+    assert len(soup.find_all("link", rel="preconnect")) == 1
+
+
+def test_cdn_custom_template_substitutes_version(monkeypatch):
+    """A custom MERMAID_CDN_URL template gets {version} substituted."""
+    monkeypatch.setattr(
+        mermaid_assets,
+        "MERMAID_CDN_URL",
+        "https://cdn.jsdelivr.net/npm/mermaid@{version}/dist/mermaid.min.js",
+    )
+    out = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    soup = BeautifulSoup(out, "html.parser")
+    script = _mermaid_script(soup)
+    assert script["src"].startswith("https://cdn.jsdelivr.net/npm/mermaid@")
+    assert script["src"].endswith("/dist/mermaid.min.js")
+    preconnect = soup.find("link", rel="preconnect")
+    assert preconnect is not None
+    assert preconnect["href"] == "https://cdn.jsdelivr.net"
+
+
+def test_cdn_disabled_keeps_pure_self_hosted(monkeypatch):
+    """MERMAID_CDN_URL="" disables the CDN: script keeps the local src, no
+    onerror, no preconnect (old behaviour)."""
+    monkeypatch.setattr(mermaid_assets, "MERMAID_CDN_URL", "")
+    out = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    soup = BeautifulSoup(out, "html.parser")
+    script = _mermaid_script(soup)
+    assert script["src"] == "assets/javascripts/mermaid.min.js"
+    assert not script.has_attr("onerror")
+    assert soup.find("link", rel="preconnect") is None
+
+
+def test_cdn_malformed_template_does_not_crash(monkeypatch):
+    """A template with stray braces must not crash the build: the hook falls
+    back to the raw template and the browser-side onerror fallback still
+    applies (graceful degradation, same as on_pre_build's stub file)."""
+    monkeypatch.setattr(mermaid_assets, "MERMAID_CDN_URL", "https://example.com/assets/a{b}.js")
+    out = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    soup = BeautifulSoup(out, "html.parser")
+    # the src no longer contains "mermaid.min.js", so locate the script by its onerror
+    script = soup.find("script", onerror=lambda v: v and "this.src=" in v)
+    assert script is not None
+    assert script["src"] == "https://example.com/assets/a{b}.js"
+    assert script["onerror"] == 'this.onerror=null;this.src="assets/javascripts/mermaid.min.js"'
+    preconnect = soup.find("link", rel="preconnect")
+    assert preconnect["href"] == "https://example.com"
+
+
+def test_cdn_scheme_less_template_gets_no_preconnect(monkeypatch):
+    """A scheme-less template is kept as src (the onerror fallback still
+    applies) but yields no preconnect — the origin is unusable."""
+    monkeypatch.setattr(
+        mermaid_assets,
+        "MERMAID_CDN_URL",
+        "cdn.example.com/mermaid/{version}/dist/mermaid.min.js",
+    )
+    out = mermaid_assets.on_post_page(HTML_WITH_MERMAID, page=None, config={})
+    soup = BeautifulSoup(out, "html.parser")
+    script = _mermaid_script(soup)
+    assert script["src"].startswith("cdn.example.com/mermaid/")
+    assert script["src"].endswith("/dist/mermaid.min.js")
+    assert soup.find("link", rel="preconnect") is None

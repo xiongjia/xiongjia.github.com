@@ -125,7 +125,7 @@ xiongjia.github.com/
 │   ├── snippet_include.py         # `<!-- include: -->` snippet expansion
 │   ├── moment_hook.py             # Moment micro-post timeline (delegates to mkdocs_moment)
 │   ├── backlinks.py               # Bidirectional links & topology graphs
-│   ├── mermaid_assets.py          # Mermaid JS local downloader
+│   ├── mermaid_assets.py          # Mermaid JS loader (CDN-first, local fallback)
 │   └── mkdocs_moment/             # Moment plugin package
 ├── overrides/                     # MkDocs Material theme overrides
 │   ├── main.html                  # Extra meta tags & external link handling
@@ -174,7 +174,10 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 - **`snippet_include.py`** — Expands `<!-- include: path -->` snippet markers
 - **`moment_hook.py`** — Moment micro-post timeline (delegates to `plugins/mkdocs_moment/`)
 - **`backlinks.py`** — Bidirectional links: backlinks + topology graphs (see below)
-- **`mermaid_assets.py`** — Downloads & injects self-hosted Mermaid JS bundle
+- **`mermaid_assets.py`** — Downloads the Mermaid JS bundle locally and
+  injects it CDN-first (`MERMAID_CDN_URL`, default `registry.npmmirror.com`
+  for mainland-China speed) with an `onerror` fallback to the self-hosted
+  copy; disables the CDN with `MERMAID_CDN_URL=""`
 
 ### MkDocs Plugins (`mkdocs.yml` → `plugins`)
 
