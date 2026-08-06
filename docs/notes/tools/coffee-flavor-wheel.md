@@ -287,9 +287,11 @@ ______________________________________________________________________
       text.textContent = node.name;
 
       var angleDeg = midAngle * 180 / Math.PI;
-      var rotateAngle = (angleDeg > 90 && angleDeg < 270) ? angleDeg + 180 : angleDeg;
+      // 左半轮翻转 180° 保持文字正立可读；labelRotate 即最终旋转角（度数）
+      var labelRotate = (angleDeg > 90 && angleDeg < 270) ? angleDeg + 180 : angleDeg;
       if (node.depth >= 3 || (node.endAngle - node.startAngle) < 0.25) {
-        text.setAttribute("transform", "rotate(" + (rotateAngle - 90) + ", " + labelX + ", " + labelY + ")");
+        // 沿径向排列（文字顺着半径方向），窄扇区弧宽有限、径向空间充足
+        text.setAttribute("transform", "rotate(" + labelRotate + ", " + labelX + ", " + labelY + ")");
       }
 
       svg.appendChild(text);
