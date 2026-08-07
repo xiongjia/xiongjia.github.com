@@ -24,3 +24,4 @@ Storage、Supabase Storage、MinIO 等对象存储服务的**通用概念与机�
 | [挂载 Bucket（FUSE Mount）](./mount-bucket.md)   | FUSE 挂载：OSS（ossfs2 + Security Key）、S3/mountpoint、rclone   |
 | [签名 URL（Signed URL）](./signed-url.md)        | 限时下载 / 客户端直传的原理与签名算法（V1/V2 → SigV4）           |
 | [供应商对比（Vendors）](./vendors-comparison.md) | S3/R2/OSS/Supabase/MinIO 差异：API、SDK、签名、权限、计费、选型  |
+| [数据迁移（Migration）](./data-migration.md)     | 跨厂商搬迁（如 R2 → MinIO）：rclone 流程、客户端兼容性与注意事项 |

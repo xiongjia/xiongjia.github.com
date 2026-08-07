@@ -21,6 +21,7 @@ hide:
 | [go-cli-urfave](#go-cli-urfave)                     | [Others](#others)                 | 🟡 Experimental | 2026-08-03 |
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
+| [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -90,3 +91,29 @@ Go CLI 原型，用 `urfave/cli` v2 框架写的简单命令行程序。
 - 证明非 Python 工具链项目可以干净地放在 `prototypes/` 下
 - 不影响 MkDocs 构建、ruff / mdformat 格式化与 lint
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
+
+______________________________________________________________________
+
+## Maps
+
+> 相关文档：[Protomaps 自建底图研究](./research/topics/protomaps/index.md)
+
+### protomaps-map-view
+
+React + Vite + TypeScript 原型：在本地 Protomaps 底图上的**通用地图组件**
+（MapLibre GL JS + pmtiles 协议 + @protomaps/basemaps 完整样式，pnpm 管理）。
+
+- 本地瓦片：gitignored `.cache/pmtiles/`（`VITE_PMTILES_DIR/FILE` 配置），vite
+  内联插件在 dev/preview 同源挂载（HTTP Range 字节读取，无 CORS、无额外服务）
+- 通用 `MapView`：中心/缩放、中心 HUD、导航控件、marker（emoji 或圆点 +
+  标签 + 弹窗）、轨迹线图层、事件 props（onClick/onMove/onZoom/onIdle）、
+  运行时底图切换（多 pmtiles，换 URL 重建地图、换坐标移动相机）
+- 架构拆分：`src/lib/map/`（MapController + basemap + layers + hooks，框架无关）
+- glyphs 本地化：`.cache/glyphs/` + `scripts/warm-glyphs.ts` 预热（支持
+  protomaps / maplibre 双源，后者含 CJK 真字形）
+- 可嵌入 widget：`createMapWidget()` 纯 HTML 直接可用（`pnpm build:widget`，
+  pmtiles/glyphs 作为参数），`examples/embed.html` 示例；分发不走 npm
+  （直接 copy 产物，或 js/css + 瓦片 + 字体一起发 S3）
+- 已知限制：官方字体无 CJK（`pnpm warm:glyphs --source=maplibre` 可解）；
+  maplibre 固定 v5（v6 与 pmtiles 协议不兼容，见 README Known issue）
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/protomaps-map-view)

@@ -117,7 +117,8 @@ categories:
 ## 参考
 
 - 相关文档：[基本用法（Basic Usage）](./basic-usage.md)、
-  [签名 URL（Signed URL）](./signed-url.md)
+  [签名 URL（Signed URL）](./signed-url.md)、
+  [数据迁移（Migration）](./data-migration.md)
 - 实测来源：[ali-oss-client](../../../../../notes/prototypes.md#ali-oss-client) ·
   [r2-client](../../../../../notes/prototypes.md#r2-client) ·
   [supabase-storage-client](../../../../../notes/prototypes.md#supabase-storage-client)

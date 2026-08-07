@@ -33,6 +33,14 @@ Python `.venv/`, Node `node_modules/`).
   urfave/cli v2: `greet` command with `--name` flag (originally under
   `research/experiments/`, migrated here; `go.sum` tracked for reproducible
   builds) · created 2026-08-03 · status `experimental`
+- **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS
+  generic map view component on a local Protomaps basemap (MapLibre GL JS +
+  pmtiles + @protomaps/basemaps): env-configured local cache (gitignored
+  `.cache/pmtiles/` + `.cache/glyphs/` served by inline Vite dev/preview
+  plugins, no CDN), center HUD, markers (emoji or dots + labels/popups), track
+  lines, runtime basemap switching, 5 demos with tab switching, embeddable
+  widget (build:widget, plain-HTML / S3 distribution) · created 2026-08-07 ·
+  status `working`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`

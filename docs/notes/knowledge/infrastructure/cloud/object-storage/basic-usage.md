@@ -200,7 +200,8 @@ await client.send(new DeleteBucketCommand({ Bucket }));       // 删桶（须为
 ## 参考
 
 - 相关文档：[供应商对比（Vendors）](./vendors-comparison.md)、
-  [签名 URL（Signed URL）](./signed-url.md)
+  [签名 URL（Signed URL）](./signed-url.md)、
+  [数据迁移（Migration）](./data-migration.md)
 - 可运行示例：[Prototypes 列表](../../../../../notes/prototypes.md)：
   [ali-oss-client](../../../../../notes/prototypes.md#ali-oss-client) ·
   [r2-client](../../../../../notes/prototypes.md#r2-client) ·

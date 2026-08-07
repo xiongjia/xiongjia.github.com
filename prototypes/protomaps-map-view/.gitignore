@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment — local-only config
+.env
+.env.local
+.env.*.local
+
+# Local cache: basemap tiles (.cache/pmtiles/) + label-font glyphs
+# (.cache/glyphs/) — never commit (see README → Local cache)
+.cache/
+
+# Logs
+*.log
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/
