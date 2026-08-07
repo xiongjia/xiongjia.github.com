@@ -1,0 +1,5 @@
+# pnpm 11 settings — allowBuilds replaces onlyBuiltDependencies (package.json no longer read)
+allowBuilds:
+  esbuild: true
+minimumReleaseAgeExclude:
+  - vite@8.2.1

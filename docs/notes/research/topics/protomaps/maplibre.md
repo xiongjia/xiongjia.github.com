@@ -20,6 +20,7 @@ categories:
 > 与「上海地区底图项目」第 5 步（test-map.html 快速验证）不同，本页系统讲解集成到**自己应用**的方法：
 > 协议原理、`@protomaps/basemaps` 完整样式、React 组件、样式切换与性能。
 >
+> 🚀 本文方案的**实战封装**见原型 [protomaps-map-view](../../../prototypes.md#protomaps-map-view)：把本页的 React 集成方式封装成通用 MapView 组件（中心/缩放、marker/轨迹、底图切换、可嵌入纯 HTML 或发 S3 分发）。
 > ⚠️ **3D 地形（TerrainControl）不在本页范围**——它需要单独的 DEM 高程数据，与 Protomaps 底图无关。
 
 ## 1. 原理：pmtiles 自定义协议
@@ -209,12 +210,13 @@ const switchToSatellite = () => {
 
 ## 7. 参考链接
 
-| 资源                      | 链接                                                                                         |
-| ------------------------- | -------------------------------------------------------------------------------------------- |
-| MapLibre GL JS 文档       | [https://maplibre.org/maplibre-gl-js/docs/](https://maplibre.org/maplibre-gl-js/docs/)       |
-| MapLibre PMTiles 集成指南 | [https://docs.protomaps.com/pmtiles/maplibre](https://docs.protomaps.com/pmtiles/maplibre)   |
-| @protomaps/basemaps API   | [https://docs.protomaps.com/basemaps/maplibre](https://docs.protomaps.com/basemaps/maplibre) |
-| MapLibre Demo Tiles       | [https://demotiles.maplibre.org/](https://demotiles.maplibre.org/)                           |
-| 底图下载与预览            | [https://maps.protomaps.com/](https://maps.protomaps.com/)                                   |
+| 资源                      | 链接                                                                                                                                                |
+| ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| MapLibre GL JS 文档       | [https://maplibre.org/maplibre-gl-js/docs/](https://maplibre.org/maplibre-gl-js/docs/)                                                              |
+| MapLibre PMTiles 集成指南 | [https://docs.protomaps.com/pmtiles/maplibre](https://docs.protomaps.com/pmtiles/maplibre)                                                          |
+| @protomaps/basemaps API   | [https://docs.protomaps.com/basemaps/maplibre](https://docs.protomaps.com/basemaps/maplibre)                                                        |
+| MapLibre Demo Tiles       | [https://demotiles.maplibre.org/](https://demotiles.maplibre.org/)                                                                                  |
+| 底图下载与预览            | [https://maps.protomaps.com/](https://maps.protomaps.com/)                                                                                          |
+| 实战封装（原型）          | [protomaps-map-view](../../../prototypes.md#protomaps-map-view) — 把本页集成方式封装成通用 MapView 组件（React + Vite，可嵌入纯 HTML / 发 S3 分发） |
 
 → 上一站：[上海地区底图项目](./shanghai-map.md)

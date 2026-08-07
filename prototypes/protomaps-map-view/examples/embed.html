@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Map Widget — plain HTML embed example</title>
+    <link rel="stylesheet" href="../dist/widget/map-widget.css" />
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+        margin: 24px;
+        color: #0f172a;
+      }
+      h1 {
+        font-size: 18px;
+      }
+      p {
+        color: #475569;
+        font-size: 13px;
+      }
+      code {
+        background: #f1f5f9;
+        padding: 1px 5px;
+        border-radius: 4px;
+      }
+      button {
+        margin: 0 6px 12px 0;
+        padding: 6px 14px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        background: #fff;
+        cursor: pointer;
+        font-size: 13px;
+      }
+      button:hover {
+        border-color: #94a3b8;
+      }
+      #map {
+        width: 100%;
+        height: 560px;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Map Widget · 纯 HTML 嵌入示例</h1>
+    <p>
+      本页没有 React、没有构建 —— 只引入构建产物
+      <code>dist/widget/map-widget.js</code> + <code>map-widget.css</code>， 调用
+      <code>createMapWidget(el, { basemapUrl, glyphsUrl, markers, tracks })</code>。
+    </p>
+
+    <div>
+      <button id="btn-coffee">☕ 换一批咖啡标记 (setData)</button>
+      <button id="btn-fly">📍 飞到世纪公园 (flyTo)</button>
+      <button id="btn-basemap">🔄 切换底图视角 (setBasemap)</button>
+      <button id="btn-destroy">🗑 销毁重建 (destroy)</button>
+    </div>
+
+    <div id="map"></div>
+
+    <script type="module">
+      import { createMapWidget } from "../dist/widget/map-widget.js";
+
+      // ── 参数都在这改 ──────────────────────────────────────────────
+      // basemapUrl / glyphsUrl 由宿主提供（本示例用本仓库 dev server 的
+      // 本地瓦片与字体服务；换成你自己的服务器/CDN 只需改这两个 URL）。
+      const BASEMAP_URL = "pmtiles:///pmtiles/shanghai.pmtiles";
+      const GLYPHS_URL = "/glyphs/{fontstack}/{range}.pbf";
+      // ──────────────────────────────────────────────────────────────
+
+      const tracks = [
+        {
+          name: "徐汇滨江",
+          color: "#2563eb",
+          coordinates: [
+            [121.4602, 31.185],
+            [121.4605, 31.1875],
+            [121.4592, 31.1902],
+            [121.4588, 31.1927],
+            [121.458, 31.1952],
+            [121.4572, 31.1978],
+            [121.4564, 31.2002],
+            [121.4556, 31.2028],
+            [121.4535, 31.203],
+            [121.452, 31.201],
+            [121.453, 31.198],
+            [121.4542, 31.1955],
+            [121.4555, 31.1928],
+            [121.4568, 31.19],
+            [121.458, 31.1875],
+            [121.4602, 31.185],
+          ],
+        },
+        {
+          name: "世纪公园",
+          color: "#ea580c",
+          coordinates: [
+            [121.5485, 31.2135],
+            [121.552, 31.2132],
+            [121.555, 31.2135],
+            [121.5575, 31.2145],
+            [121.559, 31.216],
+            [121.56, 31.218],
+            [121.5595, 31.22],
+            [121.558, 31.2215],
+            [121.5555, 31.2225],
+            [121.5525, 31.223],
+            [121.5495, 31.2228],
+            [121.547, 31.2218],
+            [121.5458, 31.22],
+            [121.5455, 31.218],
+            [121.546, 31.216],
+            [121.547, 31.2148],
+            [121.5485, 31.2135],
+          ],
+        },
+      ];
+
+      const coffeeBatch1 = [
+        {
+          lng: 121.47,
+          lat: 31.23,
+          label: "咖啡A",
+          emoji: "☕",
+          popupContent: "<b>咖啡A</b><br/>徐汇滨江 100 号",
+        },
+        {
+          lng: 121.49,
+          lat: 31.21,
+          label: "咖啡B",
+          emoji: "🧋",
+          popupContent: "<b>咖啡B</b><br/>南京东路 50 号",
+        },
+        {
+          lng: 121.44,
+          lat: 31.26,
+          label: "咖啡C",
+          emoji: "🍵",
+          popupContent: "<b>咖啡C</b><br/>愚园路 218 号",
+        },
+      ];
+      const coffeeBatch2 = [
+        {
+          lng: 121.552,
+          lat: 31.216,
+          label: "公园咖啡",
+          emoji: "🌳",
+          popupContent: "<b>公园咖啡</b><br/>世纪公园 1 号门",
+        },
+        {
+          lng: 121.46,
+          lat: 31.195,
+          label: "滨江咖啡",
+          emoji: "🌊",
+          popupContent: "<b>滨江咖啡</b><br/>西岸美术馆旁",
+        },
+      ];
+
+      let widget = createMapWidget(document.getElementById("map"), {
+        basemapUrl: BASEMAP_URL,
+        glyphsUrl: GLYPHS_URL,
+        center: [121.47, 31.23],
+        zoom: 11,
+        markers: coffeeBatch1,
+        tracks,
+        showCenterHud: true,
+      });
+
+      document.getElementById("btn-coffee").addEventListener("click", () => {
+        widget.setData({ markers: coffeeBatch2 });
+      });
+      document.getElementById("btn-fly").addEventListener("click", () => {
+        widget.flyTo({ center: [121.5535, 31.218], zoom: 13.5, duration: 1200 });
+      });
+      // 换底图：换 URL 会重建地图（如换成 tokyo.pmtiles），center/zoom 同步更新
+      document.getElementById("btn-basemap").addEventListener("click", () => {
+        widget.setBasemap(BASEMAP_URL, { center: [121.5535, 31.218], zoom: 13 });
+      });
+      document.getElementById("btn-destroy").addEventListener("click", () => {
+        widget.destroy();
+        widget = createMapWidget(document.getElementById("map"), {
+          basemapUrl: BASEMAP_URL,
+          glyphsUrl: GLYPHS_URL,
+          center: [121.47, 31.23],
+          zoom: 11,
+          markers: coffeeBatch1,
+          tracks,
+          showCenterHud: true,
+        });
+      });
+    </script>
+  </body>
+</html>
