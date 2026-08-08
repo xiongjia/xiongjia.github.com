@@ -40,6 +40,7 @@ uv run poe lint-py                 # Python lint check (ruff)
 uv run poe test                    # run unit tests (pytest, tests/)
 uv run poe optimize-images <path>  # convert PNG/JPG/JPEG to WebP
 uv run poe add-weight-week [n]     # add empty week(s) to weight data
+uv run poe update-weight 82 [date] # record daily weight (default: today)
 uv run poe update-health-summary   # regenerate health index summary (calls local pi)
 uv run poe sync-running            # sync running data from running_page site
 uv run poe md2wechat [path]        # convert post to WeChat HTML

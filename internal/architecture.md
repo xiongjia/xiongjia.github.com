@@ -315,6 +315,7 @@ Available `poe` commands:
 | `uv run poe create-moment "Text"`    | New Moment micro-post scaffolding                 |
 | `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP conversion                    |
 | `uv run poe add-weight-week [count]` | Add empty week(s) to weight data                  |
+| `uv run poe update-weight 82 [date]` | Record a daily weight (default: today)            |
 | `uv run poe update-health-summary`   | Regenerate the health index summary (local pi AI) |
 | `uv run poe sync-running`            | Sync running data from the deployed running_page  |
 | `uv run poe md2wechat [path]`        | Convert blog post to WeChat HTML                  |
