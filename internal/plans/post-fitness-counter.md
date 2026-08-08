@@ -31,7 +31,7 @@ Published under `docs/notes/posts/posts/`.
     goal modal, cross-day auto reset
   - Build integration: `mkdocs.yml` extra_css/extra_javascript **and** minify
     plugin `css_files`/`js_files` (the pitfall that drops assets otherwise)
-  - Reference design doc: `internal/fitness-counter.md`
+  - Reference design doc: `internal/fitness-counter-design.md`
 
 - [ ] **Write the post**
 
@@ -53,7 +53,7 @@ Published under `docs/notes/posts/posts/`.
 ## References
 
 - [Fitness Counter](../../docs/notes/tools/fitness.md)
-- [Design doc](../../internal/fitness-counter.md)
+- [Design doc](../../internal/fitness-counter-design.md)
 - [fitness.js](../../docs/assets/javascripts/fitness.js)
 - [fitness.css](../../docs/assets/stylesheets/fitness.css)
 - [Health: Weight Track](../../docs/notes/health/weight.md) — related health-tool post for style reference

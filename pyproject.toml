@@ -55,6 +55,7 @@ check-fmt = [
 lint-py = "ruff check ."
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
+update-weight = { cmd = "python scripts/update_weight.py", help = "Record a daily weight into health data: uv run poe update-weight 82 [date]" }
 update-health-summary = { cmd = "python scripts/update_health_summary.py", help = "Regenerate the health status summary on the health index page (calls local pi CLI)" }
 sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
