@@ -33,6 +33,65 @@ extra:
     # feed: enabled by default — generates /moments/feed.xml, which the
     # Notes index page (docs/notes/_index_content.md) links to directly;
     # keep that link in sync if this feed config ever changes
+    # Geo / map feature. Disable entirely with enabled: false (or by removing
+    # the map block) — no geo parsing, no badges, no /moments/map/ page.
+    # NOTE: the widget/tiles/glyphs are served from the vine R2 bucket, whose
+    # CORS allow-list must include the site origin (https://xiongjia.github.io
+    # and http://localhost:8000 for dev); changing SITE_URL requires updating
+    # the R2 CORS rules first.
+    map:
+      enabled: true
+      # Hashed widget files (vine `build:widget` + `sync-assets --only widget`).
+      # A new vine release changes the hash → update these two URLs (or point
+      # them at your own CDN copy of the same files).
+      widget_js: https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/vine/widget/map-widget-885e9d424bea.js
+      widget_css: https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/vine/widget/map-widget-6d4cf0bf511b.css
+      pmtiles_prefix: pmtiles://https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/vine/pmtiles/
+      glyphs_url: https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/vine/glyphs/{fontstack}/{range}.pbf
+      # CDN dependencies the widget bundle loads at runtime. They are
+      # EXTERNALIZED at vine build time (rollup output.paths bakes these
+      # absolute URLs into map-widget-*.js), so the page itself does not load
+      # them — this block is documentation/audit. To use a different CDN,
+      # rebuild the widget with a different CDN_BASE
+      # (vine packages/ui/src/lib/widget-build.ts) and point widget_js at that
+      # bundle; versions below must match the bundle it was built with.
+      cdn:
+        react: https://esm.sh/react@19.2.7
+        react-dom/client: https://esm.sh/react-dom@19.2.7/client
+        maplibre-gl: https://esm.sh/maplibre-gl@5.24.0
+        pmtiles: https://esm.sh/pmtiles@4.4.1
+        "@protomaps/basemaps": https://esm.sh/@protomaps/basemaps@5.7.2
+      default_region: shanghai
+      regions:
+        shanghai:
+          bbox: [120.8, 30.6, 122.2, 31.8]
+          center: [121.5, 31.2]
+          zoom: 12
+          label: 上海
+        tokyo:
+          bbox: [139.4, 35.4, 140.2, 35.9]
+          center: [139.8, 35.65]
+          zoom: 12
+          label: 东京
+      tag_emoji:
+        film: 🎬
+        food: 🍽️
+      # Map control attribution (bottom corner). Empty = widget default
+      # (Protomaps + OpenStreetMap).
+      attribution: "© recycle.bin · Protomaps"
+      # Hide the bottom-right attribution control on moment maps (default:
+      # false = shown). Note OSM/MapLibre attribution is normally required
+      # by their terms — disable knowingly.
+      hide_attribution: true
+      # Clustering & per-region limits for the map page. Repeated coordinates
+      # are merged into one marker (×N badge + popup of recent visits); each
+      # region renders its most recent `region_limit` moments by default with
+      # a "load all" button.
+      cluster:
+        precision: 0.001    # coords snapped to this many degrees (~100m) for merging
+        popup_max: 3        # max tabs in a merged marker popup (tab-switched)
+        region_limit: 50    # default moments shown per region (load-all button past this)
+        auto_open_latest: false  # auto-open the latest activity's marker popup on load/region switch (default: off)
   comments:
     enabled: true
     # provider: giscus (reserved for future use)

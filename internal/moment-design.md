@@ -54,11 +54,15 @@ tags:
 ![Screenshot](./screenshot.webp)
 ````
 
-| Field   | Required | Format                                     |
-| ------- | -------- | ------------------------------------------ |
-| `date`  | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601 |
-| `tags`  | ❌       | YAML list (displayed as `#tag` links)      |
-| `draft` | ❌       | `true` — hidden in production builds       |
+| Field       | Required | Format                                             |
+| ----------- | -------- | -------------------------------------------------- |
+| `date`      | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601         |
+| `tags`      | ❌       | YAML list (displayed as `#tag` links)              |
+| `draft`     | ❌       | `true` — hidden in production builds               |
+| `place`     | ❌       | Location display text (geo, see Geo/Map)           |
+| `lng`/`lat` | ❌       | WGS-84 coordinates, must be a pair (geo)           |
+| `crs`       | ❌       | `wgs84` (default) or `gcj02` (auto-converted, geo) |
+| `region`    | ❌       | Basemap region; auto-probed by bbox (geo)          |
 
 Draft moments follow the same `MKDOCS_INCLUDE_DRAFTS` env convention as
 `plugins/draft_filter.py`: excluded in production builds, kept in dev
@@ -306,6 +310,26 @@ extra:
     timezone: Asia/Shanghai         # RSS pubDate tz (default: Asia/Shanghai)
     minify: true                    # Minify generated pages + moment.css; follows the site minify plugin flags when loaded (default: true)
     htmlmin_opts: {}                # Per-option htmlmin overrides (default: mkdocs-minify-plugin defaults)
+    # --- Geo / Map (see "Geo / Map Features" below) ---
+    map:
+      enabled: true                 # false = whole geo feature disabled (default: absent = disabled)
+      widget_js: https://…/vine/widget/map-widget-<hash>.js
+      widget_css: https://…/vine/widget/map-widget-<hash>.css
+      pmtiles_prefix: pmtiles://https://…/vine/pmtiles/
+      glyphs_url: https://…/vine/glyphs/{fontstack}/{range}.pbf
+      default_region: shanghai
+      regions:
+        shanghai: { bbox: [120.8, 30.6, 122.2, 31.8], center: [121.5, 31.2], zoom: 12, label: 上海 }
+        tokyo:    { bbox: [139.4, 35.4, 140.2, 35.9], center: [139.8, 35.65], zoom: 12, label: 东京 }
+      tag_emoji:
+        film: 🎬
+        food: 🍽️
+      attribution: "© recycle.bin · Protomaps"
+      hide_attribution: true        # hide the bottom-right attribution control
+      cluster:
+        precision: 0.001            # coords snapped for merging (~100m)
+        popup_max: 3                # tabs in a merged-marker popup
+        region_limit: 50            # default moments per region; "load all" past this
 ```
 
 ## Dependencies
@@ -362,3 +386,74 @@ uv run poe lint-py
 | `on_post_build` pagination | No placeholder `.md` files in repo                               |
 | Absolute image paths       | `moment.html` is shared between Timeline and tag pages           |
 | Chinese labels in YAML     | Zero Chinese text in Python code (follows health macros pattern) |
+
+## Geo / Map Features
+
+> Location-aware moments: a static map page + per-moment popup dialogs built on
+> the [vine](https://github.com/xiongjia/vine) embeddable MapLibre widget
+> (pmtiles basemaps served from R2). No API keys, fully static.
+
+### Frontmatter
+
+```yaml
+---
+date: 2026-08-01 15:30
+place: 徐汇滨江某咖啡店   # display text
+lng: 121.48             # coords (system per crs)
+lat: 31.16
+crs: gcj02              # wgs84 (default) | gcj02 (Amap/Baidu → auto-converted to WGS-84)
+region: shanghai        # optional; probed from lng/lat bbox when omitted
+---
+```
+
+- `lng`/`lat` must be a pair; out-of-range values are ignored with a warning.
+- `crs: gcj02` is converted at parse time by `shared/gcj02.py` (ported from
+  vine's maps-cli; verified against `121.48,31.16 → 121.475504,31.161994`).
+- Region bbox probing falls back to `default_region`.
+- Marker emoji is derived from tags via the configured `tag_emoji` table (no
+  `mark` field); `film → 🎬`, `food → 🍽️`, default `📍`.
+
+### Rendering
+
+- **Timeline**: geo moments show a `📍 place` + emoji **button** that opens the
+  same popup dialog as the detail page (no navigation to the map page); the
+  header row shows `📚 Archive · [map icon] Map` and an `All tags`
+  `<details open>` panel below.
+- **Detail**: a `📍` badge opens a **dialog** map (native `<dialog>` + backdrop)
+  centred on the moment's marker (POI zoom). The widget is `import()`ed lazily
+  and each open swaps in a fresh host element + destroys the previous instance
+  (guards against duplicate maps / stacked attribution controls). The dialog
+  logic lives in one shared module, `assets/js/moment-dialog.js`, used by both
+  the detail and timeline pages (markers read the moment data from
+  `data-map-toggle` buttons).
+- **Map page `/moments/map/`** (`on_post_build`): one map per page.
+  - Opens **focused on the most recent activity** (latest cluster coords,
+    zoom ≥ 13) so the map is never lost; region switching re-focuses the new
+    region's latest activity.
+  - Region buttons (only regions with moments; `label` display names),
+    switching swaps the basemap via `setBasemap` + that region's markers.
+  - Repeated coordinates are **clustered** (coords floored to `precision`); a
+    merged marker shows `×N` + the latest emoji; its popup tabs the most recent
+    `popup_max` moments (pure-CSS radio) and expands **all** same-coords
+    moments in place via a `<details>` toggle.
+  - Each region renders its most recent `region_limit` moments by default; a
+    `加载全部` button loads the rest.
+
+### External resources
+
+- Widget bundle + pmtiles + glyphs are served from the vine R2 bucket
+  (`widget_js`/`widget_css` point at content-hashed files — update on vine
+  release). The bundle externalizes react/maplibre/pmtiles as esm.sh URLs
+  (~8 KB entry).
+- CORS: the R2 allow-list must include the site origin and the dev server
+  (`http://localhost:8000`); changing `SITE_URL` requires updating R2 CORS.
+
+### Lifecycle notes
+
+- `_parse_moment` reads geo fields only when `map.enabled`; geo is skipped
+  entirely when disabled (zero regression).
+- `_render_map_page` / `_build_map_region_data` / `_cluster_moments` build the
+  clustered per-region marker data; templates `moment_map.html` and
+  `moment_detail.html` host the widget scripts.
+- `scripts/create_moment.py` supports `--place/--lng/--lat/--crs/--region`
+  (`--crs gcj02` prints the converted WGS-84 coords).

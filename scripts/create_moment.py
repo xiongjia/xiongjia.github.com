@@ -20,6 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from shared.date import parse_datetime_arg
+from shared.gcj02 import gcj02_to_wgs84
 
 EDITOR = os.environ.get("EDITOR", "vim")
 
@@ -44,7 +45,23 @@ def main():
     parser.add_argument(
         "--dir", default="docs/moments", help="Moment data directory (default: docs/moments)"
     )
+    parser.add_argument("--place", help="Location display text (e.g. 徐汇滨江某咖啡店)")
+    parser.add_argument("--lng", type=float, help="Longitude (coordinate system per --crs)")
+    parser.add_argument("--lat", type=float, help="Latitude (coordinate system per --crs)")
+    parser.add_argument(
+        "--crs",
+        choices=["wgs84", "gcj02"],
+        default="wgs84",
+        help=(
+            "Coordinate system of --lng/--lat: wgs84 (default) or gcj02 "
+            "(Amap/Baidu; converted to WGS-84 before saving)"
+        ),
+    )
+    parser.add_argument("--region", help="Map region (e.g. shanghai); auto-probed when omitted")
     args = parser.parse_args()
+
+    if (args.lng is None) != (args.lat is None):
+        parser.error("--lng and --lat must be given together")
 
     dt = parse_datetime_arg(args.time)
     month_dir = dt.strftime("%Y-%m")
@@ -64,6 +81,17 @@ def main():
     ]
     if args.draft:
         lines.append("draft: true")
+    if args.place:
+        lines.append(f"place: {args.place}")
+    if args.lng is not None:
+        lng, lat = args.lng, args.lat
+        if args.crs == "gcj02":
+            lng, lat = gcj02_to_wgs84(lng, lat)
+            print(f"GCJ-02 -> WGS-84: {args.lng},{args.lat} -> {lng:.6f},{lat:.6f}")
+        lines.append(f"lng: {lng:.6f}")
+        lines.append(f"lat: {lat:.6f}")
+    if args.region:
+        lines.append(f"region: {args.region}")
     lines += ["---", ""]
     if args.content:
         lines.append(args.content)
