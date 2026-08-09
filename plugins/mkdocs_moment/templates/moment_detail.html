@@ -11,6 +11,9 @@
 {% endif %}
 <meta name="twitter:card" content="{{ og.card }}">
 {% endif %}
+{% if map_cfg and map_cfg.enabled and map_cfg.widget_css %}
+<link rel="stylesheet" href="{{ map_cfg.widget_css }}">
+{% endif %}
 {% endblock %}
 
 {% block content %}
@@ -63,6 +66,10 @@
         color: var(--md-default-fg-color--light, #757575);
         text-align: center;
     }
+    {% if map_cfg.hide_attribution %}
+    /* attribution hidden per extra.moment.map.hide_attribution */
+    .moment-dialog__map .maplibregl-ctrl-attrib { display: none !important; }
+    {% endif %}
 </style>
 <article class="moment-detail">
     <a href="{{ moment.permalink }}" class="moment-detail__time"
@@ -73,6 +80,26 @@
     <div class="moment-detail__content">
         {{ moment.html | safe }}
     </div>
+
+    {% if moment.has_geo and map_cfg and map_cfg.enabled %}
+    <div class="moment-detail__geo">
+        <button type="button" class="moment-detail__place" data-map-toggle
+                data-lng="{{ moment.lng }}" data-lat="{{ moment.lat }}"
+                data-region="{{ moment.region | e }}" data-place="{{ moment.place | e }}"
+                data-emoji="{{ moment.emoji | e }}" data-title="{{ moment.title | e }}"
+                data-image="{{ moment.popup_image | e }}" data-text="{{ moment.popup_text | e }}">
+            {% if moment.emoji %}{{ moment.emoji }} {% endif %}📍 {{ moment.place or moment.region }}
+        </button>
+    </div>
+
+    <dialog class="moment-detail__dialog" id="moment-map-dialog">
+        <div class="moment-dialog__head">
+            <span class="moment-dialog__title">📍 {{ moment.place or moment.region }}</span>
+            <button type="button" class="moment-dialog__close" data-map-close aria-label="Close">✕</button>
+        </div>
+        <div class="moment-dialog__map" id="moment-map-host"></div>
+    </dialog>
+    {% endif %}
 
     {% if moment.tags %}
     <div class="moment-detail__tags">
@@ -102,4 +129,14 @@
 </article>
 
 {% include "partials/comments.html" %}
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if moment and moment.has_geo and map_cfg and map_cfg.enabled %}
+<script type="module">
+    import { initMomentDialog } from {{ (moment_base ~ "/moment-dialog.js") | tojson }};
+    initMomentDialog({{ map_cfg | tojson }});
+</script>
+{% endif %}
 {% endblock %}

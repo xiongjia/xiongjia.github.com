@@ -1,0 +1,303 @@
+{# moment_map.html — all geo moments as markers on one map, clustered #}
+{% extends "main.html" %}
+
+{% block extrahead %}
+{{ super() }}
+{% if map_cfg and map_cfg.widget_css %}
+<link rel="stylesheet" href="{{ map_cfg.widget_css }}">
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<style>
+    .moment-map__canvas {
+        width: 100%;
+        height: 480px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin: 1em 0;
+    }
+    .moment-map__count {
+        color: var(--md-default-fg-color--light, #757575);
+        font-size: 0.9em;
+        margin: 0 0 0.5em;
+    }
+    .moment-map__loadall {
+        font-size: 0.9em;
+        padding: 0.35em 1em;
+        margin-bottom: 0.5em;
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 6px;
+        background: var(--md-default-bg-color, #fff);
+        color: var(--md-typeset-a-color, #448aff);
+        cursor: pointer;
+    }
+    .moment-map__loadall:hover {
+        background: var(--md-default-fg-color--lightest, #e0e0e0);
+    }
+    .moment-map__regions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4em;
+        margin-bottom: 0.5em;
+    }
+    .moment-map__region {
+        font-size: 0.85em;
+        padding: 0.25em 0.8em;
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 6px;
+        background: var(--md-default-bg-color, #fff);
+        color: var(--md-default-fg-color, #374151);
+        cursor: pointer;
+    }
+    .moment-map__region:hover {
+        background: var(--md-default-fg-color--lightest, #e0e0e0);
+    }
+    .moment-map__region[data-active] {
+        background: var(--md-typeset-a-color, #448aff);
+        color: #fff;
+        border-color: transparent;
+    }
+    .moment-map__list {
+        list-style: none;
+        padding: 0;
+        margin: 1em 0 0;
+        columns: 2;
+        column-gap: 2em;
+    }
+    @media (max-width: 640px) {
+        .moment-map__list { columns: 1; }
+    }
+    .moment-map__list li {
+        break-inside: avoid;
+        margin-bottom: 0.3em;
+        font-size: 0.9em;
+    }
+    .moment-map__list a {
+        text-decoration: none;
+        color: var(--md-typeset-a-color, #448aff);
+    }
+    .moment-map__list a:hover { text-decoration: underline; }
+    .moment-map__list .moment-map__time {
+        color: var(--md-default-fg-color--light, #757575);
+        font-size: 0.85em;
+        margin-left: 0.4em;
+    }
+    {% if map_cfg.hide_attribution %}
+    /* attribution hidden per extra.moment.map.hide_attribution */
+    .moment-map__canvas .maplibregl-ctrl-attrib { display: none !important; }
+    {% endif %}
+</style>
+<article class="moment-map">
+    <h1>🗺️ {{ page.title }}</h1>
+    {% if region_groups | length > 1 %}
+    <div class="moment-map__regions" id="moment-map-regions">
+        {% for g in region_groups %}
+        <button type="button" class="moment-map__region" data-region="{{ g.region }}"{% if loop.first %} data-active{% endif %}>{{ g.label }}</button>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <p class="moment-map__count" id="moment-map-count"></p>
+    {% if show_load_all %}
+    <button type="button" class="moment-map__loadall" id="moment-map-loadall" hidden>加载全部</button>
+    {% endif %}
+    <div id="moment-map" class="moment-map__canvas"></div>
+    <ul class="moment-map__list" id="moment-map-list"></ul>
+</article>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if region_groups and map_cfg and map_cfg.widget_js %}
+<script type="module">
+    import { createMapWidget } from {{ map_cfg.widget_js | tojson }};
+
+    const regionGroups = {{ region_groups | tojson }};
+    const mapCfg = {{ map_cfg | tojson }};
+
+    // popupContent is trusted HTML in the widget; titles/places are authored
+    // markdown, so escape them before embedding
+    function esc(s) {
+        return String(s).replace(/[&<>"']/g, (c) => ({
+            "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+        }[c]));
+    }
+
+    // cluster → widget MarkerSpec. count > 1 shows a ×N label and a popup
+    // with tab-switched moments: the first `popup_max` get tabs, the rest
+    // (same place, same coords) expand in-place via a <details> toggle.
+    // Every popup shows the moment's first image + plain-text excerpt.
+    let markerSeq = 0;
+    function toMarker(c) {
+        const m = { lng: c.lng, lat: c.lat, emoji: c.emoji || undefined };
+        const imgOf = (it) => it.image
+            ? `<img class="moment-popup-img" src="${esc(it.image)}" alt="" loading="lazy">`
+            : "";
+        if (c.count > 1) {
+            const seq = markerSeq++;
+            m.label = (c.place ? esc(c.place) + " " : "") + "×" + c.count;
+            const name = "mmp" + seq;
+            const popupMax = (mapCfg.cluster && mapCfg.cluster.popup_max) || 3;
+            const tabItems = c.items.slice(0, popupMax);
+            let tabs = "";
+            let bodies = "";
+            tabItems.forEach((it, k) => {
+                const checked = k === 0 ? " checked" : "";
+                tabs += `<input type="radio" name="${name}" id="${name}-${k}"${checked}>` +
+                        `<label for="${name}-${k}" class="moment-popup-tab">${esc(it.date.slice(5))}</label>` +
+                        `<div class="moment-popup-body" data-pp="${k}">` +
+                        `${imgOf(it)}<a href="${esc(it.permalink)}">${esc(it.title)}</a> ` +
+                        `<span class="moment-popup-date">${esc(it.date)}</span>` +
+                        (it.text ? `<div class="moment-popup-text">${esc(it.text)}</div>` : "") +
+                        `<a href="${esc(it.permalink)}" class="moment-popup-link">查看详情 →</a>` +
+                        `</div>`;
+            });
+            // "all" = every moment at this coordinate (clustered by coords),
+            // shown in place — no navigation away from the map
+            const allRows = c.items.map((it) =>
+                `<div class="moment-popup-all-row"><a href="${esc(it.permalink)}">` +
+                `${esc(it.title)}</a> <span class="moment-popup-date">${esc(it.date)}</span></div>`
+            ).join("");
+            const more = c.count > tabItems.length
+                ? `<details class="moment-popup-all"><summary>…共 ${c.count} 篇 · 全部</summary>` +
+                  `<div class="moment-popup-all-list">${allRows}</div></details>`
+                : "";
+            m.popupContent = "<b>" + esc(c.place || c.emoji || "📍") + " · " + c.count +
+                " 次</b><div class=\"moment-popup-tabs\">" + tabs + "</div>" + more;
+        } else {
+            m.label = c.place || undefined;
+            m.popupContent =
+                imgOf(c) + `<div class="moment-popup-text">${esc(c.text || c.place || c.title || "")}</div>` +
+                `<a href="${esc(c.permalink)}" class="moment-popup-link">查看详情 →</a>`;
+        }
+        return m;
+    }
+
+    // Start on the configured default_region when it has moments, else the
+    // first available region. Focus the map on the most recent activity so it
+    // is always in view on load.
+    let currentRegion = mapCfg.default_region;
+    if (!regionGroups.some((g) => g.region === currentRegion)) {
+        currentRegion = regionGroups[0].region;
+    }
+    const initialCluster = groupOf(currentRegion).default_markers[0];
+
+    const region = mapCfg.regions[mapCfg.default_region] || {};
+    const widget = createMapWidget(document.getElementById("moment-map"), {
+        basemapUrl: mapCfg.pmtiles_prefix + mapCfg.default_region + ".pmtiles",
+        glyphsUrl: mapCfg.glyphs_url,
+        attribution: mapCfg.attribution || undefined,
+        // focus on the latest activity (most recent cluster), else region center
+        center: initialCluster
+            ? [initialCluster.lng, initialCluster.lat]
+            : region.center || [121.5, 31.2],
+        zoom: initialCluster ? Math.max(region.zoom || 12, 13) : region.zoom || 12,
+        markers: [],
+    });
+
+    const list = document.getElementById("moment-map-list");
+    const countEl = document.getElementById("moment-map-count");
+    const loadAllBtn = document.getElementById("moment-map-loadall");
+    const regionBtns = document.querySelectorAll("[data-region]");
+
+    function render(markers, totalMoments, shownClusters) {
+        widget.setData({ markers });
+        if (countEl) {
+            const total = regionGroups.reduce((n, g) => n + g.total, 0);
+            let text = markers.length + " 个地点 · " + totalMoments + " 次";
+            if (totalMoments < total) {
+                text += "（共 " + total + " 次）";
+            }
+            countEl.textContent = text;
+        }
+        if (list) {
+            list.replaceChildren(...shownClusters.map((c) => {
+                const li = document.createElement("li");
+                const a = document.createElement("a");
+                a.href = c.permalink;
+                a.textContent = (c.emoji ? c.emoji + " " : "") +
+                    (c.place || c.title) +
+                    (c.count > 1 ? " ×" + c.count : "");
+                li.appendChild(a);
+                const time = document.createElement("span");
+                time.className = "moment-map__time";
+                time.textContent = c.date;
+                li.appendChild(time);
+                return li;
+            }));
+        }
+    }
+
+    // auto-open the latest activity's popup is config-driven
+    // (cluster.auto_open_latest, default off → popups stay closed)
+    const autoOpenLatest = !!(mapCfg.cluster && mapCfg.cluster.auto_open_latest);
+
+    function groupOf(name) {
+        return regionGroups.find((g) => g.region === name) || regionGroups[0];
+    }
+
+    // region switching: each group carries its own default (recent N) / all
+    // cluster sets; switching swaps the basemap (setBasemap) and markers.
+    const allLoaded = {}; // region -> true once "load all" was applied
+
+    function renderRegion(name, autoOpen) {
+        const g = groupOf(name);
+        const useAll = !!allLoaded[name];
+        const clusters = useAll ? g.all_markers : g.default_markers;
+        render(clusters.map(toMarker), useAll ? g.total : Math.min(g.total, g.limit), clusters);
+        if (loadAllBtn) {
+            loadAllBtn.hidden = !(g.has_more && !useAll);
+        }
+        if (autoOpen) {
+            scheduleOpenLatest();
+        }
+    }
+
+    // open the popup of the most recent activity (first rendered marker)
+    // once the markers appear. They render async after the map is ready, and
+    // a basemap switch destroys the old map's markers — wait until the marker
+    // count matches the current region's expected clusters so we never click
+    // a stale marker from a dying map.
+    function scheduleOpenLatest() {
+        let tries = 0;
+        const g = groupOf(currentRegion);
+        const expected = (allLoaded[currentRegion] ? g.all_markers : g.default_markers).length;
+        const attempt = () => {
+            const markers = document.querySelectorAll(".maplibregl-marker");
+            if (markers.length === expected && markers.length > 0) {
+                markers[0].click();
+                return;
+            }
+            if (++tries < 15) setTimeout(attempt, 400);
+        };
+        setTimeout(attempt, 300);
+    }
+
+    function switchRegion(name) {
+        if (name === currentRegion) return;
+        currentRegion = name;
+        const rc = mapCfg.regions[name] || {};
+        const focus = groupOf(name).default_markers[0];
+        widget.setBasemap(mapCfg.pmtiles_prefix + name + ".pmtiles", {
+            // focus on the region's latest activity, else its configured center
+            center: focus
+                ? [focus.lng, focus.lat]
+                : rc.center || region.center || [121.5, 31.2],
+            zoom: focus ? Math.max(rc.zoom || region.zoom || 12, 13) : rc.zoom || region.zoom || 12,
+        });
+        regionBtns.forEach((b) => b.toggleAttribute("data-active", b.dataset.region === name));
+        renderRegion(name, autoOpenLatest);
+    }
+
+    // initial render: first region's default set
+    renderRegion(currentRegion, autoOpenLatest);
+    if (loadAllBtn) {
+        loadAllBtn.addEventListener("click", () => {
+            allLoaded[currentRegion] = true;
+            renderRegion(currentRegion);
+        });
+    }
+    regionBtns.forEach((b) => b.addEventListener("click", () => switchRegion(b.dataset.region)));
+</script>
+{% endif %}
+{% endblock %}

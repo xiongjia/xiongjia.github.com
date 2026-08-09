@@ -825,3 +825,434 @@ def test_on_page_context_detail_injects_og():
     assert context["og"]["title"] == "content"
     assert context["og"]["card"] == "summary"
     assert context["moment_base"] == "/moments"
+
+
+# ---------------------------------------------------------------------------
+# geo / map feature (extra.moment.map)
+# ---------------------------------------------------------------------------
+
+
+def test_gcj02_to_wgs84_conversion():
+    """Ported GCJ-02 -> WGS-84 matches the verified vine value
+    (Amap picker 121.48, 31.16 -> 121.475504, 31.161994)."""
+    from shared.gcj02 import gcj02_to_wgs84
+
+    lng, lat = gcj02_to_wgs84(121.48, 31.16)
+    assert abs(lng - 121.475504) < 1e-5
+    assert abs(lat - 31.161994) < 1e-5
+
+
+def _geo_plugin(map_cfg=None):
+    plugin = MomentPlugin()
+    cfg = {
+        "enabled": True,
+        "default_region": "shanghai",
+        "regions": {
+            "shanghai": {"bbox": [120.8, 30.6, 122.2, 31.8], "center": [121.5, 31.2], "zoom": 12},
+            "tokyo": {"bbox": [139.4, 35.4, 140.2, 35.9], "center": [139.8, 35.65], "zoom": 12},
+        },
+        "tag_emoji": {"film": "🎬", "food": "🍽️"},
+    }
+    if map_cfg is not None:
+        cfg.update(map_cfg)
+    plugin._load_config({"path": "moments", "map": cfg})
+    return plugin
+
+
+def _write_moment(tmp_path, name, *fm_lines):
+    d = tmp_path / "moments" / "2026-08"
+    d.mkdir(parents=True, exist_ok=True)
+    p = d / name
+    p.write_text("---\n" + "\n".join(fm_lines) + "\n---\ncontent\n", encoding="utf-8")
+    return p
+
+
+def test_parse_moment_geo_wgs84(tmp_path):
+    plugin = _geo_plugin()
+    p = _write_moment(
+        tmp_path,
+        "01-1200.md",
+        "date: 2026-08-01 12:00",
+        "place: 徐汇滨江",
+        "lng: 121.4602",
+        "lat: 31.1850",
+        "region: shanghai",
+        "tags: [general, food]",
+    )
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert m.has_geo
+    assert m.lng == 121.4602
+    assert m.lat == 31.1850
+    assert m.crs == "wgs84"
+    assert m.place == "徐汇滨江"
+    assert m.region == "shanghai"
+    assert m.emoji == "🍽️"  # food tag -> emoji
+
+
+def test_parse_moment_gcj02_converts(tmp_path):
+    plugin = _geo_plugin()
+    p = _write_moment(
+        tmp_path,
+        "01-1200.md",
+        "date: 2026-08-01 12:00",
+        "lng: 121.48",
+        "lat: 31.16",
+        "crs: gcj02",
+        "tags: [general]",
+    )
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert m.has_geo
+    assert abs(m.lng - 121.475504) < 1e-4
+    assert abs(m.lat - 31.161994) < 1e-4
+    assert m.crs == "gcj02"
+
+
+def test_parse_moment_geo_pair_validation(tmp_path, caplog):
+    plugin = _geo_plugin()
+    p = _write_moment(tmp_path, "01-1200.md", "date: 2026-08-01 12:00", "lng: 121.46")
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert not m.has_geo
+    assert any("must be a pair" in r.message for r in caplog.records)
+
+
+def test_parse_moment_geo_out_of_range_ignored(tmp_path, caplog):
+    plugin = _geo_plugin()
+    p = _write_moment(tmp_path, "01-1200.md", "date: 2026-08-01 12:00", "lng: 500", "lat: 31.16")
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert not m.has_geo
+    assert any("Out-of-range" in r.message for r in caplog.records)
+
+
+def test_parse_moment_region_probe(tmp_path):
+    plugin = _geo_plugin()
+    sh = _write_moment(
+        tmp_path, "01-1200.md", "date: 2026-08-01 12:00", "lng: 121.47", "lat: 31.23"
+    )
+    assert plugin._parse_moment(sh, "moments/2026-08/01-1200.md").region == "shanghai"
+
+    tokyo = _write_moment(
+        tmp_path, "02-1200.md", "date: 2026-08-02 12:00", "lng: 139.7", "lat: 35.68"
+    )
+    assert plugin._parse_moment(tokyo, "moments/2026-08/02-1200.md").region == "tokyo"
+
+
+def test_parse_moment_map_disabled_ignores_geo(tmp_path):
+    plugin = _geo_plugin({"enabled": False})
+    p = _write_moment(
+        tmp_path,
+        "01-1200.md",
+        "date: 2026-08-01 12:00",
+        "lng: 121.47",
+        "lat: 31.23",
+        "tags: [film]",
+    )
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert not m.has_geo
+    assert m.emoji == ""
+    assert m.region == ""
+
+
+def test_load_config_map_defaults_disabled():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    assert plugin.map_cfg["enabled"] is False
+    assert plugin.map_cfg["regions"] == {}
+
+
+def test_on_config_map_validation_missing_resources():
+    from unittest.mock import MagicMock
+
+    from mkdocs.exceptions import PluginError
+
+    plugin = MomentPlugin()
+    config = MagicMock()
+    config.get.return_value = {
+        "moment": {
+            "path": "moments",
+            "map": {
+                "enabled": True,
+                "widget_js": "https://x/widget.js",
+                "pmtiles_prefix": "",  # missing required URL
+                "glyphs_url": "https://x/{fontstack}/{range}.pbf",
+                "default_region": "shanghai",
+                "regions": {"shanghai": {"bbox": [120.8, 30.6, 122.2, 31.8]}},
+            },
+        }
+    }
+    try:
+        plugin.on_config(config)
+        raise AssertionError("expected PluginError")
+    except PluginError as e:
+        assert "pmtiles_prefix" in str(e)
+
+
+def test_on_config_map_validation_bad_default_region():
+    from unittest.mock import MagicMock
+
+    from mkdocs.exceptions import PluginError
+
+    plugin = MomentPlugin()
+    config = MagicMock()
+    config.get.return_value = {
+        "moment": {
+            "path": "moments",
+            "map": {
+                "enabled": True,
+                "widget_js": "https://x/widget.js",
+                "pmtiles_prefix": "pmtiles://https://x/",
+                "glyphs_url": "https://x/{fontstack}/{range}.pbf",
+                "default_region": "paris",  # not in regions
+                "regions": {"shanghai": {"bbox": [120.8, 30.6, 122.2, 31.8]}},
+            },
+        }
+    }
+    try:
+        plugin.on_config(config)
+        raise AssertionError("expected PluginError")
+    except PluginError as e:
+        assert "default_region" in str(e)
+
+
+def test_has_geo_property():
+    m = _moment(0)
+    assert not m.has_geo
+    m.lng, m.lat = 121.47, 31.23
+    assert m.has_geo
+
+
+def test_on_page_context_injects_map_url_only_with_geo(tmp_path):
+    plugin = _geo_plugin()
+    plugin._moments = []
+    plugin._labels = {}
+    page = SimpleNamespace(meta={"moment_type": PageType.TIMELINE})
+    config = SimpleNamespace(
+        theme=SimpleNamespace(get_env=lambda: None), site_url="https://example.com"
+    )
+    context = {}
+    plugin.on_page_context(context, page, config, None)
+    assert "map_url" not in context  # no geo moments -> no map entry
+
+    geo = _moment(0)
+    geo.lng, geo.lat, geo.region = 121.47, 31.23, "shanghai"
+    plugin._moments = [geo]
+    plugin.on_page_context(context, page, config, None)
+    assert context["map_url"] == "/moments/map/"
+
+
+def test_on_page_context_detail_injects_map_cfg():
+    plugin = _geo_plugin({"attribution": "© test", "hide_attribution": True})
+    m = _moment(0)
+    m.lng, m.lat = 121.47, 31.23
+    plugin._moments = [m]
+    plugin._labels = {}
+    page = SimpleNamespace(
+        meta={"moment_type": PageType.MOMENT_DETAIL},
+        file=SimpleNamespace(src_path="moments/2026-07/30-0000.md"),
+    )
+    context = {}
+    plugin.on_page_context(
+        context,
+        page,
+        SimpleNamespace(theme=SimpleNamespace(get_env=lambda: None), site_url="x"),
+        None,
+    )
+    assert context["map_cfg"]["enabled"] is True
+    assert context["map_cfg"]["default_region"] == "shanghai"
+    assert context["map_cfg"]["attribution"] == "© test"
+    assert context["map_cfg"]["hide_attribution"] is True
+
+
+def test_load_config_map_hide_attribution_default_false():
+    plugin = _geo_plugin()
+    assert plugin.map_cfg["hide_attribution"] is False
+
+
+def test_render_map_page_generates_markers(tmp_path):
+    plugin = _geo_plugin()
+    geo = _moment(0)
+    geo.lng, geo.lat, geo.region, geo.place, geo.emoji = 121.47, 31.23, "shanghai", "徐汇滨江", "🎬"
+    geo.tags = ["film"]
+    plugin._moments = [geo]
+    plugin._labels = {}
+    plugin._nav = None
+    plugin._base_url = ""
+    template = MagicMock()
+    template.render.return_value = "<html>map</html>"
+    env = MagicMock()
+    env.get_template.return_value = template
+    plugin._jinja_env = env
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    assert (tmp_path / "moments" / "map" / "index.html").exists()
+    _, kwargs = template.render.call_args
+    assert kwargs["page"].url == "/moments/map/"
+    groups = kwargs["region_groups"]
+    assert len(groups) == 1
+    assert groups[0]["region"] == "shanghai"
+    assert len(groups[0]["default_markers"]) == 1
+    assert groups[0]["default_markers"][0]["lng"] == 121.47
+    assert groups[0]["default_markers"][0]["permalink"] == geo.permalink
+    assert kwargs["show_load_all"] is False
+    assert kwargs["map_cfg"]["enabled"] is True
+
+
+def test_cluster_moments_merges_repeated_coords():
+    plugin = _geo_plugin()
+    a = _moment(0)  # 2026-07-30 00:00
+    a.lng, a.lat = 121.4371, 31.1945
+    b = _moment(1)  # 00:01 — same snapped coords
+    b.lng, b.lat = 121.43715, 31.19455
+    c = _moment(2)  # 00:02 — different place
+    c.lng, c.lat = 139.7, 35.68
+    clusters = plugin._cluster_moments([a, b, c])
+    assert len(clusters) == 2
+    assert clusters[0]["count"] == 1  # newest moment (c) → its cluster first
+    assert clusters[1]["count"] == 2
+    merged = clusters[1]
+    assert abs(merged["lng"] - b.lng) < 1e-9  # latest merged moment's coords
+    assert abs(merged["lat"] - b.lat) < 1e-9
+    assert merged["count"] == 2
+
+
+def test_cluster_moments_carries_all_items():
+    """Cluster items carry EVERY moment at the coords (newest first); the
+    template tabs the first popup_max and expands the rest in place."""
+    plugin = _geo_plugin()
+    ms = []
+    for i in range(10):  # 10 moments at the same coords
+        m = _moment(i)
+        m.lng, m.lat = 121.4371, 31.1945
+        ms.append(m)
+    clusters = plugin._cluster_moments(ms)
+    assert len(clusters) == 1
+    assert clusters[0]["count"] == 10
+    assert len(clusters[0]["items"]) == 10  # all items, not truncated
+    assert clusters[0]["items"][0]["date"] > clusters[0]["items"][-1]["date"]  # newest first
+
+
+def test_build_map_region_data_applies_region_limit():
+    plugin = _geo_plugin({"cluster": {"region_limit": 3}})
+    ms = []
+    for i in range(6):  # 6 moments, all different coords in shanghai
+        m = _moment(i)
+        m.lng, m.lat = 121.4 + i * 0.01, 31.2
+        m.region = "shanghai"
+        ms.append(m)
+    groups = plugin._build_map_region_data(ms)
+    assert len(groups) == 1
+    assert groups[0]["region"] == "shanghai"
+    assert groups[0]["label"] == "shanghai"  # no label configured → falls back to name
+    assert groups[0]["total"] == 6
+    assert groups[0]["has_more"] is True
+    assert len(groups[0]["default_markers"]) == 3  # newest 3, unclustered
+    assert len(groups[0]["all_markers"]) == 6
+    assert groups[0]["default_markers"][0]["date"] > groups[0]["default_markers"][-1]["date"]
+
+
+def test_build_map_region_data_uses_configured_label():
+    plugin = _geo_plugin(
+        {
+            "regions": {
+                "shanghai": {"bbox": [1, 2, 3, 4], "label": "上海"},
+                "tokyo": {"bbox": [5, 6, 7, 8]},
+            }
+        }
+    )
+    m = _moment(0)
+    m.lng, m.lat, m.region = 121.47, 31.23, "shanghai"
+    t = _moment(1)
+    t.lng, t.lat, t.region = 139.7, 35.68, "tokyo"
+    groups = plugin._build_map_region_data([m, t])
+    labels = {g["region"]: g["label"] for g in groups}
+    assert labels["shanghai"] == "上海"
+    assert labels["tokyo"] == "tokyo"  # unlabeled region → name fallback
+
+
+def test_render_map_page_skipped_when_no_geo(tmp_path):
+    plugin = _geo_plugin()
+    plugin._moments = [_moment(0)]  # no geo
+    plugin._labels = {}
+    plugin._nav = None
+    plugin._base_url = ""
+    env = MagicMock()
+    env.get_template.return_value = MagicMock()
+    plugin._jinja_env = env
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+    assert not (tmp_path / "moments" / "map").exists()
+    assert env.get_template.call_args_list[0][0][0] == "moment_timeline.html"
+
+
+def test_parse_moment_unknown_region_falls_back_to_probe(tmp_path, caplog):
+    plugin = _geo_plugin()
+    p = _write_moment(
+        tmp_path,
+        "01-1200.md",
+        "date: 2026-08-01 12:00",
+        "lng: 121.47",
+        "lat: 31.23",
+        "region: paris",
+    )
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert m.region == "shanghai"
+    assert any("Unknown region" in r.message for r in caplog.records)
+
+
+def test_on_config_map_validation_cluster_negative():
+    """Negative / zero cluster values must fail fast (precision <= 0 would
+    corrupt the grid, negative region_limit would mis-slice)."""
+    from unittest.mock import MagicMock
+
+    from mkdocs.exceptions import PluginError
+
+    for bad in ({"precision": -0.5}, {"region_limit": -1}, {"popup_max": -1}):
+        plugin = MomentPlugin()
+        config = MagicMock()
+        config.get.return_value = {
+            "moment": {
+                "path": "moments",
+                "map": {
+                    "enabled": True,
+                    "widget_js": "https://x/widget.js",
+                    "pmtiles_prefix": "pmtiles://https://x/",
+                    "glyphs_url": "https://x/{fontstack}/{range}.pbf",
+                    "default_region": "shanghai",
+                    "regions": {"shanghai": {"bbox": [120.8, 30.6, 122.2, 31.8]}},
+                    "cluster": {"precision": 0.001, "popup_max": 3, "region_limit": 50, **bad},
+                },
+            }
+        }
+        try:
+            plugin.on_config(config)
+            raise AssertionError(f"expected PluginError for cluster {bad}")
+        except PluginError as e:
+            assert "cluster" in str(e)
+
+
+def test_map_template_cfg_trims_regions():
+    """The template-facing regions only carry center/zoom/label — bbox stays
+    build-side (probing) and is not shipped to the page."""
+    plugin = _geo_plugin()
+    cfg = plugin._map_template_cfg()
+    assert cfg["regions"]["shanghai"] == {"center": [121.5, 31.2], "zoom": 12, "label": "shanghai"}
+    assert "bbox" not in cfg["regions"]["shanghai"]
+    assert cfg["regions"]["tokyo"]["label"] == "tokyo"
+
+
+def test_build_map_region_data_orders_by_config():
+    """Region groups follow the configured regions order (default_region
+    first), not the order moments appear in."""
+    plugin = _geo_plugin()  # regions: shanghai, tokyo
+    # insert tokyo moment first so naive insertion order would put tokyo first
+    t = _moment(0)
+    t.lng, t.lat, t.region = 139.7, 35.68, "tokyo"
+    s = _moment(1)
+    s.lng, s.lat, s.region = 121.47, 31.23, "shanghai"
+    groups = plugin._build_map_region_data([t, s])
+    assert [g["region"] for g in groups] == ["shanghai", "tokyo"]
+
+
+def test_load_config_map_cluster_auto_open_latest():
+    """auto_open_latest defaults off; configurable on."""
+    assert _geo_plugin().map_cfg["cluster"]["auto_open_latest"] is False
+    plugin = _geo_plugin({"cluster": {"auto_open_latest": True}})
+    assert plugin.map_cfg["cluster"]["auto_open_latest"] is True

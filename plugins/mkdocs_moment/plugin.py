@@ -6,7 +6,7 @@ import re
 import sys
 from datetime import timedelta, timezone
 from email.utils import format_datetime
-from math import ceil
+from math import ceil, floor
 from pathlib import Path
 from typing import Literal, Optional
 from xml.etree import ElementTree as ET
@@ -28,6 +28,7 @@ from mkdocs.plugins import BasePlugin
 
 from shared.date import parse_date_strict
 from shared.frontmatter import has_draft_flag, parse_frontmatter
+from shared.gcj02 import gcj02_to_wgs84
 from shared.strings import slug_from_filename
 
 from .models import Moment, PageType, Pagination
@@ -236,6 +237,29 @@ class MomentPlugin(BasePlugin):
         # resolved once per build — htmlmin_opts is static for the build
         self._htmlmin_opts = _resolve_htmlmin_opts(self.config.get("htmlmin_opts"))
 
+        # geo / map feature config (extra.moment.map); absent or enabled=false
+        # disables the feature entirely (no parsing, no badges, no map page)
+        map_cfg = moment_cfg.get("map") or {}
+        self.map_cfg = {
+            "enabled": bool(map_cfg.get("enabled", False)),
+            "widget_js": str(map_cfg.get("widget_js", "") or ""),
+            "widget_css": str(map_cfg.get("widget_css", "") or ""),
+            "pmtiles_prefix": str(map_cfg.get("pmtiles_prefix", "") or ""),
+            "glyphs_url": str(map_cfg.get("glyphs_url", "") or ""),
+            "default_region": str(map_cfg.get("default_region", "") or ""),
+            "regions": dict(map_cfg.get("regions") or {}),
+            "tag_emoji": dict(map_cfg.get("tag_emoji") or {}),
+            "attribution": str(map_cfg.get("attribution", "") or ""),
+            "hide_attribution": bool(map_cfg.get("hide_attribution", False)),
+        }
+        cluster_cfg = map_cfg.get("cluster") or {}
+        self.map_cfg["cluster"] = {
+            "precision": float(cluster_cfg.get("precision", 0.001) or 0.001),
+            "popup_max": int(cluster_cfg.get("popup_max", 3) or 3),
+            "region_limit": int(cluster_cfg.get("region_limit", 50) or 50),
+            "auto_open_latest": bool(cluster_cfg.get("auto_open_latest", False)),
+        }
+
     # ------------------------------------------------------------------
     # MkDocs lifecycle hooks
     # ------------------------------------------------------------------
@@ -247,6 +271,34 @@ class MomentPlugin(BasePlugin):
         # validate
         if self.config["posts_per_page"] < 1:
             raise PluginError("Moment plugin: posts_per_page must be >= 1")
+        if self.map_cfg.get("enabled"):
+            missing = [
+                k for k in ("widget_js", "pmtiles_prefix", "glyphs_url") if not self.map_cfg.get(k)
+            ]
+            if missing:
+                raise PluginError(
+                    "Moment plugin: extra.moment.map is enabled but missing: " + ", ".join(missing)
+                )
+            regions = self.map_cfg.get("regions", {})
+            if not regions or self.map_cfg.get("default_region") not in regions:
+                raise PluginError(
+                    "Moment plugin: extra.moment.map needs default_region listed in regions"
+                )
+            for name, cfg in regions.items():
+                bbox = cfg.get("bbox") if isinstance(cfg, dict) else None
+                if not (isinstance(bbox, (list, tuple)) and len(bbox) == 4):
+                    raise PluginError(
+                        f"Moment plugin: region {name!r} needs bbox [minLng,minLat,maxLng,maxLat]"
+                    )
+            cluster = self.map_cfg.get("cluster", {})
+            if cluster.get("precision", 0.001) <= 0:
+                raise PluginError("Moment plugin: extra.moment.map.cluster.precision must be > 0")
+            if cluster.get("popup_max", 3) < 1:
+                raise PluginError("Moment plugin: extra.moment.map.cluster.popup_max must be >= 1")
+            if cluster.get("region_limit", 50) < 1:
+                raise PluginError(
+                    "Moment plugin: extra.moment.map.cluster.region_limit must be >= 1"
+                )
 
         # register plugin template directory
         template_dir = os.path.join(os.path.dirname(__file__), "templates")
@@ -304,6 +356,8 @@ class MomentPlugin(BasePlugin):
             moment = self._get_moment_by_src_path(str(path))
             if moment:
                 moment.html = self._render_content(content, config, moment.source_path)
+                moment.popup_image = self._first_image(moment) or ""
+                moment.popup_text = self._popup_text(moment)
             return content
 
         return markdown
@@ -335,6 +389,9 @@ class MomentPlugin(BasePlugin):
             self._inject_template_helpers(context)
             if self._moments:
                 context["archive_url"] = f"{self._moment_base()}/archive/"
+            if self.map_cfg.get("enabled") and any(m.has_geo for m in self._moments):
+                context["map_url"] = f"{self._moment_base()}/map/"
+                context["map_cfg"] = self._map_template_cfg()
             if self.config["feed_enabled"]:
                 context["feed_url"] = self._feed_url(config)
 
@@ -346,6 +403,7 @@ class MomentPlugin(BasePlugin):
                 context["labels"] = self._labels
                 context["timeline_url"] = f"/{self.config['path']}/"
                 self._inject_template_helpers(context)
+                context["map_cfg"] = self._map_template_cfg()
                 context["og"] = self._og_meta(moment, config)
                 if idx > 0:
                     context["prev_moment"] = self._moments[idx - 1]
@@ -371,6 +429,12 @@ class MomentPlugin(BasePlugin):
             self._minify_css(css_src.read_text(encoding="utf-8"), config), encoding="utf-8"
         )
 
+        # shared dialog JS (imported as a module by detail/timeline pages)
+        js_src = Path(__file__).parent / "assets" / "js" / "moment-dialog.js"
+        js_dst = site_dir / self.config["path"] / "moment-dialog.js"
+        js_dst.parent.mkdir(parents=True, exist_ok=True)
+        js_dst.write_text(js_src.read_text(encoding="utf-8"), encoding="utf-8")
+
         # pagination pages (only when the timeline spans multiple pages)
         total_pages = ceil(len(self._moments) / self.config["posts_per_page"])
         if total_pages > 1:
@@ -385,6 +449,11 @@ class MomentPlugin(BasePlugin):
 
         # archive pages — year/month index + per-month pages
         self._render_archive_pages(site_dir, config)
+
+        # map page — all geo moments as markers on one map (needs map enabled)
+        geo_moments = [m for m in self._moments if m.has_geo]
+        if self.map_cfg.get("enabled") and geo_moments:
+            self._render_map_page(site_dir, config, geo_moments)
 
         # RSS feed
         if self.config["feed_enabled"]:
@@ -554,6 +623,176 @@ class MomentPlugin(BasePlugin):
         for m in self._moments:  # already sorted desc
             groups.setdefault((m.date.year, m.date.month), []).append(m)
         return groups
+
+    # ------------------------------------------------------------------
+    # geo / map page
+    # ------------------------------------------------------------------
+
+    def _render_map_page(self, site_dir, config, geo_moments: list[Moment]):
+        """Render /{moment_base}/map/ with every geo moment as a marker.
+
+        Marker popups link back to the moment detail page; text fields are
+        escaped client-side (the widget's popupContent is trusted HTML, and
+        moment titles/places come from authored markdown).
+        """
+        helpers = self._inject_template_helpers({})
+        moment_base = helpers["moment_base"]
+        map_url = f"{moment_base}/map/"
+        page_proxy = _Page("Moment Map", map_url)
+        template = self._jinja_env.get_template("moment_map.html")
+        region_groups = self._build_map_region_data(geo_moments)
+        show_load_all = any(g["has_more"] for g in region_groups)
+        html = self._minify_html(
+            template.render(
+                page=page_proxy,
+                config=config,
+                nav=self._nav,
+                base_url=self._base_url,
+                region_groups=region_groups,
+                show_load_all=show_load_all,
+                map_cfg=self._map_template_cfg(),
+                labels=self._labels,
+                **helpers,
+            ),
+            config,
+        )
+        output_dir = site_dir / self.config["path"] / "map"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _build_map_region_data(self, geo_moments: list[Moment]) -> list[dict]:
+        """Geo moments grouped by region, each with a default (recent N) and an
+        all-clusters marker set.
+
+        Repeated coordinates are merged into one marker (count > 1); the
+        default set only includes the most recent ``region_limit`` moments per
+        region so the map never renders too many DOM markers at once.
+        """
+        cluster_cfg = self.map_cfg.get("cluster", {})
+        limit = cluster_cfg.get("region_limit", 50)
+        by_region: dict[str, list[Moment]] = {}
+        for m in geo_moments:
+            by_region.setdefault(m.region or self.map_cfg.get("default_region", ""), []).append(m)
+        # order groups by the configured regions list (default_region typically
+        # first) so the default-selected region is deterministic, not dependent
+        # on the order moments happen to appear in
+        config_order = list(self.map_cfg.get("regions", {}).keys())
+        ordered = sorted(
+            by_region.items(),
+            key=lambda kv: (
+                config_order.index(kv[0]) if kv[0] in config_order else len(config_order)
+            ),
+        )
+        groups = []
+        for region, ms in ordered:
+            ms.sort(key=lambda m: m.date, reverse=True)
+            reg_cfg = self.map_cfg.get("regions", {}).get(region, {})
+            label = reg_cfg.get("label") if isinstance(reg_cfg, dict) else None
+            groups.append(
+                {
+                    "region": region,
+                    "label": label or region,
+                    "total": len(ms),
+                    "limit": limit,
+                    "has_more": len(ms) > limit,
+                    "default_markers": self._cluster_moments(ms[:limit]),
+                    "all_markers": self._cluster_moments(ms),
+                }
+            )
+        return groups
+
+    def _cluster_moments(self, moments: list[Moment]) -> list[dict]:
+        """Merge moments at (nearly) the same coordinates into cluster markers.
+
+        Coordinates are snapped to ``precision`` degrees (~100 m at 0.001)
+        and grouped; each cluster keeps the latest moment's precise coords,
+        emoji/place, a count, and ALL items (newest first) — the template
+        tabs the first ``popup_max`` and expands the rest via a details
+        toggle. Newest clusters first.
+        """
+        cluster_cfg = self.map_cfg.get("cluster", {})
+        precision = cluster_cfg.get("precision", 0.001)
+        groups: dict[tuple[int, int], list[Moment]] = {}
+        for m in moments:
+            # integer grid cell — no float-key ambiguity (round() is subject
+            # to half-to-even boundary flips, e.g. 31.1945 / 0.001 → 31194.5)
+            key = (floor(m.lng / precision), floor(m.lat / precision))
+            groups.setdefault(key, []).append(m)
+        clusters = []
+        for items in groups.values():
+            items.sort(key=lambda m: m.date, reverse=True)
+            latest = items[0]
+            clusters.append(
+                {
+                    "lng": latest.lng,
+                    "lat": latest.lat,
+                    "count": len(items),
+                    "emoji": latest.emoji or "",
+                    "place": latest.place,
+                    "title": self._moment_title(latest),
+                    "date": latest.date.strftime("%Y-%m-%d %H:%M"),
+                    "permalink": latest.permalink,
+                    "text": latest.popup_text,
+                    "image": latest.popup_image,
+                    "items": [
+                        {
+                            "title": self._moment_title(x),
+                            "date": x.date.strftime("%Y-%m-%d %H:%M"),
+                            "permalink": x.permalink,
+                            "text": x.popup_text,
+                            "image": x.popup_image,
+                        }
+                        for x in items
+                    ],
+                }
+            )
+        clusters.sort(key=lambda c: c["date"], reverse=True)
+        return clusters
+
+    def _map_template_cfg(self) -> dict:
+        """Map feature config for templates (JSON-serializable, no plugin state).
+
+        ``regions`` is trimmed to what the front-end scripts consume (center /
+        zoom / label) — bbox probing is a build-time concern only.
+        """
+        regions = {
+            name: {
+                "center": cfg.get("center"),
+                "zoom": cfg.get("zoom"),
+                "label": cfg.get("label", name),
+            }
+            for name, cfg in self.map_cfg.get("regions", {}).items()
+            if isinstance(cfg, dict)
+        }
+        return {
+            "enabled": self.map_cfg.get("enabled", False),
+            "widget_js": self.map_cfg.get("widget_js", ""),
+            "widget_css": self.map_cfg.get("widget_css", ""),
+            "pmtiles_prefix": self.map_cfg.get("pmtiles_prefix", ""),
+            "glyphs_url": self.map_cfg.get("glyphs_url", ""),
+            "default_region": self.map_cfg.get("default_region", ""),
+            "regions": regions,
+            "attribution": self.map_cfg.get("attribution", ""),
+            "hide_attribution": self.map_cfg.get("hide_attribution", False),
+            "cluster": self.map_cfg.get("cluster", {}),
+        }
+
+    def _probe_region(self, lng: Optional[float], lat: Optional[float]) -> str:
+        """First configured region whose bbox contains (lng, lat); else default."""
+        if lng is not None and lat is not None:
+            for name, cfg in self.map_cfg.get("regions", {}).items():
+                bbox = cfg.get("bbox") if isinstance(cfg, dict) else None
+                if bbox and bbox[0] <= lng <= bbox[2] and bbox[1] <= lat <= bbox[3]:
+                    return name
+        return self.map_cfg.get("default_region", "")
+
+    @staticmethod
+    def _popup_text(moment: Moment, max_chars: int = 120) -> str:
+        """Short plain-text excerpt of a moment for map popups (XSS-safe)."""
+        text = _first_text_line(moment.content)
+        if len(text) > max_chars:
+            text = text[:max_chars].rstrip() + "…"
+        return text
 
     # ------------------------------------------------------------------
     # RSS feed
@@ -840,6 +1079,52 @@ class MomentPlugin(BasePlugin):
         # has_images
         has_images = "![" in content
 
+        # geo — only parsed when the map feature is enabled (extra.moment.map)
+        place = str(fm.get("place", "")).strip()
+        crs = str(fm.get("crs", "wgs84")).strip().lower()
+        region = str(fm.get("region", "")).strip()
+        lng = lat = None
+        if self.map_cfg.get("enabled"):
+            lng_raw, lat_raw = fm.get("lng"), fm.get("lat")
+            if (lng_raw is None) != (lat_raw is None):
+                log.warning("lng/lat must be a pair in %s — geo ignored", rel)
+            elif lng_raw is not None:
+                try:
+                    lng_f, lat_f = float(lng_raw), float(lat_raw)
+                except (TypeError, ValueError):
+                    log.warning(
+                        "Invalid lng/lat in %s: %r, %r — geo ignored", rel, lng_raw, lat_raw
+                    )
+                else:
+                    if not (-180 <= lng_f <= 180 and -90 <= lat_f <= 90):
+                        log.warning(
+                            "Out-of-range lng/lat in %s: %s, %s — geo ignored",
+                            rel,
+                            lng_raw,
+                            lat_raw,
+                        )
+                    else:
+                        if crs == "gcj02":
+                            lng_f, lat_f = gcj02_to_wgs84(lng_f, lat_f)
+                        elif crs not in ("wgs84", ""):
+                            log.warning("Unknown crs %r in %s — treated as wgs84", crs, rel)
+                            crs = "wgs84"
+                        lng, lat = lng_f, lat_f
+            if not region and lng is not None:
+                region = self._probe_region(lng, lat)
+            elif region and region not in self.map_cfg.get("regions", {}):
+                log.warning("Unknown region %r in %s — probing by bbox", region, rel)
+                region = self._probe_region(lng, lat)
+
+        # marker emoji — first tag matching the configured tag_emoji table
+        emoji = ""
+        if self.map_cfg.get("enabled"):
+            tag_emoji = self.map_cfg.get("tag_emoji", {})
+            for tag in tags:
+                if tag in tag_emoji:
+                    emoji = tag_emoji[tag]
+                    break
+
         return Moment(
             id=moment_id,
             date=date,
@@ -851,6 +1136,12 @@ class MomentPlugin(BasePlugin):
             title=title,
             tags=tags,
             has_images=has_images,
+            place=place,
+            lng=lng,
+            lat=lat,
+            crs=crs,
+            region=region,
+            emoji=emoji,
         )
 
     def _strip_frontmatter(self, markdown: str) -> str:

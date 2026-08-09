@@ -1,6 +1,8 @@
 ---
 title: Moment Plugin — Phase 3 Personal Features
 created: 2026-07-30
+updated: 2026-08-09
+status: in-progress
 tags: [moment, plugin, location, map, gallery, search, stats]
 ---
 
@@ -11,21 +13,41 @@ tags: [moment, plugin, location, map, gallery, search, stats]
 Add location-aware moments, map timeline, photo gallery, search
 integration, and personal statistics to the Moment plugin.
 
+## Status (2026-08-09)
+
+**Location + Map done** (see `internal/moment-design.md` → Geo / Map Features;
+implementation details were iterated in the git-ignored
+`internal/moment-map-draft.md`, now folded back here). Gallery / Search /
+Stats / City-Activity-Log / JSON-Feed are **not started**.
+
 ## Tasks
 
-### Location Support
+### Location Support ✅
 
-- [ ] Add `location`, `lat`, `lng` fields to moment frontmatter
-- [ ] Store location data in `Moment` dataclass
-- [ ] Display location badge on detail page (e.g. "📍 Shanghai")
-- [ ] Add location to RSS feed items
+- [x] Add `place`, `lng`, `lat`, `crs`, `region` fields to moment frontmatter
+  (the original `location` field was split into `place` + coordinates)
+- [x] Store location data in `Moment` dataclass (`has_geo` property)
+- [x] Coordinate conversion: `crs: gcj02` → WGS-84 at parse time
+  (`shared/gcj02.py`, ported from vine maps-cli)
+- [x] Region auto-probing by bbox from the configured `regions` table
+- [x] Display location badge on timeline + detail page (📍 place + tag emoji)
+- [x] ~~Add location to RSS feed items~~ — **cancelled** (user: RSS must not
+  contain map/geo info)
 
-### Map Timeline
+### Map Timeline ✅
 
-- [ ] Generate map page at `/moment/map/` showing moments with geo data
-- [ ] Use Leaflet.js (static map tiles via PMTiles or similar)
-- [ ] Cluster markers by location/time
-- [ ] Link markers to moment detail pages
+- [x] Generate map page at `/moments/map/` showing moments with geo data
+- [x] Use the **vine embeddable widget** (MapLibre + pmtiles) instead of
+  Leaflet — fully static, no API keys
+- [x] Cluster markers by location: repeated coords merge into `×N` markers
+  (configurable `cluster.precision`); popup tabs recent `popup_max`
+  moments and expands all same-coords moments in place
+- [x] Link markers to moment detail pages
+- [x] Region switching: buttons per region (with moments), `setBasemap` +
+  per-region markers; `label` display names (shanghai → 上海)
+- [x] Quantity control: per-region default `region_limit` (50) with a
+  `加载全部` button
+- [x] Detail-page popup dialog map (lazy widget import, fresh host per open)
 
 ### City Activity Log
 

@@ -22,10 +22,15 @@
     color: var(--md-typeset-a-color, #448aff);
 }
 
-/* archive entry link below the tag cloud */
+/* archive / map entry links below the timeline title, in one row */
+.moment-tools { margin-bottom: 0.5em; }
 .moment-archive-link {
     margin: 0.5em 0;
     font-size: 0.9em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    flex-wrap: wrap;
 }
 .moment-archive-link a {
     color: var(--md-typeset-a-color, #448aff);
@@ -33,6 +38,34 @@
 }
 .moment-archive-link a:hover {
     text-decoration: underline;
+}
+.moment-tools-sep {
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-map-link {
+    display: inline-flex;
+    align-items: center;
+}
+.moment-map-link svg {
+    width: 0.95em;
+    height: 0.95em;
+    fill: currentColor;
+    margin-right: 0.15em;
+}
+
+/* All tags — collapsible, expanded by default (below archive/map) */
+.moment-tagcloud-details {
+    margin: 0.4em 0;
+    font-size: 0.9em;
+}
+.moment-tagcloud-details summary {
+    cursor: pointer;
+    color: var(--md-default-fg-color--light, #757575);
+    user-select: none;
+    display: block; /* full-width header row */
+}
+.moment-tagcloud-details summary:hover {
+    color: var(--md-typeset-a-color, #448aff);
 }
 .moment-empty {
     color: var(--md-default-fg-color--light, #757575);
@@ -72,11 +105,6 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.4em;
-}
-.moment-tagcloud-label {
-    font-size: 0.85em;
-    color: var(--md-default-fg-color--light, #757575);
-    margin-bottom: 0.3em;
 }
 
 .moment-detail__tags {
@@ -164,3 +192,156 @@
 .moment-detail__prev:hover,
 .moment-detail__next:hover,
 .moment-detail__back:hover { text-decoration: underline; }
+
+/* geo badge (timeline) — opens the map dialog */
+.moment-entry__geo {
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-entry__place {
+    color: var(--md-typeset-a-color, #448aff);
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 0.3em;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+.moment-entry__place:hover { text-decoration: underline; }
+
+/* geo badge (detail) — opens the map dialog */
+.moment-detail__geo {
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-detail__place {
+    color: var(--md-typeset-a-color, #448aff);
+    background: none;
+    border: none;
+    padding: 0;
+    margin-left: 0.3em;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+.moment-detail__place:hover { text-decoration: underline; }
+
+/* detail map dialog — the host element is swapped for a fresh one on every
+   open, so the widget's createRoot always mounts on an empty container */
+.moment-detail__dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 0;
+    width: min(720px, 92vw);
+    max-height: 85vh;
+    overflow: hidden;
+    color: var(--md-default-fg-color, #374151);
+    background: var(--md-default-bg-color, #fff);
+    box-shadow: 0 24px 48px -12px rgba(0, 0, 0, 0.4);
+}
+.moment-detail__dialog[open] {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+    animation: moment-dialog-in 0.18s ease-out;
+}
+@keyframes moment-dialog-in {
+    from { opacity: 0; transform: translateY(10px) scale(0.97); }
+    to { opacity: 1; transform: none; }
+}
+.moment-detail__dialog::backdrop {
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    animation: moment-backdrop-in 0.18s ease-out;
+}
+@keyframes moment-backdrop-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+.moment-dialog__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75em 1.1em;
+    border-bottom: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    font-size: 0.95em;
+    font-weight: 600;
+}
+.moment-dialog__map {
+    width: 100%;
+    height: min(55vh, 440px);
+    min-height: 280px;
+}
+.moment-dialog__close {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.1em;
+    line-height: 1;
+    padding: 0.2em;
+    color: var(--md-default-fg-color--light, #757575);
+    transition: color 0.15s ease;
+}
+.moment-dialog__close:hover { color: var(--md-typeset-a-color, #448aff); }
+
+/* merged-marker popup tabs — pure CSS radio switching (no JS wiring): the
+   checked input's adjacent label + body pair shows, others stay hidden */
+.moment-popup-tabs { margin-top: 0.4em; }
+.moment-popup-tabs input[type="radio"] { display: none; }
+.moment-popup-tab {
+    display: inline-block;
+    font-size: 0.78em;
+    padding: 0.2em 0.6em;
+    margin-right: 0.3em;
+    border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    border-radius: 4px;
+    cursor: pointer;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-popup-tabs input:checked + .moment-popup-tab {
+    background: var(--md-typeset-a-color, #448aff);
+    color: #fff;
+    border-color: transparent;
+}
+.moment-popup-body { display: none; padding-top: 0.5em; font-size: 0.85em; }
+.moment-popup-tabs input:checked + .moment-popup-tab + .moment-popup-body { display: block; }
+.moment-popup-date { color: var(--md-default-fg-color--light, #757575); font-size: 0.85em; }
+.moment-popup-img {
+    max-width: 100%;
+    max-height: 120px;
+    border-radius: 6px;
+    margin: 0.3em 0;
+    display: block;
+}
+.moment-popup-text {
+    margin-top: 0.2em;
+    line-height: 1.5;
+    font-size: 0.85em;
+}
+.moment-popup-link {
+    display: inline-block;
+    margin-top: 0.35em;
+    font-size: 0.8em;
+    color: var(--md-typeset-a-color, #448aff);
+    text-decoration: none;
+}
+.moment-popup-link:hover { text-decoration: underline; }
+.moment-popup-all { margin-top: 0.4em; font-size: 0.8em; color: var(--md-default-fg-color--light, #757575); }
+.moment-popup-all summary {
+    cursor: pointer;
+    color: var(--md-typeset-a-color, #448aff);
+    user-select: none;
+}
+.moment-popup-all summary:hover { text-decoration: underline; }
+.moment-popup-all-list {
+    margin-top: 0.3em;
+    padding: 0.4em 0.5em;
+    border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    border-radius: 4px;
+    max-height: 160px;
+    overflow-y: auto;
+}
+.moment-popup-all-row { padding: 0.15em 0; }
