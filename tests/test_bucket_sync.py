@@ -133,7 +133,7 @@ class TestEnvLoading:
         monkeypatch.delenv("ONLY_ENV", raising=False)
         monkeypatch.delenv("ONLY_LOCAL", raising=False)
         bs.load_env_files(envdir)
-        assert os.environ.get("SHARED") == "from-local"   # .env.local wins over .env
+        assert os.environ.get("SHARED") == "from-local"  # .env.local wins over .env
         assert os.environ.get("ONLY_ENV") == "env-value"
         assert os.environ.get("ONLY_LOCAL") == "local-value"
 
