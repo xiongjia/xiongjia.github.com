@@ -38,6 +38,7 @@ graph LR
 | [Jellyfin](./topics/jellyfin/)             | Libraries or Frameworks | 视频流播放原理与 Rust 最小原型                  |
 | [shadcn/ui](./topics/shadcn-ui/)           | Libraries or Frameworks | CLI 工具源码阅读，Registry 组件分发系统         |
 | [Protomaps](./topics/protomaps/)           | Libraries or Frameworks | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成  |
+| [DuckDB](./topics/duckdb/)                 | Libraries or Frameworks | 实战研究：环境/模拟数据/PostgreSQL 加速查询     |
 
 ______________________________________________________________________
 
@@ -60,3 +61,4 @@ ______________________________________________________________________
 - [Jellyfin](./topics/jellyfin/): Jellyfin 源码阅读指南，视频流播放原理与 Rust 最小原型
 - [shadcn/ui](./topics/shadcn-ui/): shadcn/ui CLI 工具源码阅读指南，Registry 组件分发系统
 - [Protomaps](./topics/protomaps/): PMTiles 自建底图研究 —— 上海地区底图裁剪、验证与 MapLibre 集成
+- [DuckDB](./topics/duckdb/): DuckDB 实战研究 —— 环境与基本使用、模拟数据构造、PostgreSQL 数据加速查询

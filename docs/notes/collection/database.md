@@ -21,6 +21,7 @@ hide:
 
 ## DuckDB
 
+- [DuckDB 实战研究](../../notes/research/topics/duckdb/index.md) - 环境与基本使用、模拟数据构造、PostgreSQL 数据加速查询（postgres_scanner 直连 / 导出 Parquet，实测 ~35x）
 - [DuckDB Internals: Why is DuckDB Fast? (Part 1)](https://www.greybeam.ai/blog/duckdb-internals-part-1) - 从 SQL 到存储层的执行路径：进程内执行、查询生命周期（解析/绑定/优化/物理计划）、Pipeline 与 Sink、列式存储（Row Group / Zone Map / Parquet / CSV）
 - [DuckDB Internals: Why is DuckDB Fast? (Part 2 Vectorized Execution)](https://www.greybeam.ai/blog/duckdb-internals-part-2) - 向量化执行：Volcano 模型 vs 批量处理、DataChunk/Vector、四种 Vector 类型、Selection Vector、解释执行 vs 查询编译
 
