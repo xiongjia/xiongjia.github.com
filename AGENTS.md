@@ -30,6 +30,7 @@ xiongjia.github.com/
 uv sync                            # install dependencies
 uv run poe server                  # dev server WITH drafts (hot reload)
 uv run poe server-prod             # dev server WITHOUT drafts (mirrors production)
+uv run poe server-bucket           # dev server WITH bucket prefix rewrite (test bucket link replacement)
 uv run poe build                   # production build
 uv run poe build-drafts            # build including drafts (MKDOCS_INCLUDE_DRAFTS=true)
 uv run poe build-selfhost          # self-hosted build
@@ -43,10 +44,26 @@ uv run poe add-weight-week [n]     # add empty week(s) to weight data
 uv run poe update-weight 82 [date] # record daily weight (default: today)
 uv run poe update-health-summary   # regenerate health index summary (calls local pi)
 uv run poe sync-running            # sync running data from running_page site
+uv run poe bucket-sync pull       # pull docs/assets/bucket/ from R2/S3 via rclone (read-only, dry-run by default; uploads happen in PicList)
 uv run poe md2wechat [path]        # convert post to WeChat HTML
 ```
 
 Site runs at `http://localhost:8000` by default.
+
+## Bucket-hosted assets (R2/S3)
+
+Large site files (mainly WebP images) live outside git on an R2/S3 bucket.
+
+- md always uses **local relative paths** (e.g. `../../assets/bucket/food.webp`);
+  the build rewrites `assets/bucket/` → `base_url` (see
+  [internal/bucket-design.md](internal/bucket-design.md)). Switching buckets =
+  changing `extra.bucket.mappings[].base_url` in mkdocs.yml, md untouched.
+- Local copies stay in `docs/assets/bucket/` (git-ignored) so VSCode preview works.
+- Upload via **PicList** (store path = `remote_prefix`, e.g. `web-assets/img/`);
+  pull back with `poe bucket-sync pull` (read-only rclone sync, dry-run default).
+- **Credentials (R2 access keys) are developer-local only** (rclone.conf / PicList)
+  — never commit them; env test hooks: `MKDOCS_BUCKET_ENABLED`,
+  `MKDOCS_BUCKET_BASE_URL`.
 
 ## Network / Proxy tips
 

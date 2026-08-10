@@ -26,6 +26,10 @@ from markdown.treeprocessors import Treeprocessor
 from mkdocs.exceptions import PluginError
 from mkdocs.plugins import BasePlugin
 
+from shared.bucket import is_enabled as bucket_is_enabled
+from shared.bucket import load_mappings as bucket_load_mappings
+from shared.bucket import rewrite_html as bucket_rewrite_html
+from shared.bucket import rewrite_url as bucket_rewrite_url
 from shared.date import parse_date_strict
 from shared.frontmatter import has_draft_flag, parse_frontmatter
 from shared.gcj02 import gcj02_to_wgs84
@@ -221,6 +225,10 @@ class _Page:
 
 
 class MomentPlugin(BasePlugin):
+    # bucket rewrite config — populated in on_config; class-level default guards
+    # any code path that runs before/without on_config (e.g. unit tests)
+    _bucket = {"enabled": False, "mappings": []}
+
     def _load_config(self, moment_cfg: dict):
         self.config = {
             "path": moment_cfg.get("path", "moment"),
@@ -268,6 +276,13 @@ class MomentPlugin(BasePlugin):
         # read config from mkdocs.yml extra.moment
         moment_cfg = config.get("extra", {}).get("moment", {})
         self._load_config(moment_cfg)
+        # bucket asset rewrite config (extra.bucket) — relative image paths that
+        # match a bucket prefix resolve to absolute URLs (used by popup_image/OG)
+        bucket_cfg = config.get("extra", {}).get("bucket", {})
+        self._bucket = {
+            "enabled": bucket_is_enabled(bucket_cfg),
+            "mappings": bucket_load_mappings(bucket_cfg),
+        }
         # validate
         if self.config["posts_per_page"] < 1:
             raise PluginError("Moment plugin: posts_per_page must be >= 1")
@@ -356,6 +371,11 @@ class MomentPlugin(BasePlugin):
             moment = self._get_moment_by_src_path(str(path))
             if moment:
                 moment.html = self._render_content(content, config, moment.source_path)
+                # bucket-managed assets: rewrite relative paths in the rendered
+                # HTML (moment.html never passes through the bucket_url hook's
+                # on_page_content), so detail pages & popups point at the bucket
+                if self._bucket.get("enabled") and self._bucket.get("mappings"):
+                    moment.html = bucket_rewrite_html(moment.html, self._bucket["mappings"])
                 moment.popup_image = self._first_image(moment) or ""
                 moment.popup_text = self._popup_text(moment)
             return content
@@ -849,13 +869,23 @@ class MomentPlugin(BasePlugin):
         return moment.date.strftime("%Y-%m-%d %H:%M")
 
     def _first_image(self, moment: Moment) -> Optional[str]:
-        """First image URL in the rendered HTML (site-absolute or remote), if any."""
+        """First image URL in the rendered HTML (site-absolute or remote), if any.
+
+        Relative paths resolve only when they match a configured bucket prefix
+        (rewritten to the remote base_url); other relative paths are ignored,
+        preserving the historical behaviour (popup only for local/remote URLs).
+        """
         match = _IMG_SRC.search(moment.html)
         if not match:
             return None
         src = match.group(1)
         if src.startswith(("/", "http://", "https://")):
             return src
+        # relative path — bucket-managed asset? rewrite to an absolute URL
+        if self._bucket.get("enabled") and self._bucket.get("mappings"):
+            rewritten = bucket_rewrite_url(src, self._bucket["mappings"])
+            if rewritten != src:
+                return rewritten
         return None
 
     @staticmethod

@@ -16,8 +16,10 @@ site-selfhost/
 # research source clones (never committed; nested external/.gitignore kept as defense-in-depth)
 /external/
 
-# env files
+# env files — local secrets; keep .env.example tracked
 .env
+.env.*
+!.env.example
 env-*
 
 # claude code — track skills, ignore local settings
@@ -42,6 +44,9 @@ env-*
 
 # local draft files
 *-draft.md
+
+# bucket-managed large assets (R2/S3; local copies kept for VSCode preview)
+docs/assets/bucket/
 
 # downloaded mermaid assets (auto-downloaded during build)
 docs/assets/javascripts/mermaid.*

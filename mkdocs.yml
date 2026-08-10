@@ -28,6 +28,20 @@ extra:
       global_layout: "lr"   # main+subgraph LR -> portrait, avoids width-shrink
       max_nodes: 50
       global_page: "notes/link-graph.md"
+  # bucket-hosted large assets (R2/S3, git-ignored under docs/assets/bucket/).
+  # md keeps local relative links (VSCode preview); the build rewrites paths
+  # whose prefix matches `assets/bucket/` to the remote base_url. Switching
+  # buckets = change base_url here, md untouched. Env overrides for testing:
+  # MKDOCS_BUCKET_ENABLED / MKDOCS_BUCKET_BASE_URL (see `poe server-bucket`).
+  # The rclone remote name is local-only (BUCKET_SYNC_REMOTE in .env) — CI
+  # only builds, it never syncs.
+  bucket:
+    enabled: true
+    mappings:
+      - prefix: assets/bucket/
+        bucket: web-assets
+        remote_prefix: data/img   # object prefix inside the bucket
+        base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/img"
   moment:
     path: moments
     # feed: enabled by default — generates /moments/feed.xml, which the
@@ -128,6 +142,7 @@ hooks:
   - plugins/draft_filter.py
   - plugins/moment_hook.py
   - plugins/backlinks.py
+  - plugins/bucket_url.py
 
 # plugins
 plugins:
