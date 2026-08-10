@@ -23,6 +23,7 @@ dependencies = [
     "mdformat-gfm>=1.0.0",
     "mdformat-frontmatter>=2.0.0",
     "pillow>=10.0.0",
+    "python-dotenv>=1.0.0",
     "mkdocs-macros-plugin>=1.5.0",
     "python-frontmatter>=1.3.0",
     "pyperclip>=1.11.0",
@@ -34,6 +35,7 @@ license = { text = "MIT" }
 [tool.poe.tasks]
 server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Dev server WITH drafts (draft blog posts visible)" }
 server-prod = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1" }, help = "Dev server WITHOUT drafts (mirrors production build)" }
+server-bucket = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", MKDOCS_BUCKET_ENABLED = "true" }, help = "Dev server WITH bucket prefix rewrite (test bucket link replacement)" }
 build = "mkdocs build"
 build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Build static site INCLUDING drafts" }
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
@@ -58,6 +60,8 @@ add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an em
 update-weight = { cmd = "python scripts/update_weight.py", help = "Record a daily weight into health data: uv run poe update-weight 82 [date]" }
 update-health-summary = { cmd = "python scripts/update_health_summary.py", help = "Regenerate the health status summary on the health index page (calls local pi CLI)" }
 sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
+bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/bucket/ from R2/S3 via rclone (read-only; dry-run by default, --confirm to apply; uploads happen in PicList)" }
+rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
 test = { cmd = "uv run --extra test pytest -q", help = "Run unit tests (pytest, test extras): uv run poe test" }

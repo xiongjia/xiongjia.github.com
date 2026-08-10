@@ -15,24 +15,26 @@ Site runs at `http://localhost:8000` with hot-reload (includes drafts).
 
 ## Commands
 
-| Command                              | Description                                    |
-| ------------------------------------ | ---------------------------------------------- |
-| `uv run poe server`                  | Dev server WITH drafts                         |
-| `uv run poe server-prod`             | Dev server WITHOUT drafts (mirrors production) |
-| `uv run poe build`                   | Production build (excludes drafts)             |
-| `uv run poe build-drafts`            | Build including drafts                         |
-| `uv run poe build-selfhost`          | Self-hosted build (separate `site-selfhost/`)  |
-| `uv run poe fmt`                     | Format Python & Markdown                       |
-| `uv run poe lint-py`                 | Python lint check (ruff)                       |
-| `uv run poe test`                    | Run unit tests (pytest, `tests/`)              |
-| `uv run poe create-post "Title"`     | New blog post (defaults to draft)              |
-| `uv run poe create-moment "Text"`    | New Moment entry (short micro-post)            |
-| `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP                            |
-| `uv run poe add-weight-week [n]`     | Add empty week(s) to weight data               |
-| `uv run poe update-weight 82 [date]` | Record daily weight (default: today)           |
-| `uv run poe update-health-summary`   | Regenerate AI health summary (local pi CLI)    |
-| `uv run poe sync-running`            | Sync running data from running_page site       |
-| `uv run poe md2wechat [path]`        | Convert post to WeChat HTML                    |
+| Command                              | Description                                                                                                 |
+| ------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
+| `uv run poe server`                  | Dev server WITH drafts                                                                                      |
+| `uv run poe server-prod`             | Dev server WITHOUT drafts (mirrors production)                                                              |
+| `uv run poe server-bucket`           | Dev server WITH bucket prefix rewrite (test bucket link replacement)                                        |
+| `uv run poe build`                   | Production build (excludes drafts)                                                                          |
+| `uv run poe build-drafts`            | Build including drafts                                                                                      |
+| `uv run poe build-selfhost`          | Self-hosted build (separate `site-selfhost/`)                                                               |
+| `uv run poe fmt`                     | Format Python & Markdown                                                                                    |
+| `uv run poe lint-py`                 | Python lint check (ruff)                                                                                    |
+| `uv run poe test`                    | Run unit tests (pytest, `tests/`)                                                                           |
+| `uv run poe create-post "Title"`     | New blog post (defaults to draft)                                                                           |
+| `uv run poe create-moment "Text"`    | New Moment entry (short micro-post)                                                                         |
+| `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP                                                                                         |
+| `uv run poe add-weight-week [n]`     | Add empty week(s) to weight data                                                                            |
+| `uv run poe update-weight 82 [date]` | Record daily weight (default: today)                                                                        |
+| `uv run poe update-health-summary`   | Regenerate AI health summary (local pi CLI)                                                                 |
+| `uv run poe sync-running`            | Sync running data from running_page site                                                                    |
+| `uv run poe bucket-sync pull`        | Pull `docs/assets/bucket/` from R2/S3 via rclone (read-only, dry-run by default; uploads happen in PicList) |
+| `uv run poe md2wechat [path]`        | Convert post to WeChat HTML                                                                                 |
 
 ## Common Examples
 
@@ -88,6 +90,7 @@ main Python/markdown toolchain (`poe fmt` / `poe lint-py` / CI).
 Detailed documentation moved to `internal/`:
 
 - [Moment Design](internal/moment-design.md) — Micro-post timeline plugin (RSS feed, archive, tags, OpenGraph, drafts)
+- [Bucket Assets Design](internal/bucket-design.md) — large files on R2/S3, prefix → base_url rewrite, PicList/rclone sync
 - [Architecture](internal/architecture.md) — project structure, plugins, hooks, env vars, draft system
 - [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline
