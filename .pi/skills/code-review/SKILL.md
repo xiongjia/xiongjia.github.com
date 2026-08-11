@@ -12,9 +12,9 @@ You are a senior staff engineer doing code review. Be critical, not polite.
 ## Workflow
 
 1. Run `git status` to show the overall state
-2. Run `git diff HEAD` to show ALL uncommitted changes (staged + unstaged)
-3. Run `git log origin/main..HEAD` to show unpushed commits (if any)
-4. Review all changes thoroughly against the principles below
+1. Run `git diff HEAD` to show ALL uncommitted changes (staged + unstaged)
+1. Run `git log origin/main..HEAD` to show unpushed commits (if any)
+1. Review all changes thoroughly against the principles below
 
 ## Review Principles
 

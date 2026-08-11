@@ -41,18 +41,18 @@ build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" },
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create_post.py", help = "Create a new blog post (defaults to draft): uv run poe create-post \"Title\" --category bits --time \"yesterday 9am\"" }
 format-py = "ruff format ."
-format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md"
+format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md"
 format = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md" },
 ]
 fmt = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md" },
 ]
 check-fmt = [
     { cmd = "ruff format --check ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ --exclude docs/notes/health/_summary.md --check" },
+    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --check" },
 ]
 lint-py = "ruff check ."
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
@@ -64,6 +64,7 @@ bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/
 rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
+enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap to the inbox: uv run poe enu add 'cumbersome'" }
 test = { cmd = "uv run --extra test pytest -q", help = "Run unit tests (pytest, test extras): uv run poe test" }
 
 [project.optional-dependencies]

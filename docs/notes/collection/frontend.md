@@ -16,6 +16,7 @@ hide:
 - [hono](https://github.com/honojs/hono) - 轻量级 Web 框架
 - [animejs](https://animejs.com/) - JavaScript 动画库
 - [markdown-online-editor](https://github.com/nicejade/markdown-online-editor) - Markdown 在线编辑器
+- [antvis/Infographic](https://github.com/antvis/Infographic) - AI 信息图生成与渲染框架（AntV）
 
 ## React
 

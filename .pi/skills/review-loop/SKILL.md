@@ -16,13 +16,13 @@ targets: [pi-agent]
 
 1. Run ONE review pass over the current changes (git diff / worktree) and list each issue (location, cause, fix suggestion);
    **follow the code-review skill for review content** (if installed: `.pi/skills/code-review/SKILL.md` or `/skill:code-review`; otherwise use the fallback checklist below: correctness / performance / maintainability / project conventions / architecture consistency)
-2. If there are must-fix issues → fix them → end with "Fixed [N] issue(s). Ready for another review."
-3. Re-review the fix with fresh eyes (don't reuse the previous round's conclusions)
-4. Stop and summarize (rounds run, fixes applied, validation, remaining items) when any of these holds:
+1. If there are must-fix issues → fix them → end with "Fixed [N] issue(s). Ready for another review."
+1. Re-review the fix with fresh eyes (don't reuse the previous round's conclusions)
+1. Stop and summarize (rounds run, fixes applied, validation, remaining items) when any of these holds:
    - review found no issues ("No issues found.")
    - the maxIterations cap is reached
    - the user interrupted / remaining suggestions are optional polish
-5. If the same issue shows up two rounds in a row → stop and ask for human intervention (the worker cannot fix it)
+1. If the same issue shows up two rounds in a row → stop and ask for human intervention (the worker cannot fix it)
 
 ## Serial execution (mandatory)
 
