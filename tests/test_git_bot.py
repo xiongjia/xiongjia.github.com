@@ -263,3 +263,16 @@ def test_apply_proxy_bot_wins_over_shell():
         os.environ.pop("HTTP_PROXY", None)
         os.environ.pop("HTTPS_PROXY", None)
         os.environ.pop("NO_PROXY", None)
+
+
+# -- branch guard -----------------------------------------------------------
+
+
+def test_bot_branch_guard_accepts_bot():
+    gb._bot_branch_guard("bot/weight/20260812-000000")  # no raise
+
+
+def test_bot_branch_guard_rejects_others():
+    for bad in ("master", "dev/daily2", "feature/x", "", "botx"):
+        with pytest.raises(gb.BotError, match="non-bot"):
+            gb._bot_branch_guard(bad)
