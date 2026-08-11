@@ -1,0 +1,5 @@
+pid=25057
+branch=bot/text-moment/20260811-235609
+started=2026-08-11T23:56:24
+state=ready
+tasks=[["text-moment", ["测试内容"]]]
