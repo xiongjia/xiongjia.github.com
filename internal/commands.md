@@ -67,7 +67,7 @@ Tasks are registered in `mkdocs.yml` → `extra.bot.tasks` (template tasks:
 | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `poe bot "weight 82" "text-moment ..."` | Run task(s) and publish — one-step `--now` (default) or `--preview` (stop before commit)                                                               |
 | `poe bot "text-moment 内容"`            | Text-only moment (content from the user); `--preview` to stop early                                                                                    |
-| `poe bot "enu cumbersome"`              | English Scraps: append a scrap to the inbox via the bot (extra args pass through, e.g. `--date`)                                                       |
+| `poe bot "enu cumbersome"`              | English Scraps: append a scrap to the inbox via the bot (free-text content auto-joined; `--date`/`--dir` stay options)                                 |
 | `poe bot "weight 81.5" --auto-merge`    | One step + auto squash-merge when CI is green                                                                                                          |
 | `poe bot "weight 81.5" --handoff`       | Draft PR then clean up locally — dev handles the PR (default)                                                                                          |
 | `poe bot --plan morning 81.5`           | Run a local plan file (`.bot/plans/morning.yml`, git-ignored, created by you — format in the design doc); vars via positional args / `--var key=value` |

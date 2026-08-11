@@ -276,3 +276,44 @@ def test_bot_branch_guard_rejects_others():
     for bad in ("master", "dev/daily2", "feature/x", "", "botx"):
         with pytest.raises(gb.BotError, match="non-bot"):
             gb._bot_branch_guard(bad)
+
+
+# -- enu task ----------------------------------------------------------------
+
+
+def test_enu_task_joins_free_text():
+    info = gb.task_enu(None, ["mermaid", "一个", "libary", "name"])
+    assert info["cmd"] == [
+        "uv",
+        "run",
+        "python",
+        "scripts/enu.py",
+        "add",
+        "mermaid 一个 libary name",
+    ]
+    assert info["commit"] == '[bot] feat(enu): add scrap "mermaid 一个 libary name"'
+
+
+def test_enu_task_options():
+    info = gb.task_enu(None, ["cumbersome", "--date", "2026-08-11"])
+    assert info["cmd"] == [
+        "uv",
+        "run",
+        "python",
+        "scripts/enu.py",
+        "add",
+        "cumbersome",
+        "--date",
+        "2026-08-11",
+    ]
+    assert info["commit"] == '[bot] feat(enu): add scrap "cumbersome"'
+
+
+def test_enu_task_no_args():
+    with pytest.raises(gb.BotError, match="enu task needs"):
+        gb.task_enu(None, [])
+
+
+def test_enu_task_only_options_rejected():
+    with pytest.raises(gb.BotError, match="enu task needs"):
+        gb.task_enu(None, ["--date", "2026-08-11"])
