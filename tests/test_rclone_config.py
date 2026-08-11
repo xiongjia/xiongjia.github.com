@@ -16,7 +16,7 @@ import scripts.rclone_config as rc  # noqa: E402
 
 
 @pytest.fixture(autouse=True)
-def _env(monkeypatch):
+def _env(monkeypatch, clear_bucket_env):
     monkeypatch.setenv("R2_ACCOUNT_ID", "acct123")
     monkeypatch.setenv("R2_ACCESS_KEY_ID", "ak-secret")
     monkeypatch.setenv("R2_SECRET_ACCESS_KEY", "sk-secret")

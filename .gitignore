@@ -7,6 +7,9 @@ __pycache__/
 .pytest_cache/
 .ruff_cache/
 .venv/
+# bot worktree symlink to the main repo venv (a symlink is a file, so the
+# trailing-slash rule above doesn't match it — anchor a bare one as well)
+/.venv
 
 # mkdocs folders
 site/
@@ -45,8 +48,18 @@ env-*
 # local draft files
 *-draft.md
 
+# bot plan files — personal daily routines (e.g. .bot/plans/morning.yml);
+# local-only, `poe bot --plan <name>` reads them from here regardless
+.bot/
+
+# bot instance marker (worktree-local; must never be committed)
+.bot-active
+
 # bucket-managed large assets (R2/S3; local copies kept for VSCode preview)
+# trailing-slash rule matches the real dir; the bot worktree symlink is a
+# file, so anchor a bare path as well
 docs/assets/bucket/
+/docs/assets/bucket
 
 # downloaded mermaid assets (auto-downloaded during build)
 docs/assets/javascripts/mermaid.*

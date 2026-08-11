@@ -69,6 +69,7 @@ Detailed design docs live in `internal/`:
 - [Weight Tracker Design](internal/weight-tracker-design.md) — weight data & tooling
 - [Running Track Design](internal/running-track-design.md) — running data sync & rendering
 - [Health Summary Design](internal/health-summary-design.md) — AI health summary via local `pi`
+- [Bot Auto PR Design](internal/bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)
 - [Discuss System Design](internal/discuss-design.md) — Giscus comment system
 - [Retirement Countdown Design](internal/retirement-countdown-design.md) — retirement calculator & visualization
 
