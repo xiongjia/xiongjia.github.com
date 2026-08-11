@@ -206,20 +206,24 @@ def commit_workdir(workdir: Path, message: str, body: list[str]) -> None:
     args = ["-c", f"user.name={name}", "-c", f"user.email={email}", "commit", "-m", message]
     for line in body:
         args += ["-m", line]
-    # Only stage the task output. The worktree also holds symlinks/markers
-    # (master's .gitignore doesn't cover the symlink forms yet) — exclude
-    # them explicitly so they never leak into a commit / PR.
+    # Stage the task output, then unstage worktree-only artifacts (symlinks /
+    # marker). `git add -A` alone can't use :(exclude) pathspecs here — when
+    # the checked-out .gitignore already ignores them (post-merge master) the
+    # exclude pathspec collides with the ignore rule and git aborts; when it
+    # doesn't (older master) the symlinks would be staged. `git add -A` +
+    # `git reset -- <paths>` is a no-op on unstaged/ignored paths, so it works
+    # for both.
+    git("add", "-A", cwd=workdir)
     git(
-        "add",
-        "-A",
+        "reset",
         "--",
-        ".",
-        ":(exclude).bot-active",
-        ":(exclude).venv",
-        ":(exclude).env",
-        ":(exclude).env.local",
-        ":(exclude)docs/assets/bucket",
+        ".bot-active",
+        ".venv",
+        ".env",
+        ".env.local",
+        "docs/assets/bucket",
         cwd=workdir,
+        check=False,
     )
     proc = subprocess.run(["git", *args], cwd=workdir, capture_output=True, text=True, check=False)
     if proc.returncode != 0 and "nothing to commit" not in proc.stdout + proc.stderr:
@@ -247,6 +251,7 @@ def push_branch(workdir: Path, branch: str) -> None:
 
 
 def delete_remote_branch(branch: str) -> None:
+    _bot_branch_guard(branch)
     args = _git_proxy_args()
     git(*args, "push", "origin", "--delete", branch, cwd=REPO_ROOT, env=_git_auth_env())
 
@@ -355,10 +360,30 @@ def _branch_merged(branch: str) -> bool:
     return proc.returncode == 0
 
 
-def _delete_local(branch: str, workdir: Path) -> None:
-    if branch:
-        git("branch", "-D", branch, cwd=REPO_ROOT, check=False)
+def _bot_branch_guard(branch: str) -> None:
+    """Refuse to delete/remove anything that isn't a bot branch (``bot/...``).
+
+    Deleting is destructive — never trust a caller-provided name blindly (a
+    tampered marker, a typo'd arg, a future code path).
+    """
+    if not branch.startswith("bot/"):
+        raise BotError(f"refusing to touch non-bot branch {branch!r}")
+
+
+def _teardown_local(branch: str, workdir: Path) -> None:
+    """Remove the worktree then the local bot branch.
+
+    Order matters: git refuses to delete a branch that a worktree is still
+    checked out on ("cannot delete branch used by worktree").
+    """
     remove_worktree(workdir)
+    if branch:
+        _bot_branch_guard(branch)
+        git("branch", "-D", branch, cwd=REPO_ROOT, check=False)
+
+
+def _delete_local(branch: str, workdir: Path) -> None:
+    _teardown_local(branch, workdir)
 
 
 def _delete_remote(branch: str) -> None:
@@ -603,6 +628,7 @@ def do_submit(
             api.merge(number, method="squash")
             print(f"✅ merged PR #{number}")
     remove_worktree(workdir)
+    git("branch", "-D", branch, cwd=REPO_ROOT, check=False)
     if wait_ci or auto_merge:
         print(f"🧹 worktree removed ({branch})")
     else:
@@ -821,6 +847,7 @@ def cmd_abort(args) -> None:
             raise BotError(
                 f"{branch!r} is not a bot branch — use the full name from `poe bot list`"
             )
+        _bot_branch_guard(branch)
         git("branch", "-D", branch, cwd=REPO_ROOT, check=False)
     print(f"🗑  aborted {branch}")
 
