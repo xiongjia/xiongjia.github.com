@@ -498,13 +498,34 @@ def task_sync_running(ctx, args: list[str]) -> dict:
     }
 
 
+_ENU_OPT_ARGS = {"--date", "--dir"}
+
+
 def task_enu(ctx, args: list[str]) -> dict:
+    """enu content is free text (may contain spaces) — the remaining tokens
+    are joined into one content; --date/--dir take a value and stay options."""
     if not args:
         raise BotError('enu task needs a scrap, e.g. "enu cumbersome"')
+    opts: list[str] = []
+    text: list[str] = []
+    i = 0
+    while i < len(args):
+        if args[i] in _ENU_OPT_ARGS and i + 1 < len(args):
+            opts += [args[i], args[i + 1]]
+            i += 2
+        elif args[i].startswith("--"):
+            opts.append(args[i])
+            i += 1
+        else:
+            text.append(args[i])
+            i += 1
+    content = " ".join(text)
+    if not content:
+        raise BotError('enu task needs a scrap, e.g. "enu cumbersome"')
     return {
-        "cmd": ["uv", "run", "python", "scripts/enu.py", "add", *args],
-        "commit": f'[bot] feat(enu): add scrap "{args[0]}"',
-        "body": f"- scrap: {args[0]}",
+        "cmd": ["uv", "run", "python", "scripts/enu.py", "add", content, *opts],
+        "commit": f'[bot] feat(enu): add scrap "{content}"',
+        "body": f"- scrap: {content}",
     }
 
 
