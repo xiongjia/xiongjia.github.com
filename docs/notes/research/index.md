@@ -31,7 +31,7 @@ graph LR
 | [Redash](./topics/redash/)                 | Tools                   | 查询结果缓存机制与 Dashboard 自定义布局实现原理 |
 | [trip](./topics/trip/)                     | Tools                   | TRIP 项目核心原理与代码阅读指南                 |
 | [Rust](./topics/rust/)                     | Learning Plans          | 7 阶段学习路线图：基础语法到并发异步            |
-| [English](./topics/english/)               | Learning Plans          | Hollow Knight 英语学习计划                      |
+| [English](./topics/english/)               | Learning Plans          | English Scraps 随手收集 + AI 归档；主题阅读     |
 | [nest-commander](./topics/nest-commander/) | Libraries or Frameworks | NestJS CLI 构建工具                             |
 | [Better Auth](./topics/better-auth/)       | Libraries or Frameworks | 源码阅读指南                                    |
 | [NestJS](./topics/nestjs/)                 | Libraries or Frameworks | Module 注入原理与核心源码分析                   |
@@ -51,7 +51,7 @@ ______________________________________________________________________
 ## Learning Plans
 
 - [Rust](./topics/rust/): Rust 学习计划 — 从基础语法到并发异步的 7 阶段路线图。
-- [English](./topics/english/): Hollow Knight 英语学习计划 — 阅读、词汇、发音、Shadowing、口语、写作。
+- [English](./topics/english/): English Scraps — 日常英语碎片（生词/语法/难句/搭配）随手收集 + AI 归档整理；特殊主题（如 Hollow Knight）阅读按需展开。
 
 ## Libraries or Frameworks
 

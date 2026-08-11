@@ -31,7 +31,7 @@ xiongjia.github.com/
 │   └── plans/                    # Implementation plans / task tracking (see plan-index.md)
 │       └── arch/                 # Archived (done/cancelled) plans
 ├── shared/                       # Shared utilities for plugins & scripts
-├── external/                     # Research source clones (never committed)
+├── external/                     # External research data (source clones, books, …; never committed)
 ├── docs/                          # All site content (Markdown)
 │   ├── index.md                   # Redirect → /notes/
 │   ├── moments/                   # Short-form timeline (Moment plugin)
@@ -311,26 +311,8 @@ uv run poe build                           # production build (excludes drafts)
 
 The dev server runs at `http://localhost:8000` by default.
 
-Available `poe` commands:
-
-| Command                              | Description                                       |
-| ------------------------------------ | ------------------------------------------------- |
-| `uv run poe server`                  | Dev server with drafts                            |
-| `uv run poe server-prod`             | Dev server without drafts                         |
-| `uv run poe build`                   | Production build                                  |
-| `uv run poe build-drafts`            | Production build including drafts                 |
-| `uv run poe build-selfhost`          | Self-hosted build (separate `site-selfhost/` dir) |
-| `uv run poe fmt`                     | Format Python (ruff) + Markdown (mdformat)        |
-| `uv run poe lint-py`                 | Python lint check (ruff)                          |
-| `uv run poe test`                    | Run unit tests (pytest, `tests/`)                 |
-| `uv run poe create-post "Title"`     | New blog post scaffolding                         |
-| `uv run poe create-moment "Text"`    | New Moment micro-post scaffolding                 |
-| `uv run poe optimize-images <path>`  | PNG/JPG/JPEG → WebP conversion                    |
-| `uv run poe add-weight-week [count]` | Add empty week(s) to weight data                  |
-| `uv run poe update-weight 82 [date]` | Record a daily weight (default: today)            |
-| `uv run poe update-health-summary`   | Regenerate the health index summary (local pi AI) |
-| `uv run poe sync-running`            | Sync running data from the deployed running_page  |
-| `uv run poe md2wechat [path]`        | Convert blog post to WeChat HTML                  |
+All `poe` commands (dev / build / quality / content / health / assets) are
+centralized in [commands.md](./commands.md); only the core flow is kept here.
 
 ## Draft Mechanism
 
@@ -398,6 +380,7 @@ Content pages themselves are mixed Chinese/English depending on the section.
 
 ## Design Documents
 
+- [Commands](./commands.md) — command reference
 - [md2wechat Design](./md2wechat-design.md)
 - [optimize-images Design](./optimize-images-design.md)
 - [Bucket Assets Design](./bucket-design.md)
@@ -406,5 +389,8 @@ Content pages themselves are mixed Chinese/English depending on the section.
 - [Retirement Countdown Design](./retirement-countdown-design.md)
 - [Health Summary Design](./health-summary-design.md)
 - [Med Tracker Design](./med-tracker-design.md)
+
+> Plans (task/feature tracking): [plans/plan-index.md](./plans/plan-index.md);
+> English Scraps plan → [plans/english-scraps.md](./plans/english-scraps.md).
 
 > This file is the architecture overview.
