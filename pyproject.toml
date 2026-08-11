@@ -62,6 +62,7 @@ update-health-summary = { cmd = "python scripts/update_health_summary.py", help 
 sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
 bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/bucket/ from R2/S3 via rclone (read-only; dry-run by default, --confirm to apply; uploads happen in PicList)" }
 rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
+bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an isolated worktree and publish as a PR (e.g. poe bot \"weight 82\" / --plan morning / list / submit / abort / cleanup)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
 enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap to the inbox: uv run poe enu add 'cumbersome'" }

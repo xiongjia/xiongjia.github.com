@@ -9,6 +9,7 @@
 - **Quality** — `fmt` / `lint-py` / `test`
 - **Content** — `create-post` / `create-moment` / `enu add`
 - **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running`
+- **Bot** — `bot <task>` / `bot --plan` / `bot list` / `bot submit` / `bot abort` / `bot cleanup`
 - **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `rclone-config-init`
 - **English Scraps flow** — collect → batch-organize → review
 
@@ -52,6 +53,32 @@
 | `poe update-health-summary`   | Regenerate the health index summary (calls local pi AI)                      |
 | `poe sync-running`            | Sync running data from the deployed running_page                             |
 
+## Bot (auto PR)
+
+Local bot: runs task scripts in an isolated `git worktree` and publishes the
+result as a PR (format → local CI checks → commit → push → draft PR →
+optional auto-merge). Design: [bot-auto-pr-design.md](./bot-auto-pr-design.md).
+
+Tasks are registered in `mkdocs.yml` → `extra.bot.tasks` (template tasks:
+`args` / `cmd` / `commit` / `body` format strings); builtins like `weight` /
+`enu` live in `scripts/git_bot.py` and can be overridden by name.
+
+| Command                                 | Description                                                                                                                                            |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `poe bot "weight 82" "text-moment ..."` | Run task(s) and publish — one-step `--now` (default) or `--preview` (stop before commit)                                                               |
+| `poe bot "text-moment 内容"`            | Text-only moment (content from the user); `--preview` to stop early                                                                                    |
+| `poe bot "enu cumbersome"`              | English Scraps: append a scrap to the inbox via the bot (extra args pass through, e.g. `--date`)                                                       |
+| `poe bot "weight 81.5" --auto-merge`    | One step + auto squash-merge when CI is green                                                                                                          |
+| `poe bot "weight 81.5" --handoff`       | Draft PR then clean up locally — dev handles the PR (default)                                                                                          |
+| `poe bot --plan morning 81.5`           | Run a local plan file (`.bot/plans/morning.yml`, git-ignored, created by you — format in the design doc); vars via positional args / `--var key=value` |
+| `poe bot list`                          | List bot instances (bot name / worktree path / state / start time)                                                                                     |
+| `poe bot submit <name>`                 | Submit a `ready` (previewed) instance: commit + push + draft PR                                                                                        |
+| `poe bot abort <name>`                  | Discard an unfinished instance (close PR + delete branches if already pushed)                                                                          |
+| `poe bot cleanup [<name>]`              | Clean merged instances (skips active ones; `--force` removes stale)                                                                                    |
+
+Needs `BOT_GH_TOKEN` (fine-grained PAT) in `.env` — see the design doc's
+Credential Strategy for the one-time token setup.
+
 ## Assets & Conversion
 
 | Command                            | Description                                                                                                 |
@@ -76,14 +103,18 @@ keep their own copies).
 
 What it configures:
 
-| Variable                                                                                         | Purpose                                                                          |
-| ------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------- |
-| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`                                    | R2 API credentials for `poe rclone-config-init`                                  |
-| `BUCKET_SYNC_REMOTE` / `BUCKET_SYNC_BUCKET` / `BUCKET_SYNC_PREFIX` / `BUCKET_SYNC_REMOTE_PREFIX` | rclone / bucket-sync overrides (priority: CLI arg > env > mkdocs.yml)            |
-| `RCLONE_HTTP_PROXY`                                                                              | rclone proxy (e.g. `http://127.0.0.1:1095`; needed when R2 unreachable directly) |
-| `MKDOCS_BUCKET_ENABLED` / `MKDOCS_BUCKET_BASE_URL`                                               | Force bucket prefix rewrite / override `base_url` for testing                    |
-| `SITE_NAME` / `SITE_URL` / `GIT_HASH`                                                            | Site title / canonical URL / commit hash overrides                               |
-| `CF_ANALYTICS_TOKEN` / `MERMAID_CDN_URL`                                                         | Analytics beacon token / mermaid JS CDN fallback                                 |
+| Variable                                                                                         | Purpose                                                                              |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`                                    | R2 API credentials for `poe rclone-config-init`                                      |
+| `BUCKET_SYNC_REMOTE` / `BUCKET_SYNC_BUCKET` / `BUCKET_SYNC_PREFIX` / `BUCKET_SYNC_REMOTE_PREFIX` | rclone / bucket-sync overrides (priority: CLI arg > env > mkdocs.yml)                |
+| `RCLONE_HTTP_PROXY`                                                                              | rclone proxy (e.g. `http://127.0.0.1:1095`; needed when R2 unreachable directly)     |
+| `MKDOCS_BUCKET_ENABLED` / `MKDOCS_BUCKET_BASE_URL`                                               | Force bucket prefix rewrite / override `base_url` for testing                        |
+| `SITE_NAME` / `SITE_URL` / `GIT_HASH`                                                            | Site title / canonical URL / commit hash overrides                                   |
+| `CF_ANALYTICS_TOKEN` / `MERMAID_CDN_URL`                                                         | Analytics beacon token / mermaid JS CDN fallback                                     |
+| `BOT_GH_TOKEN` / `BOT_WORKTREE_DIR`                                                              | Bot PAT (personal account) / bot worktree base dir                                   |
+| `BOT_BASE_BRANCH`                                                                                | Bot fork base branch (default: `master`)                                             |
+| `BOT_SKIP_TESTS`                                                                                 | Skip the python unittest step in the bot's local CI gate (default: off)              |
+| `BOT_HTTP_PROXY`                                                                                 | Bot proxy for GitHub API / git push / mermaid download (GitHub unreachable directly) |
 
 Full env table (with defaults): [architecture.md](./architecture.md) →
 Environment Variables; full R2/bucket setup: [bucket-design.md](./bucket-design.md).
@@ -117,6 +148,18 @@ uv run poe update-weight 82
 uv run poe update-weight 81.6 2026-08-05
 uv run poe update-weight 82 --date yesterday
 uv run poe add-weight-week 2               # pre-add empty weeks
+
+# Bot auto PR — run in an isolated worktree, publish as a PR
+uv run poe bot "weight 81.5" "text-moment 晨跑5km"   # one-step draft PR
+uv run poe bot "enu cumbersome"                     # English scrap via bot (one-step draft PR)
+uv run poe bot "enu cumbersome --date 2026-08-11"  # with backdate
+uv run poe bot "weight 81.5" "enu cumbersome" "health-summary"  # composed daily check-in
+uv run poe bot "text-moment 测试内容" --preview  # text-only moment, stop before commit
+uv run poe bot "weight 81.5" --auto-merge        # + auto merge when CI green
+uv run poe bot "weight 81.5" --handoff        # draft PR then clean local, dev handles PR (default)
+uv run poe bot --plan morning 81.5               # local plan file (create .bot/plans/morning.yml first)
+uv run poe bot list
+uv run poe bot abort bot/weight/20260811-213000
 ```
 
 ## English Scraps Flow

@@ -29,7 +29,7 @@ CFG = {
 
 
 @pytest.fixture()
-def run(monkeypatch):
+def run(monkeypatch, clear_bucket_env):
     """Patch rclone & config access; return the captured command list."""
     calls: list[list[str]] = []
 
