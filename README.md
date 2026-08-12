@@ -72,6 +72,7 @@ Detailed design docs live in `internal/`:
 - [Bot Auto PR Design](internal/bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)
 - [Discuss System Design](internal/discuss-design.md) — Giscus comment system
 - [Retirement Countdown Design](internal/retirement-countdown-design.md) — retirement calculator & visualization
+- [GPS Tracker Design](internal/gps-tracker-design.md) — Notes Tools: phone GPS location recorder (vine map, multi-mark, out-of-region handling)
 
 Plans (task/feature tracking) live in [internal/plans/plan-index.md](internal/plans/plan-index.md).
 
