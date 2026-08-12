@@ -64,6 +64,7 @@ tags: [refactor, mkdocs]
 
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location ✅ + Map ✅ done; Gallery, Search, Stats, City-Log, JSON-Feed not started
 - [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data
+- [tools-assets-externalize.md](./tools-assets-externalize.md) — Notes Tools: extract inline JS/CSS from tool pages into standalone assets (deferred)
 
 ### Research
 

@@ -56,7 +56,11 @@ xiongjia.github.com/
 │   │   │   └── monitor.md
 │   │   ├── tools/                 # Dev tool notes
 │   │   │   ├── index.md
-│   │   │   └── ramen-timer.md
+│   │   │   ├── ramen-timer.md
+│   │   │   ├── med-tracker.md
+│   │   │   ├── fitness.md
+│   │   │   ├── coffee-flavor-wheel.md
+│   │   │   └── gps-tracker.md
 │   │   ├── research/              # Deep-dive source code analysis & learning plans
 │   │   │   ├── index.md
 │   │   │   └── topics/
@@ -394,6 +398,7 @@ Content pages themselves are mixed Chinese/English depending on the section.
 - [Retirement Countdown Design](./retirement-countdown-design.md)
 - [Health Summary Design](./health-summary-design.md)
 - [Med Tracker Design](./med-tracker-design.md)
+- [GPS Tracker Design](./gps-tracker-design.md)
 - [Bot Auto PR Design](./bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)
 
 > Plans (task/feature tracking): [plans/plan-index.md](./plans/plan-index.md);
