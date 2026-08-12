@@ -17,3 +17,5 @@ title: English Scraps Inbox
 2026-08-12 mermaid 一个 libary name ，不过自己经常拼错
 2026-08-12 Harness, AI Harness Engineering ,老是拼错 Harness
 2026-08-12 Solar eclipse 对应 Lunar eclipse , 不能用 Sun, 比如 Solar system，出自 https://www.youtube.com/watch?v=K8Dwy0u5pp8
+2026-08-12 devastating & spark & floking, 原句 People floking to Spain to view solar eclipse could spark more devastating wildfires. 出自 https://www.youtube.com/watch?v=K8Dwy0u5pp8
+2026-08-12 knock-off 原句: knock-off eclipase glass could cause blindness, experts warn before significant solar event
