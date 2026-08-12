@@ -136,10 +136,15 @@ def _git_proxy_args() -> list[str]:
     """``-c http.proxy=…`` args for git network ops when BOT_HTTP_PROXY is set.
 
     git does not reliably read HTTPS_PROXY as http.proxy, so network git
-    commands (fetch / push / remote delete) pass it explicitly.
+    commands (fetch / push / remote delete) pass it explicitly. HTTP/2 is
+    forced off as well (``http.version=HTTP/1.1``): git's HTTP/2 over a
+    CONNECT proxy frequently dies with "Error in the HTTP2 framing layer"
+    (e.g. through the local 127.0.0.1:1095 proxy).
     """
     proxy = os.environ.get("BOT_HTTP_PROXY")
-    return ["-c", f"http.proxy={proxy}"] if proxy else []
+    if not proxy:
+        return []  # direct connections keep HTTP/2 (only proxy CONNECT trips it)
+    return ["-c", f"http.proxy={proxy}", "-c", "http.version=HTTP/1.1"]
 
 
 def worktree_base(args) -> Path:

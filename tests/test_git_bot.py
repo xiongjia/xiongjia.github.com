@@ -347,6 +347,26 @@ def test_apply_proxy_bot_wins_over_shell():
         os.environ.pop("NO_PROXY", None)
 
 
+def test_git_proxy_args_when_set():
+    os.environ["BOT_HTTP_PROXY"] = "http://bot:1095"
+    try:
+        # HTTP/2 over a CONNECT proxy fails with "Error in the HTTP2 framing
+        # layer" — the proxy path must force HTTP/1.1
+        assert gb._git_proxy_args() == [
+            "-c",
+            "http.proxy=http://bot:1095",
+            "-c",
+            "http.version=HTTP/1.1",
+        ]
+    finally:
+        os.environ.pop("BOT_HTTP_PROXY", None)
+
+
+def test_git_proxy_args_empty_when_unset():
+    os.environ.pop("BOT_HTTP_PROXY", None)
+    assert gb._git_proxy_args() == []
+
+
 # -- branch guard -----------------------------------------------------------
 
 

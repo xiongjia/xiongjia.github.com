@@ -143,7 +143,9 @@ own proxy variable — the developer's other tools keep their own settings.
   1. **GitHub API client** — `ProxyHandler` on the urllib opener (only when
      the var is set).
   1. **git network ops** (fetch / push / remote delete) — passed explicitly
-     as `-c http.proxy=…` (git does not reliably read `HTTPS_PROXY`).
+     as `-c http.proxy=…` (git does not reliably read `HTTPS_PROXY`), with
+     HTTP/2 forced off (`-c http.version=HTTP/1.1`) — git's HTTP/2 over a
+     CONNECT proxy frequently fails with “Error in the HTTP2 framing layer”.
   1. **Subprocess env** — exported as `HTTP_PROXY` / `HTTPS_PROXY`
      (`NO_PROXY=127.0.0.1,localhost`) so `uv` / `mkdocs` (mermaid download)
      inherit it.
