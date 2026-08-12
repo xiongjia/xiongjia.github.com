@@ -22,7 +22,7 @@ flowchart TD
     A["📥 收集<br/>命令：poe enu add '内容'<br/>skill：/skill:enu-organize add"] --> B{"攒够一批？<br/>≥15 条 / ≥2 周 / 主动说"}
     B -- 否 --> A
     B -- 是 --> C["🧹 整理（AI 自动）<br/>/skill:enu-organize arch"]
-    C --> D["📚 archive.md<br/>分类 → 去重 → 补模板 → 归档"]
+    C --> D["📚 archive/周文件<br/>分类 → 去重 → 补模板 → 归档"]
     D --> E["👀 查看<br/>站点搜索 / sticky TOC"]
     D -. 可选 .-> F["🔁 回顾<br/>/skill:enu-organize quiz / review"]
     D -. 未来 .-> G["📱 Anki 导出<br/>（附录，未实现）"]
@@ -34,7 +34,7 @@ flowchart TD
 | -------------- | -------------------------------------------------- | ----------------------------- | ------------------------------------------------------ |
 | ① 收集         | `poe enu add "内容"` 或 `/skill:enu-organize add`  | 随时，几秒                    | 本页「收集」；`poe enu add --help`                     |
 | ② 整理         | `/skill:enu-organize arch`                         | inbox ≥ 15 条 / ≥ 2 周 / 主动 | `.pi/skills/enu-organize/SKILL.md`（skill 即流程文档） |
-| ③ 查看         | 打开本站[归档](./archive.md)                       | 任何时间                      | archive.md 顶部「字段说明」                            |
+| ③ 查看         | 打开本站[归档索引](./archive/)                     | 任何时间                      | archive/index.md 周列表 + 字段说明                     |
 | ④ 回顾         | `/skill:enu-organize quiz [范围]` / `review <tag>` | 按需                          | 本页「回顾」                                           |
 | ⑤ Anki（未来） | 说「导出到 Anki」                                  | 主线稳定后                    | 计划 Anki 附录（未实现）                               |
 
@@ -55,17 +55,22 @@ flowchart TD
 > 在 skill 正文；`/skill:enu-organize <action>`（add / arch / quiz / review）
 > 加载后按正文执行。
 
-分类（type 判定）→ 去重（`type:关键词`）→ 按模板补全 → 写入
-[archive.md](./archive.md) → 清空 inbox 已处理条目 → 更新本页「上次整理」→
-汇报存疑项（misc / 来源未知 / 疑似重复），只审这些即可。
+分类（type 判定）→ 去重（`type:关键词`）→ 按模板补全 → 按条目日期所在 ISO 周写入
+[archive/](./archive/)（每张卡落进对应周文件，如 `2026-w33.md`）→ 清空
+inbox 已处理条目 → 更新本页「上次整理」与归档周列表 → 汇报存疑项
+（misc / 来源未知 / 疑似重复），只审这些即可。
 
 ## 归档
 
-- **上次整理**：—
-- 所有知识点统一归档在 [archive.md](./archive.md)，用 `type` + `tags` 区分
+- **上次整理**：2026-08-12
+- 归档按 **ISO 周**分文件：`scraps/archive/<YYYY-www>.md`（如 `2026-w33.md`），卡片
+  按 `date` 落进对应周文件；只在有归档的周生成，不强制每周都有；周列表见
+  [归档索引](./archive/)
+- 所有知识点统一用 `type` + `tags` 区分；单词类卡片含中文「含义」+ **英英释义「英义」**，
+  可加选填「记忆」（词根/词源/助记，简单词不用）
 - `type` 分类：`word` / `phrasal-verb` / `collocation` / `idiom` / `grammar` /
   `sentence` / `misc`
-- 查找靠站内全文搜索；archive.md 超过 5000 行时会按日期归档旧文件、新建继续
+- 查找靠站内全文搜索
 
 ## 回顾
 
