@@ -52,7 +52,7 @@ extra:
       text-moment:
         args: [text]
         cmd: ["uv", "run", "python", "scripts/create_moment.py", "{text}"]
-        commit: '[bot] feat(moment): add text "{text}"'
+        commit: '[bot] feat(moment): add text'
         body: "- text moment: {text}"
   moment:
     path: moments
