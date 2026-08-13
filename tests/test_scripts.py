@@ -8,6 +8,7 @@ from pathlib import Path
 
 import yaml
 
+import shared.mkdocs_yaml
 from scripts import optimize_images
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -120,6 +121,72 @@ def test_optimize_images_update_md_refs_dry_run(tmp_path, monkeypatch):
 
     optimize_images.update_md_references(src, src.with_suffix(".webp"))
     assert "photo.webp" in md.read_text(encoding="utf-8")
+
+
+def test_optimize_images_quality_passthrough(tmp_path, monkeypatch):
+    from PIL import Image
+
+    src = tmp_path / "photo.png"
+    Image.new("RGB", (64, 64), (255, 0, 0)).save(src)
+    captured: dict = {}
+
+    class FakeImage:
+        info = {}
+
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *args):
+            return False
+
+        def save(self, dst, fmt, **kwargs):
+            captured.update(kwargs)
+            Path(dst).write_bytes(b"fake webp")
+
+    monkeypatch.setattr(Image, "open", lambda _path: FakeImage())
+    dst = optimize_images.convert_to_webp(src, quality=80)
+    assert dst is not None and dst.exists()
+    assert captured["quality"] == 80
+
+
+def test_optimize_images_config_quality(tmp_path, monkeypatch):
+    yml = tmp_path / "mkdocs.yml"
+    yml.write_text("extra:\n  optimize_images:\n    quality: 70\n", encoding="utf-8")
+    monkeypatch.setattr(shared.mkdocs_yaml, "MKDOCS_YML", yml)
+    assert optimize_images.config_quality() == 70
+
+    # numeric string is accepted (e.g. a !ENV default)
+    yml.write_text("extra:\n  optimize_images:\n    quality: '80'\n", encoding="utf-8")
+    assert optimize_images.config_quality() == 80
+
+    # bool (int subclass) and absent key -> None
+    yml.write_text("extra:\n  optimize_images:\n    quality: true\n", encoding="utf-8")
+    assert optimize_images.config_quality() is None
+    yml.write_text("extra:\n  other: 1\n", encoding="utf-8")
+    assert optimize_images.config_quality() is None
+
+
+def test_optimize_images_resolve_quality():
+    default = optimize_images.DEFAULT_WEBP_QUALITY
+    assert optimize_images.resolve_quality(None, None) == default
+    assert optimize_images.resolve_quality(None, 70) == 70
+    assert optimize_images.resolve_quality(80, 70) == 80
+
+
+def test_optimize_images_quality_clamped(tmp_path):
+    from PIL import Image
+
+    src = tmp_path / "photo.png"
+    Image.new("RGB", (8, 8)).save(src)
+
+    # out-of-range values clamp to the valid range instead of raising
+    assert optimize_images._clamp_quality(150) == 100
+    assert optimize_images._clamp_quality(0) == 1
+    assert optimize_images._clamp_quality(-5) == 1
+    assert optimize_images._clamp_quality(80) == 80
+
+    dst = optimize_images.convert_to_webp(src, quality=150)
+    assert dst is not None and dst.exists()
 
 
 # --- add_weight_week ---

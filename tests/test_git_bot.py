@@ -16,6 +16,8 @@ from types import SimpleNamespace
 import git_bot as gb
 import pytest
 
+import shared.mkdocs_yaml
+
 # -- task parsing -------------------------------------------------------------
 
 
@@ -311,10 +313,17 @@ def test_load_task_config(monkeypatch, tmp_path):
         "    index: !!python/name:material.extensions.emoji.twemoji\n",
         encoding="utf-8",
     )
-    monkeypatch.setattr(gb, "REPO_ROOT", tmp_path)
+    monkeypatch.setattr(shared.mkdocs_yaml, "MKDOCS_YML", tmp_path / "mkdocs.yml")
     cfg = gb.load_task_config()
     assert cfg["text-moment"]["args"] == ["text"]
     assert cfg["text-moment"]["commit"] == "[bot] c {text}"
+
+
+def test_load_task_config_broken_yaml_raises(monkeypatch, tmp_path):
+    (tmp_path / "mkdocs.yml").write_text("extra:\n  bot: [unclosed\n", encoding="utf-8")
+    monkeypatch.setattr(shared.mkdocs_yaml, "MKDOCS_YML", tmp_path / "mkdocs.yml")
+    with pytest.raises(gb.BotError):
+        gb.load_task_config()
 
 
 # -- proxy ------------------------------------------------------------------

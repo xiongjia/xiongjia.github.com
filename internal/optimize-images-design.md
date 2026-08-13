@@ -23,9 +23,9 @@ CLI args → resolve_paths()
     │
     ▼
 For each image:
-    convert_to_webp()
+    convert_to_webp(quality)
     ├── Check if .webp exists and is not smaller → SKIP
-    ├── PIL Image.open → save as WEBP (quality=85, method=6)
+    ├── PIL Image.open → save as WEBP (quality=<resolved>, method=6)
     ├── Preserve EXIF data
     └── Return dst path (or None on skip/failure)
     │
@@ -51,9 +51,9 @@ For each image:
 - Unsupported extensions (not `.png`/`.jpg`/`.jpeg`) → WARN, skipped
 - Returns `(paths, has_errors)`
 
-### `convert_to_webp(src, dry_run=False)`
+### `convert_to_webp(src, dry_run=False, quality=DEFAULT_WEBP_QUALITY)`
 
-- Quality: 85 (configurable via `WEBP_QUALITY`)
+- Quality: default 90; resolution order `--quality` CLI arg > mkdocs.yml `extra.optimize_images.quality` > `DEFAULT_WEBP_QUALITY` (90). Out-of-range values are clamped to 1-100 (above → 100, below → 1)
 - Method: 6 (slowest, best compression)
 - EXIF preservation: reads EXIF from source before conversion, passes to `save()`
 - Skip condition: if `.webp` already exists AND `dst.stat().st_size <= src.stat().st_size`
@@ -88,15 +88,27 @@ uv run poe optimize-images --all
 
 # Preview only (no writes)
 uv run poe optimize-images --dry-run docs/path/to/img.png
+
+# Override quality (default 90; or set extra.optimize_images.quality in mkdocs.yml)
+uv run poe optimize-images img1.png --quality 80
 ```
 
 ## Configuration
 
-| Parameter          | Value                       | Description                         |
-| ------------------ | --------------------------- | ----------------------------------- |
-| `WEBP_QUALITY`     | `85`                        | WebP quality (0-100)                |
-| `method`           | `6`                         | Compression method (0=fast, 6=best) |
-| `IMAGE_EXTENSIONS` | `{".png", ".jpg", ".jpeg"}` | Supported input formats             |
+Quality is resolved per run: `--quality` CLI arg beats mkdocs.yml
+`extra.optimize_images.quality`, which beats the module default. mkdocs.yml is
+read via `shared/mkdocs_yaml.py` (tolerates `!ENV` / `!!python:name` tags); an
+invalid or non-integer value falls back to the default with a warning.
+Out-of-range values are clamped to 1-100 (above → 100, below → 1) rather than
+rejected.
+
+| Parameter                       | Value                       | Description                                                             |
+| ------------------------------- | --------------------------- | ----------------------------------------------------------------------- |
+| `--quality` (CLI)               | `1-100`                     | WebP quality override, beats mkdocs.yml config (out-of-range → clamped) |
+| `extra.optimize_images.quality` | `90`                        | Default WebP quality in mkdocs.yml                                      |
+| `DEFAULT_WEBP_QUALITY`          | `90`                        | Fallback default in `scripts/optimize_images.py`                        |
+| `method`                        | `6`                         | Compression method (0=fast, 6=best)                                     |
+| `IMAGE_EXTENSIONS`              | `{".png", ".jpg", ".jpeg"}` | Supported input formats                                                 |
 
 ## Edge Cases
 

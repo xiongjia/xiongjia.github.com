@@ -42,6 +42,10 @@ extra:
         bucket: web-assets
         remote_prefix: data/img   # object prefix inside the bucket
         base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/img"
+  # default WebP quality for `poe optimize-images` (converts PNG/JPG to WebP);
+  # CLI --quality overrides this; the script falls back to 90 if both absent
+  optimize_images:
+    quality: 90
   # local bot task registry for `poe bot` (see internal/bot-auto-pr-design.md).
   # Builtin tasks (weight / health-summary / sync-running / enu) stay in
   # scripts/git_bot.py; entries here add or override template tasks —
