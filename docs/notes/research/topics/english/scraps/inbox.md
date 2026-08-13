@@ -11,3 +11,5 @@ title: English Scraps Inbox
 2026-08-08 cumbersome
 2026-08-08 The implementation is cumbersome to maintain.
 -->
+
+2026-08-13 compelling & insightful ， 原来句: in order to make your information-based analysis and arguments more insightful and compelling ，出自: https://handsondataviz.org/introduction.html
