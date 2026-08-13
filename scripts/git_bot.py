@@ -36,6 +36,7 @@ sys.path.insert(0, str(REPO_ROOT))
 from shared.ci_checks import CHECKS  # noqa: E402
 from shared.env import load_env_files  # noqa: E402
 from shared.github_api import GitHubAPI, GitHubError  # noqa: E402
+from shared.mkdocs_yaml import MkdocsYamlError, load_extra  # noqa: E402
 
 DEFAULT_WORKTREE_BASE = Path.home() / ".cache" / f"{REPO_ROOT.name}-bot" / "worktrees"
 MARKER = ".bot-active"
@@ -473,35 +474,14 @@ def load_task_config() -> dict:
     """Read ``extra.bot.tasks`` from mkdocs.yml (empty dict when absent).
 
     mkdocs.yml contains ``!ENV`` tags, so a plain ``yaml.safe_load`` would
-    fail; a custom constructor resolves them to their raw scalar (bot task
-    config never uses them).
+    fail; shared.mkdocs_yaml resolves them (bot task config never uses them).
+    A broken mkdocs.yml fails fast — the bot must not run without its task
+    registry.
     """
-    path = REPO_ROOT / "mkdocs.yml"
-    if not path.is_file():
-        return {}
-
-    class _Loader(yaml.SafeLoader):
-        pass
-
-    def _env(loader, node):  # !ENV [NAME, default] — resolve to raw value
-        if isinstance(node, yaml.ScalarNode):
-            return loader.construct_scalar(node)
-        if isinstance(node, yaml.SequenceNode):
-            return loader.construct_sequence(node)
-        return loader.construct_mapping(node)
-
-    _Loader.add_constructor("!ENV", _env)
-    # e.g. emoji_index: !!python/name:material.extensions.emoji.twemoji —
-    # resolve to the plain name string (irrelevant to bot task config)
-    _Loader.add_multi_constructor(
-        "tag:yaml.org,2002:python/name:",
-        lambda loader, suffix, node: suffix,
-    )
     try:
-        data = yaml.load(path.read_text(encoding="utf-8"), Loader=_Loader)
-    except yaml.YAMLError as exc:
-        raise BotError(f"cannot parse mkdocs.yml for bot tasks: {exc}") from exc
-    return (data or {}).get("extra", {}).get("bot", {}).get("tasks", {}) or {}
+        return load_extra("bot", label="bot", strict=True).get("tasks", {}) or {}
+    except MkdocsYamlError as exc:
+        raise BotError(str(exc)) from exc
 
 
 def _plan_task(name: str, args: list[str]) -> dict:

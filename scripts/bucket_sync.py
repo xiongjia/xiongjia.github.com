@@ -37,53 +37,18 @@ import subprocess
 import sys
 from pathlib import Path
 
-import yaml
-
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from shared.env import load_env_files
+from shared.mkdocs_yaml import load_extra
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-MKDOCS_YML = REPO_ROOT / "mkdocs.yml"
-
-
-class _EnvLoader(yaml.SafeLoader):
-    """SafeLoader that tolerates mkdocs' ``!ENV [name, default]`` tags."""
-
-
-def _env_constructor(loader: yaml.SafeLoader, node: yaml.Node) -> str:
-    """Resolve mkdocs' ``!ENV`` tag: scalar form or ``!ENV [name, default]``."""
-    if isinstance(node, yaml.SequenceNode):
-        values = loader.construct_sequence(node, deep=True)
-        if len(values) > 1:
-            return str(values[1])
-        return str(values[0]) if values else ""
-    value = loader.construct_scalar(node)
-    return value or ""
-
-
-_EnvLoader.add_constructor("!ENV", _env_constructor)
-
-
-def _python_name(loader: yaml.SafeLoader, suffix: str, node: yaml.Node) -> str:
-    """Tolerate Material's ``!!python/name:...`` tags (emoji indices)."""
-    return ""
-
-
-_EnvLoader.add_multi_constructor("tag:yaml.org,2002:python/name:", _python_name)
 
 
 def _bucket_config() -> dict:
     """Read ``extra.bucket`` from mkdocs.yml (empty dict when absent)."""
-    if not MKDOCS_YML.is_file():
-        return {}
-    try:
-        data = yaml.load(MKDOCS_YML.read_text(encoding="utf-8"), Loader=_EnvLoader)
-    except yaml.YAMLError as exc:
-        print(f"bucket-sync: cannot parse {MKDOCS_YML}: {exc}", file=sys.stderr)
-        return {}
-    return (data or {}).get("extra", {}).get("bucket", {}) or {}
+    return load_extra("bucket", label="bucket-sync")
 
 
 def _pick(cli: str | None, env_key: str, cfg_value: str) -> str:

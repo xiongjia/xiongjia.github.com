@@ -1,11 +1,14 @@
 """Optimise images by converting PNG/JPG/JPEG to WebP.
 
-Converts specified image(s) to WebP (quality=85), updates .md references
-to point to the new .webp files. Originals are left untouched.
+Converts specified image(s) to WebP and updates .md references to point to
+the new .webp files. Originals are left untouched.
+
+WebP quality resolution: ``--quality`` CLI arg > ``extra.optimize_images.quality``
+in mkdocs.yml > default 90. Out-of-range values are clamped to 1-100.
 
 Usage:
     uv run poe optimize-images docs/path/to/img.png
-    uv run poe optimize-images img1.png img2.jpg
+    uv run poe optimize-images img1.png img2.jpg --quality 80
     uv run poe optimize-images --all          # process everything under docs/
     uv run poe optimize-images --dry-run docs/path/to/img.png   # preview only
 """
@@ -19,9 +22,48 @@ from pathlib import Path
 
 from PIL import Image
 
+# bootstrap repo root so `shared/` is importable regardless of how this runs
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
+from shared.mkdocs_yaml import load_extra
+
 DOCS = Path("docs")
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg"}
-WEBP_QUALITY = 85
+DEFAULT_WEBP_QUALITY = 90
+
+
+def config_quality() -> int | None:
+    """Read ``extra.optimize_images.quality`` from mkdocs.yml (None when absent/invalid).
+
+    Accepts ints and numeric strings (e.g. an ``!ENV`` default); other values
+    — including ``true``, which is a bool subclass of int — are rejected with
+    a warning.
+    """
+    quality = load_extra("optimize_images", label="optimize-images").get("quality")
+    if type(quality) is int:
+        return quality
+    if isinstance(quality, str) and quality.strip().isdigit():
+        return int(quality)
+    if quality is not None:
+        print(
+            f"  [WARN] invalid quality in mkdocs.yml extra.optimize_images: {quality!r}",
+            file=sys.stderr,
+        )
+    return None
+
+
+def resolve_quality(cli_quality: int | None, cfg_quality: int | None) -> int:
+    """Resolve WebP quality: ``--quality`` CLI arg > mkdocs.yml > module default."""
+    if cli_quality is not None:
+        return cli_quality
+    if cfg_quality is not None:
+        return cfg_quality
+    return DEFAULT_WEBP_QUALITY
+
+
+def _clamp_quality(quality: int) -> int:
+    """Clamp quality into the valid WebP range 1-100 (out-of-range → nearest bound)."""
+    return max(1, min(100, quality))
 
 
 def iter_images(root: Path) -> Iterator[Path]:
@@ -31,12 +73,16 @@ def iter_images(root: Path) -> Iterator[Path]:
             yield path
 
 
-def convert_to_webp(src: Path, *, dry_run: bool = False) -> Path | None:
-    """Convert a single image to WebP.
+def convert_to_webp(
+    src: Path, *, dry_run: bool = False, quality: int = DEFAULT_WEBP_QUALITY
+) -> Path | None:
+    """Convert a single image to WebP at the given *quality*.
 
+    Out-of-range *quality* values are clamped to 1-100 (above → 100, below → 1).
     Returns the path to the new .webp file, or None if the WebP already exists
     and is not smaller.
     """
+    quality = _clamp_quality(quality)
     dst = src.with_suffix(".webp")
     if dst.exists() and dst.stat().st_size <= src.stat().st_size:
         print(f"  [SKIP] {src} -> {dst} (already exists and not larger)")
@@ -49,7 +95,7 @@ def convert_to_webp(src: Path, *, dry_run: bool = False) -> Path | None:
     try:
         with Image.open(src) as im:
             exif = im.info.get("exif")
-            save_kwargs: dict = {"quality": WEBP_QUALITY, "method": 6}
+            save_kwargs: dict = {"quality": quality, "method": 6}
             if exif is not None:
                 save_kwargs["exif"] = exif
             im.save(dst, "WEBP", **save_kwargs)
@@ -147,6 +193,16 @@ def main() -> None:
         help="Process ALL images under docs/ (default: only specified paths)",
     )
     parser.add_argument(
+        "--quality",
+        type=int,
+        metavar="1-100",
+        help=(
+            f"WebP quality 1-100 (default: {DEFAULT_WEBP_QUALITY}, "
+            "or extra.optimize_images.quality in mkdocs.yml; "
+            "out-of-range values clamp to the range)"
+        ),
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Preview changes without writing anything",
@@ -158,6 +214,8 @@ def main() -> None:
         help="One or more image files or directories to process",
     )
     args = parser.parse_args()
+
+    quality = _clamp_quality(resolve_quality(args.quality, config_quality()))
 
     if args.all:
         images = list(iter_images(DOCS))
@@ -172,11 +230,12 @@ def main() -> None:
         print("No matching images found.")
         sys.exit(1 if has_errors else 0)
 
-    print(f"Found {len(images)} image(s){' (dry-run)' if args.dry_run else ''}\n")
+    mode = " (dry-run)" if args.dry_run else ""
+    print(f"Found {len(images)} image(s), WebP quality={quality}{mode}\n")
 
     converted = 0
     for img in images:
-        dst = convert_to_webp(img, dry_run=args.dry_run)
+        dst = convert_to_webp(img, dry_run=args.dry_run, quality=quality)
         if dst is not None:
             update_md_references(img, dst, dry_run=args.dry_run)
             converted += 1

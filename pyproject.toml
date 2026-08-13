@@ -55,7 +55,7 @@ check-fmt = [
     { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --check" },
 ]
 lint-py = "ruff check ."
-optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references" }
+optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references (quality: --quality flag, else mkdocs.yml extra.optimize_images.quality)" }
 add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an empty week to health weight data: uv run poe add-weight-week [count]" }
 update-weight = { cmd = "python scripts/update_weight.py", help = "Record a daily weight into health data: uv run poe update-weight 82 [date]" }
 update-health-summary = { cmd = "python scripts/update_health_summary.py", help = "Regenerate the health status summary on the health index page (calls local pi CLI)" }
