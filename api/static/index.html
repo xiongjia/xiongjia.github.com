@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🤖 Bot Control Panel</title>
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <header>
+    <h1>🤖 Bot Control Panel</h1>
+    <span id="online" class="dot" title="API status">●</span>
+    <span id="version" class="muted"></span>
+    <span class="spacer"></span>
+    <a href="/docs" class="api-link" title="Swagger UI API docs">API docs</a>
+  </header>
+
+  <main>
+    <section id="tasks-pane">
+      <h2>📋 Tasks</h2>
+      <ul id="task-list"></ul>
+    </section>
+
+    <section id="work-pane">
+      <div id="form-pane">
+        <h2 id="task-title">Select a task</h2>
+        <form id="run-form" hidden>
+          <div id="fields"></div>
+          <label class="row">
+            <input type="checkbox" id="handoff" checked>
+            Handoff (draft PR, don't wait for CI)
+          </label>
+          <button type="submit" id="run-btn">▶ Run Bot</button>
+        </form>
+        <p id="form-hint" class="muted">Pick a task on the left to see its form.</p>
+      </div>
+
+      <div id="output-pane">
+        <h2>📡 Live Output <button type="button" id="abort-btn" hidden>✖ Abort</button></h2>
+        <pre id="output"></pre>
+        <h2>📜 Recent Runs</h2>
+        <table id="history">
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>

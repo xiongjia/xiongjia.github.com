@@ -69,3 +69,6 @@ docs/.mermaid-version
 # Python coverage artifacts
 .coverage
 .coverage.*
+
+# Bot Remote API runtime data (git-ignored; dir configurable via BOT_API_LOG_DIR)
+.bot-api/

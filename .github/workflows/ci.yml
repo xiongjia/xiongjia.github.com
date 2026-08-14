@@ -21,7 +21,7 @@ jobs:
         with:
           enable-cache: true
       - name: Install dependencies
-        run: uv sync --extra test
+        run: uv sync --extra test --extra api  # api extra: tests/api imports fastapi
       - name: Derive short SHA
         run: echo "GIT_HASH=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Test

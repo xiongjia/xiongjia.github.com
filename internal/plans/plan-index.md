@@ -82,6 +82,7 @@ tags: [refactor, mkdocs]
 ### Projects
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
+- [bot-remote-api.md](./bot-remote-api.md) — Bot Remote API: HTTP API + Web console + Telegram Bot over FastAPI (Phase 0 aligns the design with the actual engine registry first)
 
 ### Reading
 

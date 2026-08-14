@@ -66,10 +66,17 @@ bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an is
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
 enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap to the inbox: uv run poe enu add 'cumbersome'" }
-test = { cmd = "uv run --extra test pytest -q", help = "Run unit tests (pytest, test extras): uv run poe test" }
+test = { cmd = "uv run --extra test --extra api pytest -q", help = "Run unit tests (pytest, test+api extras): uv run poe test" }
+api-server = { cmd = "python scripts/api_server.py", help = "Start remote API (dev): uv run poe api-server" }
+api-server-prod = { cmd = "python scripts/api_server.py --host 0.0.0.0", help = "Start remote API (prod): uv run poe api-server-prod" }
 
 [project.optional-dependencies]
-test = ["pytest>=9.1.1"]
+test = ["pytest>=9.1.1", "httpx>=0.27.0"]
+api = [
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic-settings>=2.0.0",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
