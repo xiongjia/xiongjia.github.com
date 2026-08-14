@@ -23,6 +23,43 @@ export function initMomentDialog(mapCfg) {
         }[c]));
     }
 
+    // the widget needs a WebGL context; without one maplibre fails asynchronously
+    // and the dialog stays a blank box (looks like a dead button). Probe each
+    // context type on a FRESH canvas — reusing one canvas after a failed
+    // context request is unreliable in some browsers.
+    function hasWebgl() {
+        const probe = (type) => {
+            try {
+                return !!document.createElement("canvas").getContext(type);
+            } catch {
+                return false;
+            }
+        };
+        return (
+            !!(window.WebGL2RenderingContext && probe("webgl2")) ||
+            !!(window.WebGLRenderingContext &&
+                (probe("webgl") || probe("experimental-webgl")))
+        );
+    }
+
+    // import() can hang on slow/blocked CDNs; never leave the loading lock
+    // stuck (that silently kills every later click) — race a timeout and
+    // clear the timer once either side settles. The timeout error carries a
+    // stable code so the catch below can branch without string matching.
+    const importWidget = () => {
+        let timer;
+        const timeout = new Promise((_, reject) => {
+            timer = setTimeout(() => {
+                const err = new Error("widget import timed out");
+                err.code = "MOMENT_WIDGET_TIMEOUT";
+                reject(err);
+            }, 15000);
+        });
+        return Promise.race([import(mapCfg.widget_js), timeout]).finally(() =>
+            clearTimeout(timer)
+        );
+    };
+
     const open = async (btn) => {
         if (loading) return; // ignore re-entry while import() is in flight
         loading = true;
@@ -44,8 +81,14 @@ export function initMomentDialog(mapCfg) {
         if (title) title.textContent = "📍 " + (btn.dataset.place || btn.dataset.region || "");
         dialog.showModal();
         newHost.textContent = "⌛ 加载地图…";
+        if (!hasWebgl()) {
+            newHost.textContent = "浏览器无法创建 WebGL 上下文，无法显示地图";
+            loading = false;
+            return;
+        }
         try {
-            const { createMapWidget } = await import(mapCfg.widget_js);
+            const { createMapWidget } = await importWidget();
+            if (!newHost.isConnected) return; // dialog closed while loading
             const regionCfg =
                 mapCfg.regions[newHost.dataset.region] ||
                 mapCfg.regions[mapCfg.default_region] ||
@@ -82,7 +125,11 @@ export function initMomentDialog(mapCfg) {
             });
         } catch (err) {
             console.error("[moment] map widget failed to load:", err);
-            newHost.textContent = "地图加载失败，请查看浏览器控制台";
+            if (newHost.isConnected) {
+                newHost.textContent = err.code === "MOMENT_WIDGET_TIMEOUT"
+                    ? "地图加载超时，请稍后重试"
+                    : "地图加载失败，请查看浏览器控制台";
+            }
         } finally {
             loading = false;
         }
@@ -100,5 +147,6 @@ export function initMomentDialog(mapCfg) {
             widget.destroy();
             widget = null;
         }
+        loading = false; // a mid-load close must never strand the button
     });
 }

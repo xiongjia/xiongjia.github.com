@@ -425,8 +425,17 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
   (guards against duplicate maps / stacked attribution controls). The dialog
   logic lives in one shared module, `assets/js/moment-dialog.js`, used by both
   the detail and timeline pages (markers read the moment data from
-  `data-map-toggle` buttons).
+  `data-map-toggle` buttons). The dialog stays robust against dead-button
+  failure modes: the loading lock resets on dialog close (a mid-load close
+  never strands later clicks), `import()` races a 15 s timeout so a hung CDN
+  can't silently kill the button, an `isConnected` guard skips rendering into
+  a host that was closed while loading, and a WebGL pre-check shows a clear
+  message instead of a blank box when the browser has no WebGL.
 - **Map page `/moments/map/`** (`on_post_build`): one map per page.
+  - The widget is `import()`ed lazily with a 15 s timeout (like the dialog),
+    so a CDN failure or a missing WebGL context shows a fallback in the
+    canvas instead of killing the whole module — the category filters and
+    the feed below stay functional.
   - Opens **focused on the most recent activity** (latest cluster coords,
     zoom ≥ 13) so the map is never lost; region switching re-focuses the new
     region's latest activity.
@@ -438,6 +447,21 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
     moments in place via a `<details>` toggle.
   - Each region renders its most recent `region_limit` moments by default; a
     `加载全部` button loads the rest.
+  - **Category filter**: every geo moment gets a category — the first tag in
+    the configured `tag_emoji` table, else a default `其他` bucket. Checkboxes
+    (all on by default) filter markers + the list client-side; a merged marker
+    whose remaining items drop to one is rebuilt from that item (re-centering
+    on its precise coords) so labels/counts/popups always match the filtered
+    view.
+  - Below the map an **All Timeline feed** (`moment_list`, newest first)
+    lists EVERY geo moment across all regions — full rendered content
+    (`.moment-entry` markup from moment.css, thumbnails capped at 150px like
+    the timeline, glightbox anchors left as plain links since this page has
+    no lightbox JS) plus time link and `#tags` — filtered by the same
+    category checkboxes (independent of the current region / load-all
+    state). No geo/place badge: the location is already a marker on the map
+    right above, and the timeline's clickable place button would be a dead
+    control here.
 
 ### External resources
 
