@@ -1,0 +1,25 @@
+{# moment_meta.html — structured metadata block (extra.moment.meta_fields).
+   Rendered for the `moment` in the current context; emits nothing when the
+   moment has no matching schema or no `meta:` values. Shared by the timeline /
+   detail / archive templates so the label + star markup stays in one place.
+   Values are escaped (autoescape is off in the MkDocs theme env). #}
+{% set meta_items = moment_meta_items(moment) %}
+{% if meta_items %}
+<div class="moment-meta">
+    {% for item in meta_items %}
+    <span class="moment-meta__item">
+        <span class="moment-meta__label">{{ item.label | e }}</span>
+        {% if item.type == "rating" %}
+        <span class="moment-meta__stars" role="img"
+              title="{{ item.value }}/5" aria-label="{{ item.value }} out of 5">
+            {% for star in range(1, 6) %}
+            <span class="moment-meta__star{{ ' is-on' if star <= item.value else '' }}">{{ '★' if star <= item.value else '☆' }}</span>
+            {% endfor %}
+        </span>
+        {% else %}
+        <span class="moment-meta__value">{{ item.value | e }}</span>
+        {% endif %}
+    </span>
+    {% endfor %}
+</div>
+{% endif %}

@@ -81,6 +81,8 @@
         {{ moment.html | safe }}
     </div>
 
+    {% include "moment_meta.html" %}
+
     {% if moment.has_geo and map_cfg and map_cfg.enabled %}
     <div class="moment-detail__geo">
         <button type="button" class="moment-detail__place" data-map-toggle

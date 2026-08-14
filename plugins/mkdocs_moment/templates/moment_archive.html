@@ -103,8 +103,11 @@
            title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">
             {{ moment.date.strftime("%b %d, %H:%M") }}
         </a>
+        <div class="moment-archive__body">
         <div class="moment-archive__content">
             {{ moment.html | safe }}
+        </div>
+        {% include "moment_meta.html" %}
         </div>
     </div>
     {% endfor %}

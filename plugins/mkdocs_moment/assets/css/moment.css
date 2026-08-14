@@ -91,6 +91,51 @@
 .moment-entry__tags {
     margin-top: 0.5em;
 }
+
+/* structured metadata block (extra.moment.meta_fields) — label/value pairs
+   rendered on timeline / detail / archive entries; ratings show 1-5 stars.
+   Container class is .moment-meta everywhere (see moment_meta.html include). */
+.moment-meta {
+    margin-top: 0.4em;
+    font-size: 0.85em;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.2em 1.2em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-meta__item {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+}
+.moment-meta__label {
+    margin-right: 0.35em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-meta__value {
+    color: var(--md-default-fg-color, #374151);
+}
+.moment-meta__stars {
+    letter-spacing: 0.05em;
+    font-size: 1.05em;
+    line-height: 1;
+}
+.moment-meta__star {
+    color: var(--md-default-fg-color--lightest, #d0d0d0);
+}
+.moment-meta__star.is-on {
+    color: #f5b301; /* amber star */
+}
+
+/* popup meta line (map page): restaurant/cinema name + rating stars */
+.moment-popup-meta {
+    margin: 0.3em 0 0.1em;
+    font-size: 0.85em;
+}
+.moment-popup-meta .moment-meta__stars {
+    margin-left: 0.3em;
+}
 .moment-tag {
     display: inline-block;
     font-size: 0.8em;

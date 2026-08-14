@@ -1102,6 +1102,7 @@ def test_render_map_page_generates_markers(tmp_path):
             "permalink": geo.permalink,
             "category": "film",
             "html": "",  # helper moment has no rendered content
+            "meta_items": [],  # no meta_fields schema in _geo_plugin
             "tags": [{"name": "film", "url": "/moments/tag/film/"}],
         }
     ]
@@ -1335,3 +1336,377 @@ def test_load_config_map_cluster_auto_open_latest():
     assert _geo_plugin().map_cfg["cluster"]["auto_open_latest"] is False
     plugin = _geo_plugin({"cluster": {"auto_open_latest": True}})
     assert plugin.map_cfg["cluster"]["auto_open_latest"] is True
+
+
+# ---------------------------------------------------------------------------
+# Structured metadata (extra.moment.meta_fields + moment `meta:` frontmatter)
+# ---------------------------------------------------------------------------
+
+
+def test_load_config_meta_fields_defaults_empty():
+    """No meta_fields config → empty schema (feature fully off)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    assert plugin.meta_fields == {}
+    plugin._load_config({"path": "moments", "meta_fields": None})
+    assert plugin.meta_fields == {}
+
+
+def test_load_config_meta_fields_normalizes():
+    """Field lists are normalized: key required, label falls back to key,
+    unknown types → text, non-dict definitions / non-list values dropped."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆", "type": "text"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                    {"key": "x", "type": "unknown-type"},  # → text, label→key
+                    {"key": ""},  # empty key dropped
+                    "not-a-dict",  # dropped
+                ],
+                "film": {"key": "name"},  # non-list field list dropped
+            },
+        }
+    )
+    assert plugin.meta_fields == {
+        "food": [
+            {"key": "name", "label": "餐馆", "type": "text"},
+            {"key": "rating", "label": "评分", "type": "rating"},
+            {"key": "x", "label": "x", "type": "text"},
+        ]
+    }
+    assert "film" not in plugin.meta_fields
+
+
+def test_parse_moment_meta_dict(tmp_path):
+    """`meta:` frontmatter dict is parsed; ints stay ints, others become str."""
+    plugin = _geo_plugin()
+    p = _write_moment(
+        tmp_path,
+        "01-1200.md",
+        "date: 2026-08-01 12:00",
+        "tags: [food]",
+        "meta:",
+        "  name: 老上海面馆",
+        "  rating: 4",
+        "  vibe: 'quiet, cozy'",
+    )
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert m.meta == {"name": "老上海面馆", "rating": 4, "vibe": "quiet, cozy"}
+    assert isinstance(m.meta["rating"], int)
+
+
+def test_parse_moment_meta_non_dict_ignored(tmp_path):
+    """A non-dict `meta:` value is ignored without breaking the parse."""
+    plugin = _geo_plugin()
+    p = _write_moment(tmp_path, "01-1200.md", "date: 2026-08-01 12:00", "meta: just a string")
+    m = plugin._parse_moment(p, "moments/2026-08/01-1200.md")
+    assert m.meta == {}
+
+
+def test_moment_meta_items_resolves_first_matching_tag():
+    """First tag matching the schema wins; label/type come from config."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ],
+                "film": [{"key": "name", "label": "影院"}],
+            },
+        }
+    )
+    m = _moment(0, tags=["food"])
+    m.meta = {"name": "老上海面馆", "rating": 4, "extra": "ignored"}
+    items = plugin._moment_meta_items(m)
+    assert items == [
+        {"key": "name", "label": "餐馆", "type": "text", "value": "老上海面馆"},
+        {"key": "rating", "label": "评分", "type": "rating", "value": 4},
+    ]
+
+
+def test_moment_meta_items_skips_missing_fields():
+    """Fields the moment does not supply are skipped; no match → empty list."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ],
+            },
+        }
+    )
+    m = _moment(0, tags=["food"])
+    m.meta = {"name": "老上海面馆"}  # no rating
+    assert [i["key"] for i in plugin._moment_meta_items(m)] == ["name"]
+
+    m2 = _moment(1, tags=["general"])  # no matching tag
+    m2.meta = {"name": "x"}
+    assert plugin._moment_meta_items(m2) == []
+
+
+def test_moment_meta_items_rating_validation(tmp_path, caplog):
+    """Ratings must be integers in 1..5; invalid values are hidden with a
+    warning instead of rendering garbage stars."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {"food": [{"key": "rating", "label": "评分", "type": "rating"}]},
+        }
+    )
+    for bad in (0, 6, -1, "3.5", "abc"):
+        m = _moment(0, tags=["food"])
+        m.meta = {"rating": bad}
+        assert plugin._moment_meta_items(m) == [], f"rating {bad!r} should be hidden"
+    assert any("out of 1..5" in r.message for r in caplog.records)
+    assert any("is not a number" in r.message for r in caplog.records)
+
+    m = _moment(1, tags=["food"])
+    m.meta = {"rating": "5"}  # numeric string coerces
+    assert plugin._moment_meta_items(m) == [
+        {"key": "rating", "label": "评分", "type": "rating", "value": 5}
+    ]
+
+
+def test_moment_meta_items_no_schema():
+    """No configured schema → helper returns [] for any moment."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    m = _moment(0, tags=["food"])
+    m.meta = {"name": "x", "rating": 4}
+    assert plugin._moment_meta_items(m) == []
+
+
+def test_inject_template_helpers_exposes_moment_meta_items():
+    """Templates can call moment_meta_items(moment) on every render path."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {"food": [{"key": "name", "label": "餐馆"}]},
+        }
+    )
+    ctx = plugin._inject_template_helpers({})
+    m = _moment(0, tags=["food"])
+    m.meta = {"name": "老上海面馆"}
+    assert ctx["moment_meta_items"](m) == [
+        {"key": "name", "label": "餐馆", "type": "text", "value": "老上海面馆"}
+    ]
+
+
+def test_create_moment_meta_flag(tmp_path, monkeypatch, capsys):
+    """create_moment.py --meta writes a `meta:` block: integer strings stay
+    ints, other values are double-quoted (YAML-safe)."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(
+        "sys.argv",
+        ["create_moment", "hello", "--meta", "name=老上海面馆", "--meta", "rating=4"],
+    )
+    from scripts import create_moment
+
+    create_moment.main()
+    capsys.readouterr()
+    created = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert len(created) == 1
+    text = created[0].read_text(encoding="utf-8")
+    assert "meta:" in text
+    assert 'name: "老上海面馆"' in text
+    assert "rating: 4" in text
+
+
+def test_render_map_page_feed_carries_meta_items(tmp_path):
+    """The map page feed (moment_list) and marker popups must carry the
+    moment's structured metadata (restaurant/cinema name + rating), so the
+    client can render them like the timeline entries do."""
+    plugin = _geo_plugin()
+    plugin.meta_fields = {
+        "food": [
+            {"key": "name", "label": "Restaurant", "type": "text"},
+            {"key": "rating", "label": "Rating", "type": "rating"},
+        ]
+    }
+    food = _moment(0)
+    food.lng, food.lat, food.region, food.place = 121.47, 31.23, "shanghai", "徐汇滨江"
+    food.tags = ["food"]
+    food.meta = {"name": "Old Shanghai Noodle House", "rating": 4}
+    plugin._moments = [food]
+    plugin._labels = {}
+    plugin._nav = None
+    plugin._base_url = ""
+    template = MagicMock()
+    template.render.return_value = "<html>map</html>"
+    env = MagicMock()
+    env.get_template.return_value = template
+    plugin._jinja_env = env
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+
+    _, kwargs = template.render.call_args
+    assert kwargs["moment_list"] == [
+        {
+            "time_label": "Jul 30, 2026 · 00:00",
+            "date": "2026-07-30 00:00",
+            "permalink": food.permalink,
+            "category": "food",
+            "html": "",
+            "meta_items": [
+                {
+                    "key": "name",
+                    "label": "Restaurant",
+                    "type": "text",
+                    "value": "Old Shanghai Noodle House",
+                },
+                {"key": "rating", "label": "Rating", "type": "rating", "value": 4},
+            ],
+            "tags": [{"name": "food", "url": "/moments/tag/food/"}],
+        }
+    ]
+    # popup payload carries name + rating too
+    marker = kwargs["region_groups"][0]["default_markers"][0]
+    assert marker["name"] == "Old Shanghai Noodle House"
+    assert marker["rating"] == 4
+
+
+def test_cluster_moments_carries_meta_name_rating():
+    """Merged-marker items keep each visit's name + rating for popup tabs."""
+    plugin = _geo_plugin()
+    plugin.meta_fields = {
+        "food": [
+            {"key": "name", "label": "Restaurant", "type": "text"},
+            {"key": "rating", "label": "Rating", "type": "rating"},
+        ]
+    }
+    ms = []
+    for i, rating in enumerate((4, 3)):
+        m = _moment(i)
+        m.lng, m.lat = 121.4371, 31.1945
+        m.tags = ["food"]
+        m.meta = {"name": "Old Shanghai Noodle House", "rating": rating}
+        ms.append(m)
+    clusters = plugin._cluster_moments(ms)
+    assert len(clusters) == 1
+    items = clusters[0]["items"]
+    assert [it["rating"] for it in items] == [3, 4]  # newest first
+    assert all(it["name"] == "Old Shanghai Noodle House" for it in items)
+
+
+def test_load_config_meta_fields_dedupes_duplicate_keys(tmp_path, caplog):
+    """Duplicate field keys inside one category keep the first definition and
+    warn, instead of rendering the same value twice."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆"},
+                    {"key": "name", "label": "别名"},  # duplicate
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ],
+            },
+        }
+    )
+    assert plugin.meta_fields == {
+        "food": [
+            {"key": "name", "label": "餐馆", "type": "text"},
+            {"key": "rating", "label": "评分", "type": "rating"},
+        ]
+    }
+    assert any("duplicate key 'name'" in r.message for r in caplog.records)
+
+
+def test_item_dict_name_prefers_key_name():
+    """Popup name prefers the field whose key is `name`; other text fields
+    are only used as a fallback."""
+    plugin = _geo_plugin()
+    plugin.meta_fields = {
+        "food": [
+            {"key": "dish", "label": "Dish", "type": "text"},
+            {"key": "name", "label": "Restaurant", "type": "text"},
+            {"key": "rating", "label": "Rating", "type": "rating"},
+        ]
+    }
+    m = _moment(0)
+    m.lng, m.lat = 121.47, 31.23
+    m.tags = ["food"]
+    m.meta = {"dish": "Scallion-oil noodles", "name": "Old Shanghai Noodle House", "rating": 4}
+    cluster = plugin._cluster_moments([m])[0]
+    assert cluster["name"] == "Old Shanghai Noodle House"
+    assert cluster["rating"] == 4
+
+    # schema without a `name` key → first text field is the fallback
+    plugin.meta_fields = {"food": [{"key": "dish", "label": "Dish", "type": "text"}]}
+    m.meta = {"dish": "Scallion-oil noodles"}
+    assert plugin._cluster_moments([m])[0]["name"] == "Scallion-oil noodles"
+
+
+def test_create_moment_meta_duplicate_key_warns(tmp_path, monkeypatch, capsys):
+    """Repeated --meta with the same key warns instead of silently overwriting."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(
+        "sys.argv",
+        ["create_moment", "hello", "--meta", "name=A", "--meta", "name=B"],
+    )
+    from scripts import create_moment
+
+    create_moment.main()
+    out = capsys.readouterr()
+    assert "duplicate --meta key 'name'" in out.err  # warning goes to stderr
+    created = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    text = created[0].read_text(encoding="utf-8")
+    assert 'name: "B"' in text  # last value wins, consistent with dict semantics
+    assert 'name: "A"' not in text
+
+
+def test_moment_meta_items_falls_through_empty_tag_match():
+    """A tag whose schema fields are ALL missing from `meta` falls through to
+    the next matching tag instead of returning an empty list."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [{"key": "name", "label": "餐馆"}],  # no rating field
+                "film": [{"key": "rating", "label": "评分", "type": "rating"}],
+            },
+        }
+    )
+    m = _moment(0, tags=["food", "film"])
+    m.meta = {"rating": 4}  # food's `name` missing → film's rating should win
+    assert plugin._moment_meta_items(m) == [
+        {"key": "rating", "label": "评分", "type": "rating", "value": 4}
+    ]
+
+
+def test_moment_meta_items_safe_before_config():
+    """Class-level default keeps the helper safe even when _load_config never
+    ran (mirrors the _bucket guard)."""
+    plugin = MomentPlugin()
+    m = _moment(0, tags=["food"])
+    m.meta = {"name": "x", "rating": 4}
+    assert plugin._moment_meta_items(m) == []
+
+
+def test_moment_meta_items_rating_float_hidden(tmp_path, caplog):
+    """A float rating (e.g. 4.5) is hidden with a warning instead of being
+    silently truncated by int() to 4."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {"food": [{"key": "rating", "label": "评分", "type": "rating"}]},
+        }
+    )
+    m = _moment(0, tags=["food"])
+    m.meta = {"rating": 4.5}  # direct float in the dict (not the frontmatter path)
+    assert plugin._moment_meta_items(m) == []
+    assert any("is not an integer" in r.message for r in caplog.records)
