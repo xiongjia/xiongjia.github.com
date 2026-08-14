@@ -49,20 +49,36 @@ tags:
   - homelab
 ---
 
-今天用 Rust 写了一个 TUI 工具，效果不错。
+Wrote a TUI tool in Rust today — works nicely.
 
 ![Screenshot](./screenshot.webp)
 ````
 
-| Field       | Required | Format                                             |
-| ----------- | -------- | -------------------------------------------------- |
-| `date`      | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601         |
-| `tags`      | ❌       | YAML list (displayed as `#tag` links)              |
-| `draft`     | ❌       | `true` — hidden in production builds               |
-| `place`     | ❌       | Location display text (geo, see Geo/Map)           |
-| `lng`/`lat` | ❌       | WGS-84 coordinates, must be a pair (geo)           |
-| `crs`       | ❌       | `wgs84` (default) or `gcj02` (auto-converted, geo) |
-| `region`    | ❌       | Basemap region; auto-probed by bbox (geo)          |
+| Field       | Required | Format                                                                                   |
+| ----------- | -------- | ---------------------------------------------------------------------------------------- |
+| `date`      | ✅       | `YYYY-MM-DD HH:MM`, `YYYY-MM-DD`, ISO 8601                                               |
+| `tags`      | ❌       | YAML list (displayed as `#tag` links)                                                    |
+| `draft`     | ❌       | `true` — hidden in production builds                                                     |
+| `place`     | ❌       | Location display text (geo, see Geo/Map)                                                 |
+| `lng`/`lat` | ❌       | WGS-84 coordinates, must be a pair (geo)                                                 |
+| `crs`       | ❌       | `wgs84` (default) or `gcj02` (auto-converted, geo)                                       |
+| `region`    | ❌       | Basemap region; auto-probed by bbox (geo)                                                |
+| `meta`      | ❌       | Freeform metadata dict rendered via `extra.moment.meta_fields` (see Structured Metadata) |
+
+Example with metadata:
+
+```markdown
+---
+date: 2026-08-01 12:00
+tags:
+  - food
+meta:
+  name: Old Shanghai Noodle House
+  rating: 4
+---
+
+Had the scallion-oil noodles today — pretty good.
+```
 
 Draft moments follow the same `MKDOCS_INCLUDE_DRAFTS` env convention as
 `plugins/draft_filter.py`: excluded in production builds, kept in dev
@@ -139,7 +155,7 @@ extra:
     path: moments
     posts_per_page: 20
     timeline_title: Moment
-    timeline_description: 日常记录
+    timeline_description: Daily life
     sort: desc
     feed: true              # RSS feed at /moments/feed.xml (default: true)
     feed_description: ''    # RSS channel description (falls back to timeline_description)
@@ -154,8 +170,8 @@ No Chinese text in Python code. All UI strings are in
 ```yaml
 labels:
   timeline_title: Moment
-  timeline_description: 日常记录
-  empty_state: 暂无内容
+  timeline_description: Daily life
+  empty_state: Nothing yet
   older: ← Older
   newer: Newer →
   back_to_timeline: ↑ Timeline
@@ -271,6 +287,167 @@ Giscus loading via `overrides/partials/comments.html`. Each moment gets
 its own comment thread based on URL `pathname` mapping. No comment
 thread = no GitHub Discussion created (zero overhead).
 
+## Structured Metadata
+
+Moments can carry a small freeform metadata dict in frontmatter, rendered as
+label/value pairs on the timeline, detail, archive and map-page feed entries
+(and in map marker popups). The schema is
+driven by `extra.moment.meta_fields` in `mkdocs.yml` — keyed by category tag,
+so adding a new category later only means adding one config block (no code
+changes).
+
+```yaml
+meta_fields:
+  food:
+    - { key: name, label: Restaurant, type: text }  # restaurant name
+    - { key: rating, label: Rating, type: rating }   # 1–5 stars
+  film:
+    - { key: name, label: Cinema, type: text }
+    - { key: rating, label: Rating, type: rating }
+```
+
+- `key` — frontmatter key inside the moment's `meta:` block.
+- `label` — display label (Chinese OK); falls back to the key when empty.
+- `type` — `text` (default) or `rating` (renders 1–5 stars, amber-filled).
+
+### Rating system
+
+Ratings use a **1–5 integer star scale** (Dianping-style).
+Suggested semantics — adjust freely, the site only validates the range:
+
+| Rating | Meaning                              |
+| ------ | ------------------------------------ |
+| ★      | Avoid — not recommended              |
+| ★★     | Mediocre — only if you're passing by |
+| ★★★    | Average — okay, no strong opinion    |
+| ★★★★   | Recommended — worth a visit          |
+| ★★★★★  | Highly recommended — would go again  |
+
+**Recording granularity: one visit = one moment.** Each restaurant/cinema
+visit gets its own moment carrying that visit's rating; going back to the
+same place with a different rating means writing another moment (moments at
+the same coordinates automatically cluster into a ×N marker on the map).
+
+**Marking** — two equivalent ways:
+
+1. Frontmatter (hand-written / `poe server` editing):
+
+   ```markdown
+   ---
+   date: 2026-08-15 12:00
+   tags:
+     - food
+   meta:
+     name: Old Shanghai Noodle House
+     rating: 4
+   ---
+   ```
+
+1. CLI: `--meta KEY=VALUE`, repeatable — integer strings stay ints in YAML,
+   other values are double-quoted automatically:
+
+   ```bash
+   uv run poe create-moment "Scallion-oil noodles were good" --meta name="Old Shanghai Noodle House" --meta rating=4
+   ```
+
+**Rules / display**:
+
+- `rating` must be an integer in 1..5 (numeric strings like `"4"` are
+  coerced). Anything else — `0`, `6`, `3.5`, `abc` — is hidden with a build
+  warning instead of rendering garbage stars.
+- The field is optional: omit `meta.rating` and nothing renders for it.
+- Display: filled stars `★★★` are amber, the remainder `☆☆` gray (theme
+  variables, auto dark-mode); `title`/`aria-label` carry `N/5` for
+  accessibility.
+- A moment without a `rating` key in the schema or without `meta` renders no
+  metadata block at all.
+
+### Examples
+
+**1. Restaurant visit with rating (hand-written frontmatter)**
+
+```markdown
+---
+date: 2026-08-15 12:00
+tags:
+  - food
+meta:
+  name: Old Shanghai Noodle House
+  rating: 4
+---
+
+Scallion-oil noodles were great — chewy noodles, but the queue was long.
+```
+
+**2. Same restaurant, second visit, different rating (a separate moment)**
+
+```markdown
+---
+date: 2026-08-22 18:30
+tags:
+  - food
+meta:
+  name: Old Shanghai Noodle House
+  rating: 3
+---
+
+The braised pork was too salty this time — not as good as last visit.
+```
+
+**3. Name only, no rating yet (`rating` is optional)**
+
+```markdown
+---
+date: 2026-08-30 19:00
+tags:
+  - food
+meta:
+  name: New Ramen Shop
+---
+
+Stopped by to try it — no strong opinion yet, will rate later.
+```
+
+**4. Cinema (`film` category) + geo — meta and geo compose**
+
+```markdown
+---
+date: 2026-09-01 20:30
+tags:
+  - film
+meta:
+  name: Daguangming Cinema
+  rating: 5
+place: Nanjing West Road
+lng: 121.47
+lat: 31.23
+---
+
+The IMAX experience was stunning — highly recommended!
+```
+
+**5. Same content via CLI (equivalent to example 1)**
+
+```bash
+uv run poe create-moment "Scallion-oil noodles were good" --meta name="Old Shanghai Noodle House" --meta rating=4 --time "12:00"
+```
+
+### Schema rules
+
+- The **first tag that yields metadata items** wins (same rule as the map
+  `tag_emoji` table; a matching tag whose fields are all missing from `meta`
+  falls through to the next tag), so a moment never renders conflicting
+  schemas.
+- Only configured fields are shown; extra `meta` keys the schema does not
+  know are ignored.
+- Duplicate field keys inside one category are dropped with a build warning
+  (the first definition wins).
+- Map popups show the restaurant/cinema name: the field whose `key` is
+  `name` when the schema defines one, else the first text field; the rating
+  comes from the first `rating`-type field.
+- No schema configured, or no tag matches → nothing renders (feature fully
+  off by default).
+
 ## Tags
 
 - Parsed from frontmatter `tags:` list
@@ -303,13 +480,20 @@ extra:
     path: moments                   # Source directory under docs/
     posts_per_page: 20              # Timeline entries per page
     timeline_title: Moment          # Timeline page <h1>
-    timeline_description: 日常记录  # Timeline page subtitle
+    timeline_description: Daily life   # Timeline page subtitle
     sort: desc                      # desc / asc
     feed: true                      # RSS feed at /moments/feed.xml (default: true)
     feed_description: ''            # RSS channel description (falls back to timeline_description)
     timezone: Asia/Shanghai         # RSS pubDate tz (default: Asia/Shanghai)
     minify: true                    # Minify generated pages + moment.css; follows the site minify plugin flags when loaded (default: true)
     htmlmin_opts: {}                # Per-option htmlmin overrides (default: mkdocs-minify-plugin defaults)
+    meta_fields:                    # Structured metadata schema (see "Structured Metadata")
+      food:
+        - { key: name, label: Restaurant, type: text }
+        - { key: rating, label: Rating, type: rating }
+      film:
+        - { key: name, label: Cinema, type: text }
+        - { key: rating, label: Rating, type: rating }
     # --- Geo / Map (see "Geo / Map Features" below) ---
     map:
       enabled: true                 # false = whole geo feature disabled (default: absent = disabled)
@@ -319,8 +503,8 @@ extra:
       glyphs_url: https://…/vine/glyphs/{fontstack}/{range}.pbf
       default_region: shanghai
       regions:
-        shanghai: { bbox: [120.8, 30.6, 122.2, 31.8], center: [121.5, 31.2], zoom: 12, label: 上海 }
-        tokyo:    { bbox: [139.4, 35.4, 140.2, 35.9], center: [139.8, 35.65], zoom: 12, label: 东京 }
+        shanghai: { bbox: [120.8, 30.6, 122.2, 31.8], center: [121.5, 31.2], zoom: 12, label: Shanghai }
+        tokyo:    { bbox: [139.4, 35.4, 140.2, 35.9], center: [139.8, 35.65], zoom: 12, label: Tokyo }
       tag_emoji:
         film: 🎬
         food: 🍽️
@@ -364,6 +548,7 @@ docs/moments/
 uv run poe create-moment "Content text"
 uv run poe create-moment "Content" --image photo.jpg
 uv run poe create-moment "Content" --draft   # hidden in production
+uv run poe create-moment "Content" --meta name="Old Shanghai Noodle House" --meta rating=4
 
 # Preview
 uv run poe server       # http://localhost:8000/moments/
@@ -398,7 +583,7 @@ uv run poe lint-py
 ```yaml
 ---
 date: 2026-08-01 15:30
-place: 徐汇滨江某咖啡店   # display text
+place: A café by the Xuhui riverfront  # display text
 lng: 121.48             # coords (system per crs)
 lat: 31.16
 crs: gcj02              # wgs84 (default) | gcj02 (Amap/Baidu → auto-converted to WGS-84)
@@ -446,9 +631,9 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
     `popup_max` moments (pure-CSS radio) and expands **all** same-coords
     moments in place via a `<details>` toggle.
   - Each region renders its most recent `region_limit` moments by default; a
-    `加载全部` button loads the rest.
+    `Load all` button loads the rest.
   - **Category filter**: every geo moment gets a category — the first tag in
-    the configured `tag_emoji` table, else a default `其他` bucket. Checkboxes
+    the configured `tag_emoji` table, else a default `Other` bucket. Checkboxes
     (all on by default) filter markers + the list client-side; a merged marker
     whose remaining items drop to one is rebuilt from that item (re-centering
     on its precise coords) so labels/counts/popups always match the filtered
@@ -457,11 +642,13 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
     lists EVERY geo moment across all regions — full rendered content
     (`.moment-entry` markup from moment.css, thumbnails capped at 150px like
     the timeline, glightbox anchors left as plain links since this page has
-    no lightbox JS) plus time link and `#tags` — filtered by the same
-    category checkboxes (independent of the current region / load-all
-    state). No geo/place badge: the location is already a marker on the map
-    right above, and the timeline's clickable place button would be a dead
-    control here.
+    no lightbox JS) plus structured metadata (restaurant/cinema name +
+    rating stars, same `.moment-meta` block as the timeline), time link and
+    `#tags` — filtered by the same category checkboxes (independent of the
+    current region / load-all state). Marker popups show the name + rating
+    too (single markers and cluster tabs/header). No geo/place badge: the
+    location is already a marker on the map right above, and the timeline's
+    clickable place button would be a dead control here.
 
 ### External resources
 

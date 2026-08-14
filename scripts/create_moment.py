@@ -8,9 +8,11 @@ Usage:
     uv run python scripts/create_moment.py "Content text" --time "9am"
     uv run python scripts/create_moment.py "Content text" --time "yesterday 9am"
     uv run python scripts/create_moment.py "Content text" --time "30 9pm"
+    uv run python scripts/create_moment.py "Content text" --meta name="La Mian" --meta rating=4
 """
 
 import argparse
+import json
 import os
 import subprocess
 import sys
@@ -23,6 +25,20 @@ from shared.date import parse_datetime_arg
 from shared.gcj02 import gcj02_to_wgs84
 
 EDITOR = os.environ.get("EDITOR", "vim")
+
+
+def _meta_value(v: str) -> str:
+    """Format a ``--meta`` value for the YAML frontmatter.
+
+    Plain integer strings stay bare (``rating: 4`` → int in YAML); anything
+    else is double-quoted via JSON so special characters (``:``, ``#``,
+    quotes, leading/trailing spaces) can never break the frontmatter.
+    """
+    try:
+        int(v)
+    except ValueError:
+        return json.dumps(v, ensure_ascii=False)
+    return v
 
 
 def main():
@@ -58,6 +74,15 @@ def main():
         ),
     )
     parser.add_argument("--region", help="Map region (e.g. shanghai); auto-probed when omitted")
+    parser.add_argument(
+        "--meta",
+        action="append",
+        metavar="KEY=VALUE",
+        help=(
+            'Metadata key/value (repeatable), e.g. --meta name="La Mian" --meta rating=4; '
+            "rendered per extra.moment.meta_fields in mkdocs.yml"
+        ),
+    )
     args = parser.parse_args()
 
     if (args.lng is None) != (args.lat is None):
@@ -92,6 +117,25 @@ def main():
         lines.append(f"lat: {lat:.6f}")
     if args.region:
         lines.append(f"region: {args.region}")
+    if args.meta:
+        meta = {}
+        for item in args.meta:
+            if "=" not in item:
+                parser.error(f"--meta expects KEY=VALUE, got {item!r}")
+            k, v = item.split("=", 1)
+            key = k.strip()
+            # CLI duplicates: last value wins (override semantics) — note this
+            # is the opposite of extra.moment.meta_fields config dedupe, which
+            # keeps the FIRST definition (typo protection)
+            if key in meta:
+                print(
+                    f"Warning: duplicate --meta key {key!r} — keeping the last value",
+                    file=sys.stderr,
+                )
+            meta[key] = _meta_value(v)
+        lines.append("meta:")
+        for k, v in meta.items():
+            lines.append(f"  {k}: {v}")
     lines += ["---", ""]
     if args.content:
         lines.append(args.content)

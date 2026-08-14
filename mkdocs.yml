@@ -68,6 +68,21 @@ extra:
     # feed: enabled by default — generates /moments/feed.xml, which the
     # Notes index page (docs/notes/_index_content.md) links to directly;
     # keep that link in sync if this feed config ever changes
+    # Structured metadata per moment, keyed by category tag (the first tag
+    # with supplied values wins; a tag whose fields are all missing from `meta`
+    # falls through to the next). Fields render on the timeline/detail/archive
+    # entries; the moment file supplies values in a `meta:` frontmatter block
+    # (e.g. `meta: {name: 老上海面馆, rating: 4}`).
+    #   key   — frontmatter key inside the moment's `meta:` block
+    #   label — display label (Chinese OK)
+    #   type  — text (default) | rating (renders 1–5 stars)
+    meta_fields:
+      food:
+        - { key: name, label: 餐馆, type: text }
+        - { key: rating, label: 评分, type: rating }
+      film:
+        - { key: name, label: 影院, type: text }
+        - { key: rating, label: 评分, type: rating }
     # Geo / map feature. Disable entirely with enabled: false (or by removing
     # the map block) — no geo parsing, no badges, no /moments/map/ page.
     # NOTE: the widget/tiles/glyphs are served from the vine R2 bucket, whose

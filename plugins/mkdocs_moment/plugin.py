@@ -233,6 +233,10 @@ class MomentPlugin(BasePlugin):
     # any code path that runs before/without on_config (e.g. unit tests)
     _bucket = {"enabled": False, "mappings": []}
 
+    # structured metadata schema — populated in _load_config; class-level
+    # default keeps _moment_meta_items safe before on_config (like _bucket)
+    meta_fields: dict = {}
+
     def _load_config(self, moment_cfg: dict):
         self.config = {
             "path": moment_cfg.get("path", "moment"),
@@ -248,6 +252,47 @@ class MomentPlugin(BasePlugin):
         }
         # resolved once per build — htmlmin_opts is static for the build
         self._htmlmin_opts = _resolve_htmlmin_opts(self.config.get("htmlmin_opts"))
+
+        # structured metadata schema: category tag -> field definitions
+        # (extra.moment.meta_fields). Fields with a missing/empty key, a
+        # non-dict definition or a non-list field list are dropped; unknown
+        # types fall back to "text". Labels default to the field key.
+        raw_meta_fields = moment_cfg.get("meta_fields") or {}
+        self.meta_fields = {}
+        if isinstance(raw_meta_fields, dict):
+            for tag, fields in raw_meta_fields.items():
+                if not isinstance(fields, (list, tuple)):
+                    continue
+                normalized = []
+                seen = set()
+                for f in fields:
+                    if not isinstance(f, dict):
+                        continue
+                    key = str(f.get("key", "")).strip()
+                    if not key:
+                        continue
+                    if key in seen:
+                        # config dedupe keeps the FIRST definition (typo
+                        # protection) — the CLI --meta path is the opposite
+                        # (last value wins, override semantics)
+                        log.warning(
+                            "Moment meta_fields: duplicate key %r in category %r — "
+                            "keeping the first definition",
+                            key,
+                            str(tag),
+                        )
+                        continue
+                    seen.add(key)
+                    ftype = str(f.get("type", "text") or "text").strip().lower()
+                    normalized.append(
+                        {
+                            "key": key,
+                            "label": str(f.get("label") or key),
+                            "type": "rating" if ftype == "rating" else "text",
+                        }
+                    )
+                if normalized:
+                    self.meta_fields[str(tag)] = normalized
 
         # geo / map feature config (extra.moment.map); absent or enabled=false
         # disables the feature entirely (no parsing, no badges, no map page)
@@ -680,6 +725,7 @@ class MomentPlugin(BasePlugin):
                 "permalink": m.permalink,
                 "category": self._moment_category(m),
                 "html": m.html,
+                "meta_items": self._moment_meta_items(m),
                 "tags": [
                     {"name": t, "url": f"{helpers['moment_base']}/tag/{_tag_segment(t)}/"}
                     for t in m.tags
@@ -768,6 +814,20 @@ class MomentPlugin(BasePlugin):
 
         def _item_dict(x):
             """Item payload for popups / client-side category filtering."""
+            meta_items = self._moment_meta_items(x)
+            rating = next((it["value"] for it in meta_items if it["type"] == "rating"), None)
+            # popup place name: the field whose key is "name" when the schema
+            # defines one, else the first text field (see moment-design.md)
+            name = ""
+            for it in meta_items:
+                if it["key"] == "name":
+                    name = it["value"]
+                    break
+            else:
+                for it in meta_items:
+                    if it["type"] == "text":
+                        name = it["value"]
+                        break
             return {
                 "title": self._moment_title(x),
                 "date": x.date.strftime("%Y-%m-%d %H:%M"),
@@ -777,6 +837,9 @@ class MomentPlugin(BasePlugin):
                 "category": self._moment_category(x),
                 "emoji": x.emoji or "",
                 "place": x.place,
+                # structured metadata for popups (extra.moment.meta_fields)
+                "name": name,
+                "rating": rating,
                 # precise coords — lets the client re-center a merged marker
                 # on the newest remaining item after category filtering
                 "lng": x.lng,
@@ -801,6 +864,9 @@ class MomentPlugin(BasePlugin):
                     "text": latest_item["text"],
                     "image": latest_item["image"],
                     "category": latest_item["category"],
+                    # structured metadata of the latest item (popups)
+                    "name": latest_item["name"],
+                    "rating": latest_item["rating"],
                     "items": [_item_dict(x) for x in items],
                 }
             )
@@ -939,6 +1005,70 @@ class MomentPlugin(BasePlugin):
         if moment.title:
             return moment.title
         return moment.date.strftime("%Y-%m-%d %H:%M")
+
+    def _moment_meta_items(self, moment: Moment) -> list[dict]:
+        """Resolve the moment's ``meta:`` frontmatter against the configured
+        ``extra.moment.meta_fields`` schema, in category-tag order.
+
+        The first tag that yields metadata items wins (same rule as the map
+        ``tag_emoji`` table; a tag whose configured fields are all missing
+        from ``meta`` falls through to the next tag), so a moment never
+        renders conflicting schemas. Rating values must be integers in 1..5
+        — anything else (floats, out-of-range, non-numeric) is dropped with a
+        warning. Returns ``{key, label, type, value}`` items for the templates
+        to render; empty when no schema is configured or no tag matches.
+        """
+        if not self.meta_fields:
+            return []
+        for tag in moment.tags:
+            fields = self.meta_fields.get(tag)
+            if not fields:
+                continue
+            items = []
+            for f in fields:
+                key = f["key"]
+                if key not in moment.meta:
+                    continue
+                value = moment.meta[key]
+                if f["type"] == "rating":
+                    # floats (e.g. a 4.5 handed straight into the dict) must
+                    # not truncate via int() — hide like the "4.5" string path
+                    if isinstance(value, float):
+                        log.warning(
+                            "Moment %s: meta.%s rating %r is not an integer — hidden",
+                            moment.id,
+                            key,
+                            value,
+                        )
+                        continue
+                    try:
+                        rating = int(value)
+                    except (TypeError, ValueError):
+                        log.warning(
+                            "Moment %s: meta.%s rating %r is not a number — hidden",
+                            moment.id,
+                            key,
+                            value,
+                        )
+                        continue
+                    if not 1 <= rating <= 5:
+                        log.warning(
+                            "Moment %s: meta.%s rating %r out of 1..5 — hidden",
+                            moment.id,
+                            key,
+                            value,
+                        )
+                        continue
+                    value = rating
+                items.append(
+                    {"key": key, "label": f["label"] or key, "type": f["type"], "value": value}
+                )
+            # only stop at the first tag that actually yields items — a tag
+            # whose schema fields are all missing from `meta` falls through to
+            # the next tag instead of returning an empty list
+            if items:
+                return items
+        return []
 
     def _first_image(self, moment: Moment) -> Optional[str]:
         """First image URL in the rendered HTML (site-absolute or remote), if any.
@@ -1084,6 +1214,7 @@ class MomentPlugin(BasePlugin):
         """
         context["moment_base"] = self._moment_base()
         context["tag_segment"] = _tag_segment
+        context["moment_meta_items"] = self._moment_meta_items
         return context
 
     def _moment_base(self) -> str:
@@ -1181,6 +1312,21 @@ class MomentPlugin(BasePlugin):
         # has_images
         has_images = "![" in content
 
+        # meta — freeform metadata dict (rendered via extra.moment.meta_fields).
+        # Scalars are normalized: ints stay numeric (so ratings compare cleanly),
+        # everything else becomes a string; non-dict values are ignored.
+        meta: dict[str, str | int] = {}
+        raw_meta = fm.get("meta")
+        if isinstance(raw_meta, dict):
+            for k, v in raw_meta.items():
+                key = str(k)
+                if isinstance(v, bool):
+                    meta[key] = str(v)
+                elif isinstance(v, int):
+                    meta[key] = v
+                else:
+                    meta[key] = str(v)
+
         # geo — only parsed when the map feature is enabled (extra.moment.map)
         place = str(fm.get("place", "")).strip()
         crs = str(fm.get("crs", "wgs84")).strip().lower()
@@ -1238,6 +1384,7 @@ class MomentPlugin(BasePlugin):
             title=title,
             tags=tags,
             has_images=has_images,
+            meta=meta,
             place=place,
             lng=lng,
             lat=lat,

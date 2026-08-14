@@ -26,6 +26,9 @@ class Moment:
     title: str = ""  # optional frontmatter title (used by RSS title fallback)
     tags: list[str] = field(default_factory=list)
     has_images: bool = False
+    meta: dict[str, str | int] = field(
+        default_factory=dict
+    )  # freeform metadata dict (rendered via extra.moment.meta_fields)
     # --- geo (extra.moment.map) ---
     place: str = ""  # display text, e.g. "徐汇滨江某咖啡店"
     lng: Optional[float] = None  # WGS-84 longitude

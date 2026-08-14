@@ -217,6 +217,8 @@
                 text: latest.text,
                 image: latest.image,
                 category: latest.category,
+                name: latest.name,
+                rating: latest.rating,
             });
         }
         return out;
@@ -228,6 +230,27 @@
         return String(s).replace(/[&<>"']/g, (c) => ({
             "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
         }[c]));
+    }
+
+    // 1–5 star rendering for popups: per-star spans so filled (amber,
+    // .moment-meta__star.is-on) and empty (gray) stars match the timeline /
+    // feed entries; the chars themselves are safe to embed unescaped
+    function metaStars(n) {
+        let out = "";
+        for (let s = 1; s <= 5; s++) {
+            out += '<span class="moment-meta__star' + (s <= n ? " is-on" : "") + '">' +
+                   (s <= n ? "★" : "☆") + "</span>";
+        }
+        return out;
+    }
+
+    // popup meta line: restaurant/cinema name + rating, or "" when the
+    // moment carries no structured metadata
+    function metaLine(it) {
+        const parts = [];
+        if (it.name) parts.push(esc(it.name));
+        if (it.rating) parts.push('<span class="moment-meta__stars">' + metaStars(it.rating) + "</span>");
+        return parts.length ? `<div class="moment-popup-meta">${parts.join(" ")}</div>` : "";
     }
 
     // cluster → widget MarkerSpec. count > 1 shows a ×N label and a popup
@@ -255,6 +278,7 @@
                         `<div class="moment-popup-body" data-pp="${k}">` +
                         `${imgOf(it)}<a href="${esc(it.permalink)}">${esc(it.title)}</a> ` +
                         `<span class="moment-popup-date">${esc(it.date)}</span>` +
+                        `${metaLine(it)}` +
                         (it.text ? `<div class="moment-popup-text">${esc(it.text)}</div>` : "") +
                         `<a href="${esc(it.permalink)}" class="moment-popup-link">查看详情 →</a>` +
                         `</div>`;
@@ -269,12 +293,16 @@
                 ? `<details class="moment-popup-all"><summary>…共 ${c.count} 篇 · 全部</summary>` +
                   `<div class="moment-popup-all-list">${allRows}</div></details>`
                 : "";
-            m.popupContent = "<b>" + esc(c.place || c.emoji || "📍") + " · " + c.count +
-                " 次</b><div class=\"moment-popup-tabs\">" + tabs + "</div>" + more;
+            m.popupContent =
+                "<b>" + esc(c.place || c.emoji || "📍") +
+                (c.name ? " · " + esc(c.name) : "") +
+                (c.rating ? " · " + metaStars(c.rating) : "") +
+                " · " + c.count + " 次</b><div class=\"moment-popup-tabs\">" + tabs + "</div>" + more;
         } else {
             m.label = c.place || undefined;
             m.popupContent =
-                imgOf(c) + `<div class="moment-popup-text">${esc(c.text || c.place || c.title || "")}</div>` +
+                imgOf(c) + metaLine(c) +
+                `<div class="moment-popup-text">${esc(c.text || c.place || c.title || "")}</div>` +
                 `<a href="${esc(c.permalink)}" class="moment-popup-link">查看详情 →</a>`;
         }
         return m;
@@ -370,6 +398,38 @@
             content.className = "moment-entry__content";
             content.innerHTML = m.html;
             entry.appendChild(content);
+
+            // structured metadata (restaurant/cinema name, rating) — mirrors
+            // the timeline entry's .moment-meta block, built client-side from
+            // the meta_items payload (moment.css styles)
+            if (m.meta_items && m.meta_items.length) {
+                const meta = document.createElement("div");
+                meta.className = "moment-meta";
+                m.meta_items.forEach((it) => {
+                    const item = document.createElement("span");
+                    item.className = "moment-meta__item";
+                    const label = document.createElement("span");
+                    label.className = "moment-meta__label";
+                    label.textContent = it.label;
+                    item.appendChild(label);
+                    if (it.type === "rating") {
+                        const starsEl = document.createElement("span");
+                        starsEl.className = "moment-meta__stars";
+                        starsEl.title = it.value + "/5";
+                        starsEl.setAttribute("role", "img");
+                        starsEl.setAttribute("aria-label", it.value + " out of 5");
+                        starsEl.innerHTML = metaStars(it.value);
+                        item.appendChild(starsEl);
+                    } else {
+                        const value = document.createElement("span");
+                        value.className = "moment-meta__value";
+                        value.textContent = it.value;
+                        item.appendChild(value);
+                    }
+                    meta.appendChild(item);
+                });
+                entry.appendChild(meta);
+            }
 
             if (m.tags && m.tags.length) {
                 const tags = document.createElement("div");

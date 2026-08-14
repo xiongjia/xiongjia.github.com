@@ -138,6 +138,7 @@ uv run poe create-moment "Hello 👋"
 uv run poe create-moment "With image" --image photo.webp
 uv run poe create-moment "Draft idea" --draft    # hidden in production
 uv run poe create-moment "Backfill" --time "9pm"
+uv run poe create-moment "Lunch" --meta name="Old Shanghai Noodle House" --meta rating=4   # structured metadata (see extra.moment.meta_fields)
 
 # English Scraps — jot down English learning scraps
 uv run poe enu add "cumbersome"
