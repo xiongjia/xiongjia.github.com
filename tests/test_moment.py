@@ -1094,6 +1094,17 @@ def test_render_map_page_generates_markers(tmp_path):
     assert groups[0]["default_markers"][0]["permalink"] == geo.permalink
     assert kwargs["show_load_all"] is False
     assert kwargs["map_cfg"]["enabled"] is True
+    assert kwargs["categories"] == [{"key": "film", "label": "🎬 film"}]
+    assert kwargs["moment_list"] == [
+        {
+            "time_label": "Jul 30, 2026 · 00:00",
+            "date": "2026-07-30 00:00",
+            "permalink": geo.permalink,
+            "category": "film",
+            "html": "",  # helper moment has no rendered content
+            "tags": [{"name": "film", "url": "/moments/tag/film/"}],
+        }
+    ]
 
 
 def test_cluster_moments_merges_repeated_coords():
@@ -1128,6 +1139,74 @@ def test_cluster_moments_carries_all_items():
     assert clusters[0]["count"] == 10
     assert len(clusters[0]["items"]) == 10  # all items, not truncated
     assert clusters[0]["items"][0]["date"] > clusters[0]["items"][-1]["date"]  # newest first
+
+
+def test_moment_category_derives_from_tag_emoji():
+    """Category = first tag present in tag_emoji (mirrors emoji derivation)."""
+    plugin = _geo_plugin()
+    m = _moment(0, tags=("general", "food", "film"))
+    assert plugin._moment_category(m) == "food"
+    assert plugin._moment_category(_moment(1, tags=("film",))) == "film"
+
+
+def test_moment_category_defaults_to_other():
+    """A geo moment with no tag_emoji tag falls into the default 其他 bucket
+    (machine key ``_other``; the display label lives in ``_map_categories``)."""
+    plugin = _geo_plugin()
+    assert plugin._moment_category(_moment(0, tags=("general",))) == "_other"
+    assert plugin._moment_category(_moment(1, tags=())) == "_other"
+
+
+def test_map_categories_lists_used_categories_in_order():
+    """Filter list follows tag_emoji config order; unused tags stay hidden;
+    其他 is appended last when any geo moment is uncategorized."""
+    plugin = _geo_plugin()  # tag_emoji: film, food
+    used = [
+        _moment(0, tags=("film",)),
+        _moment(1, tags=("general",)),  # uncategorized -> 其他
+    ]
+    cats = plugin._map_categories(used)
+    assert cats == [
+        {"key": "film", "label": "🎬 film"},
+        {"key": "_other", "label": "其他"},
+    ]
+    # no uncategorized moments -> no 其他 entry, and unused food stays hidden
+    only_film = plugin._map_categories([_moment(0, tags=("film",))])
+    assert only_film == [{"key": "film", "label": "🎬 film"}]
+
+
+def test_map_categories_reserves_other_key():
+    """A config tag literally named ``_other`` must not collide with the
+    default bucket: the key appears exactly once (labeled 其他), and the tag's
+    own emoji label is not duplicated."""
+    plugin = _geo_plugin({"tag_emoji": {"film": "🎬", "_other": "⭐"}})
+    # moment tagged literally "_other"
+    assert plugin._map_categories([_moment(0, tags=("_other",))]) == [
+        {"key": "_other", "label": "其他"}
+    ]
+    # same bucket for a real "_other" tag and an uncategorized moment
+    mixed = plugin._map_categories([_moment(0, tags=("_other",)), _moment(1, tags=("general",))])
+    assert mixed == [{"key": "_other", "label": "其他"}]
+
+
+def test_cluster_carries_category_and_items_carry_category():
+    """Clusters and their items expose the category so the client can filter
+    by checkbox; a merged cluster keeps the newest item's category."""
+    plugin = _geo_plugin()
+    a = _moment(0, tags=("general",))  # older, uncategorized
+    b = _moment(1, tags=("food",))  # newer, same coords
+    for m in (a, b):
+        m.lng, m.lat = 121.4371, 31.1945
+    b.emoji = "🍽️"  # emoji is derived at parse time; simulate a parsed moment
+    clusters = plugin._cluster_moments([a, b])
+    assert len(clusters) == 1
+    merged = clusters[0]
+    assert merged["count"] == 2
+    assert merged["category"] == "food"  # newest item's category
+    assert [it["category"] for it in merged["items"]] == ["food", "_other"]
+    assert merged["items"][0]["emoji"] == "🍽️"
+    assert merged["items"][0]["place"] == ""
+    assert merged["items"][0]["lng"] == 121.4371  # precise coords for re-centering
 
 
 def test_build_map_region_data_applies_region_limit():

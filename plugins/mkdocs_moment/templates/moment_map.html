@@ -35,6 +35,20 @@
     .moment-map__loadall:hover {
         background: var(--md-default-fg-color--lightest, #e0e0e0);
     }
+    .moment-map__retry {
+        display: block;
+        margin: 1.5em auto;
+        padding: 0.5em 1.4em;
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 6px;
+        background: var(--md-default-bg-color, #fff);
+        color: var(--md-typeset-a-color, #448aff);
+        cursor: pointer;
+        font-size: 0.9em;
+    }
+    .moment-map__retry:hover {
+        background: var(--md-default-fg-color--lightest, #e0e0e0);
+    }
     .moment-map__regions {
         display: flex;
         flex-wrap: wrap;
@@ -58,30 +72,69 @@
         color: #fff;
         border-color: transparent;
     }
-    .moment-map__list {
-        list-style: none;
-        padding: 0;
-        margin: 1em 0 0;
-        columns: 2;
-        column-gap: 2em;
-    }
-    @media (max-width: 640px) {
-        .moment-map__list { columns: 1; }
-    }
-    .moment-map__list li {
-        break-inside: avoid;
-        margin-bottom: 0.3em;
+    .moment-map__filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4em 1.2em;
+        margin-bottom: 0.6em;
         font-size: 0.9em;
     }
-    .moment-map__list a {
-        text-decoration: none;
-        color: var(--md-typeset-a-color, #448aff);
+    .moment-map__filter {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35em;
+        cursor: pointer;
+        color: var(--md-default-fg-color, #374151);
+        user-select: none;
     }
-    .moment-map__list a:hover { text-decoration: underline; }
-    .moment-map__list .moment-map__time {
+    .moment-map__filter input {
+        accent-color: var(--md-typeset-a-color, #448aff);
+        cursor: pointer;
+    }
+    .moment-map__list-title {
         color: var(--md-default-fg-color--light, #757575);
-        font-size: 0.85em;
-        margin-left: 0.4em;
+        font-size: 0.9em;
+        font-weight: normal;
+        margin: 1.2em 0 0.4em;
+    }
+    /* the feed under the map renders timeline-style entries (moment.css
+       provides .moment-entry etc.); thumbnails mirror the timeline page:
+       image-only paragraphs become inline tiles at 150px max-height, and
+       the glightbox <a> wrappers are left as plain links (no lightbox JS
+       on this page) */
+    .moment-map__feed .moment-entry__content {
+        font-size: 0.8rem;
+    }
+    .moment-map__feed .moment-entry__content p:has(> a.glightbox:only-child) {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-map__feed .moment-entry__content a.glightbox img {
+        max-height: 150px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        border-radius: 8px;
+        display: block;
+    }
+    .moment-map__feed .moment-entry__content figure {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0 8px 8px 0;
+    }
+    .moment-map__feed .moment-entry__content figure img {
+        display: block;
+        max-height: 150px;
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        border-radius: 8px;
+    }
+    .moment-map__feed .moment-entry__content figure figcaption {
+        font-size: 0.75rem;
+        color: var(--md-default-fg-color--light, #757575);
+        text-align: center;
     }
     {% if map_cfg.hide_attribution %}
     /* attribution hidden per extra.moment.map.hide_attribution */
@@ -97,12 +150,23 @@
         {% endfor %}
     </div>
     {% endif %}
+    {% if categories %}
+    <div class="moment-map__filters" id="moment-map-filters">
+        {% for c in categories %}
+        <label class="moment-map__filter">
+            <input type="checkbox" data-category="{{ c.key }}" checked>
+            <span>{{ c.label }}</span>
+        </label>
+        {% endfor %}
+    </div>
+    {% endif %}
     <p class="moment-map__count" id="moment-map-count"></p>
     {% if show_load_all %}
     <button type="button" class="moment-map__loadall" id="moment-map-loadall" hidden>加载全部</button>
     {% endif %}
     <div id="moment-map" class="moment-map__canvas"></div>
-    <ul class="moment-map__list" id="moment-map-list"></ul>
+    <h2 class="moment-map__list-title" id="moment-map-list-title"></h2>
+    <div class="moment-map__feed" id="moment-map-list"></div>
 </article>
 {% endblock %}
 
@@ -110,10 +174,53 @@
 {{ super() }}
 {% if region_groups and map_cfg and map_cfg.widget_js %}
 <script type="module">
-    import { createMapWidget } from {{ map_cfg.widget_js | tojson }};
-
+    // widget is imported lazily (with a timeout, like moment-dialog.js): the
+    // category filters + All Timeline feed below don't need the map, so a
+    // CDN failure must never kill the whole page the way a failed static
+    // import would
     const regionGroups = {{ region_groups | tojson }};
+    const categories = {{ categories | tojson }};
+    const momentList = {{ moment_list | tojson }};
     const mapCfg = {{ map_cfg | tojson }};
+
+    // category filter: every checkbox starts checked; unchecking hides markers
+    // of that category (both map markers and the list below).
+    const activeCats = new Set(categories.map((c) => c.key));
+
+    // keep only clusters whose items match the active categories; a merged
+    // marker whose remaining items drop to one is rebuilt from that item so
+    // label/count/popup reflect the filtered view
+    function filterClusters(clusters) {
+        if (activeCats.size >= categories.length) return clusters;
+        const out = [];
+        for (const c of clusters) {
+            const items = c.items.filter((it) => activeCats.has(it.category));
+            if (!items.length) continue;
+            if (items.length === c.items.length) {
+                out.push(c);
+                continue;
+            }
+            const latest = items[0];
+            out.push({
+                ...c,
+                items,
+                count: items.length,
+                // re-center on the newest remaining item — the original
+                // cluster coords may belong to a filtered-out moment
+                lng: latest.lng,
+                lat: latest.lat,
+                emoji: latest.emoji || undefined,
+                place: latest.place || undefined,
+                title: latest.title,
+                date: latest.date,
+                permalink: latest.permalink,
+                text: latest.text,
+                image: latest.image,
+                category: latest.category,
+            });
+        }
+        return out;
+    }
 
     // popupContent is trusted HTML in the widget; titles/places are authored
     // markdown, so escape them before embedding
@@ -174,58 +281,117 @@
     }
 
     // Start on the configured default_region when it has moments, else the
-    // first available region. Focus the map on the most recent activity so it
-    // is always in view on load.
+    // first available region.
     let currentRegion = mapCfg.default_region;
     if (!regionGroups.some((g) => g.region === currentRegion)) {
         currentRegion = regionGroups[0].region;
     }
-    const initialCluster = groupOf(currentRegion).default_markers[0];
 
     const region = mapCfg.regions[mapCfg.default_region] || {};
-    const widget = createMapWidget(document.getElementById("moment-map"), {
-        basemapUrl: mapCfg.pmtiles_prefix + mapCfg.default_region + ".pmtiles",
-        glyphsUrl: mapCfg.glyphs_url,
-        attribution: mapCfg.attribution || undefined,
-        // focus on the latest activity (most recent cluster), else region center
-        center: initialCluster
-            ? [initialCluster.lng, initialCluster.lat]
-            : region.center || [121.5, 31.2],
-        zoom: initialCluster ? Math.max(region.zoom || 12, 13) : region.zoom || 12,
-        markers: [],
-    });
+    const mapHost = document.getElementById("moment-map");
+    let widget = null;
+
+    // import with a timeout race — a hung CDN must not block the page forever
+    const importWidget = () => {
+        let timer;
+        const timeout = new Promise((_, reject) => {
+            timer = setTimeout(() => {
+                const err = new Error("map widget import timed out");
+                err.code = "MOMENT_WIDGET_TIMEOUT";
+                reject(err);
+            }, 15000);
+        });
+        return Promise.race([import(mapCfg.widget_js), timeout]).finally(() =>
+            clearTimeout(timer)
+        );
+    };
+
+    // maplibre needs a WebGL context; without one it fails asynchronously and
+    // the canvas stays blank. Probe up front (mirrors moment-dialog.js) so we
+    // can show a clear message instead. Fresh canvas per context type.
+    function hasWebgl() {
+        const probe = (type) => {
+            try {
+                return !!document.createElement("canvas").getContext(type);
+            } catch {
+                return false;
+            }
+        };
+        return (
+            !!(window.WebGL2RenderingContext && probe("webgl2")) ||
+            !!(window.WebGLRenderingContext &&
+                (probe("webgl") || probe("experimental-webgl")))
+        );
+    }
 
     const list = document.getElementById("moment-map-list");
+    const listTitle = document.getElementById("moment-map-list-title");
     const countEl = document.getElementById("moment-map-count");
     const loadAllBtn = document.getElementById("moment-map-loadall");
     const regionBtns = document.querySelectorAll("[data-region]");
 
-    function render(markers, totalMoments, shownClusters) {
-        widget.setData({ markers });
+    function render(markers, totalMoments, contextTotal) {
+        if (widget) widget.setData({ markers });
         if (countEl) {
-            const total = regionGroups.reduce((n, g) => n + g.total, 0);
             let text = markers.length + " 个地点 · " + totalMoments + " 次";
-            if (totalMoments < total) {
-                text += "（共 " + total + " 次）";
+            if (totalMoments < contextTotal) {
+                text += "（共 " + contextTotal + " 次）";
             }
             countEl.textContent = text;
         }
-        if (list) {
-            list.replaceChildren(...shownClusters.map((c) => {
-                const li = document.createElement("li");
-                const a = document.createElement("a");
-                a.href = c.permalink;
-                a.textContent = (c.emoji ? c.emoji + " " : "") +
-                    (c.place || c.title) +
-                    (c.count > 1 ? " ×" + c.count : "");
-                li.appendChild(a);
-                const time = document.createElement("span");
-                time.className = "moment-map__time";
-                time.textContent = c.date;
-                li.appendChild(time);
-                return li;
-            }));
+    }
+
+    // the list under the map is the timeline-style feed of EVERY geo moment
+    // (newest first, full content like /moments/), filtered by the active
+    // categories; region switching and the load-all button only affect the
+    // map itself. Entries are built with the same classes as the timeline
+    // (moment.css), so they share its look.
+    function renderMoments() {
+        const items = momentList.filter((m) => activeCats.has(m.category));
+        if (listTitle) {
+            listTitle.textContent = "📋 All Timeline (" + items.length + ")";
         }
+        if (!list) return;
+        const frag = document.createDocumentFragment();
+        items.forEach((m, i) => {
+            const entry = document.createElement("div");
+            entry.className = "moment-entry";
+
+            const time = document.createElement("a");
+            time.className = "moment-entry__time";
+            time.href = m.permalink;
+            time.title = m.date;
+            time.textContent = m.time_label + " 🔗";
+            entry.appendChild(time);
+
+            // full rendered markdown — trusted build HTML, same as the
+            // timeline page (moment.html is authored markdown)
+            const content = document.createElement("div");
+            content.className = "moment-entry__content";
+            content.innerHTML = m.html;
+            entry.appendChild(content);
+
+            if (m.tags && m.tags.length) {
+                const tags = document.createElement("div");
+                tags.className = "moment-entry__tags";
+                m.tags.forEach((t) => {
+                    const a = document.createElement("a");
+                    a.className = "moment-tag";
+                    a.href = t.url;
+                    a.textContent = "#" + t.name;
+                    tags.appendChild(a);
+                });
+                entry.appendChild(tags);
+            }
+
+            frag.appendChild(entry);
+            if (i < items.length - 1) {
+                const hr = document.createElement("hr");
+                hr.className = "moment-divider";
+                frag.appendChild(hr);
+            }
+        });
+        list.replaceChildren(frag);
     }
 
     // auto-open the latest activity's popup is config-driven
@@ -244,7 +410,15 @@
         const g = groupOf(name);
         const useAll = !!allLoaded[name];
         const clusters = useAll ? g.all_markers : g.default_markers;
-        render(clusters.map(toMarker), useAll ? g.total : Math.min(g.total, g.limit), clusters);
+        const filtered = filterClusters(clusters);
+        const shown = filtered.reduce((n, c) => n + c.count, 0);
+        // suffix target: without filters the global total (other regions
+        // exist); with filters the unfiltered count of this region/mode so
+        // the user sees what the checkboxes are hiding
+        const contextTotal = activeCats.size < categories.length
+            ? (useAll ? g.total : Math.min(g.total, g.limit))
+            : regionGroups.reduce((n, x) => n + x.total, 0);
+        render(filtered.map(toMarker), shown, contextTotal);
         if (loadAllBtn) {
             loadAllBtn.hidden = !(g.has_more && !useAll);
         }
@@ -261,7 +435,8 @@
     function scheduleOpenLatest() {
         let tries = 0;
         const g = groupOf(currentRegion);
-        const expected = (allLoaded[currentRegion] ? g.all_markers : g.default_markers).length;
+        const base = allLoaded[currentRegion] ? g.all_markers : g.default_markers;
+        const expected = filterClusters(base).length;
         const attempt = () => {
             const markers = document.querySelectorAll(".maplibregl-marker");
             if (markers.length === expected && markers.length > 0) {
@@ -278,19 +453,81 @@
         currentRegion = name;
         const rc = mapCfg.regions[name] || {};
         const focus = groupOf(name).default_markers[0];
-        widget.setBasemap(mapCfg.pmtiles_prefix + name + ".pmtiles", {
-            // focus on the region's latest activity, else its configured center
-            center: focus
-                ? [focus.lng, focus.lat]
-                : rc.center || region.center || [121.5, 31.2],
-            zoom: focus ? Math.max(rc.zoom || region.zoom || 12, 13) : rc.zoom || region.zoom || 12,
-        });
+        if (widget) {
+            widget.setBasemap(mapCfg.pmtiles_prefix + name + ".pmtiles", {
+                // focus on the region's latest activity, else its configured center
+                center: focus
+                    ? [focus.lng, focus.lat]
+                    : rc.center || region.center || [121.5, 31.2],
+                zoom: focus ? Math.max(rc.zoom || region.zoom || 12, 13) : rc.zoom || region.zoom || 12,
+            });
+        }
         regionBtns.forEach((b) => b.toggleAttribute("data-active", b.dataset.region === name));
         renderRegion(name, autoOpenLatest);
     }
 
-    // initial render: first region's default set
-    renderRegion(currentRegion, autoOpenLatest);
+    // the feed + filters render immediately — independent of the widget
+    renderMoments();
+
+    // map init is async + failure-tolerant: on a load error or timeout the
+    // feed above still works and the canvas shows a retry button instead of
+    // a dead box. The basemap + focus are derived from the CURRENT region —
+    // the region buttons are already live while the widget loads, so the
+    // user may have switched away from default_region before init runs.
+    let initInFlight = false;
+    async function initMap() {
+        if (initInFlight || widget) return;
+        initInFlight = true;
+        mapHost.textContent = ""; // clear a previous fallback
+        const fail = (err) => {
+            console.error("[moment] map widget init failed:", err);
+            // transient failure — offer a retry (cached modules make a
+            // second import fast)
+            const btn = document.createElement("button");
+            btn.type = "button";
+            btn.className = "moment-map__retry";
+            btn.textContent = "地图加载失败，点击重试";
+            btn.addEventListener("click", initMap);
+            mapHost.appendChild(btn);
+        };
+        try {
+            let createMapWidget;
+            try {
+                ({ createMapWidget } = await importWidget());
+            } catch (err) {
+                fail(err);
+                return;
+            }
+            if (!hasWebgl()) {
+                mapHost.textContent = "浏览器无法创建 WebGL 上下文，无法显示地图";
+                return;
+            }
+            const rc = mapCfg.regions[currentRegion] || {};
+            const focus = groupOf(currentRegion).default_markers[0];
+            try {
+                widget = createMapWidget(mapHost, {
+                    basemapUrl: mapCfg.pmtiles_prefix + currentRegion + ".pmtiles",
+                    glyphsUrl: mapCfg.glyphs_url,
+                    attribution: mapCfg.attribution || undefined,
+                    // focus on the latest activity, else region center
+                    center: focus
+                        ? [focus.lng, focus.lat]
+                        : rc.center || region.center || [121.5, 31.2],
+                    zoom: focus ? Math.max(rc.zoom || region.zoom || 12, 13) : rc.zoom || region.zoom || 12,
+                    markers: [],
+                });
+                renderRegion(currentRegion, autoOpenLatest);
+            } catch (err) {
+                // sync failure while creating/rendering the widget — same
+                // retry affordance as the import path
+                if (!widget) fail(err);
+            }
+        } finally {
+            initInFlight = false;
+        }
+    }
+    initMap();
+
     if (loadAllBtn) {
         loadAllBtn.addEventListener("click", () => {
             allLoaded[currentRegion] = true;
@@ -298,6 +535,17 @@
         });
     }
     regionBtns.forEach((b) => b.addEventListener("click", () => switchRegion(b.dataset.region)));
+    document.querySelectorAll("#moment-map-filters input[type=checkbox]").forEach((cb) => {
+        cb.addEventListener("change", () => {
+            if (cb.checked) {
+                activeCats.add(cb.dataset.category);
+            } else {
+                activeCats.delete(cb.dataset.category);
+            }
+            renderRegion(currentRegion);
+            renderMoments();
+        });
+    });
 </script>
 {% endif %}
 {% endblock %}

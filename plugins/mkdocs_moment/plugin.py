@@ -40,6 +40,10 @@ from .models import Moment, PageType, Pagination
 log = logging.getLogger("mkdocs.plugins.moment")
 
 _TAG_UNSAFE = re.compile(r"[/?#%]")
+# category key for geo moments whose tags match no tag_emoji entry; must stay
+# distinct from real tag keys (JS filter matches on this key, the "其他"
+# label is resolved in _map_categories)
+_OTHER_CATEGORY = "_other"
 _IMG_SRC = re.compile(r'<img\b[^>]*\bsrc=["\']([^"\']+)["\']')
 _MD_IMG = re.compile(r"!\[([^\]]*)\]\([^)]*\)")
 _MD_IMG_LINE = re.compile(r"^!\[[^\]]*\]\([^)]*\)\s*$")
@@ -662,6 +666,27 @@ class MomentPlugin(BasePlugin):
         template = self._jinja_env.get_template("moment_map.html")
         region_groups = self._build_map_region_data(geo_moments)
         show_load_all = any(g["has_more"] for g in region_groups)
+        # flat, newest-first feed of every geo moment for the list under the
+        # map; rendered as timeline-style entries (full content HTML, tags)
+        # and filtered client-side by the active categories. The full HTML
+        # ships inline by design (the feed must show every moment's content
+        # without extra fetches); images inside are lazy-loaded, and the page
+        # is static + cacheable — if the moment count ever grows large,
+        # paginate the feed instead of trimming it here.
+        moment_list = [
+            {
+                "time_label": m.date.strftime("%b %d, %Y · %H:%M"),
+                "date": m.date.strftime("%Y-%m-%d %H:%M"),
+                "permalink": m.permalink,
+                "category": self._moment_category(m),
+                "html": m.html,
+                "tags": [
+                    {"name": t, "url": f"{helpers['moment_base']}/tag/{_tag_segment(t)}/"}
+                    for t in m.tags
+                ],
+            }
+            for m in sorted(geo_moments, key=lambda x: x.date, reverse=True)
+        ]
         html = self._minify_html(
             template.render(
                 page=page_proxy,
@@ -669,6 +694,8 @@ class MomentPlugin(BasePlugin):
                 nav=self._nav,
                 base_url=self._base_url,
                 region_groups=region_groups,
+                categories=self._map_categories(geo_moments),
+                moment_list=moment_list,
                 show_load_all=show_load_all,
                 map_cfg=self._map_template_cfg(),
                 labels=self._labels,
@@ -738,10 +765,29 @@ class MomentPlugin(BasePlugin):
             # to half-to-even boundary flips, e.g. 31.1945 / 0.001 → 31194.5)
             key = (floor(m.lng / precision), floor(m.lat / precision))
             groups.setdefault(key, []).append(m)
+
+        def _item_dict(x):
+            """Item payload for popups / client-side category filtering."""
+            return {
+                "title": self._moment_title(x),
+                "date": x.date.strftime("%Y-%m-%d %H:%M"),
+                "permalink": x.permalink,
+                "text": x.popup_text,
+                "image": x.popup_image,
+                "category": self._moment_category(x),
+                "emoji": x.emoji or "",
+                "place": x.place,
+                # precise coords — lets the client re-center a merged marker
+                # on the newest remaining item after category filtering
+                "lng": x.lng,
+                "lat": x.lat,
+            }
+
         clusters = []
         for items in groups.values():
             items.sort(key=lambda m: m.date, reverse=True)
             latest = items[0]
+            latest_item = _item_dict(latest)
             clusters.append(
                 {
                     "lng": latest.lng,
@@ -749,25 +795,51 @@ class MomentPlugin(BasePlugin):
                     "count": len(items),
                     "emoji": latest.emoji or "",
                     "place": latest.place,
-                    "title": self._moment_title(latest),
-                    "date": latest.date.strftime("%Y-%m-%d %H:%M"),
-                    "permalink": latest.permalink,
-                    "text": latest.popup_text,
-                    "image": latest.popup_image,
-                    "items": [
-                        {
-                            "title": self._moment_title(x),
-                            "date": x.date.strftime("%Y-%m-%d %H:%M"),
-                            "permalink": x.permalink,
-                            "text": x.popup_text,
-                            "image": x.popup_image,
-                        }
-                        for x in items
-                    ],
+                    "title": latest_item["title"],
+                    "date": latest_item["date"],
+                    "permalink": latest_item["permalink"],
+                    "text": latest_item["text"],
+                    "image": latest_item["image"],
+                    "category": latest_item["category"],
+                    "items": [_item_dict(x) for x in items],
                 }
             )
         clusters.sort(key=lambda c: c["date"], reverse=True)
         return clusters
+
+    def _moment_category(self, moment: Moment) -> str:
+        """Marker category: first tag present in ``tag_emoji``, else ``_other``.
+
+        Mirrors the emoji derivation (first matching tag wins) so a marker's
+        category and emoji always agree. Uncategorized moments fall into the
+        default 其他 bucket, keyed ``_other`` (the client checkbox uses the
+        same key — display label is resolved in ``_map_categories``).
+        """
+        tag_emoji = self.map_cfg.get("tag_emoji", {})
+        for tag in moment.tags:
+            if tag in tag_emoji:
+                return tag
+        return _OTHER_CATEGORY
+
+    def _map_categories(self, geo_moments: list[Moment]) -> list[dict]:
+        """Category filter list for the map page, in ``tag_emoji`` config order.
+
+        Only categories that actually occur among geo moments are listed (a
+        configured-but-unused tag stays hidden); the default 其他 category is
+        appended when any geo moment has no matching tag.
+        """
+        tag_emoji = self.map_cfg.get("tag_emoji", {})
+        used = {self._moment_category(m) for m in geo_moments}
+        # keep _OTHER_CATEGORY reserved for the default bucket even if a
+        # config tag ever used that exact name
+        categories = [
+            {"key": key, "label": f"{tag_emoji[key]} {key}"}
+            for key in tag_emoji
+            if key != _OTHER_CATEGORY and key in used
+        ]
+        if _OTHER_CATEGORY in used:
+            categories.append({"key": _OTHER_CATEGORY, "label": "其他"})
+        return categories
 
     def _map_template_cfg(self) -> dict:
         """Map feature config for templates (JSON-serializable, no plugin state).
