@@ -24,6 +24,7 @@ import re
 import socket
 import subprocess
 import sys
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
@@ -273,9 +274,39 @@ def _git_auth_env() -> dict[str, str]:
     return env
 
 
+_PUSH_RETRIABLE = (
+    "remote end closed",
+    "http2 framing",
+    "timed out",
+    "connection",
+    "could not read from remote",
+)
+
+
 def push_branch(workdir: Path, branch: str) -> None:
+    """Push with retries on transient connection failures.
+
+    Pushing through an HTTP proxy sometimes drops the connection after the
+    server already accepted the ref ("Remote end closed connection without
+    response") — the ref lands but git reports failure. Retry a few times
+    before giving up; auth/config errors are not retried.
+    """
     args = _git_proxy_args()
-    git(*args, "push", "-u", "origin", branch, cwd=workdir, env=_git_auth_env())
+    last: BotError | None = None
+    for attempt in range(3):
+        try:
+            git(*args, "push", "-u", "origin", branch, cwd=workdir, env=_git_auth_env())
+            return
+        except BotError as exc:
+            last = exc
+            if not any(s in str(exc).lower() for s in _PUSH_RETRIABLE):
+                raise
+            print(
+                f"⚠ push failed ({attempt + 1}/3): {exc} — retrying…",
+                file=sys.stderr,
+            )
+            time.sleep(3 * (attempt + 1))
+    raise last
 
 
 def delete_remote_branch(branch: str) -> None:
@@ -447,6 +478,11 @@ class TemplateTask:
     ``cmd`` / ``commit`` / ``body`` are format strings with ``{arg}``
     placeholders named in ``args``; extra CLI args are appended to ``cmd``
     (pass-through, e.g. ``--draft``). Missing args raise a clear error.
+
+    A trailing ``name...`` in ``args`` marks a rest consumer: remaining
+    non-flag tokens are joined into it (free text with spaces), while
+    ``-`` tokens stay extra CLI args (pass flag values as one token, e.g.
+    ``--time=9am``).
     """
 
     def __init__(self, spec: dict):
@@ -456,12 +492,25 @@ class TemplateTask:
         self.body = spec.get("body", "")
 
     def plan(self, args: list[str]) -> dict:
-        if len(args) < len(self.args):
+        rest_name = None
+        declared = self.args
+        if declared and declared[-1].endswith("..."):
+            rest_name = declared[-1][:-3]
+            declared = declared[:-1]
+        if len(args) < len(declared):
             raise BotError(
-                f"task needs {len(self.args)} arg(s): {', '.join(self.args)} — got {args!r}"
+                f"task needs {len(declared)} arg(s): {', '.join(declared)} — got {args!r}"
             )
-        values = {name: args[i] for i, name in enumerate(self.args)}
-        extra = list(args[len(self.args) :])
+        values = {name: args[i] for i, name in enumerate(declared)}
+        extra = list(args[len(declared) :])
+        if rest_name:
+            text, flags = [], []
+            for tok in extra:
+                (flags if tok.startswith("-") else text).append(tok)
+            if not text:
+                raise BotError(f"task needs {rest_name} content — got {args!r}")
+            values[rest_name] = " ".join(text)
+            extra = flags
         cmd = [part.format(**values) for part in self.cmd] + extra
         return {
             "cmd": cmd,
