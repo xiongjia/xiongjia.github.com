@@ -9,6 +9,7 @@ from __future__ import annotations
 import base64
 import os
 import time
+from pathlib import Path
 
 import pytest
 
@@ -60,14 +61,61 @@ def test_save_uploads_overwrites_duplicate(upload_dir):
     assert list(upload_dir.iterdir()) == [upload_dir / "photo.png"]
 
 
-def test_save_uploads_same_name_in_batch_collapses(upload_dir):
-    # two same-name files inside ONE batch → a single path (last wins)
+def test_save_uploads_same_name_in_batch_suffixed(upload_dir):
+    # two same-name files inside ONE batch → -2 suffix, BOTH preserved
     paths = up.save_uploads(
         [{"name": "a.png", "data": _b64(b"OLD")}, {"name": "a.png", "data": _b64(b"NEW")}]
     )
-    assert paths == [str(upload_dir / "a.png")]
-    assert upload_dir.joinpath("a.png").read_bytes() == b"NEW"
-    assert len(list(upload_dir.iterdir())) == 1
+    assert set(Path(p).name for p in paths) == {"a.png", "a-2.png"}
+    assert upload_dir.joinpath("a.png").read_bytes() == b"OLD"
+    assert upload_dir.joinpath("a-2.png").read_bytes() == b"NEW"
+
+
+def test_save_as_renames_with_original_extension(upload_dir):
+    # save_as without an extension keeps the original file's extension:
+    # xxxx_abc.png + save_as=123 → 123.png
+    paths = up.save_uploads([{"name": "xxxx_abc.png", "data": _b64(b"PNGDATA"), "save_as": "123"}])
+    assert paths == [str(upload_dir / "123.png")]
+    assert upload_dir.joinpath("123.png").read_bytes() == b"PNGDATA"
+
+
+def test_save_as_full_name_and_batch_dedupe(upload_dir):
+    # save_as with an extension is used as-is; two files renamed to the
+    # same save_as inside one batch get -2/-3 suffixes (both survive)
+    paths = up.save_uploads(
+        [
+            {"name": "a.jpg", "data": _b64(b"A"), "save_as": "photo"},
+            {"name": "b.jpg", "data": _b64(b"B"), "save_as": "photo"},
+            {"name": "c.png", "data": _b64(b"C"), "save_as": "photo.png"},
+        ]
+    )
+    names = {Path(p).name for p in paths}
+    assert names == {"photo.jpg", "photo-2.jpg", "photo.png"}
+    assert upload_dir.joinpath("photo-2.jpg").read_bytes() == b"B"
+
+
+def test_save_as_bad_extension_rejected(upload_dir):
+    with pytest.raises(ValueError, match="unsupported image type"):
+        up.save_uploads([{"name": "a.png", "data": _b64(b"x"), "save_as": "123.txt"}])
+
+
+def test_validation_error_uses_clean_name(upload_dir):
+    # a failing file in a batch must be reported under its clean (pre-dedupe)
+    # name — not "a-2.png" — so the client recognizes its own file
+    with pytest.raises(ValueError, match=r"a\.png: invalid base64"):
+        up.save_uploads(
+            [
+                {"name": "a.png", "data": _b64(b"ok")},
+                {"name": "a.png", "data": "!!!"},
+            ]
+        )
+
+
+def test_save_as_dot_runs_collapsed(upload_dir):
+    # "123." must not produce a double-dot filename (123..png)
+    paths = up.save_uploads([{"name": "orig.png", "data": _b64(b"X"), "save_as": "123."}])
+    assert paths == [str(upload_dir / "123.png")]
+    assert up._sanitize_name("photo..png") == "photo.png"
 
 
 def test_save_uploads_prunes_stale(upload_dir, monkeypatch):

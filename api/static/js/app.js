@@ -193,7 +193,14 @@ function renderFieldList(container, fields) {
         fileInput.accept = "image/*";
         fileInput.multiple = true;
         fileInput.hidden = true;
-        fileInput.addEventListener("change", () => uploadImages(wrap, fileInput));
+        const saveAsInput = document.createElement("input");
+        saveAsInput.type = "text";
+        saveAsInput.placeholder = "save as (optional)";
+        saveAsInput.className = "image-saveas";
+        saveAsInput.title =
+          "Custom save filename for the uploads (extension kept from the original; " +
+          "empty = keep original names)";
+        fileInput.addEventListener("change", () => uploadImages(wrap, fileInput, saveAsInput));
         const upBtn = document.createElement("button");
         upBtn.type = "button";
         upBtn.className = "upload-btn";
@@ -201,6 +208,7 @@ function renderFieldList(container, fields) {
         upBtn.title = "Pick image files from this computer — each file becomes a row";
         upBtn.addEventListener("click", () => fileInput.click());
         bar.appendChild(upBtn);
+        bar.appendChild(saveAsInput);
         bar.appendChild(fileInput);
         wrap.appendChild(bar);
       }
@@ -299,10 +307,13 @@ function addImageRow(wrap, path) {
   return row;
 }
 
-// browser file picker → base64 JSON → /api/upload → one image row per file
-async function uploadImages(wrap, fileInput) {
+// browser file picker → base64 JSON → /api/upload → one image row per file;
+// an optional "save as" value renames every uploaded file (extension kept
+// from the original)
+async function uploadImages(wrap, fileInput, saveAsInput) {
   const files = [...fileInput.files];
   if (!files.length) return;
+  const saveAs = (saveAsInput && saveAsInput.value.trim()) || "";
   try {
     const items = [];
     for (const file of files) {
@@ -313,7 +324,9 @@ async function uploadImages(wrap, fileInput) {
         reader.readAsDataURL(file);
       });
       const comma = dataUrl.indexOf(",");
-      items.push({ name: file.name, data: comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl });
+      const item = { name: file.name, data: comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl };
+      if (saveAs) item.save_as = saveAs;
+      items.push(item);
     }
     const res = await api("/api/upload", {
       method: "POST",
@@ -523,8 +536,13 @@ async function showRunResult(runId) {
 
 async function onRun(e) {
   e.preventDefault();
-  if (!currentTask) return;
-  $("run-btn").disabled = true; // guard against double-submit while POST is in flight
+  // guard against double-submit: the run button is disabled while a POST is
+  // in flight AND while a run is streaming — but an Enter key in a text
+  // field submits the form regardless of the button's disabled state, so
+  // check it explicitly here too (otherwise pressing Enter would spawn
+  // duplicate runs)
+  if (!currentTask || $("run-btn").disabled) return;
+  $("run-btn").disabled = true;
   $("output").textContent = "";
   const body = {
     task: currentTask,

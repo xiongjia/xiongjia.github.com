@@ -123,9 +123,12 @@ are given.
 Images placed by hand still go in the same month directory with `./` paths
 (plugin auto-converts relative paths to site-absolute URLs).
 
-A caption is added by putting a plain-text line right after the image
-line — the plugin's custom markdown extension wraps the pair in
+A hand-written caption is added by putting a plain-text line right after
+the image line — the plugin's custom markdown extension wraps the pair in
 `<figure><figcaption>` (inline text on the same line is not a caption).
+`create-moment` does NOT emit that line: a `--caption` / inline
+`path|caption` value becomes the markdown image's **alt text** (the `[ ]`
+in `![alt](src)`), so the generated md stays one line per image.
 
 ```
 moment/2026-07/
@@ -567,7 +570,7 @@ docs/moments/
 # Create a new moment
 uv run poe create-moment "Content text"
 uv run poe create-moment "Content" --image photo.jpg           # WebP + bucket upload (EXIF GPS → lng/lat)
-uv run poe create-moment "Content" --image "a.jpg|第一张" --image b.png  # inline per-image caption
+uv run poe create-moment "Content" --image "a.jpg|第一张" --image b.png  # inline caption → image alt text
 uv run poe create-moment "Content" --image a.jpg --image b.png --no-upload  # stage locally only
 uv run poe create-moment "Content" --tags food,film            # tags (comma-separated / repeatable)
 uv run poe create-moment "Content" --place "徐汇" --lng 121.47 --lat 31.16 --region shanghai

@@ -64,6 +64,7 @@ class FieldSchema(BaseModel):
 class UploadFileItem(BaseModel):
     name: str
     data: str  # base64 payload (no ``data:`` prefix)
+    save_as: str | None = None  # optional custom save filename (default: name)
 
 
 class UploadRequest(BaseModel):

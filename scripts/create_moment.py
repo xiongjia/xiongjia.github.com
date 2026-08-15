@@ -259,7 +259,7 @@ def main():
         help=(
             "photo(s): converted to WebP, uploaded to the bucket and linked via "
             "assets/bucket/ (repeatable); EXIF GPS fills --lng/--lat when absent. "
-            'A caption can be attached inline: --image "path|caption"'
+            'A caption (alt text) can be attached inline: --image "path|caption"'
         ),
     )
     parser.add_argument(
@@ -274,7 +274,8 @@ def main():
         help=(
             "per-image caption (order-matched to --image); images without an "
             "inline path|caption are filled in order. Prefer the inline form "
-            "for exact pairing; renders as a <figure> figcaption"
+            "for exact pairing; the caption becomes the markdown image's "
+            "alt text (the [ ] in ![alt](src))"
         ),
     )
     parser.add_argument(
@@ -514,12 +515,19 @@ def main():
         lines.append("")
         caption = captions[i] if i < len(captions) else ""
         if caption:
-            # caption line right after the image (same paragraph) → the
-            # moment plugin merges the pair into <figure><figcaption>; the
-            # alt text gets the brackets stripped so it can't break the link
-            alt = caption.replace("[", "").replace("]", "").replace("(", "").replace(")", "")
+            # the caption becomes the markdown image's ALT text (the [ ] in
+            # ![alt](src)) — never a separate line; brackets are stripped so
+            # they can't break the link syntax, and newlines are flattened
+            # (a line break inside the [ ] would split the image link in two)
+            alt = (
+                caption.replace("[", "")
+                .replace("]", "")
+                .replace("(", "")
+                .replace(")", "")
+                .replace("\r", " ")
+                .replace("\n", " ")
+            )
             lines.append(f"![{alt}]({link})")
-            lines.append(caption)
         else:
             lines.append(f"![Image]({link})")
     lines.append("")

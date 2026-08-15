@@ -156,7 +156,12 @@ form .repeat-add:hover,
 form .repeat-del:hover { border-color: var(--accent); }
 /* paired image rows (moment Images tab): [path | caption | ×] per image */
 form .images-wrap { margin: 6px 0 12px; }
-form .images-bar { margin-bottom: 8px; }
+form .images-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
 form .image-row { display: flex; align-items: center; gap: 6px; margin-bottom: 6px; }
 form .image-row .image-path { flex: 3 1 240px; }
 form .image-row .image-caption { flex: 2 1 160px; }
@@ -171,11 +176,17 @@ form .images-bar .upload-btn {
   color: #fff;
   font-size: 13px;
   font-weight: 600;
+  line-height: 1; /* the 📁 emoji would otherwise inflate the line box */
 }
 form .images-bar .upload-btn:hover {
   border-color: var(--accent);
   color: #fff;
   filter: brightness(1.15);
+}
+form .images-bar .image-saveas {
+  margin: 0;
+  flex: 1 1 160px;
+  max-width: 220px;
 }
 /* secondary: append a row and type a path */
 form .images-add {
