@@ -81,13 +81,14 @@ Credential Strategy for the one-time token setup.
 
 ## Assets & Conversion
 
-| Command                            | Description                                                                                                 |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `poe optimize-images <path>`       | PNG/JPG/JPEG → WebP                                                                                         |
-| `poe md2wechat [path]`             | Convert blog post to WeChat HTML                                                                            |
-| `poe bucket-sync pull [--confirm]` | Pull `docs/assets/bucket/` from R2/S3 via rclone (read-only, dry-run by default; uploads happen in PicList) |
-| `poe bucket-upload <images>`       | Convert PNG/JPG/JPEG → WebP, rename + upload to R2 (details below)                                          |
-| `poe rclone-config-init`           | Configure rclone R2 remote from `.env` (local credentials only)                                             |
+| Command                             | Description                                                                                                                                                          |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `poe optimize-images <path>`        | PNG/JPG/JPEG → WebP                                                                                                                                                  |
+| `poe md2wechat [path]`              | Convert blog post to WeChat HTML                                                                                                                                     |
+| `poe bucket-sync pull [--confirm]`  | Pull `docs/assets/bucket/` from R2/S3 via rclone (incremental: `--checksum` + `--fast-list` on by default; read-only, dry-run by default; uploads happen in PicList) |
+| `poe bucket-check [--check-remote]` | Cross-check bucket assets vs md references: unreferenced local files (cleanup) + md links missing from the bucket (details below)                                    |
+| `poe bucket-upload <images>`        | Convert PNG/JPG/JPEG → WebP, rename + upload to R2 (details below)                                                                                                   |
+| `poe rclone-config-init`            | Configure rclone R2 remote from `.env` (local credentials only)                                                                                                      |
 
 `poe bucket-upload` details:
 
@@ -96,6 +97,42 @@ Credential Strategy for the one-time token setup.
 - **Key rule** (`extra.bucket.upload.rule`, default `img/{Y}/{m}/{d}_{h}{i}{s}_{filename}`): `img` = image category dir in the bucket; `{Y}` year(4), `{m}`/`{d}`/`{h}`/`{i}`/`{s}` month/day/hour/min/sec (2); `{filename}` = original stem, lowercased, ASCII letters+digits only, spaces → `_`, pure-Chinese → `fallback_name` (`noname`); a `.webp` suffix is appended automatically. Key = `remote_prefix` + rendered rule, e.g. `data/img/img/2026/08/16_101112_myphoto.webp`.
 - **Options**: `--confirm` (actually upload) / `--rule` / `--fallback-name` / `--max-size-mb` / `--tmp-dir` (staging dir, default `.bucket/` at repo root, git-ignored) / `--remote` (auto-detected from `rclone listremotes` when omitted) / `--bucket` / `--prefix` / `--remote-prefix` (priority: CLI arg > env > mkdocs.yml).
 - **Permission**: needs a **read-write** R2 token (Object Read + Object Write + List Bucket) in `.env` — `bucket-sync pull` only needs read. Update `R2_*` and re-run `poe rclone-config-init`.
+
+`poe bucket-sync` details:
+
+- **Incremental by default**: `rclone sync` compares size + checksum (S3 ETag = MD5 for single-part uploads) and transfers only what changed — a second `pull` with no changes transfers nothing. `--checksum` (default on) skips modtime, so files whose local mtime differs from the remote LastModified (dropped in locally, uploaded via PicList) are not re-downloaded; `--fast-list` (default on) collapses recursive listing into one API call. `--no-checksum` / `--no-fast-list` fall back to legacy size+modtime / per-directory listings (multipart-uploaded objects have non-MD5 ETags and always transfer under `--checksum`).
+
+Examples:
+
+```bash
+uv run poe bucket-sync pull                       # dry-run preview (safe default)
+uv run poe bucket-sync pull --confirm             # apply: mirror bucket → docs/assets/bucket/ (deletes local extras)
+uv run poe bucket-sync pull --remote b2 --prefix assets/bucket   # other remote / local prefix
+uv run poe bucket-sync pull --no-checksum         # multipart-uploaded objects? fall back to size+modtime
+```
+
+`poe bucket-check` details:
+
+- **Dry-run by design** — nothing deleted/written; exit 1 when issues found.
+- **`[unreferenced]`** — local bucket files no md/html references (cleanup candidates; drafts count as references by default, `--no-drafts` to exclude them).
+- **`[missing]`** — md/html bucket links whose local file is absent (broken link / never uploaded / typo). Links are found by scanning every `*.md` under `docs/` + `*.html` under `docs/`/`overrides/` for `assets/bucket/` tokens, resolved relative to the referencing file.
+- **`--check-remote`** — checks md links against the actual bucket objects (`rclone lsf`): `[missing-remote]` = links absent from the bucket; `[not-uploaded]` = local files absent from the bucket (pending upload; `bucket-sync pull --confirm` would delete them). `--remote`/`--bucket`/`--remote-prefix` imply `--check-remote`.
+- **Filters / output**: `--only-unreferenced` / `--only-missing` / `--json` (machine-readable).
+
+Example output (stale local file + a broken link):
+
+```text
+bucket-check: prefix 'assets/bucket/' — local dir docs/assets/bucket (3 file(s)), 3 reference(s) from md/html (drafts included)
+
+[missing] 1 md/html link(s) → no local bucket file:
+  2026/08/nonexistent_zzz.webp
+    ← docs/moments/2026-08/14-0000.md
+
+[unreferenced] 1 local bucket file(s) not referenced by md/html (cleanup candidates):
+  2026/08/orphan.webp  (0.0 KiB)
+
+Summary: 2 issue(s) found → exit 1
+```
 
 ## .env Configuration
 
@@ -188,6 +225,19 @@ uv run poe bucket-upload "~/Work/tmp/My Photo.png" --confirm   # ~ and spaces ar
 uv run poe bucket-upload a.png b.jpg --quality 80 --confirm    # multiple files, quality override
 uv run poe bucket-upload --max-size-mb 20 photo.png --confirm  # raise the size limit (default 10MB)
 # needs a read-write R2 token in .env (update R2_* + poe rclone-config-init)
+
+# Bucket sync — pull the bucket mirror down (incremental: checksum+fast-list on; dry-run by default)
+uv run poe bucket-sync pull                      # preview what would change (safe default)
+uv run poe bucket-sync pull --confirm            # apply — mirror bucket → docs/assets/bucket/ (deletes local extras)
+uv run poe bucket-sync pull --no-checksum        # multipart objects? fall back to size+modtime compare
+
+# Bucket check — cross-check bucket assets vs md references (dry-run; exit 1 on issues)
+uv run poe bucket-check                          # unreferenced local files (cleanup) + broken md links
+uv run poe bucket-check --check-remote            # also verify md links exist in the R2 bucket itself
+uv run poe bucket-check --only-missing           # just broken links
+uv run poe bucket-check --only-unreferenced      # just cleanup candidates
+uv run poe bucket-check --json                   # machine-readable report
+uv run poe bucket-check --no-drafts              # ignore draft pages in the reference scan
 
 # Bot auto PR — run in an isolated worktree, publish as a PR
 uv run poe bot "weight 81.5" "text-moment 晨跑5km"   # one-step draft PR

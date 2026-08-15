@@ -60,8 +60,9 @@ add-weight-week = { cmd = "python scripts/add_weight_week.py", help = "Add an em
 update-weight = { cmd = "python scripts/update_weight.py", help = "Record a daily weight into health data: uv run poe update-weight 82 [date]" }
 update-health-summary = { cmd = "python scripts/update_health_summary.py", help = "Regenerate the health status summary on the health index page (calls local pi CLI)" }
 sync-running = { cmd = "python scripts/sync_running.py", help = "Sync running data from the deployed running_page site into docs/notes/health/data/running.yml" }
-bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/bucket/ from R2/S3 via rclone (read-only; dry-run by default, --confirm to apply; uploads happen in PicList)" }
+bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/bucket/ from R2/S3 via rclone (incremental; checksum+fast-list by default; read-only; dry-run by default, --confirm to apply; uploads happen in PicList)" }
 bucket-upload = { cmd = "python scripts/bucket_upload.py", help = "Upload images to the R2 bucket as WebP with a configured rename rule (dry-run by default; needs a read-write R2 token in .env): uv run poe bucket-upload photo.png --confirm" }
+bucket-check = { cmd = "python scripts/bucket_check.py", help = "Cross-check bucket assets vs markdown references: unreferenced local files (cleanup candidates) + md links missing from the bucket (--check-remote checks against R2): uv run poe bucket-check [--check-remote]" }
 rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
 bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an isolated worktree and publish as a PR (e.g. poe bot \"weight 82\" / --plan morning / list / submit / abort / cleanup)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }

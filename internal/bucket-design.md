@@ -148,6 +148,17 @@ build hooks (`plugins/bucket_url.py` at import time) and scripts
   (one-way mirror, **deletes local extras**); **dry-run by default**, requires
   `--confirm` to apply (protects un-uploaded local files).
 
+- **Incremental by default**: `rclone sync` compares size + checksum (S3 ETag
+  = MD5 for single-part uploads) and only transfers files that differ — a
+  second `pull` with no changes transfers nothing (verified against the real
+  bucket: 0 B re-transferred). Two flags make the repeated sync fast:
+  `--checksum` (default on; compare ETag instead of modtime, so locally-
+  dropped-then-PicList-uploaded files with mismatched mtimes are NOT
+  re-downloaded) and `--fast-list` (default on; one recursive listing instead
+  of per-directory listings — matters for buckets with many objects).
+  `--no-checksum` / `--no-fast-list` opt out (multipart-uploaded objects have
+  non-MD5 ETags and would always transfer under `--checksum`).
+
 - **Proxy**: `RCLONE_HTTP_PROXY` in `.env` (rclone's native `--http-proxy` env
   var) is inherited by the rclone subprocess — use it when R2 is only
   reachable through a proxy. Standard `HTTP(S)_PROXY` works too.
@@ -165,6 +176,39 @@ build hooks (`plugins/bucket_url.py` at import time) and scripts
   # sync only bucket1:/abc/123/** into docs/assets/bucket/, ignore the rest
   uv run poe bucket-sync pull --bucket bucket1 --remote-prefix abc/123
   ```
+
+### `scripts/bucket_check.py` (`poe bucket-check`)
+
+Local dev aid that cross-checks bucket assets against markdown references in
+both directions (dry-run by design — nothing deleted/written; exit 1 when
+issues are found):
+
+- **`[unreferenced]`** — local bucket files no md/html references (cleanup
+  candidates; safe to delete once verified they are not pending uploads).
+- **`[missing]`** — md/html links whose bucket file is absent locally (broken
+  link: the pull hasn't run, the file was never uploaded, or the link is a
+  typo).
+- **`--check-remote`** — checks against the actual bucket objects via `rclone lsf`:
+  `[missing-remote]` = md links whose key is absent from the bucket;
+  `[not-uploaded]` = local files absent from the bucket (pending upload —
+  `bucket-sync pull --confirm` would delete them). `--remote` / `--bucket` /
+  `--remote-prefix` imply `--check-remote` (a bucket-sync-style `--remote r2`
+  never silently degrades to a local-only check).
+
+Reference scope: every `*.md` under `docs/` (drafts included by default — a
+file referenced only by a draft is still referenced; `--no-drafts` to exclude
+them) plus `*.html` under `docs/`/`overrides/`. Links are found by scanning
+for tokens containing the bucket prefix (md link targets, frontmatter image
+fields, inline HTML attributes) and resolved relative to the referencing file
+(site-root `/assets/bucket/…` forms resolve against `docs/`). Tokens that
+resolve outside the bucket local dir are ignored. Filters/output:
+`--only-unreferenced` / `--only-missing` / `--json`.
+
+```bash
+uv run poe bucket-check                 # local mirror check
+uv run poe bucket-check --check-remote  # also check against the bucket
+uv run poe bucket-check --json          # machine-readable output
+```
 
 ### `scripts/bucket_upload.py` (`poe bucket-upload`)
 
@@ -225,7 +269,11 @@ uv run poe bucket-upload --max-size-mb 20 photo.png --confirm
 
 - `poe server-bucket` — `mkdocs serve` + `MKDOCS_BUCKET_ENABLED=true`, preview
   the rewrite locally (src already points at the bucket).
-- `poe bucket-sync pull [--confirm]` — pull the bucket asset dir down.
+- `poe bucket-sync pull [--confirm]` — pull the bucket asset dir down
+  (incremental: `--checksum` + `--fast-list` on by default).
+- `poe bucket-check [--check-remote]` — cross-check bucket assets vs md references
+  (unreferenced local files + missing links; `--check-remote` checks against the
+  bucket itself).
 - `poe bucket-upload [images]` — convert to WebP, rename with
   `extra.bucket.upload.rule` and upload (needs a read-write R2 token).
 
@@ -250,7 +298,9 @@ uv run poe bucket-upload --max-size-mb 20 photo.png --confirm
 
 ```bash
 uv run poe test                    # tests/test_bucket_sync.py: rclone command construction,
-                                   # subdirectory scope, CLI > env > config order (rclone mocked)
+                                   # subdirectory scope, CLI > env > config order, incremental flags
+                                   # (--checksum / --fast-list defaults + opt-outs), rclone mocked;
+                                   # tests/test_bucket_check.py: unreferenced / missing / --check-remote
 ```
 
 ### 2. Local simulation (no credentials, no network)
@@ -284,6 +334,21 @@ rclone config delete fakebucket
 ### 3. Real R2 (developer config)
 
 Follow the steps below once the fake-bucket flow passes.
+
+## Testing the check script
+
+```bash
+uv run poe test   # tests/test_bucket_check.py: token extraction / link resolution /
+                  # unreferenced + missing classification / --only-* filters / --json /
+                  # draft handling / --check-remote rclone lsf (mocked)
+```
+
+Real check against the bucket:
+
+```bash
+uv run poe bucket-check            # local mirror cross-check (orphans + broken links)
+uv run poe bucket-check --check-remote  # + md links vs actual bucket objects (rclone lsf)
+```
 
 ## Testing the upload script
 
