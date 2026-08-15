@@ -80,19 +80,28 @@
     {% if pagination.items %}
     {% if all_tags or archive_url or map_url %}
     <div class="moment-tools">
-        {% if archive_url or map_url %}
+        {% if archive_url or map_url or rankings_url %}
         <p class="moment-archive-link">
+            {# separator before each link except the first shown (namespace
+               avoids the boolean-combinator soup of the old if/sep chain) #}
+            {% set ns = namespace(shown=false) %}
             {% if archive_url %}
+            {% if ns.shown %}<span class="moment-tools-sep">·</span>{% endif %}
             <a href="{{ archive_url }}">📚 Archive</a>
-            {% endif %}
-            {% if archive_url and map_url %}
-            <span class="moment-tools-sep">·</span>
+            {% set ns.shown = true %}
             {% endif %}
             {% if map_url %}
+            {% if ns.shown %}<span class="moment-tools-sep">·</span>{% endif %}
             <a href="{{ map_url }}" class="moment-map-link">
                 {% include ".icons/fontawesome/solid/map-location-dot.svg" %}
                 <span>Map</span>
             </a>
+            {% set ns.shown = true %}
+            {% endif %}
+            {% if rankings_url %}
+            {% if ns.shown %}<span class="moment-tools-sep">·</span>{% endif %}
+            <a href="{{ rankings_url }}">🏆 Rankings</a>
+            {% set ns.shown = true %}
             {% endif %}
         </p>
         {% endif %}

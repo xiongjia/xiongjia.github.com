@@ -7,6 +7,21 @@
         font-size: 1.2em;
         margin: 1.5em 0 0.5em;
     }
+    /* reciprocal link to the rankings page, inline in the page title */
+    .moment-archive__rankings {
+        font-size: 0.55em;
+        font-weight: 400;
+        margin-left: 0.75em;
+        color: var(--md-default-fg-color--light, #757575);
+        white-space: nowrap;
+    }
+    .moment-archive__rankings a {
+        color: var(--md-typeset-a-color, #448aff);
+        text-decoration: none;
+    }
+    .moment-archive__rankings a:hover {
+        text-decoration: underline;
+    }
     .moment-archive__month a {
         color: inherit;
         text-decoration: none;
@@ -92,7 +107,11 @@
     }
 </style>
 <article class="moment-archive">
-    <h1>📚 {{ page.title }}</h1>
+    <h1>📚 {{ page.title }}
+    {% if rankings_url %}
+    <span class="moment-archive__rankings">· <a href="{{ rankings_url }}">🏆 Rankings</a></span>
+    {% endif %}
+    </h1>
     {% for group in archive_groups %}
     <h2 class="moment-archive__month">
         <a href="{{ group.url }}">{{ group.label }}</a>

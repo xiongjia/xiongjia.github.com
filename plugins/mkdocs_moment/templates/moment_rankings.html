@@ -1,0 +1,113 @@
+{# moment_rankings.html — rated moments per category, sorted by score.
+   Archive-style page: one ranked list per category (the meta_fields tags
+   that define a `rating` field). Visits to the same venue (same meta
+   `name`) are merged into one entry scored by their average rating; a
+   ×N badge shows the visit count. Rendered at /{moment_base}/rankings/. #}
+{% extends "main.html" %}
+
+{% block content %}
+<style>
+    .moment-rankings__cat {
+        font-size: 1.2em;
+        margin: 1.5em 0 0.5em;
+    }
+    .moment-rankings__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.35em;
+    }
+    .moment-rankings__entry {
+        display: grid;
+        grid-template-columns: 2.2em 1fr auto;
+        column-gap: 0.9em;
+        row-gap: 0.15em;
+        align-items: baseline;
+        padding: 0.3em 0;
+        border-bottom: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    }
+    .moment-rankings__rank {
+        font-weight: 700;
+        color: var(--md-typeset-a-color, #448aff);
+        font-size: 0.95em;
+    }
+    .moment-rankings__name {
+        color: inherit;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    .moment-rankings__name:hover {
+        color: var(--md-typeset-a-color, #448aff);
+        text-decoration: underline;
+    }
+    .moment-rankings__count {
+        display: inline-block;
+        margin-left: 0.4em;
+        padding: 0.05em 0.45em;
+        font-size: 0.72em;
+        font-weight: 600;
+        line-height: 1.5;
+        color: var(--md-typeset-a-color, #448aff);
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        vertical-align: middle;
+    }
+    .moment-rankings__stars {
+        white-space: nowrap;
+        letter-spacing: 0.05em;
+    }
+    .moment-rankings__meta {
+        font-size: 0.82em;
+        color: var(--md-default-fg-color--light, #757575);
+        white-space: nowrap;
+        /* 4th grid child would auto-place at row 2 / col 1 (the 2.2em rank
+           column) — pin it to a full-width caption line under the entry */
+        grid-column: 1 / -1;
+    }
+    /* narrow screens: rank stays, name + meta stack under it */
+    @media (max-width: 640px) {
+        .moment-rankings__entry {
+            grid-template-columns: 2.2em 1fr;
+        }
+        .moment-rankings__meta {
+            grid-column: 2;
+        }
+    }
+</style>
+<article class="moment-rankings">
+    <h1>🏆 {{ page.title }}</h1>
+    {% for group in ranking_groups %}
+    <h2 class="moment-rankings__cat">{{ group.emoji }} {{ group.title }}</h2>
+    <ol class="moment-rankings__list">
+        {% for entry in group.entries %}
+        {% set latest = entry.moments[0] %}
+        <li class="moment-rankings__entry">
+            <span class="moment-rankings__rank">{{ entry.rank }}</span>
+            <a class="moment-rankings__name" href="{{ latest.permalink }}"
+               title="{{ latest.date.strftime('%Y-%m-%d %H:%M') }}">
+                {{ entry.name | e }}
+                {% if entry.visits > 1 %}
+                <span class="moment-rankings__count"
+                      title="{{ entry.visits }} 次访问">{{ entry.visits }}×</span>
+                {% endif %}
+            </a>
+            <span class="moment-rankings__stars" role="img"
+                  title="{{ entry.rating }}/5" aria-label="{{ entry.rating }} out of 5">
+                {% for star in range(1, 6) %}{{ '★' if star <= entry.rating else '☆' }}{% endfor %}
+            </span>
+            <span class="moment-rankings__meta">
+                {% if entry.visits > 1 %}
+                {{ entry.moments[-1].date.strftime("%Y-%m-%d") }} ~ {{ latest.date.strftime("%Y-%m-%d") }}
+                {% else %}
+                {{ latest.date.strftime("%Y-%m-%d") }}
+                {% endif %}
+                {% if latest.place %} · {{ latest.place | e }}{% endif %}
+            </span>
+        </li>
+        {% endfor %}
+    </ol>
+    {% endfor %}
+</article>
+{% endblock %}

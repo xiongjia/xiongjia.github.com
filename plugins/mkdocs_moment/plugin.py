@@ -237,6 +237,10 @@ class MomentPlugin(BasePlugin):
     # default keeps _moment_meta_items safe before on_config (like _bucket)
     meta_fields: dict = {}
 
+    # rankings pages config — populated in _load_config; class-level default
+    # keeps _ranking_groups safe before on_config (like meta_fields)
+    rankings_cfg: dict = {"enabled": False, "categories": {}}
+
     def _load_config(self, moment_cfg: dict):
         self.config = {
             "path": moment_cfg.get("path", "moment"),
@@ -293,6 +297,17 @@ class MomentPlugin(BasePlugin):
                     )
                 if normalized:
                     self.meta_fields[str(tag)] = normalized
+
+        # rankings pages config (extra.moment.rankings): group rated moments
+        # per category (the meta_fields tags that define a `rating` field) and
+        # list them sorted by score, like the archive page. Optional per-
+        # category title/emoji overrides fall back to the tag name and the
+        # map tag_emoji table.
+        raw_rankings = moment_cfg.get("rankings") or {}
+        self.rankings_cfg = {
+            "enabled": bool(raw_rankings.get("enabled", False)),
+            "categories": dict(raw_rankings.get("categories") or {}),
+        }
 
         # geo / map feature config (extra.moment.map); absent or enabled=false
         # disables the feature entirely (no parsing, no badges, no map page)
@@ -458,6 +473,8 @@ class MomentPlugin(BasePlugin):
             self._inject_template_helpers(context)
             if self._moments:
                 context["archive_url"] = f"{self._moment_base()}/archive/"
+            if self.rankings_cfg.get("enabled") and self._ranking_groups():
+                context["rankings_url"] = f"{self._moment_base()}/rankings/"
             if self.map_cfg.get("enabled") and any(m.has_geo for m in self._moments):
                 context["map_url"] = f"{self._moment_base()}/map/"
                 context["map_cfg"] = self._map_template_cfg()
@@ -517,7 +534,14 @@ class MomentPlugin(BasePlugin):
         self._render_tag_pages(site_dir, template, config, tag_moments)
 
         # archive pages — year/month index + per-month pages
-        self._render_archive_pages(site_dir, config)
+        # rankings data — computed once, shared by the archive + rankings pages
+        ranking_groups = (
+            self._ranking_groups() if self.rankings_cfg.get("enabled") else []
+        )
+        self._render_archive_pages(site_dir, config, ranking_groups)
+
+        # rankings page — rated moments per category, sorted by score
+        self._render_rankings_page(site_dir, config, ranking_groups)
 
         # map page — all geo moments as markers on one map (needs map enabled)
         geo_moments = [m for m in self._moments if m.has_geo]
@@ -612,11 +636,13 @@ class MomentPlugin(BasePlugin):
             output_dir.mkdir(parents=True, exist_ok=True)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
-    def _render_archive_pages(self, site_dir, config):
+    def _render_archive_pages(self, site_dir, config, ranking_groups=None):
         """Render the year/month archive index and one page per month.
 
         Index at /archive/, month pages at /<YYYY>/<MM>/ (slash-separated, so
         they do not collide with hyphenated detail URLs like /2026-07/30-1430/).
+        ``ranking_groups`` (precomputed by `on_post_build`) decides whether the
+        index page links to the rankings page.
         """
         groups = self._archive_groups()
         if not groups:
@@ -670,6 +696,8 @@ class MomentPlugin(BasePlugin):
             }
             for (year, month), items in groups.items()
         ]
+        # reciprocal link to the rankings page when it exists
+        rankings_url = f"{moment_base}/rankings/" if ranking_groups else None
         html = self._minify_html(
             archive_template.render(
                 page=page_proxy,
@@ -677,6 +705,7 @@ class MomentPlugin(BasePlugin):
                 nav=self._nav,
                 base_url=self._base_url,
                 archive_groups=archive_groups,
+                rankings_url=rankings_url,
                 labels=self._labels,
                 **helpers,
             ),
@@ -691,6 +720,144 @@ class MomentPlugin(BasePlugin):
         groups: dict[tuple[int, int], list[Moment]] = {}
         for m in self._moments:  # already sorted desc
             groups.setdefault((m.date.year, m.date.month), []).append(m)
+        return groups
+
+    def _render_rankings_page(self, site_dir, config, ranking_groups=None):
+        """Render /{moment_base}/rankings/ — rated moments per category,
+        sorted by score (like the archive page, but grouped by rating).
+
+        ``ranking_groups`` comes from `on_post_build` (computed once and
+        shared with the archive page); when omitted it is recomputed here."""
+        groups = self._ranking_groups() if ranking_groups is None else ranking_groups
+        if not groups:
+            return
+        helpers = self._inject_template_helpers({})
+        moment_base = helpers["moment_base"]
+        rankings_url = f"{moment_base}/rankings/"
+        page_proxy = _Page("Moment Rankings", rankings_url)
+        template = self._jinja_env.get_template("moment_rankings.html")
+        html = self._minify_html(
+            template.render(
+                page=page_proxy,
+                config=config,
+                nav=self._nav,
+                base_url=self._base_url,
+                ranking_groups=groups,
+                labels=self._labels,
+                **helpers,
+            ),
+            config,
+        )
+        output_dir = site_dir / self.config["path"] / "rankings"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _moment_meta_tag(self, moment: Moment) -> Optional[str]:
+        """First tag whose meta_fields schema matches the moment's `meta:`
+        values, mirroring the tag selection in `_moment_meta_items` (a tag
+        whose fields are all missing from `meta` falls through to the next).
+        Returns None when no schema matches.
+
+        NOTE: first-match-wins — a moment whose earliest matching tag is a
+        non-rating schema (e.g. ``cafe`` with only a ``name`` field) is
+        categorized as that tag and never appears in rankings, even if a
+        later tag (e.g. ``food``) carries a valid rating. Consistent with
+        how `_moment_meta_items` renders such moments."""
+        if not self.meta_fields:
+            return None
+        for tag in moment.tags:
+            fields = self.meta_fields.get(tag)
+            if not fields:
+                continue
+            if any(f["key"] in moment.meta for f in fields):
+                return tag
+        return None
+
+    def _ranking_groups(self) -> list[dict]:
+        """Rated moments grouped per category, then merged per venue
+        (moments sharing the same meta `name`), sorted by aggregated rating
+        desc. Competition ranking so equal scores share a rank.
+
+        A venue's score is the average of its visit ratings (1 decimal,
+        whole numbers stay ints) — re-visits raise/lower it and add a visit
+        count, and ties break by visit count then latest visit. Moments
+        without a meta `name` never merge (each is its own entry, keyed by
+        permalink) so unrelated visits at the same place are not conflated.
+        Returns one group dict per non-empty category:
+        ``{key, title, emoji, entries}`` where each entry is
+        ``{rank, name, rating, visits, moments}`` (``moments`` = the venue's
+        visit moments, newest first)."""
+        if not self.rankings_cfg.get("enabled"):
+            return []
+        rating_tags = [
+            tag
+            for tag, fields in self.meta_fields.items()
+            if any(f["type"] == "rating" for f in fields)
+        ]
+        if not rating_tags:
+            return []
+        # (category, merge-key) -> visits; key = meta name when present
+        # (same venue across visits), else a per-moment key so nameless
+        # moments stay separate. Each visit carries its parsed rating and
+        # name so the sort/aggregation below never re-parses meta.
+        grouped: dict[tuple[str, str], list[tuple[Moment, int, Optional[str]]]] = {}
+        for m in self._moments:
+            tag = self._moment_meta_tag(m)
+            if tag not in rating_tags:
+                continue
+            items = self._moment_meta_items(m)
+            rating = next((it["value"] for it in items if it["type"] == "rating"), None)
+            if rating is None:
+                continue  # invalid/out-of-range ratings were dropped above
+            name = next((it["value"] for it in items if it["key"] == "name"), None)
+            key = str(name) if name else m.permalink  # permalink unique per moment
+            grouped.setdefault((tag, key), []).append((m, rating, name))
+
+        groups = []
+        for tag in rating_tags:  # keep meta_fields config order
+            rated = [visits for (t, _), visits in grouped.items() if t == tag]
+            if not rated:
+                continue
+            # order by RAW average (precise float) but rank by the rounded
+            # value below — two venues showing the same score may still
+            # differ in raw order; visit count and latest visit break ties
+            rated.sort(
+                key=lambda visits: (
+                    -(sum(r for _, r, _ in visits) / len(visits)),
+                    -len(visits),
+                    -max(m.date for m, _, _ in visits).timestamp(),
+                )
+            )
+            entries = []
+            prev_rating: Optional[float] = None
+            prev_rank = 0
+            for i, visits in enumerate(rated, start=1):
+                visits = sorted(visits, key=lambda v: v[0].date, reverse=True)
+                avg = round(sum(r for _, r, _ in visits) / len(visits), 1)
+                if avg == int(avg):
+                    avg = int(avg)
+                rank = prev_rank if avg == prev_rating else i
+                first_m, _first_rating, first_name = visits[0]
+                entries.append(
+                    {
+                        "rank": rank,
+                        "name": first_name or first_m.place or first_m.date.strftime(
+                            "%Y-%m-%d %H:%M"
+                        ),
+                        "rating": avg,
+                        "visits": len(visits),
+                        "moments": [v[0] for v in visits],
+                    }
+                )
+                prev_rating, prev_rank = avg, rank
+            cfg = self.rankings_cfg["categories"].get(tag, {})
+            if not isinstance(cfg, dict):
+                cfg = {}  # tolerate scalar category config (e.g. "food: 美食榜")
+            title = cfg.get("title") or tag
+            emoji = cfg.get("emoji") or self.map_cfg.get("tag_emoji", {}).get(tag, "")
+            groups.append(
+                {"key": tag, "title": title, "emoji": emoji, "entries": entries}
+            )
         return groups
 
     # ------------------------------------------------------------------
