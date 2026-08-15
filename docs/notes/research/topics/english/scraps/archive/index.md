@@ -10,12 +10,17 @@ categories: [dev]
 
 归档按 **ISO 周**分文件（`scraps/archive/<YYYY-www>.md`，如 `2026-w33.md`），
 卡片按条目 `date` 落进对应周文件；只在有归档的周生成，不强制每周都有。
+
+<details class="info" open>
+<summary>归档列表</summary>
+
+<ul>
+<li><a href="./2026-w33/">2026-W33</a></li>
+</ul>
+
+</details>
+
 查询用站内全文搜索；回顾用 `/skill:enu-organize quiz|review`。
-完整流程见[使用指南](../index.md)。
-
-## 归档列表
-
-- [2026-w33](./2026-w33.md)
 
 ## 字段说明
 
