@@ -38,11 +38,11 @@
 
 ## Content
 
-| Command                    | Description                                                                                      |
-| -------------------------- | ------------------------------------------------------------------------------------------------ |
-| `poe create-post "Title"`  | New blog post (draft by default; `--no-draft` publish; `--time` backdate; `--category`/`--tags`) |
-| `poe create-moment "Text"` | New Moment micro-post (`--draft` hidden in prod; `--image`; `--time` backdate)                   |
-| `poe enu add "scrap"`      | English Scraps: append a scrap to the inbox (auto date; `--date` backdate)                       |
+| Command                    | Description                                                                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `poe create-post "Title"`  | New blog post (draft by default; `--no-draft` publish; `--time` backdate; `--category`/`--tags`)                                              |
+| `poe create-moment "Text"` | New Moment micro-post (`--image` auto-WebP + bucket upload; `--tags`; geo `--place/--lng/--lat`; `--draft` hidden in prod; `--time` backdate) |
+| `poe enu add "scrap"`      | English Scraps: append a scrap to the inbox (auto date; `--date` backdate)                                                                    |
 
 ## Health
 
@@ -143,12 +143,33 @@ uv run poe create-post "My Post" --time "yesterday"    # yesterday, same time
 uv run poe create-post "My Post" --time "30 9am"       # this month, 30th 09:00
 uv run poe create-post "My Post" --time "2026-07-30 21:36"
 
-# Moment
+# Moment — short-form micro-posts → docs/moments/YYYY-MM/DD-HHMM.md
 uv run poe create-moment "Hello 👋"
-uv run poe create-moment "With image" --image photo.webp
-uv run poe create-moment "Draft idea" --draft    # hidden in production
-uv run poe create-moment "Backfill" --time "9pm"
-uv run poe create-moment "Lunch" --meta name="Old Shanghai Noodle House" --meta rating=4   # structured metadata (see extra.moment.meta_fields)
+uv run poe create-moment "Draft idea" --draft                    # hidden in production builds
+uv run poe create-moment "Backfill" --time "9pm"                # backdate (same syntax as create-post)
+
+# Images — --image auto-converts to WebP (PNG/JPG/JPEG; quality from extra.optimize_images)
+# and uploads to the bucket (key = extra.bucket.upload.rule); the md link uses a relative
+# assets/bucket/ path that the build rewrites to the bucket URL. Repeat for multiple photos.
+# Needs a read-write R2 token in .env + rclone; on failure the WebP stays staged locally.
+uv run poe create-moment "With image" --image photo.jpg
+uv run poe create-moment "Trip photos" --image a.jpg --image b.png
+uv run poe create-moment "Staged only" --image photo.jpg --no-upload   # convert + local stage, skip upload
+
+# Tags — comma-separated and/or repeatable; `general` always stays first
+uv run poe create-moment "Lunch" --tags food,ramen --tags shanghai
+
+# Geo — place + coordinates (WGS-84 default; --crs gcj02 converts Amap/Baidu coords)
+# EXIF GPS embedded in the photo auto-fills --lng/--lat when omitted
+uv run poe create-moment "Riverfront" --place "徐汇滨江" --lng 121.47 --lat 31.16 --region shanghai
+uv run poe create-moment "Map pin" --image photo.jpg            # lng/lat auto-filled from EXIF (WGS-84)
+
+# Structured metadata — schema driven by extra.moment.meta_fields (e.g. food: name / rating)
+uv run poe create-moment "Lunch" --tags food --meta name="Old Shanghai Noodle House" --meta rating=4
+
+# All together
+uv run poe create-moment "Trip" --image photo.jpg --tags travel,shanghai \
+    --place "徐汇" --lng 121.47 --lat 31.16 --meta name="Museum" --meta rating=5
 
 # English Scraps — jot down English learning scraps
 uv run poe enu add "cumbersome"

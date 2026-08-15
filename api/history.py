@@ -5,7 +5,7 @@ The runtime data dir is ``BOT_API_LOG_DIR`` (default: repo-local
 ``history.jsonl`` lives there and is appended line by line. The file
 rotates by the date of its last write (``history.jsonl.<date>``) and
 rotated files older than ``KEEP_DAYS`` are pruned. The same dir hosts the
-upload staging (``uploads/``) once the uploads feature lands.
+console image upload staging (``uploads/``, see ``api/uploads.py``).
 """
 
 from __future__ import annotations

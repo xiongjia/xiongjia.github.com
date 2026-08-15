@@ -25,7 +25,9 @@
 > - Engine gained sanctioned exceptions: rest-arg template args
 >   (`args: [text...]`) and a `--stage-dir` copy-in flag (uploads, Phase 2).
 > - `create-post` category options are `bits/dev/thought` (not `life`).
-> - Task scheduling (cron) is dropped; attachment uploads moved to Phase 2.
+> - Task scheduling (cron) is dropped; console image uploads landed as a
+>   base64 JSON staging endpoint (`POST /api/upload` → `.bot-api/uploads/`,
+>   no multipart dependency); Telegram attachment uploads remain Phase 2.
 
 ## Goals
 
@@ -86,7 +88,7 @@ xiongjia.github.com/
 │   ├── state.py                      # in-memory: active runs + log queues
 │   ├── history.py                    # file persistence (.bot-api/history.jsonl)
 │   ├── executor.py                   # subprocess scheduling + outcome detection
-│   ├── uploads.py                    # Phase 2: attachment upload (staging)
+│   ├── uploads.py                    # console image upload staging (base64 JSON)
 │   ├── routers/
 │   │   ├── __init__.py
 │   │   ├── bot.py                    # POST /api/bot/run, status, stream, history, abort
@@ -123,7 +125,7 @@ xiongjia.github.com/
 ├── .env.example                      # modified: server + TG_* config
 └── .bot-api/                         # runtime data (git-ignored; BOT_API_LOG_DIR)
     ├── history.jsonl                 # run history (30-day rotation)
-    └── uploads/                      # attachment staging (Phase 2)
+    └── uploads/                      # console upload staging
 ```
 
 ## Dependencies
@@ -199,6 +201,26 @@ implementation (`mkdocs.yml extra.bot.tasks` template tasks + builtins in
 `git_bot.TASKS`); only UI field metadata lives in `api/models.py`, with a
 generic fallback schema for tasks without explicit metadata. The original
 hardcoded `TASK_SCHEMAS` dict was replaced (see plan finding 3).
+
+Field types: `text` / `textarea` / `number` / `date` / `select` (fixed
+`options`) / `checkbox`, `repeat` (list field — the console collects
+multiple added values as an array, forwarded once per value, e.g.
+`--meta=rating=4 --meta=name=x`) and `images` (paired rows — each row is
+`{path, caption}`, rendered as `[path | caption | ×]` per image; forwarded
+as `--image=<path>` / `--image=<path>|<caption>` so a sparse caption stays
+with its image). A checkbox may gate a *group* of siblings
+via comma-separated `enables` (e.g. moment's "Set coordinates" gates
+`lng,lat,crs`); checkbox `emit` picks the flag direction (default
+`unchecked`, e.g. create-post's `--no-draft`, or `checked`, e.g. `--draft`).
+A coordinate gate (lng+lat) renders a "📍 Use my location" button in the
+console that fills them from the browser geolocation API (WGS-84),
+auto-checking the gate. Console forms group fields into tabs via `tab`
+(labels = first-seen order; moment: Content / Images / Location / Meta);
+tasks without `tab` metadata keep a single pane.
+Flags are forwarded as a single token `--flag=value` — the bot spec format
+(`poe bot run "<task> <args>"`) re-splits on whitespace, so flag values ride
+the flag itself; values with spaces are therefore not supported through the
+console/API (labels warn: "no spaces").
 
 ### 2. Run endpoint
 
@@ -301,24 +323,24 @@ Single-page app, pure static files, no build step.
 ┌─────────────────────────────────────────────────────────────┐
 │  🤖 Bot Control Panel    ● online    v0.1.0    API docs     │
 ├────────────────────────┬────────────────────────────────────┤
-│  📋 Tasks              │  📡 Live Output                    │
-│  ⚖️ weight             │  ┌────────────────────────────┐    │
-│  🏃 sync-running       │  │ [01:09:02] worktree ready  │    │
-│  📝 enu                │  │ [01:09:05] poe fmt ... ok  │    │
-│  💬 text-moment        │  │ [01:09:14] PR #142 (link)  │    │
-│  ❤️ health-summary     │  └────────────────────────────┘    │
-│  📰 create-post        │                                    │
-│                        │  📜 Recent Runs (clickable)        │
-│  ───────────────────── │  ┌────────────────────────────┐    │
-│  ⚡ Execute             │  │ 01:09 weight 82.5 submitted│    │
-│  Weight (kg) [82.5  ]  │  │ 08:15 sync-running failed  │    │
-│  Date (optional) [    ]│  │ ... (tooltip: last log)    │    │
-│  [✓] Handoff           │  └────────────────────────────┘    │
-│  [▶ Run Bot]           │                                    │
-└────────────────────────┴────────────────────────────────────┘
-```
-
-### Interaction flow
+│  📋 Tasks               │    📡 Live Output                           │
+│  💬 text-moment         │    ┌────────────────────────────┐          │
+│  ⚖️ weight             │    │ [01:09:02] worktree ready  │          │
+│  🏃 sync-running        │    │ [01:09:05] poe fmt ... ok  │          │
+│  📝 enu                 │    │ [01:09:14] PR #142 (link)  │          │
+│  ❤️ health-summary     │    └────────────────────────────┘          │
+│  📰 create-post         │                                            │
+│                        │    📜 Recent Runs (clickable)               │
+│  ───────────────────── │    ┌────────────────────────────┐          │
+│  ⚡ Execute (moment)    │    │ 01:09 weight 82.5 submitted│          │
+│  Content [hello …   ]  │    │ 08:15 sync-running failed  │          │
+│  Time [   ] Tags [   ] │    │ ... (tooltip: last log)    │          │
+│  Image [photo.jpg] ＋   │    └────────────────────────────┘          │
+│  Meta [rating=4 ] ＋    │                                            │
+│  [✓] draft [ ] no-up   │                                            │
+│  [ ] Set coordinates … │                                            │
+│  [✓] Handoff [▶ Run Bot]│                                            │
+└────────────────────────┴────────────────────────────────────────────┘### Interaction flow
 
 1. **Click a task** → the form renders dynamically from
    `GET /api/schema/{task}`
@@ -333,15 +355,26 @@ Single-page app, pure static files, no build step.
 ### Frontend files
 
 ```
+
 api/static/
-├── index.html          # skeleton + task list (from /api/tasks)
+├── index.html # skeleton + task list (from /api/tasks)
 ├── css/
-│   └── app.css         # dark theme (GitHub dark style)
+│ └── app.css # dark theme (GitHub dark style)
 └── js/
-    └── app.js          # task switching, form rendering, SSE, history
+└── app.js # task switching, form rendering, SSE, history
+
 ```
 
 **No build tooling**: plain native JS (ES2020), plenty for modern browsers.
+
+### Console verification (no JS test harness)
+
+The console has no automated JS tests — form rendering, tabs, paired image
+rows, geolocation and collection are verified via headless-Chrome DOM dumps
+(per AGENTS.md vision guidance): serve the app (`poe api-server`), load a
+temp copy of `index.html` that auto-selects the task and drives the UI,
+then assert on `document.title` / the rendered DOM. The same dump approach
+checks the assembled `fields` payload against `assemble_args` expectations.
 
 ## Telegram Bot Design (Phase 2)
 
@@ -364,24 +397,26 @@ console.
 ### Multi-step dialog example (/post)
 
 ```
+
 User: /post
-Bot:  📰 New Post
-      Step 1/3: Enter the post title
+Bot: 📰 New Post
+Step 1/3: Enter the post title
 
 User: 关于 FastAPI 的笔记
-Bot:  Step 2/3: Choose a category
-      [bits] [dev] [thought]
+Bot: Step 2/3: Choose a category
+[bits] [dev] [thought]
 
 User: dev
-Bot:  Step 3/3: Save as draft?
-      [Yes] [No]
+Bot: Step 3/3: Save as draft?
+[Yes] [No]
 
 User: Yes
-Bot:  ✅ Submitted
-      Task: create-post "关于 FastAPI 的笔记" --category dev --draft
-      Run ID: abc123
-      Progress: /status
-```
+Bot: ✅ Submitted
+Task: create-post "关于 FastAPI 的笔记" --category dev --draft
+Run ID: abc123
+Progress: /status
+
+````
 
 ### Implementation: ConversationHandler
 
@@ -422,7 +457,7 @@ post_conv = ConversationHandler(
     },
     fallbacks=[CommandHandler("cancel", cancel)],
 )
-```
+````
 
 ### Execution
 
@@ -642,6 +677,12 @@ server {
 
 ## Risks & Constraints
 
+- **No-auth upload endpoint**: `POST /api/upload` (no auth, like the rest
+  of the API) lets anyone who can reach the server write files — ≤25 MB
+  each, base64-decoded — into `BOT_API_LOG_DIR/uploads/` (name-sanitized,
+  extension-whitelisted, stale-pruned after 30 days). The console only
+  exposes it locally; if the port is ever tunneled/public, gate it behind a
+  reverse-proxy auth / firewall first (see `.env.example` warning).
 - **Single-process limit**: `active_runs` lives in memory; a restart loses
   in-flight runs (the history file survives). Redis can replace it later if
   high availability is needed.

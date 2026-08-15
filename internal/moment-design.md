@@ -99,9 +99,29 @@ keeping the directory per-month for manageable file counts.
 
 ### Image placement
 
-Images go in the same month directory, referenced with `./` paths.
-Plugin auto-converts relative paths to site-absolute URLs during
-Markdown -> HTML rendering.
+`create-moment --image` handles images automatically: the source is converted
+to WebP (PNG/JPG/JPEG at `extra.optimize_images.quality`; .webp sources are
+copied as-is), staged under `docs/assets/bucket/` (git-ignored preview copy)
+with the `extra.bucket.upload.rule` key, uploaded to the bucket via rclone
+(`--no-upload` stages locally only) and referenced from the moment with a
+local relative path:
+
+```
+md:  ![Image](../../assets/bucket/2026/08/30_143012_myphoto.webp)
+
+     docs/assets/bucket/2026/08/30_143012_myphoto.webp   ← local copy (git-ignored)
+     built: https://<base_url>/2026/08/30_143012_myphoto.webp
+```
+
+The build rewrites `assets/bucket/` links to the bucket `base_url` (see
+internal/bucket-design.md); the moment plugin applies the same rewrite to
+moment bodies (`on_page_markdown` → `bucket_rewrite_html`), so detail pages,
+timeline thumbnails, popups and OG images all point at the bucket. Photos
+with EXIF GPS auto-fill `lng`/`lat` (WGS-84) unless explicit `--lng/--lat`
+are given.
+
+Images placed by hand still go in the same month directory with `./` paths
+(plugin auto-converts relative paths to site-absolute URLs).
 
 A caption is added by putting a plain-text line right after the image
 line — the plugin's custom markdown extension wraps the pair in
@@ -110,7 +130,7 @@ line — the plugin's custom markdown extension wraps the pair in
 ```
 moment/2026-07/
 ├── 30-1430.md
-├── 30-1430-screenshot.webp    ← unique naming to avoid conflicts
+├── 30-1430-screenshot.webp    ← hand-placed image (./ path)
 └── 30-2130-photo.jpg
 ```
 
@@ -546,7 +566,11 @@ docs/moments/
 ```bash
 # Create a new moment
 uv run poe create-moment "Content text"
-uv run poe create-moment "Content" --image photo.jpg
+uv run poe create-moment "Content" --image photo.jpg           # WebP + bucket upload (EXIF GPS → lng/lat)
+uv run poe create-moment "Content" --image "a.jpg|第一张" --image b.png  # inline per-image caption
+uv run poe create-moment "Content" --image a.jpg --image b.png --no-upload  # stage locally only
+uv run poe create-moment "Content" --tags food,film            # tags (comma-separated / repeatable)
+uv run poe create-moment "Content" --place "徐汇" --lng 121.47 --lat 31.16 --region shanghai
 uv run poe create-moment "Content" --draft   # hidden in production
 uv run poe create-moment "Content" --meta name="Old Shanghai Noodle House" --meta rating=4
 
@@ -666,5 +690,7 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
 - `_render_map_page` / `_build_map_region_data` / `_cluster_moments` build the
   clustered per-region marker data; templates `moment_map.html` and
   `moment_detail.html` host the widget scripts.
-- `scripts/create_moment.py` supports `--place/--lng/--lat/--crs/--region`
-  (`--crs gcj02` prints the converted WGS-84 coords).
+- `scripts/create_moment.py` supports `--tags`, images (`--image` auto-WebP +
+  bucket upload, `--no-upload`), geo (`--place/--lng/--lat/--crs/--region`)
+  and EXIF GPS extraction (`--image` fills `lng`/`lat` when absent;
+  `--crs gcj02` prints the converted WGS-84 coords).

@@ -35,7 +35,7 @@ uv run poe build                   # production build
 uv run poe build-drafts            # build including drafts (MKDOCS_INCLUDE_DRAFTS=true)
 uv run poe build-selfhost          # self-hosted build
 uv run poe create-post "Title"     # new blog post (default: draft)
-uv run poe create-moment "Text"    # new Moment micro-post (--draft hides in prod)
+uv run poe create-moment "Text"    # new Moment micro-post (--draft hides in prod; --image auto-WebP+bucket)
 uv run poe fmt                     # format Python + Markdown
 uv run poe lint-py                 # Python lint check (ruff)
 uv run poe test                    # run unit tests (pytest, tests/)

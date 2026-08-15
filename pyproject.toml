@@ -65,7 +65,7 @@ bucket-upload = { cmd = "python scripts/bucket_upload.py", help = "Upload images
 rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
 bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an isolated worktree and publish as a PR (e.g. poe bot \"weight 82\" / --plan morning / list / submit / abort / cleanup)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
-create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: uv run poe create-moment 'Content' --time '9am'" }
+create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: --image auto-WebP+bucket, --tags, --place/--lng/--lat (EXIF GPS auto), --draft, --time" }
 enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap to the inbox: uv run poe enu add 'cumbersome'" }
 test = { cmd = "uv run --extra test --extra api pytest -q", help = "Run unit tests (pytest, test+api extras): uv run poe test" }
 api-server = { cmd = "python scripts/api_server.py", help = "Start remote API (dev): uv run poe api-server" }

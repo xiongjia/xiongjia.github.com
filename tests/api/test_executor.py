@@ -11,9 +11,9 @@ from api.state import MERGED, SUBMITTED, BotRun, active_runs
 
 def test_task_names_curated_usage_order():
     # console quick-task pane: curated usage order, not the full engine
-    # registry — health-summary / text-moment / create-post stay runnable
-    # via /api/bot/run but are hidden from the list
-    assert task_names() == ["weight", "enu", "sync-running"]
+    # registry — health-summary / create-post stay runnable via /api/bot/run
+    # but are hidden from the list
+    assert task_names() == ["text-moment", "weight", "enu", "sync-running"]
 
 
 def test_assemble_argv_flat():
@@ -48,7 +48,7 @@ def test_assemble_argv_stage_dir():
 
 def test_assemble_args_positional_and_flag():
     args = assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"})
-    assert args == ["82.5", "--date", "2026-08-14"]
+    assert args == ["82.5", "--date=2026-08-14"]
 
 
 def test_assemble_args_optional_omitted():
@@ -72,11 +72,11 @@ def test_weight_date_is_gated_date_picker():
     # date without the gate checked → dropped server-side too (the API
     # contract matches the console's gated UI)
     assert assemble_args("weight", {"value": 82.5, "date": "2026-08-14"}) == ["82.5"]
-    # checkbox checked + picked date → --date <iso>
+    # checkbox checked + picked date → --date=<iso> (single token — the bot
+    # spec format re-splits on whitespace, so flag values ride the flag)
     assert assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"}) == [
         "82.5",
-        "--date",
-        "2026-08-14",
+        "--date=2026-08-14",
     ]
 
 
@@ -139,6 +139,203 @@ def test_schema_fallback_for_template_task():
     assert s is not None
     assert s.fields[0].name == "content"
     assert s.fields[0].arg == 0
+
+
+# ---------------------------------------------------------------------------
+# text-moment (create_moment.py) schema — full parameter surface
+# ---------------------------------------------------------------------------
+
+
+def _moment_schema() -> dict[str, object]:
+    return {f.name: f for f in task_schema("text-moment").fields}
+
+
+def test_text_moment_schema_exposes_all_parameters():
+    """The moment form exposes every create_moment.py option."""
+    s = _moment_schema()
+    assert {f"{n}:{f.type}" for n, f in s.items()} >= {
+        "content:textarea",
+        "time:text",
+        "slug:text",
+        "tags:text",
+        "images:images",
+        "no_upload:checkbox",
+        "draft:checkbox",
+        "place:text",
+        "set_gps:checkbox",
+        "lng:number",
+        "lat:number",
+        "crs:select",
+        "region:text",
+        "meta:repeat",
+    }
+    assert s["lng"].arg == "--lng"
+    assert s["lat"].arg == "--lat"
+    assert s["tags"].arg == "--tags"
+    assert s["images"].arg is None  # paired rows are assembled specially
+    assert s["meta"].arg == "--meta"
+    assert s["images"].upload is True  # browser file-picker stages via /api/upload
+    assert s["meta"].upload is False
+
+
+def test_text_moment_tab_grouping():
+    """Fields are grouped into console tabs; order = first-seen."""
+    s = task_schema("text-moment")
+    tabs = {}
+    for f in s.fields:
+        if f.tab:
+            tabs.setdefault(f.tab, []).append(f.name)
+    assert list(tabs) == ["Content", "Images", "Location", "Meta"]
+    assert tabs["Content"] == ["content", "time", "slug", "tags", "draft"]
+    assert tabs["Images"] == ["images", "no_upload"]
+    assert tabs["Location"] == ["place", "set_gps", "lng", "lat", "crs", "region"]
+    assert tabs["Meta"] == ["meta"]
+
+
+def test_non_moment_tasks_have_no_tabs():
+    """Other tasks keep the single-pane form (no tab metadata)."""
+    for task in ["weight", "enu", "create-post"]:
+        s = task_schema(task)
+        assert all(f.tab is None for f in s.fields)
+
+
+def test_text_moment_assemble_full():
+    """Every filled option maps to the engine flag list."""
+    args = assemble_args(
+        "text-moment",
+        {
+            "content": "hello world",
+            "time": "9pm",
+            "slug": "my-slug",
+            "tags": "food,film",
+            "images": [
+                {"path": "a.jpg", "caption": "第一张"},
+                {"path": "b.png"},  # no caption — sparse stays aligned
+            ],
+            "no_upload": True,
+            "draft": True,
+            "place": "徐汇",
+            "set_gps": True,
+            "lng": 121.47,
+            "lat": 31.16,
+            "crs": "gcj02",
+            "region": "shanghai",
+            "meta": ["name=La_Mian", "rating=4"],
+        },
+    )
+    assert args == [
+        "hello world",
+        "--time=9pm",
+        "--slug=my-slug",
+        "--tags=food,film",
+        "--draft",
+        "--image=a.jpg|第一张",
+        "--image=b.png",
+        "--no-upload",
+        "--place=徐汇",
+        "--lng=121.47",
+        "--lat=31.16",
+        "--crs=gcj02",
+        "--region=shanghai",
+        "--meta=name=La_Mian",
+        "--meta=rating=4",
+    ]
+
+
+def test_text_moment_gps_gate_drops_coords():
+    """Unchecked "Set coordinates" drops lng/lat/crs server-side too."""
+    args = assemble_args(
+        "text-moment",
+        {"content": "x", "lng": 121.47, "lat": 31.16, "crs": "gcj02"},
+    )
+    assert args == ["x"]
+
+
+def test_text_moment_checked_flags_emit_only_when_checked():
+    """--draft / --no-upload are emitted when checked (emit: checked)."""
+    assert assemble_args("text-moment", {"content": "x"}) == ["x"]
+    assert assemble_args("text-moment", {"content": "x", "draft": False}) == ["x"]
+    assert assemble_args("text-moment", {"content": "x", "draft": True}) == [
+        "x",
+        "--draft",
+    ]
+    assert assemble_args("text-moment", {"content": "x", "no_upload": True}) == [
+        "x",
+        "--no-upload",
+    ]
+    # string truthy/falsy spellings behave like the console checkbox
+    assert assemble_args("text-moment", {"content": "x", "draft": "false"}) == ["x"]
+    assert assemble_args("text-moment", {"content": "x", "draft": "true"}) == [
+        "x",
+        "--draft",
+    ]
+
+
+def test_text_moment_images_accepts_scalar_and_inline():
+    """A raw API client may send a scalar string or the inline path|caption."""
+    assert assemble_args("text-moment", {"content": "x", "images": "photo.jpg"}) == [
+        "x",
+        "--image=photo.jpg",
+    ]
+    assert assemble_args("text-moment", {"content": "x", "images": []}) == ["x"]
+    assert assemble_args("text-moment", {"content": "x", "images": ["a.jpg|c1"]}) == [
+        "x",
+        "--image=a.jpg|c1",
+    ]
+
+
+def test_assemble_args_rejects_spaces_in_flag_values():
+    """A flag value with whitespace would be split by the bot spec format
+    and silently corrupt the moment content — block with a clear error."""
+    with pytest.raises(ValueError, match="must not contain spaces"):
+        assemble_args("text-moment", {"content": "x", "time": "2026-08-09 14:30"})
+    with pytest.raises(ValueError, match="must not contain spaces"):
+        assemble_args("text-moment", {"content": "x", "place": "Xuhui Riverside"})
+    with pytest.raises(ValueError, match="must not contain spaces"):
+        assemble_args(
+            "text-moment", {"content": "x", "images": [{"path": "a.jpg", "caption": "two words"}]}
+        )
+    with pytest.raises(ValueError, match="must not contain spaces"):
+        assemble_args("text-moment", {"content": "x", "meta": ["name=La Mian"]})
+    # space-free values still pass
+    assert assemble_args("text-moment", {"content": "x", "time": "2026-08-09T14:30"}) == [
+        "x",
+        "--time=2026-08-09T14:30",
+    ]
+
+
+def test_validate_schemas_accepts_comma_enables():
+    """A checkbox may gate a group (lng,lat,crs) via comma-separated enables."""
+    from api import models
+
+    assert models.validate_schemas() is None  # the real moment schema validates
+
+
+def test_validate_schemas_rejects_unknown_comma_enables(monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "use_date", "type": "checkbox", "enables": "date,nope"},
+                {"name": "date", "type": "date"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match="enables unknown field 'nope'"):
+        models.validate_schemas()
+
+
+def test_field_schema_rejects_bad_emit():
+    """A checkbox ``emit`` typo must fail fast, not silently invert the flag."""
+    from pydantic import ValidationError
+
+    from api import models
+
+    with pytest.raises(ValidationError, match="emit"):
+        models.FieldSchema(name="draft", type="checkbox", label="D", arg="--draft", emit="checkedd")
 
 
 def test_validate_schemas_catches_task_drift(monkeypatch):
