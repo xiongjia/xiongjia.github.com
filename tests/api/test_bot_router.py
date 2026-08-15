@@ -93,6 +93,55 @@ def test_tasks_and_schema(client):
     assert client.get("/api/schema/nope").status_code == 404
 
 
+def test_upload_images(client, tmp_path, monkeypatch):
+    from api import uploads as up
+
+    monkeypatch.setattr(up, "UPLOAD_DIR", tmp_path / "uploads")
+    import base64
+
+    payload = {
+        "files": [
+            {"name": "photo.png", "data": base64.b64encode(b"PNGDATA").decode()},
+            {"name": "My Photo.jpg", "data": base64.b64encode(b"JPEG").decode()},
+        ]
+    }
+    r = client.post("/api/upload", json=payload)
+    assert r.status_code == 200
+    paths = r.json()["files"]
+    assert len(paths) == 2
+    assert all(p.startswith(str(tmp_path / "uploads")) for p in paths)
+    assert all(" " not in p for p in paths)  # spec-safe: no spaces
+    saved = sorted((tmp_path / "uploads").iterdir())
+    # the staging file keeps the author's name — no timestamp/uuid prefix
+    assert {s.name for s in saved} == {"my_photo.jpg", "photo.png"}
+
+
+def test_upload_rejects_unsupported(client):
+    import base64
+
+    r = client.post(
+        "/api/upload",
+        json={"files": [{"name": "notes.txt", "data": base64.b64encode(b"x").decode()}]},
+    )
+    assert r.status_code == 400
+    assert "unsupported image type" in r.json()["detail"]
+
+
+def test_upload_rejects_invalid_base64(client):
+    r = client.post("/api/upload", json={"files": [{"name": "x.png", "data": "!!"}]})
+    assert r.status_code == 400
+    assert "invalid base64" in r.json()["detail"]
+
+
+def test_upload_empty_list(client, tmp_path, monkeypatch):
+    from api import uploads as up
+
+    monkeypatch.setattr(up, "UPLOAD_DIR", tmp_path / "uploads")
+    r = client.post("/api/upload", json={"files": []})
+    assert r.status_code == 200
+    assert r.json() == {"files": []}
+
+
 def test_run_and_status(client):
     r = client.post("/api/bot/run", json={"task": "weight", "fields": {"value": 82.5}})
     assert r.status_code == 200

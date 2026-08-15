@@ -10,7 +10,7 @@ The console task *list* is a curated subset of the registry in usage order
 
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
@@ -35,14 +35,39 @@ class FieldSchema(BaseModel):
     options: list[str] | None = None
     step: float | None = None
     # engine-arg mapping: int = positional index, str = flag forwarded as
-    # ``--flag value`` (checkbox: emitted when unchecked, e.g. --no-draft).
-    # A checkbox with ``enables`` gates a sibling field (UI); it may also
-    # carry an ``arg``, emitted when unchecked like any checkbox flag — the
-    # gate itself is enforced in assemble_args.
+    # ``--flag=value`` — a single token, because the bot spec format
+    # (``poe bot run "<task> <args>"``) re-splits on whitespace and a rest
+    # consumer (text-moment) would absorb bare ``--flag value`` pairs into
+    # the free text (repeat fields forward one ``--flag=value`` per
+    # collected value — arrays from the console UI, e.g. --image / --meta).
+    # Checkbox: the flag is emitted per *emit* below.
     arg: int | str | None = None
-    # checkbox-only: name of a sibling field this checkbox gates in the UI
-    # (the sibling starts disabled and is cleared until the box is checked)
+    # checkbox-only: names of sibling fields this checkbox gates in the UI
+    # (comma-separated for a group, e.g. "lng,lat,crs"); the siblings start
+    # disabled and are cleared until the box is checked — the gate itself is
+    # enforced in assemble_args.
     enables: str | None = None
+    # checkbox-only: when to emit ``arg`` — "unchecked" (default: emit when
+    # the box is OFF, e.g. --no-draft) or "checked" (emit when ON, e.g.
+    # --draft / --no-upload). Literal: a typo fails fast at schema build
+    # instead of silently inverting the checkbox behavior.
+    emit: Literal["unchecked", "checked"] = "unchecked"
+    # console-only: form tab this field belongs to (fields without a tab go
+    # to a single "General" pane). Tab order = first-seen order; the string
+    # is the tab's display label.
+    tab: str | None = None
+    # console-only: repeat fields with a browser file-picker — files are
+    # staged via POST /api/upload and the returned paths fill the values
+    upload: bool = False
+
+
+class UploadFileItem(BaseModel):
+    name: str
+    data: str  # base64 payload (no ``data:`` prefix)
+
+
+class UploadRequest(BaseModel):
+    files: list[UploadFileItem] = Field(default_factory=list)
 
 
 class TaskSchema(BaseModel):
@@ -86,8 +111,114 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
         },
     ],
     "text-moment": [
-        {"name": "content", "type": "textarea", "label": "Content", "required": True, "arg": 0},
-        {"name": "time", "type": "text", "label": "Time (optional)", "arg": "--time"},
+        {
+            "name": "content",
+            "type": "textarea",
+            "label": "Content",
+            "required": True,
+            "arg": 0,
+            "tab": "Content",
+        },
+        {
+            "name": "time",
+            "type": "text",
+            "label": "Time (no spaces: 9am / 21:30 / 2026-08-09T14:30)",
+            "arg": "--time",
+            "tab": "Content",
+        },
+        {
+            "name": "slug",
+            "type": "text",
+            "label": "Slug (optional, no spaces)",
+            "arg": "--slug",
+            "tab": "Content",
+        },
+        {
+            "name": "tags",
+            "type": "text",
+            "label": "Tags (comma-separated, e.g. food,film)",
+            "arg": "--tags",
+            "tab": "Content",
+        },
+        {
+            "name": "draft",
+            "type": "checkbox",
+            "label": "Save as draft (hidden in production)",
+            "default": False,
+            "arg": "--draft",
+            "emit": "checked",
+            "tab": "Content",
+        },
+        {
+            "name": "images",
+            "type": "images",
+            "label": "Images (each row: path + optional caption)",
+            "tab": "Images",
+            "upload": True,
+        },
+        {
+            "name": "no_upload",
+            "type": "checkbox",
+            "label": "Stage image locally only (skip bucket upload)",
+            "default": False,
+            "arg": "--no-upload",
+            "emit": "checked",
+            "tab": "Images",
+        },
+        {
+            "name": "place",
+            "type": "text",
+            "label": "Place (display text, no spaces)",
+            "arg": "--place",
+            "tab": "Location",
+        },
+        {
+            "name": "set_gps",
+            "type": "checkbox",
+            "label": "Set coordinates",
+            "default": False,
+            "enables": "lng,lat,crs",
+            "tab": "Location",
+        },
+        {
+            "name": "lng",
+            "type": "number",
+            "label": "Longitude",
+            "step": 0.000001,
+            "arg": "--lng",
+            "tab": "Location",
+        },
+        {
+            "name": "lat",
+            "type": "number",
+            "label": "Latitude",
+            "step": 0.000001,
+            "arg": "--lat",
+            "tab": "Location",
+        },
+        {
+            "name": "crs",
+            "type": "select",
+            "label": "Coordinate system",
+            "options": ["wgs84", "gcj02"],
+            "default": "wgs84",
+            "arg": "--crs",
+            "tab": "Location",
+        },
+        {
+            "name": "region",
+            "type": "text",
+            "label": "Map region (optional: shanghai)",
+            "arg": "--region",
+            "tab": "Location",
+        },
+        {
+            "name": "meta",
+            "type": "repeat",
+            "label": "Meta KEY=VALUE (no spaces, e.g. rating=4)",
+            "arg": "--meta",
+            "tab": "Meta",
+        },
     ],
     "enu": [
         {"name": "word", "type": "text", "label": "Word / Phrase", "required": True, "arg": 0},
@@ -117,7 +248,12 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
 
 # Console quick-task pane: most-used first. Entries missing from the engine
 # registry are skipped, so the list never advertises a task the bot can't run.
-_TASK_ORDER = ["weight", "enu", "sync-running"]
+_TASK_ORDER = ["text-moment", "weight", "enu", "sync-running"]
+
+
+def _split_names(value: str) -> list[str]:
+    """Split a comma-separated field-name list (checkbox ``enables`` targets)."""
+    return [part.strip() for part in value.split(",") if part.strip()]
 
 
 def validate_schemas() -> None:
@@ -140,24 +276,25 @@ def validate_schemas() -> None:
             enables = f.get("enables")
             if enables is None:
                 continue
-            if enables not in by_name:
-                raise RuntimeError(
-                    f"task {task!r}: field {f['name']!r} enables unknown field {enables!r}"
-                )
-            # a gated field is an optional option by definition — required +
-            # gate is contradictory (assemble_args would silently drop it)
-            if by_name[enables].get("required"):
-                raise RuntimeError(f"task {task!r}: gated field {enables!r} must not be required")
+            for name in _split_names(enables):
+                if name not in by_name:
+                    raise RuntimeError(
+                        f"task {task!r}: field {f['name']!r} enables unknown field {name!r}"
+                    )
+                # a gated field is an optional option by definition — required +
+                # gate is contradictory (assemble_args would silently drop it)
+                if by_name[name].get("required"):
+                    raise RuntimeError(f"task {task!r}: gated field {name!r} must not be required")
 
 
 validate_schemas()
 
 
 def task_names() -> list[str]:
-    """Console task list: curated usage order (weight → enu → sync-running).
+    """Console task list: curated usage order (text-moment → weight → …).
 
-    Other engine tasks (health-summary, text-moment, create-post) remain
-    valid for ``/api/bot/run`` but are hidden from this list.
+    Other engine tasks (health-summary, create-post) remain valid for
+    ``/api/bot/run`` but are hidden from this list.
     """
     return [name for name in _TASK_ORDER if name in TASKS]
 
@@ -197,6 +334,22 @@ def _as_bool(value: Any) -> bool:
     return bool(value)
 
 
+def _no_space(value: str, fname: str) -> None:
+    """Reject whitespace in a flag value that rides the spec string.
+
+    The bot spec format (``poe bot run "<task> <args>"``) re-splits on
+    whitespace — ``--time=2026-08-09 14:30`` would silently drop the
+    ``14:30`` into the moment text. Blocking with a clear message beats
+    silent content corruption; the console labels already say "no spaces".
+    """
+    if any(ch.isspace() for ch in value):
+        raise ValueError(
+            f"field {fname!r}: value must not contain spaces — the bot spec "
+            "format re-splits on whitespace and would corrupt the arguments "
+            "(use e.g. 2026-08-09T14:30 for times, no spaces elsewhere)"
+        )
+
+
 def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
     """Map schema field values → the engine arg list.
 
@@ -210,12 +363,12 @@ def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
     if schema is None:
         raise ValueError(f"unknown task {task!r}")
     # checkbox gates: names of fields whose gate checkbox is unchecked (e.g.
-    # weight's date is only sent when "Specify date" is checked)
-    gated_off = {
-        g.enables
-        for g in schema.fields
-        if g.type == "checkbox" and g.enables and not _as_bool(fields.get(g.name, g.default))
-    }
+    # weight's date is only sent when "Specify date" is checked; moment
+    # lng/lat/crs only when "Set coordinates" is checked)
+    gated_off: set[str] = set()
+    for g in schema.fields:
+        if g.type == "checkbox" and g.enables and not _as_bool(fields.get(g.name, g.default)):
+            gated_off.update(_split_names(g.enables))
     positional: list[str] = []
     flags: list[str] = []
     skipped_positional = False
@@ -227,6 +380,32 @@ def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
                 skipped_positional = True
             continue
         value = fields.get(f.name, f.default)
+        if f.type == "images":
+            # paired rows [{path, caption}] → one --image per row, the
+            # caption attached inline (``path|caption``) so a sparse caption
+            # stays with its image. The pairing contract is implemented in
+            # three places — keep them in sync:
+            #   1. JS  console collectFields (api/static/js/app.js) emits
+            #      [{path, caption}] from the paired-row UI
+            #   2. this branch folds caption into ``path|caption``
+            #   3. create_moment.py partitions on the FIRST ``|``
+            rows = value if isinstance(value, list) else ([value] if value else [])
+            for row in rows:
+                if isinstance(row, dict):
+                    path = str(row.get("path") or "").strip()
+                    cap = str(row.get("caption") or "").strip()
+                elif isinstance(row, str) and "|" in row:
+                    path, _, cap = row.partition("|")
+                    path, cap = path.strip(), cap.strip()
+                else:
+                    path, cap = str(row or "").strip(), ""
+                if not path:
+                    continue
+                _no_space(path, f.name)
+                if cap:
+                    _no_space(cap, f"{f.name}.caption")
+                flags.append(f"--image={path}" if not cap else f"--image={path}|{cap}")
+            continue
         if isinstance(f.arg, int):
             if value is None or value == "":
                 if f.required:
@@ -240,8 +419,18 @@ def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
             positional.append(str(value))
         elif isinstance(f.arg, str):
             if f.type == "checkbox":
-                if not _as_bool(value):
+                checked = _as_bool(value)
+                # emit picks the direction: flag when checked, or when
+                # unchecked (default — create-post's --no-draft pattern)
+                if checked == (f.emit == "checked"):
                     flags.append(f.arg)
+            elif f.type == "repeat":
+                values = value if isinstance(value, list) else [value]
+                for v in values:
+                    if v is not None and str(v) != "":
+                        _no_space(str(v), f.name)
+                        flags.append(f"{f.arg}={v}")
             elif value is not None and value != "":
-                flags += [f.arg, str(value)]
+                _no_space(str(value), f.name)
+                flags.append(f"{f.arg}={value}")
     return positional + flags

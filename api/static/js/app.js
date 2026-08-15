@@ -79,6 +79,50 @@ async function selectTask(name, li) {
 function renderFields(fields) {
   const box = $("fields");
   box.textContent = "";
+  // group by schema tab (fields without a tab collapse into one pane)
+  const tabs = new Map();
+  for (const f of fields) {
+    const tab = f.tab || "General";
+    if (!tabs.has(tab)) tabs.set(tab, []);
+    tabs.get(tab).push(f);
+  }
+  if (tabs.size <= 1) {
+    renderFieldList(box, fields);
+  } else {
+    const bar = document.createElement("div");
+    bar.className = "tab-bar";
+    [...tabs.keys()].forEach((tab, i) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "tab-btn" + (i === 0 ? " active" : "");
+      btn.textContent = tab;
+      btn.dataset.tab = tab;
+      btn.addEventListener("click", () => switchTab(bar, box, tab));
+      bar.appendChild(btn);
+    });
+    box.appendChild(bar);
+    [...tabs.keys()].forEach((tab, i) => {
+      const pane = document.createElement("div");
+      pane.className = "tab-pane" + (i === 0 ? " active" : "");
+      pane.dataset.pane = tab;
+      renderFieldList(pane, tabs.get(tab));
+      box.appendChild(pane);
+    });
+  }
+  pairGatedFields(box);
+  syncGatedFields(box);
+}
+
+function switchTab(bar, box, tab) {
+  for (const btn of bar.querySelectorAll(".tab-btn")) {
+    btn.classList.toggle("active", btn.dataset.tab === tab);
+  }
+  for (const pane of box.querySelectorAll(".tab-pane")) {
+    pane.classList.toggle("active", pane.dataset.pane === tab);
+  }
+}
+
+function renderFieldList(container, fields) {
   for (const f of fields) {
     const labelText = f.label + (f.required ? " *" : "");
     const label = document.createElement("label");
@@ -99,8 +143,81 @@ function renderFields(fields) {
       input.checked = f.default !== false;
       if (f.enables) {
         input.dataset.enables = f.enables;
-        input.addEventListener("change", () => syncGatedFields(box));
+        input.addEventListener("change", () => syncGatedFields(container));
       }
+    } else if (f.type === "repeat") {
+      // repeatable value list (--image / --meta): a text input + add button;
+      // added values become removable rows collected as an array below
+      const wrap = document.createElement("div");
+      wrap.className = "repeat-wrap";
+      wrap.dataset.name = f.name;
+      const row = document.createElement("div");
+      row.className = "repeat-row";
+      input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = f.label;
+      input.dataset.name = f.name;
+      input.dataset.type = "repeat"; // base input — never collected directly
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          addFromBase(wrap, input);
+        }
+      });
+      const addBtn = document.createElement("button");
+      addBtn.type = "button";
+      addBtn.className = "repeat-add";
+      addBtn.textContent = "＋";
+      addBtn.title = "Add value";
+      addBtn.addEventListener("click", () => addFromBase(wrap, input));
+      row.appendChild(input);
+      row.appendChild(addBtn);
+      wrap.appendChild(row);
+      label.textContent = labelText;
+      container.appendChild(label);
+      container.appendChild(wrap);
+      continue;
+    } else if (f.type === "images") {
+      // paired image rows: each row = [path | caption | ×] — the image↔
+      // caption relationship is explicit. 📁 Upload images is the single
+      // primary action (top); a muted "add path manually" link below the
+      // rows appends an empty row for typing an already-staged path.
+      const wrap = document.createElement("div");
+      wrap.className = "images-wrap";
+      wrap.dataset.name = f.name;
+      if (f.upload) {
+        const bar = document.createElement("div");
+        bar.className = "images-bar";
+        const fileInput = document.createElement("input");
+        fileInput.type = "file";
+        fileInput.accept = "image/*";
+        fileInput.multiple = true;
+        fileInput.hidden = true;
+        fileInput.addEventListener("change", () => uploadImages(wrap, fileInput));
+        const upBtn = document.createElement("button");
+        upBtn.type = "button";
+        upBtn.className = "upload-btn";
+        upBtn.textContent = "📁 Upload images";
+        upBtn.title = "Pick image files from this computer — each file becomes a row";
+        upBtn.addEventListener("click", () => fileInput.click());
+        bar.appendChild(upBtn);
+        bar.appendChild(fileInput);
+        wrap.appendChild(bar);
+      }
+      const manual = document.createElement("button");
+      manual.type = "button";
+      manual.className = "images-add";
+      manual.textContent = "＋ add image path manually";
+      manual.title = "Add a row and type an image path (e.g. a .bot-api/uploads/… file)";
+      manual.addEventListener("click", () => {
+        const row = addImageRow(wrap);
+        if (row) row.querySelector(".image-path").focus();
+      });
+      wrap.appendChild(manual);
+      label.textContent = labelText;
+      container.appendChild(label);
+      container.appendChild(wrap);
+      continue;
     } else if (f.type === "textarea") {
       input = document.createElement("textarea");
       input.placeholder = f.label;
@@ -114,51 +231,220 @@ function renderFields(fields) {
     label.textContent = labelText; // set once — checkbox prepends its input
     if (f.type === "checkbox") label.prepend(input);
     else label.appendChild(input);
-    box.appendChild(label);
+    container.appendChild(label);
   }
-  pairGatedFields(box);
-  syncGatedFields(box);
 }
 
-// checkbox-gated option fields (e.g. weight "Specify date" → date picker):
-// the checkbox and its gated field share one row; the gated field stays
-// hidden (and value-cleared) until the box is checked.
+// add a value row from the base input; an empty input shows visible
+// feedback instead of silently doing nothing (the reported "＋ no response")
+function addFromBase(wrap, baseInput) {
+  if (addRepeatValue(wrap, baseInput.value)) {
+    baseInput.value = "";
+    baseInput.focus();
+    return;
+  }
+  baseInput.classList.add("flash");
+  setTimeout(() => baseInput.classList.remove("flash"), 700);
+  appendLog({ time: "--:--:--", level: "warn", msg: "type a value first, then ＋" });
+  baseInput.focus();
+}
+
+// append one removable value row carrying *text*; returns false when empty
+function addRepeatValue(wrap, text) {
+  const value = (text || "").trim();
+  if (!value) return false;
+  const row = document.createElement("div");
+  row.className = "repeat-value-row";
+  const input = document.createElement("input");
+  input.type = "text";
+  input.value = value;
+  input.dataset.name = wrap.dataset.name;
+  input.className = "repeat-value";
+  const del = document.createElement("button");
+  del.type = "button";
+  del.className = "repeat-del";
+  del.textContent = "×";
+  del.title = "Remove";
+  del.addEventListener("click", () => row.remove());
+  row.appendChild(input);
+  row.appendChild(del);
+  wrap.appendChild(row);
+  return true;
+}
+
+// append one image row (path + optional caption) to the paired list; *path*
+// pre-fills the path input (e.g. from an upload). Returns the row.
+function addImageRow(wrap, path) {
+  const row = document.createElement("div");
+  row.className = "image-row";
+  const pathInput = document.createElement("input");
+  pathInput.type = "text";
+  pathInput.placeholder = "image path";
+  pathInput.className = "image-path";
+  if (path) pathInput.value = path;
+  const capInput = document.createElement("input");
+  capInput.type = "text";
+  capInput.placeholder = "caption (optional, no spaces)";
+  capInput.className = "image-caption";
+  const del = document.createElement("button");
+  del.type = "button";
+  del.className = "repeat-del";
+  del.textContent = "×";
+  del.title = "Remove this image";
+  del.addEventListener("click", () => row.remove());
+  row.appendChild(pathInput);
+  row.appendChild(capInput);
+  row.appendChild(del);
+  wrap.appendChild(row);
+  return row;
+}
+
+// browser file picker → base64 JSON → /api/upload → one image row per file
+async function uploadImages(wrap, fileInput) {
+  const files = [...fileInput.files];
+  if (!files.length) return;
+  try {
+    const items = [];
+    for (const file of files) {
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(reader.error);
+        reader.readAsDataURL(file);
+      });
+      const comma = dataUrl.indexOf(",");
+      items.push({ name: file.name, data: comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl });
+    }
+    const res = await api("/api/upload", {
+      method: "POST",
+      body: JSON.stringify({ files: items }),
+    });
+    for (const path of res.files) addImageRow(wrap, path);
+    appendLog({ time: "--:--:--", level: "ok", msg: `📁 uploaded ${res.files.length} image(s)` });
+  } catch (err) {
+    appendLog({ time: "--:--:--", level: "err", msg: `📁 upload failed: ${err.message}` });
+  } finally {
+    fileInput.value = ""; // allow re-picking the same file
+  }
+}
+
+// the sibling fields a checkbox gates (comma-separated `enables`)
+function gatedTargets(cb, box) {
+  return (cb.dataset.enables || "")
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean)
+    .map((name) => box.querySelector(`[data-name="${name}"]`))
+    .filter(Boolean);
+}
+
+// checkbox-gated option fields (e.g. weight "Specify date" → date picker;
+// moment "Set coordinates" → lng/lat/crs): the checkbox and its gated fields
+// share one row; the gated fields stay hidden (and value-cleared) until the
+// box is checked. A gate covering a coordinate pair (lng+lat) also gets a
+// "Use my location" button that fills them from the browser geolocation API.
 function pairGatedFields(box) {
   for (const cb of box.querySelectorAll('input[type="checkbox"][data-enables]')) {
-    const target = box.querySelector(`[data-name="${cb.dataset.enables}"]`);
-    if (!target) continue;
     const cbLabel = cb.closest("label");
-    if (!cbLabel) continue; // checkbox outside a label — nothing to pair
-    const targetLabel = target.closest("label") || target;
-    if (cbLabel.parentElement.classList.contains("gate-row")) continue; // already paired
+    if (!cbLabel || cbLabel.parentElement.classList.contains("gate-row")) continue;
+    const targets = gatedTargets(cb, box);
+    if (!targets.length) continue;
+    const names = new Set(targets.map((t) => t.dataset.name));
     const row = document.createElement("div");
     row.className = "gate-row";
     cbLabel.after(row);
     row.appendChild(cbLabel);
-    row.appendChild(targetLabel);
+    for (const target of targets) row.appendChild(target.closest("label") || target);
+    if (names.has("lng") && names.has("lat")) {
+      const locate = document.createElement("button");
+      locate.type = "button";
+      locate.className = "locate-btn";
+      locate.textContent = "📍 Use my location";
+      locate.title = "Fill coordinates from the browser's current position (WGS-84)";
+      locate.addEventListener("click", () => useMyLocation(cb, box));
+      row.appendChild(locate);
+    }
   }
+}
+
+// browser geolocation → lng/lat (WGS-84): auto-checks the gate so the gated
+// inputs become editable, fills them, and reports the result in the output
+function useMyLocation(gateCb, box) {
+  if (!navigator.geolocation) {
+    appendLog({ time: "--:--:--", level: "err", msg: "📍 geolocation is not supported by this browser" });
+    return;
+  }
+  appendLog({ time: "--:--:--", level: "info", msg: "📍 requesting browser location…" });
+  navigator.geolocation.getCurrentPosition(
+    (pos) => {
+      gateCb.checked = true;
+      syncGatedFields(box); // enable the gated inputs
+      const lng = box.querySelector('[data-name="lng"]');
+      const lat = box.querySelector('[data-name="lat"]');
+      const crs = box.querySelector('[data-name="crs"]');
+      if (lng) lng.value = pos.coords.longitude.toFixed(6);
+      if (lat) lat.value = pos.coords.latitude.toFixed(6);
+      if (crs) crs.value = "wgs84"; // browser coords are already WGS-84
+      appendLog({
+        time: "--:--:--",
+        level: "ok",
+        msg: `📍 browser location: ${pos.coords.latitude.toFixed(6)}, ${pos.coords.longitude.toFixed(6)} (WGS-84)`,
+      });
+    },
+    (err) => {
+      const why =
+        err.code === err.PERMISSION_DENIED
+          ? "permission denied — allow location access or type the coordinates"
+          : err.message || `code ${err.code}`;
+      appendLog({ time: "--:--:--", level: "err", msg: `📍 geolocation failed: ${why}` });
+    },
+    { enableHighAccuracy: true, timeout: 10000, maximumAge: 30000 }
+  );
 }
 
 function syncGatedFields(box) {
   for (const cb of box.querySelectorAll('input[type="checkbox"][data-enables]')) {
-    const target = box.querySelector(`[data-name="${cb.dataset.enables}"]`);
-    if (!target) continue;
-    target.disabled = !cb.checked;
-    const targetLabel = target.closest("label") || target;
-    targetLabel.classList.toggle("gated-off", !cb.checked);
-    if (!cb.checked) target.value = "";
+    for (const target of gatedTargets(cb, box)) {
+      target.disabled = !cb.checked;
+      const targetLabel = target.closest("label") || target;
+      targetLabel.classList.toggle("gated-off", !cb.checked);
+      if (!cb.checked) target.value = "";
+    }
   }
 }
 
 function collectFields() {
   const fields = {};
-  for (const input of document.querySelectorAll("#fields [data-name]")) {
-    if (input.disabled) continue; // gated-off option (e.g. date picker)
+  const box = $("fields");
+  for (const input of box.querySelectorAll("[data-name]")) {
+    if (input.disabled) continue; // gated-off option (e.g. date / coordinates)
+    if (input.dataset.type === "repeat") continue; // base input — values below
     if (input.type === "checkbox") {
       fields[input.dataset.name] = input.checked;
     } else if (input.value !== "") {
       fields[input.dataset.name] = input.value;
     }
+  }
+  // repeatable fields → the added values as an array (--image / --meta).
+  // ORDER MATTERS: the data-name loop above already collected each value
+  // row as a scalar (they carry data-name); this array pass must run LAST
+  // so it overwrites those scalars with the correct list.
+  for (const wrap of box.querySelectorAll(".repeat-wrap")) {
+    const name = wrap.dataset.name;
+    const values = [...wrap.querySelectorAll(".repeat-value")]
+      .map((v) => v.value.trim())
+      .filter((v) => v !== "");
+    if (values.length) fields[name] = values;
+  }
+  // paired image rows → [{path, caption}] (only rows with a path)
+  for (const wrap of box.querySelectorAll(".images-wrap")) {
+    const rows = [...wrap.querySelectorAll(".image-row")]
+      .map((row) => ({
+        path: row.querySelector(".image-path").value.trim(),
+        caption: row.querySelector(".image-caption").value.trim(),
+      }))
+      .filter((r) => r.path);
+    if (rows.length) fields[wrap.dataset.name] = rows;
   }
   return fields;
 }
@@ -187,8 +473,12 @@ function appendLog(entry) {
 
 function setAbort(run) {
   // label names the exact run this button targets (task + args), so it
-  // reads as per-run, not a global control
-  $("abort-btn").textContent = `✖ Abort ${run.task}${run.args ? " " + run.args : ""}`.trim();
+  // reads as per-run, not a global control — long flag strings (e.g.
+  // --image=/path/…/photo.jpg) are truncated to keep the button compact;
+  // the run id stays in the tooltip
+  const label = `${run.task}${run.args ? " " + run.args : ""}`.trim();
+  const short = label.length > 42 ? label.slice(0, 39) + "…" : label;
+  $("abort-btn").textContent = `✖ Abort ${short}`;
   $("abort-btn").title = `Abort run ${run.run_id}`;
   $("abort-btn").hidden = false;
 }

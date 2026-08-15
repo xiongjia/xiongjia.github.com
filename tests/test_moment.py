@@ -6,6 +6,7 @@ Covers the three base bugs fixed before Phase 2 feature work:
   3. tag dirs used percent-encoding instead of literal names
 """
 
+import base64
 import re
 import sys
 from datetime import datetime, timedelta
@@ -1971,6 +1972,366 @@ def test_create_moment_meta_duplicate_key_warns(tmp_path, monkeypatch, capsys):
     text = created[0].read_text(encoding="utf-8")
     assert 'name: "B"' in text  # last value wins, consistent with dict semantics
     assert 'name: "A"' not in text
+
+
+# ---------------------------------------------------------------------------
+# create-moment: tags / geo / images (WebP + bucket) / GPS from EXIF
+# ---------------------------------------------------------------------------
+
+
+_PNG = base64.b64decode(
+    "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJ"
+    "AAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg=="
+)
+
+_BUCKET_CFG = {
+    "enabled": True,
+    "mappings": [
+        {
+            "prefix": "assets/bucket/",
+            "bucket": "web-assets",
+            "remote_prefix": "data/img",
+        }
+    ],
+    "upload": {
+        "rule": "{Y}/{m}/{d}_{h}{i}{s}_{filename}",
+        "fallback_name": "noname",
+        "tmp_dir": ".bucket",
+        "max_size_mb": 10,
+    },
+}
+
+
+def _moment_bucket_run(monkeypatch):
+    """Patch create_moment's bucket machinery (config / env / rclone mocked).
+
+    Returns the captured rclone command list (empty when nothing uploaded).
+    """
+    calls: list[list[str]] = []
+
+    def _fake_call(cmd, **kwargs):
+        calls.append(cmd)
+        return 0
+
+    import scripts.bucket_sync as bsync
+    from scripts import create_moment
+
+    monkeypatch.setattr(create_moment, "_bucket_config", lambda: _BUCKET_CFG)
+    monkeypatch.setattr(create_moment, "load_env_files", lambda: None)
+    monkeypatch.setattr(create_moment.shutil, "which", lambda _: "/usr/bin/rclone")
+    monkeypatch.setattr(create_moment.subprocess, "call", _fake_call)
+    monkeypatch.setattr(bsync, "available_remotes", lambda: ["r2"])
+    return calls
+
+
+def _run_create_moment(monkeypatch, argv, tmp_path):
+    """Run create_moment.main() from a clean tmp dir with the given CLI args."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr("sys.argv", ["create_moment", *argv])
+    from scripts import create_moment
+
+    create_moment.main()
+
+
+def test_create_moment_tags_dedup(tmp_path, monkeypatch, capsys):
+    """--tags flattens comma-separated + repeated flags; general stays first."""
+    _run_create_moment(
+        monkeypatch,
+        ["hello", "--tags", "food, film", "--tags", "tech", "--tags", "food"],
+        tmp_path,
+    )
+    capsys.readouterr()
+    created = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    text = created[0].read_text(encoding="utf-8")
+    tags = [line.strip().lstrip("- ") for line in text.splitlines() if line.startswith("  - ")]
+    assert tags == ["general", "food", "film", "tech"]
+
+
+def test_create_moment_geo(tmp_path, monkeypatch, capsys):
+    """--place/--lng/--lat/--region land in the frontmatter."""
+    _run_create_moment(
+        monkeypatch,
+        [
+            "hello",
+            "--place",
+            "徐汇滨江",
+            "--lng",
+            "121.47",
+            "--lat",
+            "31.23",
+            "--region",
+            "shanghai",
+        ],
+        tmp_path,
+    )
+    capsys.readouterr()
+    created = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    text = created[0].read_text(encoding="utf-8")
+    assert "place: 徐汇滨江" in text
+    assert "lng: 121.470000" in text
+    assert "lat: 31.230000" in text
+    assert "region: shanghai" in text
+
+
+def test_create_moment_yaml_safe_tags_and_place(tmp_path, monkeypatch, capsys):
+    """Tags/place with YAML-special chars are quoted; frontmatter stays a
+    string list (a bare ``foo: bar`` would parse as a mapping, ``#tag`` as a
+    comment, ``9`` as an int)."""
+    _run_create_moment(
+        monkeypatch,
+        [
+            "x",
+            "--tags",
+            "foo: bar,#tag,9,normal",
+            "--place",
+            "Xuhui: Riverside",
+        ],
+        tmp_path,
+    )
+    capsys.readouterr()
+    from shared.frontmatter import parse_frontmatter
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    fm, _ = parse_frontmatter(md)
+    assert fm["tags"] == ["general", "foo: bar", "#tag", "9", "normal"]
+    assert fm["place"] == "Xuhui: Riverside"
+    # YAML-special values get JSON double-quoted in the frontmatter
+    assert '"foo: bar"' in md and '"#tag"' in md and '"9"' in md
+    assert 'place: "Xuhui: Riverside"' in md
+
+
+def test_yaml_scalar_quotes_yaml1_1_number_forms():
+    """YAML 1.1 int/float spellings (hex, underscores, exponent, dates)
+    must be quoted so tags parse as strings, not numbers/dates."""
+    from scripts import create_moment
+
+    for bad in ["1_000", "0x1F", "2026-08-15", "true", "1.5", "#tag", "foo: bar"]:
+        assert create_moment._yaml_scalar(bad).startswith('"'), bad
+    for good in ["general", "food", "咖啡", "hello-world", "v2.0", "rust"]:
+        assert create_moment._yaml_scalar(good) == good
+
+
+def test_create_moment_rejects_path_traversal_slug(tmp_path, monkeypatch, capsys):
+    """A slug with / or .. must be rejected, not crash or escape the dir."""
+    for bad in ["../x", "a/b", "..", "..%2F.."]:
+        monkeypatch.chdir(tmp_path)
+        monkeypatch.setattr("sys.argv", ["create_moment", "x", "--slug", bad])
+        from scripts import create_moment
+
+        try:
+            create_moment.main()
+            raise AssertionError(f"slug {bad!r} should have been rejected")
+        except SystemExit as exc:
+            assert exc.code == 2  # argparse parser.error
+        capsys.readouterr()
+        assert not list((tmp_path / "docs").rglob("*.md"))  # nothing written
+
+
+def test_create_moment_returns_1_when_all_images_fail(tmp_path, monkeypatch, capsys):
+    """All images failing → the content-only moment is saved but exit 1, so
+    the bot does not publish a broken PR."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr("sys.argv", ["create_moment", "x", "--image", "/nope/missing.png"])
+    from scripts import create_moment
+
+    rc = create_moment.main()
+    capsys.readouterr()
+    assert rc == 1
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert len(md) == 1  # text-only moment still saved
+    assert "![Image]" not in md[0].read_text(encoding="utf-8")
+
+
+def test_create_moment_meta_key_with_special_char_quoted(tmp_path, monkeypatch, capsys):
+    """A meta key that could nest YAML (``foo: bar``) is quoted; parsing it
+    back keeps the literal key."""
+    from shared.frontmatter import parse_frontmatter
+
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--meta", "rating=4", "--meta", "foo: bar=ok"],
+        tmp_path,
+    )
+    capsys.readouterr()
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    fm, _ = parse_frontmatter(md)
+    assert fm["meta"] == {"rating": 4, "foo: bar": "ok"}
+
+
+def test_create_moment_image_bucket_upload(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """--image converts to WebP, uploads via rclone, writes the bucket link."""
+    src = tmp_path / "photo.png"
+    src.write_bytes(_PNG)
+    calls = _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch, ["hello", "--image", str(src), "--time", "2026-08-09 14:30"], tmp_path
+    )
+    capsys.readouterr()
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert "![Image](../../assets/bucket/2026/08/09_143000_photo.webp)" in md[0].read_text(
+        encoding="utf-8"
+    )
+
+    webp = tmp_path / "docs" / "assets" / "bucket" / "2026" / "08" / "09_143000_photo.webp"
+    assert webp.is_file()
+
+    assert calls, "rclone upload should have run"
+    rclone = calls[0]
+    assert rclone[0] == "rclone"
+    assert rclone[1] == "copyto"
+    assert str(webp) in rclone
+    assert "r2:web-assets/data/img/2026/08/09_143000_photo.webp" in rclone
+
+
+def test_create_moment_image_no_upload(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """--no-upload stages the WebP locally without any rclone call."""
+    src = tmp_path / "photo.png"
+    src.write_bytes(_PNG)
+    calls = _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["hello", "--image", str(src), "--no-upload", "--time", "2026-08-09 14:30"],
+        tmp_path,
+    )
+    capsys.readouterr()
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert "![Image](../../assets/bucket/2026/08/09_143000_photo.webp)" in md[0].read_text(
+        encoding="utf-8"
+    )
+    assert (
+        tmp_path / "docs" / "assets" / "bucket" / "2026" / "08" / "09_143000_photo.webp"
+    ).is_file()
+    assert calls == []  # no upload attempted
+
+
+def test_create_moment_captions_order_matched(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """--caption order-matches --image: caption line after each image."""
+    a, b = tmp_path / "a.png", tmp_path / "b.png"
+    a.write_bytes(_PNG)
+    b.write_bytes(_PNG)
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        [
+            "hello",
+            "--image",
+            str(a),
+            "--image",
+            str(b),
+            "--caption",
+            "第一张",
+            "--caption",
+            "第二张",
+            "--no-upload",
+            "--time",
+            "2026-08-09 14:30",
+        ],
+        tmp_path,
+    )
+    capsys.readouterr()
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    # image + caption adjacent (no blank line between) → the plugin merges
+    # them into <figure><figcaption>; blank line separates the two images
+    assert "![第一张](../../assets/bucket/2026/08/09_143000_a.webp)\n第一张\n\n" in md
+    assert "![第二张](../../assets/bucket/2026/08/09_143000_b.webp)\n第二张" in md
+
+
+def test_create_moment_caption_mismatch_warns(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """Extra captions (more than images) warn and are truncated."""
+    src = tmp_path / "a.png"
+    src.write_bytes(_PNG)
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--image", str(src), "--caption", "one", "--caption", "two", "--no-upload"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "extra --caption(s) with no matching image" in out.err
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    assert "one" in md and "two" not in md
+
+
+def test_create_moment_caption_without_image_warns(tmp_path, monkeypatch, capsys):
+    """--caption without --image is ignored with a warning."""
+    _run_create_moment(monkeypatch, ["x", "--caption", "nope"], tmp_path)
+    out = capsys.readouterr()
+    assert "without any image" in out.err
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    assert "nope" not in md
+
+
+def test_create_moment_inline_caption_sparse(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """Inline ``path|caption`` keeps a sparse caption attached to its image."""
+    a, b = tmp_path / "a.png", tmp_path / "b.png"
+    a.write_bytes(_PNG)
+    b.write_bytes(_PNG)
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        [
+            "x",
+            "--image",
+            str(a),  # no caption
+            "--image",
+            f"{b}|第二张的说明",
+            "--no-upload",
+            "--time",
+            "2026-08-09 14:30",
+        ],
+        tmp_path,
+    )
+    capsys.readouterr()
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    # caption stays with image b (the second one), not image a
+    assert "![Image](../../assets/bucket/2026/08/09_143000_a.webp)\n" in md
+    assert "![第二张的说明](../../assets/bucket/2026/08/09_143000_b.webp)\n第二张的说明" in md
+
+
+def test_create_moment_gps_from_exif(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """EXIF GPS on the photo fills lng/lat (WGS-84) when --lng/--lat absent."""
+    from PIL import Image
+    from PIL.TiffImagePlugin import IFDRational
+
+    src = tmp_path / "gps.jpg"
+    im = Image.new("RGB", (4, 4), "red")
+    exif = Image.Exif()
+    gps = exif.get_ifd(0x8825)
+    gps[1] = "N"
+    gps[2] = (IFDRational(31, 1), IFDRational(10, 1), IFDRational(0, 1))
+    gps[3] = "E"
+    gps[4] = (IFDRational(121, 1), IFDRational(28, 1), IFDRational(0, 1))
+    im.save(src, exif=exif)
+
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(monkeypatch, ["hello", "--image", str(src), "--no-upload"], tmp_path)
+    out = capsys.readouterr()
+    assert "GPS from EXIF" in out.out
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    text = md[0].read_text(encoding="utf-8")
+    assert "lng: 121.466667" in text
+    assert "lat: 31.166667" in text
+
+
+def test_dms_to_degrees():
+    from scripts import create_moment
+
+    assert create_moment._dms_to_degrees((31, 10, 0), False) == 31 + 10 / 60
+    assert create_moment._dms_to_degrees((121, 28, 0), True) == -(121 + 28 / 60)
+    assert create_moment._dms_to_degrees(121.466667, False) == 121.466667  # decimal float
+    assert create_moment._dms_to_degrees("bad", False) is None
+    assert create_moment._dms_to_degrees((float("nan"), 0, 0), False) is None
+
+
+def test_exif_gps_none_for_plain_png(tmp_path):
+    from scripts import create_moment
+
+    png = tmp_path / "plain.png"
+    png.write_bytes(_PNG)
+    assert create_moment.exif_gps(png) is None
 
 
 def test_moment_meta_items_falls_through_empty_tag_match():
