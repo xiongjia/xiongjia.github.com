@@ -72,6 +72,32 @@ class TestPull:
         assert "r2:bucket1/abc/123/" in run[0]
 
 
+class TestIncrementalFlags:
+    """pull defaults to checksum + fast-list (incremental, fast on S3/R2);
+    both are disable-able for buckets with multipart objects / legacy mode."""
+
+    def test_checksum_and_fast_list_on_by_default(self, run, monkeypatch):
+        _main(monkeypatch, ["pull"])
+        cmd = run[0]
+        assert "--checksum" in cmd
+        assert "--fast-list" in cmd
+
+    def test_no_checksum_falls_back_to_modtime(self, run, monkeypatch):
+        _main(monkeypatch, ["pull", "--no-checksum"])
+        assert "--checksum" not in run[0]
+
+    def test_no_fast_list_disables(self, run, monkeypatch):
+        _main(monkeypatch, ["pull", "--no-fast-list"])
+        assert "--fast-list" not in run[0]
+
+    def test_flags_survive_dry_run(self, run, monkeypatch):
+        _main(monkeypatch, ["pull", "--no-checksum", "--no-fast-list"])
+        cmd = run[0]
+        assert "--dry-run" in cmd
+        assert "--checksum" not in cmd
+        assert "--fast-list" not in cmd
+
+
 class TestNoPush:
     def test_push_rejected(self, monkeypatch):
         monkeypatch.setenv("BUCKET_SYNC_REMOTE", "x")

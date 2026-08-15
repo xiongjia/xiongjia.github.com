@@ -64,6 +64,8 @@ Detailed design docs live in `internal/`:
 - [Commands](internal/commands.md) — command reference
 - [Moment Design](internal/moment-design.md) — Micro-post timeline plugin
 - [Bucket Assets Design](internal/bucket-design.md) — large files on R2/S3, PicList/rclone sync
+  (`poe bucket-sync pull` incremental mirror · `poe bucket-check` orphan/broken-link audit ·
+  `poe bucket-upload` WebP + rename)
 - [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline
 - [Weight Tracker Design](internal/weight-tracker-design.md) — weight data & tooling

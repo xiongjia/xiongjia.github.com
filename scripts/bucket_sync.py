@@ -15,6 +15,17 @@ name is **auto-detected from ``rclone listremotes``** (prefers ``r2``, else
 the single/first configured remote) — ``--remote`` CLI / ``BUCKET_SYNC_REMOTE``
 env override it, stale override values warn and fall back.
 
+**Incremental by default**: ``rclone sync`` compares size + checksum (S3 ETag
+= MD5 for single-part uploads) and only transfers files that differ — a
+second ``pull`` with no changes transfers nothing. ``--checksum`` (default
+on) skips the modtime comparison, so files whose local mtimes differ from the
+remote LastModified (e.g. manually dropped into ``docs/assets/bucket/`` then
+uploaded via PicList) are NOT re-downloaded. Objects uploaded as multipart
+have non-MD5 ETags and would always transfer under ``--checksum`` — pass
+``--no-checksum`` (size + modtime comparison) for buckets with such objects.
+``--fast-list`` (default on) collapses recursive listing into one API call,
+which matters for buckets with many objects; ``--no-fast-list`` disables it.
+
 **Proxy**: set ``RCLONE_HTTP_PROXY`` in .env (rclone's native env var for
 ``--http-proxy``) when R2 is only reachable through a proxy (e.g. mainland
 China). load_env_files() merges it into the process env and the rclone
@@ -28,6 +39,7 @@ Usage:
     uv run poe bucket-sync pull            # dry-run preview
     uv run poe bucket-sync pull --confirm  # apply (deletes local extras)
     uv run poe bucket-sync pull --remote b2 --prefix assets/files
+    uv run poe bucket-sync pull --no-checksum --no-fast-list  # legacy mode
 """
 
 from __future__ import annotations
@@ -195,6 +207,22 @@ def main() -> int:
         action="store_true",
         help="pull: actually apply (without it pull is a dry-run preview)",
     )
+    parser.add_argument(
+        "--checksum",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="compare size + checksum (S3 ETag = MD5 for single-part uploads) instead of "
+        "size + modtime (default: on). Skips re-downloads when local mtimes differ from "
+        "the remote LastModified; multipart-uploaded objects have non-MD5 ETags and "
+        "always transfer under this mode — pass --no-checksum for those",
+    )
+    parser.add_argument(
+        "--fast-list",
+        action=argparse.BooleanOptionalAction,
+        default=True,
+        help="one recursive listing instead of per-directory listings (default: on; "
+        "much faster on S3/R2 with many objects; --no-fast-list disables)",
+    )
     args = parser.parse_args()
 
     if shutil.which("rclone") is None:
@@ -236,6 +264,10 @@ def main() -> int:
         "--progress",
         "--verbose",
     ]
+    if args.checksum:
+        cmd.append("--checksum")
+    if args.fast_list:
+        cmd.append("--fast-list")
     if dry_run:
         cmd.append("--dry-run")
     print(f"bucket-sync: pull {rpath} -> {local}" + (" (dry-run)" if dry_run else ""))
