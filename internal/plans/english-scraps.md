@@ -88,7 +88,7 @@ flowchart TD
     C --> D["📚 archive/周文件<br/>分类 → 去重 → 补模板 → 归档"]
     D --> E["👀 查看<br/>站点搜索 / sticky TOC"]
     D -. 可选 .-> F["🔁 回顾<br/>/skill:enu-organize quiz / review"]
-    D -. 未来 .-> G["📱 Anki 导出<br/>（附录，未实现）"]
+    D -. 可选 .-> G["📱 Anki 导出<br/>poe enu export（已实现）"]
 ```
 
 ### 步骤说明表（每个步骤：操作 / 触发 / 文档位置）
@@ -335,11 +335,11 @@ categories: [dev]
 
 - 不做任何定期回顾（daily/weekly 都做不到，定期触发器必然失效）
 
-## Anki 导出（可选附录，先不做）
+## Anki 导出（可选附录，已实现）
 
 > 复习完全可选：归档周文件才是知识库本体，不导出 Anki 也能正常使用。
-> 本计划**主线先跑通「收集 → 归档」**，Anki 作为可选工具；以下设计留作
-> 后续扩展，不列入前期 Tasks。
+> 2026-08 已实现 `poe enu export`（`scripts/enu.py` 子命令）：生成 `.apkg`
+> 或兜底 CSV、回写 `status`，手工导入。以下为设计记录与实现要点。
 
 - **触发**：用户说「导出到 Anki」或「生成 Anki 卡片」
 - **筛选**：只导出 `status: new` 的条目（或用户指定 tag / type）
@@ -408,7 +408,9 @@ categories: [dev]
 - **收集命令**：`poe enu add "内容"` —— 模仿 `poe bucket-sync pull` 的
   「命名空间 + 子命令」模式（`scripts/enu.py`，子命令 `add`，后续可扩展 `list`
   等）—— 追加一行 `YYYY-MM-DD <内容>` 到 `scraps/inbox.md`（自动建目录/文件，
-  可选 `--date` 回溯）；**纯脚本，无 AI 依赖**（与 `poe create-post` 一致）
+  可选 `--date` 回溯）；**纯脚本，无 AI 依赖**（与 `poe create-post` 一致）；
+  `export` 子命令复用同一命名空间：`poe enu export [--format apkg|csv] [--type] [--tag] [--all] [--dry-run] [--out]`，解析归档 → 生成 Anki 文件 →
+  回写 status，同样无 AI 依赖
 
 ## Tasks
 
@@ -440,7 +442,19 @@ categories: [dev]
 
 - [ ] 实际使用一段时间（真实收集 + 按需 AI 整理），记录摩擦点
 - [ ] 根据试点调整：分类粒度、标签体系、触发时机、周文件粒度
-- [ ] （可选）Anki 导出模板验证（CSV 导入测试）—— 主线稳定后再做
+
+### Anki 导出（2026-08 已实现）
+
+- [x] `scripts/enu.py` 新增 `export` 子命令：解析 `scraps/archive/*.md` →
+  筛选（默认 `status: new`，支持 `--type` / `--tag` / `--all`）→ 按 type
+  生成 apkg（每 type 一个 note type、每 note 识别卡 + 产出卡 2 模板）→
+  导出成功后回写 `status: new → learning`（`--dry-run` 只生成不改）
+- [x] 依赖 `genanki` + `.anki/` 加入 .gitignore
+- [x] 兜底 CSV：`--format csv`，UTF-8 BOM，每 type 一文件，首字段 = 去重 key
+- [x] 幂等：归档 key + `status: new` 筛选 + 稳定 guid（sha1 派生）三重去重
+- [x] 文档：`scraps/index.md` Anki 章节 + skill `export` 动作 + poe 帮助文案
+- [x] 测试：`tests/test_enu_export.py`（apkg 有效性 / guid 稳定 / CSV BOM / status 回写 / 筛选）
+- [ ] （可选）实际导出一批真实卡片到 Anki 验证导入体验（用户操作）
 
 ## Notes / 开放问题
 

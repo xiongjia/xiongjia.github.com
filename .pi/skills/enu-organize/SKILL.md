@@ -9,14 +9,16 @@ description: "English Scraps: collect, organize & review English learning scraps
 `scraps/archive/` 下的按周文件（如 `scraps/archive/2026-w33.md`）。
 路径相对 `docs/notes/research/topics/english/`；仅 `inbox.md` 相对 `scraps/` 目录。
 
-| 触发词         | 动作                     |
-| -------------- | ------------------------ |
-| `add <内容>`   | 追加一条到 inbox         |
-| `arch`         | 批量整理归档（9 步流程） |
-| `quiz [范围]`  | 出 5–10 题复习并批改     |
-| `review <tag>` | 筛出该 tag 的卡片        |
+| 触发词         | 动作                                      |
+| -------------- | ----------------------------------------- |
+| `add <内容>`   | 追加一条到 inbox                          |
+| `arch`         | 批量整理归档（9 步流程）                  |
+| `quiz [范围]`  | 出 5–10 题复习并批改                      |
+| `review <tag>` | 筛出该 tag 的卡片                         |
+| `export`       | 导出 `status: new` 卡片到 Anki（`.apkg`） |
 
-> 本 skill 即 enu 系列，动作用英文：`add` / `arch` / `quiz` / `review`。
+> 本 skill 即 enu 系列，动作用英文：`add` / `arch` / `quiz` / `review` / `export`。
+> `export` 是脚本能力（`poe enu export`），skill 只负责触发与说明，不加 AI 逻辑。
 
 ## 1. 记录（add \<内容>）
 
@@ -119,6 +121,16 @@ description: "English Scraps: collect, organize & review English learning scraps
 
 1. 先扫 `scraps/archive/*.md`（所有周文件）现有 tags，给出可选项
 1. 筛出该 tag 的卡片列表（标题 + 一句话提示），供用户浏览回忆
+
+## 5. 导出 Anki（export）
+
+触发：用户说「导出到 Anki」/「生成 Anki 卡片」。纯脚本能力，skill 只转达：
+
+1. 提示用户运行 `uv run poe enu export`（必要时给 `--type` / `--tag` / `--format csv`）
+1. 说明：导出所有 `status: new` 卡片 → `.anki/english-scraps-<日期>.apkg`
+   （git-ignored）；成功后周文件里 `status: new → learning`；
+   手工双击导入 Anki / AnkiDroid，再同步 AnkiWeb；不做 AnkiConnect
+1. 如需先看效果可加 `--dry-run`（只生成不改状态）
 
 ## 约束
 
