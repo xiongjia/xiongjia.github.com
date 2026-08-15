@@ -89,6 +89,23 @@ form textarea {
 form textarea { min-height: 64px; resize: vertical; }
 form .row { display: flex; align-items: center; gap: 8px; }
 form .row input { width: auto; }
+/* checkbox-gated option: checkbox + gated field share one row */
+form .gate-row { display: flex; align-items: center; gap: 10px; }
+form .gate-row label {
+  margin: 10px 0 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+form .gate-row label.row { flex: none; }
+form .gate-row input[type="date"] { width: auto; flex: 1 1 140px; }
+/* gated-off: hidden until its gate checkbox is checked — declared after the
+   label display rules so it wins the specificity tie by source order */
+form label.gated-off { display: none; }
+form input:disabled,
+form select:disabled,
+form textarea:disabled { opacity: .5; }
 
 button {
   margin-top: 14px;
