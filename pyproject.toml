@@ -34,9 +34,13 @@ readme = "README.md"
 license = { text = "MIT" }
 
 [tool.poe.tasks]
-server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Dev server WITH drafts (draft blog posts visible)" }
-server-prod = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1" }, help = "Dev server WITHOUT drafts (mirrors production build)" }
-server-bucket = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", MKDOCS_BUCKET_ENABLED = "true" }, help = "Dev server WITH bucket prefix rewrite (test bucket link replacement)" }
+# Dev servers never emit the CF analytics beacon: empty CF_ANALYTICS_TOKEN
+# → mkdocs !ENV resolves it to null → the partial renders nothing. See
+# overrides/partials/cf-analytics.html for the client-side loopback guard
+# that also covers ad-hoc `mkdocs serve` / local static previews.
+server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH drafts (draft blog posts visible)" }
+server-prod = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITHOUT drafts (mirrors production build)" }
+server-bucket = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", MKDOCS_BUCKET_ENABLED = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH bucket prefix rewrite (test bucket link replacement)" }
 build = "mkdocs build"
 build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Build static site INCLUDING drafts" }
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }

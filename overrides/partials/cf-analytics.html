@@ -1,8 +1,31 @@
 {# Cloudflare Web Analytics beacon (free tier, cookieless).
    Injected from config so the token lives in mkdocs.yml, not the template.
-   Rendered only when enabled and a token is configured. #}
+   Rendered only when enabled and a token is configured.
+
+   Local dev servers are never counted, two layers deep:
+   1. `poe server*` builds with an empty token (pyproject.toml env), so the
+      dev-server HTML contains no beacon bytes at all.
+   2. Safety net for any other local serving (`mkdocs serve` run directly,
+      `python -m http.server` previewing `site/`): the beacon script is only
+      injected when the page is NOT served from a loopback/unspecified host
+      (localhost / 127.0.0.1 / 0.0.0.0 / ::1). Anything else — including a
+      LAN IP — counts as a real visit.
+   The beacon reads its config via document.currentScript ||
+   document.querySelector('script[data-cf-beacon]'), so a dynamically
+   injected <script type='module'> with the attribute set before append
+   works exactly like the static snippet. #}
 {% if config.extra.cf_analytics.enabled and config.extra.cf_analytics.token %}
   <!-- Cloudflare Web Analytics -->
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ config.extra.cf_analytics.token }}"}'></script>
+  <script type='module'>
+    var _cfHost = window.location.hostname;
+    var _cfLoopback = _cfHost === 'localhost' || _cfHost === '127.0.0.1' || _cfHost === '0.0.0.0' || _cfHost === '::1' || _cfHost === '[::1]';
+    if (!_cfLoopback) {
+      var _cf = document.createElement('script');
+      _cf.type = 'module';
+      _cf.src = 'https://static.cloudflareinsights.com/beacon.min.js';
+      _cf.setAttribute('data-cf-beacon', JSON.stringify({ token: '{{ config.extra.cf_analytics.token }}' }));
+      document.head.appendChild(_cf);
+    }
+  </script>
   <!-- End Cloudflare Web Analytics -->
 {% endif %}
