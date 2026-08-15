@@ -289,25 +289,29 @@ targets are skipped). `max_backlinks` caps each list with
 
 ## Environment Variables
 
-| Variable                                                      | Purpose                                                                       | Default                            |
-| ------------------------------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------- |
-| `MKDOCS_INCLUDE_DRAFTS`                                       | Include draft pages in dev server (`true`/`1`/`yes`)                          | unset (exclude)                    |
-| `MKDOCS_BUCKET_ENABLED`                                       | Force-enable bucket prefix rewrite (`true`/`1`/`yes`)                         | unset (use `extra.bucket.enabled`) |
-| `MKDOCS_BUCKET_BASE_URL`                                      | Override every bucket mapping's `base_url` (testing)                          | unset                              |
-| `BUCKET_SYNC_REMOTE`                                          | rclone remote name for `poe bucket-sync` (local-only, not in mkdocs.yml)      | `r2`                               |
-| `BUCKET_SYNC_BUCKET`                                          | Bucket name override for `poe bucket-sync`                                    | mappings[].bucket                  |
-| `BUCKET_SYNC_PREFIX`                                          | Local prefix override for `poe bucket-sync`                                   | mappings[].prefix                  |
-| `BUCKET_SYNC_REMOTE_PREFIX`                                   | Remote prefix override for `poe bucket-sync`                                  | mappings[].remote_prefix           |
-| `RCLONE_HTTP_PROXY`                                           | Proxy URL for rclone (native `--http-proxy` env var)                          | unset                              |
-| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` | R2 API credentials for `poe rclone-config-init` (local `.env` only)           | unset                              |
-| `SITE_NAME`                                                   | Override site name in HTML title                                              | `recycle.bin`                      |
-| `SITE_URL`                                                    | Override canonical URL                                                        | `https://xiongjia.github.io`       |
-| `GIT_HASH`                                                    | Embed current commit hash in page meta                                        | empty                              |
-| `BOT_GH_TOKEN`                                                | Bot PAT (personal account) for the local bot (git-ignored `.env` only)        | unset                              |
-| `BOT_WORKTREE_DIR`                                            | Bot worktree base dir (overrides the default cache dir)                       | `~/.cache/<repo>-bot/worktrees/`   |
-| `BOT_BASE_BRANCH`                                             | Bot fork base branch (bot branches fork from origin/<this>)                   | `master`                           |
-| `BOT_SKIP_TESTS`                                              | Skip the python unittest step in the bot's local CI gate (local escape hatch) | `false`                            |
-| `BOT_HTTP_PROXY`                                              | Bot proxy for GitHub API / git push / mermaid download                        | unset                              |
+| Variable                                                      | Purpose                                                                                                                           | Default                                   |
+| ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+| `MKDOCS_INCLUDE_DRAFTS`                                       | Include draft pages in dev server (`true`/`1`/`yes`)                                                                              | unset (exclude)                           |
+| `MKDOCS_BUCKET_ENABLED`                                       | Force-enable bucket prefix rewrite (`true`/`1`/`yes`)                                                                             | unset (use `extra.bucket.enabled`)        |
+| `MKDOCS_BUCKET_BASE_URL`                                      | Override every bucket mapping's `base_url` (testing)                                                                              | unset                                     |
+| `BUCKET_SYNC_REMOTE`                                          | rclone remote name for `poe bucket-sync`/`poe bucket-upload` (local-only; auto-detected from `rclone listremotes`, env overrides) | auto-detect → `r2`                        |
+| `BUCKET_SYNC_BUCKET`                                          | Bucket name override for `poe bucket-sync`                                                                                        | mappings[].bucket                         |
+| `BUCKET_SYNC_PREFIX`                                          | Local prefix override for `poe bucket-sync`                                                                                       | mappings[].prefix                         |
+| `BUCKET_SYNC_REMOTE_PREFIX`                                   | Remote prefix override for `poe bucket-sync`                                                                                      | mappings[].remote_prefix                  |
+| `BUCKET_UPLOAD_RULE`                                          | Rename rule for `poe bucket-upload` (local override)                                                                              | mkdocs.yml `extra.bucket.upload.rule`     |
+| `BUCKET_UPLOAD_FALLBACK_NAME`                                 | Filename when the stem has no ASCII alphanumerics (`poe bucket-upload`)                                                           | `noname`                                  |
+| `BUCKET_UPLOAD_TMP_DIR`                                       | Staging dir for converted WebP before upload (`poe bucket-upload`)                                                                | `extra.bucket.upload.tmp_dir` → `.bucket` |
+| `BUCKET_UPLOAD_MAX_SIZE_MB`                                   | Per-file upload size limit in MB (`poe bucket-upload`; larger files fail)                                                         | `extra.bucket.upload.max_size_mb` → `10`  |
+| `RCLONE_HTTP_PROXY`                                           | Proxy URL for rclone (native `--http-proxy` env var)                                                                              | unset                                     |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` | R2 API credentials for `poe rclone-config-init` (local `.env` only)                                                               | unset                                     |
+| `SITE_NAME`                                                   | Override site name in HTML title                                                                                                  | `recycle.bin`                             |
+| `SITE_URL`                                                    | Override canonical URL                                                                                                            | `https://xiongjia.github.io`              |
+| `GIT_HASH`                                                    | Embed current commit hash in page meta                                                                                            | empty                                     |
+| `BOT_GH_TOKEN`                                                | Bot PAT (personal account) for the local bot (git-ignored `.env` only)                                                            | unset                                     |
+| `BOT_WORKTREE_DIR`                                            | Bot worktree base dir (overrides the default cache dir)                                                                           | `~/.cache/<repo>-bot/worktrees/`          |
+| `BOT_BASE_BRANCH`                                             | Bot fork base branch (bot branches fork from origin/<this>)                                                                       | `master`                                  |
+| `BOT_SKIP_TESTS`                                              | Skip the python unittest step in the bot's local CI gate (local escape hatch)                                                     | `false`                                   |
+| `BOT_HTTP_PROXY`                                              | Bot proxy for GitHub API / git push / mermaid download                                                                            | unset                                     |
 
 ## Dev Workflow
 

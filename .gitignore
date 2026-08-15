@@ -72,3 +72,7 @@ docs/.mermaid-version
 
 # Bot Remote API runtime data (git-ignored; dir configurable via BOT_API_LOG_DIR)
 .bot-api/
+
+# bucket-upload staging dir (converted WebP before upload; git-ignored, dir
+# configurable via extra.bucket.upload.tmp_dir / BUCKET_UPLOAD_TMP_DIR)
+.bucket/

@@ -189,6 +189,25 @@ def test_optimize_images_quality_clamped(tmp_path):
     assert dst is not None and dst.exists()
 
 
+def test_optimize_images_convert_to_custom_dst(tmp_path):
+    """convert_to_webp(dst=...) targets a custom path (bucket-upload uses it
+    to convert straight into the keyed staging file); the default still lands
+    next to the source."""
+    from PIL import Image
+
+    src = tmp_path / "photo.png"
+    Image.new("RGB", (8, 8)).save(src)
+
+    custom = tmp_path / "nested" / "sub" / "photo.webp"
+    custom.parent.mkdir(parents=True)
+    result = optimize_images.convert_to_webp(src, dst=custom)
+    assert result == custom and custom.exists()
+
+    # default dst unchanged: src.with_suffix(".webp") next to the source
+    default = optimize_images.convert_to_webp(src)
+    assert default == src.with_suffix(".webp") and default.exists()
+
+
 # --- add_weight_week ---
 
 

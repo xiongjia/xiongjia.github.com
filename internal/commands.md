@@ -10,7 +10,7 @@
 - **Content** — `create-post` / `create-moment` / `enu add`
 - **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running`
 - **Bot** — `bot <task>` / `bot --plan` / `bot list` / `bot submit` / `bot abort` / `bot cleanup`
-- **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `rclone-config-init`
+- **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `bucket-upload` / `rclone-config-init`
 - **English Scraps flow** — collect → batch-organize → review
 
 ## Dev & Build
@@ -86,7 +86,16 @@ Credential Strategy for the one-time token setup.
 | `poe optimize-images <path>`       | PNG/JPG/JPEG → WebP                                                                                         |
 | `poe md2wechat [path]`             | Convert blog post to WeChat HTML                                                                            |
 | `poe bucket-sync pull [--confirm]` | Pull `docs/assets/bucket/` from R2/S3 via rclone (read-only, dry-run by default; uploads happen in PicList) |
+| `poe bucket-upload <images>`       | Convert PNG/JPG/JPEG → WebP, rename + upload to R2 (details below)                                          |
 | `poe rclone-config-init`           | Configure rclone R2 remote from `.env` (local credentials only)                                             |
+
+`poe bucket-upload` details:
+
+- **Safety**: **dry-run by default** — nothing is written/uploaded without `--confirm`. Source files larger than `extra.bucket.upload.max_size_mb` (default 10 MB) fail immediately (`--max-size-mb` / `BUCKET_UPLOAD_MAX_SIZE_MB` override).
+- **Flow**: convert to WebP (`--quality 1-100`, default from `extra.optimize_images.quality`) → render the key → stage in the temp dir → `rclone copyto` → save a local copy under `docs/assets/bucket/` → print the md link.
+- **Key rule** (`extra.bucket.upload.rule`, default `img/{Y}/{m}/{d}_{h}{i}{s}_{filename}`): `img` = image category dir in the bucket; `{Y}` year(4), `{m}`/`{d}`/`{h}`/`{i}`/`{s}` month/day/hour/min/sec (2); `{filename}` = original stem, lowercased, ASCII letters+digits only, spaces → `_`, pure-Chinese → `fallback_name` (`noname`); a `.webp` suffix is appended automatically. Key = `remote_prefix` + rendered rule, e.g. `data/img/img/2026/08/16_101112_myphoto.webp`.
+- **Options**: `--confirm` (actually upload) / `--rule` / `--fallback-name` / `--max-size-mb` / `--tmp-dir` (staging dir, default `.bucket/` at repo root, git-ignored) / `--remote` (auto-detected from `rclone listremotes` when omitted) / `--bucket` / `--prefix` / `--remote-prefix` (priority: CLI arg > env > mkdocs.yml).
+- **Permission**: needs a **read-write** R2 token (Object Read + Object Write + List Bucket) in `.env` — `bucket-sync pull` only needs read. Update `R2_*` and re-run `poe rclone-config-init`.
 
 ## .env Configuration
 
@@ -103,18 +112,19 @@ keep their own copies).
 
 What it configures:
 
-| Variable                                                                                         | Purpose                                                                              |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`                                    | R2 API credentials for `poe rclone-config-init`                                      |
-| `BUCKET_SYNC_REMOTE` / `BUCKET_SYNC_BUCKET` / `BUCKET_SYNC_PREFIX` / `BUCKET_SYNC_REMOTE_PREFIX` | rclone / bucket-sync overrides (priority: CLI arg > env > mkdocs.yml)                |
-| `RCLONE_HTTP_PROXY`                                                                              | rclone proxy (e.g. `http://127.0.0.1:1095`; needed when R2 unreachable directly)     |
-| `MKDOCS_BUCKET_ENABLED` / `MKDOCS_BUCKET_BASE_URL`                                               | Force bucket prefix rewrite / override `base_url` for testing                        |
-| `SITE_NAME` / `SITE_URL` / `GIT_HASH`                                                            | Site title / canonical URL / commit hash overrides                                   |
-| `CF_ANALYTICS_TOKEN` / `MERMAID_CDN_URL`                                                         | Analytics beacon token / mermaid JS CDN fallback                                     |
-| `BOT_GH_TOKEN` / `BOT_WORKTREE_DIR`                                                              | Bot PAT (personal account) / bot worktree base dir                                   |
-| `BOT_BASE_BRANCH`                                                                                | Bot fork base branch (default: `master`)                                             |
-| `BOT_SKIP_TESTS`                                                                                 | Skip the python unittest step in the bot's local CI gate (default: off)              |
-| `BOT_HTTP_PROXY`                                                                                 | Bot proxy for GitHub API / git push / mermaid download (GitHub unreachable directly) |
+| Variable                                                                                                     | Purpose                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`                                                | R2 API credentials for `poe rclone-config-init` (token scope: see `bucket-upload` notes above)            |
+| `BUCKET_SYNC_REMOTE` / `BUCKET_SYNC_BUCKET` / `BUCKET_SYNC_PREFIX` / `BUCKET_SYNC_REMOTE_PREFIX`             | rclone / bucket-sync overrides (priority: CLI arg > env > mkdocs.yml)                                     |
+| `BUCKET_UPLOAD_RULE` / `BUCKET_UPLOAD_FALLBACK_NAME` / `BUCKET_UPLOAD_TMP_DIR` / `BUCKET_UPLOAD_MAX_SIZE_MB` | `bucket-upload` rename rule / fallback name / staging dir / size limit overrides (reuses `BUCKET_SYNC_*`) |
+| `RCLONE_HTTP_PROXY`                                                                                          | rclone proxy (e.g. `http://127.0.0.1:1095`; needed when R2 unreachable directly)                          |
+| `MKDOCS_BUCKET_ENABLED` / `MKDOCS_BUCKET_BASE_URL`                                                           | Force bucket prefix rewrite / override `base_url` for testing                                             |
+| `SITE_NAME` / `SITE_URL` / `GIT_HASH`                                                                        | Site title / canonical URL / commit hash overrides                                                        |
+| `CF_ANALYTICS_TOKEN` / `MERMAID_CDN_URL`                                                                     | Analytics beacon token / mermaid JS CDN fallback                                                          |
+| `BOT_GH_TOKEN` / `BOT_WORKTREE_DIR`                                                                          | Bot PAT (personal account) / bot worktree base dir                                                        |
+| `BOT_BASE_BRANCH`                                                                                            | Bot fork base branch (default: `master`)                                                                  |
+| `BOT_SKIP_TESTS`                                                                                             | Skip the python unittest step in the bot's local CI gate (default: off)                                   |
+| `BOT_HTTP_PROXY`                                                                                             | Bot proxy for GitHub API / git push / mermaid download (GitHub unreachable directly)                      |
 
 Full env table (with defaults): [architecture.md](./architecture.md) →
 Environment Variables; full R2/bucket setup: [bucket-design.md](./bucket-design.md).
@@ -149,6 +159,14 @@ uv run poe update-weight 82
 uv run poe update-weight 81.6 2026-08-05
 uv run poe update-weight 82 --date yesterday
 uv run poe add-weight-week 2               # pre-add empty weeks
+
+# Bucket upload — dry-run by default; --confirm to actually upload
+uv run poe bucket-upload photo.png                      # preview only (safe default)
+uv run poe bucket-upload photo.png --confirm            # convert + rename + upload, prints md link
+uv run poe bucket-upload "~/Work/tmp/My Photo.png" --confirm   # ~ and spaces are fine
+uv run poe bucket-upload a.png b.jpg --quality 80 --confirm    # multiple files, quality override
+uv run poe bucket-upload --max-size-mb 20 photo.png --confirm  # raise the size limit (default 10MB)
+# needs a read-write R2 token in .env (update R2_* + poe rclone-config-init)
 
 # Bot auto PR — run in an isolated worktree, publish as a PR
 uv run poe bot "weight 81.5" "text-moment 晨跑5km"   # one-step draft PR

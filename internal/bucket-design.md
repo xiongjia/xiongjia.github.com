@@ -14,8 +14,9 @@
   bloat the repo (`.git` was 21M).
 - New large files go to a bucket (R2 / S3-compatible); **existing files are
   not migrated** for now.
-- Uploading/management is done with **PicList** (GUI) and **rclone** (CLI);
-  no custom upload logic.
+- Uploading/management is done with **PicList** (GUI), **rclone** (CLI) and
+  **`poe bucket-upload`** (CLI, converts to WebP + rename + upload);
+  `bucket-sync` stays a read-only mirror.
 - Core requirement: never hard-code bucket URLs in md; switching buckets /
   domains is a one-line config change.
 
@@ -139,8 +140,9 @@ build hooks (`plugins/bucket_url.py` at import time) and scripts
 
 - Loads `.env` at startup (R2 credentials / test overrides).
 
-- **Read-only by design** (matches the read-only R2 token; uploads happen in
-  PicList): only `pull` exists.
+- **Read-only by design** (matches the read-only R2 token): only `pull`
+  exists — **uploads go through `poe bucket-upload`** (needs a read-write
+  token, see below) or PicList.
 
 - `pull` — `rclone sync {remote}:{bucket}/{remote_prefix}/ → docs/assets/bucket/`
   (one-way mirror, **deletes local extras**); **dry-run by default**, requires
@@ -164,21 +166,80 @@ build hooks (`plugins/bucket_url.py` at import time) and scripts
   uv run poe bucket-sync pull --bucket bucket1 --remote-prefix abc/123
   ```
 
+### `scripts/bucket_upload.py` (`poe bucket-upload`)
+
+The write-side counterpart of `bucket-sync`: converts images to WebP, renames
+with a configured rule and uploads to the bucket. **Requires a read-write R2
+token** (Admin Read & Write, or Object Read + Object Write + List Bucket) in
+`.env` — the pull path only needs read. Update the token and re-run
+`poe rclone-config-init`; credentials never leave `.env` / rclone.conf.
+
+**Flow per image**: convert to WebP (quality from
+`extra.optimize_images.quality`, default 90) → render the object key → stage
+in the temp dir → `rclone copyto` → copy into `docs/assets/bucket/` (VSCode
+preview copy, git-ignored) → delete the temp file (kept on failure, path
+printed for retry).
+
+**Safety**: the script is **dry-run by default** — nothing is written or
+uploaded unless `--confirm` is passed (same guard as `bucket-sync pull`).
+Source files larger than `extra.bucket.upload.max_size_mb` (default 10 MB)
+fail immediately; override with `--max-size-mb` / `BUCKET_UPLOAD_MAX_SIZE_MB`.
+
+**Key rule** (`extra.bucket.upload.rule`, default
+`img/{Y}/{m}/{d}_{h}{i}{s}_{filename}`) — the rendered rule is joined to the
+mapping's `remote_prefix`, so with `remote_prefix: data/img` the object key is
+`data/img/img/2026/08/16_101112_myphoto.webp` (`img` is an image-category
+directory inside the bucket; change the rule to `{Y}/{m}/...` for a flatter
+tree). Tokens: `{Y}` year (4), `{m}/{d}/{h}/{i}/{s}` month/day/hour/minute/
+second (2), `{filename}` = original stem lowercased and reduced to ASCII
+letters+digits, spaces become `_` (Chinese/punctuation removed); an empty
+result (pure Chinese, no ASCII alphanumerics) → `fallback_name` (`noname`).
+A `.webp`
+suffix is appended unless the rule already ends in one. Same-second uploads of
+the same filename get a `-2`/`-3`… suffix.
+
+**Temp / staging dir**: `--tmp-dir` > `BUCKET_UPLOAD_TMP_DIR` >
+`extra.bucket.upload.tmp_dir` > `.bucket` at the repo root (git-ignored, same
+pattern as `.bot-api/`); converted WebP files land there before the upload.
+
+**Parameter resolution** mirrors `bucket-sync`: CLI arg > env (`.env`) >
+mkdocs.yml. The rclone remote name is **auto-detected from
+`rclone listremotes`** (prefers `r2`, else the single/first configured
+remote) — `--remote` / `BUCKET_SYNC_REMOTE` override it, stale values warn
+and fall back, and several remotes without an explicit choice warn before
+picking the first; CI never uploads. Upload-specific envs:
+`BUCKET_UPLOAD_RULE` / `BUCKET_UPLOAD_FALLBACK_NAME` /
+`BUCKET_UPLOAD_TMP_DIR` / `BUCKET_UPLOAD_MAX_SIZE_MB` (see `.env.example`).
+
+```bash
+# dry-run preview by default (nothing is uploaded)
+uv run poe bucket-upload photo.png
+# actually upload: converts to WebP, renames, uploads, prints the md link
+uv run poe bucket-upload photo.png --confirm
+# multiple images / quality / size-limit overrides
+uv run poe bucket-upload a.png b.jpg --quality 80 --confirm
+uv run poe bucket-upload --max-size-mb 20 photo.png --confirm
+```
+
 ### poe tasks
 
 - `poe server-bucket` — `mkdocs serve` + `MKDOCS_BUCKET_ENABLED=true`, preview
   the rewrite locally (src already points at the bucket).
 - `poe bucket-sync pull [--confirm]` — pull the bucket asset dir down.
+- `poe bucket-upload [images]` — convert to WebP, rename with
+  `extra.bucket.upload.rule` and upload (needs a read-write R2 token).
 
 ## Usage Flow
 
 1. Developer creates the bucket + API token in the R2 console; enable public
-   read (or a custom domain).
+   read (or a custom domain). **Create a read-write token** (Object Read +
+   Object Write + List Bucket) — `poe bucket-upload` needs write.
 1. Configure PicList R2 image host: endpoint / credentials / **store path =
    `remote_prefix`** (e.g. `web-assets/img/`).
 1. Drop large files into `docs/assets/bucket/` (git-ignored); reference them
-   from md with relative paths.
-1. Upload via PicList (keys match `remote_prefix`).
+   from md with relative paths — or upload with `poe bucket-upload` (auto
+   WebP + rename, prints the md link).
+1. Upload via PicList (keys match `remote_prefix`) or `poe bucket-upload`.
 1. `poe server-bucket` previews the rewrite; `poe build` builds production.
 1. Switching buckets/domains: change `base_url` in mkdocs.yml + rebuild; md
    untouched.
@@ -224,6 +285,21 @@ rclone config delete fakebucket
 
 Follow the steps below once the fake-bucket flow passes.
 
+## Testing the upload script
+
+```bash
+uv run poe test   # tests/test_bucket_upload.py: sanitize / rule rendering /
+                  # key resolution / temp dir / rclone command construction (mocked)
+```
+
+Real upload verification (needs the read-write token):
+
+```bash
+uv run poe bucket-upload /path/to/photo.png   # preview key/command (dry-run by default)
+uv run poe bucket-upload /path/to/photo.png --confirm      # convert + upload
+# then check the printed link renders: poe server-bucket
+```
+
 ## Developer Verification Steps
 
 These steps need the developer's bucket configuration (credentials never go
@@ -231,13 +307,17 @@ into the repo). Once verified, set `extra.bucket.enabled: true`.
 
 1. **Configure the rclone remote** (once, from `.env` — non-interactive):
    ```bash
-   # .env: R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY (read-only token)
+   # .env: R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY — use the
+   # READ-WRITE token if you plan to `poe bucket-upload` (Object Read +
+   # Object Write + List Bucket), else read-only is enough for pull
    uv run poe rclone-config-init                # creates/updates the `r2` remote
    uv run poe rclone-config-init --verify-bucket <bucket>  # object-level check
    # (or manual: rclone config create r2 s3 provider=Cloudflare ...)
    ```
-1. **Upload a test image** (PicList or rclone):
+1. **Upload a test image** (bucket-upload, PicList or rclone):
    ```bash
+   uv run poe bucket-upload /path/to/test.png --confirm  # WebP + rename + upload + local copy
+   # or manually:
    mkdir -p docs/assets/bucket
    cp /path/to/test.webp docs/assets/bucket/
    rclone copy docs/assets/bucket/ r2:<bucket>/web-assets/img/ --progress
@@ -253,12 +333,34 @@ into the repo). Once verified, set `extra.bucket.enabled: true`.
    uv run poe bucket-sync pull             # dry-run preview (lists files that would be deleted)
    uv run poe bucket-sync pull --confirm   # apply
    ```
+1. **Verify upload** (read-write token):
+   ```bash
+   uv run poe bucket-upload /path/to/photo.png   # preview key + rclone command (dry-run by default)
+   uv run poe bucket-upload /path/to/photo.png --confirm      # convert + upload
+   ls docs/assets/bucket/                   # local preview copy is present
+   ```
 1. **Migration drill**: change `base_url`, rebuild, confirm md untouched and
    built links switch.
 1. When all pass: `mkdocs.yml` → `bucket.enabled: true`, production enabled.
 
 ## Known Limitations & Risks
 
+- **403 CreateBucket on upload**: rclone's S3 backend checks bucket
+  existence (HeadBucket) before writing; R2 scoped API tokens return 403 for
+  bucket-level ops, which rclone misreads as "bucket missing" and then
+  attempts CreateBucket → AccessDenied. `poe bucket-upload` already passes
+  `--s3-no-check-bucket` (goes straight to PutObject); for manual rclone
+  uploads add the flag too.
+- **`poe bucket-upload` needs a read-write R2 token**: the pull path only
+  needs read; uploading requires Object Write (Admin Read & Write, or Object
+  Read + Object Write + List Bucket). Update `.env` and re-run
+  `poe rclone-config-init` when switching between read-only and read-write
+  usage.
+- **dedupe checks the local copy only**: `bucket-upload` appends
+  `-2`/`-3`… when the same key already exists under `docs/assets/bucket/`;
+  if that dir was wiped (e.g. `bucket-sync pull` deletes local extras, or
+  manual cleanup) a same-second re-upload silently overwrites the remote
+  object instead of getting a `-2` suffix.
 - **VSCode preview depends on local copies**: `docs/assets/bucket/` is
   git-ignored; other clones of the repo have no local copies → preview breaks
   for them (the author is unaffected).
