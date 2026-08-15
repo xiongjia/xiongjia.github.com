@@ -97,6 +97,10 @@ function renderFields(fields) {
       input = document.createElement("input");
       input.type = "checkbox";
       input.checked = f.default !== false;
+      if (f.enables) {
+        input.dataset.enables = f.enables;
+        input.addEventListener("change", () => syncGatedFields(box));
+      }
     } else if (f.type === "textarea") {
       input = document.createElement("textarea");
       input.placeholder = f.label;
@@ -112,11 +116,44 @@ function renderFields(fields) {
     else label.appendChild(input);
     box.appendChild(label);
   }
+  pairGatedFields(box);
+  syncGatedFields(box);
+}
+
+// checkbox-gated option fields (e.g. weight "Specify date" → date picker):
+// the checkbox and its gated field share one row; the gated field stays
+// hidden (and value-cleared) until the box is checked.
+function pairGatedFields(box) {
+  for (const cb of box.querySelectorAll('input[type="checkbox"][data-enables]')) {
+    const target = box.querySelector(`[data-name="${cb.dataset.enables}"]`);
+    if (!target) continue;
+    const cbLabel = cb.closest("label");
+    if (!cbLabel) continue; // checkbox outside a label — nothing to pair
+    const targetLabel = target.closest("label") || target;
+    if (cbLabel.parentElement.classList.contains("gate-row")) continue; // already paired
+    const row = document.createElement("div");
+    row.className = "gate-row";
+    cbLabel.after(row);
+    row.appendChild(cbLabel);
+    row.appendChild(targetLabel);
+  }
+}
+
+function syncGatedFields(box) {
+  for (const cb of box.querySelectorAll('input[type="checkbox"][data-enables]')) {
+    const target = box.querySelector(`[data-name="${cb.dataset.enables}"]`);
+    if (!target) continue;
+    target.disabled = !cb.checked;
+    const targetLabel = target.closest("label") || target;
+    targetLabel.classList.toggle("gated-off", !cb.checked);
+    if (!cb.checked) target.value = "";
+  }
 }
 
 function collectFields() {
   const fields = {};
   for (const input of document.querySelectorAll("#fields [data-name]")) {
+    if (input.disabled) continue; // gated-off option (e.g. date picker)
     if (input.type === "checkbox") {
       fields[input.dataset.name] = input.checked;
     } else if (input.value !== "") {

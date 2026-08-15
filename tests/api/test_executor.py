@@ -9,11 +9,11 @@ from api.models import assemble_args, task_names, task_schema
 from api.state import MERGED, SUBMITTED, BotRun, active_runs
 
 
-def test_task_names_derived_from_engine():
-    names = task_names()
-    assert "weight" in names
-    assert "text-moment" in names  # template task from mkdocs.yml
-    assert names == sorted(names)
+def test_task_names_curated_usage_order():
+    # console quick-task pane: curated usage order, not the full engine
+    # registry — health-summary / text-moment / create-post stay runnable
+    # via /api/bot/run but are hidden from the list
+    assert task_names() == ["weight", "enu", "sync-running"]
 
 
 def test_assemble_argv_flat():
@@ -47,7 +47,7 @@ def test_assemble_argv_stage_dir():
 
 
 def test_assemble_args_positional_and_flag():
-    args = assemble_args("weight", {"value": 82.5, "date": "2026-08-14"})
+    args = assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"})
     assert args == ["82.5", "--date", "2026-08-14"]
 
 
@@ -55,11 +55,29 @@ def test_assemble_args_optional_omitted():
     assert assemble_args("weight", {"value": 82}) == ["82"]
 
 
-def test_weight_date_field_is_free_text_like_time():
+def test_weight_date_is_gated_date_picker():
+    # console version: a "Specify date" checkbox (default unchecked) gates a
+    # native date picker — unchecked sends no --date; text-moment's optional
+    # time stays free text
     s = task_schema("weight")
+    gate = next(f for f in s.fields if f.name == "use_date")
     date_field = next(f for f in s.fields if f.name == "date")
     time_field = next(f for f in task_schema("text-moment").fields if f.name == "time")
-    assert date_field.type == time_field.type == "text"  # blank-able, no browser watermark
+    assert date_field.type == "date"
+    assert gate.type == "checkbox" and gate.default is False
+    assert gate.enables == "date"
+    assert time_field.type == "text"
+    # default (no date) → no --date flag
+    assert assemble_args("weight", {"value": 82}) == ["82"]
+    # date without the gate checked → dropped server-side too (the API
+    # contract matches the console's gated UI)
+    assert assemble_args("weight", {"value": 82.5, "date": "2026-08-14"}) == ["82.5"]
+    # checkbox checked + picked date → --date <iso>
+    assert assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"}) == [
+        "82.5",
+        "--date",
+        "2026-08-14",
+    ]
 
 
 def test_assemble_args_required_missing():
@@ -75,6 +93,23 @@ def test_assemble_args_defaults():
 def test_assemble_args_draft_flag_when_unchecked():
     args = assemble_args("create-post", {"title": "T", "draft": False})
     assert args[-1] == "--no-draft"
+
+
+@pytest.mark.parametrize(
+    "falsy",
+    ["false", "FALSE", "0", "", "no", "off", "n", "f", " false "],
+)
+def test_checkbox_string_falsy_spellings(falsy):
+    # a raw API client sending string falsy spellings must not enable the
+    # gate (or suppress the draft flag)
+    assert assemble_args("weight", {"value": 82.5, "use_date": falsy, "date": "2026-08-14"}) == [
+        "82.5"
+    ]
+    assert assemble_args("create-post", {"title": "T", "draft": falsy}) == [
+        "T",
+        "bits",
+        "--no-draft",
+    ]
 
 
 def test_assemble_args_unknown_task():
@@ -104,6 +139,48 @@ def test_schema_fallback_for_template_task():
     assert s is not None
     assert s.fields[0].name == "content"
     assert s.fields[0].arg == 0
+
+
+def test_validate_schemas_catches_task_drift(monkeypatch):
+    from api import models
+
+    # a curated name removed/renamed in the engine must be loud, not a
+    # silent drop of the console button
+    monkeypatch.setattr(models, "TASKS", {k: v for k, v in models.TASKS.items() if k != "weight"})
+    with pytest.raises(RuntimeError, match="missing from engine registry"):
+        models.validate_schemas()
+
+
+def test_validate_schemas_catches_bad_enables(monkeypatch):
+    from api import models
+
+    # a checkbox ``enables`` pointing at a nonexistent sibling is dead config
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {"weight": [{"name": "use_date", "type": "checkbox", "enables": "nope"}]},
+    )
+    with pytest.raises(RuntimeError, match="enables unknown field"):
+        models.validate_schemas()
+
+
+def test_validate_schemas_rejects_required_gated_field(monkeypatch):
+    from api import models
+
+    # a gated field is an optional option by definition — required + gate is
+    # contradictory config that assemble_args would silently drop
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "use_date", "type": "checkbox", "enables": "date"},
+                {"name": "date", "type": "date", "required": True, "arg": "--date"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match="must not be required"):
+        models.validate_schemas()
 
 
 def test_finalize_outcomes():
