@@ -6,13 +6,13 @@ description: "English Scraps: collect, organize & review English learning scraps
 # English Scraps（enu-organize）
 
 把日常英语碎片（生词 / 语法 / 难句 / 搭配）从 `scraps/inbox.md` 整理归档到
-`scraps/archive/` 下的按周文件（如 `scraps/archive/2026-w33.md`）。所有路径在
-`docs/notes/research/topics/english/scraps/` 下。
+`scraps/archive/` 下的按周文件（如 `scraps/archive/2026-w33.md`）。
+路径相对 `docs/notes/research/topics/english/`；仅 `inbox.md` 相对 `scraps/` 目录。
 
 | 触发词         | 动作                     |
 | -------------- | ------------------------ |
 | `add <内容>`   | 追加一条到 inbox         |
-| `arch`         | 批量整理归档（8 步流程） |
+| `arch`         | 批量整理归档（9 步流程） |
 | `quiz [范围]`  | 出 5–10 题复习并批改     |
 | `review <tag>` | 筛出该 tag 的卡片        |
 
@@ -24,7 +24,7 @@ description: "English Scraps: collect, organize & review English learning scraps
 1. 文件不存在时先建 frontmatter（`draft: true` + `title: English Scraps Inbox` + 格式说明注释）
 1. 完成后简短确认（如「已记：cumbersome」），不啰嗦
 
-## 2. 归档（arch）— 8 步
+## 2. 归档（arch）— 9 步
 
 触发条件（满足任一即可）：inbox 行数 ≥ 15 条 / 距离上次整理 ≥ 2 周 / 用户主动。
 
@@ -45,9 +45,15 @@ description: "English Scraps: collect, organize & review English learning scraps
    - 条目追加到文件末尾，不维护文件内索引；周文件天然小，无旧版 5000 行拆分规则
    - 一次归档跨多周时，各条目按各自日期落进对应周文件
 1. **归档后删除**：从 inbox 删除已处理条目（不保留、不建处理日志）
-1. 更新 `scraps/index.md` 的「上次整理：YYYY-MM-DD」，并把新周行追加到
-   `scraps/archive/index.md` 的「归档列表」（一行/周，已有周不重复、不计数；
-   手动整理后也应更新）
+1. 更新 `scraps/index.md` 的「上次整理：YYYY-MM-DD」，并把新周行追加到两处
+   「归档列表」（每处一行/周，已有周不重复、不计数；手动整理后也应更新）：
+   - `scraps/archive/index.md` 折叠块内：`<li><a href="./2026-w33/">2026-W33</a></li>`
+   - `english/index.md` 折叠块内：`<li><a href="./scraps/archive/2026-w33/">2026-W33</a></li>`
+     （href 用目录 URL，不带 `.md`；文件名小写 `2026-w33`，显示大写 `2026-W33`）
+1. **自检**：两处「归档列表」各新增一行；href 为目录 URL 且相对本页正确
+   （archive 页 `./<周>/`、topic 首页 `./scraps/archive/<周>/`，两者本就不同，
+   勿改成相同）；本周源文件 `scraps/archive/<周>.md` 已生成（构建后对应
+   `<周>/index.html`，链接才可点）
 1. 汇报：本次归档 N 条（按 type 分组）+ **存疑项清单**（misc / 来源未知 / 疑似重复 /
    释义不确定），只请用户确认这些
 
