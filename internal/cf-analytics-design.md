@@ -104,7 +104,9 @@ extra:
 
 - `enabled: false` turns analytics off completely (templates render nothing).
 - `token` falls back to the committed value; setting `CF_ANALYTICS_TOKEN`
-  overrides it without a git commit (handy for token rotation).
+  overrides it without a git commit (handy for token rotation). An **empty**
+  `CF_ANALYTICS_TOKEN` (e.g. `CF_ANALYTICS_TOKEN='' uv run poe server`) makes
+  mkdocs' `!ENV` resolve the token to null and disables the beacon entirely.
 - The token is **public by design** (client-side beacon), so committing the
   fallback is safe.
 
@@ -116,10 +118,30 @@ Shared Jinja fragment, included by both templates. Renders the beacon only when
 ```jinja
 {% if config.extra.cf_analytics.enabled and config.extra.cf_analytics.token %}
   <!-- Cloudflare Web Analytics -->
-  <script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "{{ config.extra.cf_analytics.token }}"}'></script>
+  <script type='module'>
+    ... loopback guard, then inject the beacon script ...
+  </script>
   <!-- End Cloudflare Web Analytics -->
 {% endif %}
 ```
+
+**Dev-server exclusion (two layers):**
+
+1. `poe server` / `server-prod` / `server-bucket` set `CF_ANALYTICS_TOKEN=""` in
+   their env (pyproject.toml) → mkdocs `!ENV` resolves it to null → the
+   dev-server HTML contains no beacon bytes at all.
+1. Safety net for ad-hoc local serving (`mkdocs serve` run directly, or
+   `python -m http.server` previewing `site/`): the partial's inline module
+   script only injects the beacon when `location.hostname` is **not** a
+   loopback/unspecified host (`localhost`, `127.0.0.1`, `0.0.0.0`, `::1`,
+   `[::1]`). Anything else —
+   including a LAN IP (e.g. opening the dev server from a phone) — is treated
+   as a real visit (covered in practice by layer 1).
+
+The dynamic injection works because the beacon reads its config via
+`document.currentScript || document.querySelector('script[data-cf-beacon]')`;
+with `type='module'` `currentScript` is null, so it DOM-scans and finds the
+injected tag (attribute set before `appendChild`).
 
 ### `overrides/main.html`
 
@@ -157,6 +179,18 @@ is tracked too — useful for spotting dead links from the backlinks feature.
    env override changes the emitted token.
 1. Commit → CI builds → GitHub Pages deploy (pending).
 
+## Update (2026-08-16): exclude local dev server
+
+Local `mkdocs serve` visits used to be recorded under the `localhost` hostname
+in the dashboard, polluting the stats. Now excluded in two layers — mechanism
+documented in the "Dev-server exclusion" note under the partial section above
+(empty-token env in `poe server*` + client-side loopback guard).
+
+Verified: `CF_ANALYTICS_TOKEN='' uv run poe build-drafts` (mirrors the
+`poe server*` env) emits no beacon in `index.html`/`404.html`; plain
+`uv run poe build` (no env override) still emits the beacon with the
+mkdocs.yml default token.
+
 ## Testing
 
 Local:
@@ -164,17 +198,25 @@ Local:
 ```bash
 uv run poe server
 # DevTools → Network → load a page
-# Expect: GET https://static.cloudflareinsights.com/beacon.min.js → 200
-# Expect: a subsequent beacon payload request with status 200
+# Expect: NO request to https://static.cloudflareinsights.com/beacon.min.js
+#         (server task forces an empty token — no beacon in the HTML at all)
 ```
 
-Note: local visits are recorded under the `localhost` hostname in the
-dashboard, so final verification happens on the live site. To run the dev
-server without sending any beacon at all, override the token with an empty
-value (`and token` short-circuits):
+To test the loopback guard itself (direct `mkdocs serve`, beacon present in
+HTML but not injected at runtime):
 
 ```bash
-CF_ANALYTICS_TOKEN='' uv run poe server
+uv run mkdocs serve          # or serve a built site locally
+# DevTools → Console → location.hostname
+# Expect: beacon.min.js NOT fetched on localhost / 127.0.0.1 / ::1
+```
+
+Production-style build (beacon must still be emitted):
+
+```bash
+uv run poe build
+# grep -o 'data-cf-beacon' site/index.html → present
+# Live verification happens on the deployed site (see below).
 ```
 
 Final verification after a production deploy:
@@ -189,6 +231,16 @@ Final verification after a production deploy:
 - **Beacon CDN failure / blocked**: page still renders fully — the script is
   `type='module'` (deferred by default) + non-blocking; worst case the visit is
   not counted.
+- **Beacon now loads via JS injection**: the beacon fetch starts at parse
+  completion (inline module runs, then injects) instead of at parse start.
+  The view is still recorded — the beacon reads navigation timing at init —
+  so the only cost is a sub-second skew for very fast bounces; accepted price
+  of the loopback guard.
+- **Local dev server** (`localhost` / `127.0.0.1` / `::1`): excluded twice —
+  `poe server*` emits no beacon (empty token), and the client-side loopback
+  guard skips injection for any other local serving. LAN-IP access to a dev
+  server is counted as a real visit (a `poe server*` dev server never sends a
+  beacon anyway; direct `mkdocs serve` on a LAN IP is the one gap, accepted).
 - **Theme toggle / client-side navigation**: static site uses full page loads;
   no SPA handling needed (the optional `"spa": true` flag is unnecessary).
 - **Privacy mode (Brave) / ad blockers**: beacon may not fire → undercount,
