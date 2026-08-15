@@ -535,9 +535,7 @@ class MomentPlugin(BasePlugin):
 
         # archive pages — year/month index + per-month pages
         # rankings data — computed once, shared by the archive + rankings pages
-        ranking_groups = (
-            self._ranking_groups() if self.rankings_cfg.get("enabled") else []
-        )
+        ranking_groups = self._ranking_groups() if self.rankings_cfg.get("enabled") else []
         self._render_archive_pages(site_dir, config, ranking_groups)
 
         # rankings page — rated moments per category, sorted by score
@@ -841,9 +839,9 @@ class MomentPlugin(BasePlugin):
                 entries.append(
                     {
                         "rank": rank,
-                        "name": first_name or first_m.place or first_m.date.strftime(
-                            "%Y-%m-%d %H:%M"
-                        ),
+                        "name": first_name
+                        or first_m.place
+                        or first_m.date.strftime("%Y-%m-%d %H:%M"),
                         "rating": avg,
                         "visits": len(visits),
                         "moments": [v[0] for v in visits],
@@ -855,9 +853,7 @@ class MomentPlugin(BasePlugin):
                 cfg = {}  # tolerate scalar category config (e.g. "food: 美食榜")
             title = cfg.get("title") or tag
             emoji = cfg.get("emoji") or self.map_cfg.get("tag_emoji", {}).get(tag, "")
-            groups.append(
-                {"key": tag, "title": title, "emoji": emoji, "entries": entries}
-            )
+            groups.append({"key": tag, "title": title, "emoji": emoji, "entries": entries})
         return groups
 
     # ------------------------------------------------------------------

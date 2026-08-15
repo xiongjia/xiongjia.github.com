@@ -834,7 +834,8 @@ def test_on_post_build_generates_rankings_page(tmp_path):
 
     def _calls_for(url):
         return [
-            c for c in template.render.call_args_list
+            c
+            for c in template.render.call_args_list
             if c.kwargs.get("page") and c.kwargs["page"].url == url
         ]
 
@@ -863,9 +864,7 @@ def test_ranking_groups_tolerates_scalar_category_config():
             "rankings": {"enabled": True, "categories": {"food": "美食榜"}},
         }
     )
-    plugin._moments = [
-        _rated_moment(0, ("general", "food"), {"name": "A", "rating": 4})
-    ]
+    plugin._moments = [_rated_moment(0, ("general", "food"), {"name": "A", "rating": 4})]
     groups = plugin._ranking_groups()
     # scalar value ignored (no crash) — title falls back to the tag name
     assert groups[0]["title"] == "food"
