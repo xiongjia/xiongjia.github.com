@@ -83,6 +83,20 @@ extra:
       film:
         - { key: name, label: 影院, type: text }
         - { key: rating, label: 评分, type: rating }
+    # Rankings page (extra.moment.rankings): archive-style page at
+    # /moments/rankings/ grouping rated moments per category (the meta_fields
+    # tags that define a `rating` field) and listing them sorted by score.
+    # Visits to the same venue (identical meta `name`) merge into one entry
+    # scored by average rating, with a ×N visit count. Categories with no
+    # rated moments are omitted; optional per-category title/emoji overrides
+    # fall back to the tag name and map.tag_emoji.
+    rankings:
+      enabled: true
+      categories:
+        food:
+          title: 美食榜
+        film:
+          title: 影院榜
     # Geo / map feature. Disable entirely with enabled: false (or by removing
     # the map block) — no geo parsing, no badges, no /moments/map/ page.
     # NOTE: the widget/tiles/glyphs are served from the vine R2 bucket, whose

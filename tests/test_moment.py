@@ -603,6 +603,312 @@ def test_archive_groups_ordered_newest_first():
 
 
 # ---------------------------------------------------------------------------
+# Rankings page
+# ---------------------------------------------------------------------------
+
+
+def _rated_moment(i: int, tags, meta) -> Moment:
+    """Build a moment with meta (name/rating) on a deterministic date."""
+    m = _moment(i, tags=tags)
+    m.meta = meta
+    return m
+
+
+def _rankings_plugin(moments):
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆", "type": "text"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ],
+                "film": [
+                    {"key": "name", "label": "影院", "type": "text"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ],
+            },
+            "rankings": {
+                "enabled": True,
+                "categories": {"food": {"title": "美食榜"}, "film": {"title": "影院榜"}},
+            },
+            "map": {"tag_emoji": {"film": "🎬", "food": "🍽️"}},
+        }
+    )
+    plugin._moments = moments
+    plugin._labels = {}
+    return plugin
+
+
+def test_ranking_groups_disabled_by_default():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = [_moment(0)]
+    assert plugin._ranking_groups() == []
+
+
+def test_ranking_groups_sorted_by_rating_desc():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "B 面馆", "rating": 3}),
+            _rated_moment(1, ("general", "food"), {"name": "A 面馆", "rating": 5}),
+            _rated_moment(2, ("general", "food"), {"name": "C 面馆", "rating": 4}),
+        ]
+    )
+    groups = plugin._ranking_groups()
+    assert [g["key"] for g in groups] == ["food"]
+    assert [e["name"] for e in groups[0]["entries"]] == ["A 面馆", "C 面馆", "B 面馆"]
+    assert [e["rating"] for e in groups[0]["entries"]] == [5, 4, 3]
+    assert [e["rank"] for e in groups[0]["entries"]] == [1, 2, 3]
+    assert groups[0]["title"] == "美食榜"
+    assert groups[0]["emoji"] == "🍽️"
+
+
+def test_ranking_groups_ties_share_rank_and_newest_first():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "film"), {"name": "老影院", "rating": 4}),
+            _rated_moment(1, ("general", "film"), {"name": "新影院", "rating": 4}),
+            _rated_moment(2, ("general", "film"), {"name": "低分影院", "rating": 3}),
+        ]
+    )
+    groups = plugin._ranking_groups()
+    entries = groups[0]["entries"]
+    # same score -> shared rank; secondary sort newest first
+    assert [e["rank"] for e in entries] == [1, 1, 3]
+    assert [e["name"] for e in entries] == ["新影院", "老影院", "低分影院"]
+    assert groups[0]["title"] == "影院榜"
+    assert groups[0]["emoji"] == "🎬"
+
+
+def test_ranking_groups_merges_same_name_visits():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "老面馆", "rating": 4}),
+            _rated_moment(1, ("general", "food"), {"name": "老面馆", "rating": 3}),
+            _rated_moment(2, ("general", "food"), {"name": "新面馆", "rating": 5}),
+        ]
+    )
+    groups = plugin._ranking_groups()
+    entries = groups[0]["entries"]
+    # 老面馆 merged: avg (4+3)/2 = 3.5, 2 visits; 新面馆 5 first
+    assert [e["name"] for e in entries] == ["新面馆", "老面馆"]
+    assert [e["rating"] for e in entries] == [5, 3.5]
+    assert [e["visits"] for e in entries] == [1, 2]
+    assert [e["rank"] for e in entries] == [1, 2]
+    # merged moments newest-first
+    assert [m.permalink for m in entries[1]["moments"]] == [
+        "/moments/2026-07/30-0001/",
+        "/moments/2026-07/30-0000/",
+    ]
+
+
+def test_ranking_groups_tiebreak_by_visits_then_latest():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "A 店", "rating": 5}),
+            _rated_moment(1, ("general", "food"), {"name": "A 店", "rating": 3}),  # avg 4, 2 visits
+            _rated_moment(2, ("general", "food"), {"name": "B 店", "rating": 4}),  # avg 4, 1 visit
+        ]
+    )
+    groups = plugin._ranking_groups()
+    # same avg 4: more visits first, then newest visit
+    assert [e["name"] for e in groups[0]["entries"]] == ["A 店", "B 店"]
+    assert [e["rank"] for e in groups[0]["entries"]] == [1, 1]
+
+
+def test_ranking_groups_nameless_moments_never_merge():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "A 店", "rating": 4}),
+            _rated_moment(1, ("general", "food"), {"rating": 4}),  # no name
+            _rated_moment(2, ("general", "food"), {"rating": 4}),  # no name
+        ]
+    )
+    groups = plugin._ranking_groups()
+    entries = groups[0]["entries"]
+    # the two nameless moments stay separate entries
+    assert len(entries) == 3
+    assert sum(1 for e in entries if e["visits"] == 1) == 3
+
+
+def test_ranking_groups_tiebreak_by_latest_visit():
+    # 旧店 (5+3) and 新店 (4+4) both average 4.0 over 2 visits — same score
+    # AND same visit count, so the tie breaks on the LATEST visit
+    # (新店 00:03 > 旧店 00:01).
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "旧店", "rating": 5}),
+            _rated_moment(1, ("general", "food"), {"name": "旧店", "rating": 3}),
+            _rated_moment(2, ("general", "food"), {"name": "新店", "rating": 4}),
+            _rated_moment(3, ("general", "food"), {"name": "新店", "rating": 4}),
+        ]
+    )
+    groups = plugin._ranking_groups()
+    # same avg AND same visit count -> newest visit first
+    assert [e["name"] for e in groups[0]["entries"]] == ["新店", "旧店"]
+    assert [e["rank"] for e in groups[0]["entries"]] == [1, 1]
+
+
+def test_ranking_rating_never_leaks_across_tags():
+    """A moment whose first matching tag carries an invalid rating must be
+    skipped entirely — it must never pick up a (valid) rating from a later
+    tag: `_moment_meta_items` falls through the first tag when it yields no
+    valid items, and `_moment_meta_tag` mirrors that selection. Both read the
+    same meta dict, so a rating invalid for one tag is invalid for all."""
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food", "film"), {"name": "X", "rating": 9}),
+            _rated_moment(1, ("general", "film"), {"name": "Y", "rating": 4}),
+        ]
+    )
+    groups = plugin._ranking_groups()
+    # only the valid film rating ranks; the invalid food rating leaks nowhere
+    assert [g["key"] for g in groups] == ["film"]
+    assert [e["name"] for e in groups[0]["entries"]] == ["Y"]
+
+
+def test_ranking_groups_skips_unrated_and_invalid_ratings():
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "无评分", "rating": 9}),
+            _rated_moment(1, ("general", "food"), {"name": "正常", "rating": 4}),
+            _rated_moment(2, ("general", "food"), {}),  # no meta at all
+            _moment(3),  # no meta_fields tag
+        ]
+    )
+    groups = plugin._ranking_groups()
+    assert [e["name"] for e in groups[0]["entries"]] == ["正常"]
+
+
+def test_ranking_groups_empty_when_no_rated_moments():
+    plugin = _rankings_plugin([_moment(0)])
+    assert plugin._ranking_groups() == []
+
+
+def test_on_page_context_injects_rankings_url():
+    plugin = _rankings_plugin([_rated_moment(0, ("general", "food"), {"name": "A", "rating": 4})])
+    page = SimpleNamespace(meta={"moment_type": PageType.TIMELINE})
+    config = SimpleNamespace(
+        theme=SimpleNamespace(get_env=lambda: None), site_url="https://example.com"
+    )
+    context = {}
+    plugin.on_page_context(context, page, config, None)
+    assert context["rankings_url"] == "/moments/rankings/"
+
+
+def test_on_page_context_skips_rankings_url_when_no_rated_moments():
+    plugin = _rankings_plugin([_moment(0)])
+    page = SimpleNamespace(meta={"moment_type": PageType.TIMELINE})
+    config = SimpleNamespace(
+        theme=SimpleNamespace(get_env=lambda: None), site_url="https://example.com"
+    )
+    context = {}
+    plugin.on_page_context(context, page, config, None)
+    assert "rankings_url" not in context
+
+
+def test_on_post_build_generates_rankings_page(tmp_path):
+    plugin = _rankings_plugin(
+        [
+            _rated_moment(0, ("general", "food"), {"name": "A 面馆", "rating": 5}),
+            _rated_moment(1, ("general", "film"), {"name": "B 影院", "rating": 3}),
+        ]
+    )
+    plugin._nav = None
+    plugin._base_url = ""
+    template = MagicMock()
+    template.render.return_value = "<html>rankings</html>"
+    env = MagicMock()
+    env.get_template.return_value = template
+    plugin._jinja_env = env
+    plugin.on_post_build(
+        {
+            "site_dir": str(tmp_path),
+            "docs_dir": str(tmp_path),
+            "site_url": "https://example.com",
+        }
+    )
+    assert (tmp_path / "moments" / "rankings" / "index.html").exists()
+
+    def _calls_for(url):
+        return [
+            c
+            for c in template.render.call_args_list
+            if c.kwargs.get("page") and c.kwargs["page"].url == url
+        ]
+
+    # find the rankings render among all renders — order-independent
+    ranking_calls = _calls_for("/moments/rankings/")
+    assert len(ranking_calls) == 1
+    assert len(ranking_calls[0].kwargs["ranking_groups"]) == 2
+    # archive page carries a reciprocal link to rankings when it exists
+    archive_calls = _calls_for("/moments/archive/")
+    assert len(archive_calls) == 1
+    assert archive_calls[0].kwargs["rankings_url"] == "/moments/rankings/"
+
+
+def test_ranking_groups_tolerates_scalar_category_config():
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {
+                "food": [
+                    {"key": "name", "label": "餐馆", "type": "text"},
+                    {"key": "rating", "label": "评分", "type": "rating"},
+                ]
+            },
+            # short form: scalar instead of a {title, emoji} dict
+            "rankings": {"enabled": True, "categories": {"food": "美食榜"}},
+        }
+    )
+    plugin._moments = [_rated_moment(0, ("general", "food"), {"name": "A", "rating": 4})]
+    groups = plugin._ranking_groups()
+    # scalar value ignored (no crash) — title falls back to the tag name
+    assert groups[0]["title"] == "food"
+    assert groups[0]["entries"][0]["name"] == "A"
+
+
+def test_on_post_build_skips_rankings_page_without_rated_moments(tmp_path):
+    plugin = _rankings_plugin([_moment(0)])
+    plugin._nav = None
+    plugin._base_url = ""
+    env = MagicMock()
+    env.get_template.return_value = MagicMock()
+    plugin._jinja_env = env
+    plugin.on_post_build(
+        {
+            "site_dir": str(tmp_path),
+            "docs_dir": str(tmp_path),
+            "site_url": "https://example.com",
+        }
+    )
+    assert not (tmp_path / "moments" / "rankings").exists()
+
+
+def test_on_post_build_archive_without_rankings_has_no_link(tmp_path):
+    """Archive index gets rankings_url=None when rankings are disabled, so
+    the reciprocal link never renders."""
+    plugin, template = _make_plugin([_moment(0)])  # rankings disabled by default
+    plugin.on_post_build(
+        {
+            "site_dir": str(tmp_path),
+            "docs_dir": str(tmp_path),
+            "site_url": "https://example.com",
+        }
+    )
+    archive_calls = [
+        c
+        for c in template.render.call_args_list
+        if c.kwargs.get("page") and c.kwargs["page"].url == "/moments/archive/"
+    ]
+    assert len(archive_calls) == 1
+    assert archive_calls[0].kwargs["rankings_url"] is None
+
+
+# ---------------------------------------------------------------------------
 # Draft support
 # ---------------------------------------------------------------------------
 
