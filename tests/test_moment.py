@@ -2232,10 +2232,11 @@ def test_create_moment_captions_order_matched(tmp_path, monkeypatch, capsys, cle
     )
     capsys.readouterr()
     md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
-    # image + caption adjacent (no blank line between) → the plugin merges
-    # them into <figure><figcaption>; blank line separates the two images
-    assert "![第一张](../../assets/bucket/2026/08/09_143000_a.webp)\n第一张\n\n" in md
-    assert "![第二张](../../assets/bucket/2026/08/09_143000_b.webp)\n第二张" in md
+    # the caption goes into the image's alt text ONLY (the [ ] of
+    # ![alt](src)) — no separate caption line after the image
+    assert "![第一张](../../assets/bucket/2026/08/09_143000_a.webp)\n\n" in md
+    assert "![第二张](../../assets/bucket/2026/08/09_143000_b.webp)" in md
+    assert "\n第一张\n" not in md
 
 
 def test_create_moment_caption_mismatch_warns(tmp_path, monkeypatch, capsys, clear_bucket_env):
@@ -2263,6 +2264,23 @@ def test_create_moment_caption_without_image_warns(tmp_path, monkeypatch, capsys
     assert "nope" not in md
 
 
+def test_create_moment_caption_newline_flattened(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """A caption with a newline must not split the image link in two — the
+    newline is flattened to a space inside the alt text."""
+    src = tmp_path / "a.png"
+    src.write_bytes(_PNG)
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--image", f"{src}|line1\nline2", "--no-upload", "--time", "2026-08-09 14:30"],
+        tmp_path,
+    )
+    capsys.readouterr()
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
+    assert "![line1 line2](../../assets/bucket/2026/08/09_143000_a.webp)" in md
+    assert "\nline2\n]" not in md  # no line break inside the [ ]
+
+
 def test_create_moment_inline_caption_sparse(tmp_path, monkeypatch, capsys, clear_bucket_env):
     """Inline ``path|caption`` keeps a sparse caption attached to its image."""
     a, b = tmp_path / "a.png", tmp_path / "b.png"
@@ -2285,9 +2303,10 @@ def test_create_moment_inline_caption_sparse(tmp_path, monkeypatch, capsys, clea
     )
     capsys.readouterr()
     md = list((tmp_path / "docs" / "moments").rglob("*.md"))[0].read_text(encoding="utf-8")
-    # caption stays with image b (the second one), not image a
+    # caption stays with image b (the second one) as its alt text only
     assert "![Image](../../assets/bucket/2026/08/09_143000_a.webp)\n" in md
-    assert "![第二张的说明](../../assets/bucket/2026/08/09_143000_b.webp)\n第二张的说明" in md
+    assert "![第二张的说明](../../assets/bucket/2026/08/09_143000_b.webp)" in md
+    assert "\n第二张的说明\n" not in md
 
 
 def test_create_moment_gps_from_exif(tmp_path, monkeypatch, capsys, clear_bucket_env):

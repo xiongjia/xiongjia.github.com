@@ -10,8 +10,9 @@ Files keep the **uploaded (sanitized) name — no timestamp/uuid prefix** —
 so the image key stem stays the author's filename (create_moment sanitizes
 it again for the bucket key). A re-upload of the same name **overwrites**
 the staging file (the moment flow converts + uploads to R2 immediately, so
-staging is transient) and stale files older than ``STALE_DAYS`` are pruned
-on each save.
+staging is transient) — note: a moment staged but not yet run would pick up
+the re-uploaded content, so run it before re-uploading a same-named file.
+Stale files older than ``STALE_DAYS`` are pruned on each save.
 
 No auth by design (matches the rest of the API) — bind to a trusted network.
 """
@@ -53,7 +54,9 @@ def _sanitize_name(name: str) -> str:
     its original extension — different contracts, keep them apart.
     """
     raw = Path(name).name.strip().lower() or "upload"
-    p = Path(_FILENAME_SAFE.sub("_", raw).strip("._"))
+    cleaned = _FILENAME_SAFE.sub("_", raw)
+    cleaned = re.sub(r"\.{2,}", ".", cleaned)  # photo..png → photo.png
+    p = Path(cleaned.strip("._"))
     if p.suffix.lower() not in _IMAGE_EXTS:
         raise ValueError(f"unsupported image type: {p.suffix or '(none)'} (png/jpg/jpeg/webp)")
     return f"{p.stem}{p.suffix.lower()}"
@@ -76,23 +79,52 @@ def _prune_stale() -> None:
             pass
 
 
+def _unique_in_batch(name: str, taken: set[str]) -> str:
+    """Append ``-2``/``-3``… when *name* is already taken inside ONE batch.
+
+    Two different files renamed to the same ``save_as`` (e.g. all "123")
+    must BOTH survive the upload — a suffix keeps them apart. Cross-batch
+    re-uploads still overwrite (staging is transient).
+    """
+    if name not in taken:
+        return name
+    p = Path(name)
+    n = 2
+    while f"{p.stem}-{n}{p.suffix}" in taken:
+        n += 1
+    return f"{p.stem}-{n}{p.suffix}"
+
+
 def save_uploads(items: list[dict]) -> list[str]:
     """Decode base64 files into ``uploads/``; return absolute paths.
 
-    Each file is saved under its sanitized original name — a duplicate name
-    **overwrites** the previous staging file, and two same-name files inside
-    one batch collapse to a single path (last one wins). Raises
-    ``ValueError`` on any invalid/oversized file (the endpoint maps it to a
-    400). Nothing is written when a file fails, so a bad batch leaves no
-    partial files behind.
+    Each file is saved under its sanitized name — ``save_as`` (optional,
+    per file) overrides it: a ``save_as`` without an extension keeps the
+    original file's extension (``123`` + ``xxxx_abc.png`` → ``123.png``).
+    Same-name files inside one batch get a ``-2``/``-3``… suffix so nothing
+    is lost; a re-upload of an existing name **overwrites** (staging is
+    transient). Raises ``ValueError`` on any invalid/oversized file (the
+    endpoint maps it to a 400). Nothing is written when a file fails, so a
+    bad batch leaves no partial files behind.
     """
     if not items:
         return []
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
     _prune_stale()
-    decoded: dict[str, bytes] = {}
+    # validate EVERYTHING first (error messages use the clean, pre-dedupe
+    # name so the client recognizes its own file), then dedupe + write
+    decoded: list[tuple[str, bytes]] = []
     for item in items:
         name = _sanitize_name(str(item.get("name", "")))
+        save_as = str(item.get("save_as") or "").strip()
+        if save_as:
+            # append the original extension BEFORE sanitizing — sanitize
+            # enforces the extension whitelist and would reject a bare
+            # ``123`` (no suffix) otherwise
+            save_as = Path(save_as).name.strip().lower()
+            if not Path(save_as).suffix:
+                save_as += Path(name).suffix
+            name = _sanitize_name(save_as)
         try:
             raw = base64.b64decode(str(item.get("data", "")), validate=True)
         except Exception as exc:
@@ -104,10 +136,16 @@ def save_uploads(items: list[dict]) -> list[str]:
                 f"{name}: {len(raw) / 1e6:.1f}MB exceeds the "
                 f"{MAX_UPLOAD_BYTES / 1e6:.0f}MB upload limit"
             )
-        decoded[name] = raw
+        decoded.append((name, raw))
+    # same-name files inside one batch (original names or a shared save_as)
+    # get -2/-3… so nothing is lost; cross-batch re-uploads still overwrite
+    # (staging is transient)
+    taken: set[str] = set()
     paths: list[str] = []
-    for name, raw in decoded.items():
-        dest = UPLOAD_DIR / name
-        dest.write_bytes(raw)  # duplicate name → overwrite (staging is transient)
+    for name, raw in decoded:
+        final = _unique_in_batch(name, taken)
+        taken.add(final)
+        dest = UPLOAD_DIR / final
+        dest.write_bytes(raw)
         paths.append(str(dest))
     return paths
