@@ -74,16 +74,22 @@ def iter_images(root: Path) -> Iterator[Path]:
 
 
 def convert_to_webp(
-    src: Path, *, dry_run: bool = False, quality: int = DEFAULT_WEBP_QUALITY
+    src: Path,
+    *,
+    dry_run: bool = False,
+    quality: int = DEFAULT_WEBP_QUALITY,
+    dst: Path | None = None,
 ) -> Path | None:
     """Convert a single image to WebP at the given *quality*.
 
     Out-of-range *quality* values are clamped to 1-100 (above → 100, below → 1).
-    Returns the path to the new .webp file, or None if the WebP already exists
-    and is not smaller.
+    *dst* overrides the output location (default: next to *src* with a .webp
+    suffix) — used by bucket-upload to convert straight into the keyed target
+    path. Returns the path to the new .webp file, or None if the WebP already
+    exists and is not smaller.
     """
     quality = _clamp_quality(quality)
-    dst = src.with_suffix(".webp")
+    dst = dst or src.with_suffix(".webp")
     if dst.exists() and dst.stat().st_size <= src.stat().st_size:
         print(f"  [SKIP] {src} -> {dst} (already exists and not larger)")
         return None

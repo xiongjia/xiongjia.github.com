@@ -41,6 +41,7 @@ def run(monkeypatch, clear_bucket_env):
     monkeypatch.setattr(bs, "_bucket_config", lambda: CFG)
     monkeypatch.setattr(bs, "load_env_files", lambda: None)
     monkeypatch.setattr(bs.subprocess, "call", _fake_call)
+    monkeypatch.setattr(bs, "available_remotes", lambda: ["r2", "env-remote", "cli-remote"])
     return calls
 
 
@@ -105,6 +106,48 @@ class TestResolutionOrder:
         monkeypatch.delenv("BUCKET_SYNC_REMOTE", raising=False)
         with pytest.raises(SystemExit):
             _main(monkeypatch, ["pull"])
+
+
+class TestRemoteResolution:
+    """Remote auto-detection from rclone listremotes."""
+
+    def test_auto_detect_single_remote(self, run, monkeypatch):
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["web-assets-rw"])
+        assert _main(monkeypatch, ["pull"]) == 0
+        assert "web-assets-rw:web-assets-rw/web-assets/img/" in run[0]
+
+    def test_auto_detect_prefers_r2(self, run, monkeypatch):
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["a", "r2", "b"])
+        assert _main(monkeypatch, ["pull"]) == 0
+        assert "r2:r2/web-assets/img/" in run[0]
+
+    def test_stale_env_remote_warns_and_falls_back(self, run, monkeypatch, capsys):
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["web-assets-rw"])
+        monkeypatch.setenv("BUCKET_SYNC_REMOTE", "web-assets-readonly")
+        assert _main(monkeypatch, ["pull"]) == 0
+        assert "web-assets-rw:web-assets-rw/web-assets/img/" in run[0]
+        assert "not configured" in capsys.readouterr().err
+
+    def test_cli_remote_beats_auto_detect(self, run, monkeypatch):
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["web-assets-rw"])
+        assert _main(monkeypatch, ["pull", "--remote", "web-assets-rw"]) == 0
+        assert "web-assets-rw:web-assets-rw/web-assets/img/" in run[0]
+
+    def test_multi_remote_warns_when_unpinned(self, run, monkeypatch, capsys):
+        """Several remotes and no explicit choice → pick the first, warn loudly
+        (uploads must not silently go to the wrong account)."""
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["prod-bucket", "test-bucket"])
+        assert _main(monkeypatch, ["pull"]) == 0
+        assert "prod-bucket:prod-bucket/web-assets/img/" in run[0]
+        err = capsys.readouterr().err
+        assert "multiple rclone remotes" in err
+        assert "prod-bucket" in err
+
+    def test_multi_remote_no_warning_when_pinned(self, run, monkeypatch, capsys):
+        monkeypatch.setattr(bs, "available_remotes", lambda: ["prod-bucket", "test-bucket"])
+        _main(monkeypatch, ["pull", "--remote", "test-bucket"])
+        assert "multiple rclone remotes" not in capsys.readouterr().err
+        assert "test-bucket:test-bucket/web-assets/img/" in run[0]
 
 
 class TestNoRclone:

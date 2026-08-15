@@ -11,7 +11,9 @@ only mirrors the bucket down to the local dir through rclone:
 Read-only by design (matches the read-only R2 token): no push/upload path —
 uploading is PicList's job. Defaults are read from ``extra.bucket`` in
 mkdocs.yml (``remote_prefix``, first mapping's ``prefix``); the rclone remote
-name comes from ``BUCKET_SYNC_REMOTE`` (.env, default ``r2``).
+name is **auto-detected from ``rclone listremotes``** (prefers ``r2``, else
+the single/first configured remote) — ``--remote`` CLI / ``BUCKET_SYNC_REMOTE``
+env override it, stale override values warn and fall back.
 
 **Proxy**: set ``RCLONE_HTTP_PROXY`` in .env (rclone's native env var for
 ``--http-proxy``) when R2 is only reachable through a proxy (e.g. mainland
@@ -73,7 +75,58 @@ def _first_mapping(cfg: dict) -> dict:
     return dict(mappings[0])
 
 
-DEFAULT_REMOTE = "r2"  # rclone remote name; local-only (BUCKET_SYNC_REMOTE env, not mkdocs.yml)
+DEFAULT_REMOTE = "r2"  # last-resort remote name when rclone has no remotes
+
+
+def available_remotes() -> list[str]:
+    """Configured rclone remote names (sorted; [] when none or rclone errors)."""
+    try:
+        out = subprocess.run(["rclone", "listremotes"], capture_output=True, text=True, check=False)
+    except OSError:
+        return []
+    return sorted({line.strip().rstrip(":") for line in out.stdout.splitlines() if line.strip()})
+
+
+def resolve_remote(cli: str | None, label: str = "bucket") -> str:
+    """Pick the rclone remote: ``--remote`` CLI > ``BUCKET_SYNC_REMOTE`` env > auto-detect.
+
+    Auto-detect prefers ``r2`` when configured, else the single available
+    remote, else the first one; with several remotes and no explicit choice it
+    warns (uploads must not silently go to the wrong account). An explicit
+    (CLI/env) name that is not in ``rclone listremotes`` is warned about and
+    ignored — a stale env value must not break uploads. With no remotes at
+    all ``DEFAULT_REMOTE`` is used so the rclone call itself still reports
+    the real error.
+    """
+    available = available_remotes()
+    explicit = cli or os.environ.get("BUCKET_SYNC_REMOTE", "").strip()
+    if explicit:
+        if explicit in available:
+            return explicit
+        print(
+            f"{label}: WARNING rclone remote {explicit!r} is not configured "
+            f"(listremotes: {available or 'none'}) — auto-selecting instead",
+            file=sys.stderr,
+        )
+    if "r2" in available:
+        pick = "r2"
+    elif available:
+        pick = available[0]
+    else:
+        pick = ""
+    if len(available) > 1 and not explicit:
+        print(
+            f"{label}: WARNING multiple rclone remotes {available} — using {pick!r}; "
+            "set BUCKET_SYNC_REMOTE (env) or --remote (CLI) to pin",
+            file=sys.stderr,
+        )
+    if pick:
+        return pick
+    print(
+        f"{label}: WARNING no rclone remotes configured (rclone listremotes is empty)",
+        file=sys.stderr,
+    )
+    return DEFAULT_REMOTE
 
 
 def _rclone_path(remote: str, bucket: str, remote_prefix: str) -> str:
@@ -118,7 +171,9 @@ def main() -> int:
         help="pull = bucket->local (rclone sync, deletes local extras, dry-run by default)",
     )
     parser.add_argument(
-        "--remote", help="rclone remote name (default: BUCKET_SYNC_REMOTE env or 'r2')"
+        "--remote",
+        help="rclone remote name (default: auto-detected from `rclone listremotes`; "
+        "BUCKET_SYNC_REMOTE env overrides, stale values fall back with a warning)",
     )
     parser.add_argument(
         "--bucket",
@@ -147,7 +202,7 @@ def main() -> int:
 
     cfg = _bucket_config()
     mapping = _first_mapping(cfg)  # raises SystemExit when no mappings
-    remote = _pick(args.remote, "BUCKET_SYNC_REMOTE", DEFAULT_REMOTE)
+    remote = resolve_remote(args.remote, label="bucket-sync")
     bucket = _pick(args.bucket, "BUCKET_SYNC_BUCKET", str(mapping.get("bucket") or ""))
     if not bucket:
         # falling back to the remote name is almost always wrong and silently

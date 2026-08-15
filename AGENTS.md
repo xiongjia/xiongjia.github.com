@@ -45,6 +45,7 @@ uv run poe update-weight 82 [date] # record daily weight (default: today)
 uv run poe update-health-summary   # regenerate health index summary (calls local pi)
 uv run poe sync-running            # sync running data from running_page site
 uv run poe bucket-sync pull       # pull docs/assets/bucket/ from R2/S3 via rclone (read-only, dry-run by default; uploads happen in PicList)
+uv run poe bucket-upload img.png --confirm  # upload an image to the bucket as WebP (rename rule from mkdocs.yml; dry-run by default, --confirm uploads; needs a read-write R2 token in .env)
 uv run poe md2wechat [path]        # convert post to WeChat HTML
 ```
 
@@ -59,7 +60,9 @@ Large site files (mainly WebP images) live outside git on an R2/S3 bucket.
   [internal/bucket-design.md](internal/bucket-design.md)). Switching buckets =
   changing `extra.bucket.mappings[].base_url` in mkdocs.yml, md untouched.
 - Local copies stay in `docs/assets/bucket/` (git-ignored) so VSCode preview works.
-- Upload via **PicList** (store path = `remote_prefix`, e.g. `web-assets/img/`);
+- Upload via **PicList** (store path = `remote_prefix`, e.g. `web-assets/img/`) or
+  `poe bucket-upload` (auto WebP + rename + upload, dry-run by default, `--confirm` to upload, needs a read-write R2
+  token);
   pull back with `poe bucket-sync pull` (read-only rclone sync, dry-run default).
 - **Credentials (R2 access keys) are developer-local only** (rclone.conf / PicList)
   — never commit them; env test hooks: `MKDOCS_BUCKET_ENABLED`,

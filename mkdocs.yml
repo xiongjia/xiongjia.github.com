@@ -42,6 +42,20 @@ extra:
         bucket: web-assets
         remote_prefix: data/img   # object prefix inside the bucket
         base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/img"
+    # `poe bucket-upload` rename rule (key = remote_prefix + rendered rule).
+    # Default was img/{Y}/{m}/{d}_{h}{i}{s}_{filename} (img = image category
+    # dir in the bucket); current rule drops the img/ level. {Y} year(4),
+    # {m}/{d}/{h}/{i}/{s} month/day/hour/min/sec (2); {filename} = original
+    # stem, lowercased, ASCII letters+digits only, spaces → _ (empty →
+    # fallback_name); a .webp suffix is appended automatically. tmp_dir stages
+    # the converted WebP before upload (git-ignored, default .bucket/).
+    # max_size_mb rejects larger source files (default 10). Upload is dry-run
+    # by default — pass --confirm to upload; needs a read-write R2 token.
+    upload:
+      rule: "{Y}/{m}/{d}_{h}{i}{s}_{filename}"
+      fallback_name: noname
+      tmp_dir: .bucket
+      max_size_mb: 10
   # default WebP quality for `poe optimize-images` (converts PNG/JPG to WebP);
   # CLI --quality overrides this; the script falls back to 90 if both absent
   optimize_images:
