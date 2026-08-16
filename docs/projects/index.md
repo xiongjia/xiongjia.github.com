@@ -12,13 +12,15 @@ hide:
 
 ## Overview
 
-| Project                         | Status      | Category           |
-| ------------------------------- | ----------- | ------------------ |
-| [seedling](#seedling)           | 🟢 Active   | Frontend & UI      |
-| [vine](#vine)                   | 🟢 Active   | Frontend & UI      |
-| [playground](#playground)       | 🟢 Active   | Automation Toolkit |
-| [mung](#mung)                   | 🟢 Active   | AI & Skills        |
-| [Running Otaku](#running-otaku) | 📦 Archived | Health & Sports    |
+| Project                         | Status         | Category           |
+| ------------------------------- | -------------- | ------------------ |
+| [seedling](#seedling)           | 🟢 Active      | Frontend & UI      |
+| [vine](#vine)                   | 🟡 Maintenance | Frontend & UI      |
+| [playground](#playground)       | 🟢 Active      | Automation Toolkit |
+| [mung](#mung)                   | 🟢 Active      | AI & Skills        |
+| [Running Otaku](#running-otaku) | 📦 Archived    | Health & Sports    |
+
+状态：🟢 Active（活跃开发）· 🟡 Maintenance（维护模式，仅小修小补）· 📦 Archived（归档）
 
 ______________________________________________________________________
 
@@ -36,9 +38,10 @@ React 写的 Dashboard Demo UI，支持多语言、多皮肤模式，用来整�
 
 ### vine
 
-静态地图 Web 应用（MapLibre GL + React），在地图上标记产品位置并生成旅行笔记。
+完全静态的地图方案（零后端）：可复用的 MapView 组件（React + 原生 HTML widget）、pmtiles 区域管理 CLI、演示站点与组件 playground，可部署到 GitHub Pages / S3 / R2 等任意静态托管。
 
 - :simple-github: [Source](https://github.com/xiongjia/vine)
+- :material-web: [Demo](https://xiongjia.github.io/vine/)
 
 **Pipeline**: Collection(map visualization) → React + MapLibre GL → Project
 
