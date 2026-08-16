@@ -66,12 +66,19 @@ tags: [refactor, mkdocs]
 - [running-track-health-monitor.md](./running-track-health-monitor.md) — Running Track: health monitor integration with running_page data
 - [tools-assets-externalize.md](./tools-assets-externalize.md) — Notes Tools: extract inline JS/CSS from tool pages into standalone assets (deferred)
 - [bucket-upload.md](./bucket-upload.md) — Bucket Image Upload: `poe bucket-upload` (WebP + rename rule + rclone upload; needs read-write R2 token)
+- [mkdocs-media-archive.md](./mkdocs-media-archive.md) — MkDocs Media Archive: 用 MkDocs 归档看过的书/影片/游戏（调研方案 → 数据模型 → 索引页）
+- [research-index-status.md](./research-index-status.md) — Research Index Status: 给 research topic 增加状态维度（active/done/stale/draft），索引页加状态列
 
 ### Research
 
 - [indie-game-tool-research.md](./indie-game-tool-research.md) — Indie Game Tool Research: Godot, Krita, LDTK, Tiled, Blender
 - [maplibre-research.md](./maplibre-research.md) — MapLibre GL JS & Protomaps Research: MapLibre, PMTiles, Tippecanoe
 - [hands-on-data-viz-reading.md](./hands-on-data-viz-reading.md) — Hands-On Data Visualization Reading Plan: data viz from spreadsheets to code
+- [cloudflare-kv-research.md](./cloudflare-kv-research.md) — Cloudflare KV Database Research/Prototype: 读写模型、TTL、缓存语义、限制定价、wrangler demo
+- [tauri-ui-research.md](./tauri-ui-research.md) — Tauri UI Research/Prototype: Tauri 2 桌面 + 移动端（架构、IPC、插件、打包）
+- [improve-lux-research.md](./improve-lux-research.md) — Improve Lux Research: 核对上游更新、补全缺失、修正过时内容
+- [improve-trip-research.md](./improve-trip-research.md) — Improve TRIP Research: 核对上游、补全前后端机制与实操说明
+- [improve-shadcn-ui-research.md](./improve-shadcn-ui-research.md) — Improve shadcn/ui Research: 核对 CLI/Registry 最新实现、主题机制、实操示例
 
 ### Posts
 
