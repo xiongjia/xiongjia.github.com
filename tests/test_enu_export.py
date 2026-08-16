@@ -1,5 +1,7 @@
 """Tests for scripts/enu.py export (English Scraps → Anki apkg / CSV)."""
 
+import json
+import re
 import sqlite3
 import subprocess
 import sys
@@ -48,6 +50,27 @@ categories: [dev]
 - **含义**: 想出（主意/方案）
 - **例句**: We came up with a plan.
 - **替换**: think of
+
+### look forward to
+
+- **type**: collocation
+- **date**: 2026-08-11
+- **source**: 未知来源
+- **status**: new
+- **tags**: [phrasal, future]
+- **含义**: 期待
+- **例句**: I look forward to hearing from you.
+- **易混**: look forward to + 动名词
+
+### break the ice
+
+- **type**: idiom
+- **date**: 2026-08-12
+- **source**: 未知来源
+- **status**: new
+- **tags**: [social]
+- **含义**: 打破冷场
+- **例句**: He told a joke to break the ice.
 
 ### would have done
 
@@ -102,13 +125,27 @@ def _write_fixture(tmp_path: Path, crlf: bool = False) -> Path:
     return path
 
 
-def _apkg_notes(apkg: Path, tmp_path: Path) -> list[tuple[str, str, str]]:
-    """Return (guid, fields, tags) rows from an apkg's collection.anki2."""
+def _open_anki_collection(apkg: Path, tmp_path: Path) -> sqlite3.Connection:
+    """Extract and open an apkg's collection.anki2 (caller must close)."""
     with zipfile.ZipFile(apkg) as z:
         z.extract("collection.anki2", tmp_path)
-    con = sqlite3.connect(tmp_path / "collection.anki2")
+    return sqlite3.connect(tmp_path / "collection.anki2")
+
+
+def _apkg_notes(apkg: Path, tmp_path: Path) -> list[tuple[str, str, str]]:
+    """Return (guid, fields, tags) rows from an apkg's collection.anki2."""
+    con = _open_anki_collection(apkg, tmp_path)
     try:
         return con.execute("SELECT guid, flds, tags FROM notes").fetchall()
+    finally:
+        con.close()
+
+
+def _apkg_models(apkg: Path, tmp_path: Path) -> dict[str, dict]:
+    """Return the note-type models dict from an apkg's collection.anki2."""
+    con = _open_anki_collection(apkg, tmp_path)
+    try:
+        return json.loads(con.execute("SELECT models FROM col").fetchone()[0])
     finally:
         con.close()
 
@@ -118,13 +155,13 @@ def test_export_apkg_creates_valid_package(tmp_path):
     out = tmp_path / ".anki"
     proc = _run_enu(tmp_path, "export", "--dry-run", "--out", str(out))
     assert proc.returncode == 0, proc.stderr
-    assert "4 card(s)" in proc.stdout
+    assert "6 card(s)" in proc.stdout
 
     apkg = next(out.glob("english-scraps-*.apkg"))
     notes = _apkg_notes(apkg, tmp_path)
-    # 4 exportable cards (word / phrasal-verb / grammar / sentence);
-    # the misc card and the type-less block are skipped
-    assert len(notes) == 4, [n[1] for n in notes]
+    # 6 exportable cards (word / phrasal-verb / collocation / idiom / grammar /
+    # sentence); the misc card and the type-less block are skipped
+    assert len(notes) == 6, [n[1] for n in notes]
 
     fields_by_key = {}
     for guid, fields, tags in notes:
@@ -134,7 +171,7 @@ def test_export_apkg_creates_valid_package(tmp_path):
             assert "technical" in tags and "adjective" in tags
     # deterministic, unique guids
     guids = sorted(fields_by_key)
-    assert len(set(guids)) == 4
+    assert len(set(guids)) == 6
     # spot-check a word note: term + ipa present
     for fields in fields_by_key.values():
         if fields[0] == "cumbersome":
@@ -157,6 +194,30 @@ def test_export_apkg_guid_stable_across_runs(tmp_path):
     assert guids1 == guids2
 
 
+def test_export_apkg_templates_only_reference_real_fields(tmp_path):
+    """Anki rejects templates that reference fields not defined in the note type
+    (e.g. literal ``{{f}}`` from a brace-escape bug). Every field referenced in a
+    template must exist in the model's field list."""
+    _write_fixture(tmp_path)
+    out = tmp_path / ".anki"
+    assert _run_enu(tmp_path, "export", "--dry-run", "--out", str(out)).returncode == 0
+
+    apkg = next(out.glob("english-scraps-*.apkg"))
+    models = _apkg_models(apkg, tmp_path)
+    assert models, "apkg must contain at least one note type"
+    for m in models.values():
+        fields = {fld["name"] for fld in m["flds"]}
+        for t in m["tmpls"]:
+            for kind, tmpl in (("qfmt", t["qfmt"]), ("afmt", t["afmt"])):
+                # ``{{#x}}`` / ``{{x}}`` / ``{{/x}}`` / ``{{^x}}`` all reference field x
+                for name in re.findall(r"\{\{#?/?\^?([^{}\s]+?)\}\}", tmpl):
+                    if name not in fields:
+                        ref = "{{" + name + "}}"
+                        raise AssertionError(
+                            f"{m['name']} {t['name']} {kind}: {ref} not in {sorted(fields)}"
+                        )
+
+
 def test_export_csv_utf8_bom_and_key_column(tmp_path):
     _write_fixture(tmp_path)
     out = tmp_path / ".anki"
@@ -175,6 +236,10 @@ def test_export_csv_utf8_bom_and_key_column(tmp_path):
     assert (out / "phrasal-verb.csv").exists()
     pv = (out / "phrasal-verb.csv").read_text(encoding="utf-8-sig").splitlines()
     assert pv[1].startswith("phrasal-verb:come-up-with,")
+    coll = (out / "collocation.csv").read_text(encoding="utf-8-sig").splitlines()
+    assert coll[1].startswith("collocation:look-forward-to,look forward to,期待,")
+    idiom = (out / "idiom.csv").read_text(encoding="utf-8-sig").splitlines()
+    assert idiom[1].startswith("idiom:break-the-ice,break the ice,打破冷场,")
 
 
 def test_export_sentence_dedup_key_uses_original(tmp_path):
@@ -193,10 +258,10 @@ def test_export_status_rewrite_new_to_learning(tmp_path):
     out = tmp_path / ".anki"
     proc = _run_enu(tmp_path, "export", "--out", str(out))
     assert proc.returncode == 0, proc.stderr
-    assert "Status updated: 4 card(s) new → learning" in proc.stdout
+    assert "Status updated: 6 card(s) new → learning" in proc.stdout
 
     text = path.read_text(encoding="utf-8")
-    assert text.count("- **status**: learning") == 4
+    assert text.count("- **status**: learning") == 6
     # the misc card and the type-less block are not exportable — their status stays new
     assert text.count("- **status**: new") == 2
 
@@ -212,7 +277,7 @@ def test_export_all_re_exports_learning_cards(tmp_path):
     assert _run_enu(tmp_path, "export", "--out", str(out)).returncode == 0
     proc = _run_enu(tmp_path, "export", "--all", "--dry-run", "--out", str(out))
     assert proc.returncode == 0, proc.stderr
-    assert "4 card(s)" in proc.stdout
+    assert "6 card(s)" in proc.stdout
 
 
 def test_export_misc_type_prints_hint(tmp_path):
@@ -268,7 +333,7 @@ def test_export_ignores_archive_index_page(tmp_path):
     proc = _run_enu(tmp_path, "export", "--dry-run", "--out", str(out))
     assert proc.returncode == 0, proc.stderr
     # index.md's ### heading must not be parsed as a card
-    assert "4 card(s)" in proc.stdout
+    assert "6 card(s)" in proc.stdout
 
 
 def test_export_status_rewrite_preserves_crlf(tmp_path):
