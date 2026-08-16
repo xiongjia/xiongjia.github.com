@@ -52,6 +52,9 @@ uv run poe md2wechat [path]        # convert post to WeChat HTML
 
 Site runs at `http://localhost:8000` by default.
 
+Note: the dev servers bind 0.0.0.0 (`poe server*` on :8000, `poe api-server*` on :8100); the API has **no auth** — keep it on a trusted
+network or pin `BOT_API_HOST=127.0.0.1` for local-only.
+
 ## Bucket-hosted assets (R2/S3)
 
 Large site files (mainly WebP images) live outside git on an R2/S3 bucket.

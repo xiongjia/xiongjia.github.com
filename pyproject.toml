@@ -28,6 +28,14 @@ dependencies = [
     "python-frontmatter>=1.3.0",
     "pyperclip>=1.11.0",
     "genanki>=0.13.1",
+    # API server (bot remote API) + its test stack — kept in base deps so a
+    # plain `uv sync` is enough on any machine (no extras to forget, no
+    # venv churn between `poe test` and `poe api-server`).
+    "fastapi>=0.115.0",
+    "uvicorn[standard]>=0.32.0",
+    "pydantic-settings>=2.0.0",
+    "pytest>=9.1.1",
+    "httpx>=0.27.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
@@ -38,9 +46,9 @@ license = { text = "MIT" }
 # → mkdocs !ENV resolves it to null → the partial renders nothing. See
 # overrides/partials/cf-analytics.html for the client-side loopback guard
 # that also covers ad-hoc `mkdocs serve` / local static previews.
-server = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH drafts (draft blog posts visible)" }
-server-prod = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITHOUT drafts (mirrors production build)" }
-server-bucket = { cmd = "mkdocs serve", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", MKDOCS_BUCKET_ENABLED = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH bucket prefix rewrite (test bucket link replacement)" }
+server = { cmd = "mkdocs serve --dev-addr 0.0.0.0:8000", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH drafts, bind 0.0.0.0:8000 (draft blog posts visible)" }
+server-prod = { cmd = "mkdocs serve --dev-addr 0.0.0.0:8000", env = { NO_MKDOCS_2_WARNING = "1", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITHOUT drafts, bind 0.0.0.0:8000 (mirrors production build)" }
+server-bucket = { cmd = "mkdocs serve --dev-addr 0.0.0.0:8000", env = { NO_MKDOCS_2_WARNING = "1", MKDOCS_INCLUDE_DRAFTS = "true", MKDOCS_BUCKET_ENABLED = "true", CF_ANALYTICS_TOKEN = "" }, help = "Dev server WITH bucket prefix rewrite, bind 0.0.0.0:8000 (test bucket link replacement)" }
 build = "mkdocs build"
 build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" }, help = "Build static site INCLUDING drafts" }
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
@@ -73,17 +81,9 @@ bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an is
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: --image auto-WebP+bucket, --tags, --place/--lng/--lat (EXIF GPS auto), --draft, --time" }
 enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap (poe enu add 'cumbersome') or export Anki cards (poe enu export)" }
-test = { cmd = "uv run --extra test --extra api pytest -q", help = "Run unit tests (pytest, test+api extras): uv run poe test" }
-api-server = { cmd = "python scripts/api_server.py", help = "Start remote API (dev): uv run poe api-server" }
-api-server-prod = { cmd = "python scripts/api_server.py --host 0.0.0.0", help = "Start remote API (prod): uv run poe api-server-prod" }
-
-[project.optional-dependencies]
-test = ["pytest>=9.1.1", "httpx>=0.27.0"]
-api = [
-    "fastapi>=0.115.0",
-    "uvicorn[standard]>=0.32.0",
-    "pydantic-settings>=2.0.0",
-]
+test = { cmd = "uv run pytest -q", help = "Run unit tests (pytest): uv run poe test" }
+api-server = { cmd = "uv run python scripts/api_server.py", help = "Start remote API (binds 0.0.0.0; BOT_API_HOST/BOT_API_PORT override): uv run poe api-server" }
+api-server-prod = { ref = "api-server", help = "Start remote API (prod; alias of api-server): uv run poe api-server-prod" }
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

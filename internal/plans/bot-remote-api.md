@@ -169,9 +169,11 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
    `--date`, `enu` + `--date`), and must always supply declared args
    (defaults from the schema) — `TemplateTask.plan` raises when a declared
    arg is missing.
-1. **Ports/hosts should be env-driven, not hardcoded.** `BOT_API_HOST` /
-   `BOT_API_PORT` should be the uvicorn defaults in `api_server.py`;
-   `poe api-server-prod` only forces `--host 0.0.0.0`.
+1. **Ports/hosts should be env-driven, not hardcoded.** The uvicorn bind
+   comes from `api/config.py` defaults (`host` 0.0.0.0, port from
+   `BOT_API_PORT`), and `poe api-server` / `poe api-server-prod` run the
+   launcher without extra flags — so `BOT_API_HOST=127.0.0.1` restores
+   local-only operation.
 1. **Status enum should match engine outcomes.** Engine marker states are
    `running/ready/submitting/stale` + derived `merged`; map to API status
    `running → submitted` (draft PR, handoff — the only outcome, see the
@@ -277,11 +279,10 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   history tests use tmp_path (TG webhook tests come with Phase 2)
 - [x] Local test wiring only (GitHub CI is deferred to Phase 2, with TG):
   `tests/api/` imports the `api` package → `poe test` becomes
-  `uv run --extra test --extra api pytest -q` (local dev and the bot's
-  own local CI gate both need it — verified: without the api extra,
-  pytest collection fails on fastapi import); add `httpx` to the `test`
-  extra (FastAPI `TestClient` dependency — verified it is not pulled in
-  by fastapi itself). No `.github/workflows/ci.yml` changes here.
+  `uv run pytest -q` (fastapi/pytest/httpx live in
+  `[project.dependencies]`, no extras — verified: without them pytest
+  collection fails on fastapi import). No `.github/workflows/ci.yml`
+  changes here.
 - [x] History pagination + search (`GET /api/bot/history` limit/offset +
   `q` query param; `history.load(limit, offset, query)` returns
   newest-first records + total)
@@ -332,8 +333,8 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   message to the owner chat)
 - [x] GitHub CI (pulled forward from the last phase):
   `.github/workflows/ci.yml`
-  `uv sync --extra test` → `--extra test --extra api` (tests import the
-  `api` package) — done; the lint job runs pytest incl. `tests/api/`
+  `uv sync` (API/test deps moved into `[project.dependencies]`, no
+  extras) — done; the lint job runs pytest incl. `tests/api/`
 
 ## Notes
 
@@ -384,12 +385,12 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   the API server process just inherits the env.
 - **CI interplay**: `api/` is linted/formatted by repo-wide `poe fmt` /
   `lint-py` (also run by the bot's own CI gate in worktrees), and the
-  `poe api-server` extras must be installed (`uv sync --extra api`) before
-  the API process starts.
+  API deps live in `[project.dependencies]` (no extras), so they are
+  always present — no manual `uv sync --extra api` needed.
 - **Port**: default `BOT_API_PORT=8100` (documented in `.env.example`) —
   8000 belongs to the mkdocs dev server (`poe server`), and the engine's
   preview already avoids it (`bot-auto-pr-design.md` §1). Port is
-  env-driven everywhere (`poe api-server-prod` only forces `--host 0.0.0.0`); keep `BOT_API_HOST=127.0.0.1` for local-only operation. The
+  env-driven everywhere (config default host 0.0.0.0); pin `BOT_API_HOST=127.0.0.1` for local-only operation. The
   same port is the webhook/nginx/tunnel target in Phase 2, so it's a
   stable contract once chosen.
 - **Webhook exposure (no auth)**: the TG webhook URL is effectively public

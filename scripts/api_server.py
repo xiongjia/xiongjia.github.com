@@ -1,8 +1,9 @@
 """uvicorn launcher for the bot API server.
 
 Usage:
-    uv run poe api-server           # BOT_API_HOST/BOT_API_PORT from env
-    uv run poe api-server-prod      # --host 0.0.0.0 (port from env)
+    uv run poe api-server         # binds 0.0.0.0 by default (BOT_API_HOST overrides)
+    uv run poe api-server-prod    # same as dev (alias)
+    python scripts/api_server.py  # BOT_API_HOST / BOT_API_PORT from env
 """
 
 from __future__ import annotations
@@ -21,9 +22,7 @@ from shared.env import load_env_files  # noqa: E402
 def main() -> None:
     load_env_files()
     parser = argparse.ArgumentParser(description="Bot Remote API server")
-    parser.add_argument(
-        "--host", default=None, help="bind host (default: BOT_API_HOST / 127.0.0.1)"
-    )
+    parser.add_argument("--host", default=None, help="bind host (default: BOT_API_HOST / 0.0.0.0)")
     parser.add_argument(
         "--port", type=int, default=None, help="bind port (default: BOT_API_PORT / 8100)"
     )

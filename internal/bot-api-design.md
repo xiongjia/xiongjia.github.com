@@ -131,26 +131,26 @@ xiongjia.github.com/
 ## Dependencies
 
 ```toml
-# pyproject.toml
-[project.optional-dependencies]
-test = ["pytest>=9.1.1", "httpx>=0.27.0"]   # httpx: FastAPI TestClient
-api = [
-    "fastapi>=0.115.0",
-    "uvicorn[standard]>=0.32.0",
-    "python-telegram-bot>=20.6",             # added in Phase 2
-    "pydantic-settings>=2.0.0",              # config management
-]
+# pyproject.toml — deps live in [project.dependencies]; no extras so a
+# plain `uv sync` is enough on any machine (no --extra bookkeeping, no
+# venv churn between `poe test` and `poe api-server`).
+"fastapi>=0.115.0",
+"uvicorn[standard]>=0.32.0",
+"python-telegram-bot>=20.6",             # added in Phase 2
+"pydantic-settings>=2.0.0",              # config management
+"pytest>=9.1.1",
+"httpx>=0.27.0",                         # FastAPI TestClient
 
 [tool.poe.tasks]
 # existing ...
 bot = { cmd = "python scripts/git_bot.py", help = "Local bot CLI" }
 
 # added
-api-server = { cmd = "python scripts/api_server.py", help = "Start remote API (dev)" }
-api-server-prod = { cmd = "python scripts/api_server.py --host 0.0.0.0", help = "Start remote API (prod)" }
+api-server = { cmd = "uv run python scripts/api_server.py", help = "Start remote API (binds 0.0.0.0; BOT_API_HOST overrides)" }
+api-server-prod = { ref = "api-server", help = "Start remote API (prod; alias of api-server)" }
 ```
 
-Install: `uv sync --extra api`
+Install: `uv sync` (API/test deps in `[project.dependencies]`, no extras)
 
 ## Configuration
 
@@ -599,7 +599,7 @@ failure without bloating the file).
 
 ```bash
 # 1. Install deps
-uv sync --extra api
+uv sync
 
 # 2. Configure .env (BOT_API_HOST/PORT, BOT_API_LOG_DIR; TG_* in Phase 2)
 
@@ -627,7 +627,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/xiongjia/xiongjia.github.com
-ExecStart=/home/xiongjia/.local/bin/uv run --extra api poe api-server-prod
+ExecStart=/home/xiongjia/.local/bin/uv run poe api-server-prod
 Restart=on-failure
 Environment=PYTHONUNBUFFERED=1
 
