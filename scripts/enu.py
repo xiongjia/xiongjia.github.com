@@ -128,9 +128,12 @@ _CSS = """
 """
 
 
-def _sec(label: str, f: str) -> str:
-    """Conditional back-section ``{{#f}}<b>label</b>: {{f}}<br>{{/f}}``."""
-    return f"{{{{#{f}}}}}<b>{label}</b>: {{{{f}}}}<br>{{{{/{f}}}}}"
+def _sec(label: str, field_name: str) -> str:
+    """Conditional back-section ``{{#field}}<b>label</b>: {{field}}<br>{{/field}}``."""
+    return (
+        "{{#" + field_name + "}}<b>" + label + "</b>: {{" + field_name + "}}"
+        "<br>{{/" + field_name + "}}"
+    )
 
 
 _AFMT_WORD = (
