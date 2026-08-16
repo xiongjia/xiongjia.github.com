@@ -23,11 +23,23 @@
 > - Runtime data lives in `.bot-api/` (configurable via `BOT_API_LOG_DIR`):
 >   `history.jsonl` (+ rotation) and `uploads/` staging.
 > - Engine gained sanctioned exceptions: rest-arg template args
->   (`args: [text...]`) and a `--stage-dir` copy-in flag (uploads, Phase 2).
+>   (`args: [text...]`) and a push retry in `push_branch` (3 attempts on
+>   transient proxy connection errors). The planned `--stage-dir` copy-in
+>   flag (uploads, Phase 2) was **dropped** — `create_moment` now converts
+>   - uploads to R2 itself, so staged files never need to enter the
+>     worktree.
 > - `create-post` category options are `bits/dev/thought` (not `life`).
 > - Task scheduling (cron) is dropped; console image uploads landed as a
 >   base64 JSON staging endpoint (`POST /api/upload` → `.bot-api/uploads/`,
->   no multipart dependency); Telegram attachment uploads remain Phase 2.
+>   no multipart dependency).
+> - **Telegram scope (dev decision, 2026-08-17)**: allowlisted users only
+>   (`TG_ALLOWED_USER_IDS`), three tasks — `/weight`, `/enu`, simplified
+>   `/moment` (text + multiple photos); no `/post` dialog, no `/sync`/
+>   `/health`/`/status`; completion pushed to the issuing chat. Replies
+>   in English; photo-only `/moment` allowed (empty text + `--no-editor`,
+>   a new create_moment flag); `/weight` defaults to today; concurrent
+>   runs allowed; completion push is one-way (PR link, no reply). The
+>   Telegram design section below is outdated and superseded by the plan.
 
 ## Goals
 
@@ -592,6 +604,110 @@ failure without bloating the file).
 4. User sends /status
 5. query active_runs / history file, format the reply
 ```
+
+## Telegram Bot Setup (Phase 2)
+
+How to create the bot, get the token, and configure the API server for the
+allowlisted private bot (`/weight`, `/enu`, `/moment`).
+
+### 1. Create the bot and get the token (BotFather)
+
+1. Open Telegram and start a chat with **@BotFather** (the official
+   bot-creation bot, blue checkmark).
+1. Send `/newbot`.
+1. Follow the prompts:
+   - **Name**: any display name (e.g. `Xiongjia Bot`).
+   - **Username**: must end in `bot` (e.g. `xiongjia_bot`).
+1. BotFather replies with an **HTTP API token**, e.g.
+   `123456789:AAF...` — copy it, this is `TG_BOT_TOKEN`.
+   (Rotate it later with `/token`; delete the bot with `/deletebot`.)
+
+### 2. Get your Telegram user ID (allowlist)
+
+The bot only answers allowlisted users (`TG_ALLOWED_USER_IDS`). Ask any
+user-info bot for your numeric ID — they reply with a single number on
+any message:
+
+| Bot              | Notes                                    |
+| ---------------- | ---------------------------------------- |
+| **@userinfobot** | most common; compact reply               |
+| @getidsbot       | replies with chat id / user id           |
+| @RawDataBot      | full JSON — your id is `message.from.id` |
+
+Web alternative: open `https://t.me/userinfobot`, tap "Open in
+Telegram", send `/start`.
+
+1. Start a chat with the bot and send `/start` (or any message) — it
+   replies with your numeric user ID, e.g. `123456789`.
+1. Put that number in `TG_ALLOWED_USER_IDS` (comma-separated for more
+   than one user).
+
+> **First-setup gotcha**: non-allowlisted messages are **silently
+> ignored** (no reply, no error). If you mis-typed the ID, your own
+> `/weight` / `/enu` / `/moment` will get no response either — re-check
+> the ID with @userinfobot before digging elsewhere.
+
+### 3. Configure `.env.local`
+
+Add to `.env.local` (never commit secrets; `.env.example` documents the
+keys). `shared.env.load_env_files()` picks `.env.local` up at server
+start:
+
+```bash
+TG_BOT_TOKEN=123456789:AAF...
+TG_ALLOWED_USER_IDS=123456789
+TG_MODE=polling
+```
+
+- `TG_MODE=polling` — dev mode: the bot long-polls Telegram itself; no
+  public URL needed. Use this first to verify.
+- `TG_MODE=webhook` — production: Telegram POSTs updates to a public
+  https URL. Needs `TG_WEBHOOK_URL` (e.g. Cloudflare Tunnel → nginx →
+  `http://127.0.0.1:8100/webhook/...`). The webhook path is
+  `/webhook/<secret>`; the secret comes from `TG_WEBHOOK_PATH` when set,
+  otherwise a random value is generated at startup (nginx / the tunnel
+  can forward the whole `/webhook/` prefix, so the value itself doesn't
+  need to be pinned unless you want a stable URL).
+
+### 4. Network / proxy
+
+`python-telegram-bot` talks to `api.telegram.org` (outbound HTTPS). If
+Telegram is unreachable directly (e.g. mainland China), reuse the
+existing proxy env:
+
+```bash
+BOT_HTTP_PROXY=http://127.0.0.1:1095
+```
+
+### 5. Verify
+
+1. Start the server: `uv run poe api-server`
+   (defaults `BOT_API_HOST=127.0.0.1`, `BOT_API_PORT=8100`).
+1. In Telegram, message the bot:
+   - `/ping` → replies `pong` (config self-check — works even for
+     non-allowlisted accounts, so it can tell a connection/token
+     problem from an allowlist one).
+   - `/help` → lists all available commands.
+   - `/weight 82` (from your allowlisted account) → replies with a run
+     id, then pushes the result + PR link when the run finishes.
+   - `/moment Morning run 5km` (optionally with photos) → same flow.
+1. Watch logs/history in the web console at `http://localhost:8100`.
+1. A message from a **non-allowlisted** account is silently ignored
+   (no reply, no error) — except `/ping`, which always answers.
+
+### Troubleshooting
+
+- **"Unauthorized" / 401 on start** → `TG_BOT_TOKEN` wrong or the bot
+  was deleted; re-run `/newbot` or `/token` in BotFather.
+- **No replies, server logs show polling errors** → outbound network
+  problem; set `BOT_HTTP_PROXY` and restart.
+- **Commands ignored even from your own account** → your user ID is not
+  in `TG_ALLOWED_USER_IDS`, or the value has spaces/typos. Cross-check:
+  `/ping` still answers (it bypasses the allowlist); if `/ping` also goes
+  unanswered, the problem is upstream (token / connection / server).
+- **Webhook 404** → `TG_MODE=webhook` but the tunnel/nginx path does
+  not match `/webhook/`; or `TG_WEBHOOK_URL` was never registered
+  (`set_webhook` runs at startup — check startup logs).
 
 ## Deployment
 

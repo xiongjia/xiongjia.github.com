@@ -8,6 +8,8 @@ in-flight runs (history file survives).
 from __future__ import annotations
 
 import asyncio
+import logging
+from collections.abc import Callable
 from dataclasses import dataclass, field
 from datetime import datetime
 
@@ -16,6 +18,9 @@ SUBMITTED = "submitted"
 MERGED = "merged"
 FAILED = "failed"
 ABORTED = "aborted"
+# idempotent task produced no diff (engine printed "⏭ no changes") —
+# nothing to push, no PR; distinct from submitted so the UI/push can say so
+NOOP = "noop"
 
 ACTIVE_CAP = 50
 # cap on the in-memory log list so a long noisy run can't grow unbounded
@@ -41,6 +46,9 @@ def now_iso() -> str:
     return datetime.now().astimezone().isoformat(timespec="seconds")
 
 
+logger = logging.getLogger("api.state")
+
+
 def log_level(line: str) -> str:
     for emoji, level in _LEVELS.items():
         if emoji in line:
@@ -61,6 +69,12 @@ class BotRun:
     log_queue: asyncio.Queue = field(default_factory=asyncio.Queue)
     proc: asyncio.subprocess.Process | None = None
     branch: str | None = None
+    # Telegram completion push (Phase 2): issuing chat + one-way callback.
+    # The callback is sync and must not block — it schedules the async
+    # send itself (``create_task``). Fires from ``finish()``, so every
+    # end path (success/fail/abort) is covered.
+    chat_id: int | None = None
+    on_done: Callable[[BotRun], None] | None = None
 
     def log(self, msg: str, level: str | None = None) -> None:
         entry = {
@@ -79,6 +93,13 @@ class BotRun:
         if pr_url:
             self.pr_url = pr_url
         self.log_queue.put_nowait(None)  # sentinel: end of stream
+        if self.on_done:
+            try:
+                self.on_done(self)
+            except Exception:
+                # best effort — never break run teardown / history write,
+                # but log so a silently dropped push is not undebuggable
+                logger.warning("run %s on_done callback failed", self.run_id, exc_info=True)
 
     def to_dict(self) -> dict:
         return {

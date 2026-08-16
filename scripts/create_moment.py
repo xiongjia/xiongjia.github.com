@@ -253,6 +253,14 @@ def main():
     parser = argparse.ArgumentParser(description="Create a new Moment")
     parser.add_argument("content", nargs="?", help="Moment content (opens editor if empty)")
     parser.add_argument(
+        "--no-editor",
+        action="store_true",
+        help=(
+            "with empty content: skip the editor step — for non-interactive / "
+            "bot use (e.g. photo-only moments; the bot subprocess has no TTY)"
+        ),
+    )
+    parser.add_argument(
         "--image",
         action="append",
         metavar="PATH",
@@ -535,7 +543,7 @@ def main():
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
-    if not args.content:
+    if not args.content and not args.no_editor:
         ret = subprocess.call([EDITOR, filepath])
         if ret != 0:
             print(f"Warning: editor exited with code {ret}")

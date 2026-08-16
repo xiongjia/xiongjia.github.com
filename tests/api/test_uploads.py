@@ -27,16 +27,16 @@ def _b64(raw: bytes) -> str:
 
 
 def test_sanitize_name():
-    assert up._sanitize_name("My Photo.JPG") == "my_photo.jpg"
-    assert up._sanitize_name("IMG_2024.png") == "img_2024.png"
-    assert up._sanitize_name("照片 café.jpg") == "caf_.jpg"  # non-ascii runs → _
-    assert up._sanitize_name("../../evil.webp") == "evil.webp"  # path traversal
+    assert up.sanitize_name("My Photo.JPG") == "my_photo.jpg"
+    assert up.sanitize_name("IMG_2024.png") == "img_2024.png"
+    assert up.sanitize_name("照片 café.jpg") == "caf_.jpg"  # non-ascii runs → _
+    assert up.sanitize_name("../../evil.webp") == "evil.webp"  # path traversal
     with pytest.raises(ValueError, match="unsupported image type"):
-        up._sanitize_name("")  # no name and no extension
+        up.sanitize_name("")  # no name and no extension
     with pytest.raises(ValueError, match="unsupported image type"):
-        up._sanitize_name("notes.txt")
+        up.sanitize_name("notes.txt")
     with pytest.raises(ValueError, match="unsupported image type"):
-        up._sanitize_name("noext")
+        up.sanitize_name("noext")
 
 
 def test_save_uploads_basic(upload_dir):
@@ -115,7 +115,7 @@ def test_save_as_dot_runs_collapsed(upload_dir):
     # "123." must not produce a double-dot filename (123..png)
     paths = up.save_uploads([{"name": "orig.png", "data": _b64(b"X"), "save_as": "123."}])
     assert paths == [str(upload_dir / "123.png")]
-    assert up._sanitize_name("photo..png") == "photo.png"
+    assert up.sanitize_name("photo..png") == "photo.png"
 
 
 def test_save_uploads_prunes_stale(upload_dir, monkeypatch):

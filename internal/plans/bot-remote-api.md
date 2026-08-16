@@ -1,7 +1,7 @@
 ---
 title: Bot Remote API — HTTP API + Web Console + Telegram Bot
 created: 2026-08-14
-updated: 2026-08-14
+updated: 2026-08-17
 status: in-progress
 tags: [bot, api, fastapi, telegram, web-console]
 ---
@@ -33,8 +33,23 @@ full suite 415 passing, ruff clean, live smoke test on
 
 **Phase 1 done** — web management API + console complete and verified
 (30+ `tests/api/` tests, full suite 421 passing, ruff clean, live smoke
-on `127.0.0.1:8100`). **Phase 0**: design-doc English translation pending.
-**Phase 2** (Telegram Bot + attachments + CI wiring): not started.
+on `127.0.0.1:8100`). **Phase 0 done** — design doc translated, engine
+registry aligned, `.gitignore` updated. Attachment uploads shipped early
+in a simpler form than planned: base64 JSON staging (no python-multipart),
+and `create_moment` converts + uploads to R2 so files never enter the
+worktree — the planned `--stage-dir` engine flag is dropped (the Phase 2
+upload entries below reflect this).
+
+**Phase 2 done (2026-08-17)** — Telegram Bot implemented and verified:
+allowlisted users only (`TG_ALLOWED_USER_IDS`, denied users silently
+ignored), three tasks (`/weight`, `/enu`, simplified `/moment` text +
+multiple photos via caption command / album aggregation), completion
+push to the issuing chat (one-way, PR link), webhook + polling mode
+switch, `--no-editor` sanctioned flag on `create_moment` for photo-only
+moments, 13 `tests/api/test_tg_webhook.py` tests + full suite 634
+passing, ruff clean. Setup guide: `internal/bot-api-design.md`
+(§ Telegram Bot Setup). Real-device
+smoke (a live bot token) is pending — see Phase 2's status note.
 Task scheduling (cron) is dropped — not needed for now.
 
 ## Target structure
@@ -52,7 +67,8 @@ xiongjia.github.com/
 │   │                                     #   from the engine (mkdocs.yml extra.bot.tasks + git_bot.TASKS)
 │   ├── state.py                          # BotRun dataclass + active_runs (in-memory, capped at 50)
 │   ├── history.py                        # JSONL append persistence + daily rotation (30 days)
-│   ├── uploads.py                        # Phase 2: attachment upload (multipart → staging, file_id)
+│   ├── uploads.py                        # image staging: base64 from console; raw-bytes writer
+│   │                                     #   shared with TG photo downloads (sanitize + limits)
 │   ├── executor.py                       # execute_bot_task(): async subprocess scheduling + log queue
 │   │                                     #   + status updates + history writes
 │   ├── lifespan.py                       # startup: cleanup / schema validation / PTB init; shutdown: kill
@@ -62,8 +78,8 @@ xiongjia.github.com/
 │   │   ├── bot.py                        # POST /api/bot/run, GET /status/{id}, GET /stream/{id} (SSE+heartbeat),
 │   │   │                                 #   GET /history, POST /abort/{id}
 │   │   ├── system.py                     # GET /api/health, /version, /schema/{task}
-│   │   └── tg.py                         # POST /webhook + command routing
-│   │                                     #   + /post ConversationHandler
+│   │   └── tg.py                         # POST /webhook + allowlist gate + 3 commands
+│   │                                     #   + completion push to the issuing chat
 │   └── static/                           # Web console (pure static SPA, no build step)
 │       ├── index.html
 │       ├── css/
@@ -72,17 +88,17 @@ xiongjia.github.com/
 │           └── app.js                    # EventSource SSE + heartbeat, dynamic forms, history refresh
 │
 ├── scripts/
-│   ├── git_bot.py                        # existing, zero modification (except sanctioned --stage-dir, Phase 2)
+│   ├── git_bot.py                        # existing, zero modification (rest-arg + push retry only)
 │   └── api_server.py                     # new: uvicorn launcher (with REPO_ROOT sys.path bootstrap)
 │
 ├── tests/
 │   ├── conftest.py                       # modified: add REPO_ROOT to sys.path (for `import api`)
 │   └── api/
 │       ├── test_bot_router.py            # run / status / stream / history / abort
-│       ├── test_tg_webhook.py            # webhook handling + command routing + /post dialog
+│       ├── test_tg_webhook.py            # allowlist gate + 3 commands + completion push
 │       ├── test_executor.py              # subprocess scheduling, state transitions, arg pass-through
 │       ├── test_history.py               # JSONL write / load / rotation
-│       └── test_uploads.py               # Phase 1: multipart upload → staging → file_id
+│       └── test_uploads.py               # base64 staging: sanitize / dedupe / limits / prune
 │
 ├── internal/
 │   ├── bot-api-design.md                 # committed (raw Chinese copy; translation is a Phase 0 task)
@@ -181,23 +197,23 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
    (API cancel).
    Add an `abort` action — the design has no way to cancel a running
    bot (subprocess terminate + `poe bot abort <branch>`).
-1. **Attachment uploads are coming (requirement gap).** The design only
-   supports text args, but e.g. `create_moment.py --image` writes
-   `![Image](./<path>)` **relative to the moment file** (`docs/moments/ <YYYY-MM>/`), and the moment is content **committed in the PR** — so an
-   uploaded file must end up inside the bot worktree's `docs/` *before*
-   the task runs (race: `poe bot` creates the worktree inside its own
-   subprocess). Symlinking fails both ways: a link at the worktree root
-   can't be referenced by mkdocs (build only copies under `docs/`), and a
-   link under `docs/` gets committed **as a link** (git never follows
-   symlinks) → broken in CI. The workable mechanism is a small sanctioned
-   engine flag: `poe bot run … --stage-dir <dir>` copies the API's staging
-   dir into the worktree right after `symlink_env()`, before any task
-   runs. Reserve the plumbing now: a `file` schema field type, `POST /api/upload` (multipart) staging to a git-ignored `.bot-api/uploads/`,
-   and executor staging under `.bot-api/stage/<run_id>/` mirroring the
-   worktree-relative layout (e.g. `docs/moments/<YYYY-MM>/`). Rejected
-   alternative: upload to R2 and reference `assets/bucket/…` (zero engine
-   change) — the repo's convention is uploads via PicList (developer-local)
-   and the draft PR preview would 404 until uploaded.
+1. **Attachment uploads (resolved — R2 route).** The design only
+   supports text args, but `create_moment.py --image` writes
+   `![Image](./<path>)` relative to the moment file, and the moment is
+   content **committed in the PR** — so the file must be referenceable
+   from inside the bot worktree's `docs/` *before* the task runs (race:
+   `poe bot` creates the worktree inside its own subprocess). Two
+   candidate mechanisms: (a) a sanctioned engine flag
+   (`--stage-dir`, copy the API's staging dir into the worktree after
+   `symlink_env()`) — the original plan, or (b) have the task itself
+   upload to R2. **Shipped: (b)** — `create_moment` now converts +
+   uploads to R2 immediately and references `assets/bucket/…` (commit
+   `7ed3baa`), so files never enter the worktree and `--stage-dir` was
+   dropped. What remains: `POST /api/upload` base64 staging to the
+   git-ignored `.bot-api/uploads/` (done, `api/uploads.py` + `test_uploads.py`),
+   and the TG photo path reusing the same sanitize/limits. The rejected
+   alternative (uploads via PicList only) was superseded by
+   `poe bucket-upload` / the create_moment R2 flow.
 
 ## Tasks
 
@@ -287,82 +303,136 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   `q` query param; `history.load(limit, offset, query)` returns
   newest-first records + total)
 
-### Phase 2 — Telegram Bot + attachments + CI wiring (webhook + polling — last phase)
+### Phase 2 — Telegram Bot: allowlist + 3 tasks + completion push (last phase)
 
-- [ ] `api/routers/tg.py`: webhook handler (`POST /webhook/<random>`) +
-  command routing (no secret-token check — auth layer removed by dev
-  decision); webhook registration: lifespan calls
-  `bot.set_webhook(TG_WEBHOOK_URL)` on startup and `delete_webhook()` on
-  shutdown (webhook mode only)
-- [ ] Commands: `/weight`, `/sync`, `/enu`, `/moment`, `/health`,
-  `/status` (single-step, calling shared `execute_bot_task()`; forward
-  only provided args per finding 9; **handoff-only** — TG never
-  auto-merges either, matching the web console)
-- [ ] ConversationHandler: `/post` multi-step dialog (title → category →
-  draft) with inline keyboards; `/cancel` fallback
-- [ ] Polling/Webhook mode switch (`TG_MODE=polling|webhook`) — lifespan
-  PTB lifecycle (Phase 1 lifespan gains this): `initialize()`/`start()` +
-  `updater.start_polling()` as an async background task (finding 6),
-  `stop()` on shutdown; webhook mode via `process_update` per request
-- [ ] Share `execute_bot_task()` with `api/routers/bot.py` — TG never
-  calls `git_bot.py` directly
-- [ ] `pyproject.toml`: add `python-telegram-bot>=20.6`
-  (`download_to_drive`) to the `api` extras
-- [ ] `.env.example`: append `TG_*` blocks (`TG_BOT_TOKEN`,
-  `TG_WEBHOOK_URL`, `TG_MODE=polling`)
-- [ ] `tests/api/test_tg_webhook.py`: webhook handling + command routing
-  - `/post` dialog, using in-memory PTB `Update` objects (no network)
-- [ ] Attachment uploads (moved from Phase 1): `POST /api/upload`
-  (multipart) → stage under `.bot-api/uploads/` (git-ignored) →
-  `file_id`; schema `file` fields (e.g. `text-moment --image`); executor
-  re-stages under `.bot-api/stage/<run_id>/` mirroring the
-  worktree-relative layout and runs the task with the sanctioned
-  `--stage-dir` flag (git_bot copies it into the worktree after
-  `symlink_env()`, before tasks — race-free, and the files get committed
-  with the PR since they land under `docs/`); TTL cleanup of staged
-  files (e.g. delete older than 7 days); `test_uploads.py` in
-  `tests/api/`
-- [ ] TG attachments: `/moment <text>` with a photo —
-  `update.message.photo[-1]` (largest) → `get_file()` →
-  `download_to_drive()` into the same `.bot-api/uploads/` staging
-  (PTB pin `>=20.6`, `download_to_drive`; outbound network needed,
-  `BOT_HTTP_PROXY` honored; optional WebP optimization via
-  `optimize_images.py`) → file_id → same `execute_bot_task()` path;
-  reply with run_id + `/status`
-- [ ] Notification push: completion callback to Telegram (run finished →
-  message to the owner chat)
-- [x] GitHub CI (pulled forward from the last phase):
-  `.github/workflows/ci.yml`
+**Scope (dev decision, 2026-08-17)**: private bot — only allowlisted
+users may issue commands. Three tasks only: `/weight`, `/enu`, and a
+simplified `/moment` (text + optional multiple photos; no
+tags/captions/place/GPS/meta). Dropped from the original design: `/sync`,
+`/health`, `/post` (ConversationHandler + `/cancel` fallback), `/status`
+(completion push replaces it), and the complex moment flow (create_moment
+extras stay web-console-only).
+
+**Interaction decisions (2026-08-17)**: replies in **English**;
+`/moment` allows **photo-only** (empty text — passes `""` +
+`--no-editor`, see below); `/weight` defaults to today (no `--date`);
+concurrent runs are **allowed** (worktree isolation, same as the console
+— never rejected/queued); completion push is one-way — uniform handoff
+(draft PR), sends the result + PR link, nothing further to reply.
+
+**Status: implemented (2026-08-17)** — all items below are done and
+verified by `tests/api/test_tg_webhook.py` (13 tests) + the full suite
+(634 passing) + ruff clean. Remaining: a real-device smoke test with a
+live bot token (see the design doc's "Telegram Bot Setup" section).
+
+- [x] `api/config.py`: add TG settings — `tg_bot_token`,
+  `tg_webhook_url`, `tg_webhook_path` (optional; random at startup if
+  unset), `tg_mode` (`polling` default), `tg_allowed_user_ids`
+  (comma-separated ints, parsed into a set; empty → no TG commands
+  accepted, fail fast at startup)
+- [x] `pyproject.toml`: add `python-telegram-bot>=20.6`
+  (`download_to_drive`) to `[project.dependencies]` — no extras, matching
+  the CI decision (finding 4; PTB must be importable in the lint job)
+- [x] `.env.example`: append the `TG_*` block (`TG_BOT_TOKEN`,
+  `TG_WEBHOOK_URL`, `TG_MODE=polling`, `TG_ALLOWED_USER_IDS`,
+  `TG_WEBHOOK_PATH`; acquisition steps in the design doc's "Telegram
+  Bot Setup" section)
+- [x] `api/routers/tg.py`: webhook handler (`POST /webhook/{secret}` —
+  secret = `TG_WEBHOOK_PATH` or random at startup) + command routing;
+  **allowlist gate first** — `update.effective_user.id` not in
+  `TG_ALLOWED_USER_IDS` → ignore silently (no reply, no hint the bot
+  exists); no secret-token check (web API auth decision stands).
+  Webhook registration: lifespan calls `bot.set_webhook(TG_WEBHOOK_URL)`
+  on startup and `delete_webhook()` on shutdown (webhook mode only)
+- [x] Commands (single-step, shared `execute_bot_task()`, handoff-only,
+  never auto-merge — same as the console; English replies):
+  - `/ping` → replies `pong` (config self-check; **bypasses the
+    allowlist** so first-time setup can tell a connection/token problem
+    from an allowlist one; no side effects)
+  - `/help` → replies the command list (no side effects; also bypasses
+    the allowlist, same reasoning as /ping)
+  - `/weight <kg>` → `execute_bot_task("weight", [kg])` — defaults to
+    today (no `--date`)
+  - `/enu <text…>` → `execute_bot_task("enu", [" ".join(args)])` — free
+    text, rest-arg join (finding 9)
+  - `/moment [text…] [photos…]` → `execute_bot_task("text-moment", [text or "", *[f"--image={p}" for p in paths]])` — text optional
+    (photo-only allowed); when text is empty pass `""` + `--no-editor`
+    so create_moment skips the EDITOR step (new sanctioned flag, see
+    Moment photos item); simplified — text + images only
+- [x] Moment photos: gather **all** photos of the message or media group
+  (album) — `update.message.photo` (per message) and, for albums,
+  `media_group_id` aggregation across updates (each photo update carries
+  the same group id); the text comes from the caption (first photo's
+  caption for albums) or the command args. For each photo take
+  `photo[-1]` (largest) → `get_file()` → `download_to_drive()` into
+  `.bot-api/uploads/` through the same sanitize/validation as browser
+  uploads (extract a raw-bytes writer in `uploads.py` sharing
+  `_sanitize_name` + size/type limits; the PTB download bypasses the
+  base64 route). Outbound HTTPS needed — `BOT_HTTP_PROXY` honored.
+  Reply with run_id immediately
+- [x] `create_moment.py` gains a `--no-editor` flag (sanctioned extension,
+  like the rest-arg marker): when `content` is empty/absent AND
+  `--no-editor` is set, skip the `subprocess.call([EDITOR, …])` step —
+  required for photo-only TG moments (the bot subprocess has no TTY and
+  EDITOR would fail/hang). Web console unaffected (content is required
+  there)
+- [x] Completion push: after a run finishes (submitted/failed/aborted),
+  send a one-way result (task, args, status, PR link) to the **issuing
+  chat** — uniform handoff (always draft PR), no reply expected. Needs
+  an `on_done` hook in `api/state.py` `BotRun.finish()` (covers every
+  finish path incl. abort) — `api/routers/tg.py` registers a callback
+  per run; `--wait-ci` runs can take minutes, so the webhook handler
+  never blocks on completion
+- [x] Polling/Webhook mode switch (`TG_MODE=polling|webhook`) — lifespan
+  PTB lifecycle (Phase 1 lifespan gains this): `initialize()`/`start()`
+  unconditionally, then `updater.start_polling()` as an async background
+  task (finding 6) or `set_webhook()` per mode; `stop()` on shutdown;
+  webhook mode via `process_update` per request. Keep the handler fast
+  and always return 200 — Telegram retries on timeout, and a retried
+  `/moment` would create two moments (dedupe on `update.update_id` if
+  cheap)
+- [x] `tests/api/test_tg_webhook.py`: allowlist gate (allowed/denied),
+  the three commands (monkeypatch `execute_bot_task` — no real `poe bot`), and the completion-push callback, using in-memory PTB `Update`
+  objects (no network); PTB `Application` built with a fake token, bot
+  sends monkeypatched
+- [x] GitHub CI (already done): `.github/workflows/ci.yml`
   `uv sync` (API/test deps moved into `[project.dependencies]`, no
-  extras) — done; the lint job runs pytest incl. `tests/api/`
+  extras); the lint job runs pytest incl. `tests/api/` — PTB joins the
+  same deps, so the job keeps working with no changes
 
 ## Notes
 
 - **Zero-modification rule**: `scripts/git_bot.py` must not change; the API
   shells out via `uv run poe bot ...` (subprocess) and derives its task
   list from `mkdocs.yml` + `git_bot.TASKS` (read-only import). Sanctioned
-  exceptions so far (rest-arg + push retry done in Phase 1;
-  `--stage-dir` is Phase 2, uploads): a rest-arg marker in `TemplateTask`
+  exceptions so far: a rest-arg marker in `TemplateTask`
   (mkdocs.yml `args: [text...]` — joins free-text tokens so multi-word
-  moment content survives the engine's whitespace split), a
-  `--stage-dir` flag in `cmd_run` that copies the API's staging dir into
-  the worktree after `symlink_env()` and before the tasks run, and a
+  moment content survives the engine's whitespace split), and a
   **push retry** in `push_branch` (3 attempts on transient
   connection errors — diagnosed: pushing through the HTTP proxy sometimes
   drops the connection after the server accepted the ref, e.g. "Remote end
-  closed connection without response"). Needed because `create_moment.py --image` writes
-  `![Image](./<path>)` relative to the moment file, and symlinking the
-  staging dir either breaks mkdocs copy (outside `docs/`) or commits the
-  link itself (git doesn't follow symlinks).
+  closed connection without response"), and a **no-op commit guard** in
+  `do_submit`/`commit_workdir` (returns whether a commit was created; no
+  diff → print `⏭ no changes (already recorded)` and exit clean instead
+  of pushing and failing PR creation with GitHub 422 — hit with a
+  same-day duplicate `/weight 82`). The originally planned
+  `--stage-dir` flag (copy uploads into the worktree after
+  `symlink_env()`) was **dropped**: `create_moment.py --image` now
+  converts + uploads to R2 and references `assets/bucket/…`, so staged
+  files never need to enter the worktree.
 - **Task registry is config-driven**: adding a task = mkdocs.yml
   `extra.bot.tasks` entry + optional UI metadata in `api/models.py`; the
   schema endpoint and console forms follow automatically.
-- **TG attachments (Phase 2)**: the webhook gets only a `file_id`; the API
-  process pulls bytes via `get_file()` / `download_to_drive()` (needs
-  outbound HTTPS; `BOT_HTTP_PROXY` applies). Keep downloads small
-  (bots cap at 20 MB) and reply promptly — background large downloads so
-  the webhook 200 isn't delayed (Telegram retries on timeout). Voice is
-  out of scope (would need transcription).
+- **TG attachments (Phase 2, simplified)**: `/moment` takes text plus
+  multiple photos — from one message or an album (media group,
+  aggregated on `media_group_id`); each photo `photo[-1]` → `get_file()`
+  → `download_to_drive()` into `.bot-api/uploads/` through the same
+  sanitize/size checks as browser uploads, then forwarded as one
+  `--image=<abs path>` per photo; `create_moment` converts + uploads to
+  R2 (staging is transient — no `--stage-dir`). Keep downloads small
+  (bots cap at 20 MB) and reply promptly —
+  background the work so the webhook 200 isn't delayed (Telegram retries
+  on timeout). Voice is out of scope (would need transcription).
 - **Handoff-only (dev decision)**: auto-merge is removed from the API
   contract and the console (no `auto_merge` field — extra client fields are
   ignored; the executor never passes `--auto-merge`). Every run ends in a
@@ -370,10 +440,13 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   (`poe bot run … --auto-merge`). The console has a **Handoff checkbox**
   (default on): off = `--wait-ci` (wait for CI checks, still draft — never
   merges). TG (Phase 2) is handoff-only too.
-- **No auth layer** (dev decision): the design's API-Key + IP-whitelist +
-  TG secret-token machinery is dropped. Bind to localhost / a trusted
-  network via `BOT_API_HOST`, and add auth back later if the API is ever
-  exposed publicly. `TG_BOT_TOKEN` stays a secret — never log it.
+- **Auth split** (dev decision): the **web API/console stays
+  unauthenticated** (design's API-Key + IP-whitelist + TG secret-token
+  machinery dropped; bind to localhost / a trusted network via
+  `BOT_API_HOST`, add auth back later if ever exposed publicly). The
+  **Telegram bot is allowlisted** instead: `TG_ALLOWED_USER_IDS`
+  (comma-separated Telegram user IDs), denied users ignored silently.
+  `TG_BOT_TOKEN` stays a secret — never log it.
 - **Single process**: FastAPI serves HTTP + webhook on one event loop;
   `active_runs` is in-memory (restart loses in-flight runs, history file
   survives). ~30–50 MB memory footprint.
@@ -393,11 +466,13 @@ analysis surfaced the following discrepancies, all folded into the Tasks:
   env-driven everywhere (config default host 0.0.0.0); pin `BOT_API_HOST=127.0.0.1` for local-only operation. The
   same port is the webhook/nginx/tunnel target in Phase 2, so it's a
   stable contract once chosen.
-- **Webhook exposure (no auth)**: the TG webhook URL is effectively public
-  (set via `set_webhook`), and anyone who knows it can trigger bot runs.
-  Mitigations: unguessable path (`/webhook/<random>`), Cloudflare Tunnel
-  access rule / restrict ingress to Telegram ASN, or accept the risk for
-  local/polling usage. `TG_BOT_TOKEN` stays a secret — never log it.
+- **Webhook exposure (allowlist on top)**: the TG webhook URL is
+  effectively public (set via `set_webhook`), so anyone who knows it can
+  POST updates — but the allowlist gate (user ID check) runs before any
+  command, so fake webhook calls can't start bot runs. Mitigations:
+  unguessable path (`/webhook/<random>`), Cloudflare Tunnel access rule /
+  restrict ingress to Telegram ASN, or accept the risk for local/polling
+  usage. `TG_BOT_TOKEN` stays a secret — never log it.
 - **Deployment**: dev = `poe api-server`; prod = `poe api-server-prod` +
   systemd user service, Cloudflare Tunnel or Nginx reverse proxy for
   public access / webhook (Nginx needs SSE/websocket-friendly proxy

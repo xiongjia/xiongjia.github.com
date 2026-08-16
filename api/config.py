@@ -5,10 +5,15 @@
 here. No auth by design — the default bind is 0.0.0.0 so other machines on
 a trusted network can reach it; pin ``BOT_API_HOST=127.0.0.1`` (or put it
 behind a firewall / reverse proxy) when the network is not trusted.
+
+Telegram settings come from ``TG_*`` env vars (separate class: the
+``BOT_API_`` prefix is reserved for the server). An empty ``TG_BOT_TOKEN``
+disables the bot — the API keeps working as a plain web management layer.
 """
 
 from __future__ import annotations
 
+from pydantic import AliasChoices, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -22,4 +27,40 @@ class Settings(BaseSettings):
     log_dir: str = ".bot-api"
 
 
+class TgSettings(BaseSettings):
+    """Telegram bot config (``TG_*``). Empty token → bot disabled."""
+
+    model_config = SettingsConfigDict(env_prefix="TG_", extra="ignore")
+
+    bot_token: str = ""
+    webhook_url: str = ""
+    # optional unguessable webhook path segment; random at startup when
+    # empty (nginx/tunnel can forward the whole /webhook/ prefix)
+    webhook_path: str = ""
+    mode: str = "polling"  # polling | webhook
+    allowed_user_ids: str = ""  # comma-separated numeric Telegram user IDs
+    # outbound proxy for api.telegram.org — reuses BOT_HTTP_PROXY (the
+    # engine's convention) or an explicit TG_PROXY; PTB does NOT read
+    # proxy env vars on its own, so this is plumbed into the builder
+    proxy: str = Field(default="", validation_alias=AliasChoices("TG_PROXY", "BOT_HTTP_PROXY"))
+
+    @property
+    def enabled(self) -> bool:
+        return bool(self.bot_token)
+
+    @property
+    def allowed_ids(self) -> set[int]:
+        """Parsed allowlist; malformed entries are dropped, not fatal."""
+        out: set[int] = set()
+        for part in self.allowed_user_ids.split(","):
+            part = part.strip()
+            if part:
+                try:
+                    out.add(int(part))
+                except ValueError:
+                    continue
+        return out
+
+
 settings = Settings()
+tg_settings = TgSettings()

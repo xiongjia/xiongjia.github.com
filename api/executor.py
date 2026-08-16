@@ -17,6 +17,7 @@ import os
 import re
 import signal
 import uuid
+from collections.abc import Callable
 from pathlib import Path
 
 from api import history as history_store
@@ -25,6 +26,7 @@ from api.state import (
     ABORTED,
     FAILED,
     MERGED,
+    NOOP,
     RUNNING,
     SUBMITTED,
     BotRun,
@@ -40,6 +42,7 @@ HISTORY_LOG_TAIL = 20
 
 RE_MERGED = re.compile(r"merged PR #\d+")
 RE_SUBMITTED = re.compile(r"Draft PR #(\d+): (\S+)")
+RE_NOOP = re.compile(r"⏭ no changes")
 RE_BRANCH = re.compile(r"🌿 branch (bot/\S+)")
 
 
@@ -82,7 +85,6 @@ def assemble_argv(
     args: list[str],
     auto_merge: bool = False,
     handoff: bool = True,
-    stage_dir: str | None = None,
 ) -> list[str]:
     """``uv run poe bot run "<task> <args…>" --handoff|--wait-ci …``.
 
@@ -96,8 +98,6 @@ def assemble_argv(
     argv.append("--handoff" if handoff else "--wait-ci")
     if auto_merge:
         argv.append("--auto-merge")
-    if stage_dir:
-        argv += ["--stage-dir", stage_dir]
     return argv
 
 
@@ -106,18 +106,23 @@ def execute_bot_task(
     args: list[str],
     auto_merge: bool = False,
     handoff: bool = True,
-    stage_dir: str | None = None,
+    chat_id: int | None = None,
+    on_done: Callable[[BotRun], None] | None = None,
 ) -> BotRun:
     """Create a run, schedule the subprocess in the background, return now."""
     if task_schema(task) is None:
         raise ValueError(f"unknown task {task!r}")
-    run = BotRun(run_id=uuid.uuid4().hex[:12], task=task, args=" ".join(args))
+    run = BotRun(
+        run_id=uuid.uuid4().hex[:12],
+        task=task,
+        args=" ".join(args),
+        chat_id=chat_id,
+        on_done=on_done,
+    )
     active_runs[run.run_id] = run
     trim_active()
     run.log(f"▶ submitting: {task} {' '.join(args)}")
-    asyncio.get_running_loop().create_task(
-        _run_bot(run, task, args, auto_merge, handoff, stage_dir)
-    )
+    asyncio.get_running_loop().create_task(_run_bot(run, task, args, auto_merge, handoff))
     return run
 
 
@@ -127,10 +132,9 @@ async def _run_bot(
     args: list[str],
     auto_merge: bool,
     handoff: bool,
-    stage_dir: str | None,
 ) -> None:
     try:
-        argv = assemble_argv(task, args, auto_merge, handoff, stage_dir)
+        argv = assemble_argv(task, args, auto_merge, handoff)
         run.log(f"$ {' '.join(argv)}", level="cmd")
         # PYTHONUNBUFFERED keeps engine stderr/stdout arriving in real order
         # (block-buffered stdout piped into the log stream otherwise reorders
@@ -170,6 +174,10 @@ def _finalize(run: BotRun, code: int) -> None:
             run.finish(SUBMITTED, pr_url=m.group(2))
         elif RE_MERGED.search(text):
             run.finish(MERGED)
+        elif RE_NOOP.search(text):
+            # idempotent task, nothing changed (e.g. same-day duplicate
+            # weight) — engine skipped push/PR, exit clean
+            run.finish(NOOP)
         else:
             run.finish(SUBMITTED)
     else:
