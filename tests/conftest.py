@@ -26,3 +26,18 @@ def clear_bucket_env(monkeypatch):
     for key in [k for k in os.environ if k.startswith(("BUCKET_SYNC_", "BUCKET_UPLOAD_"))]:
         monkeypatch.delenv(key, raising=False)
     return None
+
+
+@pytest.fixture(autouse=True)
+def tg_off(monkeypatch):
+    """Never let the real Telegram bot start during tests.
+
+    ``load_env_files()`` injects the developer's `.env.local` TG_* values
+    into the test process, so a TestClient lifespan boot would call
+    ``initialize()``/``start_polling()`` against api.telegram.org (network!).
+    Force the token empty — TG tests re-enable it per-test with a fake token.
+    """
+    from api.config import tg_settings
+
+    monkeypatch.setattr(tg_settings, "bot_token", "")
+    monkeypatch.setattr(tg_settings, "allowed_user_ids", "")

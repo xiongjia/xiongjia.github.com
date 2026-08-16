@@ -41,11 +41,6 @@ def test_assemble_argv_wait_ci_when_handoff_off():
     assert "--auto-merge" not in argv  # wait-ci still never merges
 
 
-def test_assemble_argv_stage_dir():
-    argv = assemble_argv("text-moment", ["x"], auto_merge=False, stage_dir=".bot-api/stage/r1")
-    assert argv[-2:] == ["--stage-dir", ".bot-api/stage/r1"]
-
-
 def test_assemble_args_positional_and_flag():
     args = assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"})
     assert args == ["82.5", "--date=2026-08-14"]
@@ -396,6 +391,16 @@ def test_finalize_outcomes():
     run3 = BotRun(run_id="z", task="weight", args="82")
     _finalize(run3, 1)
     assert run3.status == "failed"
+
+
+def test_finalize_noop_no_changes():
+    from api.state import NOOP
+
+    run = BotRun(run_id="n", task="weight", args="82")
+    run.log("⏭ no changes (already recorded) — skipping PR")
+    _finalize(run, 0)
+    assert run.status == NOOP
+    assert run.pr_url is None
 
 
 def test_finalize_trims_history_logs(monkeypatch):

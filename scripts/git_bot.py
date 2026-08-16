@@ -230,7 +230,13 @@ def git_identity() -> tuple[str, str]:
     return name, email
 
 
-def commit_workdir(workdir: Path, message: str, body: list[str]) -> None:
+def commit_workdir(workdir: Path, message: str, body: list[str]) -> bool:
+    """Commit staged changes; returns True when a commit was created.
+
+    "nothing to commit" (returncode 1) is fine — the task was idempotent
+    (e.g. same-day weight already recorded) or a previous submit already
+    committed. The caller skips push/PR in that case.
+    """
     name, email = git_identity()
     args = ["-c", f"user.name={name}", "-c", f"user.email={email}", "commit", "-m", message]
     for line in body:
@@ -259,8 +265,7 @@ def commit_workdir(workdir: Path, message: str, body: list[str]) -> None:
         raise BotError(
             f"git commit failed in {workdir}: {proc.stderr.strip() or proc.stdout.strip()}"
         )
-    # "nothing to commit" is fine — a previous submit already committed (e.g.
-    # the branch was pushed but PR creation failed and we're retrying).
+    return proc.returncode == 0
 
 
 def _git_auth_env() -> dict[str, str]:
@@ -726,7 +731,14 @@ def do_submit(
 ) -> None:
     now_tag = run_time_tag()  # one run time shared by commit title + PR desc
     subject, body = aggregate_commit(tasks_run, now_tag=now_tag)
-    commit_workdir(workdir, subject, body)
+    if not commit_workdir(workdir, subject, body):
+        # idempotent task produced no diff (e.g. same-day weight already
+        # recorded) — nothing to push, nothing to PR; exit clean instead of
+        # failing a PR creation with GitHub 422 ("no commits between branches")
+        print("⏭ no changes (already recorded) — skipping PR")
+        remove_worktree(workdir)
+        git("branch", "-D", branch, cwd=REPO_ROOT, check=False)
+        return
     print("🚀 pushing…")
     push_branch(workdir, branch)
 

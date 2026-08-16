@@ -24,3 +24,27 @@ def test_bot_api_env_overrides_defaults(monkeypatch):
     settings = Settings()
     assert settings.host == "127.0.0.1"
     assert settings.port == 9999
+
+
+def test_tg_defaults_disabled(monkeypatch):
+    for key in ("TG_BOT_TOKEN", "TG_MODE", "TG_ALLOWED_USER_IDS"):
+        monkeypatch.delenv(key, raising=False)
+    from api.config import TgSettings
+
+    tg = TgSettings()
+    assert tg.enabled is False
+    assert tg.mode == "polling"
+    assert tg.allowed_ids == set()
+
+
+def test_tg_env_maps_and_parses_allowlist(monkeypatch):
+    from api.config import TgSettings
+
+    monkeypatch.setenv("TG_BOT_TOKEN", "123456:abc")
+    monkeypatch.setenv("TG_MODE", "webhook")
+    monkeypatch.setenv("TG_WEBHOOK_URL", "https://bot.example.com/webhook")
+    monkeypatch.setenv("TG_ALLOWED_USER_IDS", "111, 222, bad, 333")
+    tg = TgSettings()
+    assert tg.enabled is True
+    assert tg.mode == "webhook"
+    assert tg.allowed_ids == {111, 222, 333}  # malformed entry dropped

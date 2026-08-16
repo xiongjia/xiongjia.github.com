@@ -528,7 +528,7 @@ async function showRunResult(runId) {
     const st = await api(`/api/bot/status/${runId}`);
     appendLog({
       time: "--:--:--",
-      level: ["submitted", "merged"].includes(st.status) ? "ok" : "err",
+      level: ["submitted", "merged", "noop"].includes(st.status) ? "ok" : "err",
       msg: `done: ${st.status}${st.pr_url ? " " + st.pr_url : ""}`,
     });
   } catch { /* ignore — history pane still refreshes */ }

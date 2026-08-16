@@ -41,7 +41,7 @@ STALE_DAYS = 30
 _FILENAME_SAFE = re.compile(r"[^a-z0-9._-]+")
 
 
-def _sanitize_name(name: str) -> str:
+def sanitize_name(name: str) -> str:
     """Basename → safe stem: lowercase, non-alnum chars → ``_``, keep ext.
 
     ``My Photo.JPG`` → ``my_photo.jpg``; the saved path stays space-free so
@@ -62,11 +62,13 @@ def _sanitize_name(name: str) -> str:
     return f"{p.stem}{p.suffix.lower()}"
 
 
-def _prune_stale() -> None:
+def prune_stale() -> None:
     """Delete staging files untouched for ``STALE_DAYS``.
 
     Uploads are transient: after a moment run the md references the bucket
     URL, not the staging file — leftover files would accumulate forever.
+    Called by every staging write (browser uploads AND TG photo downloads),
+    so a TG-only workload still prunes.
     """
     cutoff = time.time() - STALE_DAYS * 86400
     if not UPLOAD_DIR.is_dir():
@@ -110,12 +112,12 @@ def save_uploads(items: list[dict]) -> list[str]:
     if not items:
         return []
     UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
-    _prune_stale()
+    prune_stale()
     # validate EVERYTHING first (error messages use the clean, pre-dedupe
     # name so the client recognizes its own file), then dedupe + write
     decoded: list[tuple[str, bytes]] = []
     for item in items:
-        name = _sanitize_name(str(item.get("name", "")))
+        name = sanitize_name(str(item.get("name", "")))
         save_as = str(item.get("save_as") or "").strip()
         if save_as:
             # append the original extension BEFORE sanitizing — sanitize
@@ -124,7 +126,7 @@ def save_uploads(items: list[dict]) -> list[str]:
             save_as = Path(save_as).name.strip().lower()
             if not Path(save_as).suffix:
                 save_as += Path(name).suffix
-            name = _sanitize_name(save_as)
+            name = sanitize_name(save_as)
         try:
             raw = base64.b64decode(str(item.get("data", "")), validate=True)
         except Exception as exc:
