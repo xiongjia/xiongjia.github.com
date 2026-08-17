@@ -13,7 +13,15 @@ def test_task_names_curated_usage_order():
     # console quick-task pane: curated usage order, not the full engine
     # registry — health-summary / create-post stay runnable via /api/bot/run
     # but are hidden from the list
-    assert task_names() == ["text-moment", "weight", "enu", "sync-running"]
+    assert task_names() == [
+        "text-moment",
+        "weight",
+        "enu",
+        "sync-running",
+        "collect",
+        "collect-todo",
+        "collect-idea",
+    ]
 
 
 def test_assemble_argv_flat():

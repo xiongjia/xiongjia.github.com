@@ -77,6 +77,21 @@ extra:
         cmd: ["uv", "run", "python", "scripts/create_post.py", "{title}", "--category", "{category}"]
         commit: '[bot] feat(post): add {title}'
         body: "- post: {title} ({category})"
+      collect:
+        args: [text...]
+        cmd: ["uv", "run", "python", "scripts/collect.py", "add", "{text}"]
+        commit: '[bot] feat(collect): add item'
+        body: "- collect: {text}"
+      collect-todo:
+        args: [text...]
+        cmd: ["uv", "run", "python", "scripts/collect.py", "todo", "{text}"]
+        commit: '[bot] feat(collect): add todo'
+        body: "- todo: {text}"
+      collect-idea:
+        args: [text...]
+        cmd: ["uv", "run", "python", "scripts/collect.py", "idea", "{text}"]
+        commit: '[bot] feat(collect): add idea'
+        body: "- idea: {text}"
   moment:
     path: moments
     # feed: enabled by default — generates /moments/feed.xml, which the
@@ -356,6 +371,7 @@ nav:
       - Game Dev: notes/collection/game-dev.md
       - Maps: notes/collection/maps.md
       - Emoji: notes/collection/emoji.md
+      - Plans: notes/collection/scraps/plans.md
     - Tools:
       - notes/tools/index.md
       - Ramen Timer: notes/tools/ramen-timer.md

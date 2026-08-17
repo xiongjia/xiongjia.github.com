@@ -17,6 +17,7 @@ hide:
 - [hello-agents](https://github.com/datawhalechina/hello-agents) - AI Agent 入门
 - [pi-docs-playbook](https://github.com/enderzcx/pi-docs-playbook) - Pi Agent 文档
 - [Claude Command Suite](https://github.com/qdhenry/Claude-Command-Suite) - Claude 命令集成套件
+- [Claude-BugHunter](https://github.com/elementalsouls/Claude-BugHunter) - Claude Code bug hunting skill 包，82 个 skill、15 个 slash command、覆盖 24 类漏洞的 681 条披露报告模式
 
 ## AI Skills & MCP
 

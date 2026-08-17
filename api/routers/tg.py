@@ -103,6 +103,9 @@ def get_app() -> Application | None:
         _app.add_handler(CommandHandler("weight", cmd_weight))
         _app.add_handler(CommandHandler("enu", cmd_enu))
         _app.add_handler(CommandHandler("moment", cmd_moment))
+        _app.add_handler(CommandHandler("collect", cmd_collect))
+        _app.add_handler(CommandHandler("collect_todo", cmd_collect_todo))
+        _app.add_handler(CommandHandler("collect_idea", cmd_collect_idea))
         # photo moments: CommandHandler only matches message.text, but a
         # photo moment arrives as a caption command (``/moment …`` written
         # in the photo's caption) — handle it here, incl. album members
@@ -174,7 +177,10 @@ HELP_TEXT = (
     "/ping - connection self-check (always answers)\n"
     "/weight <kg> - record today's weight\n"
     "/enu <text> - add an English scrap\n"
-    "/moment <text> [photos] - create a moment (text + optional photos)"
+    "/moment <text> [photos] - create a moment (text + optional photos)\n"
+    "/collect <text> - add a resource to the inbox\n"
+    "/collect_todo <text> - add a TODO directly to plans\n"
+    "/collect_idea <text> - add an idea directly to plans"
 )
 
 
@@ -234,6 +240,48 @@ async def cmd_moment(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None
     if msg.photo:
         return  # photo moments go through on_photo_message (caption command)
     await _run_moment(chat.id, " ".join(context.args), [])
+
+
+async def cmd_collect(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if _seen(update) or not _allowed(update):
+        return
+    chat = update.effective_chat
+    if chat is None:
+        return
+    if not context.args:
+        await _send(chat.id, "Usage: /collect <text>\nExample: /collect A neat CLI tool for X")
+        return
+    run = _start_run(chat.id, "collect", [" ".join(context.args)])
+    await _send(chat.id, _submitted_message(run))
+
+
+async def cmd_collect_todo(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if _seen(update) or not _allowed(update):
+        return
+    chat = update.effective_chat
+    if chat is None:
+        return
+    if not context.args:
+        await _send(chat.id, "Usage: /collect_todo <text>\nExample: /collect_todo 看这个视频")
+        return
+    run = _start_run(chat.id, "collect-todo", [" ".join(context.args)])
+    await _send(chat.id, _submitted_message(run))
+
+
+async def cmd_collect_idea(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if _seen(update) or not _allowed(update):
+        return
+    chat = update.effective_chat
+    if chat is None:
+        return
+    if not context.args:
+        await _send(
+            chat.id,
+            "Usage: /collect_idea <text>\nExample: /collect_idea 用 MapLibre 做热力图",
+        )
+        return
+    run = _start_run(chat.id, "collect-idea", [" ".join(context.args)])
+    await _send(chat.id, _submitted_message(run))
 
 
 def _bot_username() -> str | None:
