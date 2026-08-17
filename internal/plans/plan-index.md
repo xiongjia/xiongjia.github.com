@@ -68,6 +68,7 @@ tags: [refactor, mkdocs]
 - [bucket-upload.md](./bucket-upload.md) — Bucket Image Upload: `poe bucket-upload` (WebP + rename rule + rclone upload; needs read-write R2 token)
 - [mkdocs-media-archive.md](./mkdocs-media-archive.md) — MkDocs Media Archive: 用 MkDocs 归档看过的书/影片/游戏（调研方案 → 数据模型 → 索引页）
 - [research-index-status.md](./research-index-status.md) — Research Index Status: 给 research topic 增加状态维度（active/done/stale/draft），索引页加状态列
+- [collection-scrape.md](./arch/collection-scrape.md) — Collection Scrape: 日常随手收集（poe collect-add/todo/idea）+ AI 整理 + Plans 面板 ✅
 
 ### Research
 

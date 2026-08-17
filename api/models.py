@@ -249,7 +249,15 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
 
 # Console quick-task pane: most-used first. Entries missing from the engine
 # registry are skipped, so the list never advertises a task the bot can't run.
-_TASK_ORDER = ["text-moment", "weight", "enu", "sync-running"]
+_TASK_ORDER = [
+    "text-moment",
+    "weight",
+    "enu",
+    "sync-running",
+    "collect",
+    "collect-todo",
+    "collect-idea",
+]
 
 
 def _split_names(value: str) -> list[str]:
@@ -313,7 +321,24 @@ def task_schema(task: str) -> TaskSchema | None:
     if isinstance(template, type) or not declared:
         return TaskSchema(task=task)
     if declared[-1].endswith("..."):
+        rest_name = declared[-1][:-3]
         declared = declared[:-1]
+        return TaskSchema(
+            task=task,
+            fields=[
+                FieldSchema(name=name, label=name, required=True, arg=i)
+                for i, name in enumerate(declared)
+            ]
+            + [
+                FieldSchema(
+                    name=rest_name,
+                    label=rest_name,
+                    type="text",
+                    required=True,
+                    arg=len(declared),
+                )
+            ],
+        )
     return TaskSchema(
         task=task,
         fields=[

@@ -8,6 +8,7 @@ hide:
 
 ## Media System
 
+- [Selene-TV](https://github.com/MoonTechLab/Selene-TV) - Android TV 客户端，基于 MoonTV v100 / Helios 后端，针对遥控器优化
 - [jellyfin](https://jellyfin.org/) - .NET 实现的流管理
 - [emby](https://emby.media/) - .NET 实现的流管理
 - [plex](https://www.plex.tv/)

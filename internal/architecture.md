@@ -12,7 +12,7 @@ Notes → Collection → Research → Knowledge → Projects
 ```
 
 - **Notes** (`docs/notes/`): Blog posts (timeline-based, RSS feed) and study notes (long-form)
-- **Collection** (`docs/notes/collection/`): Curated links by domain (database, dev tools, AI, etc.)
+- **Collection** (`docs/notes/collection/`): Curated links by domain (database, dev tools, AI, etc.) + capture inbox (`scraps/inbox.md`) and visible plans list (`scraps/plans.md`)
 - **Research** (`docs/notes/research/`): Deep-dive source code analysis & learning plans (per-topic dirs under `topics/`)
 - **Knowledge** (`docs/notes/knowledge/`): Long-term knowledge base — big topics with sub-projects, the output of Research
 - **Projects** (`docs/projects/`): Tangible project outputs
@@ -42,12 +42,13 @@ xiongjia.github.com/
 │   │   ├── _index_content.md      # Notes landing content fragment (mermaid + about)
 │   │   ├── link-graph.md          # Site-wide link topology (generated at build by plugins/backlinks.py)
 │   │   ├── prototypes.md          # Prototype index page (GitHub jumps)
-│   │   ├── collection/            # Curated links by domain
+│   │   ├── collection/            # Curated links by domain + capture
 │   │   │   ├── index.md
 │   │   │   ├── ai.md
 │   │   │   ├── database.md
 │   │   │   ├── dev-tools.md
 │   │   │   ├── emoji.md
+│   │   │   └── scraps/             # Capture inbox + plans (poe collect-*)
 │   │   │   ├── frontend.md
 │   │   │   ├── game-dev.md
 │   │   │   ├── languages.md

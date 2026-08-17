@@ -84,6 +84,9 @@ bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an is
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
 create-moment = { cmd = "python scripts/create_moment.py", help = "Create a new Moment: --image auto-WebP+bucket, --tags, --place/--lng/--lat (EXIF GPS auto), --draft, --time" }
 enu = { cmd = "python scripts/enu.py", help = "English Scraps: add a scrap (poe enu add 'cumbersome') or export Anki cards (poe enu export)" }
+collect-add = { cmd = "python scripts/collect.py add", help = "Collect a resource → inbox (needs AI arch): poe collect-add 'content'" }
+collect-todo = { cmd = "python scripts/collect.py todo", help = "Add a TODO → plans.md (no AI): poe collect-todo '看这个视频'" }
+collect-idea = { cmd = "python scripts/collect.py idea", help = "Add an idea → plans.md (no AI): poe collect-idea '用 MapLibre 做热力图'" }
 test = { cmd = "uv run pytest -q", help = "Run unit tests (pytest): uv run poe test" }
 api-server = { cmd = "uv run python scripts/api_server.py", help = "Start remote API (binds 0.0.0.0; BOT_API_HOST/BOT_API_PORT override): uv run poe api-server" }
 api-server-prod = { ref = "api-server", help = "Start remote API (prod; alias of api-server): uv run poe api-server-prod" }
