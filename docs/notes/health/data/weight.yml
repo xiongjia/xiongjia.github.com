@@ -65,5 +65,5 @@ weeks:
   # Week 3 — Mon 2026-08-10
   - days: [81.90, 81.90, 81.90, 81.45, 81.45, 82.60, 82.00]
   # Week 4 — Mon 2026-08-17
-  - days: [81.40, null, null, null, null, null, null]
+  - days: [81.40, 82.00, null, null, null, null, null]
 
