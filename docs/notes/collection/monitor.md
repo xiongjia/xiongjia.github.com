@@ -46,3 +46,4 @@ hide:
 - [btop](https://github.com/aristocratos/bpytop) - 改良版 top
 - [netdata](https://github.com/netdata/netdata) - Real-time performance monitoring
 - [nmon](https://nmon.sourceforge.net/pmwiki.php) - CLI 监控 + CSV 导出分析
+- [monoscope](https://github.com/monoscope-tech/monoscope) - 监控工具
