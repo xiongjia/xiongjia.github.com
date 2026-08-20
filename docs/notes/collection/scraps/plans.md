@@ -19,6 +19,8 @@ ______________________________________________________________________
 
 <!-- Items go here via: poe collect-idea "content" -->
 
+- 2026-08-20 给跑步历史数据做个类似 github 提及墙的历史数据查看
+
 ### 📦 Misc
 
 <!-- Items that don't fit TODO or Idea -->
