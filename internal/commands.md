@@ -8,7 +8,7 @@
 - **Dev & Build** — `server` / `server-prod` / `server-bucket` / `build` / `build-drafts` / `build-selfhost`
 - **Quality** — `fmt` / `lint-py` / `test`
 - **Content** — `create-post` / `create-moment` / `enu add`
-- **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running`
+- **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running` / `sync-running-splits`
 - **Bot** — `bot <task>` / `bot --plan` / `bot list` / `bot submit` / `bot abort` / `bot cleanup`
 - **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `bucket-upload` / `rclone-config-init`
 - **English Scraps flow** — collect → batch-organize → review
@@ -46,12 +46,13 @@
 
 ## Health
 
-| Command                       | Description                                                                  |
-| ----------------------------- | ---------------------------------------------------------------------------- |
-| `poe update-weight 82 [date]` | Record a daily weight (default: today; date accepts `yesterday`, full dates) |
-| `poe add-weight-week [n]`     | Pre-add empty week(s) to weight data                                         |
-| `poe update-health-summary`   | Regenerate the health index summary (calls local pi AI)                      |
-| `poe sync-running`            | Sync running data from the deployed running_page                             |
+| Command                       | Description                                                                                                 |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `poe update-weight 82 [date]` | Record a daily weight (default: today; date accepts `yesterday`, full dates)                                |
+| `poe add-weight-week [n]`     | Pre-add empty week(s) to weight data                                                                        |
+| `poe update-health-summary`   | Regenerate the health index summary (calls local pi AI)                                                     |
+| `poe sync-running`            | Sync running data from the Garmin CN API (incremental; writes `running.yml` + `.running/splits.json`)       |
+| `poe sync-running-splits`     | Upload `.running/splits.json` to R2 (dry-run default; `--confirm` or `SYNC_RUNNING_CONFIRM=true` to upload) |
 
 ## Bot (auto PR)
 

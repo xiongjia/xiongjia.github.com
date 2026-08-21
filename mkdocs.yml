@@ -38,6 +38,12 @@ extra:
   bucket:
     enabled: true
     mappings:
+      # 跑步配速/路线数据（prefix 更具体，排前面，保证先匹配）
+      - prefix: assets/bucket/running/
+        bucket: web-assets
+        remote_prefix: data/metadata/running
+        base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/metadata/running"
+      # 图片（通用，排后面）
       - prefix: assets/bucket/
         bucket: web-assets
         remote_prefix: data/img   # object prefix inside the bucket
@@ -56,6 +62,9 @@ extra:
       fallback_name: noname
       tmp_dir: .bucket
       max_size_mb: 10
+    # 跑步配速/路线数据（参见 internal/local-draft.md）
+    running:
+      data_key: splits.json
   # default WebP quality for `poe optimize-images` (converts PNG/JPG to WebP);
   # CLI --quality overrides this; the script falls back to 90 if both absent
   optimize_images:
@@ -213,6 +222,7 @@ extra_css:
 extra_javascript:
   - assets/javascripts/retire.js
   - assets/javascripts/fitness.js
+  - notes/health/running-route.js
   
 # hooks (custom Python modules treated as plugins)
 hooks:

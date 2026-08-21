@@ -2,6 +2,8 @@
 title: Running Track — Health Monitor Integration
 created: 2026-07-31
 updated: 2026-08-03
+archived: 2026-08-21
+status: completed
 tags: [health, running, health-monitor, integration]
 ---
 
@@ -29,28 +31,25 @@ calendar (like the running_page summary poster).
 
 ## Data Source
 
-Single source: the deployed running_page site —
-`https://xiongjia.github.io/running_page/summary`.
+Single source: the **Garmin CN API** directly (since 2026-08 — the original
+running_page-deployed fetch was replaced). `scripts/sync_running.py` uses the
+`garth` client (`GARMIN_SECRET_STRING_CN` from `.env`, `garmin.cn` domain,
+`ssl_verify=False`):
 
-The `/summary` path is only a human-facing page reference — on GitHub Pages it
-returns **HTTP 404** with a custom `404.html` that does a client-side redirect
-(running_page's SPA fallback), so it must **not** be used as the fetch URL
-(`urllib` raises `HTTPError 404`). Fetch the index instead; the actual
-activity data ships inside a **hashed JS asset**:
+1. `activitylist-service/activities/search/activities?start=..&limit=100&activityType=running`
+   — paginated activity list (newest first)
+1. Incremental filter: the cache check *is* the cursor — per-activity details
+   are fetched only for activities not yet present in `.running/splits.json`;
+   a failed details fetch stays uncached and is retried on the next run
+   regardless of list position
+1. Per activity: `activity-service/activity/{id}/splits` for per-km splits,
+   and `activity-service/activity/{id}/details?maxChartSize=0&maxPolylineSize=4000`
+   for the route; Garmin returns the polyline as a `geoPolylineDTO.polyline`
+   point array which is encoded to Google Polyline format
 
-1. `GET https://xiongjia.github.io/running_page/` → HTML (HTTP 200)
-1. Find the `activities-<hash>.js` asset in the HTML — it appears as
-   `<link rel="modulepreload" href=".../assets/activities-<hash>.js">`
-   (match both `src` and `href`; the filename changes on every data refresh)
-1. `GET .../assets/activities-<hash>.js` → contains `JSON.parse('[...]')` —
-   the full activities array (JS-string-escaped)
-1. Unescape (JS string literal rules: `\\`, `\'`, `\"`, `\uXXXX`, …) and
-   parse the JSON array
-
-> The upstream running_page project owns the data itself
-> (`.github/workflows/run_data_sync.yml` syncs daily and redeploys GitHub
-> Pages). This repo never talks to Strava/Garmin and never runs running_page's
-> sync logic — it only downloads the published result.
+> The repo talks to Garmin directly — the running_page deployment is no longer
+> consulted. The Garmin token is a developer-local secret in `.env`; sync stays
+> manual (no CI).
 
 ### Activity fields
 
@@ -77,9 +76,9 @@ activity data ships inside a **hashed JS asset**:
 - **Manual sync (Phase 1)**: `uv run poe sync-running` →
   `scripts/sync_running.py` fetches from the deployed site and writes
   `docs/notes/health/data/running.yml` (activities + `synced_at` timestamp).
-- **Auto-sync (Phase 4, future)**: a scheduled GitHub Actions workflow that
-  runs the same script and commits the yaml when it changes. Deliberately
-  split out — Phases 1–3 work with the manual command alone.
+- **Auto-sync (Phase 4, cancelled)**: see Phase 4 below — cancelled because
+  the splits/polyline extension (Garmin API + R2 bucket) requires local
+  secrets. Manual sync only.
 
 ## Tasks
 
@@ -107,15 +106,15 @@ activity data ships inside a **hashed JS asset**:
 - [x] **Create `docs/notes/health/macros/running_macros.py`** — reads the
   local yaml only (no network)
 
-  - `running_summary()` — card: total runs, total distance (km), total time,
-    total elevation gain, avg heart rate
   - `running_year_table()` — yearly table: year, runs, distance, avg pace,
     avg heart rate, elevation
   - `running_monthly_chart()` — merged Mermaid chart: monthly distance bar +
     avg HR line on one plot (see design doc for the single-y-axis constraint)
-  - `running_recent()` — table of the last 2 weeks (falls back to last 10)
+  - `running_recent()` — table of the last 5 activities (lazy pace/route dialogs)
   - `running_all()` — all activities in a collapsed `???` block
   - `running_synced_at()` — note showing the last `synced_at` timestamp
+  - `running_calendar_heatmap()` — GitHub-style grid + summary line
+  - `running_recent_routes()` — inline map of recent N routes
   - `running_monthly_grid()` — (optional) calendar grid heatmap matching
     running_page poster style (not implemented)
   - Graceful "no data" state if the yaml is missing → show hint to run
@@ -153,15 +152,15 @@ activity data ships inside a **hashed JS asset**:
 
   - Add `- Running Track: notes/health/running.md` under Health Monitor section
 
-### Phase 4: Auto-sync (future — split out, not required for Phase 1)
+### Phase 4: Auto-sync (cancelled)
 
-- [ ] **Scheduled CI workflow** (e.g. `.github/workflows/sync-running.yml`)
-  - Daily/weekly schedule: run `uv run poe sync-running`, commit
-    `docs/notes/health/data/running.yml` if changed
-  - Uses the same fetch-from-deployed-site logic as Phase 1 — no secrets, no
-    cross-repo clone needed
-- [ ] **Optional: docs note** on stale-data behavior (page shows last
-  `synced_at`)
+> **Cancelled**: sync is local-only per `local-draft.md` design decision. The
+> splits/polyline data (Garmin API + R2 bucket) requires local secrets
+> (`GARMIN_SECRET_STRING_CN` + R2 write token) that don't belong in CI.
+> Manual `uv run poe sync-running` is the only sync path.
+
+- [x] ~~**Scheduled CI workflow**~~ — cancelled
+- [x] ~~**Optional: docs note**~~ — cancelled
 
 ## Iterations after the initial phases (completed)
 

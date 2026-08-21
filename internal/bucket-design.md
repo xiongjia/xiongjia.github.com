@@ -6,7 +6,7 @@
 > rewrites matching prefixes to a configurable bucket `base_url` — switching
 > buckets is a config change, md untouched.
 >
-> Requirements: `internal/local-draft.md`; plan: `internal/plans/bucket-assets.md`.
+> Plan: `internal/plans/arch/bucket-assets.md` (archived, completed).
 
 ## Background & Goals
 

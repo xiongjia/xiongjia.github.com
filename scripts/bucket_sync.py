@@ -80,11 +80,24 @@ def _pick(cli: str | None, env_key: str, cfg_value: str) -> str:
     return cfg_value
 
 
-def _first_mapping(cfg: dict) -> dict:
+def _all_mappings(cfg: dict) -> list[dict]:
+    """Return all mappings (used when no specific mapping is targeted)."""
     mappings = cfg.get("mappings") or []
     if not mappings:
         raise SystemExit("bucket-sync: no mappings in extra.bucket")
-    return dict(mappings[0])
+    return [dict(m) for m in mappings]
+
+
+def _generic_mapping(cfg: dict) -> dict:
+    """The most general mapping — the one with the shortest local prefix.
+
+    Specific mappings (e.g. ``assets/bucket/running/``) are listed first so
+    URL rewriting matches them before the generic ``assets/bucket/`` mapping;
+    tools that upload/check generic bucket assets must target the shortest
+    prefix rather than ``mappings[0]``.
+    """
+    mappings = _all_mappings(cfg)  # raises SystemExit when no mappings
+    return min(mappings, key=lambda m: len(str(m.get("prefix") or "")))
 
 
 DEFAULT_REMOTE = "r2"  # last-resort remote name when rclone has no remotes
@@ -229,49 +242,83 @@ def main() -> int:
         raise SystemExit("bucket-sync: rclone not found — install it first (brew install rclone)")
 
     cfg = _bucket_config()
-    mapping = _first_mapping(cfg)  # raises SystemExit when no mappings
+    mappings = _all_mappings(cfg)  # raises SystemExit when no mappings
     remote = resolve_remote(args.remote, label="bucket-sync")
-    bucket = _pick(args.bucket, "BUCKET_SYNC_BUCKET", str(mapping.get("bucket") or ""))
-    if not bucket:
-        # falling back to the remote name is almost always wrong and silently
-        # produces 403 AccessDenied against R2 — warn loudly instead
-        bucket = remote
-        print(
-            f"bucket-sync: WARNING bucket name fell back to remote name {remote!r} — "
-            "set BUCKET_SYNC_BUCKET (.env) or mappings[].bucket (mkdocs.yml) "
-            "to the real bucket name (R2 console); a wrong bucket returns 403.",
-            file=sys.stderr,
+
+    # When --prefix is given, sync only the matching mapping; otherwise sync all
+    if args.prefix:
+        target = [m for m in mappings if m.get("prefix", "").rstrip("/") == args.prefix.rstrip("/")]
+        if not target:
+            print(f"bucket-sync: no mapping with prefix {args.prefix!r}", file=sys.stderr)
+            return 1
+        mappings = [target[0]]
+
+    # Env overrides (BUCKET_SYNC_*) are single-mapping settings: applying them
+    # to every mapping when syncing all would pull e.g. the running mapping
+    # into the wrong local dir. CLI args always apply (explicit intent); env
+    # only when exactly one mapping is being synced (legacy single-mapping flow
+    # or --prefix target).
+    single = len(mappings) == 1
+
+    def _pick_scoped(cli: str | None, env_key: str, cfg_value: str, *, use_env: bool) -> str:
+        if cli:
+            return cli
+        if use_env:
+            env = os.environ.get(env_key, "")
+            if env:
+                return env
+        return cfg_value
+
+    exit_code = 0
+    for mapping in mappings:
+        bucket = _pick_scoped(
+            args.bucket, "BUCKET_SYNC_BUCKET", str(mapping.get("bucket") or ""), use_env=single
         )
-    prefix = _pick(
-        args.prefix,
-        "BUCKET_SYNC_PREFIX",
-        str(mapping.get("prefix") or "assets/bucket/"),
-    )
-    remote_prefix = _pick(
-        args.remote_prefix, "BUCKET_SYNC_REMOTE_PREFIX", str(mapping.get("remote_prefix") or "")
-    )
+        if not bucket:
+            bucket = remote
+            print(
+                f"bucket-sync: WARNING bucket name fell back to remote name {remote!r} — "
+                "set BUCKET_SYNC_BUCKET (.env) or mappings[].bucket (mkdocs.yml) "
+                "to the real bucket name (R2 console); a wrong bucket returns 403.",
+                file=sys.stderr,
+            )
+        prefix = _pick_scoped(
+            args.prefix,
+            "BUCKET_SYNC_PREFIX",
+            str(mapping.get("prefix") or "assets/bucket/"),
+            use_env=single,
+        )
+        remote_prefix = _pick_scoped(
+            args.remote_prefix,
+            "BUCKET_SYNC_REMOTE_PREFIX",
+            str(mapping.get("remote_prefix") or ""),
+            use_env=single,
+        )
 
-    local = _local_dir(prefix)
-    rpath = _rclone_path(remote, bucket, remote_prefix)
+        local = _local_dir(prefix)
+        rpath = _rclone_path(remote, bucket, remote_prefix)
 
-    # read-only by design — only pull (rclone sync) exists
-    dry_run = not args.confirm
-    cmd = [
-        "rclone",
-        "sync",
-        rpath,
-        str(local),
-        "--progress",
-        "--verbose",
-    ]
-    if args.checksum:
-        cmd.append("--checksum")
-    if args.fast_list:
-        cmd.append("--fast-list")
-    if dry_run:
-        cmd.append("--dry-run")
-    print(f"bucket-sync: pull {rpath} -> {local}" + (" (dry-run)" if dry_run else ""))
-    return _run(cmd)
+        dry_run = not args.confirm
+        cmd = [
+            "rclone",
+            "sync",
+            rpath,
+            str(local),
+            "--progress",
+            "--verbose",
+        ]
+        if args.checksum:
+            cmd.append("--checksum")
+        if args.fast_list:
+            cmd.append("--fast-list")
+        if dry_run:
+            cmd.append("--dry-run")
+        print(f"bucket-sync: pull {rpath} -> {local}" + (" (dry-run)" if dry_run else ""))
+        rc = _run(cmd)
+        if rc != 0:
+            exit_code = rc
+
+    return exit_code
 
 
 if __name__ == "__main__":

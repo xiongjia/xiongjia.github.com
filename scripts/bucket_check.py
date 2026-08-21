@@ -55,7 +55,7 @@ from urllib.parse import unquote
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.bucket_sync import _first_mapping, _pick, _rclone_path, resolve_remote
+from scripts.bucket_sync import _generic_mapping, _pick, _rclone_path, resolve_remote
 from shared.env import load_env_files
 from shared.frontmatter import has_draft_flag
 from shared.mkdocs_yaml import load_extra
@@ -278,7 +278,9 @@ def main() -> int:
         args.check_remote = True
 
     cfg = _bucket_config()
-    mapping = _first_mapping(cfg)  # raises SystemExit when no mappings
+    # bucket-check targets the most general mapping (assets/bucket/); the
+    # running-data mapping is listed first for URL rewrite, not for asset checks
+    mapping = _generic_mapping(cfg)  # raises SystemExit when no mappings
     prefix = _pick(args.prefix, "BUCKET_SYNC_PREFIX", str(mapping.get("prefix") or DEFAULT_PREFIX))
     local_dir = REPO_ROOT / "docs" / prefix.strip("/")
     if not local_dir.is_dir():

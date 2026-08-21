@@ -116,7 +116,8 @@ xiongjia.github.com/
 │   ├── cleanup_gh_pages.sh        # Delete stale gh-pages branch
 │   ├── optimize_images.py         # PNG/JPG/JPEG → WebP converter
 │   ├── add_weight_week.py         # Add empty week to weight data
-│   ├── sync_running.py            # Sync running data from running_page
+│   ├── sync_running.py            # Sync running data from Garmin CN API
+│   ├── sync_running_splits.py     # Upload running splits/polyline to R2
 │   ├── update_health_summary.py   # Regenerate AI health summary (local pi CLI)
 │   ├── md2wechat.py               # MkDocs → WeChat HTML converter
 │   └── md2wechat/                 # Converter assets (sample.md)
@@ -304,6 +305,8 @@ targets are skipped). `max_backlinks` caps each list with
 | `BUCKET_UPLOAD_TMP_DIR`                                       | Staging dir for converted WebP before upload (`poe bucket-upload`)                                                                | `extra.bucket.upload.tmp_dir` → `.bucket` |
 | `BUCKET_UPLOAD_MAX_SIZE_MB`                                   | Per-file upload size limit in MB (`poe bucket-upload`; larger files fail)                                                         | `extra.bucket.upload.max_size_mb` → `10`  |
 | `RCLONE_HTTP_PROXY`                                           | Proxy URL for rclone (native `--http-proxy` env var)                                                                              | unset                                     |
+| `GARMIN_SECRET_STRING_CN`                                     | Garmin CN OAuth token for `poe sync-running` (from `garth.client.dumps()`; local `.env` only)                                     | unset                                     |
+| `SYNC_RUNNING_CONFIRM`                                        | `1`/`true` uploads `.running/splits.json` without `--confirm` (`poe sync-running-splits`)                                         | unset (dry-run)                           |
 | `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY` | R2 API credentials for `poe rclone-config-init` (local `.env` only)                                                               | unset                                     |
 | `SITE_NAME`                                                   | Override site name in HTML title                                                                                                  | `recycle.bin`                             |
 | `SITE_URL`                                                    | Override canonical URL                                                                                                            | `https://xiongjia.github.io`              |

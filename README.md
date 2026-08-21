@@ -69,7 +69,7 @@ Detailed design docs live in `internal/`:
 - [md2wechat Design](internal/md2wechat-design.md) — WeChat HTML converter
 - [optimize-images Design](internal/optimize-images-design.md) — WebP conversion pipeline
 - [Weight Tracker Design](internal/weight-tracker-design.md) — weight data & tooling
-- [Running Track Design](internal/running-track-design.md) — running data sync & rendering
+- [Running Track Design](internal/running-track-design.md) — Garmin CN API sync, splits/polyline in R2, heatmap + route maps
 - [Health Summary Design](internal/health-summary-design.md) — AI health summary via local `pi`
 - [Bot Auto PR Design](internal/bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)
 - [Discuss System Design](internal/discuss-design.md) — Giscus comment system
