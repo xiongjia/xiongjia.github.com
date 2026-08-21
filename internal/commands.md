@@ -80,6 +80,28 @@ Tasks are registered in `mkdocs.yml` → `extra.bot.tasks` (template tasks:
 Needs `BOT_GH_TOKEN` (fine-grained PAT) in `.env` — see the design doc's
 Credential Strategy for the one-time token setup.
 
+## Bot Remote API (web console · Telegram · cron)
+
+Thin FastAPI shell over `poe bot` (single process, no auth — bind
+`BOT_API_HOST=127.0.0.1` on untrusted networks). Design:
+[bot-api-design.md](./bot-api-design.md). It serves a dark web console at
+`/` (run tasks, watch SSE output, history, cron panel), a Telegram bot
+(allowlisted users), and scheduled jobs.
+
+| Command / URL                        | Description                                                                      |
+| ------------------------------------ | -------------------------------------------------------------------------------- |
+| `poe api-server` / `api-server-prod` | Start the API (default 0.0.0.0:8100; `BOT_API_HOST`/`BOT_API_PORT` override)     |
+| `GET /api/cron`                      | Cron jobs (schedule / spec / `next_run_at` / `last_run` / runtime disable state) |
+| `POST /api/cron/{name}/run`          | Manual run-now — fires the job's spec through the handoff flow                   |
+| \`POST /api/cron/{name}/disable      | enable\`                                                                         |
+
+Cron jobs are configured in `mkdocs.yml` → `extra.bot.cron` (5-field cron
+string in the server-local timezone; text DOW names like `SAT` — APScheduler
+maps numeric DOW 0=Monday…6=Sunday, unlike standard cron). Each job fires a
+raw `poe bot run` spec (multi-task with `+`) → handoff draft PR.
+`BOT_API_CRON_ENABLED=false` disables scheduling. See
+[archived plan](./plans/arch/bot-cronjob.md).
+
 ## Assets & Conversion
 
 | Command                             | Description                                                                                                                                                          |

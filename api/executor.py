@@ -33,6 +33,7 @@ from api.state import (
     active_runs,
     trim_active,
 )
+from scripts.git_bot import BotError, parse_task_specs
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
@@ -112,6 +113,44 @@ def execute_bot_task(
     """Create a run, schedule the subprocess in the background, return now."""
     if task_schema(task) is None:
         raise ValueError(f"unknown task {task!r}")
+    return _spawn_run(task, args, auto_merge, handoff, chat_id, on_done)
+
+
+def execute_bot_spec(
+    spec: str,
+    handoff: bool = True,
+    chat_id: int | None = None,
+    on_done: Callable[[BotRun], None] | None = None,
+) -> BotRun:
+    """Run a raw ``poe bot run`` spec (cron entry point).
+
+    Specs may compose multiple tasks with ``' + '`` (one worktree/branch/PR
+    — the cron pilot jobs rely on it); validation uses the engine's own
+    parser (``parse_task_specs``) instead of the per-task schema, so
+    composite specs pass. ``execute_bot_task()`` remains the single-task
+    schema path for the console/TG. Handoff-only, like everything else —
+    no auto-merge from here.
+    """
+    try:
+        parse_task_specs([spec])
+    except BotError as exc:
+        raise ValueError(f"invalid spec {spec!r}: {exc}") from exc
+    return _spawn_run(spec, [], auto_merge=False, handoff=handoff, chat_id=chat_id, on_done=on_done)
+
+
+def _spawn_run(
+    task: str,
+    args: list[str],
+    auto_merge: bool,
+    handoff: bool,
+    chat_id: int | None,
+    on_done: Callable[[BotRun], None] | None,
+) -> BotRun:
+    """Common spawn: create the run, schedule the subprocess, return now.
+
+    ``task`` is either a single task name (console/TG) or a full raw spec
+    (cron) — ``assemble_argv`` treats both the same (``" ".join([task,
+    *args])``)."""
     run = BotRun(
         run_id=uuid.uuid4().hex[:12],
         task=task,
@@ -121,7 +160,7 @@ def execute_bot_task(
     )
     active_runs[run.run_id] = run
     trim_active()
-    run.log(f"▶ submitting: {task} {' '.join(args)}")
+    run.log(f"▶ submitting: {task} {' '.join(args)}".rstrip())
     asyncio.get_running_loop().create_task(_run_bot(run, task, args, auto_merge, handoff))
     return run
 

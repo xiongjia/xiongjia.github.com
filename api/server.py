@@ -9,13 +9,14 @@ from fastapi.staticfiles import StaticFiles
 
 from api.config import tg_settings
 from api.lifespan import run_lifespan
-from api.routers import bot, system, tg
+from api.routers import bot, cron, system, tg
 
 
 def create_app() -> FastAPI:
     app = FastAPI(title="Bot Remote API", version="0.1.0", lifespan=run_lifespan)
     app.include_router(system.router)
     app.include_router(bot.router)
+    app.include_router(cron.router)
     if tg_settings.enabled:
         app.add_api_route(f"/webhook/{tg.webhook_path()}", tg.webhook, methods=["POST"])
     static_dir = Path(__file__).parent / "static"

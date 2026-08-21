@@ -40,6 +40,7 @@ dependencies = [
     # Telegram Bot (Phase 2) — PTB 20.6+ for download_to_drive on the
     # /moment photo path. Kept in base deps so CI's pytest run imports it.
     "python-telegram-bot>=20.6",
+    "apscheduler>=3.10,<4",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"

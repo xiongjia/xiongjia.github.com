@@ -28,6 +28,7 @@ from pathlib import Path
 # bootstrap repo root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+import requests
 import yaml
 
 from shared.env import load_env_files
@@ -55,9 +56,38 @@ def _garmin_client():
         print("Error: GARMIN_SECRET_STRING_CN not set in .env", file=sys.stderr)
         sys.exit(1)
     garth.configure(domain="garmin.cn", ssl_verify=False)
+    # retrying session: Garmin CN occasionally times out mid-read; without
+    # this one slow response fails the whole sync (and the cron run). Retry
+    # transient connect/read errors with a short backoff instead — the sync
+    # is incremental, so a retry after a partial fetch is cheap.
+    garth.client.sess = _build_session()
     garth.client.loads(token)
     _GARTH_CLIENT = garth.client
     return _GARTH_CLIENT
+
+
+def _build_session() -> requests.Session:
+    """Requests session with bounded retries for transient Garmin failures.
+
+    connect=3 / read=2 retries (total capped at 3) with a short backoff;
+    idempotent GETs only — writes (POST/DELETE) are never auto-retried, so
+    a retried token refresh can't double-consume anything."""
+    from requests.adapters import HTTPAdapter
+    from urllib3.util.retry import Retry
+
+    session = requests.Session()
+    retry = Retry(
+        total=3,
+        connect=3,
+        read=2,
+        backoff_factor=0.5,
+        status_forcelist=[429, 500, 502, 503, 504],
+        allowed_methods=frozenset({"GET"}),
+    )
+    adapter = HTTPAdapter(max_retries=retry)
+    session.mount("https://", adapter)
+    session.mount("http://", adapter)
+    return session
 
 
 def _fetch_garmin_activities() -> list[dict]:

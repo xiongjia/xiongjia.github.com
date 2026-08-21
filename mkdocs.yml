@@ -62,7 +62,8 @@ extra:
       fallback_name: noname
       tmp_dir: .bucket
       max_size_mb: 10
-    # 跑步配速/路线数据（参见 internal/local-draft.md）
+    # 跑步配速/路线数据（data_key 由 sync-running-splits 上传用；参见
+    # internal/plans/arch/bot-cronjob.md）
     running:
       data_key: splits.json
   # default WebP quality for `poe optimize-images` (converts PNG/JPG to WebP);
@@ -101,6 +102,48 @@ extra:
         cmd: ["uv", "run", "python", "scripts/collect.py", "idea", "{text}"]
         commit: '[bot] feat(collect): add idea'
         body: "- idea: {text}"
+      # smoke-test task: no args, always creates a fresh "hello world" moment
+      # (filename embeds the timestamp, so every run has a diff → always a PR).
+      # Run via `poe bot run hello --handoff` or the console/cron.
+      hello:
+        args: []
+        cmd: ["uv", "run", "python", "scripts/create_moment.py", "hello world"]
+        commit: '[bot] feat(moment): hello world'
+        body: "- hello world (smoke test)"
+      # cron pilot: upload the Garmin splits/polyline cache to R2 (the sync
+      # step runs first in the same spec). --confirm is passed by the cron
+      # spec; plain `poe bot run sync-splits` stays a dry-run by default.
+      sync-splits:
+        args: []
+        cmd: ["uv", "run", "python", "scripts/sync_running_splits.py"]
+        commit: '[bot] chore(running): upload splits to R2'
+        body: "- splits uploaded to R2 (data/metadata/running/splits.json)"
+    # scheduled bot runs (see internal/plans/arch/bot-cronjob.md). Each job fires
+    # the raw `poe bot run` spec through the handoff flow (worktree → CI gate
+    # → draft PR); schedule is a 5-field cron string in the server's local
+    # timezone (per-job `timezone` overrides, e.g. Asia/Shanghai). Disable
+    # globally with BOT_API_CRON_ENABLED=false. Note: a bad schedule/spec
+    # here fails the API server startup (fail-fast, like models.validate_schemas).
+    cron:
+    # 每天 12:00：同步 Garmin 跑步数据 + 上传 splits 到 R2 → 一个 draft PR
+      daily-sync-running:
+        schedule: "0 12 * * *"
+        spec: "sync-running + sync-splits --confirm"
+        handoff: true
+    # 每周六 08:00：本地 pi CLI 生成 AI 健康建议 → 一个 draft PR
+    # (注意：APScheduler DOW 数字 0=Monday…6=Sunday，用文本名 SAT 最安全)
+      weekly-health-summary:
+        schedule: "0 8 * * SAT"
+        spec: "health-summary"
+        handoff: true
+    # 冒烟测试：每天 13:00 发一条 "hello world" moment → draft PR
+    # （验证 cron 自动触发；每次运行都有 diff 必出 PR，手动关掉即可。
+    #   注意：moment 文件名分钟级时间戳，同一分钟内手动重复触发会写
+    #   同一文件——cron 每日一次无影响，仅影响手动连点）
+      smoke-hello:
+        schedule: "0 13 * * *"
+        spec: "hello"
+        handoff: true
   moment:
     path: moments
     # feed: enabled by default — generates /moments/feed.xml, which the

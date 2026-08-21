@@ -29,9 +29,11 @@
 >   - uploads to R2 itself, so staged files never need to enter the
 >     worktree.
 > - `create-post` category options are `bits/dev/thought` (not `life`).
-> - Task scheduling (cron) is dropped; console image uploads landed as a
->   base64 JSON staging endpoint (`POST /api/upload` → `.bot-api/uploads/`,
->   no multipart dependency).
+> - Task scheduling (cron) was originally dropped, then **implemented
+>   (2026-08-21)** — mkdocs.yml `extra.bot.cron` + APScheduler in the API
+>   process (see `internal/plans/arch/bot-cronjob.md`); console image
+>   uploads landed as a base64 JSON staging endpoint (`POST /api/upload`
+>   → `.bot-api/uploads/`, no multipart dependency).
 > - **Telegram scope (dev decision, 2026-08-17)**: allowlisted users only
 >   (`TG_ALLOWED_USER_IDS`), three tasks — `/weight`, `/enu`, simplified
 >   `/moment` (text + multiple photos); no `/post` dialog, no `/sync`/

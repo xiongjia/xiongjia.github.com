@@ -20,6 +20,7 @@ from datetime import timedelta
 
 from fastapi import FastAPI
 
+from api import cron as cron_scheduler
 from api import history as history_store
 from api.config import tg_settings
 from api.executor import terminate_proc
@@ -143,7 +144,9 @@ async def run_lifespan(app: FastAPI):
     if _cleanup_enabled():
         asyncio.get_running_loop().create_task(_stale_worktree_cleanup())
     tg_app = await _tg_startup()
+    cron_scheduler.start()
     yield
+    cron_scheduler.shutdown()
     await _tg_shutdown(tg_app)
     # graceful shutdown: terminate in-flight bot subprocesses
     for run in active_runs.values():
