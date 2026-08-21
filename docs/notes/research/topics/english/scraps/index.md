@@ -38,7 +38,7 @@ categories:
 | 整理 | `/skill:enu-organize arch`                              |
 | 回顾 | `/skill:enu-organize quiz [范围]` / `review <tag>`      |
 | 导出 | `poe enu export`（Anki，可选）                          |
-| 查看 | 站内全文搜索 / [archive/ 周文件](./archive/index.md)            |
+| 查看 | 站内全文搜索 / [archive/ 周文件](./archive/index.md)    |
 
 ## Anki 导出（可选）
 

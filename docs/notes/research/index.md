@@ -25,8 +25,8 @@ graph LR
   click J "/projects/" "Projects"
 ```
 
-| Topic                                      | Category                | Description                                     |
-| ------------------------------------------ | ----------------------- | ----------------------------------------------- |
+| Topic                                              | Category                | Description                                     |
+| -------------------------------------------------- | ----------------------- | ----------------------------------------------- |
 | [Lux](./topics/lux/index.md)                       | Tools                   | Go 视频下载器，支持多个视频网站下载视频和音频   |
 | [Redash](./topics/redash/index.md)                 | Tools                   | 查询结果缓存机制与 Dashboard 自定义布局实现原理 |
 | [trip](./topics/trip/index.md)                     | Tools                   | TRIP 项目核心原理与代码阅读指南                 |
