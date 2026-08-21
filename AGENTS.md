@@ -43,7 +43,8 @@ uv run poe optimize-images <path>  # convert PNG/JPG/JPEG to WebP
 uv run poe add-weight-week [n]     # add empty week(s) to weight data
 uv run poe update-weight 82 [date] # record daily weight (default: today)
 uv run poe update-health-summary   # regenerate health index summary (calls local pi)
-uv run poe sync-running            # sync running data from running_page site
+uv run poe sync-running            # sync running data from the Garmin CN API (incremental)
+uv run poe sync-running-splits     # upload running splits/polyline to R2 (dry-run; --confirm or SYNC_RUNNING_CONFIRM=true)
 uv run poe bucket-sync pull       # pull docs/assets/bucket/ from R2/S3 via rclone (incremental: checksum + fast-list by default; read-only, dry-run by default; uploads happen in PicList)
 uv run poe bucket-check [--check-remote] # cross-check bucket assets vs markdown references (orphans to clean + broken links; --check-remote checks against the bucket)
 uv run poe bucket-upload img.png --confirm  # upload an image to the bucket as WebP (rename rule from mkdocs.yml; dry-run by default, --confirm uploads; needs a read-write R2 token in .env)

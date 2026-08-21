@@ -72,7 +72,7 @@ from pathlib import Path
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.bucket_sync import _first_mapping, _pick, resolve_remote
+from scripts.bucket_sync import _generic_mapping, _pick, resolve_remote
 from scripts.optimize_images import (
     IMAGE_EXTENSIONS,
     _clamp_quality,
@@ -271,7 +271,9 @@ def main() -> int:
         raise SystemExit("bucket-upload: rclone not found — install it first (brew install rclone)")
 
     cfg = _bucket_config()
-    mapping = _first_mapping(cfg)  # raises SystemExit when no mappings
+    # Image uploads target the most general mapping (assets/bucket/), not the
+    # more specific running-data mapping (which is listed first for URL rewrite).
+    mapping = _generic_mapping(cfg)  # raises SystemExit when no mappings
     upload_cfg = cfg.get("upload") or {}
     rule = _pick(args.rule, UPLOAD_RULE_ENV, str(upload_cfg.get("rule") or DEFAULT_RULE))
     fallback = _pick(

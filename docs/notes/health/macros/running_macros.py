@@ -6,6 +6,8 @@ access at build/serve time. If the data file is missing, every macro renders a
 friendly hint instead of failing.
 """
 
+import html
+import json
 import os
 from datetime import datetime, timedelta
 from typing import Any
@@ -13,6 +15,27 @@ from typing import Any
 import yaml
 
 _DATA_PATH = os.path.join("notes", "health", "data", "running.yml")
+
+# Find repo root: try __file__ based path, then CWD, then up from docs/
+_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
+_REPO_ROOT = _THIS_DIR
+for _ in range(5):  # up to 5 levels up
+    if os.path.isfile(os.path.join(_REPO_ROOT, "mkdocs.yml")):
+        break
+    parent = os.path.dirname(_REPO_ROOT)
+    if parent == _REPO_ROOT:
+        _REPO_ROOT = os.getcwd()
+        break
+    _REPO_ROOT = parent
+else:
+    _REPO_ROOT = os.getcwd()
+
+_SPLITS_PATH = os.path.join(_REPO_ROOT, ".running", "splits.json")
+# PMTiles config + supported regions — populated from mkdocs.yml at macro registration time
+_PMTILES_URL = ""
+_GLYPHS_URL = ""
+_SUPPORTED_REGIONS: list[list[float]] = []  # [[minLng, minLat, maxLng, maxLat], ...]
+_REGIONS: dict[str, list[float]] = {}  # {name: [minLng, minLat, maxLng, maxLat], ...}
 
 _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
@@ -31,7 +54,7 @@ def _load_data(env: Any) -> dict:
 
 def _no_data() -> str:
     """Friendly hint rendered when the data file is missing."""
-    return "> ⚠️ No running data yet — run `uv run poe sync-running` to fetch it."
+    return "> ⚠️ 暂无跑步数据 — 运行 `poe sync-running` 同步。"
 
 
 def _parse_moving_time(interval: Any) -> float | None:
@@ -102,42 +125,6 @@ def _runs(data: dict) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-#  Summary cards
-# ---------------------------------------------------------------------------
-
-
-def _summary(data: dict) -> str:
-    runs = _runs(data)
-    if not runs:
-        return _no_data()
-
-    n = len(runs)
-    total_km = sum(float(a.get("distance") or 0) for a in runs) / 1000.0
-    total_sec = sum(_parse_moving_time(a.get("moving_time")) or 0 for a in runs)
-    total_elev = sum(float(a.get("elevation_gain") or 0) for a in runs)
-    hrs = [float(a.get("average_heartrate")) for a in runs if a.get("average_heartrate")]
-    avg_hr = (sum(hrs) / len(hrs)) if hrs else None
-
-    cards = [
-        ("Runs", f"{n}"),
-        ("Distance", f"{total_km:.1f} km"),
-        ("Total Time", _fmt_hours_minutes(total_sec)),
-        ("Elevation", f"{total_elev:.0f} m"),
-        ("Avg HR", f"{avg_hr:.0f} bpm" if avg_hr else "—"),
-    ]
-    parts = ['<div class="weight-cards">\n']
-    for label, value in cards:
-        parts.append(
-            f'    <div class="weight-card">'
-            f'<div class="label">{label}</div>'
-            f'<div class="value">{value}</div>'
-            f"</div>\n"
-        )
-    parts.append("</div>\n")
-    return "".join(parts)
-
-
-# ---------------------------------------------------------------------------
 #  Yearly table
 # ---------------------------------------------------------------------------
 
@@ -160,14 +147,22 @@ def _year_table(data: dict) -> str:
         if a.get("average_heartrate"):
             y["hrs"].append(float(a["average_heartrate"]))
 
-    md = "| Year | Runs | Distance (km) | Avg Pace | Avg HR | Elevation (m) |\n"
-    md += "|:-----|-----:|--------------:|:--------:|-------:|--------------:|\n"
+    rows = []
     for year in sorted(years, reverse=True):
         y = years[year]
         pace = _fmt_pace(y["sec"] / y["km"]) if y["km"] else "—"
         hr = f"{sum(y['hrs']) / len(y['hrs']):.0f}" if y["hrs"] else "—"
-        md += f"| {year} | {y['n']} | {y['km']:.1f} | {pace} | {hr} | {y['elev']:.0f} |\n"
-    return md
+        rows.append(
+            f"<tr><td>{year}</td><td style='text-align:right'>{y['n']}</td><td style='text-align:right'>{y['km']:.1f}</td><td style='text-align:center'>{pace}</td><td style='text-align:center'>{hr}</td><td style='text-align:right'>{y['elev']:.0f}</td></tr>"  # noqa: E501
+        )
+
+    return (
+        '<div class="md-typeset__scrollwrap"><div class="md-typeset__table">'
+        '<table><thead><tr><th>Year</th><th style="text-align:right">Runs</th>'
+        '<th style="text-align:right">Distance (km)</th><th style="text-align:center">Avg Pace</th>'
+        '<th style="text-align:center">Avg HR</th><th style="text-align:right">Elevation (m)</th></tr></thead>'  # noqa: E501
+        f"<tbody>{''.join(rows)}</tbody></table></div></div>"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -237,27 +232,101 @@ def _monthly_chart(data: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _activity_table(runs: list[dict]) -> str:
-    """Markdown table (header + rows) for the given activities.
+def _activity_table(
+    runs: list[dict], splits: dict[int, dict] | None = None, splits_url: str = ""
+) -> str:
+    """HTML table of activities, each row with optional popup pace splits
+    and route map.
 
-    Date / Time / Duration are merged into a single column to keep the table
-    narrow; a note above the header explains the abbreviations.
+    When splits data is available, the displayed pace uses the actual moving
+    time from Garmin splits (not total elapsed time which includes stops).
+    Buttons carry the data as attributes; the pace/route dialogs are created
+    lazily by JS on first click, so no hidden <dialog> nodes sit in the DOM.
     """
-    md = "> Avg HR = Average Heart Rate（平均心率）｜ Pace (/km) = 每公里配速（min/km）\n\n"
-    md += "| Date · Time · Duration | Name | Distance (km) | Pace (/km) | Avg HR |\n"
-    md += "|:------------------------|:-----|--------------:|:----------:|-------:|\n"
+    rows = []
+
     for a in runs:
         dt = _activity_date(a)
         sec = _parse_moving_time(a.get("moving_time"))
         dur = _fmt_hours_minutes(sec) if sec else "—"
         when_dur = f"{dt.strftime('%Y-%m-%d %H:%M')} · {dur}" if dt else "—"
-        # escape pipe/newline so activity names can't break the Markdown table
-        name = str(a.get("name") or "—").replace("|", "\\|").replace("\n", " ")
+        name = html.escape(str(a.get("name") or "—"), quote=True)
+        when_dur_esc = html.escape(when_dur, quote=True)
         km = float(a.get("distance") or 0) / 1000.0
-        pace = _fmt_pace(sec / km) if sec and km else "—"
         hr = f"{float(a['average_heartrate']):.0f}" if a.get("average_heartrate") else "—"
-        md += f"| {when_dur} | {name} | {km:.2f} | {pace} | {hr} |\n"
-    return md
+
+        # Calculate pace: prefer splits moving time, fall back to running.yml
+        pace_sec = None
+        has_polyline = False
+        if splits and a.get("run_id"):
+            entry = splits.get(int(a["run_id"]))
+            if entry:
+                if entry.get("splits"):
+                    total_move = sum(s.get("duration") or 0 for s in entry["splits"])
+                    if total_move > 0 and km > 0:
+                        pace_sec = total_move / km
+                if entry.get("summary_polyline"):
+                    has_polyline = True
+        if pace_sec is None and sec and km:
+            pace_sec = sec / km
+        pace = _fmt_pace(pace_sec) if pace_sec else "—"
+
+        # Build buttons (dialog content is embedded as data attributes and
+        # rendered lazily by running-route.js on click)
+        btns = []
+        if splits and a.get("run_id"):
+            entry = splits.get(int(a["run_id"]))
+            if entry and entry.get("splits"):
+                pace_rows = []
+                for s in entry["splits"]:
+                    sp = s.get("pace") or "—"
+                    shr = f"{s['hr']:.0f}" if s.get("hr") else "—"
+                    sd = s.get("duration")
+                    sd_str = f"{sd // 60}:{sd % 60:02d}" if sd else "—"
+                    sk = f"{s['km']:.2f}" if s["km"] < 1 else f"{s['km']:.0f}"
+                    pace_rows.append([sk, sd_str, sp, shr])
+                pace_json = html.escape(
+                    json.dumps(
+                        {
+                            "when": when_dur,
+                            "name": name,
+                            "km": f"{km:.2f}",
+                            "pace": pace,
+                            "rows": pace_rows,
+                        },
+                        ensure_ascii=False,
+                    ),
+                    quote=True,
+                )
+                btns.append(
+                    f"<button data-pace='{pace_json}' onclick=\"window.openPaceDialog(this)\" "
+                    f'title="分段配速" style="border:none;background:none;cursor:pointer;padding:0;font-size:inherit;color:var(--md-typeset-a-color)">📊</button>'  # noqa: E501
+                )
+
+            if has_polyline and _in_supported_region(a, splits):
+                rid = a["run_id"]
+                btns.append(
+                    f"<button data-route-id='{rid}' data-when='{when_dur_esc}' "
+                    f"data-splits='{splits_url}' data-pmtiles='{_PMTILES_URL}' "
+                    f"data-glyphs='{_GLYPHS_URL}' onclick=\"window.openRouteMap(this)\" "
+                    f'title="查看路线" style="border:none;background:none;cursor:pointer;padding:0;font-size:inherit;color:var(--md-typeset-a-color)">🗺️</button>'  # noqa: E501
+                )
+
+        pace_cell = pace
+        if btns:
+            pace_cell = pace + " " + " ".join(btns)
+
+        rows.append(
+            f"<tr><td>{when_dur}</td><td style='text-align:right'>{km:.2f}</td><td style='text-align:center'>{pace_cell}</td><td style='text-align:center'>{hr}</td></tr>"  # noqa: E501
+        )
+
+    return (
+        '<p style="font-size:0.85em;color:var(--md-default-fg-color--light)">Avg HR = 平均心率 ｜ Pace = 每公里移动配速（min/km）</p>'  # noqa: E501
+        '<div class="md-typeset__scrollwrap"><div class="md-typeset__table">'
+        "<table><thead><tr><th>日期 · 时间 · 时长</th>"
+        "<th style='text-align:right'>距离 (km)</th><th style='text-align:center'>配速</th><th style='text-align:center'>心率</th></tr></thead>"  # noqa: E501
+        f"<tbody>{''.join(rows)}</tbody></table></div></div>"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -265,16 +334,14 @@ def _activity_table(runs: list[dict]) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _recent(data: dict) -> str:
+def _recent(data: dict, splits: dict[int, dict] | None = None, splits_url: str = "") -> str:
     runs = _runs(data)
     if not runs:
         return _no_data()
 
-    # last 2 weeks; fall back to the last 10 activities when data is stale
-    cutoff = datetime.now() - timedelta(days=14)
-    two_weeks = [a for a in runs if (dt := _activity_date(a)) is not None and dt >= cutoff]
-    rows = two_weeks if two_weeks else runs[:10]
-    return _activity_table(rows)
+    # Last 5 activities
+    rows = runs[:5]
+    return _activity_table(rows, splits, splits_url)
 
 
 # ---------------------------------------------------------------------------
@@ -282,15 +349,185 @@ def _recent(data: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
-def _all(data: dict) -> str:
+def _all(data: dict, splits: dict[int, dict] | None = None, splits_url: str = "") -> str:
     runs = _runs(data)
     if not runs:
         return _no_data()
 
-    md = f'??? "🗂️ All Activities ({len(runs)})"\n'
-    for line in _activity_table(runs).rstrip("\n").split("\n"):
-        md += f"    {line}\n"
-    return md
+    table = _activity_table(runs, splits, splits_url)
+    # Content is HTML (no dialogs to hoist out) — indent inside the ??? block
+    return f'??? "🗂️ All Activities ({len(runs)})"\n' + "\n".join(
+        f"    {line}" for line in table.rstrip().split("\n")
+    )
+
+
+# ---------------------------------------------------------------------------
+#  Calendar heatmap — GitHub-style daily running grid
+# ---------------------------------------------------------------------------
+
+
+def _calendar_heatmap(data: dict, year: int | None = None) -> str:
+    """GitHub-style calendar heatmap of daily running distance (km).
+
+    Returns an HTML/CSS grid: 7 rows (Mon–Sun) × ~53 columns (weeks),
+    each cell colored by total distance on that day. Pure CSS tooltip
+    on hover shows the date + distance.
+    """
+    runs = _runs(data)
+    if not runs:
+        return _no_data()
+
+    # Determine year (default: latest)
+    latest = _activity_date(runs[0])
+    if latest is None:
+        return _no_data()
+    if year is None:
+        year = latest.year
+
+    # Filter runs for the year and aggregate by date
+    daily: dict[str, float] = {}
+    for a in runs:
+        dt = _activity_date(a)
+        if dt is None or dt.year != year:
+            continue
+        key = dt.strftime("%Y-%m-%d")
+        daily[key] = daily.get(key, 0) + float(a.get("distance") or 0) / 1000.0
+
+    if not daily:
+        return f"> {year} 年暂无跑步数据"
+
+    # Summary line: total runs, total distance, total days
+    total_runs = sum(
+        1 for a in runs if _activity_date(a) is not None and _activity_date(a).year == year
+    )
+    total_km = sum(daily.values())
+    total_days = len(daily)
+    summary = f"{total_runs} 次跑步 · {total_km:.0f} 公里 · {total_days} 天"
+
+    # Grid boundaries
+    start = datetime(year, 1, 1)
+    end = datetime(year, 12, 31)
+    grid_start = start - timedelta(days=start.weekday())  # Monday of week 1
+    grid_end = end + timedelta(days=6 - end.weekday())  # Sunday of last week
+    num_weeks = (grid_end - grid_start).days // 7 + 1
+
+    cell_w = 11  # cell width (px)
+    cell_gap = 1  # gap between cells (px)
+    col_w = cell_w + cell_gap  # total column width
+    label_w = 40  # day label column width (px)
+    cell_r = 2  # border radius
+
+    # Color levels (km)
+    levels = [0, 1, 2, 5, 999]
+    colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
+
+    def _color(km: float) -> str:
+        for i, threshold in enumerate(levels):
+            if km <= threshold:
+                return colors[i]
+        return colors[-1]
+
+    day_labels = ["", "Mon", "", "Wed", "", "Fri", ""]
+    months_short = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ]
+
+    # Build month label positions: (week_index, label) for months in the target year
+    # Find the grid column (week) that contains the 1st of each month
+    month_positions: list[tuple[int, str]] = []
+    for m in range(1, 13):
+        first_day = datetime(year, m, 1)
+        # Which week column does this day fall in?
+        days_from_start = (first_day - grid_start).days
+        if days_from_start >= 0:
+            w = days_from_start // 7
+            month_positions.append((w, months_short[m - 1]))
+
+    # ── HTML ──
+    lines = []
+    lines.append(
+        '<div class="running-heatmap" '
+        'style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; '
+        'font-size: 12px; overflow-x: auto; overflow-y: hidden;">'
+    )
+    lines.append(
+        f'  <div style="font-size:0.9em;color:var(--md-default-fg-color--light);margin-bottom:0.5em">{summary}</div>'  # noqa: E501
+    )
+
+    # Month labels: absolute positioning at exact column positions
+    lines.append(
+        f'  <div style="position: relative; margin-left: {label_w}px; '
+        f"height: 15px; font-size: 10px; color: #586069; "
+        f'white-space: nowrap;">'
+    )
+    for w, label in month_positions:
+        left = w * col_w
+        lines.append(
+            f'    <div style="position: absolute; left: {left}px; '
+            f'top: 0; line-height: 15px;">{label}</div>'
+        )
+    lines.append("  </div>")
+
+    # Day grid: CSS grid, 1 label column + 53 week columns
+    lines.append(
+        f'  <div style="display: inline-grid; '
+        f"grid-template-columns: {label_w}px repeat({num_weeks}, {col_w}px); "
+        f'gap: 0;">'
+    )
+
+    # Rows: day labels + cells
+    for day_idx in range(7):
+        label = day_labels[day_idx]
+        if label:
+            lines.append(
+                f'    <div style="font-size: 10px; color: #586069; '
+                f'line-height: {cell_w}px; text-align: left;">{label}</div>'
+            )
+        else:
+            lines.append(f'    <div style="height: {cell_w}px;"></div>')
+
+        for w in range(num_weeks):
+            d = grid_start + timedelta(weeks=w, days=day_idx)
+            key = d.strftime("%Y-%m-%d")
+            km = daily.get(key, 0)
+            color = _color(km)
+            title = f"{key}: {km:.1f} km" if km > 0 else key
+            lines.append(
+                f'    <div style="width: {cell_w}px; height: {cell_w}px; '
+                f'background: {color}; border-radius: {cell_r}px; cursor: default;" '
+                f'title="{title}"></div>'
+            )
+
+    lines.append("  </div>")
+
+    # Legend row
+    lines.append(
+        '  <div style="display: flex; align-items: center; gap: 3px; '
+        'margin-top: 8px; font-size: 10px; color: #586069;">'
+    )
+    lines.append("    <span>Less</span>")
+    for c in colors:
+        lines.append(
+            f'    <div style="width: {cell_w}px; height: {cell_w}px; '
+            f'background: {c}; border-radius: {cell_r}px;"></div>'
+        )
+    lines.append("    <span>More</span>")
+    lines.append("  </div>")
+
+    lines.append("</div>")
+
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------
@@ -298,13 +535,50 @@ def _all(data: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
+def _splits_bucket_url() -> str:
+    """Construct the R2 bucket URL for splits.json from mkdocs.yml config."""
+    try:
+        from shared.mkdocs_yaml import load_extra
+
+        bucket = load_extra("bucket", label="running-macros")
+        if not bucket:
+            return ""
+        for m in bucket.get("mappings") or []:
+            if "running" in str(m.get("prefix", "")):
+                base = str(m.get("base_url", "")).rstrip("/")
+                dk = (bucket.get("running") or {}).get("data_key", "splits.json")
+                if base:
+                    return f"{base}/{dk}"
+    except Exception:
+        pass
+    return ""
+
+
 def _synced_note(data: dict) -> str:
     synced_at = data.get("synced_at")
     if not synced_at:
         # never claim there is no data just because synced_at is missing
         # (only reachable via hand-edited files)
-        return "> ⚠️ 未记录同步时间 — 运行 `uv run poe sync-running` 可更新数据。"
-    return f"> 🕓 Data synced at `{synced_at}` — re-run `uv run poe sync-running` to refresh."
+        return "> ⚠️ 未记录同步时间 — 运行 `poe sync-running` 更新。"
+    return f"> 🕓 数据同步于 `{synced_at}` — 运行 `poe sync-running` 更新。"
+
+
+# ---------------------------------------------------------------------------
+#  Pace splits — per-km data from .running/splits.json
+# ---------------------------------------------------------------------------
+
+
+def _load_splits() -> dict[int, dict] | None:
+    """Load .running/splits.json, return {run_id: activity_data} or None."""
+    if not os.path.exists(_SPLITS_PATH):
+        return None
+    try:
+        with open(_SPLITS_PATH, encoding="utf-8") as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return None
+    acts = data.get("activities") or []
+    return {int(a["run_id"]): a for a in acts}
 
 
 # ---------------------------------------------------------------------------
@@ -312,13 +586,106 @@ def _synced_note(data: dict) -> str:
 # ---------------------------------------------------------------------------
 
 
+def _decode_polyline(encoded: str) -> list[tuple[float, float]]:
+    """Decode Google Polyline to [(lat, lng), ...] coordinates."""
+    coords = []
+    index = 0
+    lat = 0
+    lng = 0
+    while index < len(encoded):
+        result = 0
+        shift = 0
+        while True:
+            b = ord(encoded[index]) - 63
+            index += 1
+            result |= (b & 0x1F) << shift
+            shift += 5
+            if b < 0x20:
+                break
+        dlat = ~(result >> 1) if (result & 1) else (result >> 1)
+        lat += dlat
+        result = 0
+        shift = 0
+        while True:
+            b = ord(encoded[index]) - 63
+            index += 1
+            result |= (b & 0x1F) << shift
+            shift += 5
+            if b < 0x20:
+                break
+        dlng = ~(result >> 1) if (result & 1) else (result >> 1)
+        lng += dlng
+        coords.append((lat / 1e5, lng / 1e5))
+    return coords
+
+
+def _region_at(lat: float, lng: float) -> str | None:
+    """Region name containing a coordinate, or None if not in any region."""
+    for name, bbox in _REGIONS.items():
+        min_lng, min_lat, max_lng, max_lat = bbox
+        if min_lng <= lng <= max_lng and min_lat <= lat <= max_lat:
+            return name
+    return None
+
+
+def _region_for_activity(activity: dict, splits: dict[int, dict] | None = None) -> str | None:
+    """Region of an activity, derived from its first polyline coordinate."""
+    if not _REGIONS or not splits or not activity.get("run_id"):
+        return None
+    entry = splits.get(int(activity["run_id"]))
+    if not entry or not entry.get("summary_polyline"):
+        return None
+    try:
+        coords = _decode_polyline(entry["summary_polyline"])
+        if coords:
+            lat, lng = coords[0]
+            return _region_at(lat, lng)
+    except Exception:
+        pass
+    return None
+
+
+def _in_supported_region(activity: dict, splits: dict[int, dict] | None = None) -> bool:
+    """Check if the activity is within any configured PMTiles region.
+
+    Uses the first coordinate from the polyline to check against region bboxes.
+    """
+    if not _SUPPORTED_REGIONS:
+        return True  # no regions configured = show all
+    if splits and activity.get("run_id"):
+        entry = splits.get(int(activity["run_id"]))
+        if entry and entry.get("summary_polyline"):
+            try:
+                coords = _decode_polyline(entry["summary_polyline"])
+                if coords:
+                    lat, lng = coords[0]
+                    for bbox in _SUPPORTED_REGIONS:
+                        min_lng, min_lat, max_lng, max_lat = bbox
+                        if min_lng <= lng <= max_lng and min_lat <= lat <= max_lat:
+                            return True
+            except Exception:
+                pass
+    return False
+
+
 def define_env(env):
     """Register running tracking macros."""
-
-    @env.macro
-    def running_summary():
-        """Cards: total runs, distance, time, elevation, avg heart rate."""
-        return _summary(_load_data(env))
+    global _PMTILES_URL, _GLYPHS_URL, _SUPPORTED_REGIONS, _REGIONS
+    try:
+        moment_cfg = (env.conf.get("extra", {}) or {}).get("moment", {}) or {}
+        map_cfg = moment_cfg.get("map") or {}
+        _PMTILES_URL = str(map_cfg.get("pmtiles_prefix", "") or "")
+        _GLYPHS_URL = str(map_cfg.get("glyphs_url", "") or "")
+        # Read supported regions (reset both so repeated define_env calls don't duplicate)
+        _SUPPORTED_REGIONS = []
+        _REGIONS = {}
+        for name, rcfg in (map_cfg.get("regions") or {}).items():
+            bbox = rcfg.get("bbox")
+            if bbox and len(bbox) == 4:
+                _SUPPORTED_REGIONS.append([float(v) for v in bbox])
+                _REGIONS[name] = [float(v) for v in bbox]
+    except Exception:
+        pass
 
     @env.macro
     def running_year_table():
@@ -332,15 +699,95 @@ def define_env(env):
 
     @env.macro
     def running_recent():
-        """Table of activities from the last 2 weeks (fallback: last 10)."""
-        return _recent(_load_data(env))
+        """Table of activities from the last 2 weeks (fallback: last 10), with pace splits."""
+        data = _load_data(env)
+        splits = _load_splits()
+        splits_url = _splits_bucket_url()
+        return _recent(data, splits, splits_url)
 
     @env.macro
     def running_all():
-        """Collapsed table of all activities."""
-        return _all(_load_data(env))
+        """Collapsed table of all activities, with pace splits."""
+        data = _load_data(env)
+        splits = _load_splits()
+        splits_url = _splits_bucket_url()
+        return _all(data, splits, splits_url)
 
     @env.macro
     def running_synced_at():
         """Note showing when the local data was last synced."""
         return _synced_note(_load_data(env))
+
+    @env.macro
+    def running_calendar_heatmap(year=None):
+        """GitHub-style calendar grid of daily running distance.
+
+        Args:
+            year: 4-digit year (default: latest year with data).
+        """
+        return _calendar_heatmap(_load_data(env), year)
+
+    @env.macro
+    def running_splits_note():
+        """Note showing whether pace splits data is available."""
+        splits = _load_splits()
+        if splits is None:
+            return (
+                "> 💡 运行 `poe sync-running-splits` 同步配速数据后，活动列表将显示每公里分段配速"
+            )
+        has_poly = sum(1 for s in splits.values() if s.get("summary_polyline"))
+        return f"> ✅ 配速数据已同步（{len(splits)} 条活动，{has_poly} 条有路线）"
+
+    @env.macro
+    def running_recent_routes(max_routes=10):
+        """Inline map showing the most recent N routes overlaid.
+
+        Uses the last N activities with route data (date-independent, so the
+        view is not frozen at build time). When the routes span multiple
+        regions, only the region with the most routes is shown.
+
+        Args:
+            max_routes: max routes to consider (default 10).
+        """
+        data = _load_data(env)
+        splits = _load_splits()
+        if not splits:
+            return '<p style="font-size:0.85em;color:var(--md-default-fg-color--light)">💡 运行 <code>poe sync-running-splits</code> 后可用</p>'  # noqa: E501
+
+        runs = _runs(data)[:max_routes]
+
+        # Build route data, grouped by region
+        routes_by_region: dict[str, list[dict]] = {}
+        for a in runs:
+            if not a.get("run_id"):
+                continue
+            entry = splits.get(int(a["run_id"]))
+            if not entry or not entry.get("summary_polyline"):
+                continue
+            # Find which region this activity belongs to
+            region = _region_for_activity(a, splits)
+            if not region:
+                continue
+            dt = _activity_date(a)
+            routes_by_region.setdefault(region, []).append(
+                {
+                    "run_id": a["run_id"],
+                    "date": dt.strftime("%m-%d") if dt else "?",
+                    "polyline": entry["summary_polyline"],
+                }
+            )
+
+        if not routes_by_region:
+            return ""
+
+        # Pick the region with the most routes
+        best_region = max(routes_by_region, key=lambda r: len(routes_by_region[r]))
+        routes = routes_by_region[best_region]
+
+        routes_json = json.dumps(routes, ensure_ascii=False)
+        return (
+            f'<div id="inline-routes-map" style="width:100%;height:400px;border-radius:8px;overflow:hidden;margin:0.5em 0" '  # noqa: E501
+            f"data-routes='{routes_json}' "
+            f"data-pmtiles='{_PMTILES_URL}' data-glyphs='{_GLYPHS_URL}'></div>"
+            f'<div id="inline-routes-legend" style="display:flex;flex-wrap:wrap;gap:0.3em 1em;padding:0.3em 0;font-size:12px;color:var(--md-default-fg-color--light)"></div>'  # noqa: E501
+        )

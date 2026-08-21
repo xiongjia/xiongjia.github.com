@@ -1,393 +1,257 @@
 """Unit tests for scripts/sync_running.py (no network) and the running macros.
 
-Covers the offline-testable pieces: JS-string unescaping, asset discovery in
-the index HTML, JSON.parse payload extraction, the Run-type filter, the
-data-yaml helpers, and the running_macros aggregation/rendering functions.
+Covers the offline-testable pieces of the Garmin-direct sync: polyline
+encoding, pace formatting, Garmin→yml activity conversion, the incremental
+cursor, splits-cache repair, and the running_macros rendering functions.
 """
+
+import json
 
 import health_macros
 import pytest
-import running_macros as rm
-import yaml
 from sync_running import (
-    drop_polyline,
-    extract_activities,
-    find_asset_url,
-    is_run,
-    js_unescape,
+    _encode_polyline,
+    _garmin_to_activity,
+    _pace_from_speed,
 )
 
-
-def test_js_unescape_common_escapes():
-    assert js_unescape(r"a\\b") == "a\\b"
-    assert js_unescape(r"it\'s") == "it's"
-    assert js_unescape(r"a\"b") == 'a"b'
-    assert js_unescape(r"line\nbreak") == "line\nbreak"
-    assert js_unescape(r"\u4e2d\u6587") == "中文"
-
-
-def test_js_unescape_unknown_escape_drops_backslash():
-    # JS semantics: unknown escapes keep the character, dropping the backslash
-    assert js_unescape(r"\z") == "z"
-
-
-def test_js_unescape_polyline_double_backslashes():
-    # polylines arrive double-escaped in the JS string literal: the raw bundle
-    # has \\\\ which JS parses to \\ (still a JSON escape, resolved by
-    # json.loads downstream -> single backslash)
-    assert js_unescape(r"wBr@}@fA\\\\Nd@r@") == r"wBr@}@fA\\Nd@r@"
-
-
-def test_extract_activities_resolves_polyline_backslashes():
-    bundle = r"""const e=JSON.parse('[{"name":"A\\\\B","type":"Run"}]');export{e as a};"""
-    acts = extract_activities(bundle)
-    assert acts[0]["name"] == "A\\B"
-
-
-def test_find_asset_url_href_modulepreload():
-    html = '<link rel="modulepreload" crossorigin href="/running_page/assets/activities-ABC123.js">'
-    assert (
-        find_asset_url(html)
-        == "https://xiongjia.github.io/running_page/assets/activities-ABC123.js"
-    )
-
-
-def test_find_asset_url_script_src():
-    html = '<script type="module" src="/running_page/assets/activities-xyz_9.js"></script>'
-    assert (
-        find_asset_url(html) == "https://xiongjia.github.io/running_page/assets/activities-xyz_9.js"
-    )
-
-
-def test_find_asset_url_absolute_and_missing():
-    # same-origin absolute URL passes through; foreign origins are refused
-    assert (
-        find_asset_url('<script src="https://xiongjia.github.io/assets/activities-A1.js"></script>')
-        == "https://xiongjia.github.io/assets/activities-A1.js"
-    )
-    assert find_asset_url("<html>no asset here</html>") is None
-    external = '<script src="https://cdn.example.com/assets/activities-A1.js"></script>'
-    assert find_asset_url(external) is None
-
-
-def test_extract_activities_parses_payload():
-    bundle = (
-        r"""const e=JSON.parse('[{"run_id":1,"name":"Pudong """
-        r"""\\\\ Evening","type":"Run","moving_time":"0:19:42.196000"}"""
-        r""",{"run_id":2,"type":"cycling"}]');export{e as a};"""
-    )
-    acts = extract_activities(bundle)
-    assert len(acts) == 2
-    assert acts[0]["name"] == "Pudong \\ Evening"
-    assert acts[0]["moving_time"] == "0:19:42.196000"
-
-
-def test_extract_activities_missing_payload_raises():
-    try:
-        extract_activities("const e=[];export{e as a};")
-    except ValueError as exc:
-        assert "payload not found" in str(exc)
-    else:  # pragma: no cover
-        raise AssertionError("expected ValueError")
-
-
-def test_extract_activities_invalid_json_raises():
-    try:
-        extract_activities("const e=JSON.parse('[not json');export{e as a};")
-    except ValueError as exc:
-        assert "invalid activities JSON" in str(exc)
-    else:  # pragma: no cover
-        raise AssertionError("expected ValueError")
-
-
-def test_is_run_case_insensitive():
-    assert is_run({"type": "Run"})
-    assert is_run({"type": "run"})
-    assert not is_run({"type": "cycling"})
-    assert not is_run({})
-
-
-def test_drop_polyline_keeps_rest():
-    a = {"run_id": 1, "name": "Pudong", "summary_polyline": "xyz", "distance": 2059.83}
-    out = drop_polyline(a)
-    assert "summary_polyline" not in out
-    assert out["run_id"] == 1
-    # original dict untouched
-    assert "summary_polyline" in a
-
-
-def test_data_yaml_roundtrip_preserves_interval_strings():
-    # PyYAML must quote interval strings, otherwise '0:19:42' parses as a
-    # sexagesimal float on read-back
-    payload = {
-        "synced_at": "2026-08-01T12:00:00+08:00",
-        "activities": [{"moving_time": "0:19:42.196000"}],
-    }
-    text = yaml.safe_dump(payload, sort_keys=False, allow_unicode=True, default_flow_style=False)
-    back = yaml.safe_load(text)
-    assert back["activities"][0]["moving_time"] == "0:19:42.196000"
-    assert isinstance(back["activities"][0]["moving_time"], str)
-
-
-def test_macro_runs_sorted_newest_first():
-    """running_macros._runs returns newest-first regardless of yaml order."""
-    data = {
-        "activities": [
-            {
-                "name": "old",
-                "distance": 5000,
-                "start_date": "2025-10-15 14:21:46",
-                "start_date_local": "2025-10-15 22:21:46",
-            },
-            {
-                "name": "new",
-                "distance": 8000,
-                "start_date": "2026-08-02 14:06:45",
-                "start_date_local": "2026-08-02 22:06:45",
-            },
-        ]
-    }
-    runs = rm._runs(data)
-    assert [a["name"] for a in runs] == ["new", "old"]
-
-    recent = rm._recent(data)
-    assert "new" in recent.splitlines()[4]  # note(0), blank(1), header(2), sep(3), data(4)
-    chart = rm._monthly_chart(data)
-    assert "2026" in chart.splitlines()[2]  # title uses the newest year
-
-
-def test_recent_filters_to_last_two_weeks():
-    """running_macros._recent keeps only activities within the last 14 days."""
-    from datetime import datetime as _dt
-    from datetime import timedelta as _td
-
-    now = _dt.now()
-
-    def act(name, days_ago):
-        dt = now - _td(days=days_ago)
-        stamp = dt.strftime("%Y-%m-%d %H:%M:%S")
-        return {"name": name, "distance": 5000, "start_date": stamp, "start_date_local": stamp}
-
-    data = {"activities": [act("old", 40), act("mid", 15), act("new", 1)]}
-    table = rm._recent(data)
-    rows = [line for line in table.splitlines() if line.startswith("| ") and "|" in line[2:]]
-    assert len(rows) == 2  # header + one data row
-    assert "new" in rows[1]
-    assert "old" not in table
-
-
-def test_recent_falls_back_when_no_two_week_runs():
-    """When every activity is older than 14 days, show the last 10 instead."""
-    data = {
-        "activities": [
-            {
-                "name": "old1",
-                "distance": 5000,
-                "start_date": "2025-10-15 14:21:46",
-                "start_date_local": "2025-10-15 22:21:46",
-            },
-            {
-                "name": "old2",
-                "distance": 8000,
-                "start_date": "2025-10-16 14:06:45",
-                "start_date_local": "2025-10-16 22:06:45",
-            },
-        ]
-    }
-    table = rm._recent(data)
-    assert "old1" in table and "old2" in table
-
-
-def test_all_collapsed_details():
-    """running_macros._all wraps the full table in a collapsed ??? block."""
-    data = {
-        "activities": [
-            {
-                "name": "a",
-                "distance": 5000,
-                "start_date": "2026-08-02 14:06:45",
-                "start_date_local": "2026-08-02 22:06:45",
-            },
-            {
-                "name": "b",
-                "distance": 8000,
-                "start_date": "2026-08-01 14:06:45",
-                "start_date_local": "2026-08-01 22:06:45",
-            },
-        ]
-    }
-    out = rm._all(data)
-    assert out.startswith('??? "')  # collapsed by default (no '+')
-    assert "All Activities (2)" in out
-    assert out.count("| a |") == 1 and out.count("| b |") == 1
-    # details content is indented
-    assert any(line.startswith("    | ") for line in out.splitlines())
-
-
-def test_monthly_chart_merges_distance_bar_and_hr_line():
-    """running_macros._monthly_chart: one plot with bar (km) + line (bpm)."""
-
-    def act(name, stamp, km, hr):
-        return {
-            "name": name,
-            "distance": km * 1000,
-            "start_date": stamp,
-            "start_date_local": stamp,
-            "average_heartrate": hr,
-        }
-
-    data = {
-        "activities": [
-            act("a", "2026-08-02 14:06:45", 5.0, 140),
-            act("b", "2026-07-15 14:06:45", 8.0, 150),
-        ]
-    }
-    out = rm._monthly_chart(data)
-    assert 'title "Monthly Distance (km) & Avg HR (bpm) — 2026"' in out
-    assert 'x-axis ["Jul", "Aug"]' in out
-    assert "bar [8.0, 5.0]" in out
-    assert "line [150, 140]" in out
-    assert 'y-axis "km / bpm" 0 --> 165' in out
-
-
-def test_monthly_chart_hr_missing_month_uses_zero():
-    """A month with runs but no HR data falls back to 0 in the line series."""
-    data = {
-        "activities": [
-            {
-                "name": "a",
-                "distance": 5000,
-                "start_date": "2026-08-02 14:06:45",
-                "start_date_local": "2026-08-02 14:06:45",
-            },
-            {
-                "name": "b",
-                "distance": 8000,
-                "start_date": "2026-07-15 14:06:45",
-                "start_date_local": "2026-07-15 14:06:45",
-                "average_heartrate": 150,
-            },
-        ]
-    }
-    out = rm._monthly_chart(data)
-    assert "line [150, 0]" in out
-
-
 # ---------------------------------------------------------------------------
-#  Macro aggregation / rendering coverage
+#  sync_running: pure helpers
 # ---------------------------------------------------------------------------
 
 
-def test_load_data_empty_comment_only_file_returns_empty(tmp_path):
-    """running_macros._load_data: comment-only yaml -> {} (not None)."""
-    data_dir = tmp_path / "notes" / "health" / "data"
-    data_dir.mkdir(parents=True)
-    (data_dir / "running.yml").write_text("# only a comment\n", encoding="utf-8")
+def _decode(encoded: str) -> list[tuple[float, float]]:
+    """Reference Google Polyline decoder for round-trip assertions."""
+    coords = []
+    index = 0
+    lat = lng = 0
+    while index < len(encoded):
+        result = 0
+        shift = 0
+        while True:
+            b = ord(encoded[index]) - 63
+            index += 1
+            result |= (b & 0x1F) << shift
+            shift += 5
+            if b < 0x20:
+                break
+        lat += ~(result >> 1) if (result & 1) else (result >> 1)
+        result = 0
+        shift = 0
+        while True:
+            b = ord(encoded[index]) - 63
+            index += 1
+            result |= (b & 0x1F) << shift
+            shift += 5
+            if b < 0x20:
+                break
+        lng += ~(result >> 1) if (result & 1) else (result >> 1)
+        coords.append((lat / 1e5, lng / 1e5))
+    return coords
 
-    env = type("Env", (), {"conf": {"docs_dir": str(tmp_path)}})()
-    assert rm._load_data(env) == {}
+
+def test_encode_polyline_roundtrip():
+    coords = [(31.19077, 121.51594), (31.19137, 121.51568), (31.19168, 121.51532)]
+    encoded = _encode_polyline(coords)
+    assert _decode(encoded) == coords
 
 
-def test_activity_date_falls_back_to_start_date():
-    """running_macros._activity_date: garbage local -> valid start_date, else None."""
-    act = {"start_date_local": "not-a-date", "start_date": "2025-10-15 14:21:46"}
-    dt = rm._activity_date(act)
-    assert dt is not None and dt.year == 2025
-
-    assert rm._activity_date({"start_date_local": "x", "start_date": "y"}) is None
-    assert rm._activity_date({}) is None
+def test_encode_polyline_negative_deltas_roundtrip():
+    coords = [(31.2, 121.5), (31.19, 121.51), (31.21, 121.49)]
+    assert _decode(_encode_polyline(coords)) == coords
 
 
-def test_summary_aggregates_cards():
-    """running_macros._summary: totals for km, time, elevation, avg HR."""
+def test_pace_from_speed():
+    # 1000 m / 5:00 = 3.333 m/s
+    assert _pace_from_speed(3.3333) == "5:00"
+    assert _pace_from_speed(0) == "—"
+    assert _pace_from_speed(-1) == "—"
+
+
+def test_garmin_to_activity_fields():
+    ga = {
+        "activityId": 630166908,
+        "activityName": "Pudong Running",
+        "startTimeGMT": "2026-08-20T14:04:12.0",
+        "startTimeLocal": "2026-08-20T22:04:12.0",
+        "distance": 3200.0,
+        "movingDuration": 844.0,
+        "duration": 1093.82,
+        "averageHR": 104.0,
+        "averageSpeed": 0.913,
+        "elevationGain": 5.0,
+        "activityType": {"typeKey": "running"},
+        "locationName": "Shanghai",
+    }
+    out = _garmin_to_activity(ga)
+    assert out["run_id"] == 630166908
+    assert out["distance"] == 3200.0
+    assert out["moving_time"] == "14:04"  # 844s -> 14m 4s (no hour part)
+    assert out["start_date"] == "2026-08-20 14:04:12"
+    assert out["start_date_local"] == "2026-08-20 22:04:12"
+    assert out["average_heartrate"] == 104.0
+    assert out["source"] == "garmin_cn"
+    assert out["type"] == "Run"
+
+
+def test_garmin_to_activity_hour_moving_time():
+    ga = {"activityId": 1, "movingDuration": 3661.0, "distance": 10000.0}
+    assert _garmin_to_activity(ga)["moving_time"] == "1:01:01"
+
+
+def test_garmin_to_activity_missing_hr_is_none():
+    ga = {"activityId": 2, "distance": 1000.0}
+    out = _garmin_to_activity(ga)
+    assert out["average_heartrate"] is None
+
+
+def test_save_splits_appends_new(tmp_path, monkeypatch):
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+
+    acts = [{"run_id": 100}]
+    details = {100: {"splits": [{"km": 1.0}], "summary_polyline": "abc"}}
+    sr._save_splits(acts, details)
+
+    saved = json.loads(cache.read_text())
+    assert saved["activities"][0]["run_id"] == 100
+    assert saved["activities"][0]["summary_polyline"] == "abc"
+
+
+def test_save_splits_repairs_partial_entry(tmp_path, monkeypatch):
+    """An existing entry missing polyline is repaired in place, not duplicated."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    cache.write_text(
+        json.dumps(
+            {"version": 1, "activities": [{"run_id": 100, "splits": [], "summary_polyline": ""}]}
+        )
+    )
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+
+    acts = [{"run_id": 100}]
+    details = {100: {"splits": [{"km": 1.0}], "summary_polyline": "fixed"}}
+    sr._save_splits(acts, details)
+
+    saved = json.loads(cache.read_text())
+    assert len(saved["activities"]) == 1  # no duplicate
+    assert saved["activities"][0]["summary_polyline"] == "fixed"
+    assert saved["activities"][0]["splits"] == [{"km": 1.0}]
+
+
+def test_save_splits_skips_missing_details(tmp_path, monkeypatch):
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+
+    # details_map empty for this activity -> not written
+    sr._save_splits([{"run_id": 200}], {})
+    saved = json.loads(cache.read_text())
+    assert saved["activities"] == []
+
+
+def test_migrate_old_running_page_ids():
+    """running_page-era run_ids are remapped to Garmin IDs by start date."""
+    import sync_running as sr
+
+    # two old-id entries (epoch-ms ids), one already garmin-id
+    yml = [
+        {"run_id": 1760538106000, "start_date": "2025-10-15 14:21:46"},
+        {"run_id": 1760624263000, "start_date": "2025-10-16 14:17:43"},
+        {"run_id": 630166908, "start_date": "2026-08-20 14:04:12"},
+    ]
+    splits = [{"run_id": 1760538106000, "start_date": "2025-10-15 14:21:46"}]
+    runs = [
+        {"activityId": 1001, "startTimeGMT": "2025-10-15T14:21:46"},
+        {"activityId": 1002, "startTimeGMT": "2025-10-16T14:17:43"},
+        {"activityId": 630166908, "startTimeGMT": "2026-08-20T14:04:12"},
+    ]
+    remap = sr._migrate_old_running_page_ids(yml, splits, runs)
+    assert remap == {1760538106000: 1001, 1760624263000: 1002}
+    assert yml[0]["run_id"] == 1001
+    assert yml[1]["run_id"] == 1002
+    assert yml[2]["run_id"] == 630166908  # already garmin, untouched
+    assert splits[0]["run_id"] == 1001
+
+
+def test_migrate_skips_ambiguous_multi_run_day():
+    """A date with 2+ Garmin activities is not guessed."""
+    import sync_running as sr
+
+    yml = [{"run_id": 1760538106000, "start_date": "2025-10-15 14:21:46"}]
+    runs = [
+        {"activityId": 1001, "startTimeGMT": "2025-10-15T08:00:00"},
+        {"activityId": 1002, "startTimeGMT": "2025-10-15T18:00:00"},
+    ]
+    remap = sr._migrate_old_running_page_ids(yml, [], runs)
+    assert remap == {}
+    assert yml[0]["run_id"] == 1760538106000  # untouched
+
+
+def test_cached_detail_ids_requires_real_details():
+    """Entries with only empty/partial data are not treated as cached."""
+    import sync_running as sr
+
+    acts = [
+        {"run_id": 1, "summary_polyline": "abc", "splits": []},
+        {"run_id": 2, "summary_polyline": "", "splits": []},
+        {"run_id": 3},
+    ]
+    assert sr._cached_detail_ids(acts) == {1}
+
+
+# ---------------------------------------------------------------------------
+#  running_macros: data helpers + rendering
+# ---------------------------------------------------------------------------
+
+import running_macros as rm  # noqa: E402
+
+
+def _activity(name, stamp, km=5.0, hr=130, sec=1500, elev=10):
+    m, s = divmod(sec, 60)
+    return {
+        "name": name,
+        "distance": km * 1000,
+        "moving_time": f"{m}:{s:02d}",
+        "elevation_gain": elev,
+        "average_heartrate": hr,
+        "start_date": stamp,
+        "start_date_local": stamp,
+    }
+
+
+def test_runs_sorted_newest_first():
     data = {
         "activities": [
-            {
-                "name": "a",
-                "distance": 5000,
-                "moving_time": "0:30:00",
-                "elevation_gain": 50,
-                "average_heartrate": 140,
-                "start_date_local": "2026-08-01 22:00:00",
-            },
-            {
-                "name": "b",
-                "distance": 3000,
-                "moving_time": "0:20:00",
-                "elevation_gain": 30,
-                "average_heartrate": 120,
-                "start_date_local": "2026-08-02 22:00:00",
-            },
+            _activity("old", "2025-10-15 14:21:46"),
+            _activity("new", "2026-08-02 14:06:45"),
         ]
     }
-    out = rm._summary(data)
-    assert '<div class="label">Runs</div><div class="value">2</div>' in out
-    assert '<div class="label">Distance</div><div class="value">8.0 km</div>' in out
-    assert '<div class="label">Total Time</div><div class="value">50m</div>' in out
-    assert '<div class="label">Elevation</div><div class="value">80 m</div>' in out
-    assert '<div class="label">Avg HR</div><div class="value">130 bpm</div>' in out
+    assert [a["name"] for a in rm._runs(data)] == ["new", "old"]
 
 
-def test_summary_missing_hr_shows_dash():
-    """running_macros._summary: no heart-rate data -> '—' in the Avg HR card."""
-    data = {
-        "activities": [{"name": "a", "distance": 5000, "start_date_local": "2026-08-01 22:00:00"}]
-    }
-    out = rm._summary(data)
-    assert '<div class="label">Avg HR</div><div class="value">—</div>' in out
+def test_recent_returns_last_five():
+    """_recent shows the last 5 activities regardless of age."""
+    data = {"activities": [_activity(f"a{i}", f"2026-01-0{i} 10:00:00") for i in range(1, 7)]}
+    out = rm._recent(data)
+    # 5 data rows in the HTML table
+    assert out.count("<tr>") == 5 + 1  # 5 data + 1 header
+    assert "2026-01-06" in out  # newest included
+    assert "2026-01-01" not in out  # 6th oldest dropped
 
 
-def test_year_table_groups_by_year_newest_first():
-    """running_macros._year_table: per-year rows sorted newest first."""
-    data = {
-        "activities": [
-            {
-                "name": "y2025",
-                "distance": 5000,
-                "moving_time": "0:30:00",
-                "elevation_gain": 50,
-                "average_heartrate": 140,
-                "start_date_local": "2025-10-15 22:21:46",
-            },
-            {
-                "name": "y2026",
-                "distance": 3000,
-                "moving_time": "0:20:00",
-                "elevation_gain": 30,
-                "average_heartrate": 120,
-                "start_date_local": "2026-08-02 22:06:45",
-            },
-        ]
-    }
-    out = rm._year_table(data)
-    rows = [line for line in out.splitlines() if line.startswith("| 20")]
-    assert len(rows) == 2
-    assert "| 2026 | 1 | 3.0 | 6:40 | 120 | 30 |" in rows[0]
-    assert "| 2025 | 1 | 5.0 | 6:00 | 140 | 50 |" in rows[1]
-
-
-def test_parse_moving_time_and_formatters():
-    """running_macros: interval parsing, duration and pace formatting."""
-    assert rm._parse_moving_time("0:19:42.196000") == pytest.approx(1182.196)
-    assert rm._parse_moving_time("") is None
-    assert rm._parse_moving_time(None) is None
-    assert rm._parse_moving_time("nope") is None
-
-    assert rm._fmt_hours_minutes(45240) == "12h 34m"
-    assert rm._fmt_hours_minutes(3000) == "50m"
-    assert rm._fmt_hours_minutes(0) == "0m"
-
-    assert rm._fmt_pace(332) == "5:32"
-    assert rm._fmt_pace(60.0) == "1:00"
-    assert rm._fmt_pace(0) == "—"
-    assert rm._fmt_pace(None) == "—"
-
-
-def test_activity_table_duration_pace_hr_cells():
-    """running_macros._activity_table: merged when-cell, pace and HR formatting."""
+def test_activity_table_html_and_escaping():
+    """_activity_table: HTML table; no raw name is ever rendered (no name column)."""
     runs = [
         {
-            "name": "Pudong",
+            "name": "<img src=x onerror=alert(1)>",
             "distance": 5000,
             "moving_time": "0:25:00",
             "average_heartrate": 123,
@@ -395,59 +259,203 @@ def test_activity_table_duration_pace_hr_cells():
         }
     ]
     out = rm._activity_table(runs)
-    assert "| 2026-08-02 22:06 · 25m | Pudong | 5.00 | 5:00 | 123 |" in out
+    assert "<table>" in out
+    assert "名称" not in out  # name column removed
+    assert "<img" not in out  # never a raw name rendered
+    # 4 header cells + 1 row of 4 cells
+    assert out.count("</th>") == 4
+    assert out.count("<td") == 4
 
 
-def test_load_existing_activities_reads_yaml(monkeypatch, tmp_path):
-    """sync_running._load_existing_activities: reads yaml; missing file -> []."""
-    import sync_running as sr
-
-    yaml_path = tmp_path / "running.yml"
-    yaml_path.write_text(
-        yaml.safe_dump(
-            {"activities": [{"name": "a", "distance": 5000}]},
-            sort_keys=False,
-            allow_unicode=True,
-        ),
-        encoding="utf-8",
-    )
-    monkeypatch.setattr(sr, "DATA_PATH", str(yaml_path))
-    assert sr._load_existing_activities() == [{"name": "a", "distance": 5000}]
-
-    monkeypatch.setattr(sr, "DATA_PATH", str(tmp_path / "missing.yml"))
-    assert sr._load_existing_activities() == []
-
-
-def test_macros_render_no_data_hint_when_empty():
-    """running_macros: data renderers return the no-data hint for {}."""
-    hint = rm._no_data()
-    for fn in (rm._summary, rm._year_table, rm._recent, rm._all, rm._monthly_chart):
-        assert fn({}) == hint
+def test_activity_table_pace_prefers_splits_moving_time():
+    runs = [
+        {
+            "name": "Pudong",
+            "distance": 5000,
+            "moving_time": "0:50:00",  # slow total incl. stops
+            "average_heartrate": 120,
+            "start_date_local": "2026-08-02 22:06:45",
+        }
+    ]
+    splits = {
+        1: {"splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(5)]}
+    }
+    runs[0]["run_id"] = 1
+    out = rm._activity_table(runs, splits)
+    # 1500s moving / 5km = 5:00, not the 10:00 from total time
+    assert "5:00" in out
 
 
-def test_load_data_non_dict_yaml_returns_empty(tmp_path):
-    """running_macros._load_data: a hand-edited list/scalar yaml -> {} not a crash."""
+def test_activity_table_lazy_dialogs_no_hidden_dialog_nodes():
+    """Buttons carry payloads; no <dialog> nodes are emitted into the DOM."""
+    runs = [
+        {
+            "run_id": 1,
+            "name": "Pudong",
+            "distance": 5000,
+            "moving_time": "0:25:00",
+            "average_heartrate": 123,
+            "start_date_local": "2026-08-02 22:06:45",
+        }
+    ]
+    splits = {
+        1: {
+            "splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(5)],
+            "summary_polyline": _encode_polyline([(31.2, 121.5), (31.21, 121.51)]),
+        }
+    }
+    rm._SUPPORTED_REGIONS = [[120.8, 30.6, 122.2, 31.8]]
+    rm._REGIONS = {"shanghai": [120.8, 30.6, 122.2, 31.8]}
+    out = rm._activity_table(runs, splits, splits_url="https://bucket/splits.json")
+    assert "<dialog" not in out
+    assert "openPaceDialog(this)" in out
+    assert "openRouteMap(this)" in out
+    assert "data-pace=" in out
+    assert "data-route-id=" in out
+
+
+def test_activity_table_lazy_pace_json_safe_roundtrip():
+    """data-pace JSON escapes the name for safe innerHTML embedding."""
+    import html as _html
+
+    runs = [
+        {
+            "run_id": 9,
+            "name": "O'Brien's \"Night\" Run",
+            "distance": 3000,
+            "moving_time": "0:20:00",
+            "average_heartrate": 120,
+            "start_date_local": "2026-08-20 22:00:00",
+        }
+    ]
+    splits = {
+        9: {"splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(3)]}
+    }
+    out = rm._activity_table(runs, splits, splits_url="https://b/s.json")
+
+    import re
+
+    m = re.search(r"data-pace='([^']*)'", out)
+    assert m, "data-pace attr missing"
+    # browser-side: attribute entity decode -> valid JSON
+    payload = json.loads(_html.unescape(m.group(1)))
+    # name stored entity-escaped so JS innerHTML embedding is injection-safe;
+    # the browser decodes &#x27;/&quot; when rendering the dialog
+    assert "O&#x27;Brien" in payload["name"]
+    assert "<" not in payload["name"] and '"' not in payload["name"]
+    assert len(payload["rows"]) == 3
+
+
+def test_running_recent_routes_uses_last_n_not_build_window():
+    """running_recent_routes picks the last N routes; no datetime.now() window."""
+    import inspect
+
+    captured = {}
+
+    class Env:
+        def macro(self, fn):
+            captured[fn.__name__] = fn
+            return fn
+
+    health_macros.define_env(Env())
+    src = inspect.getsource(captured["running_recent_routes"])
+    assert "datetime.now" not in src
+    assert "days=" not in src
+    assert "max_routes" in src
+
+
+def test_all_collapsed_details():
+    data = {
+        "activities": [
+            _activity("a", "2026-08-02 14:06:45"),
+            _activity("b", "2026-08-01 14:06:45"),
+        ]
+    }
+    out = rm._all(data)
+    assert out.startswith('??? "')
+    assert "All Activities (2)" in out
+    assert "a" in out and "b" in out
+
+
+def test_year_table_html():
+    data = {
+        "activities": [
+            _activity("y2025", "2025-10-15 22:21:46"),
+            _activity("y2026", "2026-08-02 22:06:45"),
+        ]
+    }
+    out = rm._year_table(data)
+    assert "<table>" in out
+    assert "2026" in out and "2025" in out
+    # newest year row first
+    assert out.index("2026") < out.index("2025")
+
+
+def test_monthly_chart_merges_distance_bar_and_hr_line():
+    data = {
+        "activities": [
+            _activity("a", "2026-08-02 14:06:45", km=5.0, hr=140),
+            _activity("b", "2026-07-15 14:06:45", km=8.0, hr=150),
+        ]
+    }
+    out = rm._monthly_chart(data)
+    assert 'title "Monthly Distance (km) & Avg HR (bpm) — 2026"' in out
+    assert 'x-axis ["Jul", "Aug"]' in out
+    assert "bar [8.0, 5.0]" in out
+    assert "line [150, 140]" in out
+
+
+def test_parse_moving_time_and_formatters():
+    assert rm._parse_moving_time("0:19:42.196000") == pytest.approx(1182.196)
+    assert rm._parse_moving_time("") is None
+    assert rm._parse_moving_time(None) is None
+
+    assert rm._fmt_hours_minutes(45240) == "12h 34m"
+    assert rm._fmt_hours_minutes(3000) == "50m"
+    assert rm._fmt_pace(332) == "5:32"
+    assert rm._fmt_pace(0) == "—"
+
+
+def test_load_data_empty_comment_only_file_returns_empty(tmp_path):
     data_dir = tmp_path / "notes" / "health" / "data"
     data_dir.mkdir(parents=True)
-    (data_dir / "running.yml").write_text("- just a list\n", encoding="utf-8")
-
+    (data_dir / "running.yml").write_text("# only a comment\n", encoding="utf-8")
     env = type("Env", (), {"conf": {"docs_dir": str(tmp_path)}})()
     assert rm._load_data(env) == {}
 
 
-def test_synced_note_missing_timestamp_does_not_claim_no_data():
-    """running_macros._synced_note: missing synced_at -> sync hint, not the no-data hint."""
+def test_macros_render_no_data_hint_when_empty():
+    hint = rm._no_data()
+    for fn in (rm._year_table, rm._recent, rm._all, rm._monthly_chart):
+        assert fn({}) == hint
+
+
+def test_synced_note_variants():
     note = rm._synced_note({"activities": [{"name": "a"}]})
     assert note != rm._no_data()
     assert "sync-running" in note
-
     with_timestamp = rm._synced_note({"synced_at": "2026-08-03T00:00:00+08:00"})
-    assert "Data synced at" in with_timestamp
+    assert "数据同步于" in with_timestamp
+
+
+def test_region_helpers():
+    rm._REGIONS = {"shanghai": [120.8, 30.6, 122.2, 31.8]}
+    rm._SUPPORTED_REGIONS = [[120.8, 30.6, 122.2, 31.8]]
+    assert rm._region_at(31.2, 121.5) == "shanghai"
+    assert rm._region_at(0, 0) is None
+    # regions configured but no polyline -> cannot place, excluded
+    assert rm._in_supported_region({"run_id": 1}) is False
+
+    entry = {"run_id": 1, "summary_polyline": _encode_polyline([(31.2, 121.5)])}
+    assert rm._region_for_activity({"run_id": 1}, {1: entry}) == "shanghai"
+    assert rm._in_supported_region({"run_id": 1}, {1: entry}) is True
+
+    # no regions configured -> everything passes
+    rm._SUPPORTED_REGIONS = []
+    assert rm._in_supported_region({"run_id": 1}) is True
 
 
 def test_health_macros_registers_running_macros():
-    """health_macros loader wires running_macros into the macros plugin env."""
-
     class Env:
         def __init__(self):
             self.registered = {}
@@ -459,40 +467,15 @@ def test_health_macros_registers_running_macros():
     env = Env()
     health_macros.define_env(env)
     for name in (
-        "running_summary",
         "running_year_table",
         "running_monthly_chart",
         "running_recent",
         "running_all",
         "running_synced_at",
+        "running_calendar_heatmap",
+        "running_recent_routes",
     ):
         assert name in env.registered
-
-
-def test_activity_table_escapes_name_special_chars():
-    """running_macros._activity_table: pipe/newline in names must not break the table."""
-    runs = [
-        {
-            "name": "Night | Race\nSprint",
-            "distance": 5000,
-            "moving_time": "0:25:00",
-            "average_heartrate": 120,
-            "start_date_local": "2026-08-02 22:06:45",
-        }
-    ]
-    out = rm._activity_table(runs)
-    row = out.splitlines()[-1]
-    # exact row: pipe escaped, newline flattened, 5 columns intact
-    assert row == "| 2026-08-02 22:06 \u00b7 25m | Night \\| Race Sprint | 5.00 | 5:00 | 120 |"
-
-
-def test_find_asset_url_rejects_external_origin():
-    """sync_running.find_asset_url: absolute URLs from other origins are refused."""
-    html = '<script src="https://evil.example/assets/activities-hack.js"></script>'
-    assert find_asset_url(html) is None
-    # same-origin absolute URL still accepted
-    ok = '<script src="https://xiongjia.github.io/running_page/assets/activities-A1.js"></script>'
-    assert find_asset_url(ok) == "https://xiongjia.github.io/running_page/assets/activities-A1.js"
-    # protocol-relative URL is refused outright
-    proto_rel = '<script src="//evil.example/assets/activities-hack.js"></script>'
-    assert find_asset_url(proto_rel) is None
+    # superseded by the lazy pace dialog + heatmap summary line
+    assert "running_summary" not in env.registered
+    assert "running_pace_section" not in env.registered

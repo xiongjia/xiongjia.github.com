@@ -1,177 +1,230 @@
 # Running Track — Design Document
 
-> Personal running stats on the Health Monitor page, fed from the deployed
-> running_page site via a manual sync script. No self-syncing, no build-time
-> network access.
+> Personal running stats on the Health Monitor page, synced directly from the
+> Garmin CN API via a manual local script. No build-time network access.
 
 ## Overview
 
-Four-tier architecture (mirrors the weight tracker):
+The Running Track page is a static MkDocs page built from two local data
+sources:
 
-- **Source**: the deployed running_page site
-  (`https://xiongjia.github.io/running_page/`) — upstream syncs daily and
-  publishes the activity data as a hashed JS asset
-- **Sync tool**: `scripts/sync_running.py` (`uv run poe sync-running`) —
-  downloads the data on demand and writes `docs/notes/health/data/running.yml`
-- **Data layer**: `docs/notes/health/data/running.yml` — the only file MkDocs
-  reads; macros never touch the network
-- **Macro layer**: `docs/notes/health/macros/running_macros.py`, aggregated by
-  `health_macros.py` for the MkDocs macros plugin
+- **`docs/notes/health/data/running.yml`** — committed activity summaries
+  (per-run stats, dates)
+- **`.running/splits.json`** — git-ignored per-km splits + route polylines
+  (large data, uploaded to R2 for the browser to fetch)
 
 ```
-running_page (GitHub Pages)
-        │  poe sync-running (manual)
-        ▼
-docs/notes/health/data/running.yml
-        │  running_macros.py (build/serve time, local only)
-        ▼
-docs/notes/health/running.md  ← sidebar entry in mkdocs.yml
+Garmin CN API
+     │  poe sync-running (manual, local)
+     ▼
+running.yml (committed)      .running/splits.json (git-ignored)
+     │                              │  poe sync-running-splits (rclone)
+     │                              ▼
+     │                       R2 bucket: data/metadata/running/splits.json
+     │                              │  browser fetch (JS)
+     └─────────────┬────────────────┘
+                   ▼
+   running_macros.py (build/serve time, local only)
+                   ▼
+        docs/notes/health/running.md
 ```
 
-## Data Source
+## Data Source — Garmin CN API
 
-### Why not self-sync?
+`scripts/sync_running.py` talks to Garmin CN directly (the old running_page
+deployment fetch was replaced in 2026-08):
 
-This repo has no Strava/Garmin credentials and no running_page clone. The
-upstream project owns the pipeline (`run_data_sync.yml`, daily cron) and
-redeploys to GitHub Pages; we only consume the published result.
+- Auth: the `garth` client loads `GARMIN_SECRET_STRING_CN` from `.env`
+  (`garmin.cn` domain, `ssl_verify=False`). The token is a developer-local
+  secret; sync is manual (no CI).
+- **Activity list** (`activitylist-service/activities/search/activities`,
+  paginated, `activityType=running`) is a cheap index (~2 requests for ~170
+  activities).
+- **Per-activity details** are fetched only for activities not yet in
+  `.running/splits.json`:
+  - `activity-service/activity/{id}/splits` — per-km laps (`distance`,
+    `movingDuration`, `averageMovingSpeed`, `averageHR`)
+  - `activity-service/activity/{id}/details?maxChartSize=0&maxPolylineSize=4000`
+    — route points; Garmin returns `geoPolylineDTO.polyline` as
+    `{lat, lon}` points, which the script encodes to Google Polyline format.
 
-### Fetch mechanics
+### Incremental + retry semantics
 
-`/summary` is a human-facing SPA path — on GitHub Pages it returns **HTTP 404**
-with a custom `404.html` doing a client-side redirect, so `urllib` raises
-`HTTPError 404`. The sync script therefore fetches the index page:
+The cache check **is** the incremental cursor *and* the retry mechanism: an
+activity whose details fetch failed stays uncached, so the next run retries it
+regardless of where it sits in the list (no cursor can advance past it).
 
-1. `GET https://xiongjia.github.io/running_page/` → HTML (HTTP 200)
-1. Find the hashed asset — it appears as
-   `<link rel="modulepreload" href=".../assets/activities-<hash>.js">`
-   (match both `src` and `href`; the hash changes on every upstream refresh)
-1. `GET .../assets/activities-<hash>.js` → `const e=JSON.parse('[...]');…`
-1. Unescape the JS string literal (JS rules: `\\`, `\'`, `\"`, `\uXXXX`,
-   unknown escapes drop the backslash) and `json.loads` the payload
-1. Filter `type == "Run"` **case-insensitively** (the deployment mixes
-   `"Run"` and `"cycling"`), drop the heavy `summary_polyline` field
+### ID migration (one-time)
 
-Data quirks observed in the deployment:
+The first Garmin-backed sync merged new Garmin-ID activities on top of 160
+running_page-era entries (millisecond-epoch run_ids). `_migrate_old_running_page_ids`
+remaps old IDs to Garmin IDs by matching the start instant (minute-level
+timestamp, then date-only for unambiguous days; never guesses on ambiguous
+keys). After migration all IDs are Garmin IDs and the cache check is correct.
 
-- Upstream array is **oldest-first**; macros sort newest-first defensively
-- `moving_time` is an interval string (`"0:19:42.196000"`) — parse to seconds
-- `average_speed` is m/s; `distance` is meters; `elevation_gain` is meters
-- PyYAML auto-quotes interval strings so they round-trip as strings (they
-  would otherwise parse as YAML 1.1 sexagesimal floats)
+## Data Layer
 
-## Data Layer (`running.yml`)
+### `running.yml` (committed)
 
 ```yaml
 # Auto-generated by scripts/sync_running.py — do not edit by hand
-synced_at: '2026-08-03T00:45:54+08:00'
-source: https://xiongjia.github.io/running_page/
+synced_at: '2026-08-21T02:03:23+08:00'
+source: garmin_cn
 activities:
-  - run_id: 1760538106000
+  - run_id: 630166908
     name: Pudong Running
-    distance: 2059.83
-    moving_time: '0:19:42.196000'
+    distance: 3200.0
+    moving_time: '14:04'
     type: Run
-    start_date: '2025-10-15 14:21:46'
-    start_date_local: '2025-10-15 22:21:46'
-    average_heartrate: 142
-    average_speed: 1.732
-    elevation_gain: 3
-    streak: 1
+    subtype: running
+    start_date: '2026-08-20 14:04:12'
+    start_date_local: '2026-08-20 22:04:12'
+    location_country: Shanghai
+    average_heartrate: 104.0
+    average_speed: 0.913
+    elevation_gain: 5.0
+    source: garmin_cn
 ```
 
-- `synced_at`: local timestamp of the last sync (shown on the page as a
-  freshness hint; staleness is expected between manual syncs)
-- `source`: the URL the data was fetched from (traceability)
-- `activities`: raw runs only — filtering to `Run` and polyline removal are
-  done by the script, so the yaml and macros stay simple. `streak` (running_page's
-  per-activity streak marker) is kept for a future calendar-grid heatmap
+- `run_id` is the Garmin activity id (small integer)
+- `moving_time` is derived from `movingDuration` (moving time, not elapsed)
+- `start_date` is UTC; `start_date_local` is local wall-clock (display basis)
 
-## Sync Tool (`scripts/sync_running.py`)
+### `.running/splits.json` (git-ignored, uploaded to R2)
 
-- Pure functions (`js_unescape`, `find_asset_url`, `extract_activities`,
-  `is_run`, `drop_polyline`) are unit-tested offline with fixtures; the
-  network path lives only in `main()`/`_fetch`
-- **Idempotent**: compares the new runs against the existing yaml; if
-  unchanged, skips the write and prints "Data unchanged" — keeps git history
-  clean for a future auto-sync phase
-- **Failures**: network errors and parse errors print a message to stderr and
-  exit non-zero; a missing asset or payload is detected explicitly
-- Honors proxy env vars (`HTTPS_PROXY` etc.) via `urllib`
+```json
+{
+  "version": 1,
+  "synced_at": "2026-08-21T02:03:23+08:00",
+  "activities": [
+    {
+      "run_id": 630166908,
+      "source": "garmin_cn",
+      "splits": [{ "km": 1.0, "duration": 817, "pace": "13:37", "hr": 99 }],
+      "summary_polyline": "…"
+    }
+  ]
+}
+```
+
+`summary_polyline` is a Google Polyline string (decoded client-side). The file
+is uploaded to R2 by `scripts/sync_running_splits.py`; the browser fetches it
+to draw routes.
+
+## Sync Tooling
+
+- `poe sync-running` → `scripts/sync_running.py`: fetch list → filter to
+  uncached → fetch details → write `running.yml` + `.running/splits.json`.
+  Idempotent (a no-op run reports "nothing to do"); partial entries are
+  repaired in place; both writers dedup by `run_id`.
+- `poe sync-running-splits` → `scripts/sync_running_splits.py`: rclone
+  `copyto` of `.running/splits.json` to the bucket. Dry-run by default;
+  `--confirm` or `SYNC_RUNNING_CONFIRM=true` to upload. Requires a read-write
+  R2 token.
+
+### Bucket mapping
+
+`mkdocs.yml` `extra.bucket.mappings` has the running mapping first (so URL
+rewriting matches it before the generic image mapping):
+
+```yaml
+- prefix: assets/bucket/running/
+  remote_prefix: data/metadata/running
+  base_url: "https://…r2.dev/data/metadata/running"
+- prefix: assets/bucket/
+  remote_prefix: data/img
+```
+
+`extra.bucket.running.data_key: splits.json` names the object. `bucket-sync`
+iterates all mappings; `bucket-upload`/`bucket-check` target the most general
+mapping via `_generic_mapping`.
 
 ## Macro Layer (`running_macros.py`)
 
-All macros load `running.yml` relative to `docs_dir` and return Markdown/HTML;
-if the file is missing they render a hint to run `poe sync-running`.
+Reads `running.yml` (and `.running/splits.json` for splits/polylines) relative
+to the repo root; no network at build/serve time.
 
-| Macro                     | Output                                                                                   |
-| ------------------------- | ---------------------------------------------------------------------------------------- |
-| `running_summary()`       | Flex cards (reuses `.weight-card` styles): runs, distance, total time, elevation, avg HR |
-| `running_year_table()`    | Markdown table grouped by year: runs, km, avg pace, avg HR, elevation                    |
-| `running_monthly_chart()` | Merged Mermaid `xychart-beta`: `bar` (km) + `line` (bpm)                                 |
-| `running_recent()`        | Activity table for the last 2 weeks (fallback: last 10)                                  |
-| `running_all()`           | Same table, all activities, inside a collapsed `???` block                               |
-| `running_synced_at()`     | Blockquote showing `synced_at` + re-sync hint                                            |
+| Macro                        | Output                                                                              |
+| ---------------------------- | ----------------------------------------------------------------------------------- |
+| `running_year_table()`       | HTML table grouped by year: runs, km, avg pace, avg HR, elevation                   |
+| `running_monthly_chart()`    | Merged Mermaid `xychart-beta`: `bar` (km) + `line` (bpm)                            |
+| `running_recent()`           | Activity table for the last 5 activities, with lazy pace/route dialogs              |
+| `running_all()`              | Same table, all activities, inside a collapsed `???` block                          |
+| `running_synced_at()`        | Blockquote showing `synced_at` + re-sync hint                                       |
+| `running_calendar_heatmap()` | GitHub-style grid + summary line (runs · km · days)                                 |
+| `running_recent_routes()`    | Inline MapLibre map of the most recent N routes (dominant region, checkbox toggles) |
 
 ### Activity table
 
-Columns are merged to keep the table narrow:
+Four columns (the activity name is deliberately omitted):
 
 ```
-> Avg HR = Average Heart Rate（平均心率）｜ Pace (/km) = 每公里配速（min/km）
+> Avg HR = 平均心率 ｜ Pace = 每公里移动配速（min/km）
 
-| Date · Time · Duration | Name | Distance (km) | Pace (/km) | Avg HR |
-| 2026-08-02 22:06 · 53m | …    | 4.51          | 11:47      | 123    |
+| 日期 · 时间 · 时长 | 距离 (km) | 配速 | 心率 |
+| 2026-08-20 22:04 · 14m | 3.20 | 8:40 | 104 |
 ```
 
-- `Date · Time` come from `start_date_local` (local time); `Duration` from
-  `moving_time`
-- The abbreviation note above the table is part of `_activity_table`, so it
-  appears for both recent and all-activity tables (indented inside the
-  collapsed block)
-- Pace is seconds-per-km formatted `M:SS`
+- Pace prefers the splits' total moving time over `running.yml`'s (elapsed)
+- Each row's 📊/🗺️ buttons carry their data in `data-*` attributes; the
+  dialogs are created lazily by JS on click (no hidden `<dialog>` nodes in
+  the DOM, no name column)
+
+## Client-side (`docs/notes/health/running-route.js`)
+
+Loaded via `extra_javascript` on every page; self-initializes only when its
+containers exist.
+
+- **Pace dialog** (`openPaceDialog`): builds the splits table from the
+  button's `data-pace` JSON
+- **Route dialog** (`openRouteMap`): creates a `<dialog>` on click, loads
+  MapLibre + PMTiles (cached, registered once), fetches `splits.json` from
+  R2, decodes the polyline, draws the route with start/end markers; dialog
+  removed on close
+- **Inline route map** (`#inline-routes-map`): the most recent N routes
+  overlaid on one MapLibre map — per-route checkbox toggles, color legend,
+  reset button; only the region with the most routes is shown
+- Basemap is the same PMTiles vector tiles as Moment (Protomaps, no API key)
+
+## Page (`docs/notes/health/running.md`)
+
+Sections in order:
+
+1. 数据同步 — `running_synced_at()` note
+1. 跑步记录 — heatmap + summary line (runs · km · days)
+1. 最近活动 — last-5 table (lazy dialogs) + `### 🗺️ 路线` inline map
+1. 年度统计 / 月度里程与心率趋势 / 所有活动 — collapsed (`<details>` / `???`)
+
+Sidebar entry registered in `mkdocs.yml` under Health Monitor; the Health
+Monitor index links the page and adds a `🏃 Running Track` node to its
+Mermaid graph. `force_render_paths: "notes/health/*"` covers the page.
 
 ## Rendering Decisions
 
 - **Merged chart with a single y-axis**: `xychart-beta` has exactly one
-  `y-axis` and **does not accept `null` values** (verified against
-  mermaid@10.9: `Expecting 'NUMBER_WITH_DECIMAL', got 'ALPHA'`). Therefore the
-  x-axis covers only months with activities, so every `bar`/`line` slot has a
-  real value. The y-axis range covers both km and bpm magnitudes
-  (`"km / bpm" 0 --> 155`); a month with runs but no HR data falls back to
-  `0` in the line series (defensive only — every activity carries HR today)
-- **Date basis**: `start_date_local` is used for grouping (year/month) and
-  display; `start_date` (UTC) is only a fallback
-- **Recent window**: `datetime.now() - 14 days`, falling back to the last 10
-  activities when the data is stale — keeps the table useful between syncs
-- **Icon**: `fontawesome/solid/person-running` — the Material icon set ships
-  no running icon; `material/run-stroke` breaks the build
+  `y-axis` and rejects `null` values, so the x-axis covers only months with
+  activities; a month with runs but no HR data falls back to `0`
+- **Date basis**: `start_date_local` for grouping/display; `start_date` (UTC)
+  is only a fallback
+- **Region gating**: a route button only shows when the activity's first
+  polyline coordinate falls inside a configured `extra.moment.map.regions`
+  bbox; multi-region route sets show only the dominant region
+- **Icon**: `fontawesome/solid/person-running` — the Material set has no
+  running icon
 - **i18n style**: macro labels are English (consistent with weight/retire
-  macros); the page headings are Chinese
-
-## Page (`docs/notes/health/running.md`)
-
-Sections, in order: data-sync note → summary cards → yearly table → merged
-monthly chart → recent activities (2 weeks) → all activities (collapsed).
-Sidebar entry registered in `mkdocs.yml` under Health Monitor; the Health
-Monitor index links the page and adds a `🏃 Running Track` node to its
-Mermaid graph. `force_render_paths: "notes/health/*"` already covers the page.
+  macros); page headings are Chinese
 
 ## Non-Goals
 
-- Syncing running data itself (upstream running_page owns that)
+- Auto-sync in CI (cancelled — the Garmin token + R2 write credentials are
+  developer-local; sync is manual only)
 - Build-time network fetches (data only refreshes via `poe sync-running`)
-- Map routes / heart-rate zones / writing back to running_page
-
-## Future Work
-
-- **Phase 4 — auto-sync**: a scheduled GitHub Actions workflow that runs the
-  same script and commits `running.yml` only when it changes (the idempotency
-  check already supports this); no secrets, no cross-repo clone needed
-- Optional calendar-grid heatmap (`running_monthly_grid`)
+- Writing data back to Garmin / running_page
 
 ## Related
 
-- [Plan: Running Track health monitor](./plans/running-track-health-monitor.md)
+- [Plan: Running Track — Health Monitor](./plans/arch/running-track-health-monitor.md)
+  (archived, completed)
 - [Weight Tracker design](./weight-tracker-design.md) — four-tier pattern
+- [Bucket design](./bucket-design.md) — R2 mapping + rclone tooling
 - [Health Monitor](../docs/notes/health/index.md)

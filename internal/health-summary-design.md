@@ -190,8 +190,9 @@ summary untouched** — a stale-but-valid page beats a broken one.
 
 ## Future Work
 
-- Schedule regeneration in CI on data changes (like the planned running
-  auto-sync), committing `_summary.md` only when content changes
+- Schedule regeneration in CI on data changes (the running auto-sync is
+  local-only, but a health-summary refresh could be CI-triggered), committing
+  `_summary.md` only when content changes
 - Emoji status summary (e.g. 🟢/🟡/🔴 per track) computed deterministically,
   with the LLM only writing the narrative
 
