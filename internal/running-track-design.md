@@ -1,30 +1,39 @@
 # Running Track — Design Document
 
 > Personal running stats on the Health Monitor page, synced directly from the
-> Garmin CN API via a manual local script. No build-time network access.
+> Garmin CN API via a manual local script. Sync stays manual/local and the
+> MkDocs build is fully offline: it reads only committed data, embeds the R2
+> splits URL + map config as data attributes, and the browser fetches the
+> splits client-side. CI and local builds agree, and a plain commit suffices.
 
 ## Overview
 
-The Running Track page is a static MkDocs page built from two local data
-sources:
+The Running Track page is a static MkDocs page built from committed data, with
+splits/route data loaded by the browser from R2:
 
 - **`docs/notes/health/data/running.yml`** — committed activity summaries
   (per-run stats, dates)
-- **`.running/splits.json`** — git-ignored per-km splits + route polylines
-  (large data, uploaded to R2 for the browser to fetch)
+- **`splits.json` on R2** (`data/metadata/running/splits.json`) — per-km
+  splits + route polylines; fetched client-side by `running-route.js` (never
+  read at build time)
+
+`.running/splits.json` is the git-ignored sync cache: it stages the Garmin API
+responses and is what `poe sync-running-splits` uploads. Neither the macros
+nor the page read it — the browser uses the bucket copy.
 
 ```
 Garmin CN API
      │  poe sync-running (manual, local)
      ▼
-running.yml (committed)      .running/splits.json (git-ignored)
+running.yml (committed)      .running/splits.json (git-ignored, sync cache)
      │                              │  poe sync-running-splits (rclone)
      │                              ▼
      │                       R2 bucket: data/metadata/running/splits.json
-     │                              │  browser fetch (JS)
+     │                              │  browser fetch (JS): pace buttons + maps
+     │                              │  build: only embeds the URL (offline)
      └─────────────┬────────────────┘
                    ▼
-   running_macros.py (build/serve time, local only)
+   running_macros.py (build/serve time, offline)
                    ▼
         docs/notes/health/running.md
 ```
@@ -109,7 +118,8 @@ activities:
 
 `summary_polyline` is a Google Polyline string (decoded client-side). The file
 is uploaded to R2 by `scripts/sync_running_splits.py`; the browser fetches it
-to draw routes.
+to draw routes and to build the pace/route buttons — the local `.running/`
+file is only the sync cache, never a render source.
 
 ## Sync Tooling
 
@@ -141,8 +151,12 @@ mapping via `_generic_mapping`.
 
 ## Macro Layer (`running_macros.py`)
 
-Reads `running.yml` (and `.running/splits.json` for splits/polylines) relative
-to the repo root; no network at build/serve time.
+Reads only committed `running.yml` (offline). Splits are never touched at
+build time: the macros embed the bucket URL + PMTiles/glyphs/regions config as
+data attributes (`data-splits-url`, `data-regions`, …) and per-row `run_id`;
+`running-route.js` fetches the splits client-side and corrects paces, creates
+the 📊/🗺️ buttons, the sync note, and the inline map. Failures degrade to
+hint notes, never a failed build.
 
 | Macro                        | Output                                                                              |
 | ---------------------------- | ----------------------------------------------------------------------------------- |
@@ -166,24 +180,32 @@ Four columns (the activity name is deliberately omitted):
 ```
 
 - Pace prefers the splits' total moving time over `running.yml`'s (elapsed)
-- Each row's 📊/🗺️ buttons carry their data in `data-*` attributes; the
-  dialogs are created lazily by JS on click (no hidden `<dialog>` nodes in
-  the DOM, no name column)
+- Rows carry `data-run-id`/`data-when`/`data-name`/`data-km` (and the pace
+  cell a `data-pace-cell` marker); JS creates the 📊/🗺️ buttons lazily and
+  opens the dialogs on click (no hidden `<dialog>` nodes in the DOM, no name
+  column)
 
 ## Client-side (`docs/notes/health/running-route.js`)
 
 Loaded via `extra_javascript` on every page; self-initializes only when its
-containers exist.
+containers exist. Pure helpers live in `running-route-core.js` (loaded first;
+unit-tested under Node via `poe test-js` / CI). Fetches `splits.json` from R2
+once (cached per page) and:
 
-- **Pace dialog** (`openPaceDialog`): builds the splits table from the
-  button's `data-pace` JSON
+- **Table enhancement**: matches rows by `data-run-id`, corrects the pace
+  column from the splits' total moving time, lazily creates 📊 pace / 🗺️
+  route buttons (region-gated by the embedded bboxes)
+- **Pace dialog**: builds the splits table from the splits payload on click
+  (legacy `data-pace` buttons still supported)
 - **Route dialog** (`openRouteMap`): creates a `<dialog>` on click, loads
-  MapLibre + PMTiles (cached, registered once), fetches `splits.json` from
-  R2, decodes the polyline, draws the route with start/end markers; dialog
-  removed on close
-- **Inline route map** (`#inline-routes-map`): the most recent N routes
-  overlaid on one MapLibre map — per-route checkbox toggles, color legend,
-  reset button; only the region with the most routes is shown
+  MapLibre + PMTiles (cached, registered once), decodes the polyline, draws
+  the route with start/end markers; dialog removed on close
+- **Inline route map** (`#inline-routes-map`): fetches the splits, picks the
+  dominant region among the last N runs (embedded in `data-runs`), overlays
+  them on one MapLibre map — per-route checkbox toggles, color legend, reset
+  button
+- **Sync note** (`#running-splits-note`): updated to ✅/hint once the fetch
+  resolves
 - Basemap is the same PMTiles vector tiles as Moment (Protomaps, no API key)
 
 ## Page (`docs/notes/health/running.md`)
@@ -218,7 +240,6 @@ Mermaid graph. `force_render_paths: "notes/health/*"` covers the page.
 
 - Auto-sync in CI (cancelled — the Garmin token + R2 write credentials are
   developer-local; sync is manual only)
-- Build-time network fetches (data only refreshes via `poe sync-running`)
 - Writing data back to Garmin / running_page
 
 ## Related

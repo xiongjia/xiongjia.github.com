@@ -1,4 +1,9 @@
 // Running route map — MapLibre GL JS polyline viewer with PMTiles basemap
+//
+// Pure helpers (polyline decode, region gating, formatting, escaping) live in
+// running-route-core.js (loaded first; also unit-tested under Node in
+// tests/test_running_route_core.cjs). This file is the page wiring: data
+// attributes, dialogs, maps and the client-side splits enhancement.
 
 // Cached dependency load: the script/link are appended once, the pmtiles
 // protocol registered once per page, not on every map open. A failed load
@@ -36,27 +41,38 @@ function loadDeps() {
   return depsPromise;
 }
 
-function decodePolyline(encoded) {
-  const coords = [];
-  let index = 0, lat = 0, lng = 0, len = encoded.length;
-  while (index < len) {
-    let result = 0, shift = 0, byte;
-    do {
-      byte = encoded.charCodeAt(index++) - 63;
-      result |= (byte & 0x1f) << shift;
-      shift += 5;
-    } while (byte >= 0x20);
-    lat += result & 1 ? ~(result >> 1) : result >> 1;
-    result = 0; shift = 0;
-    do {
-      byte = encoded.charCodeAt(index++) - 63;
-      result |= (byte & 0x1f) << shift;
-      shift += 5;
-    } while (byte >= 0x20);
-    lng += result & 1 ? ~(result >> 1) : result >> 1;
-    coords.push([lng / 1e5, lat / 1e5]);
+// ── Client-side splits enhancement ──
+// Pace splits + route polylines live on R2 (data/metadata/running/splits.json,
+// uploaded by `poe sync-running-splits`); the page embeds the URL + map config
+// as data attributes. This script fetches the file once, corrects the pace
+// column, lazily creates the 📊/🗺️ buttons and updates the sync note — the
+// MkDocs build itself is offline (CI needs no sync step). Pure helpers come
+// from running-route-core.js (loaded first).
+
+const SPLITS_CACHE = new Map();
+
+function fetchSplits(url) {
+  if (!url) return Promise.resolve(null);
+  if (!SPLITS_CACHE.has(url)) {
+    SPLITS_CACHE.set(url, fetch(url)
+      .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then((d) => (d && Array.isArray(d.activities) ? d.activities : []))
+      // failures resolve to null and an empty payload to [] — every caller
+      // treats both as no-data (hint UI); the result is cached for the page
+      // lifetime
+      .catch((err) => { console.error("splits fetch failed:", err); return null; }));
   }
-  return coords;
+  return SPLITS_CACHE.get(url);
+}
+
+function splitsById(activities) {
+  const m = new Map();
+  (activities || []).forEach((a) => { if (a && a.run_id != null) m.set(String(a.run_id), a); });
+  return m;
+}
+
+function parseRegions(el) {
+  try { return JSON.parse(el.dataset.regions || "[]"); } catch { return []; }
 }
 
 const pending = new Map();
@@ -85,9 +101,8 @@ async function openRouteMap(btn) {
     const maplibregl = window.maplibregl;
     if (!maplibregl) throw new Error("MapLibre not loaded");
 
-    const resp = await fetch(splitsUrl);
-    const data = await resp.json();
-    const activity = data.activities.find((a) => a.run_id === runId);
+    const activities = await fetchSplits(splitsUrl);
+    const activity = (activities || []).find((a) => String(a.run_id) === String(runId));
     if (!activity || !activity.summary_polyline) {
       dialog.innerHTML = '<p style="padding:2em;text-align:center;color:var(--md-default-fg-color--light)">暂无路线数据</p>';
       dialog.showModal();
@@ -112,7 +127,7 @@ async function openRouteMap(btn) {
         #${mapId} .maplibregl-ctrl-attrib { display: none !important; }
       </style>
       <div style="display:flex;justify-content:space-between;align-items:center;padding:0 0.5em 0.5em;border-bottom:1px solid var(--md-default-fg-color--lightest,#eee);margin-bottom:0.5em">
-        <span style="font-size:0.9em;color:var(--md-default-fg-color--light)">🗺️ ${whenDur}</span>
+        <span style="font-size:0.9em;color:var(--md-default-fg-color--light)">🗺️ ${esc(whenDur)}</span>
         <form method="dialog" style="margin:0">
           <button style="border:none;background:none;cursor:pointer;font-size:1.2em;padding:0;line-height:1" aria-label="关闭">✕</button>
         </form>
@@ -177,29 +192,121 @@ async function openRouteMap(btn) {
   }
 }
 
-// Pace splits dialog — content arrives as JSON in the button's data-pace
-// attribute (escaped by the macro); the <dialog> is created on click.
-window.openPaceDialog = function (btn) {
-  let data;
-  try { data = JSON.parse(btn.dataset.pace); } catch { return; }
+// Pace splits dialog — created lazily on click from the splits payload
+// (client-side; the macro no longer embeds buttons or data-pace JSON).
+function showPaceDialog(data) {
   const dlg = document.createElement("dialog");
   dlg.style.cssText = "border:none;border-radius:8px;padding:1em 1.5em;";
   dlg.onclick = (e) => { if (e.target === dlg) dlg.close(); };
   const rows = (data.rows || []).map((r) =>
-    `<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`
+    `<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td><td>${esc(r[2])}</td><td>${esc(r[3])}</td></tr>`
   ).join("");
   dlg.innerHTML =
     '<form method="dialog" style="float:right"><button style="border:none;background:none;cursor:pointer;" aria-label="关闭">✕</button></form>' +
-    `<h3 style="margin-top:0">📊 ${data.when}</h3>` +
-    `<p style="font-size:0.85em;color:var(--md-default-fg-color--light)">${data.name} · ${data.km} km · 配速 ${data.pace}</p>` +
+    `<h3 style="margin-top:0">📊 ${esc(data.when)}</h3>` +
+    `<p style="font-size:0.85em;color:var(--md-default-fg-color--light)">${esc(data.name)} · ${esc(data.km)} km · 配速 ${esc(data.pace)}</p>` +
     '<table style="font-size:0.9em;width:100%"><thead><tr><th>km</th><th>用时</th><th>配速</th><th>心率</th></tr></thead>' +
     `<tbody>${rows}</tbody></table>`;
   dlg.addEventListener("close", () => dlg.remove(), { once: true });
   document.body.appendChild(dlg);
   dlg.showModal();
+}
+
+// Legacy entry point: stale cached pages may still carry data-pace buttons.
+window.openPaceDialog = function (btn) {
+  let data;
+  try { data = JSON.parse(btn.dataset.pace); } catch { return; }
+  showPaceDialog(data);
 };
 
 window.openRouteMap = openRouteMap;
+
+const DIALOG_BTN_STYLE = "border:none;background:none;cursor:pointer;padding:0;font-size:inherit;color:var(--md-typeset-a-color)";
+
+function makeButton(label, title, onClick) {
+  const btn = document.createElement("button");
+  btn.textContent = label;
+  btn.title = title;
+  btn.style.cssText = DIALOG_BTN_STYLE;
+  btn.addEventListener("click", onClick);
+  return btn;
+}
+
+function enhanceTable(table, byId, regions) {
+  const rows = table.querySelectorAll("tbody tr[data-run-id]");
+  if (!rows.length) return;
+  // every table in the page-level `tables` selector carries these attributes
+  const splitsUrl = table.dataset.splitsUrl || "";
+  const pmtiles = table.dataset.pmtiles || "";
+  const glyphs = table.dataset.glyphs || "";
+  rows.forEach((tr) => {
+    const entry = byId.get(tr.dataset.runId);
+    if (!entry) return;
+    const paceCell = tr.querySelector("[data-pace-cell]");
+    if (!paceCell) return;
+    let paceStr = paceCell.textContent.trim();
+    // Prefer the splits' total moving time over running.yml elapsed time
+    if (Array.isArray(entry.splits) && entry.splits.length) {
+      const total = entry.splits.reduce((s, x) => s + (Number(x.duration) || 0), 0);
+      const kmNum = Number(tr.dataset.km);
+      if (total > 0 && kmNum > 0) {
+        paceStr = fmtClock(total / kmNum);
+        paceCell.textContent = paceStr;
+      }
+    }
+    const when = tr.dataset.when || "";
+    const name = tr.dataset.name || "—";
+    const km = tr.dataset.km || "0";
+    const splitsRows = Array.isArray(entry.splits) ? paceRowsFor(entry) : [];
+    if (splitsRows.length) {
+      paceCell.appendChild(document.createTextNode(" "));
+      paceCell.appendChild(makeButton("📊", "分段配速", () =>
+        showPaceDialog({ when, name, km, pace: paceStr, rows: splitsRows })));
+    }
+    if (entry.summary_polyline) {
+      let pt = null;
+      try { pt = firstPolylinePoint(entry.summary_polyline); } catch { pt = null; }
+      if (regionIndexFor(pt, regions) >= 0) {
+        const btn = makeButton("🗺️", "查看路线", () => openRouteMap(btn));
+        btn.dataset.routeId = tr.dataset.runId;
+        btn.dataset.when = when;
+        btn.dataset.splits = splitsUrl;
+        btn.dataset.pmtiles = pmtiles;
+        btn.dataset.glyphs = glyphs;
+        paceCell.appendChild(document.createTextNode(" "));
+        paceCell.appendChild(btn);
+      }
+    }
+  });
+}
+
+// ── Page-level enhancement: fetch splits once, correct paces, add buttons,
+// update the sync note ──
+(function () {
+  const noteEl = document.getElementById("running-splits-note");
+  const tables = Array.from(document.querySelectorAll("table[data-splits-url]"));
+  const mapBox = document.getElementById("inline-routes-map");
+  const cfgSource = tables.find((t) => t.dataset.splitsUrl) || mapBox;
+  const splitsUrl = cfgSource ? (cfgSource.dataset.splitsUrl || "") : "";
+  if (!splitsUrl) {
+    if (noteEl) noteEl.textContent = "💡 配速数据暂不可用 — 运行 poe sync-running-splits 上传后刷新";
+    return;
+  }
+
+  fetchSplits(splitsUrl).then((activities) => {
+    if (noteEl) {
+      if (!activities || !activities.length) {
+        noteEl.textContent = "💡 配速数据暂不可用 — 运行 poe sync-running-splits 上传后刷新";
+      } else {
+        const withPoly = activities.filter((a) => a.summary_polyline).length;
+        noteEl.textContent = `✅ 配速数据已同步（${activities.length} 条活动，${withPoly} 条有路线）`;
+      }
+    }
+    if (!activities || !activities.length) return;
+    const byId = splitsById(activities);
+    tables.forEach((t) => enhanceTable(t, byId, parseRegions(t)));
+  });
+})();
 
 const ROUTE_COLORS = [
   "#e6194b", "#3cb44b", "#4363d8", "#f58231",
@@ -209,22 +316,47 @@ const ROUTE_COLORS = [
 
 // ── Inline multi-route map (auto-init from data attributes) ──
 
-(function() {
+(function () {
   const container = document.getElementById("inline-routes-map");
   if (!container) return;
   const legend = document.getElementById("inline-routes-legend");
-
-  const routesRaw = container.dataset.routes;
-  const pmtilesPrefix = container.dataset.pmtiles;
-  const glyphsUrl = container.dataset.glyphs;
-  if (!routesRaw) return;
-
-  let routes;
-  try { routes = JSON.parse(routesRaw); } catch { return; }
-  if (!routes.length) return;
+  const splitsUrl = container.dataset.splitsUrl || "";
+  if (!splitsUrl) return;
+  const pmtilesPrefix = container.dataset.pmtiles || "";
+  const glyphsUrl = container.dataset.glyphs || "";
+  const regions = parseRegions(container);
+  let runs;
+  try { runs = JSON.parse(container.dataset.runs || "[]"); } catch { return; }
+  if (!runs.length) { if (legend) legend.textContent = "暂无路线数据"; return; }
 
   (async () => {
     try {
+      const activities = await fetchSplits(splitsUrl);
+      if (!activities || !activities.length) {
+        if (legend) legend.textContent = "暂无路线数据";
+        return;
+      }
+      const byId = splitsById(activities);
+
+      // Last N runs with route data, grouped by region; show the dominant one
+      const routesByRegion = new Map();
+      for (const r of runs) {
+        if (r.run_id == null) continue;
+        const entry = byId.get(String(r.run_id));
+        if (!entry || !entry.summary_polyline) continue;
+        let pt = null;
+        try { pt = firstPolylinePoint(entry.summary_polyline); } catch { pt = null; }
+        const region = regionIndexFor(pt, regions);
+        if (region < 0) continue;
+        if (!routesByRegion.has(region)) routesByRegion.set(region, []);
+        routesByRegion.get(region).push({ run_id: r.run_id, date: r.date || "?", polyline: entry.summary_polyline });
+      }
+      if (!routesByRegion.size) { if (legend) legend.textContent = "暂无路线数据"; return; }
+
+      let best = null;
+      routesByRegion.forEach((routes) => { if (!best || routes.length > best.length) best = routes; });
+      const routes = best;
+
       await loadDeps();
       const maplibregl = window.maplibregl;
       if (!maplibregl) throw new Error("MapLibre not loaded");

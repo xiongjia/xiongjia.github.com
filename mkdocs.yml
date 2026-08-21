@@ -222,6 +222,7 @@ extra_css:
 extra_javascript:
   - assets/javascripts/retire.js
   - assets/javascripts/fitness.js
+  - notes/health/running-route-core.js
   - notes/health/running-route.js
   
 # hooks (custom Python modules treated as plugins)
