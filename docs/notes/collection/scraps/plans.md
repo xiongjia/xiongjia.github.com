@@ -15,6 +15,8 @@ ______________________________________________________________________
 
 <!-- Items go here via: poe collect-todo "content" -->
 
+- 2026-08-22 找下 Robotic Process Automation (RPA) 有哪些方向
+
 ### 💡 Ideas
 
 <!-- Items go here via: poe collect-idea "content" -->
