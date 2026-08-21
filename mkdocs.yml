@@ -38,12 +38,12 @@ extra:
   bucket:
     enabled: true
     mappings:
-      # 跑步配速/路线数据（prefix 更具体，排前面，保证先匹配）
+      # Running pace/route data (more specific prefix, placed first to ensure it matches first)
       - prefix: assets/bucket/running/
         bucket: web-assets
         remote_prefix: data/metadata/running
         base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/metadata/running"
-      # 图片（通用，排后面）
+      # Images (generic, placed after more specific prefixes)
       - prefix: assets/bucket/
         bucket: web-assets
         remote_prefix: data/img   # object prefix inside the bucket
@@ -62,7 +62,7 @@ extra:
       fallback_name: noname
       tmp_dir: .bucket
       max_size_mb: 10
-    # 跑步配速/路线数据（data_key 由 sync-running-splits 上传用；参见
+    # Running pace/route data (data_key used by sync-running-splits for upload; see
     # internal/plans/arch/bot-cronjob.md）
     running:
       data_key: splits.json
@@ -125,21 +125,22 @@ extra:
     # globally with BOT_API_CRON_ENABLED=false. Note: a bad schedule/spec
     # here fails the API server startup (fail-fast, like models.validate_schemas).
     cron:
-    # 每天 12:00：同步 Garmin 跑步数据 + 上传 splits 到 R2 → 一个 draft PR
+    # Daily at 00:45: sync Garmin running data + upload splits to R2 → one draft PR
       daily-sync-running:
-        schedule: "0 12 * * *"
+        schedule: "45 0 * * *"
         spec: "sync-running + sync-splits --confirm"
         handoff: true
-    # 每周六 08:00：本地 pi CLI 生成 AI 健康建议 → 一个 draft PR
-    # (注意：APScheduler DOW 数字 0=Monday…6=Sunday，用文本名 SAT 最安全)
+    # Every Saturday at 05:00: local pi CLI generates AI health advice → one draft PR
+    # (Note: APScheduler DOW numeric 0=Monday…6=Sunday; using text name SAT is safest)
       weekly-health-summary:
-        schedule: "0 8 * * SAT"
+        schedule: "0 5 * * SAT"
         spec: "health-summary"
         handoff: true
-    # 冒烟测试：每天 13:00 发一条 "hello world" moment → draft PR
-    # （验证 cron 自动触发；每次运行都有 diff 必出 PR，手动关掉即可。
-    #   注意：moment 文件名分钟级时间戳，同一分钟内手动重复触发会写
-    #   同一文件——cron 每日一次无影响，仅影响手动连点）
+    # Smoke test: daily at 13:00, post a "hello world" moment → draft PR
+    # (Verify cron auto-trigger; each run has a diff so always produces a PR — just close it.
+    #   Note: moment filenames use minute-level timestamps; repeated manual triggers within
+    #   the same minute write to the same file — cron once-a-day is unaffected, only affects
+    #   rapid manual clicks)
       smoke-hello:
         schedule: "0 13 * * *"
         spec: "hello"
