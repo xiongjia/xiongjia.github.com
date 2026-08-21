@@ -90,6 +90,7 @@ collect-add = { cmd = "python scripts/collect.py add", help = "Collect a resourc
 collect-todo = { cmd = "python scripts/collect.py todo", help = "Add a TODO → plans.md (no AI): poe collect-todo '看这个视频'" }
 collect-idea = { cmd = "python scripts/collect.py idea", help = "Add an idea → plans.md (no AI): poe collect-idea '用 MapLibre 做热力图'" }
 test = { cmd = "uv run pytest -q", help = "Run unit tests (pytest): uv run poe test" }
+test-js = { cmd = "node tests/test_running_route_core.cjs", help = "Run running-route core JS unit tests (node): uv run poe test-js" }
 api-server = { cmd = "uv run python scripts/api_server.py", help = "Start remote API (binds 0.0.0.0; BOT_API_HOST/BOT_API_PORT override): uv run poe api-server" }
 api-server-prod = { ref = "api-server", help = "Start remote API (prod; alias of api-server): uv run poe api-server-prod" }
 

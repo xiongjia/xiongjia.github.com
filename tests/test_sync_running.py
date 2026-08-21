@@ -267,27 +267,30 @@ def test_activity_table_html_and_escaping():
     assert out.count("<td") == 4
 
 
-def test_activity_table_pace_prefers_splits_moving_time():
+def test_activity_table_uses_elapsed_pace_and_exposes_run_data():
+    """No build-time splits: pace = running.yml elapsed; rows carry data attrs
+    so client-side JS can correct pace from the R2 splits copy."""
     runs = [
         {
+            "run_id": 1,
             "name": "Pudong",
             "distance": 5000,
-            "moving_time": "0:50:00",  # slow total incl. stops
+            "moving_time": "0:50:00",  # 3000s elapsed / 5km = 10:00
             "average_heartrate": 120,
             "start_date_local": "2026-08-02 22:06:45",
         }
     ]
-    splits = {
-        1: {"splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(5)]}
-    }
-    runs[0]["run_id"] = 1
-    out = rm._activity_table(runs, splits)
-    # 1500s moving / 5km = 5:00, not the 10:00 from total time
-    assert "5:00" in out
+    out = rm._activity_table(runs, splits_url="https://bucket/splits.json")
+    assert "10:00" in out
+    assert "data-run-id='1'" in out
+    assert "data-name='Pudong'" in out
+    assert "data-splits-url='https://bucket/splits.json'" in out
+    assert "openPaceDialog" not in out
+    assert "openRouteMap" not in out
 
 
-def test_activity_table_lazy_dialogs_no_hidden_dialog_nodes():
-    """Buttons carry payloads; no <dialog> nodes are emitted into the DOM."""
+def test_activity_table_no_dialog_nodes_or_buttons():
+    """Buttons/dialogs are created lazily by JS — the macro emits neither."""
     runs = [
         {
             "run_id": 1,
@@ -298,26 +301,17 @@ def test_activity_table_lazy_dialogs_no_hidden_dialog_nodes():
             "start_date_local": "2026-08-02 22:06:45",
         }
     ]
-    splits = {
-        1: {
-            "splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(5)],
-            "summary_polyline": _encode_polyline([(31.2, 121.5), (31.21, 121.51)]),
-        }
-    }
-    rm._SUPPORTED_REGIONS = [[120.8, 30.6, 122.2, 31.8]]
-    rm._REGIONS = {"shanghai": [120.8, 30.6, 122.2, 31.8]}
-    out = rm._activity_table(runs, splits, splits_url="https://bucket/splits.json")
+    out = rm._activity_table(runs, splits_url="https://bucket/splits.json")
     assert "<dialog" not in out
-    assert "openPaceDialog(this)" in out
-    assert "openRouteMap(this)" in out
-    assert "data-pace=" in out
-    assert "data-route-id=" in out
+    assert "data-pace=" not in out
+    assert "data-route-id=" not in out
+    assert "data-run-id='1'" in out
+    assert "data-km='5.00'" in out
+    assert "data-pace-cell" in out
 
 
-def test_activity_table_lazy_pace_json_safe_roundtrip():
-    """data-pace JSON escapes the name for safe innerHTML embedding."""
-    import html as _html
-
+def test_activity_table_data_name_escaped_in_attribute():
+    """Names land only in escaped data attributes — never raw HTML."""
     runs = [
         {
             "run_id": 9,
@@ -328,22 +322,9 @@ def test_activity_table_lazy_pace_json_safe_roundtrip():
             "start_date_local": "2026-08-20 22:00:00",
         }
     ]
-    splits = {
-        9: {"splits": [{"km": 1.0, "duration": 300, "pace": "5:00", "hr": 120} for _ in range(3)]}
-    }
-    out = rm._activity_table(runs, splits, splits_url="https://b/s.json")
-
-    import re
-
-    m = re.search(r"data-pace='([^']*)'", out)
-    assert m, "data-pace attr missing"
-    # browser-side: attribute entity decode -> valid JSON
-    payload = json.loads(_html.unescape(m.group(1)))
-    # name stored entity-escaped so JS innerHTML embedding is injection-safe;
-    # the browser decodes &#x27;/&quot; when rendering the dialog
-    assert "O&#x27;Brien" in payload["name"]
-    assert "<" not in payload["name"] and '"' not in payload["name"]
-    assert len(payload["rows"]) == 3
+    out = rm._activity_table(runs)
+    assert "<img" not in out
+    assert "data-name='O&#x27;Brien&#x27;s &quot;Night&quot; Run'" in out
 
 
 def test_running_recent_routes_uses_last_n_not_build_window():
@@ -424,6 +405,54 @@ def test_load_data_empty_comment_only_file_returns_empty(tmp_path):
     assert rm._load_data(env) == {}
 
 
+def test_recent_routes_embeds_runs_and_config(tmp_path):
+    """running_recent_routes ships the container with recent runs + config;
+    the map itself is rendered client-side from the R2 splits copy."""
+    data_dir = tmp_path / "notes" / "health" / "data"
+    data_dir.mkdir(parents=True)
+    (data_dir / "running.yml").write_text(
+        "activities:\n"
+        "  - name: a\n    run_id: 1\n    distance: 5000\n    moving_time: '0:25:00'\n"
+        "    average_heartrate: 120\n    start_date_local: '2026-08-02 22:06:45'\n"
+        "  - name: b\n    run_id: 2\n    distance: 3000\n    moving_time: '0:20:00'\n"
+        "    average_heartrate: 110\n    start_date_local: '2026-08-01 20:00:00'\n",
+        encoding="utf-8",
+    )
+
+    class Env:
+        def __init__(self, conf):
+            self.conf = conf
+            self.registered = {}
+
+        def macro(self, fn):
+            self.registered[fn.__name__] = fn
+            return fn
+
+    env = Env(
+        {
+            "docs_dir": str(tmp_path),
+            "extra": {
+                "moment": {
+                    "map": {
+                        "pmtiles_prefix": "https://x/pmtiles/",
+                        "glyphs_url": "https://x/glyphs/",
+                        "regions": {"shanghai": {"bbox": [120.8, 30.6, 122.2, 31.8]}},
+                    }
+                }
+            },
+        }
+    )
+    health_macros.define_env(env)
+    out = env.registered["running_recent_routes"](max_routes=10)
+    assert 'id="inline-routes-map"' in out
+    assert "data-runs=" in out
+    assert "data-splits-url=" in out
+    assert "data-pmtiles='https://x/pmtiles/'" in out
+    assert "data-glyphs='https://x/glyphs/'" in out
+    assert "data-regions=" in out
+    assert "data-routes=" not in out  # polylines are no longer embedded at build
+
+
 def test_macros_render_no_data_hint_when_empty():
     hint = rm._no_data()
     for fn in (rm._year_table, rm._recent, rm._all, rm._monthly_chart):
@@ -436,23 +465,6 @@ def test_synced_note_variants():
     assert "sync-running" in note
     with_timestamp = rm._synced_note({"synced_at": "2026-08-03T00:00:00+08:00"})
     assert "数据同步于" in with_timestamp
-
-
-def test_region_helpers():
-    rm._REGIONS = {"shanghai": [120.8, 30.6, 122.2, 31.8]}
-    rm._SUPPORTED_REGIONS = [[120.8, 30.6, 122.2, 31.8]]
-    assert rm._region_at(31.2, 121.5) == "shanghai"
-    assert rm._region_at(0, 0) is None
-    # regions configured but no polyline -> cannot place, excluded
-    assert rm._in_supported_region({"run_id": 1}) is False
-
-    entry = {"run_id": 1, "summary_polyline": _encode_polyline([(31.2, 121.5)])}
-    assert rm._region_for_activity({"run_id": 1}, {1: entry}) == "shanghai"
-    assert rm._in_supported_region({"run_id": 1}, {1: entry}) is True
-
-    # no regions configured -> everything passes
-    rm._SUPPORTED_REGIONS = []
-    assert rm._in_supported_region({"run_id": 1}) is True
 
 
 def test_health_macros_registers_running_macros():

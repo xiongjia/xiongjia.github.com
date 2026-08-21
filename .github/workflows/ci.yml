@@ -26,6 +26,8 @@ jobs:
         run: echo "GIT_HASH=${GITHUB_SHA:0:7}" >> $GITHUB_ENV
       - name: Test
         run: uv run pytest -q
+      - name: JS tests
+        run: uv run poe test-js
       - name: Build check
         run: uv run mkdocs build
       - name: Lint & Format check
