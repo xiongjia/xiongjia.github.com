@@ -23,6 +23,7 @@ categories:
 
 <ul>
 <li><a href="./scraps/archive/2026-w33/">2026-W33</a></li>
+<li><a href="./scraps/archive/2026-w34/">2026-W34</a></li>
 </ul>
 
 </details>
