@@ -21,10 +21,10 @@ git-ignored `internal/local-draft.md`.
 
 Two pilot jobs (the acceptance target):
 
-1. **daily-sync-running** — every day 12:00: `poe sync-running` + upload
+1. **daily-sync-running** — every day 00:45: `poe sync-running` + upload
    `.running/splits.json` to R2 (`poe sync-running-splits --confirm`) →
    handoff draft PR with the updated `running.yml`
-1. **weekly-health-summary** — every Saturday 08:00: regenerate the AI
+1. **weekly-health-summary** — every Saturday 05:00: regenerate the AI
    health summary (`poe bot run "health-summary"` → local `pi` CLI) →
    handoff draft PR
 
@@ -35,7 +35,7 @@ no code).
 
 ```
 mkdocs.yml extra.bot.cron          # job registry (dict keyed by name)
-        │  schedule: "0 12 * * *"  # 5-field cron string (server-local TZ)
+        │  schedule: "45 0 * * *"  # 5-field cron string (server-local TZ)
         │  spec: "sync-running + sync-splits --confirm"   # raw `poe bot run` spec
         │  handoff: true           # draft PR (default; never auto-merge)
         │  enabled: true           # per-job switch (default on)
@@ -124,7 +124,7 @@ feature is a **thin scheduling shell**, matching the API's existing
    process — like the TG bot, it only fires while `poe api-server` runs.
    Deployment note: run under systemd (prod) if 24/7 scheduling is wanted.
 1. **Manual trigger endpoint** (`POST /api/cron/{name}/run`) is the smoke
-   test path and the "run it now" button — no waiting for 12:00 to verify.
+   test path and the "run it now" button — no waiting for 00:45 to verify.
 
 ## Tasks
 
@@ -187,8 +187,8 @@ feature is a **thin scheduling shell**, matching the API's existing
   and the `commit_workdir()` `git reset --` list; `.running` stays
   git-ignored → nothing new gets staged — done, all three sites
 - [x] `mkdocs.yml` `extra.bot.cron`: define the two pilot jobs
-  - `daily-sync-running`: `schedule: "0 12 * * *"`, `spec: "sync-running + sync-splits --confirm"`, `handoff: true`
-  - `weekly-health-summary`: `schedule: "0 8 * * SAT"`, `spec: "health-summary"`,
+  - `daily-sync-running`: `schedule: "45 0 * * *"`, `spec: "sync-running + sync-splits --confirm"`, `handoff: true`
+  - `weekly-health-summary`: `schedule: "0 5 * * SAT"`, `spec: "health-summary"`,
     `handoff: true`
     (text names for DOW — see the DOW note below)
   - `smoke-hello` (added 2026-08-21): `schedule: "0 13 * * *"`,
@@ -227,7 +227,7 @@ feature is a **thin scheduling shell**, matching the API's existing
   maps DOW numbers 0=Monday … 6=Sunday (unlike standard cron's 0=Sunday),
   while text names (`SAT`, `SUN`, …) keep the standard meaning. Always use
   text names in `extra.bot.cron` schedules; the pilot `weekly-health-summary`
-  is `"0 8 * * SAT"` (Saturday).
+  is `"0 5 * * SAT"` (Saturday).
 
 - **hello smoke task** (added 2026-08-21, `extra.bot.tasks.hello`):
   zero-arg task that creates a "hello world" moment via `create_moment.py` —

@@ -17,8 +17,8 @@ categories:
 > **本页目的：** 用**自己的数据**（不依赖 OSM 底图）制作一张最简单的 PMTiles 地图并渲染。
 > 流程：GeoJSON → Tippecanoe → `.pmtiles` → MapLibre，全程本地完成。
 >
-> 前置：需要安装 Tippecanoe（见 [PMTiles 格式与工具链](./pmtiles.md#22-tippecanoe)）。
-> 进阶：从 OSM 构建完整底图（含道路/水系/地名）参考官方 [Building Tiles](https://docs.protomaps.com/basemaps/build)，见 [PMTiles 格式与工具链](./pmtiles.md#23-planetiler)。
+> 前置：需要安装 Tippecanoe（见 [PMTiles 格式与工具链](./pmtiles.md#tippecanoe)）。
+> 进阶：从 OSM 构建完整底图（含道路/水系/地名）参考官方 [Building Tiles](https://docs.protomaps.com/basemaps/build)，见 [PMTiles 格式与工具链](./pmtiles.md#planetiler)。
 
 ## 1. 准备数据（GeoJSON）
 
@@ -291,4 +291,4 @@ npx -y http-server . --cors --port 8080
 - **点变标签**：加一个 symbol 图层，`layout: { "text-field": ["get", "name"] }` 显示店名
 - **区域/线数据**：GeoJSON 换成 Polygon / LineString 即可，图层类型用 `fill` / `line`
 - **数据更新**：改 GeoJSON 后重新跑 tippecanoe 覆盖 `coffee.pmtiles` 即可
-- **从 OSM 构建完整底图**：官方 [Building Tiles](https://docs.protomaps.com/basemaps/build)（Planetiler 管线），见 [PMTiles 格式与工具链](./pmtiles.md#23-planetiler)
+- **从 OSM 构建完整底图**：官方 [Building Tiles](https://docs.protomaps.com/basemaps/build)（Planetiler 管线），见 [PMTiles 格式与工具链](./pmtiles.md#planetiler)

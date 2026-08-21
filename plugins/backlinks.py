@@ -320,8 +320,14 @@ def on_files(files, config, **kwargs):
 # --------------------------------------------------------------------------
 
 
-def _rel_url(from_url: str, to_url: str) -> str:
-    """Relative URL from one page URL to another (both MkDocs pretty URLs)."""
+def _mermaid_click_url(from_url: str, to_url: str) -> str:
+    """Relative URL from one page to another, for Mermaid `click` directives.
+
+    Both URLs are MkDocs pretty URLs (e.g. ``notes/tools/med-tracker/``) that
+    the browser must resolve at runtime, so directory paths keep their trailing
+    slash. Distinct from `_rel_src`, which produces source-`.md` paths for
+    markdown links that MkDocs validates and rewrites.
+    """
     if from_url in ("", "/"):
         # root-level page: target URLs are already root-relative
         return to_url
@@ -342,7 +348,7 @@ def _backlinks_items(src_uri: str, cfg: dict) -> str:
         _BACKLINKS.get(src_uri, ()),
         key=lambda s: (_PAGES[s]["section"], _PAGES[s]["title"]),
     )
-    return _link_list(from_url=_PAGES[src_uri]["url"], targets=sources, cap=cfg["max_backlinks"])
+    return _link_list(page_src_uri=src_uri, targets=sources, cap=cfg["max_backlinks"])
 
 
 def _forward_targets(src_uri: str) -> list[str]:
@@ -353,15 +359,25 @@ def _forward_targets(src_uri: str) -> list[str]:
     )
 
 
-def _link_list(from_url: str, targets, cap) -> str:
-    """Markdown bullet list of page links, capped, ``... and N more`` overflow."""
+def _rel_src(from_src: str, to_src: str) -> str:
+    """Relative path from one page's source `.md` file to another."""
+    return posixpath.relpath(to_src, posixpath.dirname(from_src))
+
+
+def _link_list(page_src_uri: str, targets, cap) -> str:
+    """Markdown bullet list of page links, capped, ``... and N more`` overflow.
+
+    `page_src_uri` is the current page's source `.md` path; links are rendered
+    as relative source paths (e.g. ``../collection/database.md``) so MkDocs can
+    validate them and rewrite them to pretty URLs at build time.
+    """
     if not targets:
         return ""
     if cap == "all" or len(targets) <= cap:
         shown, extra = targets, 0
     else:
         shown, extra = targets[:cap], len(targets) - cap
-    lines = [f"- [{_PAGES[t]['title']}]({_rel_url(from_url, _PAGES[t]['url'])})" for t in shown]
+    lines = [f"- [{_PAGES[t]['title']}]({_rel_src(page_src_uri, t)})" for t in shown]
     if extra:
         lines.append(f"- … and {extra} more")
     return "\n".join(lines)
@@ -429,7 +445,8 @@ def _mermaid_block(layout: str, node_srcs, edge_pairs, base_url: str, clusters=N
 
     for s in sorted(node_srcs):
         title = _ml_escape(_PAGES[s]["title"])
-        lines.append(f'  click {ids[s]} "{_rel_url(base_url, _PAGES[s]["url"])}" "{title}"')
+        url = _mermaid_click_url(base_url, _PAGES[s]["url"])
+        lines.append(f'  click {ids[s]} "{url}" "{title}"')
     return "```mermaid\n" + "\n".join(lines) + "\n```"
 
 
@@ -482,9 +499,7 @@ def on_page_markdown(markdown, page, config, **kwargs):
 
     backlinks = _backlinks_items(src_uri, cfg)
     fwd_targets = _forward_targets(src_uri)
-    forward = _link_list(
-        from_url=_PAGES[src_uri]["url"], targets=fwd_targets, cap=cfg["max_backlinks"]
-    )
+    forward = _link_list(page_src_uri=src_uri, targets=fwd_targets, cap=cfg["max_backlinks"])
     graph = _neighborhood_section(src_uri, cfg) if cfg["graph"]["enabled"] else ""
 
     blocks = []

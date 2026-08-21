@@ -24,10 +24,10 @@ categories:
 
 ## 归档
 
-- **上次整理**：2026-08-12
+- **上次整理**：2026-08-21
 
 - 按 **ISO 周**归档到 `archive/<YYYY-www>.md`（如 `2026-w33.md`），卡片落进对应
-  周文件；只在有归档的周生成。周列表与字段说明见 [archive/](./archive/)；
+  周文件；只在有归档的周生成。周列表与字段说明见 [archive/](./archive/index.md)；
   周列表在 [英语学习首页](../index.md) 也有一份。
 
 ## 常用命令
@@ -38,7 +38,7 @@ categories:
 | 整理 | `/skill:enu-organize arch`                              |
 | 回顾 | `/skill:enu-organize quiz [范围]` / `review <tag>`      |
 | 导出 | `poe enu export`（Anki，可选）                          |
-| 查看 | 站内全文搜索 / [archive/ 周文件](./archive/)            |
+| 查看 | 站内全文搜索 / [archive/ 周文件](./archive/index.md)    |
 
 ## Anki 导出（可选）
 

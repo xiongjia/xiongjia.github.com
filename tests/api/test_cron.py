@@ -217,7 +217,7 @@ def test_cron_list_shape(client):
     jobs = {j["name"]: j for j in r.json()["jobs"]}
     assert "daily-sync-running" in jobs
     j = jobs["daily-sync-running"]
-    assert j["schedule"] == "0 12 * * *"
+    assert j["schedule"] == "45 0 * * *"
     assert j["spec"] == "sync-running + sync-splits --confirm"
     assert j["handoff"] is True
     assert j["enabled"] is True

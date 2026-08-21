@@ -23,11 +23,12 @@ categories:
 
 <ul>
 <li><a href="./scraps/archive/2026-w33/">2026-W33</a></li>
+<li><a href="./scraps/archive/2026-w34/">2026-W34</a></li>
 </ul>
 
 </details>
 
-完整周列表、字段说明见 [Archive](./scraps/archive/)。
+完整周列表、字段说明见 [Archive](./scraps/archive/index.md)。
 
 ## 特殊主题
 

@@ -269,16 +269,16 @@ def test_link_list_overflow(monkeypatch):
         bl,
         "_PAGES",
         {
-            "a": {"title": "A", "url": "a/", "section": "s"},
-            "b": {"title": "B", "url": "b/", "section": "s"},
-            "c": {"title": "C", "url": "c/", "section": "s"},
+            "a.md": {"title": "A", "url": "a/", "section": "s"},
+            "b.md": {"title": "B", "url": "b/", "section": "s"},
+            "c.md": {"title": "C", "url": "c/", "section": "s"},
         },
     )
-    out = bl._link_list("a/", ["b", "c"], cap=1)
+    out = bl._link_list("a.md", ["b.md", "c.md"], cap=1)
     assert "[B]" in out and "[C]" not in out
     assert "… and 1 more" in out
     # 'all' means no cap
-    out = bl._link_list("a/", ["b", "c"], cap="all")
+    out = bl._link_list("a.md", ["b.md", "c.md"], cap="all")
     assert "[B]" in out and "[C]" in out and "more" not in out
 
 
@@ -289,16 +289,36 @@ def test_ml_escape():
     assert bl._ml_escape("a\nb\rc") == "a b c"
 
 
-def test_rel_url():
+def test_mermaid_click_url():
     # pretty URLs (trailing slash) stay relative from the base dir
-    assert bl._rel_url("notes/", "notes/collection/") == "collection/"
-    assert bl._rel_url("notes/collection/database/", "notes/collection/ai/") == "../ai/"
+    assert bl._mermaid_click_url("notes/", "notes/collection/") == "collection/"
+    assert bl._mermaid_click_url("notes/collection/database/", "notes/collection/ai/") == "../ai/"
     # non-pretty base (use_directory_urls=False) -> dirname + "/"
-    assert bl._rel_url("notes/a", "notes/b") == "b"
-    assert bl._rel_url("notes/a", "notes/collection/database/") == "collection/database/"
+    assert bl._mermaid_click_url("notes/a", "notes/b") == "b"
+    assert bl._mermaid_click_url("notes/a", "notes/collection/database/") == "collection/database/"
     # root-level pages: targets are already root-relative (no CWD-anchored path)
-    assert bl._rel_url("/", "notes/collection/") == "notes/collection/"
-    assert bl._rel_url("index.html", "notes/") == "notes/"
+    assert bl._mermaid_click_url("/", "notes/collection/") == "notes/collection/"
+    assert bl._mermaid_click_url("index.html", "notes/") == "notes/"
+
+
+def test_rel_src():
+    # source .md paths, resolved relative to the current page's directory
+    assert (
+        bl._rel_src("notes/tools/med-tracker.md", "notes/tools/coffee-flavor-wheel.md")
+        == "coffee-flavor-wheel.md"
+    )
+    # parent directory index from a leaf page
+    assert bl._rel_src("notes/tools/med-tracker.md", "notes/tools/index.md") == "index.md"
+    # cross-section link
+    assert (
+        bl._rel_src("notes/tools/med-tracker.md", "notes/collection/database.md")
+        == "../collection/database.md"
+    )
+    # from a section index page
+    assert (
+        bl._rel_src("notes/tools/index.md", "notes/collection/database.md")
+        == "../collection/database.md"
+    )
 
 
 def test_load_config_invalid_depth_falls_back(caplog):
