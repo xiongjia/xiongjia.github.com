@@ -15,4 +15,4 @@ categories:
 
 ## Sub Topics
 
-- [Object Storage](./object-storage/)：对象存储（S3 / OSS / MinIO 等）—— 签名 URL、访问控制、权限体系
+- [Object Storage](./object-storage/index.md)：对象存储（S3 / OSS / MinIO 等）—— 签名 URL、访问控制、权限体系

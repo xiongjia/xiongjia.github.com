@@ -15,4 +15,4 @@ categories:
 
 ## Sub Topics
 
-- [Cloud](./cloud/)：云服务相关（对象存储、计算、网络等）
+- [Cloud](./cloud/index.md)：云服务相关（对象存储、计算、网络等）

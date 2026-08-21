@@ -28,7 +28,7 @@ categories:
 
 </details>
 
-完整周列表、字段说明见 [Archive](./scraps/archive/)。
+完整周列表、字段说明见 [Archive](./scraps/archive/index.md)。
 
 ## 特殊主题
 

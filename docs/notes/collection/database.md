@@ -18,7 +18,7 @@ hide:
 - [patroni](https://github.com/zalando/patroni) - Python 实现的 PG 高可用方案 (依赖 ETCD)
 - [PGSimCity](https://nikolays.github.io/PGSimCity/) - PostgreSQL 工作原理 3D 可视化模拟：把集群映射为一座虚拟城市（缓冲池、WAL、检查点、autovacuum、复制），可调事务频率/读写比例并跑预设场景（检查点风暴、缓存激冷等）
 - [PGSimCity Github](https://github.com/NikolayS/PGSimCity) - 源码（TypeScript + three.js，Apache-2.0，早期原型）
-- [pglayers](https://github.com/pglayers/pglayers) - 预编译的 PG extension 层（`pgx-*` 镜像），通过 multi-stage COPY 自由组合各类扩展（pg_duckdb、pgvector、pgmq 等），用于构建含 pg_duckdb 的 Docker 镜像，详见 [pg_duckdb + force_execution](../../research/topics/duckdb/postgresql-acceleration.md) ([pglayers.github.io](https://pglayers.github.io/))
+- [pglayers](https://github.com/pglayers/pglayers) - 预编译的 PG extension 层（`pgx-*` 镜像），通过 multi-stage COPY 自由组合各类扩展（pg_duckdb、pgvector、pgmq 等），用于构建含 pg_duckdb 的 Docker 镜像，详见 [pg_duckdb + force_execution](../research/topics/duckdb/postgresql-acceleration.md) ([pglayers.github.io](https://pglayers.github.io/))
 
 ## DuckDB
 

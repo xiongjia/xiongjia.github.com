@@ -125,9 +125,9 @@ go-pmtiles --version
 | `pmtiles convert` | 在目录/存档/MBTiles 等格式间转换     |
 | `pmtiles upload`  | 上传到 S3 兼容对象存储               |
 
-> 合并**重叠区域**的档案（如底图 + 自己的数据）用 tippecanoe 的 `tile-join`，见 [2.2](#22-tippecanoe) 与 [自制 PMTiles 地图](./make-own-map.md)。
+> 合并**重叠区域**的档案（如底图 + 自己的数据）用 tippecanoe 的 `tile-join`，见 [2.2](#tippecanoe) 与 [自制 PMTiles 地图](./make-own-map.md)。
 
-### 2.2 Tippecanoe（自有数据 → 瓦片）
+### 2.2 Tippecanoe（自有数据 → 瓦片） {#tippecanoe}
 
 将 GeoJSON/Shapefile 转为 PMTiles（v2.17+ 直接支持 `.pmtiles` 输出）。
 
@@ -178,7 +178,7 @@ tile-join -o merged.pmtiles *.pmtiles
 | `--maxzoom=14`             | 限制最大 zoom（文件更小）                                   |
 | `--drop-densest-as-needed` | 自动简化密集数据                                            |
 
-### 2.3 Planetiler（OSM → 完整底图，专业级）
+### 2.3 Planetiler（OSM → 完整底图，专业级） {#planetiler}
 
 如需构建类似 Protomaps 官方底图的完整图层（道路、水系、建筑、地名），需要 Planetiler 管线。
 basemaps 仓库无预编译二进制与 brew 包，需通过 Maven 构建或 Docker 本地构建镜像：
