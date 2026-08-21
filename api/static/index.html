@@ -44,6 +44,17 @@
         </table>
       </div>
     </section>
+
+    <section id="cron-pane">
+      <h2>⏰ Cron Jobs</h2>
+      <p id="cron-hint" class="muted">No cron jobs configured (mkdocs.yml <code>extra.bot.cron</code>).</p>
+      <table id="cron" hidden>
+        <thead>
+          <tr><th>Job</th><th>Schedule</th><th>Next run</th><th>Last run</th><th></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </section>
   </main>
 
   <script src="js/app.js"></script>

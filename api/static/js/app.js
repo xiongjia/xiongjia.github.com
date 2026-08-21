@@ -56,6 +56,10 @@ async function init() {
   }
   refreshHistory();
   scheduleHistory(HISTORY_IDLE_MS);
+  refreshCron();
+  // cron next-run times change at minute granularity — a slow independent
+  // timer is enough (the fast history poll is only for running runs)
+  setInterval(refreshCron, 30_000);
 }
 
 async function selectTask(name, li) {
@@ -587,6 +591,115 @@ function showRunLogs(r) {
     p.className = "warn";
     p.textContent = "(no logs recorded)";
     $("output").appendChild(p);
+  }
+}
+
+// HTML-escape a value for use inside an attribute (title / href).
+function escAttr(s) {
+  return String(s)
+    .replace(/&/g, "&amp;")
+    .replace(/"/g, "&quot;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+function fmtTime(iso) {
+  if (!iso) return "—";
+  return new Date(iso).toLocaleString(undefined, {
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+  });
+}
+
+// ⏰ Cron pane: GET /api/cron → table (job / schedule / next run / last run
+// + Run-now). Refreshed on a slow timer (next runs change at minute
+// granularity) and right after a manual trigger. A failed load shows the
+// real error in the hint (stale server without /api/cron → 404) instead of
+// silently looking like "no jobs configured".
+async function refreshCron() {
+  try {
+    const { jobs } = await api("/api/cron");
+    $("cron-hint").hidden = jobs.length > 0;
+    $("cron-hint").textContent =
+      "No cron jobs configured (mkdocs.yml extra.bot.cron).";
+    $("cron").hidden = jobs.length === 0;
+    const tbody = $("cron").querySelector("tbody");
+    tbody.textContent = "";
+    for (const j of jobs) {
+      const tr = document.createElement("tr");
+      const last = j.last_run
+        ? `<span class="status ${j.last_run.status}">${j.last_run.status}</span> ` +
+          (j.last_run.pr_url ? `<a href="${escAttr(j.last_run.pr_url)}" target="_blank" rel="noopener">PR</a> ` : "") +
+          `<span class="muted" title="started ${escAttr(j.last_run.started_at)}${j.last_run.finished_at ? " · finished " + escAttr(j.last_run.finished_at) : ""}">${fmtTime(j.last_run.started_at)}</span>`
+        : `<span class="muted">—</span>`;
+      // state badge: config-disabled (mkdocs.yml) vs runtime-paused
+      // (.bot-api/cron-state.json override)
+      const badge = j.active
+        ? ""
+        : j.disabled
+        ? ' <span class="warn">(paused)</span>'
+        : ' <span class="muted">(disabled)</span>';
+      const toggle =
+        `<button type="button" class="cron-toggle" data-job="${escAttr(j.name)}" data-action="${j.disabled ? "enable" : "disable"}">` +
+        `${j.disabled ? "▶ Enable" : "⏸ Disable"}</button>`;
+      tr.innerHTML =
+        `<td title="${escAttr(j.spec)}">${escAttr(j.name)}${badge}</td>` +
+        `<td title="spec: ${escAttr(j.spec)}${j.timezone ? " · " + escAttr(j.timezone) : ""}">${escAttr(j.schedule)}</td>` +
+        `<td>${fmtTime(j.next_run_at)}</td>` +
+        `<td>${last}</td>` +
+        `<td><button type="button" class="cron-run" data-job="${escAttr(j.name)}">▶ Run</button> ${toggle}</td>`;
+      tbody.appendChild(tr);
+    }
+    for (const btn of tbody.querySelectorAll(".cron-run")) {
+      btn.addEventListener("click", () => cronRun(btn.dataset.job));
+    }
+    for (const btn of tbody.querySelectorAll(".cron-toggle")) {
+      btn.addEventListener("click", () => cronToggle(btn.dataset.job, btn.dataset.action));
+    }
+  } catch (err) {
+    // visible, not silent — a stale server (started before /api/cron
+    // existed) returns 404, and a stopped server fails the fetch entirely;
+    // both would otherwise look like "no jobs configured"
+    $("cron-hint").hidden = false;
+    $("cron").hidden = true;
+    $("cron-hint").textContent =
+      `⚠ cannot load cron jobs: ${err.message} — restart the API server (poe api-server) and hard-refresh (Cmd+Shift+R)`;
+  }
+}
+
+async function cronRun(name) {
+  const btn = document.querySelector(`.cron-run[data-job="${CSS.escape(name)}"]`);
+  if (btn) btn.disabled = true; // one trigger per click; table re-renders on refresh
+  try {
+    const run = await api(`/api/cron/${name}/run`, { method: "POST" });
+    connectStream(run.run_id, run.stream_url);
+    setAbort(run);
+    scheduleHistory(HISTORY_ACTIVE_MS); // fast-poll while the run is active
+    refreshCron();
+    appendLog({ time: "--:--:--", level: "ok", msg: `⏰ cron ${name} triggered → run ${run.run_id}` });
+  } catch (err) {
+    if (btn) btn.disabled = false;
+    appendLog({ time: "--:--:--", level: "err", msg: `⏰ cron ${name} trigger failed: ${err.message}` });
+  }
+}
+
+// ⏸/▶ runtime disable/enable toggle (persisted in .bot-api/cron-state.json)
+async function cronToggle(name, action) {
+  const btn = document.querySelector(`.cron-toggle[data-job="${CSS.escape(name)}"]`);
+  if (btn) btn.disabled = true;
+  try {
+    const res = await api(`/api/cron/${name}/${action}`, { method: "POST" });
+    refreshCron();
+    appendLog({
+      time: "--:--:--",
+      level: res.disabled ? "warn" : "ok",
+      msg: `⏰ cron ${name} ${res.disabled ? "disabled (paused)" : "enabled"}`,
+    });
+  } catch (err) {
+    if (btn) btn.disabled = false;
+    appendLog({ time: "--:--:--", level: "err", msg: `⏰ cron ${name} ${action} failed: ${err.message}` });
   }
 }
 

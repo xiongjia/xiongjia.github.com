@@ -276,3 +276,39 @@ td.status { font-weight: 600; }
 td.merged, td.submitted { color: var(--ok); }
 td.failed { color: var(--err); }
 td.running { color: var(--accent); }
+
+/* ⏰ Cron pane — second grid row under the work pane (main: 260px 1fr) */
+#cron-pane { grid-column: 2; }
+#cron thead th {
+  text-align: left;
+  color: var(--muted);
+  font-weight: 400;
+  padding: 4px 6px;
+  border-bottom: 1px solid var(--border);
+}
+#cron code { color: var(--muted); }
+#cron .cron-run {
+  margin: 0;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  background: none;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+#cron .cron-run:hover { background: var(--accent); color: #fff; }
+#cron .cron-toggle {
+  margin: 0;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+#cron .cron-toggle:hover { border-color: var(--warn); color: var(--warn); }
+#cron .warn { color: var(--warn); }
+#cron a { color: var(--accent); text-decoration: none; }
+#cron a:hover { text-decoration: underline; }

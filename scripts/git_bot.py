@@ -166,7 +166,7 @@ def create_worktree(branch: str, workdir: Path) -> None:
 def remove_worktree(workdir: Path) -> None:
     if not workdir.exists():
         return
-    for name in (".venv", ".env", ".env.local", "docs/assets/bucket"):
+    for name in (".venv", ".env", ".env.local", "docs/assets/bucket", ".running"):
         link = workdir / name
         if link.is_symlink():
             link.unlink()
@@ -195,6 +195,13 @@ def symlink_env(workdir: Path) -> None:
         ".env": False,
         ".env.local": False,
         "docs/assets/bucket": True,  # bucket local copies (build/preview)
+        # Garmin incremental cache (sync_running.py): the worktree only
+        # checks out tracked files, so without this a fresh worktree has no
+        # cache → every `poe bot run sync-running` full-fetches all activity
+        # details. Symlinking keeps the fetch incremental across runs (the
+        # cache lives in the main repo); it's git-ignored, so nothing gets
+        # staged by `git add -A` (commit_workdir resets it defensively too).
+        ".running": True,
     }
     for name, is_dir in links.items():
         src = REPO_ROOT / name
@@ -257,15 +264,30 @@ def commit_workdir(workdir: Path, message: str, body: list[str]) -> bool:
         ".env",
         ".env.local",
         "docs/assets/bucket",
+        ".running",
         cwd=workdir,
         check=False,
     )
     proc = subprocess.run(["git", *args], cwd=workdir, capture_output=True, text=True, check=False)
-    if proc.returncode != 0 and "nothing to commit" not in proc.stdout + proc.stderr:
+    if proc.returncode != 0 and not _noop_commit(proc):
         raise BotError(
             f"git commit failed in {workdir}: {proc.stderr.strip() or proc.stdout.strip()}"
         )
     return proc.returncode == 0
+
+
+def _noop_commit(proc: subprocess.CompletedProcess) -> bool:
+    """True when the commit had nothing to record (idempotent task, no diff).
+
+    git prints two distinct no-op messages: ``nothing to commit, working
+    tree clean`` (clean tree) and ``nothing added to commit but untracked
+    files present`` (only untracked leftovers, e.g. the worktree-only
+    symlinks like ``.running`` that we unstage after ``git add -A``). The
+    second one contains ``nothing added to commit``, NOT the ``nothing to
+    commit`` substring — a guard matching only the first would raise
+    BotError on a perfectly fine no-op run."""
+    msg = proc.stdout + proc.stderr
+    return "nothing to commit" in msg or "nothing added to commit" in msg
 
 
 def _git_auth_env() -> dict[str, str]:

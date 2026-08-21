@@ -56,6 +56,14 @@ Site runs at `http://localhost:8000` by default.
 Note: the dev servers bind 0.0.0.0 (`poe server*` on :8000, `poe api-server*` on :8100); the API has **no auth** — keep it on a trusted
 network or pin `BOT_API_HOST=127.0.0.1` for local-only.
 
+**Bot scheduled jobs (cron)**: configured in `mkdocs.yml` → `extra.bot.cron`
+(schedule / spec / handoff per job; text DOW names like `SAT` — APScheduler
+maps numeric DOW 0=Monday…6=Sunday). Runs inside the API process
+(`poe api-server` must be up) via `poe bot` handoff draft PRs; runtime
+disable/enable persisted in `.bot-api/cron-state.json`, kill switch
+`BOT_API_CRON_ENABLED=false`. See `internal/plans/arch/bot-cronjob.md`
+and `internal/commands.md` → Bot Remote API.
+
 ## Bucket-hosted assets (R2/S3)
 
 Large site files (mainly WebP images) live outside git on an R2/S3 bucket.
