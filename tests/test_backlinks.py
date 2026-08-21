@@ -303,19 +303,22 @@ def test_mermaid_click_url():
 
 def test_rel_src():
     # source .md paths, resolved relative to the current page's directory
-    assert bl._rel_src(
-        "notes/tools/med-tracker.md", "notes/tools/coffee-flavor-wheel.md"
-    ) == "coffee-flavor-wheel.md"
+    assert (
+        bl._rel_src("notes/tools/med-tracker.md", "notes/tools/coffee-flavor-wheel.md")
+        == "coffee-flavor-wheel.md"
+    )
     # parent directory index from a leaf page
     assert bl._rel_src("notes/tools/med-tracker.md", "notes/tools/index.md") == "index.md"
     # cross-section link
-    assert bl._rel_src(
-        "notes/tools/med-tracker.md", "notes/collection/database.md"
-    ) == "../collection/database.md"
+    assert (
+        bl._rel_src("notes/tools/med-tracker.md", "notes/collection/database.md")
+        == "../collection/database.md"
+    )
     # from a section index page
-    assert bl._rel_src(
-        "notes/tools/index.md", "notes/collection/database.md"
-    ) == "../collection/database.md"
+    assert (
+        bl._rel_src("notes/tools/index.md", "notes/collection/database.md")
+        == "../collection/database.md"
+    )
 
 
 def test_load_config_invalid_depth_falls_back(caplog):

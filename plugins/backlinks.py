@@ -499,9 +499,7 @@ def on_page_markdown(markdown, page, config, **kwargs):
 
     backlinks = _backlinks_items(src_uri, cfg)
     fwd_targets = _forward_targets(src_uri)
-    forward = _link_list(
-        page_src_uri=src_uri, targets=fwd_targets, cap=cfg["max_backlinks"]
-    )
+    forward = _link_list(page_src_uri=src_uri, targets=fwd_targets, cap=cfg["max_backlinks"])
     graph = _neighborhood_section(src_uri, cfg) if cfg["graph"]["enabled"] else ""
 
     blocks = []
