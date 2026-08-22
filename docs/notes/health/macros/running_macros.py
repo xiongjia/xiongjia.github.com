@@ -43,6 +43,10 @@ _SUPPORTED_REGIONS: list[list[float]] = []  # [[minLng, minLat, maxLng, maxLat],
 
 _MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
+# Label foreground — theme-adaptive (light/dark); fallback for non-Material contexts.
+# Fallback matches the Moment stats heatmap's label color (#757575).
+_LABEL_FG = "var(--md-default-fg-color--light, #757575)"
+
 
 def _load_data(env: Any) -> dict:
     """Load running.yml relative to the docs directory."""
@@ -383,15 +387,16 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
     label_w = 40  # day label column width (px)
     cell_r = 2  # border radius
 
-    # Color levels (km)
+    # Color levels (km): cell classes (rh-cell / l1–l4) are styled in
+    # docs/assets/stylesheets/running.css — palette mirrors the Moment stats
+    # heatmap with [data-md-color-scheme="slate"] dark overrides.
     levels = [0, 1, 2, 5, 999]
-    colors = ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"]
 
-    def _color(km: float) -> str:
+    def _level(km: float) -> int:
         for i, threshold in enumerate(levels):
             if km <= threshold:
-                return colors[i]
-        return colors[-1]
+                return i
+        return len(levels) - 1
 
     day_labels = ["", "Mon", "", "Wed", "", "Fri", ""]
     months_short = [
@@ -427,6 +432,8 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
         'style="font-family: -apple-system, BlinkMacSystemFont, sans-serif; '
         'font-size: 12px; overflow-x: auto; overflow-y: hidden;">'
     )
+    # Cell color classes come from docs/assets/stylesheets/running.css
+    # (loaded site-wide, so no per-page <style> block is needed here).
     lines.append(
         f'  <div style="font-size:0.9em;color:var(--md-default-fg-color--light);margin-bottom:0.5em">{summary}</div>'  # noqa: E501
     )
@@ -434,7 +441,7 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
     # Month labels: absolute positioning at exact column positions
     lines.append(
         f'  <div style="position: relative; margin-left: {label_w}px; '
-        f"height: 15px; font-size: 10px; color: #586069; "
+        f"height: 15px; font-size: 10px; color: {_LABEL_FG}; "
         f'white-space: nowrap;">'
     )
     for w, label in month_positions:
@@ -457,7 +464,7 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
         label = day_labels[day_idx]
         if label:
             lines.append(
-                f'    <div style="font-size: 10px; color: #586069; '
+                f'    <div style="font-size: 10px; color: {_LABEL_FG}; '
                 f'line-height: {cell_w}px; text-align: left;">{label}</div>'
             )
         else:
@@ -467,11 +474,13 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
             d = grid_start + timedelta(weeks=w, days=day_idx)
             key = d.strftime("%Y-%m-%d")
             km = daily.get(key, 0)
-            color = _color(km)
+            lvl = _level(km)
+            cls = "rh-cell" + (f" l{lvl}" if lvl else "")
             title = f"{key}: {km:.1f} km" if km > 0 else key
             lines.append(
-                f'    <div style="width: {cell_w}px; height: {cell_w}px; '
-                f'background: {color}; border-radius: {cell_r}px; cursor: default;" '
+                f'    <div class="{cls}" '
+                f'style="width: {cell_w}px; height: {cell_w}px; '
+                f'border-radius: {cell_r}px; cursor: default;" '
                 f'title="{title}"></div>'
             )
 
@@ -480,13 +489,14 @@ def _calendar_heatmap(data: dict, year: int | None = None) -> str:
     # Legend row
     lines.append(
         '  <div style="display: flex; align-items: center; gap: 3px; '
-        'margin-top: 8px; font-size: 10px; color: #586069;">'
+        f'margin-top: 8px; font-size: 10px; color: {_LABEL_FG};">'
     )
     lines.append("    <span>Less</span>")
-    for c in colors:
+    for lvl in range(len(levels)):
+        cls = "rh-cell" + (f" l{lvl}" if lvl else "")
         lines.append(
-            f'    <div style="width: {cell_w}px; height: {cell_w}px; '
-            f'background: {c}; border-radius: {cell_r}px;"></div>'
+            f'    <div class="{cls}" '
+            f'style="width: {cell_w}px; height: {cell_w}px; border-radius: {cell_r}px;"></div>'
         )
     lines.append("    <span>More</span>")
     lines.append("  </div>")

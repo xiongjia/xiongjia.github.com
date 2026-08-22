@@ -174,9 +174,9 @@ async function openRouteMap(btn) {
         map.addLayer({
           id: "route-line", type: "line", source: "route",
           layout: { "line-join": "round", "line-cap": "round" },
-          paint: { "line-color": "#40c463", "line-width": 4, "line-opacity": 0.8 },
+          paint: { "line-color": "#3aa263", "line-width": 4, "line-opacity": 0.8 },
         });
-        new maplibregl.Marker({ color: "#30a14e" }).setLngLat(coords[0])
+        new maplibregl.Marker({ color: "#1f7a43" }).setLngLat(coords[0])
           .setPopup(new maplibregl.Popup({ offset: 25 }).setText("起点")).addTo(map);
         new maplibregl.Marker({ color: "#d73a49" }).setLngLat(coords[coords.length - 1])
           .setPopup(new maplibregl.Popup({ offset: 25 }).setText("终点")).addTo(map);

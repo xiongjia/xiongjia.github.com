@@ -270,6 +270,7 @@ extra_css:
   - assets/stylesheets/tools.css
   - assets/stylesheets/back-link.css
   - assets/stylesheets/fitness.css
+  - assets/stylesheets/running.css
 extra_javascript:
   - assets/javascripts/retire.js
   - assets/javascripts/fitness.js
@@ -299,6 +300,7 @@ plugins:
         - assets/stylesheets/tools.css
         - assets/stylesheets/weight.css
         - assets/stylesheets/fitness.css
+        - assets/stylesheets/running.css
       js_files:
         - assets/javascripts/retire.js
         - assets/javascripts/fitness.js
