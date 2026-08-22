@@ -78,9 +78,9 @@
     {% endif %}
 
     {% if pagination.items %}
-    {% if all_tags or archive_url or map_url %}
+    {% if all_tags or archive_url or map_url or stats_url %}
     <div class="moment-tools">
-        {% if archive_url or map_url or rankings_url %}
+        {% if archive_url or map_url or rankings_url or stats_url %}
         <p class="moment-archive-link">
             {# separator before each link except the first shown (namespace
                avoids the boolean-combinator soup of the old if/sep chain) #}
@@ -101,6 +101,11 @@
             {% if rankings_url %}
             {% if ns.shown %}<span class="moment-tools-sep">·</span>{% endif %}
             <a href="{{ rankings_url }}">🏆 Rankings</a>
+            {% set ns.shown = true %}
+            {% endif %}
+            {% if stats_url %}
+            {% if ns.shown %}<span class="moment-tools-sep">·</span>{% endif %}
+            <a href="{{ stats_url }}">📊 Stats</a>
             {% set ns.shown = true %}
             {% endif %}
         </p>

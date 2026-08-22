@@ -62,6 +62,19 @@ _IMAGE_MIME = {
 }
 
 
+def _heat_level(count: int) -> int:
+    """Heatmap intensity bucket for a per-day moment count (0 = none)."""
+    if count <= 0:
+        return 0
+    if count == 1:
+        return 1
+    if count == 2:
+        return 2
+    if count <= 4:
+        return 3
+    return 4
+
+
 def _strip_inline_markdown(text: str) -> str:
     """Strip inline markdown syntax for RSS/OG title extraction."""
     text = _MD_IMG.sub("", text)  # drop image syntax entirely (incl. alt)
@@ -309,6 +322,13 @@ class MomentPlugin(BasePlugin):
             "categories": dict(raw_rankings.get("categories") or {}),
         }
 
+        # stats page config (extra.moment.stats): /{moment_base}/stats/ with
+        # posting-frequency chart, top-tag bars and activity heatmaps. On by
+        # default (unlike map/rankings — it needs no external resources).
+        self.stats_cfg = {
+            "enabled": bool((moment_cfg.get("stats") or {}).get("enabled", True)),
+        }
+
         # geo / map feature config (extra.moment.map); absent or enabled=false
         # disables the feature entirely (no parsing, no badges, no map page)
         map_cfg = moment_cfg.get("map") or {}
@@ -475,6 +495,8 @@ class MomentPlugin(BasePlugin):
                 context["archive_url"] = f"{self._moment_base()}/archive/"
             if self.rankings_cfg.get("enabled") and self._ranking_groups():
                 context["rankings_url"] = f"{self._moment_base()}/rankings/"
+            if self.stats_cfg.get("enabled") and self._moments:
+                context["stats_url"] = f"{self._moment_base()}/stats/"
             if self.map_cfg.get("enabled") and any(m.has_geo for m in self._moments):
                 context["map_url"] = f"{self._moment_base()}/map/"
                 context["map_cfg"] = self._map_template_cfg()
@@ -540,6 +562,10 @@ class MomentPlugin(BasePlugin):
 
         # rankings page — rated moments per category, sorted by score
         self._render_rankings_page(site_dir, config, ranking_groups)
+
+        # stats page — posting frequency / top tags / activity heatmaps
+        if self.stats_cfg.get("enabled") and self._moments:
+            self._render_stats_page(site_dir, config)
 
         # map page — all geo moments as markers on one map (needs map enabled)
         geo_moments = [m for m in self._moments if m.has_geo]
@@ -749,6 +775,153 @@ class MomentPlugin(BasePlugin):
         output_dir = site_dir / self.config["path"] / "rankings"
         output_dir.mkdir(parents=True, exist_ok=True)
         (output_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _render_stats_page(self, site_dir, config):
+        """Render /{moment_base}/stats/ — posting frequency (Mermaid), top
+        tags (HTML bars) and per-year activity heatmaps.
+
+        The page is generated in on_post_build, so it never passes through
+        mermaid2's on_post_page: the mermaid.min.js script + init are
+        injected by the template itself when the site's mermaid assets exist
+        (mirrors the manual moment.css / moment-dialog.js handling). Chart
+        markup must stay div.mermaid — Material's bundle owns pre.mermaid
+        (its own mermaid component, lazy-loads v11) and would clash with our
+        manual init; htmlmin's `pre` attribute keeps the diagram's newlines
+        (mermaid's parser needs them) and is stripped from the output.
+        """
+        helpers = self._inject_template_helpers({})
+        moment_base = helpers["moment_base"]
+        stats_url = f"{moment_base}/stats/"
+        page_proxy = _Page("Moment Stats", stats_url)
+        template = self._jinja_env.get_template("moment_stats.html")
+        stats = self._build_stats()
+        # mermaid JS relative to /moments/stats/: site assets/javascripts/
+        # mermaid.min.js (downloaded by plugins/mermaid_assets.py); only
+        # injected when present, so a build without the mermaid plugin still
+        # renders the summary cards / tag bars / heatmaps
+        mermaid_js = ""
+        mermaid_path = Path(site_dir) / "assets" / "javascripts" / "mermaid.min.js"
+        if mermaid_path.is_file():
+            rel = os.path.relpath(mermaid_path, Path(site_dir) / self.config["path"] / "stats")
+            mermaid_js = rel.replace("\\", "/")
+        html = self._minify_html(
+            template.render(
+                page=page_proxy,
+                config=config,
+                nav=self._nav,
+                base_url=self._base_url,
+                stats=stats,
+                mermaid_js=mermaid_js,
+                labels=self._labels,
+                **helpers,
+            ),
+            config,
+        )
+        output_dir = site_dir / self.config["path"] / "stats"
+        output_dir.mkdir(parents=True, exist_ok=True)
+        (output_dir / "index.html").write_text(html, encoding="utf-8")
+
+    def _build_stats(self) -> dict:
+        """Aggregate moment stats for the /{moment_base}/stats/ page.
+
+        All values are numbers / tag names — zero presentation text lives in
+        Python (labels come from the template, like other moment pages).
+        Returns ``{totals, month_rows, top_tags, max_tag_count, year_grids}``:
+        ``month_rows`` is chronological ``{label, count}`` for the Mermaid
+        chart — gap-filled (zero-activity months included) and capped at the
+        last 24 months; ``top_tags`` is count-desc ``{name, count}`` capped
+        at 15; ``year_grids`` is per-year ``{year, rows}`` with rows = month
+        1..12 → ``{day, count, level}`` cells for the activity heatmap.
+        """
+        empty = {
+            "totals": {},
+            "month_rows": [],
+            "top_tags": [],
+            "max_tag_count": 1,
+            "year_grids": [],
+        }
+        if not self._moments:
+            return empty
+
+        total = len(self._moments)
+        images = sum(1 for m in self._moments if m.has_images)
+        years = sorted({m.date.year for m in self._moments}, reverse=True)
+        first = min(m.date for m in self._moments)
+        last = max(m.date for m in self._moments)
+
+        # per-month counts, gap-filled so the chart keeps true time spacing:
+        # a zero-activity month shows as an empty bar instead of vanishing
+        # (adjacent bars would otherwise imply consecutive months).
+        months: dict[tuple[int, int], int] = {}
+        for m in self._moments:
+            months[(m.date.year, m.date.month)] = months.get((m.date.year, m.date.month), 0) + 1
+        month_rows = []
+        y, mo = first.year, first.month
+        end = (last.year, last.month)
+        while (y, mo) <= end:
+            month_rows.append({"label": f"{y}-{mo:02d}", "count": months.get((y, mo), 0)})
+            mo += 1
+            if mo == 13:
+                y += 1
+                mo = 1
+        most_active_month = max(month_rows, key=lambda r: r["count"])["label"]
+        # the chart shows the last 24 months only, so the xychart never grows
+        # unbounded as the site ages (summary cards keep lifetime figures)
+        chart_rows = month_rows[-24:]
+        max_month_count = max((r["count"] for r in chart_rows), default=0)
+
+        # top tags (count desc, ties by name asc)
+        tag_counts: dict[str, int] = {}
+        for m in self._moments:
+            for t in m.tags:
+                tag_counts[t] = tag_counts.get(t, 0) + 1
+        top_tags = [
+            {"name": t, "count": c}
+            for t, c in sorted(tag_counts.items(), key=lambda kv: (-kv[1], kv[0]))[:15]
+        ]
+        max_tag_count = max((r["count"] for r in top_tags), default=1)
+
+        # per-year heatmaps: year → month → day → count
+        by_day: dict[int, dict[int, dict[int, int]]] = {}
+        for m in self._moments:
+            by_day.setdefault(m.date.year, {}).setdefault(m.date.month, {})
+            day_counts = by_day[m.date.year][m.date.month]
+            day_counts[m.date.day] = day_counts.get(m.date.day, 0) + 1
+        year_grids = []
+        for y in years:
+            rows = []
+            for mo in range(1, 13):
+                day_counts = by_day[y].get(mo, {})
+                # uniform 31-day rows: month lengths differ, but a fixed 31
+                # keeps the grid auto-placement aligned and the look uniform
+                # (a variable-day grid would shift every row after a short
+                # month — GitHub's week-aligned wall avoids this differently)
+                cells = [
+                    {
+                        "day": d,
+                        "count": day_counts.get(d, 0),
+                        "level": _heat_level(day_counts.get(d, 0)),
+                    }
+                    for d in range(1, 32)
+                ]
+                rows.append({"month": mo, "cells": cells})
+            year_grids.append({"year": y, "rows": rows})
+
+        return {
+            "totals": {
+                "total": total,
+                "images": images,
+                "years": len(years),
+                "first": first.strftime("%Y-%m-%d"),
+                "last": last.strftime("%Y-%m-%d"),
+                "most_active_month": most_active_month,
+                "max_month_count": max_month_count,
+            },
+            "month_rows": chart_rows,
+            "top_tags": top_tags,
+            "max_tag_count": max_tag_count,
+            "year_grids": year_grids,
+        }
 
     def _moment_meta_tag(self, moment: Moment) -> Optional[str]:
         """First tag whose meta_fields schema matches the moment's `meta:`
@@ -1579,15 +1752,21 @@ class MomentPlugin(BasePlugin):
         exts = list(config.get("markdown_extensions", [])) + [_MomentFigureExtension()]
         ext_configs = config.get("mdx_configs", {})
         html = md_lib.markdown(content, extensions=exts, extension_configs=ext_configs)
-        return self._wrap_glightbox(html)
+        # group key = the moment's source path (unique per moment) so GLightbox
+        # prev/next only cycles this moment's images, never unrelated ones
+        group = Path(source_path).with_suffix("").as_posix()
+        return self._wrap_glightbox(html, group)
 
-    def _wrap_glightbox(self, html: str) -> str:
+    def _wrap_glightbox(self, html: str, group: str) -> str:
         """Wrap <img> in <a class="glightbox"> so mkdocs-glightbox can open full-size.
 
         Moment pages render content at runtime via md_lib, bypassing glightbox's
         on_page_content post-processing, so we wrap images here ourselves.
         Images already inside a link (e.g. `[![img](src)](url)`) are left alone
-        to avoid invalid nested <a> tags.
+        to avoid invalid nested <a> tags. ``group`` becomes the ``data-gallery``
+        attribute — GLightbox groups prev/next navigation by this value, so a
+        moment's images stay one gallery (without it, ALL page images form one
+        gallery and prev/next jumps across unrelated moments).
         """
         out: list[str] = []
         last = 0
@@ -1601,7 +1780,7 @@ class MomentPlugin(BasePlugin):
             if not inside_a and src:
                 url = src.group(1)
                 if not url.startswith(("data:", "#", "javascript:")):
-                    tag = f'<a class="glightbox" href="{url}">{tag}</a>'
+                    tag = f'<a class="glightbox" href="{url}" data-gallery="{group}">{tag}</a>'
             out.append(tag)
             last = m.end()
         out.append(html[last:])

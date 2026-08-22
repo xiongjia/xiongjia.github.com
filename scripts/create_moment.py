@@ -29,6 +29,7 @@ the rclone upload (e.g. for a later ``poe bucket-upload`` / PicList).
 """
 
 import argparse
+import calendar
 import json
 import math
 import os
@@ -164,6 +165,44 @@ def exif_gps(path: Path) -> tuple[float, float] | None:
     if lat is None or lng is None or not (-90 <= lat <= 90) or not (-180 <= lng <= 180):
         return None
     return lng, lat
+
+
+def exif_camera_date(path: Path) -> tuple[str, str]:
+    """Read ``(camera, photo_date)`` from the image EXIF, else ``("", "")``.
+
+    ``camera`` = Make + Model joined (e.g. ``SONY ILCE-7M4``); ``photo_date``
+    = DateTimeOriginal normalized to ``YYYY-MM-DD HH:MM``. Missing/empty
+    values come back as ``""``; unreadable EXIF prints a warning (like
+    ``exif_gps``). EXIF survives the WebP conversion (see
+    internal/moment-design.md), but this reads the SOURCE before conversion.
+    """
+    camera = photo_date = ""
+    try:
+        from PIL import Image
+
+        with Image.open(path) as im:
+            exif = im.getexif()
+        make = str(exif.get(0x010F) or "").strip()  # Make
+        model = str(exif.get(0x0110) or "").strip()  # Model
+        parts = [p for p in (make, model) if p]
+        if parts:
+            camera = " ".join(parts)
+        raw_date = str(exif.get(0x9003) or "").strip()  # DateTimeOriginal
+        m = re.match(r"^(\d{4}):(\d{2}):(\d{2}) (\d{2}):(\d{2})(?::\d{2})?$", raw_date)
+        if m:
+            year, mon, day, hour, minute = (int(m.group(i)) for i in range(1, 6))
+            # range-check so a corrupt EXIF can never write an impossible date
+            # (e.g. "2026:99:99 99:99", or Feb 30) into the frontmatter
+            if (
+                1 <= mon <= 12
+                and 1 <= day <= calendar.monthrange(year, mon)[1]
+                and 0 <= hour <= 23
+                and 0 <= minute <= 59
+            ):
+                photo_date = f"{year:04d}-{mon:02d}-{day:02d} {hour:02d}:{minute:02d}"
+    except Exception as exc:
+        print(f"  [WARN]  {path.name}: cannot read EXIF: {exc}", file=sys.stderr)
+    return camera, photo_date
 
 
 def _stage_webp(src: Path, webp: Path, quality: int) -> bool:
@@ -354,6 +393,7 @@ def main():
     image_links: list[str] = []
     inline_captions: list[str] = []
     gps: tuple[float, float] | None = None
+    camera = photo_date = ""  # EXIF Make/Model + DateTimeOriginal → meta
     if args.image:
         # R2 credentials / BUCKET_* overrides come from .env (like bucket-upload)
         load_env_files()
@@ -434,6 +474,13 @@ def main():
             inline_captions.append(inline.strip() if sep else "")
             if gps is None and args.lng is None:
                 gps = exif_gps(Path(path.strip()).expanduser())
+            if not camera or not photo_date:
+                # EXIF Make/Model + DateTimeOriginal → meta (never the date:)
+                cam, pdate = exif_camera_date(Path(path.strip()).expanduser())
+                if cam and not camera:
+                    camera = cam
+                if pdate and not photo_date:
+                    photo_date = pdate
 
         if image_links and not bucket_is_enabled(cfg):
             print(
@@ -492,8 +539,8 @@ def main():
         lines.append(f"lat: {lat:.6f}")
     if args.region:
         lines.append(f"region: {args.region}")
+    meta: dict[str, str] = {}
     if args.meta:
-        meta = {}
         for item in args.meta:
             if "=" not in item:
                 parser.error(f"--meta expects KEY=VALUE, got {item!r}")
@@ -508,6 +555,17 @@ def main():
                     file=sys.stderr,
                 )
             meta[key] = _meta_value(v)
+    # EXIF camera/photo date fill meta only when the CLI did not set them
+    # (explicit --meta wins). The moment ``date:`` is never overridden.
+    # _yaml_scalar (not _meta_value): these must ALWAYS round-trip as strings
+    # — _meta_value deliberately keeps bare ints for ratings.
+    if camera and "camera" not in meta:
+        meta["camera"] = _yaml_scalar(camera)
+        print(f"  Camera:  {camera} (from EXIF)")
+    if photo_date and "photo_date" not in meta:
+        meta["photo_date"] = _yaml_scalar(photo_date)
+        print(f"  Photo:   {photo_date} (from EXIF)")
+    if meta:
         lines.append("meta:")
         for k, v in meta.items():
             # the KEY rides bare into ``  {key}: {value}`` — quote it when it

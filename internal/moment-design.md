@@ -697,3 +697,13 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
   bucket upload, `--no-upload`), geo (`--place/--lng/--lat/--crs/--region`)
   and EXIF GPS extraction (`--image` fills `lng`/`lat` when absent;
   `--crs gcj02` prints the converted WGS-84 coords).
+- **EXIF survives WebP optimization (verified 2026-08-22)**: `convert_to_webp`
+  (`scripts/optimize_images.py`) reads `im.info["exif"]` and passes it to
+  `save_kwargs["exif"]`, so Pillow writes the full original EXIF blob into the
+  WebP EXIF chunk — Make / Model / DateTimeOriginal / GPS all survive the
+  conversion (tested: JPEG → WebP round-trip keeps SONY / ILCE-7M4 /
+  2026:08:01 15:30:00 / GPS IFD keys 1-4). `create_moment.py` reads GPS from
+  the **source** image before conversion, so future camera/date extraction
+  (Phase 3 Multi-Image Gallery) can equally read the source at creation time
+  — zero new dependencies (Pillow `getexif()` + `get_ifd(0x8825)`), no need
+  to read back from the bucket WebP.

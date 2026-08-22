@@ -1,0 +1,242 @@
+{# moment_stats.html — /{moment_base}/stats/ posting statistics page.
+   Generated in on_post_build, so mermaid2's on_post_page never sees it: the
+   mermaid.min.js <script> + init are injected here ({{ mermaid_js }}) only
+   when the site's mermaid assets exist. Label text lives in this template
+   (no Chinese in Python), matching the other moment templates. #}
+{% extends "main.html" %}
+
+{% block extrahead %}
+{{ super() }}
+<style>
+    .moment-stats__cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(10em, 1fr));
+        gap: 0.75em;
+        margin: 0 0 1.5em;
+    }
+    .moment-stats__card {
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 8px;
+        padding: 0.7em 1em;
+    }
+    .moment-stats__card b {
+        display: block;
+        font-size: 1.5em;
+        line-height: 1.25;
+        font-weight: 700;
+    }
+    .moment-stats__card span {
+        font-size: 0.8em;
+        color: var(--md-default-fg-color--light, #757575);
+    }
+    /* time-span card: the value is a range, not a number — split at the ~ so
+       each date stays on its own line (no mid-string wrap) */
+    .moment-stats__card--range b {
+        font-size: 1em;
+        line-height: 1.4;
+        white-space: nowrap;
+    }
+    .moment-stats__section { margin: 1.75em 0; }
+    .moment-stats__section h2 { font-size: 1.15em; margin: 0 0 0.75em; }
+    .moment-stats__year {
+        font-size: 1em;
+        font-weight: 600;
+        margin: 0.75em 0 0.5em;
+    }
+    .moment-stats__note {
+        font-size: 0.7em;
+        font-weight: 400;
+        color: var(--md-default-fg-color--light, #757575);
+        margin-left: 0.5em;
+    }
+    /* top-tag bars */
+    .moment-stats__tagbar {
+        display: grid;
+        grid-template-columns: max-content 1fr 3em;
+        gap: 0.4em 0.75em;
+        align-items: center;
+        margin: 0.5em 0;
+    }
+    .moment-stats__tagbar-name {
+        font-size: 0.9em;
+        white-space: nowrap;
+        text-align: right;
+    }
+    .moment-stats__tagbar-track {
+        height: 0.9em;
+        background: var(--md-default-fg-color--lightest, #e0e0e0);
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .moment-stats__tagbar-fill {
+        height: 100%;
+        border-radius: 4px;
+        background: var(--md-typeset-a-color, #448aff);
+    }
+    .moment-stats__tagbar-count {
+        font-size: 0.8em;
+        color: var(--md-default-fg-color--light, #757575);
+        text-align: right;
+    }
+    /* per-year activity heatmap: 12 rows (months) × 31 cols (days) */
+    .moment-stats__heatmap {
+        display: grid;
+        grid-template-columns: 2.4em repeat(31, 1fr);
+        gap: 2px;
+        margin: 0.5em 0 1em;
+    }
+    .moment-stats__heatmap .m-label {
+        font-size: 0.7em;
+        color: var(--md-default-fg-color--light, #757575);
+        text-align: right;
+        padding-right: 0.4em;
+        line-height: 1.15;
+        white-space: nowrap;
+        align-self: center;
+    }
+    .moment-stats__cell {
+        aspect-ratio: 1;
+        border-radius: 2px;
+        background: var(--md-default-fg-color--lightest, #e0e0e0);
+    }
+    .moment-stats__cell.l1 { background: #a8d5ba; }
+    .moment-stats__cell.l2 { background: #6cbf8e; }
+    .moment-stats__cell.l3 { background: #3aa263; }
+    .moment-stats__cell.l4 { background: #1f7a43; }
+    body[data-md-color-scheme="slate"] .moment-stats__cell { background: rgba(255, 255, 255, 0.12); }
+    body[data-md-color-scheme="slate"] .moment-stats__cell.l1 { background: #2e6b4f; }
+    body[data-md-color-scheme="slate"] .moment-stats__cell.l2 { background: #2f8a5e; }
+    body[data-md-color-scheme="slate"] .moment-stats__cell.l3 { background: #3aa263; }
+    body[data-md-color-scheme="slate"] .moment-stats__cell.l4 { background: #5cc98a; }
+    .moment-stats__legend {
+        display: flex;
+        gap: 0.4em;
+        align-items: center;
+        font-size: 0.75em;
+        color: var(--md-default-fg-color--light, #757575);
+        margin-top: 0.25em;
+    }
+    .moment-stats__legend .moment-stats__cell { width: 0.9em; aspect-ratio: 1; }
+</style>
+{% endblock %}
+
+{% block content %}
+<article class="moment-stats">
+    <h1>📊 {{ page.title }}</h1>
+
+    <div class="moment-stats__cards">
+        <div class="moment-stats__card"><b>{{ stats.totals.total }}</b><span>Moment 总数</span></div>
+        <div class="moment-stats__card"><b>{{ stats.totals.images }}</b><span>含图 Moment</span></div>
+        <div class="moment-stats__card"><b>{{ stats.totals.years }}</b><span>活跃年份</span></div>
+        <div class="moment-stats__card"><b>{{ stats.totals.most_active_month }}</b><span>最活跃月份</span></div>
+        <div class="moment-stats__card moment-stats__card--range">
+            <b>{{ stats.totals.first }} ~<br>{{ stats.totals.last }}</b><span>时间跨度</span>
+        </div>
+    </div>
+
+    {% if stats.month_rows | length > 1 %}
+    <section class="moment-stats__section">
+        <h2>月度发文频率<span class="moment-stats__note">最近 24 个月(汇总卡片为终身口径)</span></h2>
+        {# div.mermaid (NOT pre.mermaid): Material's bundle owns pre.mermaid
+           (its own mermaid component) and would clash with our manual init —
+           div.mermaid is invisible to it. The `pre` attribute is htmlmin's
+           pre_attr convention: content is preserved verbatim (newlines stay
+           for mermaid's parser) and the attribute is stripped from output. #}
+        <div class="mermaid" pre>
+xychart-beta
+    title "Posting Frequency by Month"
+    x-axis [{% for r in stats.month_rows %}{{ "\"" ~ r.label ~ "\"" }}{{ ", " if not loop.last }}{% endfor %}]
+    y-axis "moments" 0 --> {{ stats.totals.max_month_count + 2 }}
+    bar [{% for r in stats.month_rows %}{{ r.count }}{{ ", " if not loop.last }}{% endfor %}]
+        </div>
+    </section>
+    {% endif %}
+
+    {% if stats.top_tags %}
+    <section class="moment-stats__section">
+        <h2>热门标签 Top {{ stats.top_tags | length }}</h2>
+        <div class="moment-stats__tagbar">
+            {% for t in stats.top_tags %}
+            <span class="moment-stats__tagbar-name">{{ t.name }}</span>
+            <div class="moment-stats__tagbar-track">
+                <div class="moment-stats__tagbar-fill"
+                     style="width: {{ (t.count / stats.max_tag_count * 100) | round(1) }}%"></div>
+            </div>
+            <span class="moment-stats__tagbar-count">{{ t.count }}</span>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {% if stats.year_grids %}
+    <section class="moment-stats__section">
+        <h2>每日发文热力图</h2>
+        {% for g in stats.year_grids %}
+        <h3 class="moment-stats__year">{{ g.year }}</h3>
+        {# Uniform 31-day rows per month — variable real day counts would
+           misalign grid auto-placement (each short month shifts the next
+           label), and the trailing transparent gaps looked inconsistent.
+           Days 29-31 of short months simply stay empty (gray) cells. #}
+        <div class="moment-stats__heatmap">
+            {% for row in g.rows %}
+            <div class="m-label">{{ row.month }}月</div>
+            {% for cell in row.cells %}
+            <div class="moment-stats__cell l{{ cell.level }}"
+                 {% if cell.count %}role="img"
+                 aria-label="{{ g.year }}-{{ "%02d" | format(row.month) }}-{{ "%02d" | format(cell.day) }} · {{ cell.count }} 条"
+                 title="{{ g.year }}-{{ "%02d" | format(row.month) }}-{{ "%02d" | format(cell.day) }} · {{ cell.count }} 条"{% endif %}></div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+        {% endfor %}
+        <div class="moment-stats__legend">
+            <span>少</span>
+            <span class="moment-stats__cell l1"></span>
+            <span class="moment-stats__cell l2"></span>
+            <span class="moment-stats__cell l3"></span>
+            <span class="moment-stats__cell l4"></span>
+            <span>多</span>
+        </div>
+    </section>
+    {% endif %}
+</article>
+{% endblock %}
+
+{% block scripts %}
+{{ super() }}
+{% if mermaid_js %}
+<script src="{{ mermaid_js }}"></script>
+<script>
+    // Render the xychart manually (not startOnLoad) so we can re-render with
+    // the matching theme when the site's color scheme toggles. Material puts
+    // the scheme on <body> (data-md-color-scheme), so we read and observe the
+    // body. mermaid's built-in themes: default (light) / dark — the site's
+    // dark palette needs the dark theme or the axis labels become unreadable.
+    (function () {
+        const root = document.body;
+        const chart = document.querySelector(".mermaid");
+        if (!chart || typeof mermaid === "undefined") return;
+        const source = chart.textContent;
+        const themes = { default: "default", slate: "dark" };
+        const currentTheme = () =>
+            themes[root.getAttribute("data-md-color-scheme")] || "default";
+        const render = () => {
+            mermaid.initialize({ startOnLoad: false, theme: currentTheme() });
+            mermaid
+                .render("mm-chart-" + Date.now(), source)
+                .then((res) => {
+                    chart.innerHTML = res.svg;
+                })
+                .catch((err) => {
+                    console.error("mermaid render failed:", err);
+                });
+        };
+        render();
+        new MutationObserver(render).observe(root, {
+            attributes: true,
+            attributeFilter: ["data-md-color-scheme"]
+        });
+    })();
+</script>
+{% endif %}
+{% endblock %}
