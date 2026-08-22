@@ -78,7 +78,9 @@
         color: var(--md-default-fg-color--light, #757575);
         text-align: right;
     }
-    /* per-year activity heatmap: 12 rows (months) × 31 cols (days) */
+    /* per-year activity heatmap: 12 rows (months) × 31 cols (days).
+       Color ramp is shared with the Running Track heatmap
+       (docs/assets/stylesheets/running.css) — keep both in sync. */
     .moment-stats__heatmap {
         display: grid;
         grid-template-columns: 2.4em repeat(31, 1fr);

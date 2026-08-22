@@ -1,0 +1,20 @@
+/* ============================================================
+ * running.css — Running Track 跑步记录热力图样式
+ * 配色与 Moment 状态页热力图（plugins/mkdocs_moment/templates/
+ * moment_stats.html 的 .moment-stats__cell）保持一致，亮暗主题
+ * 双套取值，暗色经 [data-md-color-scheme="slate"] 覆盖。
+ * 调整此处绿色阶时请同步 moment_stats.html，反之亦然。
+ * ============================================================ */
+
+.running-heatmap .rh-cell {
+    background: var(--md-default-fg-color--lightest, #e0e0e0);
+}
+.running-heatmap .rh-cell.l1 { background: #a8d5ba; }
+.running-heatmap .rh-cell.l2 { background: #6cbf8e; }
+.running-heatmap .rh-cell.l3 { background: #3aa263; }
+.running-heatmap .rh-cell.l4 { background: #1f7a43; }
+[data-md-color-scheme="slate"] .running-heatmap .rh-cell { background: rgba(255, 255, 255, 0.12); }
+[data-md-color-scheme="slate"] .running-heatmap .rh-cell.l1 { background: #2e6b4f; }
+[data-md-color-scheme="slate"] .running-heatmap .rh-cell.l2 { background: #2f8a5e; }
+[data-md-color-scheme="slate"] .running-heatmap .rh-cell.l3 { background: #3aa263; }
+[data-md-color-scheme="slate"] .running-heatmap .rh-cell.l4 { background: #5cc98a; }
