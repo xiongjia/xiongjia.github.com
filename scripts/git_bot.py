@@ -166,7 +166,7 @@ def create_worktree(branch: str, workdir: Path) -> None:
 def remove_worktree(workdir: Path) -> None:
     if not workdir.exists():
         return
-    for name in (".venv", ".env", ".env.local", "docs/assets/bucket", ".running"):
+    for name in (".venv", ".env", ".env.local", "docs/assets/bucket"):
         link = workdir / name
         if link.is_symlink():
             link.unlink()
@@ -195,13 +195,6 @@ def symlink_env(workdir: Path) -> None:
         ".env": False,
         ".env.local": False,
         "docs/assets/bucket": True,  # bucket local copies (build/preview)
-        # Garmin incremental cache (sync_running.py): the worktree only
-        # checks out tracked files, so without this a fresh worktree has no
-        # cache → every `poe bot run sync-running` full-fetches all activity
-        # details. Symlinking keeps the fetch incremental across runs (the
-        # cache lives in the main repo); it's git-ignored, so nothing gets
-        # staged by `git add -A` (commit_workdir resets it defensively too).
-        ".running": True,
     }
     for name, is_dir in links.items():
         src = REPO_ROOT / name
@@ -264,7 +257,6 @@ def commit_workdir(workdir: Path, message: str, body: list[str]) -> bool:
         ".env",
         ".env.local",
         "docs/assets/bucket",
-        ".running",
         cwd=workdir,
         check=False,
     )
@@ -282,7 +274,7 @@ def _noop_commit(proc: subprocess.CompletedProcess) -> bool:
     git prints two distinct no-op messages: ``nothing to commit, working
     tree clean`` (clean tree) and ``nothing added to commit but untracked
     files present`` (only untracked leftovers, e.g. the worktree-only
-    symlinks like ``.running`` that we unstage after ``git add -A``). The
+    symlinks that we unstage after ``git add -A``). The
     second one contains ``nothing added to commit``, NOT the ``nothing to
     commit`` substring — a guard matching only the first would raise
     BotError on a perfectly fine no-op run."""
@@ -303,10 +295,20 @@ def _git_auth_env() -> dict[str, str]:
 
 _PUSH_RETRIABLE = (
     "remote end closed",
+    "remote end hung",  # "the remote end hung up unexpectedly"
+    "rpc failed",  # "error: RPC failed; curl 52 Empty reply from server"
+    "empty reply",
+    "unexpected disconnect",
+    "hung up",
     "http2 framing",
     "timed out",
-    "connection",
+    "connection",  # broad: failed to connect / aborted / closed / reset…
+    "connection reset",
+    "connection refused",
+    "reset by peer",
     "could not read from remote",
+    "could not resolve host",
+    "early eof",
 )
 
 
@@ -320,7 +322,7 @@ def push_branch(workdir: Path, branch: str) -> None:
     """
     args = _git_proxy_args()
     last: BotError | None = None
-    for attempt in range(3):
+    for attempt in range(5):
         try:
             git(*args, "push", "-u", "origin", branch, cwd=workdir, env=_git_auth_env())
             return
@@ -329,10 +331,10 @@ def push_branch(workdir: Path, branch: str) -> None:
             if not any(s in str(exc).lower() for s in _PUSH_RETRIABLE):
                 raise
             print(
-                f"⚠ push failed ({attempt + 1}/3): {exc} — retrying…",
+                f"⚠ push failed ({attempt + 1}/5): {exc} — retrying…",
                 file=sys.stderr,
             )
-            time.sleep(3 * (attempt + 1))
+            time.sleep(min(3 * (attempt + 1), 20))
     raise last
 
 

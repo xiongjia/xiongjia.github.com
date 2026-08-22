@@ -7,7 +7,8 @@ client-side by `docs/notes/health/running-route.js` from the R2 bucket copy
 the build itself is offline and CI needs no sync step; the macros only embed
 the bucket URL + map config as data attributes for the JS. The git-ignored
 `.running/splits.json` is the sync pipeline's cache (Garmin API cache +
-upload staging) and is never read at build time.
+upload staging) and is never read at build time; on a cold start (fresh bot
+worktree / clone) sync_running.py seeds it from the R2 bucket copy.
 """
 
 import html

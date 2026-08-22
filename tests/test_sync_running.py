@@ -207,6 +207,110 @@ def test_cached_detail_ids_requires_real_details():
     assert sr._cached_detail_ids(acts) == {1}
 
 
+def _bucket_cfg() -> dict:
+    return {
+        "mappings": [
+            {
+                "prefix": "assets/bucket/running/",
+                "bucket": "web-assets",
+                "remote_prefix": "data/metadata/running",
+            }
+        ],
+        "running": {"data_key": "splits.json"},
+    }
+
+
+def test_seed_cache_skips_when_warm(tmp_path, monkeypatch):
+    """A non-empty local cache means no bucket round-trip."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    cache.write_text('{"activities": []}', encoding="utf-8")
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+
+    called = []
+    monkeypatch.setattr(sr.subprocess, "call", lambda *a, **k: called.append(a) or 0)
+    sr._seed_cache_from_bucket()
+    assert called == []
+
+
+def test_seed_cache_pulls_bucket_when_missing(tmp_path, monkeypatch):
+    """Cold start: rclone copyto bucket -> local cache."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(sr, "load_extra", lambda *a, **k: _bucket_cfg())
+    monkeypatch.setattr(sr, "resolve_remote", lambda *a, **k: "r2")
+
+    cmds = []
+    monkeypatch.setattr(sr.subprocess, "call", lambda *a, **k: cmds.append(a[0]) or 0)
+    sr._seed_cache_from_bucket()
+
+    assert cmds == [
+        [
+            "rclone",
+            "copyto",
+            "r2:web-assets/data/metadata/running/splits.json",
+            str(cache),
+            "--s3-no-check-bucket",
+            "--quiet",
+        ],
+    ]
+
+
+def test_seed_cache_rclone_failure_does_not_raise(tmp_path, monkeypatch, capsys):
+    """A failed seed (e.g. no bucket creds) falls back to a full sync."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(sr, "load_extra", lambda *a, **k: _bucket_cfg())
+    monkeypatch.setattr(sr, "resolve_remote", lambda *a, **k: "r2")
+    monkeypatch.setattr(sr.subprocess, "call", lambda *a, **k: 1)  # rclone fails
+
+    sr._seed_cache_from_bucket()  # must not raise
+    assert "full sync" in capsys.readouterr().err
+
+
+def test_seed_cache_missing_mapping_skips(tmp_path, monkeypatch):
+    """No running mapping configured -> no rclone call."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(sr, "load_extra", lambda *a, **k: {"mappings": []})
+
+    called = []
+    monkeypatch.setattr(sr.subprocess, "call", lambda *a, **k: called.append(a) or 0)
+    sr._seed_cache_from_bucket()
+    assert called == []
+
+
+def test_seed_cache_timeout_falls_back(tmp_path, monkeypatch, capsys):
+    """A hung rclone (subprocess.TimeoutExpired) falls back to a full sync."""
+    import subprocess as _subprocess
+
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+    monkeypatch.setattr(sr, "load_extra", lambda *a, **k: _bucket_cfg())
+    monkeypatch.setattr(sr, "resolve_remote", lambda *a, **k: "r2")
+
+    def _hang(*a, **k):
+        raise _subprocess.TimeoutExpired(cmd=a[0], timeout=k.get("timeout"))
+
+    monkeypatch.setattr(sr.subprocess, "call", _hang)
+    sr._seed_cache_from_bucket()  # must not raise
+    assert "falling back to full sync" in capsys.readouterr().err
+
+
 # ---------------------------------------------------------------------------
 #  running_macros: data helpers + rendering
 # ---------------------------------------------------------------------------
