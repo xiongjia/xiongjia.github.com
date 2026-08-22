@@ -30,9 +30,12 @@ Python `.venv/`, Node `node_modules/`).
 ## Others
 
 - **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
-  urfave/cli v2: `greet` command with `--name` flag (originally under
+  urfave/cli **v3** (migrated from v2): root command with global `--name` flag,
+  subcommands (`hello`, `bye` alias `b`), nested commands (`team add/remove`),
+  per-command flags, strict arg validation with exit code 2; `Justfile` recipes
+  (`just build`/`run`/`fmt`/`vet`/`test`/`clean`); originally under
   `research/experiments/`, migrated here; `go.sum` tracked for reproducible
-  builds) · created 2026-08-03 · status `experimental`
+  builds · created 2026-08-03 · status `working`
 - **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS
   generic map view component on a local Protomaps basemap (MapLibre GL JS +
   pmtiles + @protomaps/basemaps): env-configured local cache (gitignored

@@ -9,5 +9,9 @@
 *.test
 *.out
 vendor/
-# Local build output (binary name matches the module directory)
+# Local build output (just build → ./bin/, plain `go build .` → ./go-cli-urfave)
+bin/
 /go-cli-urfave
+# VS Code debug config: re-include .vscode/ so the launch config is committed
+# with the prototype (overrides a global core.excludesFile ignore of .vscode)
+!.vscode/

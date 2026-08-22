@@ -1,0 +1,33 @@
+# Command recipes for the go-cli-urfave prototype.
+# Requires: just (https://github.com/casey/just), go.
+# All recipes run inside this prototype directory: `just build`
+
+# Show available recipes
+default:
+    @just --list
+
+# Compile the CLI into ./bin/greet
+build:
+    go build -o bin/greet .
+
+# Build and run the CLI; pass through args, e.g. `just run hello -n Ada`
+run *args:
+    go run . {{ args }}
+
+# Format the source code (Go + the Justfile itself)
+fmt:
+    just --fmt
+    gofmt -w .
+    go vet ./...
+
+# Run the Go static analyzer
+vet:
+    go vet ./...
+
+# Run the unit tests (none yet, so this is a no-op placeholder)
+test:
+    go test ./...
+
+# Remove build artifacts
+clean:
+    @if [ -d bin ]; then rm -rf bin && echo "Removed build artifacts (./bin)"; else echo "No build artifacts to remove"; fi

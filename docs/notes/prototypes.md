@@ -18,7 +18,7 @@ hide:
 | --------------------------------------------------- | --------------------------------- | --------------- | ---------- |
 | [ali-oss-client](#ali-oss-client)                   | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-01 |
 | [prototype-example](#prototype-example)             | [Others](#others)                 | 🟡 Experimental | 2026-08-01 |
-| [go-cli-urfave](#go-cli-urfave)                     | [Others](#others)                 | 🟡 Experimental | 2026-08-03 |
+| [go-cli-urfave](#go-cli-urfave)                     | [Others](#others)                 | 🟢 Working      | 2026-08-03 |
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
@@ -77,9 +77,13 @@ ______________________________________________________________________
 
 ### go-cli-urfave
 
-Go CLI 原型，用 `urfave/cli` v2 框架写的简单命令行程序。
+Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfave.org/>）写的命令行程序，已从 v2 迁移至 v3。
 
-- `greet` 命令，支持 `--name` 参数
+- 根命令 `greet`：全局 `--name` / `-n` 参数（默认 `World`）与根 Action
+- 子命令：`hello` / `bye`（`bye` 带别名 `b`；`hello` 不加 `h` 别名以避免与内建 `help` 冲突）
+- 嵌套命令：`team add <name> --role <role>` / `team remove <name>`，演示二级命令树、局部参数与位置参数（缺参、多余参数、未知命令或空 `--name` 时报错并退出码 2）
+- `Justfile`：`just build` / `run` / `fmt` / `vet` / `test` / `clean`
+- VS Code 调试：自带 `.vscode/launch.json`（Go/Delve），README 含调试说明
 - 原为研究 [Lux](https://github.com/iawia002/lux) 时在 `research/experiments/` 下的实验代码，已迁移至此
 - `go.sum` 纳入版本控制，保证依赖可复现构建
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/go-cli-urfave)
