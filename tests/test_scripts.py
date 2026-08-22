@@ -208,6 +208,66 @@ def test_optimize_images_convert_to_custom_dst(tmp_path):
     assert default == src.with_suffix(".webp") and default.exists()
 
 
+# --- create_moment EXIF ---
+
+
+def test_exif_camera_date_extracts_make_model_datetime(tmp_path):
+    from PIL import Image
+
+    from scripts import create_moment
+
+    src = tmp_path / "photo.jpg"
+    exif = Image.Exif()
+    exif[0x010F] = "Apple"  # Make
+    exif[0x0110] = "iPhone 15 Pro"  # Model
+    exif[0x9003] = "2026:08:01 15:30:00"  # DateTimeOriginal
+    Image.new("RGB", (32, 32), (200, 30, 30)).save(src, "JPEG", exif=exif)
+
+    camera, photo_date = create_moment.exif_camera_date(src)
+    assert camera == "Apple iPhone 15 Pro"
+    assert photo_date == "2026-08-01 15:30"
+
+
+def test_exif_camera_date_missing_fields(tmp_path):
+    from PIL import Image
+
+    from scripts import create_moment
+
+    # no EXIF at all → both empty
+    plain = tmp_path / "plain.jpg"
+    Image.new("RGB", (16, 16)).save(plain, "JPEG")
+    assert create_moment.exif_camera_date(plain) == ("", "")
+
+    # model only → camera is just the model, no date
+    model_only = tmp_path / "model.jpg"
+    exif = Image.Exif()
+    exif[0x0110] = "X-T5"  # Model
+    Image.new("RGB", (16, 16)).save(model_only, "JPEG", exif=exif)
+    camera, photo_date = create_moment.exif_camera_date(model_only)
+    assert camera == "X-T5"
+    assert photo_date == ""
+
+
+def test_exif_camera_date_rejects_impossible_datetime(tmp_path):
+    from PIL import Image
+
+    from scripts import create_moment
+
+    # corrupt EXIF date — must be dropped
+    src = tmp_path / "bad.jpg"
+    exif = Image.Exif()
+    exif[0x9003] = "2026:99:99 99:99"
+    Image.new("RGB", (16, 16)).save(src, "JPEG", exif=exif)
+    assert create_moment.exif_camera_date(src) == ("", "")
+
+    # day exceeds the month's real length (Feb 2026 has 28 days) — dropped too
+    feb = tmp_path / "feb30.jpg"
+    exif = Image.Exif()
+    exif[0x9003] = "2026:02:30 10:00"
+    Image.new("RGB", (16, 16)).save(feb, "JPEG", exif=exif)
+    assert create_moment.exif_camera_date(feb) == ("", "")
+
+
 # --- add_weight_week ---
 
 

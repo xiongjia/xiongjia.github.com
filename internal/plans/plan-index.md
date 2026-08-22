@@ -62,7 +62,7 @@ tags: [refactor, mkdocs]
 
 ### Site Feature
 
-- [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location ✅ + Map ✅ done; Gallery, Search, Stats, City-Log, JSON-Feed not started
+- [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location ✅ + Map ✅ + multi-image ✅ + lightbox grouping ✅ + EXIF camera/date ✅ + Stats ✅; cancelled: Grid/Masonry (G1); parked: search filter, City-Log (G5/G6); open: JSON Feed, auto-tag, streak stat
 - [tools-assets-externalize.md](./tools-assets-externalize.md) — Notes Tools: extract inline JS/CSS from tool pages into standalone assets (deferred)
 - [mkdocs-media-archive.md](./mkdocs-media-archive.md) — MkDocs Media Archive: 用 MkDocs 归档看过的书/影片/游戏（调研方案 → 数据模型 → 索引页）
 - [research-index-status.md](./research-index-status.md) — Research Index Status: 给 research topic 增加状态维度（active/done/stale/draft），索引页加状态列

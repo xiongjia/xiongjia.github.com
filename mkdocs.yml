@@ -179,6 +179,13 @@ extra:
           title: 美食榜
         film:
           title: 影院榜
+    # Stats page (extra.moment.stats): /moments/stats/ with monthly posting
+    # frequency (Mermaid — injected manually because on_post_build pages
+    # bypass mermaid2's on_post_page), top-tag bars and per-year activity
+    # heatmaps. On by default (needs no external resources); disable with
+    # enabled: false.
+    stats:
+      enabled: true
     # Geo / map feature. Disable entirely with enabled: false (or by removing
     # the map block) — no geo parsing, no badges, no /moments/map/ page.
     # NOTE: the widget/tiles/glyphs are served from the vine R2 bucket, whose

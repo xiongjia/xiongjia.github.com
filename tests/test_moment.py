@@ -565,6 +565,147 @@ def test_on_page_context_injects_archive_url():
     assert context["archive_url"] == "/moments/archive/"
 
 
+def test_on_page_context_injects_stats_url():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = [_moment(0)]
+    plugin._labels = {}
+    page = SimpleNamespace(meta={"moment_type": PageType.TIMELINE})
+    config = SimpleNamespace(
+        theme=SimpleNamespace(get_env=lambda: None), site_url="https://example.com"
+    )
+    context = {}
+    plugin.on_page_context(context, page, config, None)
+    assert context["stats_url"] == "/moments/stats/"
+
+
+def test_on_page_context_skips_stats_url_when_disabled():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments", "stats": {"enabled": False}})
+    plugin._moments = [_moment(0)]
+    plugin._labels = {}
+    page = SimpleNamespace(meta={"moment_type": PageType.TIMELINE})
+    config = SimpleNamespace(
+        theme=SimpleNamespace(get_env=lambda: None), site_url="https://example.com"
+    )
+    context = {}
+    plugin.on_page_context(context, page, config, None)
+    assert "stats_url" not in context
+
+
+def test_on_post_build_generates_stats_page(tmp_path):
+    """/moments/stats/ is generated when moments exist (stats on by default)."""
+    plugin, _ = _make_plugin([_moment(0), _moment(1)])
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+    assert (tmp_path / "moments" / "stats" / "index.html").exists()
+
+
+def test_on_post_build_skips_stats_when_disabled(tmp_path):
+    plugin, _ = _make_plugin([_moment(0)], stats={"enabled": False})
+    plugin.on_post_build({"site_dir": str(tmp_path)})
+    assert not (tmp_path / "moments" / "stats").exists()
+
+
+def test_build_stats_aggregates_totals_months_tags_heatmap():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = [
+        _moment(0, tags=("general", "food")),  # 2026-07-30
+        _moment(1, tags=("general", "food")),  # 2026-07-30
+        _moment(2, tags=("general", "film")),  # 2026-07-30
+        _rss_moment(
+            "2026-08-01-0900",
+            datetime(2026, 8, 1, 9, 0),
+            "/moments/2026-08/01-0900/",
+            "aug",
+            "<p>aug</p>",
+        ),
+    ]
+    stats = plugin._build_stats()
+    assert stats["totals"]["total"] == 4
+    assert stats["totals"]["first"] == "2026-07-30"
+    assert stats["totals"]["last"] == "2026-08-01"
+    assert stats["totals"]["years"] == 1
+    assert stats["totals"]["most_active_month"] == "2026-07"
+    assert stats["totals"]["max_month_count"] == 3
+    # chronological month rows
+    assert [r["label"] for r in stats["month_rows"]] == ["2026-07", "2026-08"]
+    assert [r["count"] for r in stats["month_rows"]] == [3, 1]
+    # top tags: count desc, ties by name (the _rss_moment carries no tags)
+    assert [t["name"] for t in stats["top_tags"]] == ["general", "food", "film"]
+    assert stats["top_tags"][0]["count"] == 3
+    assert stats["max_tag_count"] == 3
+    # heatmap: one year grid per active year, 12 month rows, 31 day cells
+    # each (uniform rows — short months just leave empty cells)
+    assert [g["year"] for g in stats["year_grids"]] == [2026]
+    grid = stats["year_grids"][0]
+    assert len(grid["rows"]) == 12
+    assert all(len(r["cells"]) == 31 for r in grid["rows"])
+    # 2026-07-30 has 3 moments → level 3; 2026-08-01 has 1 → level 1
+    july = grid["rows"][6]  # month 7
+    assert july["cells"][29]["day"] == 30 and july["cells"][29]["count"] == 3
+    assert july["cells"][29]["level"] == 3
+    aug = grid["rows"][7]  # month 8
+    assert aug["cells"][0]["count"] == 1 and aug["cells"][0]["level"] == 1
+    assert aug["cells"][1]["count"] == 0 and aug["cells"][1]["level"] == 0
+
+
+def test_build_stats_gap_fills_zero_months():
+    """Zero-activity months between active ones stay in the chart as 0 bars
+    (adjacent bars would otherwise imply consecutive months)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = [
+        _moment(0),  # 2026-07-30
+        _rss_moment(
+            "2026-09-05-1200",
+            datetime(2026, 9, 5, 12, 0),
+            "/moments/2026-09/05-1200/",
+            "sep",
+            "<p>sep</p>",
+        ),
+    ]
+    stats = plugin._build_stats()
+    assert [r["label"] for r in stats["month_rows"]] == ["2026-07", "2026-08", "2026-09"]
+    assert [r["count"] for r in stats["month_rows"]] == [1, 0, 1]
+    assert stats["totals"]["most_active_month"] == "2026-07"  # tie → earliest
+
+
+def test_build_stats_chart_capped_at_24_months():
+    """The chart only shows the last 24 months (summary cards keep lifetime)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    # one moment per month across 30 months
+    plugin._moments = [
+        _rss_moment(
+            f"2024-{mo:02d}-15-1200",
+            datetime(2024 + (mo - 1) // 12, (mo - 1) % 12 + 1, 15, 12, 0),
+            f"/moments/2024-{mo:02d}/15-1200/",
+            f"m{mo}",
+            "<p>x</p>",
+        )
+        for mo in range(1, 31)
+    ]
+    stats = plugin._build_stats()
+    assert len(stats["month_rows"]) == 24
+    assert stats["month_rows"][0]["label"] == "2024-07"
+    assert stats["month_rows"][-1]["label"] == "2026-06"
+    # lifetime totals unaffected by the chart cap
+    assert stats["totals"]["total"] == 30
+    assert stats["totals"]["most_active_month"] == "2024-01"  # earliest of 30 ties
+
+
+def test_build_stats_empty():
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = []
+    stats = plugin._build_stats()
+    assert stats["totals"] == {}
+    assert stats["month_rows"] == []
+    assert stats["top_tags"] == []
+    assert stats["year_grids"] == []
+
+
 def test_on_page_context_skips_archive_url_when_no_moments():
     plugin = MomentPlugin()
     plugin._load_config({"path": "moments"})
@@ -1009,8 +1150,24 @@ def test_render_content_caption_glightbox_wrapped():
     html = plugin._render_content(
         "![Alt](./x.webp)\ncaption", _render_config(), "moments/2026-07/30-1000.md"
     )
-    assert '<a class="glightbox" href="/moments/2026-07/x.webp">' in html
+    assert '<a class="glightbox" href="/moments/2026-07/x.webp"' in html
+    # GLightbox grouping key: the moment's source path (without .md) so
+    # prev/next only cycles this moment's images, never unrelated ones
+    assert 'data-gallery="moments/2026-07/30-1000"' in html
     assert "<figcaption>caption</figcaption>" in html
+
+
+def test_render_content_glightbox_group_distinct_per_moment():
+    """Two moments' images must never share a gallery (distinct data-gallery)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    html = plugin._render_content(
+        "![A](./1.webp)\n\n![B](./2.webp)", _render_config(), "moments/2026-08/01-1530.md"
+    )
+    assert html.count('data-gallery="moments/2026-08/01-1530"') == 2
+    other = plugin._render_content("![C](./3.webp)", _render_config(), "moments/2026-08/02-0900.md")
+    assert 'data-gallery="moments/2026-08/01-1530"' not in other
+    assert 'data-gallery="moments/2026-08/02-0900"' in other
 
 
 def test_render_content_multiple_captioned_images():
