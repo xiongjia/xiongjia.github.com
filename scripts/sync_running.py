@@ -6,11 +6,14 @@ details (splits + polyline) are only fetched for activities not yet cached.
 
 Flow:
 1. Fetch the full Garmin activity list (paginated, running only)
-2. Compare against .running/splits.json — only fetch details (splits +
+2. Cold start: if the local splits cache is missing/empty (fresh bot worktree
+   or clone — the cache is git-ignored), seed it from the R2 bucket copy
+   (uploaded by `poe sync-running-splits` on the previous run)
+3. Compare against .running/splits.json — only fetch details (splits +
    polyline) for activities not yet cached
-3. Failed detail fetches stay uncached, so they are retried on the next run
+4. Failed detail fetches stay uncached, so they are retried on the next run
    (the cache check is the incremental cursor and the retry mechanism)
-4. Append new activities to running.yml + update .running/splits.json
+5. Append new activities to running.yml + update .running/splits.json
 
 Usage:
     uv run poe sync-running
@@ -20,6 +23,7 @@ from __future__ import annotations
 
 import json
 import os
+import subprocess
 import sys
 import time
 from datetime import datetime
@@ -31,7 +35,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import requests
 import yaml
 
+from scripts.bucket_sync import _rclone_path, resolve_remote
 from shared.env import load_env_files
+from shared.mkdocs_yaml import load_extra
 
 load_env_files()
 
@@ -241,6 +247,54 @@ def _pace_from_speed(speed_mps: float) -> str:
     return f"{m}:{s:02d}"
 
 
+def _seed_cache_from_bucket() -> None:
+    """Seed the local splits cache from the R2 bucket when missing/empty.
+
+    ``.running/splits.json`` is git-ignored, so a fresh bot worktree or
+    clone starts with no cache and would otherwise full-fetch every activity
+    detail on the first sync. The bucket copy (uploaded by
+    ``poe sync-running-splits`` after every successful run) is the shared
+    incremental cursor: pull it down, then the normal cache-vs-Garmin diff
+    only fetches what's new. Best-effort — any failure falls through to a
+    full sync (the retry mechanism makes that self-healing too).
+    """
+    if CACHE_FILE.is_file() and CACHE_FILE.stat().st_size > 0:
+        return  # warm cache already present
+    try:
+        cfg = load_extra("bucket", label="sync-running")
+        mapping = next(
+            (m for m in cfg.get("mappings") or [] if "running" in str(m.get("prefix", ""))),
+            None,
+        )
+        if not mapping:
+            print(
+                "  ⚠️  no running mapping in extra.bucket.mappings — skipping bucket seed",
+                file=sys.stderr,
+            )
+            return
+        remote = resolve_remote(None, label="sync-running")
+        bucket = mapping.get("bucket") or remote
+        rpath = _rclone_path(remote, bucket, mapping.get("remote_prefix", ""))
+        data_key = (cfg.get("running") or {}).get("data_key", "splits.json")
+        CACHE_DIR.mkdir(parents=True, exist_ok=True)
+        src = f"{rpath}{data_key}"
+        print(f"  seeding cache from bucket: {src}")
+        rc = subprocess.call(
+            ["rclone", "copyto", src, str(CACHE_FILE), "--s3-no-check-bucket", "--quiet"],
+            timeout=120,  # TimeoutExpired → except below → falls back to full sync
+        )
+        if rc != 0:
+            print(
+                f"  ⚠️  bucket cache seed failed (rclone exit {rc}) — falling back to full sync",
+                file=sys.stderr,
+            )
+    except Exception as e:
+        print(
+            f"  ⚠️  bucket cache seed failed ({e}) — falling back to full sync",
+            file=sys.stderr,
+        )
+
+
 def _save_splits(activities: list[dict], details_map: dict[int, dict]):
     """Merge newly-fetched details into .running/splits.json (repairing partials)."""
     by_id = {a["run_id"]: a for a in _load_existing_splits()}
@@ -410,6 +464,12 @@ def main() -> int:
     if not runs:
         print("No running activities found")
         return 0
+
+    # ── seed cold cache from bucket (fresh worktree/clone) ──
+    # The cache is git-ignored, so only the local machine and the previous
+    # bot run have it. Pull the bucket copy (uploaded by the last
+    # sync-running-splits) so the fetch below stays incremental; best-effort.
+    _seed_cache_from_bucket()
 
     # ── load existing data + one-time id migration ──
     # The first Garmin-backed sync merged new Garmin-ID activities on top of

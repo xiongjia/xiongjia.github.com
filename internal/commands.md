@@ -46,13 +46,13 @@
 
 ## Health
 
-| Command                       | Description                                                                                                 |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `poe update-weight 82 [date]` | Record a daily weight (default: today; date accepts `yesterday`, full dates)                                |
-| `poe add-weight-week [n]`     | Pre-add empty week(s) to weight data                                                                        |
-| `poe update-health-summary`   | Regenerate the health index summary (calls local pi AI)                                                     |
-| `poe sync-running`            | Sync running data from the Garmin CN API (incremental; writes `running.yml` + `.running/splits.json`)       |
-| `poe sync-running-splits`     | Upload `.running/splits.json` to R2 (dry-run default; `--confirm` or `SYNC_RUNNING_CONFIRM=true` to upload) |
+| Command                       | Description                                                                                                                                        |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `poe update-weight 82 [date]` | Record a daily weight (default: today; date accepts `yesterday`, full dates)                                                                       |
+| `poe add-weight-week [n]`     | Pre-add empty week(s) to weight data                                                                                                               |
+| `poe update-health-summary`   | Regenerate the health index summary (calls local pi AI)                                                                                            |
+| `poe sync-running`            | Sync running data from the Garmin CN API (incremental; writes `running.yml` + `.running/splits.json` cache; seeds the cache from R2 on cold start) |
+| `poe sync-running-splits`     | Upload `.running/splits.json` to R2 (dry-run default; `--confirm` or `SYNC_RUNNING_CONFIRM=true` to upload)                                        |
 
 ## Bot (auto PR)
 
