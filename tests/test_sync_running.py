@@ -157,6 +157,33 @@ def test_save_splits_skips_missing_details(tmp_path, monkeypatch):
     assert saved["activities"] == []
 
 
+def test_save_splits_tolerates_entry_without_run_id(tmp_path, monkeypatch):
+    """A cache entry missing run_id is skipped, not crash the sync."""
+    import sync_running as sr
+
+    cache = tmp_path / "splits.json"
+    cache.write_text(
+        json.dumps(
+            {
+                "version": 1,
+                "activities": [
+                    {"run_id": 100, "splits": [], "summary_polyline": ""},
+                    {"name": "no id", "splits": [{"km": 1.0}], "summary_polyline": "x"},
+                ],
+            }
+        )
+    )
+    monkeypatch.setattr(sr, "CACHE_FILE", cache)
+    monkeypatch.setattr(sr, "CACHE_DIR", tmp_path)
+
+    sr._save_splits([{"run_id": 100}], {100: {"splits": [{"km": 1.0}], "summary_polyline": "abc"}})
+
+    saved = json.loads(cache.read_text())
+    assert len(saved["activities"]) == 1  # the no-id entry is dropped
+    assert saved["activities"][0]["run_id"] == 100
+    assert saved["activities"][0]["summary_polyline"] == "abc"
+
+
 def test_migrate_old_running_page_ids():
     """running_page-era run_ids are remapped to Garmin IDs by start date."""
     import sync_running as sr
@@ -205,6 +232,125 @@ def test_cached_detail_ids_requires_real_details():
         {"run_id": 3},
     ]
     assert sr._cached_detail_ids(acts) == {1}
+
+
+def test_cached_detail_ids_tolerates_missing_run_id():
+    """Entries without an int run_id are skipped, not crash the cursor."""
+    import sync_running as sr
+
+    acts = [
+        {"run_id": 1, "splits": [{"km": 1.0}]},
+        {"name": "no id", "splits": [{"km": 1.0}]},
+    ]
+    assert sr._cached_detail_ids(acts) == {1}
+
+
+def test_pending_activities_repairs_cached_but_not_in_yml():
+    """A run cached in splits but missing from running.yml is still processed:
+    the bucket-seeded snapshot can be ahead of the committed yml, and a pure
+    cache check would skip it forever while the page silently misses it."""
+    import sync_running as sr
+
+    runs = [
+        {"activityId": 630502470, "startTimeGMT": "2026-08-21T14:14:25"},
+        {"activityId": 630857204, "startTimeGMT": "2026-08-22T14:17:00"},
+    ]
+    yml = [{"run_id": 630502470}]  # Aug 22 run not in running.yml
+    splits = [
+        {"run_id": 630502470, "splits": [{"km": 1.0}], "summary_polyline": "a"},
+        {"run_id": 630857204, "splits": [{"km": 1.0}], "summary_polyline": "b"},
+    ]
+    pending = sr._pending_activities(runs, yml, splits)
+    assert [a["activityId"] for a in pending] == [630857204]
+
+
+def test_pending_activities_skips_fully_synced():
+    """Cached AND in running.yml → nothing to do (normal steady state)."""
+    import sync_running as sr
+
+    runs = [{"activityId": 630857204, "startTimeGMT": "2026-08-22T14:17:00"}]
+    yml = [{"run_id": 630857204}]
+    splits = [{"run_id": 630857204, "splits": [{"km": 1.0}], "summary_polyline": "b"}]
+    assert sr._pending_activities(runs, yml, splits) == []
+
+
+def test_pending_activities_retries_uncached_run():
+    """A run whose details never got cached stays pending (retry mechanism)."""
+    import sync_running as sr
+
+    runs = [{"activityId": 100, "startTimeGMT": "2025-01-01T10:00:00"}]
+    assert sr._pending_activities(runs, [], []) == [runs[0]]
+    # even when it is in running.yml but not cached
+    assert sr._pending_activities(runs, [{"run_id": 100}], []) == [runs[0]]
+
+
+def test_pending_activities_tolerates_missing_run_id():
+    """An entry without run_id in running.yml must not crash the cursor."""
+    import sync_running as sr
+
+    runs = [{"activityId": 630857204, "startTimeGMT": "2026-08-22T14:17:00"}]
+    yml = [{"run_id": 630857204}, {"name": "broken entry"}]
+    splits = [{"run_id": 630857204, "splits": [{"km": 1.0}], "summary_polyline": "b"}]
+    assert sr._pending_activities(runs, yml, splits) == []
+
+
+def test_details_for_run_reuses_cached_and_fetches_missing():
+    """Repair path: cached details are reused; fetch only for uncached runs."""
+    import sync_running as sr
+
+    cached = {100: {"splits": [{"km": 1.0}], "summary_polyline": "abc"}}
+    fetched = []
+
+    def fetch_fn(rid):
+        fetched.append(rid)
+        return {"splits": [{"km": 2.0}], "summary_polyline": "xyz"}
+
+    assert sr._details_for_run(100, cached, fetch_fn) == cached[100]
+    assert fetched == []
+    assert sr._details_for_run(200, cached, fetch_fn) == {
+        "splits": [{"km": 2.0}],
+        "summary_polyline": "xyz",
+    }
+    assert fetched == [200]
+
+
+def test_write_running_yml_sorts_newest_first(tmp_path, monkeypatch):
+    """Backfilled/repaired runs land in date order, newest first."""
+    import sync_running as sr
+    import yaml
+
+    data = tmp_path / "running.yml"
+    monkeypatch.setattr(sr, "DATA_PATH", data)
+    sr._write_running_yml(
+        [
+            {"run_id": 1, "start_date": "2025-01-01 10:00:00"},
+            {"run_id": 3, "start_date": "2026-08-22 14:17:14"},
+            {"run_id": 2, "start_date": "2026-01-01 10:00:00"},
+            {"run_id": 4},  # no start_date -> sinks to the bottom
+        ]
+    )
+    loaded = yaml.safe_load(data.read_text(encoding="utf-8"))
+    assert [a["run_id"] for a in loaded["activities"]] == [3, 2, 1, 4]
+
+
+def test_write_running_yml_sort_tolerates_date_objects(tmp_path, monkeypatch):
+    """An unquoted ISO date (yaml.safe_load -> datetime.date) must not crash the
+    sort — str() normalization keeps mixed types ordered, never raising."""
+    from datetime import date
+
+    import sync_running as sr
+    import yaml
+
+    data = tmp_path / "running.yml"
+    monkeypatch.setattr(sr, "DATA_PATH", data)
+    sr._write_running_yml(
+        [
+            {"run_id": 1, "start_date": "2026-08-22 14:17:14"},
+            {"run_id": 2, "start_date": date(2026, 8, 21)},  # yaml parses '2026-08-21' this way
+        ]
+    )
+    loaded = yaml.safe_load(data.read_text(encoding="utf-8"))
+    assert [a["run_id"] for a in loaded["activities"]] == [1, 2]
 
 
 def _bucket_cfg() -> dict:

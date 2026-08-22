@@ -9,10 +9,14 @@ Flow:
 2. Cold start: if the local splits cache is missing/empty (fresh bot worktree
    or clone — the cache is git-ignored), seed it from the R2 bucket copy
    (uploaded by `poe sync-running-splits` on the previous run)
-3. Compare against .running/splits.json — only fetch details (splits +
-   polyline) for activities not yet cached
+3. The incremental cursor is the data itself (running.yml), NOT the runtime
+   cache snapshot: an activity is "done" only when it is BOTH cached (details
+   fetched) AND present in running.yml. Anything missing from either is
+   processed — so a run whose details were cached but never merged into
+   running.yml (the bucket-seeded snapshot can be ahead of the committed yml)
+   still lands on the page instead of being skipped as "already synced".
 4. Failed detail fetches stay uncached, so they are retried on the next run
-   (the cache check is the incremental cursor and the retry mechanism)
+   (the membership check doubles as the retry mechanism)
 5. Append new activities to running.yml + update .running/splits.json
 
 Usage:
@@ -28,6 +32,7 @@ import sys
 import time
 from datetime import datetime
 from pathlib import Path
+from typing import Callable
 
 # bootstrap repo root
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -297,7 +302,7 @@ def _seed_cache_from_bucket() -> None:
 
 def _save_splits(activities: list[dict], details_map: dict[int, dict]):
     """Merge newly-fetched details into .running/splits.json (repairing partials)."""
-    by_id = {a["run_id"]: a for a in _load_existing_splits()}
+    by_id = {a["run_id"]: a for a in _load_existing_splits() if isinstance(a.get("run_id"), int)}
     for a in activities:
         rid = a["run_id"]
         det = details_map.get(rid)
@@ -305,7 +310,8 @@ def _save_splits(activities: list[dict], details_map: dict[int, dict]):
             continue
         entry = by_id.get(rid)
         if entry is not None:
-            # Repair partial entries (e.g. empty polyline from a prior failed run)
+            # Repair partial entries — e.g. a splits-only entry whose polyline
+            # is missing because Garmin had no GPS data for that activity.
             if not entry.get("summary_polyline") or not entry.get("splits"):
                 entry["splits"] = det["splits"]
                 entry["summary_polyline"] = det["summary_polyline"]
@@ -320,9 +326,55 @@ def _save_splits(activities: list[dict], details_map: dict[int, dict]):
     print(f"  wrote {CACHE_FILE} ({len(by_id)} activities)")
 
 
+def _has_real_details(entry: dict) -> bool:
+    """True when a cache entry carries real details (splits or polyline)."""
+    return bool(entry.get("summary_polyline") or entry.get("splits"))
+
+
 def _cached_detail_ids(activities: list[dict]) -> set[int]:
     """Run_ids in the given list that carry real details (splits or polyline)."""
-    return {a["run_id"] for a in activities if a.get("summary_polyline") or a.get("splits")}
+    return {
+        a["run_id"] for a in activities if isinstance(a.get("run_id"), int) and _has_real_details(a)
+    }
+
+
+def _pending_activities(
+    runs: list[dict], yml_acts: list[dict], splits_acts: list[dict]
+) -> list[dict]:
+    """Garmin activities that still need detail fetch / running.yml merge.
+
+    The incremental cursor is the actual data, not the runtime cache
+    snapshot: an activity is "done" only when it is BOTH cached (details
+    fetched) AND present in running.yml. Anything missing from either is
+    processed. This repairs the case where the last run cached details but
+    never merged them into running.yml — the bucket-seeded cache can be
+    ahead of the committed yml, and a pure cache check would skip that run
+    forever ("cached" means done, yet the page never shows it).
+
+    Membership (not a date window from the last yml activity) is the cursor:
+    a date cutoff would re-verify every cached activity >= the last date on
+    each run (always re-fetching the newest), while membership is exact,
+    zero-waste in steady state, and repairs any cache/data divergence.
+    """
+    cached_ids = _cached_detail_ids(splits_acts)
+    yml_ids = {a["run_id"] for a in yml_acts if isinstance(a.get("run_id"), int)}
+    return [a for a in runs if a["activityId"] not in cached_ids or a["activityId"] not in yml_ids]
+
+
+def _details_for_run(
+    rid: int, cached: dict[int, dict], fetch_fn: Callable[[int], dict | None]
+) -> dict | None:
+    """Details for one run: reuse cached details when present, else fetch.
+
+    The repair path re-processes runs that are cached but missing from
+    running.yml — their splits/polyline already exist in the cache, so reuse
+    them instead of re-fetching from Garmin. ``fetch_fn`` is only called for
+    runs without cached details; a None return means "retry next sync".
+    """
+    det = cached.get(rid)
+    if det is not None:
+        return det
+    return fetch_fn(rid)
 
 
 def _migrate_old_running_page_ids(
@@ -415,6 +467,12 @@ def _write_running_yml(activities: list[dict]) -> None:
         if isinstance(rid, int):
             seen.add(rid)
         deduped.append(a)
+    # Newest first — "YYYY-MM-DD HH:MM:SS" sorts chronologically; entries
+    # without a parseable start_date sink to the bottom (reverse=True). Keeps
+    # backfilled/repaired runs in date order instead of landing at the top.
+    # str() also normalizes non-string dates (yaml.safe_load parses unquoted
+    # ISO dates to datetime.date) so the sort never raises on mixed types.
+    deduped.sort(key=lambda a: str(a.get("start_date") or ""), reverse=True)
     payload = {
         "synced_at": datetime.now().astimezone().isoformat(timespec="seconds"),
         "source": "garmin_cn",
@@ -484,28 +542,45 @@ def main() -> int:
         _write_splits(splits_acts)
         print(f"migrated {len(remap)} running_page ids to Garmin ids")
 
-    # Incremental: only fetch details for activities not yet cached. An
-    # activity whose details fetch failed stays uncached, so it is retried
-    # on every run regardless of where it sits in the list (fixes the
-    # older-fails-while-newer-succeeds gap).
-    cached_ids = _cached_detail_ids(splits_acts)
-    to_process = [a for a in runs if a["activityId"] not in cached_ids]
-    already = len(runs) - len(to_process)
-    print(f"Running activities: {len(runs)} ({already} cached, {len(to_process)} to fetch)")
+    # Incremental cursor = the data itself (running.yml), not the runtime
+    # cache snapshot. An activity is "done" only when it is BOTH cached
+    # (details fetched) AND present in running.yml. The bucket seed can be
+    # ahead of the committed yml — a run whose details were cached but never
+    # merged into running.yml would otherwise be skipped forever by a pure
+    # cache check while the page silently misses it. Anything missing from
+    # either is (re)processed; the membership check also keeps retrying
+    # activities whose detail fetch previously failed.
+    to_process = _pending_activities(runs, yml_acts, splits_acts)
+    done = len(runs) - len(to_process)
+    print(f"Running activities: {len(runs)} ({done} synced, {len(to_process)} to process)")
 
     if not to_process:
-        print("All activities already have details — nothing to do")
+        print("All activities already synced — nothing to do")
         return 0
 
     # ── convert + fetch details ──
+    # Runs that are cached but missing from running.yml (the repair path)
+    # already have splits/polyline — reuse them instead of re-fetching.
+    cached_details = {
+        a["run_id"]: {
+            "splits": a.get("splits") or [],
+            "summary_polyline": a.get("summary_polyline") or "",
+        }
+        for a in splits_acts
+        if isinstance(a.get("run_id"), int) and _has_real_details(a)
+    }
     activities = []
     details_map: dict[int, dict] = {}
     for idx, ga in enumerate(to_process, 1):
         a = _garmin_to_activity(ga)
         rid = a["run_id"]
-        print(f"  [{idx}/{len(to_process)}] {rid} ({a['start_date'][:10]})")
+        reused = rid in cached_details
+        print(
+            f"  [{idx}/{len(to_process)}] {rid} ({a['start_date'][:10]})"
+            + (" [cached]" if reused else "")
+        )
 
-        det = _fetch_splits_and_polyline(rid)
+        det = _details_for_run(rid, cached_details, _fetch_splits_and_polyline)
         if det is None:
             # Not cached -> retried next run (no cursor to advance past it)
             print(f"    ⚠️  {rid}: details fetch failed, will retry next sync")
@@ -516,7 +591,7 @@ def main() -> int:
         time.sleep(0.5)
 
     # ── merge new activities into running.yml ──
-    existing_ids = {a["run_id"] for a in yml_acts}
+    existing_ids = {a["run_id"] for a in yml_acts if isinstance(a.get("run_id"), int)}
     merged = [a for a in activities if a["run_id"] not in existing_ids] + yml_acts
     _write_running_yml(merged)
     print(f"  wrote {DATA_PATH} ({len(merged)} activities)")
