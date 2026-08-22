@@ -25,6 +25,8 @@ ______________________________________________________________________
 
 - 2026-08-20 给跑步历史数据做个类似 github 提交墙的历史数据查看 (done)
 
+- 2026-08-22 测试 EXIF（Exchangeable Image File Format) 做个工具提取照片的 EXTIF
+
 ### 📦 Misc
 
 <!-- Items that don't fit TODO or Idea -->
