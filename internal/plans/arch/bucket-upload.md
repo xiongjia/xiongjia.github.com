@@ -1,6 +1,8 @@
 ---
 title: Bucket Image Upload
 created: 2026-08-15
+archived: 2026-08-22
+status: completed
 tags: [bucket, r2, upload, images]
 ---
 
@@ -77,6 +79,13 @@ token, we never touch secrets).
   requirement)
 - [x] `internal/architecture.md` — env var table rows
 - [x] AGENTS.md — `poe bucket-upload` command line
+
+## Status (2026-08-22)
+
+**Completed — verified in real use.** All tasks done; developer provisioned
+the read-write R2 token and ran a live `poe bucket-upload … --confirm`
+end-to-end (WebP conversion → rclone upload → local `docs/assets/bucket/`
+copy → md link), confirmed usable. Archived per the plan-index convention.
 
 ## Notes
 
