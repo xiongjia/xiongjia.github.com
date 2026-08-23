@@ -22,16 +22,16 @@ PostgreSQL 时如何用 DuckDB 加速分析查询。
 
 ## Sub Topics
 
-| 阅读顺序 | 主题                                                | 描述                                                                                  |
-| -------- | --------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| 1        | [环境与基本使用](./basic-usage.md)                  | CLI / Python API 安装与上手、常用 SQL、扩展机制（parquet / json / httpfs / postgres） |
-| 2        | [模拟数据](./mock-data.md)                          | 内置生成器、迷你电商数仓（10 万客户 / 100 万订单）、TPC-H dbgen、导出 Parquet         |
-| 3        | [PostgreSQL 加速查询](./postgresql-acceleration.md) | pg_duckdb + force_execution、postgres_scanner、Parquet 导出、基准对比                 |
+| 阅读顺序 | 主题                                                | 描述                                                                                            |
+| -------- | --------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| 1        | [环境与基本使用](./basic-usage.md)                  | CLI / Python API 安装与上手、常用 SQL、CSV 导出、扩展机制（parquet / json / httpfs / postgres） |
+| 2        | [模拟数据](./mock-data.md)                          | 内置生成器、迷你电商数仓（10 万客户 / 100 万订单）、TPC-H dbgen、导出 Parquet                   |
+| 3        | [PostgreSQL 加速查询](./postgresql-acceleration.md) | pg_duckdb + force_execution、postgres_scanner、Parquet 导出、基准对比                           |
 
 ## 推荐阅读顺序
 
 1. **环境与基本使用** → [环境与基本使用](./basic-usage.md)：装好 CLI 与 Python API，
-   跑通第一个查询，了解扩展机制
+   跑通第一个查询，学会把表导出成 CSV，了解扩展机制
 1. **构造模拟数据** → [模拟数据](./mock-data.md)：用 SQL 生成贴近真实的分析数据集，
    导出 Parquet（后续 PG 加速实验的载体）
 1. **PG 加速实战** → [PostgreSQL 加速查询](./postgresql-acceleration.md)：数据在 PG 时，

@@ -102,6 +102,40 @@ ORDER BY total_amount DESC
 LIMIT 8;
 ```
 
+> 💡 **补充：外键** —— 上面 4 张表都是 `CREATE TABLE ... AS`（CTAS）建的，**CTAS 不带
+> 任何约束**（连主键都没有），所以这套迷你数仓里没有外键，引用一致性靠生成逻辑保证
+> （如 `orders.customer_id = 1 + (i % 100000)` 恰好落在 1..100000 区间内）。
+>
+> DuckDB **支持外键语法**，且本机 1.5.5 实测**强制校验**（插入父行不存在的记录报
+> `Constraint Error: Violates foreign key constraint`）。但有几点限制（本机实测）：
+>
+> - 外键**只能建表时声明**（内联 `REFERENCES` / `FOREIGN KEY (...)`），
+>   `ALTER TABLE ... ADD FOREIGN KEY` 不支持（报 `Not implemented`）
+> - **不支持** `ON DELETE CASCADE` / `SET NULL` / `SET DEFAULT`，删除被引用的父行
+>   默认拒绝（RESTRICT 行为）
+> - 被引用列必须是 `PRIMARY KEY` 或 `UNIQUE`
+>
+> 所以本页生成脚本保持 CTAS 不带约束即可；若要严格外键，需把建表语句改成显式
+> `CREATE TABLE` + `REFERENCES` 声明，例如订单表挂到客户表（其余列按需补上，此处只示意思路）：
+>
+> ```sql
+> CREATE TABLE customers (
+>     id   INTEGER PRIMARY KEY,
+>     name VARCHAR
+> );
+> CREATE TABLE orders (
+>     id          INTEGER PRIMARY KEY,
+>     customer_id INTEGER REFERENCES customers(id)  -- 外键：指向 customers.id
+> );
+>
+> -- 多列外键的写法（示意：前提是 orders 有 (id, line_no) 复合主键）：
+> CREATE TABLE order_lines (
+>     order_id INTEGER,
+>     line_no  INTEGER,
+>     FOREIGN KEY (order_id, line_no) REFERENCES orders(id, line_no)
+> );
+> ```
+
 ## 3. 导出 Parquet 复用
 
 生成一次、导出成 Parquet，之后任何进程都能直接查询（这也是 PG 加速实验的载体）：
@@ -127,21 +161,71 @@ GROUP BY city ORDER BY amt DESC LIMIT 3;
 
 ## 4. TPC-H 基准数据（标准分析型数据集）
 
-想要**业界标准**的模拟数据，用内置的 `dbgen`（TPC-H 基准，8 张表：
-customer / orders / lineitem / part / partsupp / supplier / nation / region）：
+**TPC-H 是什么：** 业界标准分析型基准测试，由 TPC（事务处理性能委员会）制定，
+定义了一套 8 张表的订单模型 Schema、数据生成器 dbgen 和 22 条标准查询。
+数据库厂商都用它横向比性能（DuckDB 官网 benchmark 也用它），所以叫“基准数据”。
+
+DuckDB 把 dbgen **内置成函数**，一条命令就在当前库里直接生成 8 张表
+（customer / orders / lineitem / part / partsupp / supplier / nation / region）：
 
 ```sql
 CALL dbgen(sf=0.1);   -- sf = scale factor，0.1 ≈ 100MB 原始数据量
 ```
 
-`sf=0.1` 实测行数：`orders` 15 万、`lineitem` 60 万、`customer` 1.5 万。
-`sf=1` 时 lineitem 约 600 万行。数据分布、字段命名都比手搓的更像生产环境，
-适合做性能实验的对照数据集。
+sf 是数据规模档位，各表行数按比例缩放：
 
-## 5. 列式剪枝的一个注意点
+| sf   | 原始数据量 | lineitem 行数 |
+| ---- | ---------- | ------------- |
+| 0.01 | ~10MB      | 6 万          |
+| 0.1  | ~100MB     | 60 万         |
+| 1    | ~1GB       | 600 万        |
 
-Parquet 按 **Row Group**（DuckDB 写入时每组 122,880 行）存储，每组带
-min/max 统计，查询时可跳过不相关的组：
+> 原始数据量指未压缩的文本形式，落进 DuckDB 列式存储后体积小很多。
+> `sf=0.1` 实测行数：orders 15 万、lineitem 60 万、customer 1.5 万。
+
+**和手搓数据（第 2 节）的区别：** 手搓数据用 `random()` 均匀撒，分布太“平”；
+dbgen 按 TPC-H 规范生成，字段分布、键关联更像真实生产数据，性能实验的结果
+更可信 —— 手搓数据用来跑通功能，TPC-H 用来测真实性能。
+
+生成后直接用 TPC-H 标准查询验证（本机实测 sf=0.1，60 万行 lineitem，毫秒级）：
+
+```sql
+-- 测试 1：TPC-H Q6 收入预测 —— 全表扫描 + 多条件过滤
+-- 固定结果 revenue = 11803420.25（sf=0.1，DuckDB 1.5.5），可当数据完整性的回归校验
+SELECT sum(l_extendedprice * l_discount) AS revenue
+FROM lineitem
+WHERE l_shipdate >= DATE '1994-01-01' AND l_shipdate < DATE '1995-01-01'
+  AND l_discount BETWEEN 0.06 - 0.01 AND 0.06 + 0.01
+  AND l_quantity < 24;
+
+-- 测试 2：TPC-H Q3 运输优先级 —— 三表 JOIN + 聚合 + 排序
+SELECT l_orderkey,
+       sum(l_extendedprice * (1 - l_discount)) AS revenue,
+       o_orderdate, o_shippriority
+FROM customer, orders, lineitem
+WHERE c_mktsegment = 'BUILDING'
+  AND c_custkey = o_custkey
+  AND l_orderkey = o_orderkey
+  AND o_orderdate < DATE '1995-03-15'
+  AND l_shipdate > DATE '1995-03-15'
+GROUP BY l_orderkey, o_orderdate, o_shippriority
+ORDER BY revenue DESC, o_orderdate
+LIMIT 5;
+```
+
+想看耗时，把 `.timer on` 放查询前，用 stdin 喂给 CLI（`-c` 里不能用点命令）：
+
+```bash
+printf '.timer on\nSELECT ...;\n' | uvx --from duckdb-cli duckdb tpch10.duckdb
+```
+
+## 5. 一个注意点：Parquet 的 min/max pruning
+
+机制：Parquet 按 **Row Group** 存储
+（DuckDB 写入时每组 122,880 行），每组头部带各列 **min/max 统计**。
+查询带过滤条件时，引擎先比对各组的 min/max —— 某组范围与过滤条件完全不
+重叠就**整组跳过**、不实际读数据，这就是 pruning（也叫 row group
+skipping）。它直接决定按时间过滤这类查询快不快：
 
 ```sql
 SELECT row_group_id, path_in_schema, stats_min_value, stats_max_value
@@ -157,9 +241,25 @@ WHERE path_in_schema = 'order_date' ORDER BY row_group_id LIMIT 3;
 │  2 │ order_date │ 2024-08-11 │ 2026-08-11 │
 ```
 
-> ⚠️ **注意：** 因为日期是用 `random()` 均匀撒的，每个 Row Group 的
-> min/max 都覆盖全区间 → 按日期过滤**无法剪枝**。真实时序数据按时间有序写入时，
-> 各组区间互不重叠，过滤就能跳过大部分组。构造测试数据时这点要心里有数。
+> ⚠️ **注意：** 本页 `orders` 的日期用 `random()` 均匀撒，每个 Row Group 的
+> min/max 都覆盖全区间（实测输出可见）→ 按日期过滤时**每组都可能命中，无法
+> pruning**，等于全表扫描（最坏情况）。
+>
+> **什么时候要紧：** 用这份数据做**性能实验**（尤其按日期过滤，以及
+> [PostgreSQL 加速查询](./postgresql-acceleration.md) 的对比实验）时，测出来的
+> 是最坏情况数字，不代表真实负载 —— 真实生产数据（订单/日志/流水）是按时间
+> 追加写入、天然有序的。**跑通功能 / 验证正确性则无所谓**，random 数据即可。
+>
+> **需要可剪枝的 Parquet 时**，在导出那一刻按时间排序（Row Group 的 min/max
+> 是写入时按数据流顺序算的，表本身的顺序无关）：
+>
+> ```sql
+> COPY (SELECT * FROM orders ORDER BY order_date)
+>   TO 'parquet/orders.parquet' (FORMAT PARQUET);
+> ```
+>
+> 实测：50 万行、5 个 Row Group，查最后一个月 —— 随机数据要读 5/5 组，排序后只读 1/5 组。
+> 一句话：**数据分布决定 pruning 效果，性能数字只有在数据长得像真实数据时才可信。**
 
 ## 6. 参考链接
 
