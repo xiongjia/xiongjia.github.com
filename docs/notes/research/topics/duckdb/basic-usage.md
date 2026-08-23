@@ -13,7 +13,7 @@ categories:
 
 # :material-rocket-launch: 环境与基本使用
 
-> **本页目的：** 把 DuckDB 装起来并跑通基本用法 —— CLI、Python API、常用 SQL、
+> **本页目的：** 把 DuckDB 装起来并跑通基本用法 —— CLI、Python API、常用 SQL、CSV 导出、
 > 扩展机制。全部基于本机实测（DuckDB v1.5.5 Variegata，macOS arm64）。
 >
 > 本页是 DuckDB 实战系列第 1 篇，下一篇见 [模拟数据](./mock-data.md)。
@@ -32,6 +32,14 @@ uvx --from duckdb-cli duckdb --version   # v1.5.5 (Variegata)
 
 > ⚠️ **坑：** `uvx duckdb` 会报 `Package "duckdb" does not provide any executables` ——
 > 新版 `duckdb` Python 包不再附带 CLI，要用 `uvx --from duckdb-cli duckdb`。
+
+> 💡 **uvx 装在哪：** `uvx` 是**临时执行**，不装到当前目录，全部落在 uv 的全局缓存里
+> （`uv cache dir` 查看；默认 `$UV_CACHE_DIR` > `$XDG_CACHE_HOME/uv` > `~/.cache/uv`）。
+> 结构大致是：`wheels-v6/` 存下载的 wheel，`archive-v0/<hash>/` 存解压后的包
+> （duckdb 的 `bin/duckdb` 就在这里），`environments-v2/<hash>/` 是临时 venv，
+> 用符号链接指回 archive-v0。跑完后临时 venv 清理，但包会留在缓存里复用，
+> 所以第二次执行会快很多。想**持久安装**（可卸载、入口进 `~/.local/bin`）用
+> `uv tool install duckdb-cli`，那是装到 `~/.local/share/uv/tools/`。
 
 ## 2. CLI 基本操作
 
@@ -112,7 +120,50 @@ COPY sales FROM 'sales.csv'   (FORMAT CSV, HEADER);
 EXPLAIN ANALYZE SELECT ym, sum(amt) FROM sales GROUP BY ym;
 ```
 
-## 5. 扩展机制
+## 5. 导出表到 CSV
+
+最常用的是 `COPY ... TO`，支持分隔符、表头、压缩等选项：
+
+```sql
+-- 基本导出
+COPY sales TO 'sales.csv' (FORMAT CSV, HEADER);
+
+-- 不带表头
+COPY sales TO 'sales-nohead.csv' (FORMAT CSV, HEADER false);
+
+-- 自定义分隔符（TSV）
+COPY sales TO 'sales.tsv' (FORMAT CSV, DELIMITER E'\t', HEADER);
+
+-- 导出为 gzip 压缩的 CSV
+COPY sales TO 'sales.csv.gz' (FORMAT CSV, HEADER, COMPRESSION GZIP);
+
+-- 只导出查询结果（子查询）
+COPY (SELECT id, amt FROM sales WHERE amt > 50) TO 'big.csv' (FORMAT CSV, HEADER);
+```
+
+> **实测：** 1.5.5 里 COPY CSV 的 `HEADER` **默认为 true**（不写也会带表头），
+> 需要无表头时显式写 `HEADER false`。分隔符用 `DELIMITER`，制表符转义写法 `E'\t'`。
+
+CLI 交互模式也可以用 `.mode` / `.output` 把查询结果写进文件：
+
+```
+.mode csv
+.output sales.csv
+SELECT * FROM sales;
+.output stdout
+```
+
+导出结束后用 `.output stdout` 恢复终端输出（注意：`.output` 命令不支持行内注释）。
+
+Python API 里 relation 自带 `to_csv()`：
+
+```python
+duckdb.sql("SELECT * FROM sales").to_csv("sales.csv", header=True)
+```
+
+反向导入（CSV → 表）见第 4 节 `COPY sales FROM ...`。
+
+## 6. 扩展机制
 
 DuckDB 通过扩展提供更多功能，分两类：
 
@@ -136,7 +187,7 @@ WHERE extension_name IN ('parquet','json','httpfs','postgres_scanner');
 > 非核心扩展必须先 `INSTALL`（联网下载）再 `LOAD`；`INSTALL` 后扩展文件缓存在
 > `~/.duckdb/extensions/`。
 
-## 6. 参考链接
+## 7. 参考链接
 
 | 资源        | 链接                                                                                                             |
 | ----------- | ---------------------------------------------------------------------------------------------------------------- |

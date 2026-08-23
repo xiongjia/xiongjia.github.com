@@ -25,20 +25,29 @@ graph LR
   click J "/projects/" "Projects"
 ```
 
-| Topic                                              | Category                | Description                                     |
-| -------------------------------------------------- | ----------------------- | ----------------------------------------------- |
-| [Lux](./topics/lux/index.md)                       | Tools                   | Go 视频下载器，支持多个视频网站下载视频和音频   |
-| [Redash](./topics/redash/index.md)                 | Tools                   | 查询结果缓存机制与 Dashboard 自定义布局实现原理 |
-| [trip](./topics/trip/index.md)                     | Tools                   | TRIP 项目核心原理与代码阅读指南                 |
-| [Rust](./topics/rust/index.md)                     | Learning Plans          | 7 阶段学习路线图：基础语法到并发异步            |
-| [English](./topics/english/index.md)               | Learning Plans          | English Scraps 随手收集 + AI 归档；主题阅读     |
-| [nest-commander](./topics/nest-commander/index.md) | Libraries or Frameworks | NestJS CLI 构建工具                             |
-| [Better Auth](./topics/better-auth/index.md)       | Libraries or Frameworks | 源码阅读指南                                    |
-| [NestJS](./topics/nestjs/index.md)                 | Libraries or Frameworks | Module 注入原理与核心源码分析                   |
-| [Jellyfin](./topics/jellyfin/index.md)             | Libraries or Frameworks | 视频流播放原理与 Rust 最小原型                  |
-| [shadcn/ui](./topics/shadcn-ui/index.md)           | Libraries or Frameworks | CLI 工具源码阅读，Registry 组件分发系统         |
-| [Protomaps](./topics/protomaps/index.md)           | Libraries or Frameworks | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成  |
-| [DuckDB](./topics/duckdb/index.md)                 | Libraries or Frameworks | 实战研究：环境/模拟数据/PostgreSQL 加速查询     |
+| Topic                                    | Category                | Status    | Description                                    |
+| ---------------------------------------- | ----------------------- | --------- | ---------------------------------------------- |
+| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读    |
+| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成 |
+| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询    |
+
+> **Status**: `polished` — notes polished and ready to use; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
+
+### Drafts
+
+> 仍在整理中的笔记，内容可能不完整，后续可能删除。
+
+| Topic                                              | Category                | Status | Description                                     |
+| -------------------------------------------------- | ----------------------- | ------ | ----------------------------------------------- |
+| [Lux](./topics/lux/index.md)                       | Tools                   | draft  | Go 视频下载器，支持多个视频网站下载视频和音频   |
+| [Redash](./topics/redash/index.md)                 | Tools                   | draft  | 查询结果缓存机制与 Dashboard 自定义布局实现原理 |
+| [trip](./topics/trip/index.md)                     | Tools                   | draft  | TRIP 项目核心原理与代码阅读指南                 |
+| [Rust](./topics/rust/index.md)                     | Learning Plans          | draft  | 7 阶段学习路线图：基础语法到并发异步            |
+| [nest-commander](./topics/nest-commander/index.md) | Libraries or Frameworks | draft  | NestJS CLI 构建工具                             |
+| [Better Auth](./topics/better-auth/index.md)       | Libraries or Frameworks | draft  | 源码阅读指南                                    |
+| [NestJS](./topics/nestjs/index.md)                 | Libraries or Frameworks | draft  | Module 注入原理与核心源码分析                   |
+| [Jellyfin](./topics/jellyfin/index.md)             | Libraries or Frameworks | draft  | 视频流播放原理与 Rust 最小原型                  |
+| [shadcn/ui](./topics/shadcn-ui/index.md)           | Libraries or Frameworks | draft  | CLI 工具源码阅读，Registry 组件分发系统         |
 
 ______________________________________________________________________
 
