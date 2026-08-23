@@ -88,6 +88,7 @@ tags: [refactor, mkdocs]
 ### Projects
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
+- [raft-db.md](./raft-db.md) — Raft + LevelDB 分布式高可用 KV 数据库原型：raft（etcd-io/raft 或 raft-rs）+ LevelDB，选主/日志复制/故障转移（内容落在 `docs/notes/research/topics/raft-db/`，实现落 `prototypes/raft-db/`）
 - [bot-remote-api.md](./bot-remote-api.md) — Bot Remote API: HTTP API + Web console + Telegram Bot over FastAPI (Phase 0 aligns the design with the actual engine registry first)
 
 ### Reading
@@ -100,3 +101,4 @@ tags: [refactor, mkdocs]
 - [english-scraps.md](./english-scraps.md) — English Scraps：日常英语碎片（生词/语法/难句/搭配）随手收集 + AI 归档（内容落在 `docs/notes/research/topics/english/scraps/`）
 - [duckdb-internals-learning.md](./duckdb-internals-learning.md) — DuckDB Internals 学习计划（Greybeam 系列）：查询生命周期、列式存储、向量化执行（内容落在 `docs/notes/research/topics/duckdb/`）
 - [pgsimcity-learning.md](./pgsimcity-learning.md) — PGSimCity 学习计划：PostgreSQL 内部机制 3D 可视化（缓冲池、WAL、检查点、autovacuum、复制）（内容落在 `docs/notes/research/topics/pgsimcity/`）
+- [tsdb-from-scratch.md](./tsdb-from-scratch.md) — TSDB from scratch 学习计划：精读 write-tsdb-from-scratch 系列 + 自己实现基本 TSDB（内容落在 `docs/notes/research/topics/tsdb/`，实现落 `prototypes/tsdb-from-scratch/`）

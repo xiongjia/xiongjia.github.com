@@ -87,3 +87,4 @@ hide:
 - [scoop](https://scoop.sh/) - Windows package management
 - [AlmaLinux](https://almalinux.org/) - CentOS 替代
 - [ClearOS](https://www.clearos.com/) - NAS 管理 Linux
+- [cordis](https://github.com/cordiverse/cordis) - DHS 的 Plugin 管理机制
