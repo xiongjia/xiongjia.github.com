@@ -1,4 +1,7 @@
-{# moment_archive.html #}
+{# moment_archive.html — month-picker calendar on top (shared partial
+   moment_calendar.html, also shown on every per-month page), latest month's
+   moments inline below (one month at a time; other months live on their own
+   /<YYYY>/<MM>/ pages reachable from the calendar) #}
 {% extends "main.html" %}
 
 {% block content %}
@@ -29,6 +32,19 @@
     .moment-archive__month a:hover {
         color: var(--md-typeset-a-color, #448aff);
     }
+    /* badge marking the inline month (latest) below the calendar */
+    .moment-archive__latest {
+        display: inline-block;
+        font-size: 0.55em;
+        font-weight: 400;
+        margin-left: 0.6em;
+        padding: 0.1em 0.6em;
+        border-radius: 999px;
+        border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+        color: var(--md-default-fg-color--light, #757575);
+        vertical-align: middle;
+    }
+    /* --- entries --- */
     .moment-archive__entry {
         display: grid;
         grid-template-columns: 7.5em 1fr;
@@ -38,7 +54,7 @@
         padding: 0.25em 0;
     }
     /* narrow screens: stack time above content. Grid (not flex-wrap) so a long
-       moment's max-content width never pushes the whole content block to a new
+       moment's max-width content never pushes the whole content block to a new
        line on desktop — text wraps inside its 1fr column instead. */
     @media (max-width: 640px) {
         .moment-archive__entry {
@@ -112,11 +128,15 @@
     <span class="moment-archive__rankings">· <a href="{{ rankings_url }}">🏆 Rankings</a></span>
     {% endif %}
     </h1>
-    {% for group in archive_groups %}
+
+    {% include "moment_calendar.html" %}
+
+    {% if latest_group %}
     <h2 class="moment-archive__month">
-        <a href="{{ group.url }}">{{ group.label }}</a>
+        <a href="{{ latest_group.url }}">{{ latest_group.label }}</a>
+        <span class="moment-archive__latest">{{ labels.get('archive_latest', '最新') }}</span>
     </h2>
-    {% for moment in group.entries %}
+    {% for moment in latest_group.entries %}
     <div class="moment-archive__entry">
         <a href="{{ moment.permalink }}" class="moment-archive__time"
            title="{{ moment.date.strftime('%Y-%m-%d %H:%M') }}">
@@ -130,6 +150,6 @@
         </div>
     </div>
     {% endfor %}
-    {% endfor %}
+    {% endif %}
 </article>
 {% endblock %}

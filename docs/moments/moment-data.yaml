@@ -5,3 +5,7 @@ labels:
   older: ← Older
   newer: Newer →
   back_to_timeline: ↑ Timeline
+  archive_month_picker: 按月份浏览归档
+  archive_empty_month: 暂无记录
+  archive_count_suffix: 条
+  archive_latest: 最新

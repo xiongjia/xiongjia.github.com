@@ -61,6 +61,15 @@ def _make_plugin(moments, posts_per_page=20, **extra):
     return plugin, template
 
 
+def _render_calls_for(template, url):
+    """Render calls whose page proxy carries the given URL (order-independent)."""
+    return [
+        c
+        for c in template.render.call_args_list
+        if c.kwargs.get("page") and c.kwargs["page"].url == url
+    ]
+
+
 # ---------------------------------------------------------------------------
 # _tag_segment (foundation fix #3)
 # ---------------------------------------------------------------------------
@@ -551,6 +560,70 @@ def test_on_post_build_generates_archive_pages(tmp_path):
     assert not (tmp_path / "moments" / "2026-07" / "archive").exists()
 
 
+def test_on_post_build_archive_render_kwargs(tmp_path):
+    """Archive index gets a full year→month calendar grid plus only the
+    latest month's moments; month pages carry the same calendar (their month
+    highlighted) with no standalone Archive link — the calendar is the
+    archive navigation."""
+    plugin, template = _make_plugin(
+        [
+            _moment(0),  # 2026-07
+            _moment(1),  # 2026-07
+            _rss_moment(
+                "2026-06-30-1200",
+                datetime(2026, 6, 30, 12, 0),
+                "/moments/2026-06/30-1200/",
+                "june",
+                "<p>june</p>",
+            ),
+            _rss_moment(
+                "2025-12-31-2300",
+                datetime(2025, 12, 31, 23, 0),
+                "/moments/2025-12/31-2300/",
+                "dec",
+                "<p>dec</p>",
+            ),
+        ]
+    )
+    plugin.on_post_build(
+        {
+            "site_dir": str(tmp_path),
+            "docs_dir": str(tmp_path),
+            "site_url": "https://example.com",
+        }
+    )
+
+    archive_calls = _render_calls_for(template, "/moments/archive/")
+    assert len(archive_calls) == 1
+    kwargs = archive_calls[0].kwargs
+    # years laid out oldest-first (traditional calendar reading order)
+    assert [y["year"] for y in kwargs["calendar_years"]] == [2025, 2026]
+    # each year has all twelve months in the calendar grid (Jan–Dec)
+    for year_cell in kwargs["calendar_years"]:
+        assert [m["month"] for m in year_cell["months"]] == list(range(1, 13))
+    months = {m["month"]: m for m in kwargs["calendar_years"][1]["months"]}
+    # filled months carry url + count; empty months are disabled (url None)
+    assert months[6]["count"] == 1 and months[6]["url"] == "/moments/2026/06/"
+    assert months[7]["count"] == 2 and months[7]["url"] == "/moments/2026/07/"
+    assert all(m["url"] is None for m in months.values() if not m["count"])
+    # the older year's single December moment is wired up too
+    assert kwargs["calendar_years"][0]["months"][11]["count"] == 1
+    assert kwargs["calendar_years"][0]["months"][11]["url"] == "/moments/2025/12/"
+    # latest month (newest first) renders inline below the calendar
+    assert kwargs["latest_group"]["label"] == "2026 · 07"
+    assert kwargs["latest_group"]["url"] == "/moments/2026/07/"
+    assert len(kwargs["latest_group"]["entries"]) == 2
+    # the archive calendar highlights the latest month
+    assert kwargs["calendar_highlight"] == {"year": 2026, "month": 7}
+    # month pages carry the shared calendar (that month highlighted); no
+    # standalone Archive link — the calendar is the archive navigation
+    june_calls = _render_calls_for(template, "/moments/2026/06/")
+    assert len(june_calls) == 1
+    assert "archive_url" not in june_calls[0].kwargs
+    assert june_calls[0].kwargs["calendar_years"] == kwargs["calendar_years"]
+    assert june_calls[0].kwargs["calendar_highlight"] == {"year": 2026, "month": 6}
+
+
 def test_on_page_context_injects_archive_url():
     plugin = MomentPlugin()
     plugin._load_config({"path": "moments"})
@@ -974,19 +1047,12 @@ def test_on_post_build_generates_rankings_page(tmp_path):
     )
     assert (tmp_path / "moments" / "rankings" / "index.html").exists()
 
-    def _calls_for(url):
-        return [
-            c
-            for c in template.render.call_args_list
-            if c.kwargs.get("page") and c.kwargs["page"].url == url
-        ]
-
     # find the rankings render among all renders — order-independent
-    ranking_calls = _calls_for("/moments/rankings/")
+    ranking_calls = _render_calls_for(template, "/moments/rankings/")
     assert len(ranking_calls) == 1
     assert len(ranking_calls[0].kwargs["ranking_groups"]) == 2
     # archive page carries a reciprocal link to rankings when it exists
-    archive_calls = _calls_for("/moments/archive/")
+    archive_calls = _render_calls_for(template, "/moments/archive/")
     assert len(archive_calls) == 1
     assert archive_calls[0].kwargs["rankings_url"] == "/moments/rankings/"
 
@@ -1041,11 +1107,7 @@ def test_on_post_build_archive_without_rankings_has_no_link(tmp_path):
             "site_url": "https://example.com",
         }
     )
-    archive_calls = [
-        c
-        for c in template.render.call_args_list
-        if c.kwargs.get("page") and c.kwargs["page"].url == "/moments/archive/"
-    ]
+    archive_calls = _render_calls_for(template, "/moments/archive/")
     assert len(archive_calls) == 1
     assert archive_calls[0].kwargs["rankings_url"] is None
 
