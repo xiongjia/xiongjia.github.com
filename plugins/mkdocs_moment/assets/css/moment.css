@@ -53,6 +53,70 @@
     margin-right: 0.15em;
 }
 
+/* month-picker calendar — shared by the archive index and every per-month
+   page (see moment_calendar.html include) */
+.moment-calendar {
+    margin: 0.75em 0 1.75em;
+    padding: 1em 1.25em 1.25em;
+    border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    border-radius: 10px;
+    background: var(--md-default-bg-color--light, #fafafa);
+}
+.moment-calendar__year + .moment-calendar__year {
+    margin-top: 1.1em;
+}
+.moment-calendar__year-title {
+    font-size: 0.95em;
+    margin: 0 0 0.5em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+.moment-calendar__months {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 0.5em;
+}
+@media (max-width: 640px) {
+    .moment-calendar__months {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+.moment-calendar__month-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+    padding: 0.45em 0.2em;
+    border-radius: 8px;
+    text-decoration: none;
+    background: var(--md-default-bg-color, #ffffff);
+    border: 1px solid var(--md-default-fg-color--lightest, #e0e0e0);
+    color: inherit;
+}
+a.moment-calendar__month-cell:hover {
+    border-color: var(--md-typeset-a-color, #448aff);
+    color: var(--md-typeset-a-color, #448aff);
+}
+.moment-calendar__month-cell.is-current {
+    border-color: var(--md-typeset-a-color, #448aff);
+    box-shadow: inset 0 0 0 1px var(--md-typeset-a-color, #448aff);
+}
+.moment-calendar__month-cell.is-empty {
+    opacity: 0.35;
+    background: transparent;
+    border-style: dashed;
+}
+.moment-calendar__month-name {
+    font-size: 0.9em;
+    font-weight: 600;
+}
+.moment-calendar__month-count {
+    font-size: 0.7em;
+    color: var(--md-default-fg-color--light, #757575);
+}
+a.moment-calendar__month-cell:hover .moment-calendar__month-count {
+    color: var(--md-typeset-a-color, #448aff);
+}
+
 /* All tags — collapsible, expanded by default (below archive/map) */
 .moment-tagcloud-details {
     margin: 0.4em 0;

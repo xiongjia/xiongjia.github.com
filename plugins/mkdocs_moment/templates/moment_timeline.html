@@ -77,6 +77,10 @@
     <p class="moment-timeline__desc">{{ labels.timeline_description }}</p>
     {% endif %}
 
+    {# month-picker calendar — only renders on per-month pages (the archive
+       index includes it via its own template); no-op elsewhere #}
+    {% include "moment_calendar.html" %}
+
     {% if pagination.items %}
     {% if all_tags or archive_url or map_url or stats_url %}
     <div class="moment-tools">

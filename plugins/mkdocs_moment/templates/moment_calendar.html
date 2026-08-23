@@ -1,0 +1,29 @@
+{# moment_calendar.html — month-picker calendar, shared by the archive index
+   and every per-month page so it stays visible while browsing months.
+   Expects `calendar_years` (list of year cells, each with an ordered 12-cell
+   `months` list), `calendar_highlight` ({year, month}) for the is-current
+   highlight, and `labels` for the UI strings. Styles live in moment.css
+   (site-wide). #}
+{% if calendar_years %}
+<nav class="moment-calendar" aria-label="{{ labels.get('archive_month_picker', '按月份浏览归档') }}">
+    {% for year_cell in calendar_years %}
+    <section class="moment-calendar__year">
+        <h2 class="moment-calendar__year-title">{{ year_cell.year }}</h2>
+        <div class="moment-calendar__months">
+            {% for month_cell in year_cell.months %}
+            {% if month_cell.count %}
+            <a href="{{ month_cell.url }}"
+               class="moment-calendar__month-cell{{ ' is-current' if month_cell.year == calendar_highlight.year and month_cell.month == calendar_highlight.month }}"
+               title="{{ year_cell.year }}-{{ month_cell.label }} · {{ month_cell.count }} {{ labels.get('archive_count_suffix', '条') }}">
+                <span class="moment-calendar__month-name">{{ month_cell.label }}</span>
+                <span class="moment-calendar__month-count">{{ month_cell.count }}</span>
+            </a>
+            {% else %}
+            <span class="moment-calendar__month-cell is-empty" title="{{ labels.get('archive_empty_month', '暂无记录') }}">{{ month_cell.label }}</span>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+    {% endfor %}
+</nav>
+{% endif %}

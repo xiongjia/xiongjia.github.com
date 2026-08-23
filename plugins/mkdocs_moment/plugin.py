@@ -663,10 +663,15 @@ class MomentPlugin(BasePlugin):
     def _render_archive_pages(self, site_dir, config, ranking_groups=None):
         """Render the year/month archive index and one page per month.
 
-        Index at /archive/, month pages at /<YYYY>/<MM>/ (slash-separated, so
-        they do not collide with hyphenated detail URLs like /2026-07/30-1430/).
-        ``ranking_groups`` (precomputed by `on_post_build`) decides whether the
-        index page links to the rankings page.
+        Index at /archive/ (a month-picker calendar on top, with the latest
+        month's moments rendered inline below — one month at a time, so the
+        page never grows to the full archive), month pages at /<YYYY>/<MM>/
+        (slash-separated, so they do not collide with hyphenated detail URLs
+        like /2026-07/30-1430/). Both the index and every month page carry
+        the same shared calendar (current month highlighted), so it stays
+        visible while browsing months. ``ranking_groups`` (precomputed by
+        `on_post_build`) decides whether the index page links to the
+        rankings page.
         """
         groups = self._archive_groups()
         if not groups:
@@ -675,7 +680,47 @@ class MomentPlugin(BasePlugin):
         moment_base = helpers["moment_base"]
         month_dir = self.config["path"]
 
-        # per-month pages reuse the timeline template
+        # shared calendar: cells cover every month of every year that has
+        # moments (missing months filled in as disabled cells so the grid
+        # always shows Jan–Dec); years without any moments are omitted from
+        # the calendar entirely
+        by_year: dict[int, dict[int, dict]] = {}
+        for (year, month), items in groups.items():
+            by_year.setdefault(year, {})[month] = {
+                "year": year,
+                "month": month,
+                "label": f"{month:02d}",
+                "url": f"{moment_base}/{year}/{month:02d}/",
+                "count": len(items),
+            }
+        # projection: each year becomes a 12-cell ordered month grid; years
+        # read oldest-first (traditional calendar order) — reversed because
+        # ``by_year`` was filled newest-first from the groups
+        calendar_years = [
+            {
+                "year": year,
+                "months": [
+                    months.get(
+                        m,
+                        {
+                            "year": year,
+                            "month": m,
+                            "label": f"{m:02d}",
+                            "url": None,
+                            "count": 0,
+                        },
+                    )
+                    for m in range(1, 13)
+                ],
+            }
+            for year, months in reversed(by_year.items())
+        ]
+
+        # per-month pages reuse the timeline template; each shows a single
+        # month and the shared calendar (that month highlighted). The
+        # calendar is the archive navigation, so month pages carry no
+        # standalone Archive link — the archive index has none either (a
+        # self-link there would be pointless)
         timeline_template = self._jinja_env.get_template("moment_timeline.html")
         for (year, month), items in groups.items():
             month_path = f"{year}/{month:02d}"
@@ -700,6 +745,8 @@ class MomentPlugin(BasePlugin):
                     base_url=self._base_url,
                     pagination=pagination,
                     labels=self._labels,
+                    calendar_years=calendar_years,
+                    calendar_highlight={"year": year, "month": month},
                     **helpers,
                 ),
                 config,
@@ -708,18 +755,19 @@ class MomentPlugin(BasePlugin):
             output_dir.mkdir(parents=True, exist_ok=True)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
-        # archive index page groups moments by year/month
+        # archive index page: shared calendar + latest month inline
         archive_template = self._jinja_env.get_template("moment_archive.html")
         archive_url = f"{moment_base}/archive/"
         page_proxy = _Page("Moment Archive", archive_url)
-        archive_groups = [
-            {
-                "label": f"{year} · {month:02d}",
-                "url": f"{moment_base}/{year}/{month:02d}/",
-                "entries": items,
-            }
-            for (year, month), items in groups.items()
-        ]
+        # the latest month with moments renders inline below the calendar
+        latest_year, latest_month = next(iter(groups))
+        latest_group = {
+            "year": latest_year,
+            "month": latest_month,
+            "label": f"{latest_year} · {latest_month:02d}",
+            "url": f"{moment_base}/{latest_year}/{latest_month:02d}/",
+            "entries": groups[(latest_year, latest_month)],
+        }
         # reciprocal link to the rankings page when it exists
         rankings_url = f"{moment_base}/rankings/" if ranking_groups else None
         html = self._minify_html(
@@ -728,7 +776,9 @@ class MomentPlugin(BasePlugin):
                 config=config,
                 nav=self._nav,
                 base_url=self._base_url,
-                archive_groups=archive_groups,
+                calendar_years=calendar_years,
+                calendar_highlight={"year": latest_year, "month": latest_month},
+                latest_group=latest_group,
                 rankings_url=rankings_url,
                 labels=self._labels,
                 **helpers,
