@@ -22,7 +22,7 @@ KV 数据库原型：多节点通过 Raft 达成一致（选主、日志复制�
 
   - 语言与库：Go（[etcd-io/raft](https://github.com/etcd-io/raft) + goleveldb，
     后者为 LevelDB 的纯 Go 重实现）或 Rust（[raft-rs](https://github.com/tikv/raft-rs)
-    + leveldb crate）；选型在 README 记录理由
+    - leveldb crate）；选型在 README 记录理由
   - 架构：Raft 集群（3 节点起步）→ 日志应用 → 状态机（KV 内存态）→
     LevelDB 持久化；区分 leader 读 / 线性一致性读的取舍
   - API 面：Put / Get / Delete，可选 Watch
