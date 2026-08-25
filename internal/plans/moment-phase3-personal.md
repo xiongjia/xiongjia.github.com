@@ -89,8 +89,10 @@ parked until their triggers fire).
 - [x] EXIF camera/date extraction — GPS already done (`exif_gps` fills
   `lng`/`lat`); `exif_camera_date` in `scripts/create_moment.py` reads
   Make/Model + DateTimeOriginal from the source at create time → stored
-  in `meta.camera` / `meta.photo_date` (never the moment `date:`;
-  explicit `--meta` wins). WebP preserves EXIF (verified)
+  in `meta.camera` / `meta.photo_date` (never the moment `date:` — the
+  auto-meta path; `--time-from-exif` is the explicit opt-in to use that
+  EXIF date as `date:`; explicit `--meta` wins). WebP preserves EXIF
+  (verified; orientation is now baked into the pixels)
 
 ### Search Integration
 
@@ -141,12 +143,12 @@ parked until their triggers fire).
 
 ## Open Decisions (2026-08-22; G1/G5/G6 still open, G2–G4 resolved)
 
-| #   | Topic                           | Status / Recommendation                                                                 |
-| --- | ------------------------------- | --------------------------------------------------------------------------------------- |
-| G1  | Grid/Masonry layout             | **Resolved — keep cancelled** (Phase 2 decision: inline thumbnail row kept)             |
-| G2  | Lightbox group key              | **Implemented** — `data-gallery` = moment source path in `_wrap_glightbox`              |
-| G3  | EXIF DateTimeOriginal semantics | **Implemented** — stored in `meta.camera`/`meta.photo_date`, never overrides `date:`    |
-| G4  | Stats page Mermaid injection    | **Implemented** — div.mermaid (avoids Material's pre.mermaid component) + `pre` htmlmin |
-|     |                                 | attr keeps newlines; mermaid.min.js injected by the template                            |
-| G5  | City-Log data source            | **Parked** — revisit when the City Log PWA (Phase 0) ships an export                    |
-| G6  | Search filter scope             | **Parked** — tag/archive already cover browsing; revisit if search demand appears       |
+| #   | Topic                           | Status / Recommendation                                                                                       |
+| --- | ------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| G1  | Grid/Masonry layout             | **Resolved — keep cancelled** (Phase 2 decision: inline thumbnail row kept)                                   |
+| G2  | Lightbox group key              | **Implemented** — `data-gallery` = moment source path in `_wrap_glightbox`                                    |
+| G3  | EXIF DateTimeOriginal semantics | **Implemented** — stored in `meta.camera`/`meta.photo_date`; `--time-from-exif` opts into using it as `date:` |
+| G4  | Stats page Mermaid injection    | **Implemented** — div.mermaid (avoids Material's pre.mermaid component) + `pre` htmlmin                       |
+|     |                                 | attr keeps newlines; mermaid.min.js injected by the template                                                  |
+| G5  | City-Log data source            | **Parked** — revisit when the City Log PWA (Phase 0) ships an export                                          |
+| G6  | Search filter scope             | **Parked** — tag/archive already cover browsing; revisit if search demand appears                             |

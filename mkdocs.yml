@@ -165,6 +165,8 @@ extra:
       film:
         - { key: name, label: 影院, type: text }
         - { key: rating, label: 评分, type: rating }
+      misc:
+        - { key: name, label: 地点, type: text }
     # Rankings page (extra.moment.rankings): archive-style page at
     # /moments/rankings/ grouping rated moments per category (the meta_fields
     # tags that define a `rating` field) and listing them sorted by score.
@@ -229,6 +231,10 @@ extra:
       tag_emoji:
         film: 🎬
         food: 🍽️
+      # Marker emoji for the generic 其他 bucket (moments whose tags have no
+      # tag_emoji entry). Separate key on purpose: tag_emoji's own ``_other``
+      # entry is reserved for a literal "_other" tag and never applies here.
+      other_emoji: 📌
       # Map control attribution (bottom corner). Empty = widget default
       # (Protomaps + OpenStreetMap).
       attribution: "© recycle.bin · Protomaps"

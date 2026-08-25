@@ -118,7 +118,17 @@ internal/bucket-design.md); the moment plugin applies the same rewrite to
 moment bodies (`on_page_markdown` → `bucket_rewrite_html`), so detail pages,
 timeline thumbnails, popups and OG images all point at the bucket. Photos
 with EXIF GPS auto-fill `lng`/`lat` (WGS-84) unless explicit `--lng/--lat`
-are given.
+are given, and the WebP conversion **bakes EXIF Orientation into the pixels**
+(dropping the Orientation tag) so sideways photos render upright in viewers
+that ignore WebP orientation tags. `--time-from-exif` additionally uses the
+photo's EXIF DateTimeOriginal as the moment `date:` (first photo with one
+wins; mutually exclusive with `--time`).
+
+Moment images always target the **generic** bucket mapping
+(`assets/bucket/` → `data/img`), selected by shortest-prefix
+(`_generic_mapping` in scripts/bucket_sync.py) — never the more-specific
+`assets/bucket/running/` mapping, which is listed first in mkdocs.yml only so
+URL rewriting matches running links before the generic prefix.
 
 Images placed by hand still go in the same month directory with `./` paths
 (plugin auto-converts relative paths to site-absolute URLs).
@@ -468,6 +478,8 @@ uv run poe create-moment "Scallion-oil noodles were good" --meta name="Old Shang
 - Map popups show the restaurant/cinema name: the field whose `key` is
   `name` when the schema defines one, else the first text field; the rating
   comes from the first `rating`-type field.
+- The generic `misc` (其他) tag can carry a schema too (e.g. `{key: name, label: 地点}`), so catch-all moments get a meta block + popup name like
+  food/film do. Moments without matching `meta` values still render nothing.
 - No schema configured, or no tag matches → nothing renders (feature fully
   off by default).
 
@@ -531,6 +543,7 @@ extra:
       tag_emoji:
         film: 🎬
         food: 🍽️
+      other_emoji: 📌    # marker emoji for the default 其他 bucket (no tag_emoji match)
       attribution: "© recycle.bin · Protomaps"
       hide_attribution: true        # hide the bottom-right attribution control
       cluster:
@@ -623,7 +636,11 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
   vine's maps-cli; verified against `121.48,31.16 → 121.475504,31.161994`).
 - Region bbox probing falls back to `default_region`.
 - Marker emoji is derived from tags via the configured `tag_emoji` table (no
-  `mark` field); `film → 🎬`, `food → 🍽️`, default `📍`.
+  `mark` field); `film → 🎬`, `food → 🍽️`. Moments whose tags match no entry
+  fall into the default `其他` bucket, whose marker emoji comes from a
+  separate `other_emoji` config key (independent of `tag_emoji._other`, which
+  stays reserved for a literal `_other` tag). The map's category checkbox
+  label uses the same emoji (`📌 其他`).
 
 ### Rendering
 
@@ -668,8 +685,9 @@ region: shanghai        # optional; probed from lng/lat bbox when omitted
   - Below the map an **All Timeline feed** (`moment_list`, newest first)
     lists EVERY geo moment across all regions — full rendered content
     (`.moment-entry` markup from moment.css, thumbnails capped at 150px like
-    the timeline, glightbox anchors left as plain links since this page has
-    no lightbox JS) plus structured metadata (restaurant/cinema name +
+    the timeline; glightbox is injected on this generated page like the
+    real-pipeline pages, so thumbnails open in a lightbox) plus structured
+    metadata (restaurant/cinema name +
     rating stars, same `.moment-meta` block as the timeline), time link and
     `#tags` — filtered by the same category checkboxes (independent of the
     current region / load-all state). Marker popups show the name + rating

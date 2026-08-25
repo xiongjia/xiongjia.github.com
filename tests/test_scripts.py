@@ -139,6 +139,10 @@ def test_optimize_images_quality_passthrough(tmp_path, monkeypatch):
         def __exit__(self, *args):
             return False
 
+        def getexif(self):
+            # no Orientation tag → the transpose step is skipped entirely
+            return Image.Exif()
+
         def save(self, dst, fmt, **kwargs):
             captured.update(kwargs)
             Path(dst).write_bytes(b"fake webp")
@@ -187,6 +191,49 @@ def test_optimize_images_quality_clamped(tmp_path):
 
     dst = optimize_images.convert_to_webp(src, quality=150)
     assert dst is not None and dst.exists()
+
+
+def test_optimize_images_bakes_exif_orientation(tmp_path):
+    """EXIF Orientation is baked into the WebP pixels (and the tag dropped),
+    so viewers that ignore WebP orientation won't render the photo rotated;
+    GPS (and other EXIF) survives the transpose."""
+    from PIL import Image
+    from PIL.TiffImagePlugin import IFDRational
+
+    src = tmp_path / "sideways.jpg"
+    im = Image.new("RGB", (400, 300), "red")  # stored wide
+    exif = Image.Exif()
+    exif[0x0112] = 6  # rotate 90° CW to display upright
+    gps = exif.get_ifd(0x8825)
+    gps[1] = "N"
+    gps[2] = (IFDRational(31, 1), IFDRational(10, 1), IFDRational(0, 1))
+    gps[3] = "E"
+    gps[4] = (IFDRational(121, 1), IFDRational(28, 1), IFDRational(0, 1))
+    im.save(src, exif=exif)
+
+    dst = optimize_images.convert_to_webp(src)
+    assert dst is not None and dst.exists()
+
+    with Image.open(dst) as webp:
+        # pixels physically transposed: 400x300 → 300x400
+        assert webp.size == (300, 400)
+        assert webp.getexif().get(0x0112) is None  # orientation tag dropped
+        kept_gps = webp.getexif().get_ifd(0x8825)
+        assert kept_gps is not None and 2 in kept_gps  # GPS preserved
+
+
+def test_optimize_images_no_orientation_not_transposed(tmp_path):
+    """Correctly-oriented / tagless images skip the transpose entirely (size
+    unchanged) — exif_transpose would copy the whole image otherwise."""
+    from PIL import Image
+
+    src = tmp_path / "wide.png"
+    Image.new("RGB", (400, 300), "red").save(src)
+    dst = optimize_images.convert_to_webp(src)
+    assert dst is not None and dst.exists()
+    with Image.open(dst) as webp:
+        assert webp.size == (400, 300)
+        assert webp.getexif().get(0x0112) is None
 
 
 def test_optimize_images_convert_to_custom_dst(tmp_path):

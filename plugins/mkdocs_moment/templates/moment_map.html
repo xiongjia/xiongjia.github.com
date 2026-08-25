@@ -99,9 +99,9 @@
     }
     /* the feed under the map renders timeline-style entries (moment.css
        provides .moment-entry etc.); thumbnails mirror the timeline page:
-       image-only paragraphs become inline tiles at 150px max-height, and
-       the glightbox <a> wrappers are left as plain links (no lightbox JS
-       on this page) */
+       image-only paragraphs become inline tiles at 150px max-height.
+       Thumbnails open in a lightbox: this generated page gets glightbox
+       injected by _inject_glightbox, same as the real-pipeline pages. */
     .moment-map__feed .moment-entry__content {
         font-size: 0.8rem;
     }
@@ -259,7 +259,11 @@
     // Every popup shows the moment's first image + plain-text excerpt.
     let markerSeq = 0;
     function toMarker(c) {
-        const m = { lng: c.lng, lat: c.lat, emoji: c.emoji || undefined };
+        // the default 其他 bucket has no tag_emoji — use map.other_emoji so
+        // its markers don't fall back to the widget's plain red dot
+        const emoji =
+            c.emoji || (c.category === "_other" ? mapCfg.other_emoji : "") || undefined;
+        const m = { lng: c.lng, lat: c.lat, emoji };
         const imgOf = (it) => it.image
             ? `<img class="moment-popup-img" src="${esc(it.image)}" alt="" loading="lazy">`
             : "";

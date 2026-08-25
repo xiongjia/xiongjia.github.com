@@ -20,7 +20,7 @@ import sys
 from collections.abc import Iterator
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageOps
 
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
@@ -87,6 +87,12 @@ def convert_to_webp(
     suffix) — used by bucket-upload to convert straight into the keyed target
     path. Returns the path to the new .webp file, or None if the WebP already
     exists and is not smaller.
+
+    EXIF orientation is baked into the pixels via ``ImageOps.exif_transpose``
+    (and the Orientation tag dropped) — WebP viewers often ignore the EXIF
+    Orientation tag, so photos taken sideways would otherwise render rotated
+    by 90°. All other EXIF (GPS, Make/Model, …) is preserved and carried
+    into the WebP.
     """
     quality = _clamp_quality(quality)
     dst = dst or src.with_suffix(".webp")
@@ -100,6 +106,14 @@ def convert_to_webp(
 
     try:
         with Image.open(src) as im:
+            # bake EXIF orientation into the pixels and strip the Orientation
+            # tag; other EXIF (GPS, Make/Model, …) is kept in im.info["exif"].
+            # Only transpose when an Orientation tag is present (1 / none =
+            # already upright): exif_transpose always COPIES the image, so
+            # calling it unconditionally would double the peak memory for
+            # every correctly-oriented photo.
+            if im.getexif().get(0x0112) not in (None, 1):
+                im = ImageOps.exif_transpose(im)
             exif = im.info.get("exif")
             save_kwargs: dict = {"quality": quality, "method": 6}
             if exif is not None:

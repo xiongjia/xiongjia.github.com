@@ -1232,6 +1232,49 @@ def test_render_content_glightbox_group_distinct_per_moment():
     assert 'data-gallery="moments/2026-08/02-0900"' in other
 
 
+def test_inject_glightbox_generated_page():
+    """Generated pages (pagination/tag/month/archive/map) bypass
+    mkdocs-glightbox's on_post_page, so the moment plugin injects the same
+    CSS+JS+init itself (mirroring the live glightbox config); without a
+    glightbox plugin the page passes through unchanged."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    html = "<html><head></head><body></body></html>"
+    theme = SimpleNamespace(name="material")
+    theme.get = lambda k, d=None: d  # features -> []
+    lightbox = SimpleNamespace(
+        config={
+            "effect": "zoom",
+            "slide_effect": "slide",
+            "loop": False,
+            "zoomable": True,
+            "draggable": True,
+            "touchNavigation": False,
+            "background": "white",
+            "shadow": True,
+        }
+    )
+    config = {
+        "site_dir": "/build/site",
+        "theme": theme,
+        "plugins": {"glightbox": lightbox},
+    }
+    out = plugin._inject_glightbox(html, Path("/build/site/moments/map"), config)
+    # generated pages sit N levels under site_dir; asset URLs are relative
+    assert 'href="../../assets/stylesheets/glightbox.min.css"' in out
+    assert 'src="../../assets/javascripts/glightbox.min.js"' in out
+    assert '<script id="init-glightbox">' in out
+    assert "GLightbox(" in out
+    assert '"loop": false' in out
+    # material theme -> reload on material's document$ (instant nav parity)
+    assert "document$.subscribe" in out
+    # no glightbox plugin configured -> page untouched
+    bare = plugin._inject_glightbox(
+        html, Path("/build/site/moments/map"), {"site_dir": "/build/site", "theme": theme}
+    )
+    assert bare == html
+
+
 def test_render_content_multiple_captioned_images():
     """Each image + caption pair becomes a figure, not just the first one."""
     plugin = MomentPlugin()
@@ -1716,6 +1759,34 @@ def test_map_categories_reserves_other_key():
     assert mixed == [{"key": "_other", "label": "其他"}]
 
 
+def test_map_categories_other_emoji():
+    """map.other_emoji labels the default 其他 bucket (giving its markers an
+    icon instead of the widget's plain red dot) and is independent of the
+    reserved tag_emoji._other key."""
+    # configured -> emoji-prefixed label
+    plugin = _geo_plugin({"other_emoji": "📌"})
+    assert plugin._map_categories([_moment(0, tags=("general",))]) == [
+        {"key": "_other", "label": "📌 其他"}
+    ]
+    # unset -> plain 其他 (existing default preserved)
+    assert _geo_plugin()._map_categories([_moment(0, tags=("general",))]) == [
+        {"key": "_other", "label": "其他"}
+    ]
+    # tag_emoji._other stays reserved: the literal-tag moment lands in the
+    # same 其他 bucket whose label comes from other_emoji, never from the tag
+    reserved = _geo_plugin({"other_emoji": "📌", "tag_emoji": {"film": "🎬", "_other": "⭐"}})
+    assert reserved._map_categories([_moment(0, tags=("_other",))]) == [
+        {"key": "_other", "label": "📌 其他"}
+    ]
+
+
+def test_map_template_cfg_carries_other_emoji():
+    """other_emoji is shipped to the page so the client can style the 其他
+    markers; empty when not configured."""
+    assert _geo_plugin({"other_emoji": "📌"})._map_template_cfg()["other_emoji"] == "📌"
+    assert _geo_plugin()._map_template_cfg()["other_emoji"] == ""
+
+
 def test_cluster_carries_category_and_items_carry_category():
     """Clusters and their items expose the category so the client can filter
     by checkbox; a merged cluster keeps the newest item's category."""
@@ -2011,6 +2082,27 @@ def test_moment_meta_items_no_schema():
     m = _moment(0, tags=["food"])
     m.meta = {"name": "x", "rating": 4}
     assert plugin._moment_meta_items(m) == []
+
+
+def test_moment_meta_items_misc_schema_renders_name():
+    """The generic misc (其他) tag can carry a schema — meta.name then
+    renders as a meta item (and feeds the map popup name), like food/film."""
+    plugin = MomentPlugin()
+    plugin._load_config(
+        {
+            "path": "moments",
+            "meta_fields": {"misc": [{"key": "name", "label": "地点"}]},
+        }
+    )
+    m = _moment(0, tags=["general", "misc"])
+    m.meta = {"name": "杨高南路地铁站 (7 号线)"}
+    assert plugin._moment_meta_items(m) == [
+        {"key": "name", "label": "地点", "type": "text", "value": "杨高南路地铁站 (7 号线)"}
+    ]
+    # no matching meta values → still nothing rendered
+    m2 = _moment(1, tags=["general", "misc"])
+    m2.meta = {}
+    assert plugin._moment_meta_items(m2) == []
 
 
 def test_inject_template_helpers_exposes_moment_meta_items():
@@ -2528,6 +2620,110 @@ def test_create_moment_inline_caption_sparse(tmp_path, monkeypatch, capsys, clea
     assert "\n第二张的说明\n" not in md
 
 
+def test_create_moment_picks_generic_mapping(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """create-moment targets the GENERIC mapping (shortest prefix), never
+    mappings[0] — with the running mapping listed first (mirroring mkdocs.yml)
+    a moment photo still stages under assets/bucket/2026/08/ and uploads to
+    data/img/..., never assets/bucket/running/ / data/metadata/running/."""
+    from scripts import create_moment
+
+    src = tmp_path / "photo.png"
+    src.write_bytes(_PNG)
+    calls: list[list[str]] = []
+
+    def _fake_call(cmd, **kwargs):
+        calls.append(cmd)
+        return 0
+
+    import scripts.bucket_sync as bsync
+
+    monkeypatch.setattr(
+        create_moment,
+        "_bucket_config",
+        lambda: {
+            "enabled": True,
+            "mappings": [
+                {
+                    "prefix": "assets/bucket/running/",
+                    "bucket": "web-assets",
+                    "remote_prefix": "data/metadata/running",
+                },
+                {
+                    "prefix": "assets/bucket/",
+                    "bucket": "web-assets",
+                    "remote_prefix": "data/img",
+                },
+            ],
+            "upload": {"rule": "{Y}/{m}/{d}_{h}{i}{s}_{filename}", "max_size_mb": 10},
+        },
+    )
+    monkeypatch.setattr(create_moment, "load_env_files", lambda: None)
+    monkeypatch.setattr(create_moment.shutil, "which", lambda _: "/usr/bin/rclone")
+    monkeypatch.setattr(create_moment.subprocess, "call", _fake_call)
+    monkeypatch.setattr(bsync, "available_remotes", lambda: ["r2"])
+    _run_create_moment(
+        monkeypatch,
+        ["hello", "--image", str(src), "--time", "2026-08-09 14:30"],
+        tmp_path,
+    )
+    capsys.readouterr()
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    md_text = md[0].read_text(encoding="utf-8")
+    assert "![Image](../../assets/bucket/2026/08/09_143000_photo.webp)" in md_text
+    assert "running" not in md_text
+
+    assert (
+        tmp_path / "docs" / "assets" / "bucket" / "2026" / "08" / "09_143000_photo.webp"
+    ).is_file()
+    assert not (tmp_path / "docs" / "assets" / "bucket" / "running").exists()
+    assert "r2:web-assets/data/img/2026/08/09_143000_photo.webp" in calls[0]
+    assert not any("running" in token for cmd in calls for token in cmd)
+
+
+def test_create_moment_mapping_without_prefix_disables_upload(
+    tmp_path, monkeypatch, capsys, clear_bucket_env
+):
+    """A mapping with no usable prefix must not upload to the bucket root;
+    it falls back to local staging (upload disabled), like no mappings."""
+    from scripts import create_moment
+
+    src = tmp_path / "photo.png"
+    src.write_bytes(_PNG)
+    calls: list[list[str]] = []
+
+    def _fake_call(cmd, **kwargs):
+        calls.append(cmd)
+        return 0
+
+    import scripts.bucket_sync as bsync
+
+    monkeypatch.setattr(
+        create_moment,
+        "_bucket_config",
+        lambda: {
+            "enabled": True,
+            "mappings": [{"bucket": "web-assets", "remote_prefix": "data/img"}],  # no prefix
+            "upload": {"rule": "{Y}/{m}/{d}_{h}{i}{s}_{filename}", "max_size_mb": 10},
+        },
+    )
+    monkeypatch.setattr(create_moment, "load_env_files", lambda: None)
+    monkeypatch.setattr(create_moment.shutil, "which", lambda _: "/usr/bin/rclone")
+    monkeypatch.setattr(create_moment.subprocess, "call", _fake_call)
+    monkeypatch.setattr(bsync, "available_remotes", lambda: ["r2"])
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--image", str(src), "--time", "2026-08-09 14:30"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "no mappings" in out.err  # upload-disabled notice
+    assert calls == []  # nothing uploaded
+    assert (
+        tmp_path / "docs" / "assets" / "bucket" / "2026" / "08" / "09_143000_photo.webp"
+    ).is_file()
+
+
 def test_create_moment_gps_from_exif(tmp_path, monkeypatch, capsys, clear_bucket_env):
     """EXIF GPS on the photo fills lng/lat (WGS-84) when --lng/--lat absent."""
     from PIL import Image
@@ -2552,6 +2748,138 @@ def test_create_moment_gps_from_exif(tmp_path, monkeypatch, capsys, clear_bucket
     text = md[0].read_text(encoding="utf-8")
     assert "lng: 121.466667" in text
     assert "lat: 31.166667" in text
+
+
+def test_create_moment_time_from_exif(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """--time-from-exif: EXIF DateTimeOriginal becomes the moment date: —
+    and drives the filename day/time and the staged WebP key."""
+    from PIL import Image
+
+    src = tmp_path / "photo.jpg"
+    im = Image.new("RGB", (4, 4), "red")
+    exif = Image.Exif()
+    exif[0x9003] = "2026:08:09 14:30:56"  # DateTimeOriginal
+    im.save(src, exif=exif)
+
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["hello", "--image", str(src), "--no-upload", "--time-from-exif"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "Time:    2026-08-09 14:30 (from EXIF)" in out.out
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert len(md) == 1
+    assert md[0].name == "09-1430.md"
+    text = md[0].read_text(encoding="utf-8")
+    assert "date: 2026-08-09 14:30" in text
+    # a date-like meta value is YAML-quoted (dates must stay strings)
+    assert 'photo_date: "2026-08-09 14:30"' in text
+    # the staged WebP key follows the photo date too (render_rule on dt)
+    assert "09_143000_photo.webp" in text
+
+
+def test_create_moment_time_from_exif_first_usable(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """Photos without a DateTimeOriginal are skipped; the first usable EXIF
+    date wins (mirrors the EXIF-GPS "first usable" rule)."""
+    from PIL import Image
+
+    plain = tmp_path / "plain.png"
+    plain.write_bytes(_PNG)
+    dated = tmp_path / "dated.jpg"
+    im = Image.new("RGB", (4, 4), "red")
+    exif = Image.Exif()
+    exif[0x9003] = "2025:05:01 08:10:00"
+    im.save(dated, exif=exif)
+
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--image", str(plain), "--image", str(dated), "--no-upload", "--time-from-exif"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "Time:    2025-05-01 08:10 (from EXIF)" in out.out
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert md[0].name == "01-0810.md"
+    text = md[0].read_text(encoding="utf-8")
+    assert "date: 2025-05-01 08:10" in text
+
+
+def test_dt_from_exif_caches_reads(tmp_path):
+    """_dt_from_exif returns (dt, cache): paths inspected without a date are
+    cached too, so the caller's per-image EXIF pass reuses the read instead
+    of re-parsing the same file."""
+    from PIL import Image
+
+    from scripts import create_moment
+
+    plain = tmp_path / "plain.png"
+    plain.write_bytes(_PNG)
+    dated = tmp_path / "dated.jpg"
+    im = Image.new("RGB", (4, 4), "red")
+    exif = Image.Exif()
+    exif[0x9003] = "2025:05:01 08:10:00"
+    im.save(dated, exif=exif)
+
+    dt, cache = create_moment._dt_from_exif([str(plain), str(dated)])
+    assert dt.strftime("%Y-%m-%d %H:%M") == "2025-05-01 08:10"
+    assert cache[str(plain)] == ("", "")
+    assert cache[str(dated)][1] == "2025-05-01 08:10"
+
+
+def test_create_moment_time_from_exif_mutually_exclusive(tmp_path, monkeypatch, capsys):
+    """--time-from-exif conflicts with an explicit --time."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr(
+        "sys.argv",
+        ["create_moment", "x", "--image", "a.png", "--time-from-exif", "--time", "9am"],
+    )
+    from scripts import create_moment
+
+    try:
+        create_moment.main()
+        raise AssertionError("--time-from-exif with --time should be rejected")
+    except SystemExit as exc:
+        assert exc.code == 2  # argparse parser.error
+    capsys.readouterr()
+    assert not list((tmp_path / "docs").rglob("*.md"))  # nothing written
+
+
+def test_create_moment_time_from_exif_requires_image(tmp_path, monkeypatch, capsys):
+    """--time-from-exif without --image is rejected (nothing to read)."""
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setattr("sys.argv", ["create_moment", "x", "--time-from-exif"])
+    from scripts import create_moment
+
+    try:
+        create_moment.main()
+        raise AssertionError("--time-from-exif without --image should be rejected")
+    except SystemExit as exc:
+        assert exc.code == 2  # argparse parser.error
+    capsys.readouterr()
+    assert not list((tmp_path / "docs").rglob("*.md"))  # nothing written
+
+
+def test_create_moment_time_from_exif_falls_back(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """No DateTimeOriginal anywhere → warn + fall back to now (the moment
+    still gets created with a valid date:)."""
+    src = tmp_path / "plain.png"
+    src.write_bytes(_PNG)
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["x", "--image", str(src), "--no-upload", "--time-from-exif"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "falling back to now" in out.err
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert len(md) == 1
+    assert "date:" in md[0].read_text(encoding="utf-8")
 
 
 def test_dms_to_degrees():

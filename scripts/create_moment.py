@@ -14,6 +14,7 @@ Usage:
     uv run python scripts/create_moment.py "Content text" --time "9am"
     uv run python scripts/create_moment.py "Content text" --time "yesterday 9am"
     uv run python scripts/create_moment.py "Content text" --time "30 9pm"
+    uv run python scripts/create_moment.py "Content text" --image photo.jpg --time-from-exif
     uv run python scripts/create_moment.py "Content text" --meta name="La Mian" --meta rating=4
 
 Images (``--image``, repeatable): each source is converted to WebP
@@ -24,7 +25,9 @@ uploaded to the bucket with ``bucket-upload``'s key rule
 path under ``assets/bucket/``, which the build rewrites to the bucket URL
 (see internal/bucket-design.md). GPS coordinates embedded in the photo EXIF
 are read and saved as ``lng``/``lat`` (WGS-84) when no explicit
-``--lng/--lat`` are given. ``--no-upload`` stages the WebP locally without
+``--lng/--lat`` are given. With ``--time-from-exif`` the first photo's EXIF
+capture time (DateTimeOriginal) becomes the moment ``date:`` instead of
+``--time``/now. ``--no-upload`` stages the WebP locally without
 the rclone upload (e.g. for a later ``poe bucket-upload`` / PicList).
 """
 
@@ -37,6 +40,7 @@ import re
 import shutil
 import subprocess
 import sys
+from datetime import datetime
 from pathlib import Path
 
 import yaml
@@ -44,7 +48,7 @@ import yaml
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.bucket_sync import resolve_remote
+from scripts.bucket_sync import _generic_mapping, resolve_remote
 from scripts.bucket_upload import (
     DEFAULT_FALLBACK_NAME,
     DEFAULT_RULE,
@@ -205,6 +209,35 @@ def exif_camera_date(path: Path) -> tuple[str, str]:
     return camera, photo_date
 
 
+def _dt_from_exif(images: list[str]) -> tuple[datetime, dict[str, tuple[str, str]]]:
+    """Moment date from the first image with a usable EXIF DateTimeOriginal.
+
+    Inline ``path|caption`` forms are stripped; photos without a date are
+    skipped (first usable wins, mirroring the EXIF-GPS rule). When no photo
+    carries a date the moment still gets created with the current time plus a
+    warning — the ``date:`` field always stays valid.
+
+    Returns ``(dt, cache)``: ``cache`` maps each inspected path to its
+    ``(camera, photo_date)`` EXIF read, so the caller's per-image pass reuses
+    that result instead of re-reading the same file (the selected photo is
+    the one most likely to be read twice).
+    """
+    cache: dict[str, tuple[str, str]] = {}
+    for raw in images:
+        key = raw.partition("|")[0].strip()
+        cam, pdate = exif_camera_date(Path(key).expanduser())
+        cache[key] = (cam, pdate)
+        if pdate:
+            dt = parse_datetime_arg(pdate)
+            print(f"  Time:    {dt.strftime('%Y-%m-%d %H:%M')} (from EXIF)")
+            return dt, cache
+    print(
+        "  [WARN]  no EXIF DateTimeOriginal on the photos — falling back to now",
+        file=sys.stderr,
+    )
+    return parse_datetime_arg(None), cache
+
+
 def _stage_webp(src: Path, webp: Path, quality: int) -> bool:
     """Produce the WebP at *webp* from *src* (True on success).
 
@@ -345,6 +378,14 @@ def main():
         ),
     )
     parser.add_argument(
+        "--time-from-exif",
+        action="store_true",
+        help=(
+            "use the EXIF DateTimeOriginal of the first --image photo as the "
+            "moment date (default: --time or now); mutually exclusive with --time"
+        ),
+    )
+    parser.add_argument(
         "--dir", default="docs/moments", help="Moment data directory (default: docs/moments)"
     )
     parser.add_argument("--place", help="Location display text (e.g. 徐汇滨江某咖啡店)")
@@ -379,7 +420,15 @@ def main():
         # crash on a missing parent dir; restrict the charset
         parser.error(f"--slug must be letters/digits/_/- only, got {args.slug!r}")
 
-    dt = parse_datetime_arg(args.time)
+    exif_cache: dict[str, tuple[str, str]] = {}
+    if args.time_from_exif:
+        if args.time is not None:
+            parser.error("--time and --time-from-exif are mutually exclusive")
+        if not args.image:
+            parser.error("--time-from-exif requires --image (the date is read from the photo)")
+        dt, exif_cache = _dt_from_exif(args.image)
+    else:
+        dt = parse_datetime_arg(args.time)
     month_dir = dt.strftime("%Y-%m")
     time_slug = dt.strftime("%d-%H%M")
     filename = f"{time_slug}{'-' + args.slug if args.slug else ''}.md"
@@ -398,7 +447,19 @@ def main():
         # R2 credentials / BUCKET_* overrides come from .env (like bucket-upload)
         load_env_files()
         cfg = _bucket_config()
-        mapping = (cfg.get("mappings") or [{}])[0]
+        # THE generic (shortest-prefix) mapping, never mappings[0] — specific
+        # prefixes like assets/bucket/running/ are listed FIRST in mkdocs.yml
+        # so URL rewriting matches them before the generic assets/bucket/;
+        # moment photos must still target the generic mapping (assets/bucket/
+        # → data/img), see bucket_sync._generic_mapping. An empty dict keeps
+        # the "no mappings → upload disabled" fallback below (no SystemExit).
+        mapping = _generic_mapping(cfg) if cfg.get("mappings") else {}
+        if mapping and not str(mapping.get("prefix") or "").strip():
+            # a mapping without a usable prefix would stage at the bucket root
+            # and upload with an empty object prefix — treat it as absent so
+            # the "no mappings → upload disabled" fallback applies (local
+            # stage only), never a root-level upload
+            mapping = {}
         upload_cfg = cfg.get("upload") or {}
         quality = _clamp_quality(resolve_quality(None, config_quality()))
         max_bytes = int(
@@ -476,7 +537,13 @@ def main():
                 gps = exif_gps(Path(path.strip()).expanduser())
             if not camera or not photo_date:
                 # EXIF Make/Model + DateTimeOriginal → meta (never the date:)
-                cam, pdate = exif_camera_date(Path(path.strip()).expanduser())
+                # — reuse the read _dt_from_exif already did for this path,
+                # so the selected photo is only parsed once
+                key = path.strip()
+                if key in exif_cache:
+                    cam, pdate = exif_cache[key]
+                else:
+                    cam, pdate = exif_camera_date(Path(key).expanduser())
                 if cam and not camera:
                     camera = cam
                 if pdate and not photo_date:
