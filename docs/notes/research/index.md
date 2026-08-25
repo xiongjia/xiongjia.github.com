@@ -32,6 +32,8 @@ graph LR
 | [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询    |
 
 > **Status**: `polished` — notes polished and ready to use; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
+>
+> **Convention**: 新建 Topic 时补一行并填状态（draft → 下方 Drafts 表；polished/long-term → 上方主表）；状态变化时同步更新本表。
 
 ### Drafts
 

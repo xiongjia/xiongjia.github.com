@@ -1,8 +1,8 @@
 ---
 title: Bot Remote API — HTTP API + Web Console + Telegram Bot
 created: 2026-08-14
-updated: 2026-08-17
-status: in-progress
+archived: 2026-08-25
+status: completed
 tags: [bot, api, fastapi, telegram, web-console]
 ---
 
@@ -102,7 +102,7 @@ xiongjia.github.com/
 │
 ├── internal/
 │   ├── bot-api-design.md                 # committed (raw Chinese copy; translation is a Phase 0 task)
-│   └── plans/bot-remote-api.md           # this plan
+│   └── plans/arch/bot-remote-api.md      # this plan (archived)
 │
 ├── mkdocs.yml                            # modified: add create-post template task to extra.bot.tasks
 ├── pyproject.toml                        # modified: [api] extras + poe api-server / api-server-prod

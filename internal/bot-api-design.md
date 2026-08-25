@@ -9,7 +9,7 @@
 
 > **Status (2026-08-14)** — English translation of the original design.
 > Implementation has diverged from this document in several places; the
-> authoritative plan is `internal/plans/bot-remote-api.md` (Findings section
+> (archived) authoritative plan is `internal/plans/arch/bot-remote-api.md` (Findings section
 > catalogs every discrepancy). Key divergences:
 >
 > - **No auth layer** (dev decision): API Key / IP whitelist / TG webhook
@@ -125,7 +125,7 @@ xiongjia.github.com/
 │
 ├── internal/
 │   ├── bot-api-design.md             # this document
-│   └── plans/bot-remote-api.md       # the authoritative plan
+│   └── plans/arch/bot-remote-api.md  # the authoritative plan (archived)
 │
 ├── tests/
 │   └── api/                          # API tests
