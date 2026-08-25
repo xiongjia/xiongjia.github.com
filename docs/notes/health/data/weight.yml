@@ -67,5 +67,5 @@ weeks:
   # Week 4 — Mon 2026-08-17
   - days: [81.40, 82.00, 81.40, 82.00, 81.40, 81.70, 81.40]
   # Week 5 — Mon 2026-08-24
-  - days: [82.10, null, null, null, null, null, null]
+  - days: [82.10, 82.10, null, null, null, null, null]
 
