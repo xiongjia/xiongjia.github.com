@@ -65,7 +65,6 @@ tags: [refactor, mkdocs]
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location ✅ + Map ✅ + multi-image ✅ + lightbox grouping ✅ + EXIF camera/date ✅ + Stats ✅; cancelled: Grid/Masonry (G1); parked: search filter, City-Log (G5/G6); open: JSON Feed, auto-tag, streak stat
 - [tools-assets-externalize.md](./tools-assets-externalize.md) — Notes Tools: extract inline JS/CSS from tool pages into standalone assets (deferred)
 - [mkdocs-media-archive.md](./mkdocs-media-archive.md) — MkDocs Media Archive: 用 MkDocs 归档看过的书/影片/游戏（调研方案 → 数据模型 → 索引页）
-- [research-index-status.md](./research-index-status.md) — Research Index Status: 给 research topic 增加状态维度（active/done/stale/draft），索引页加状态列
 - [collection-scrape.md](./arch/collection-scrape.md) — Collection Scrape: 日常随手收集（poe collect-add/todo/idea）+ AI 整理 + Plans 面板 ✅
 
 ### Research
@@ -89,7 +88,6 @@ tags: [refactor, mkdocs]
 
 - [city-log-project.md](./city-log-project.md) — City Log: offline city check-in PWA (MapLibre + PMTiles), with preliminary analysis
 - [raft-db.md](./raft-db.md) — Raft + LevelDB 分布式高可用 KV 数据库原型：raft（etcd-io/raft 或 raft-rs）+ LevelDB，选主/日志复制/故障转移（内容落在 `docs/notes/research/topics/raft-db/`，实现落 `prototypes/raft-db/`）
-- [bot-remote-api.md](./bot-remote-api.md) — Bot Remote API: HTTP API + Web console + Telegram Bot over FastAPI (Phase 0 aligns the design with the actual engine registry first)
 
 ### Reading
 
