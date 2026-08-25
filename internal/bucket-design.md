@@ -219,10 +219,16 @@ token** (Admin Read & Write, or Object Read + Object Write + List Bucket) in
 `poe rclone-config-init`; credentials never leave `.env` / rclone.conf.
 
 **Flow per image**: convert to WebP (quality from
-`extra.optimize_images.quality`, default 90) → render the object key → stage
-in the temp dir → `rclone copyto` → copy into `docs/assets/bucket/` (VSCode
-preview copy, git-ignored) → delete the temp file (kept on failure, path
-printed for retry).
+`extra.optimize_images.quality`, default 90; EXIF Orientation is baked into
+the pixels and the tag dropped — sideways photos stay upright in every
+viewer) → render the object key → stage in the temp dir → `rclone copyto` →
+copy into `docs/assets/bucket/` (VSCode preview copy, git-ignored) → delete
+the temp file (kept on failure, path printed for retry).
+
+Uploads target the **generic** mapping — the one with the shortest local
+prefix (`_generic_mapping` in scripts/bucket_sync.py), i.e. `assets/bucket/`
+→ `data/img`, not the specific `assets/bucket/running/` entry listed first
+for URL-rewrite precedence. `create-moment --image` uses the same selection.
 
 **Safety**: the script is **dry-run by default** — nothing is written or
 uploaded unless `--confirm` is passed (same guard as `bucket-sync pull`).

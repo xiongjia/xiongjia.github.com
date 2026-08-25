@@ -38,11 +38,11 @@
 
 ## Content
 
-| Command                    | Description                                                                                                                                   |
-| -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| `poe create-post "Title"`  | New blog post (draft by default; `--no-draft` publish; `--time` backdate; `--category`/`--tags`)                                              |
-| `poe create-moment "Text"` | New Moment micro-post (`--image` auto-WebP + bucket upload; `--tags`; geo `--place/--lng/--lat`; `--draft` hidden in prod; `--time` backdate) |
-| `poe enu add "scrap"`      | English Scraps: append a scrap to the inbox (auto date; `--date` backdate)                                                                    |
+| Command                    | Description                                                                                                                                                                                                    |
+| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `poe create-post "Title"`  | New blog post (draft by default; `--no-draft` publish; `--time` backdate; `--category`/`--tags`)                                                                                                               |
+| `poe create-moment "Text"` | New Moment micro-post (`--image` auto-WebP + bucket upload; `--tags`; geo `--place/--lng/--lat`; `--draft` hidden in prod; `--time` backdate; `--time-from-exif` = photo EXIF capture time as the moment date) |
+| `poe enu add "scrap"`      | English Scraps: append a scrap to the inbox (auto date; `--date` backdate)                                                                                                                                     |
 
 ## Health
 
@@ -207,11 +207,17 @@ uv run poe create-post "My Post" --time "2026-07-30 21:36"
 uv run poe create-moment "Hello 👋"
 uv run poe create-moment "Draft idea" --draft                    # hidden in production builds
 uv run poe create-moment "Backfill" --time "9pm"                # backdate (same syntax as create-post)
+uv run poe create-moment "Photo date" --image photo.jpg --time-from-exif
+#   ^ date: = the photo's EXIF DateTimeOriginal (first photo with one wins);
+#     mutually exclusive with --time; needs --image; falls back to now if none
 
 # Images — --image auto-converts to WebP (PNG/JPG/JPEG; quality from extra.optimize_images)
 # and uploads to the bucket (key = extra.bucket.upload.rule); the md link uses a relative
 # assets/bucket/ path that the build rewrites to the bucket URL. Repeat for multiple photos.
 # Needs a read-write R2 token in .env + rclone; on failure the WebP stays staged locally.
+# EXIF Orientation is baked into the WebP pixels (sideways photos stay upright in any
+# viewer); EXIF GPS auto-fills --lng/--lat. Moment images target the GENERIC bucket
+# mapping (assets/bucket/ -> data/img), never the specific running/ mapping.
 uv run poe create-moment "With image" --image photo.jpg
 uv run poe create-moment "Trip photos" --image a.jpg --image b.png
 uv run poe create-moment "Staged only" --image photo.jpg --no-upload   # convert + local stage, skip upload

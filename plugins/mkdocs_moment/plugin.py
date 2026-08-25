@@ -1,5 +1,6 @@
 """MkDocs Moment Plugin — short-form timeline for personal micro-posts."""
 
+import json
 import logging
 import os
 import re
@@ -339,6 +340,9 @@ class MomentPlugin(BasePlugin):
             "pmtiles_prefix": str(map_cfg.get("pmtiles_prefix", "") or ""),
             "glyphs_url": str(map_cfg.get("glyphs_url", "") or ""),
             "default_region": str(map_cfg.get("default_region", "") or ""),
+            # marker emoji for the default 其他 bucket (independent of the
+            # reserved tag_emoji._other key)
+            "other_emoji": str(map_cfg.get("other_emoji", "") or ""),
             "regions": dict(map_cfg.get("regions") or {}),
             "tag_emoji": dict(map_cfg.get("tag_emoji") or {}),
             "attribution": str(map_cfg.get("attribution", "") or ""),
@@ -623,6 +627,7 @@ class MomentPlugin(BasePlugin):
 
             output_dir = site_dir / self.config["path"] / "page" / str(page_num)
             output_dir.mkdir(parents=True, exist_ok=True)
+            html = self._inject_glightbox(html, output_dir, config)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
     def _render_tag_pages(self, site_dir, template, config, tag_moments):
@@ -658,6 +663,7 @@ class MomentPlugin(BasePlugin):
             )
             output_dir = site_dir / self.config["path"] / "tag" / segment
             output_dir.mkdir(parents=True, exist_ok=True)
+            html = self._inject_glightbox(html, output_dir, config)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
     def _render_archive_pages(self, site_dir, config, ranking_groups=None):
@@ -753,6 +759,7 @@ class MomentPlugin(BasePlugin):
             )
             output_dir = site_dir / month_dir / month_path
             output_dir.mkdir(parents=True, exist_ok=True)
+            html = self._inject_glightbox(html, output_dir, config)
             (output_dir / "index.html").write_text(html, encoding="utf-8")
 
         # archive index page: shared calendar + latest month inline
@@ -787,6 +794,7 @@ class MomentPlugin(BasePlugin):
         )
         output_dir = site_dir / month_dir / "archive"
         output_dir.mkdir(parents=True, exist_ok=True)
+        html = self._inject_glightbox(html, output_dir, config)
         (output_dir / "index.html").write_text(html, encoding="utf-8")
 
     def _archive_groups(self) -> dict[tuple[int, int], list[Moment]]:
@@ -1137,6 +1145,7 @@ class MomentPlugin(BasePlugin):
         )
         output_dir = site_dir / self.config["path"] / "map"
         output_dir.mkdir(parents=True, exist_ok=True)
+        html = self._inject_glightbox(html, output_dir, config)
         (output_dir / "index.html").write_text(html, encoding="utf-8")
 
     def _build_map_region_data(self, geo_moments: list[Moment]) -> list[dict]:
@@ -1290,7 +1299,12 @@ class MomentPlugin(BasePlugin):
             if key != _OTHER_CATEGORY and key in used
         ]
         if _OTHER_CATEGORY in used:
-            categories.append({"key": _OTHER_CATEGORY, "label": "其他"})
+            # the default bucket's marker emoji is a SEPARATE config key
+            # (map.other_emoji) — tag_emoji._other stays reserved for literal
+            # "_other" tags and must never leak into this label
+            other_emoji = self.map_cfg.get("other_emoji", "")
+            label = f"{other_emoji} 其他" if other_emoji else "其他"
+            categories.append({"key": _OTHER_CATEGORY, "label": label})
         return categories
 
     def _map_template_cfg(self) -> dict:
@@ -1315,6 +1329,7 @@ class MomentPlugin(BasePlugin):
             "pmtiles_prefix": self.map_cfg.get("pmtiles_prefix", ""),
             "glyphs_url": self.map_cfg.get("glyphs_url", ""),
             "default_region": self.map_cfg.get("default_region", ""),
+            "other_emoji": self.map_cfg.get("other_emoji", ""),
             "regions": regions,
             "attribution": self.map_cfg.get("attribution", ""),
             "hide_attribution": self.map_cfg.get("hide_attribution", False),
@@ -1835,6 +1850,96 @@ class MomentPlugin(BasePlugin):
             last = m.end()
         out.append(html[last:])
         return "".join(out)
+
+    def _inject_glightbox(self, html: str, output_dir: Path, config) -> str:
+        """Inject glightbox assets + init into a generated moment page.
+
+        Generated pages (pagination / tag / month / archive / map) are written
+        straight to ``site_dir`` in ``on_post_build`` and never pass through
+        mkdocs-glightbox's ``on_post_page``, so their ``a.glightbox`` images
+        would open as plain navigation instead of a lightbox. This mirrors the
+        plugin's own injection (CSS link + glightbox.min.js + init script),
+        reading the live glightbox config so the two never diverge; when the
+        glightbox plugin is not configured the page is returned unchanged.
+
+        Mirrors mkdocs-glightbox 0.5.2 on_post_page (CSS patch, privacy
+        branch, document$ reload); only the GLightbox options are read from
+        the live config. When upgrading mkdocs-glightbox, re-sync this
+        helper so generated pages stay identical to real-pipeline pages.
+        """
+        plugins = config.get("plugins")
+        if not plugins:
+            return html
+        lightbox = plugins.get("glightbox")
+        if lightbox is None:
+            return html
+        lb_cfg = lightbox.config
+
+        # asset URLs relative to the generated page (site_dir assets root is
+        # N levels up from output_dir/index.html)
+        rel = os.path.relpath(config["site_dir"], output_dir).replace(os.sep, "/")
+        rel = (rel + "/") if rel != "." else ""
+
+        using_material = config["theme"].name == "material"
+        using_privacy = (
+            using_material
+            and "material/privacy" in plugins
+            and plugins["material/privacy"].config.enabled
+        )
+
+        head = (
+            f'<link rel="stylesheet" href="{rel}assets/stylesheets/glightbox.min.css">\n'
+            f'<script src="{rel}assets/javascripts/glightbox.min.js"></script>\n'
+            '<style id="glightbox-style">\n'
+            "html.glightbox-open { overflow: initial; height: 100%; }\n"
+            ".gslide-title { margin-top: 0px; user-select: text; }\n"
+            ".gslide-desc { color: #666; user-select: text; }\n"
+            f".gslide-image img {{ background: {lb_cfg.get('background', 'white')}; }}\n"
+        )
+        if not lb_cfg.get("shadow", True):
+            head += (
+                ".glightbox-clean .gslide-media { -webkit-box-shadow: none; box-shadow: none; }\n"
+            )
+        if using_material:
+            head += (
+                ".gscrollbar-fixer { padding-right: 15px; }\n"
+                ".gdesc-inner { font-size: 0.75rem; }\n"
+                'body[data-md-color-scheme="slate"] .gdesc-inner'
+                " { background: var(--md-default-bg-color); }\n"
+                'body[data-md-color-scheme="slate"] .gslide-title'
+                " { color: var(--md-default-fg-color); }\n"
+                'body[data-md-color-scheme="slate"] .gslide-desc'
+                " { color: var(--md-default-fg-color); }\n"
+            )
+        head += "</style>\n"
+
+        lb = {
+            "touchNavigation": lb_cfg.get("touchNavigation", True),
+            "loop": lb_cfg.get("loop", False),
+            "zoomable": lb_cfg.get("zoomable", True),
+            "draggable": lb_cfg.get("draggable", True),
+            "openEffect": lb_cfg.get("effect", "zoom"),
+            "closeEffect": lb_cfg.get("effect", "zoom"),
+            "slideEffect": lb_cfg.get("slide_effect", "slide"),
+        }
+        js = ""
+        if using_privacy:
+            js += (
+                "document.querySelectorAll('.glightbox').forEach(function(element) {\n"
+                "  try {\n"
+                "    var img = element.querySelector('img');\n"
+                "    if (img && img.src) { element.setAttribute('href', img.src); }\n"
+                "  } catch (error) { console.log('Error:', error); }\n"
+                "});\n"
+            )
+        js += "const lightbox = GLightbox(" + json.dumps(lb) + ");\n"
+        if using_material or "navigation.instant" in config["theme"].get("features", []):
+            js += "document$.subscribe(()=>{ lightbox.reload(); });\n"
+        body = f'<script id="init-glightbox">\n{js}</script>\n'
+
+        html = html.replace("</head>", head + "</head>", 1)
+        html = html.replace("</body>", body + "</body>", 1)
+        return html
 
     def _sort_moments(self):
         reverse = self.config["sort"] == "desc"
