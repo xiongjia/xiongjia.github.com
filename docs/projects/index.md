@@ -34,7 +34,7 @@ React 写的 Dashboard Demo UI，支持多语言、多皮肤模式，用来整�
 - :material-web: [Demo](https://xiongjia.github.io/seedling/)
 - :material-file-document: [Docs](https://xiongjia.github.io/seedling/docs/)
 
-**Pipeline**: Collection(frontend) → Research(shadcn/ui CLI) → Project
+**Pipeline**: Collection(frontend) → Research(shadcn/ui 实用研究) → Project
 
 ### vine
 

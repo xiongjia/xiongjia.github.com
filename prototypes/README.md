@@ -44,6 +44,10 @@ Python `.venv/`, Node `node_modules/`).
   lines, runtime basemap switching, 5 demos with tab switching, embeddable
   widget (build:widget, plain-HTML / S3 distribution) · created 2026-08-07 ·
   status `working`
+- **[etl-dbt](./etl-dbt/README.md)** — Python local ETL demo with
+  **dbt-core + DuckDB** (no server): mock e-commerce raw data → staging → marts
+  (facts / dims / daily rollup), incremental model with `delete+insert` and a
+  `--append-days` data appender · created 2026-08-26 · status `experimental`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical
   prototype) · created 2026-08-01 · status `experimental`

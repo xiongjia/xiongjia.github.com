@@ -20,6 +20,7 @@ hide:
 
 ## React
 
+- [shadcn/ui](https://ui.shadcn.com/) - 复制式 React 组件库：CLI 把 Tailwind 组件源码直接落进项目（v4 基于 Base UI），实用研究见 [Research: shadcn/ui](../research/topics/shadcn-ui/index.md)
 - [mui](https://github.com/mui/material-ui) - Public UI Components
 - [awesome mui](https://github.com/nadunindunil/awesome-material-ui)
 - [preact](https://github.com/preactjs/preact) - 精简版 React

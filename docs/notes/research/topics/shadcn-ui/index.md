@@ -1,227 +1,72 @@
 ---
 hide:
   - navigation
-title: shadcn/ui 源码阅读指南
+title: shadcn/ui 实用研究（从环境到基本使用）
 tags:
   - research
   - tech
+  - shadcn
+  - frontend
 categories:
   - dev
 ---
 
-> - 依据 shadcn/ui 仓库: branch `main`
+# :material-layers: shadcn/ui
 
-> **学习前先克隆项目:**
->
-> ```bash
-> cd external
-> git clone --depth 1 https://github.com/shadcn-ui/ui.git shadcn-ui
-> ```
+shadcn/ui 实用研究 —— **v4 新版从环境搭建到基本使用的实操路线**。全部内容
+基于本机实测（Node v24.16.0 / pnpm 11.4.0 / Vite 8.2.2 / Tailwind CSS v4 /
+TypeScript 7.0.2 / shadcn CLI 4.19.0，Vite react-ts 模板，macOS arm64）。
 
-______________________________________________________________________
+- 官方文档: [https://ui.shadcn.com/docs](https://ui.shadcn.com/docs)
+- 安装指南: [https://ui.shadcn.com/docs/installation](https://ui.shadcn.com/docs/installation)
+- 前端收藏页: [Collection Frontend](../../../collection/frontend.md)
 
-## 项目概述
+> 本主题是**实用研究**：不读 shadcn/ui 源码，而是「装起来、用起来、定制起来」。
+> 旧版"源码阅读指南"已清除替换。
 
-shadcn/ui 不是传统的 npm 组件库，而是一个 **CLI 工具**，它将组件源码直接复制到你的项目中，让你完全拥有和自定义组件代码。
+## Sub Topics
 
-- GitHub: https://github.com/shadcn-ui/ui
-- 官网: https://ui.shadcn.com
-- 本地路径: `external/shadcn-ui`
-- 核心依赖: Radix UI (无样式行为基元) + Tailwind CSS (样式)
+| 阅读顺序 | 主题                                  | 描述                                                                                                                  |
+| -------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| 1        | [环境与初始化](./setup.md)            | 技术栈定案（pnpm + Vite 8 + Tailwind v4 + TypeScript）、创建项目、接入 Tailwind、`init` 流程与 components.json 逐字段 |
+| 2        | [组件添加与基本使用](./components.md) | `add` 用法、依赖自动解析、常用组件清单与最小示例、Base UI 新范式（render prop / Field 组合）                          |
+| 3        | [进阶玩法](./advanced.md)             | 组件更新（diff/overwrite）、主题定制（oklch 变量/radius/dark）、表单集成（RHF + zod）、registry 机制与框架差异        |
 
-## 核心理念
+## 推荐阅读顺序
 
-```
-传统的 npm 包                    shadcn/ui
-─────────────                    ─────────
-npm install @acme/ui             npx shadcn add button
-    ↓                               ↓
-node_modules 黑盒               components/ui/button.tsx (你的代码)
-    ↓                               ↓
-import { Button } from ...      import { Button } from "@/components/ui/button"
-    ↓                               ↓
-无法修改源码                     完全可控，直接改
-```
+1. **环境与初始化** → [环境与初始化](./setup.md)：先把项目跑起来——TypeScript 升级、
+   Tailwind v4 接入、`init` 成功，得到 components.json 和 button.tsx
+1. **组件添加与基本使用** → [组件添加与基本使用](./components.md)：`add` 常用组件、
+   理解依赖自动解析，把 button/card/dialog/field 用起来
+1. **进阶玩法** → [进阶玩法](./advanced.md)：更新组件、主题定制、表单集成、
+   自定义 registry，以及 Vite 脚手架下的实测坑
 
-## 项目结构
+## 版本快照（2026-08-26 实测）
 
-```
-shadcn-ui/
-├── packages/
-│   ├── shadcn/                      # CLI 工具 (核心)
-│   │   └── src/
-│   │       ├── index.ts            # CLI 入口
-│   │       ├── commands/           # CLI 命令 (init, add, build, diff)
-│   │       ├── registry/           # 组件注册表系统
-│   │       ├── schema/             # components.json 配置 schema
-│   │       ├── utils/              # 工具函数
-│   │       ├── mcp/                # MCP 协议支持
-│   │       └── migrations/         # 配置迁移
-│   └── tests/                      # 测试
-├── apps/v4/                        # 文档网站 (Next.js)
-│   ├── registry/                   # 组件注册表 (JSON)
-│   ├── registry.json               # 默认注册表配置
-│   ├── components/                 # 文档站用的组件
-│   └── content/                    # MDX 文档
-├── templates/                      # 模板项目
-│   ├── next-app/ next-monorepo/
-│   ├── vite-app/ vite-monorepo/
-│   ├── astro-app/ astro-monorepo/
-│   └── start-app/ start-monorepo/
-└── skills/                         # AI 辅助技能
-```
+| 组件         | 版本                 | 备注                                |
+| ------------ | -------------------- | ----------------------------------- |
+| Node         | v24.16.0             | shadcn CLI 要求 Node >= 20.18.1     |
+| pnpm         | 11.4.0               | 包管理器                            |
+| Vite         | 8.2.2                | react-ts 模板，rolldown 构建        |
+| React        | 19.2.8               |                                     |
+| TypeScript   | 7.0.2                | （跟随当前 TypeScript 主版本）      |
+| Tailwind CSS | 4.3.3                | v4 CSS-first，无 tailwind.config.js |
+| shadcn CLI   | 4.19.0               | v4 架构，style=base-nova            |
+| 基元         | @base-ui/react 1.7.0 | **Base UI**（非旧版 Radix UI）      |
+| 图标         | lucide-react 1.34.0  | components.json 的 iconLibrary      |
+| 动画         | tw-animate-css 1.4.0 | 组件动效（init 写入 index.css）     |
 
-## 学习阶段
+## 实测要点（详细见各篇）
 
-### 阶段 1: 体验使用
+- `init` 前必须先装 Tailwind v4 并配好 `@/*` 别名，否则报
+  `No Tailwind CSS configuration found` / `Could not find valid path aliases`
+- paths 别名用相对写法（`"./src/*"`）
+- v4.19 在 Vite 8 solution-style tsconfig 下，组件会**落盘到项目根的字面
+  `@/components/ui/`**，需手动归位到 `src/`（组件代码本身可正常构建）
+- v4 的 `form` registry 项是空 stub，真实表单组件是 `field`（Base UI Field）
+- Base UI 用 `render={<Button/>}` 替代 Radix 的 `asChild`
 
-1. **初始化一个项目**
+## 相关笔记
 
-   ```bash
-   npx shadcn@latest init
-   ```
-
-1. **添加组件**
-
-   ```bash
-   npx shadcn@latest add button
-   npx shadcn@latest add dialog
-   ```
-
-1. **理解生成的文件**
-
-   - `components.json` — 项目配置 (tailwind config, aliases, registry url)
-   - `components/ui/` — 复制的组件源码
-   - `lib/utils.ts` — `cn()` 工具函数 (tailwind-merge + clsx)
-
-### 阶段 2: 理解 CLI 架构
-
-> 核心代码: `packages/shadcn/src/`
-
-4. **CLI 入口**
-
-   - 阅读 `packages/shadcn/src/index.ts` — 了解 commander 如何注册命令
-   - 工作原理: 用 `@commander-js/extra-typings` 构建 CLI
-   - TypeScript 编译为 ESM (`"type": "module"`)
-
-1. **核心命令**
-
-   | 文件                  | 命令             | 用途           |
-   | --------------------- | ---------------- | -------------- |
-   | `commands/init.ts`    | `shadcn init`    | 初始化项目配置 |
-   | `commands/add.ts`     | `shadcn add`     | 添加组件       |
-   | `commands/build.ts`   | `shadcn build`   | 构建 registry  |
-   | `commands/diff.ts`    | `shadcn diff`    | 对比组件差异   |
-   | `commands/migrate.ts` | `shadcn migrate` | 迁移配置       |
-   | `commands/search.ts`  | `shadcn search`  | 搜索组件       |
-
-### 阶段 3: 理解 Registry 系统
-
-> 核心代码: `packages/shadcn/src/registry/`
-
-6. **Registry 是什么**
-
-   - 一个 JSON 配置文件，定义所有可用的组件、依赖、文件列表
-   - 默认 registry: `https://ui.shadcn.com/r/styles/default/registry.json`
-   - 本地 registry: `apps/v4/registry.json`
-
-1. **关键模块**
-
-   | 文件                   | 用途                       |
-   | ---------------------- | -------------------------- |
-   | `registry/api.ts`      | 从 URL 或本地加载 registry |
-   | `registry/loader.ts`   | 加载组件文件               |
-   | `registry/resolver.ts` | 解析组件依赖树             |
-   | `registry/parser.ts`   | 解析 TypeScript/JSX 源码   |
-   | `registry/builder.ts`  | 构建最终输出               |
-   | `registry/schema.ts`   | Zod schema 定义            |
-
-1. **Registry 工作流程**
-
-   ```
-   shadcn add button
-       ↓
-   加载 registry.json → 解析 button 的定义
-       ↓
-   递归解析依赖 (button → @radix-ui/react-slot)
-       ↓
-   从 registry 获取每个文件的源码
-       ↓
-   转换为目标格式 (TypeScript/JavaScript)
-       ↓
-   写入 components/ui/button.tsx
-       ↓
-   安装 npm 依赖 (如 react-aria, class-variance-authority)
-   ```
-
-### 阶段 4: 理解组件设计
-
-9. **组件架构**
-
-   - 基元层: Radix UI / React Aria (无样式、可访问的行为)
-   - 样式层: Tailwind CSS + `class-variance-authority` (变体)
-   - 组合层: `cn()` = `clsx` + `tailwind-merge`
-
-1. **阅读示例组件**
-
-   - `apps/v4/components/ui/button.tsx` — 简单组件
-   - `apps/v4/components/ui/dialog.tsx` — 复合组件
-   - `apps/v4/components/ui/form.tsx` — 结合 react-hook-form
-
-### 阶段 5: 理解模板系统
-
-11. **模板项目** (`templates/`)
-
-    - `next-app` → Next.js App Router
-    - `vite-app` → Vite + React SPA
-    - `astro-app` → Astro
-    - `start-app` → TanStack Start
-    - Monorepo 变体: `*-monorepo/`
-
-01. **模板如何工作**
-
-    - 每个模板定义框架特定的配置
-    - `shadcn init` 使用对应模板初始化项目
-    - 模板包含惯例文件: `components.json`, `tailwind.config`, `lib/utils.ts`
-
-### 阶段 6: 进阶了解
-
-13. **diff 命令实现**
-
-    - `commands/diff.ts` — 对比本地组件和上游 registry 的差异
-    - 类似 `git diff`，帮助你追踪上游更新
-
-01. **build 命令**
-
-    - `commands/build.ts` — 构建自定义 registry
-    - 用于部署私有组件库
-
-01. **MCP 协议**
-
-    - `mcp/` — Model Context Protocol 集成
-    - 让 AI 助手通过 MCP 服务器管理 shadcn/ui 组件
-
-## 关键概念
-
-| 概念                         | 说明                                      |
-| ---------------------------- | ----------------------------------------- |
-| **Registry**                 | 组件的 JSON 清单，列出所有可用组件        |
-| **components.json**          | 项目级配置，记录别名、样式、registry 地址 |
-| **cn()**                     | `clsx` + `tailwind-merge` 的组合函数      |
-| **Class Variance Authority** | 类型安全的组件变体 API                    |
-| **Radix UI**                 | 无样式可访问 UI 基元库                    |
-| **Tailwind CSS**             | 原子化 CSS 框架                           |
-
-## 技术栈
-
-| 技术                      | 用途            |
-| ------------------------- | --------------- |
-| **TypeScript**            | 语言            |
-| **Commander.js**          | CLI 框架        |
-| **Zod**                   | Schema 验证     |
-| **tsup**                  | TypeScript 构建 |
-| **Vitest**                | 测试            |
-| **Next.js**               | 文档网站        |
-| **Turbo**                 | Monorepo 管理   |
-| **Radix UI / React Aria** | 组件基元        |
-| **Tailwind CSS**          | 样式            |
+- [Collection Frontend](../../../collection/frontend.md)：前端/React 资源收藏
+- [Research 索引](../../index.md)：研究笔记总目录
