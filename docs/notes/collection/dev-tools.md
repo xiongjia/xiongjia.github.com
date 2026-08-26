@@ -65,6 +65,7 @@ hide:
 ## Data / ETL
 
 - [awesome-etl](https://github.com/pawl/awesome-etl) - ETL 资源汇总
+- [airbyte](https://github.com/airbytehq/airbyte) - 开源 ELT 数据集成平台（200+ 连接器，CDC/API 同步，可自托管）
 - [meltano](https://meltano.com/) - ELT 平台
 - [dbt](https://github.com/dbt-labs/dbt-core) - SQL 数据转换工具 (ELT 中的 T，dbt = data build tool)
 - [mockaroo](https://mockaroo.com/) - Mock 数据生成 (schema → CSV → DB)

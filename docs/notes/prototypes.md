@@ -22,6 +22,7 @@ hide:
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
+| [etl-dbt](#etl-dbt)                                 | [Others](#others)                 | 🟡 Experimental | 2026-08-26 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -95,6 +96,20 @@ Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfav
 - 证明非 Python 工具链项目可以干净地放在 `prototypes/` 下
 - 不影响 MkDocs 构建、ruff / mdformat 格式化与 lint
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
+
+### etl-dbt
+
+Python 原型：**dbt-core + DuckDB** 的本地 ETL 最小链路（无服务器、无容器），
+模拟电商原始数据 → staging 清洗 → marts（订单事实 / 客户维度 / 商品维度 / 每日汇总）。
+
+- 源库/目标库分离：`data/raw.duckdb` 经 dbt `attach` 挂载为 `raw` catalog，
+  转换结果写入 `data/analytics.duckdb`
+- 增量演示：`daily_sales` 为 incremental 模型（`delete+insert` + `is_incremental()`），
+  模拟数据用 `--append-days` 追加新日期后只增量重建（30→32 行实测）
+- 确定性 mock：固定 seed（默认 42）；订单/明细 id 在追加时自动续号
+- uv 管理：Python 3.13，dbt-core 1.12.3 / dbt-duckdb 1.11.0 / DuckDB 1.5.5
+- 相关文档：[ETL 研究](./research/topics/etl/index.md)
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/etl-dbt)
 
 ______________________________________________________________________
 

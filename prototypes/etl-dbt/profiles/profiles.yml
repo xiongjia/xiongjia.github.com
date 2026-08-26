@@ -1,0 +1,15 @@
+# Local dbt profile using DuckDB for testing.
+# Run with: DBT_PROFILES_DIR=profiles uv run dbt <command>
+# path is relative to the cwd where dbt runs (project root).
+# raw.duckdb is attached as the "raw" database to simulate a separate source DB.
+etl_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "data/analytics.duckdb"
+      schema: main
+      threads: 4
+      attach:
+        - path: "data/raw.duckdb"
+          alias: "raw"

@@ -1,0 +1,22 @@
+# Python venv
+.venv/
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# Local duckdb files
+data/*.duckdb
+data/*.duckdb.wal
+# reserved: future CSV/Parquet exports from the generator
+data/*.csv
+data/*.parquet
+
+# dbt artifacts
+target/
+logs/
+# reserved: appears when `dbt deps` installs packages
+dbt_packages/
+
+# dbt-generated user file
+profiles/.user.yml

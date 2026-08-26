@@ -25,15 +25,17 @@ graph LR
   click J "/projects/" "Projects"
 ```
 
-| Topic                                    | Category                | Status    | Description                                    |
-| ---------------------------------------- | ----------------------- | --------- | ---------------------------------------------- |
-| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读    |
-| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成 |
-| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询    |
+| Topic                                    | Category                | Status    | Description                                                                      |
+| ---------------------------------------- | ----------------------- | --------- | -------------------------------------------------------------------------------- |
+| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读                                      |
+| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成                                   |
+| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询                                      |
+| [shadcn/ui](./topics/shadcn-ui/index.md) | Libraries or Frameworks | polishing | 实用研究：环境/组件使用/进阶（pnpm+Vite8+Tailwind v4 实测，打磨中）              |
+| [ETL](./topics/etl/index.md)             | Libraries or Frameworks | polishing | 数据管道/转换研究：本地模拟数据→staging→marts，增量配置（dbt-core 起步，打磨中） |
 
-> **Status**: `polished` — notes polished and ready to use; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
+> **Status**: `polished` — notes polished and ready to use; `polishing` — notes drafted, still being refined; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
 >
-> **Convention**: 新建 Topic 时补一行并填状态（draft → 下方 Drafts 表；polished/long-term → 上方主表）；状态变化时同步更新本表。
+> **Convention**: 新建 Topic 时补一行并填状态（draft → 下方 Drafts 表；polishing / polished / long-term → 上方主表）；状态变化时同步更新本表。
 
 ### Drafts
 
@@ -49,7 +51,6 @@ graph LR
 | [Better Auth](./topics/better-auth/index.md)       | Libraries or Frameworks | draft  | 源码阅读指南                                    |
 | [NestJS](./topics/nestjs/index.md)                 | Libraries or Frameworks | draft  | Module 注入原理与核心源码分析                   |
 | [Jellyfin](./topics/jellyfin/index.md)             | Libraries or Frameworks | draft  | 视频流播放原理与 Rust 最小原型                  |
-| [shadcn/ui](./topics/shadcn-ui/index.md)           | Libraries or Frameworks | draft  | CLI 工具源码阅读，Registry 组件分发系统         |
 
 ______________________________________________________________________
 
@@ -70,6 +71,7 @@ ______________________________________________________________________
 - [Better Auth](./topics/better-auth/index.md): Better Auth 源码阅读指南
 - [NestJS](./topics/nestjs/index.md): NestJS Module 注入原理与核心源码分析
 - [Jellyfin](./topics/jellyfin/index.md): Jellyfin 源码阅读指南，视频流播放原理与 Rust 最小原型
-- [shadcn/ui](./topics/shadcn-ui/index.md): shadcn/ui CLI 工具源码阅读指南，Registry 组件分发系统
+- [shadcn/ui](./topics/shadcn-ui/index.md): shadcn/ui 实用研究 —— 环境与初始化、组件添加与基本使用、进阶玩法（v4.19 + Base UI 实测，打磨中）
 - [Protomaps](./topics/protomaps/index.md): PMTiles 自建底图研究 —— 上海地区底图裁剪、验证与 MapLibre 集成
 - [DuckDB](./topics/duckdb/index.md): DuckDB 实战研究 —— 环境与基本使用、模拟数据构造、PostgreSQL 数据加速查询
+- [ETL](./topics/etl/index.md): 数据管道/转换（ETL/ELT）研究 —— 本地可验证的转换链：模拟数据、staging→marts、增量处理（首个子主题：dbt-core + DuckDB，打磨中）
