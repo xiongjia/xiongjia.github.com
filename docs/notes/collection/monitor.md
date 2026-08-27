@@ -17,6 +17,9 @@ hide:
 - [Cortex](https://github.com/cortexproject/cortex) - Prometheus 水平扩展方案（Mimir 前身）：多租户、长期存储，现由 Mimir 接替
 - [Graphite](https://github.com/graphite-project/graphite-web) - 经典 TSDB：Whisper 存储、Carbon 采集、Grafana 原生支持
 - [OpenTelemetry Collector](https://github.com/open-telemetry/opentelemetry-collector) - 统一采集代理：接收多种协议、转换、导出到任意后端
+- [GreptimeDB](https://github.com/GreptimeTeam/greptimedb) - Rust 实现的 TSDB
+- [tstorage](https://github.com/nakabonne/tstorage) - Go 实现的轻量级嵌入式 TSDB
+- [Write a TSDB from scratch](https://nakabonne.dev/posts/write-tsdb-from-scratch/) - tstorage 作者系列文章：从零实现 TSDB
 
 ## Prometheus Ecosystem
 

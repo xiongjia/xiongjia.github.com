@@ -50,6 +50,10 @@ hide:
 - [Agentic Design Patterns](https://github.com/xindoo/agentic-design-patterns) - Agent 设计模式
 - [How AI Impacts Skill Formation](https://arxiv.org/abs/2601.20245) - AI 对技能形成的影响
 
+## LLM Observability
+
+- [langfuse](https://github.com/langfuse/langfuse) - 开源 LLM 可观测性平台（evals、指标监控、prompt 管理、playground）
+
 ## Other
 
 - [AIRI](https://github.com/moeru-ai/airi) / [XSAI](https://github.com/moeru-ai/xsai) - AI 运行时

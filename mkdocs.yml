@@ -432,6 +432,7 @@ nav:
     - Collection:
       - notes/collection/index.md
       - Database: notes/collection/database.md
+      - Storage: notes/collection/storage.md
       - Monitor: notes/collection/monitor.md
       - Media: notes/collection/media.md
       - Dev Tools: notes/collection/dev-tools.md
