@@ -32,14 +32,6 @@ hide:
 - [TiKV](https://github.com/tikv/tikv) - Rust 实现的分布式 KV 存储（Raft 共识，TiDB 底层）
 - [LevelDB](https://github.com/google/leveldb) - Google 的嵌入式 KV 存储（LSM 树）
 
-## Time-Series
-
-- [GrepTimeDb](https://github.com/GreptimeTeam/greptimedb) - Rust 实现的 TSDB
-- [tstorage](https://github.com/nakabonne/tstorage) - Go 实现的轻量级嵌入式 TSDB
-- [Write a TSDB from scratch](https://nakabonne.dev/posts/write-tsdb-from-scratch/) - tstorage 作者系列文章：从零实现 TSDB
-- [TimescaleDB](https://github.com/timescale/timescaledb) - PostgreSQL 扩展时序数据库
-- [InfluxDB](https://github.com/influxdata/influxdb) - Go 时序数据库（知名开源项目）
-
 ## DB Tools
 
 - [dbeaver](https://dbeaver.io) - 跨平台数据库管理工具 (Java, JDBC)
