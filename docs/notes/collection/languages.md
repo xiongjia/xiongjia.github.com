@@ -32,9 +32,6 @@ hide:
 
 ## Tutorials / Learning
 
-- [µGo 语言实现](https://github.com/wa-lang/ugo-compiler-book) - Go 编译器学习
-- [Go 语言定制指南](https://github.com/chai2010/go-ast-book) - Go 语法树入门
-- [Go Optimization Guide](https://goperf.dev/) - Go 性能优化
 - [CS DIY](https://csdiy.wiki/) - 计算机自学目录
 - [Project-Based Learning](https://github.com/practical-tutorials/project-based-learning) - 项目驱动教程合集
 - [RustTraining](https://github.com/microsoft/RustTraining) - Microsoft Rust 培训

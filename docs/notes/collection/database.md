@@ -41,3 +41,7 @@ hide:
 
 - [etcd raft](https://github.com/etcd-io/raft) - Go 实现的 Raft 共识算法库（etcd 核心）
 - [raft-rs](https://github.com/tikv/raft-rs) - Rust 实现的 Raft 共识算法库（TiKV 核心）
+
+## Vector DB
+
+- [Milvus](https://github.com/milvus-io/milvus) - 开源云原生向量数据库（高可用、分布式向量 ANN 检索）

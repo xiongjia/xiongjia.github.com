@@ -12,7 +12,6 @@ hide:
 - [lint-staged](https://github.com/okonet/lint-staged) - Git commit 时触发 lint
 - [storybook.js](https://storybook.js.org/) - UI 组件文档生成
 - [playwright](https://github.com/microsoft/playwright) - UI 自动化测试
-- [Mostly adequate guide to FP (in javascript)](https://github.com/MostlyAdequate/mostly-adequate-guide) - FP 教程
 - [hono](https://github.com/honojs/hono) - 轻量级 Web 框架
 - [animejs](https://animejs.com/) - JavaScript 动画库
 - [markdown-online-editor](https://github.com/nicejade/markdown-online-editor) - Markdown 在线编辑器
