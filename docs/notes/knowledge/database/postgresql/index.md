@@ -18,9 +18,10 @@ PG 在干什么」的实战沉淀：会话与性能诊断、WAL / LSN 机制、�
 
 ## Docs
 
-| Docs                                                     | Description                                                                                                          |
-| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| [活跃会话诊断（Active Sessions）](./active-sessions.md)  | 查看当前活跃 Session、定位 CPU 高占用与慢查询、终止会话                                                              |
-| [查看慢查询（Slow Query）](./slow-queries.md)            | 慢查询定位：日志记录（log_min_duration_statement / auto_explain）与实时统计（pg_stat_activity / pg_stat_statements） |
-| [磁盘占用查看（Table Size / Datafile）](./disk-usage.md) | 数据库/表/索引/TOAST 空间占用、数据文件位置与膨胀排查                                                                |
-| [WAL 与 LSN](./wal-lsn.md)                               | WAL 机制、LSN 概念与常用查询：当前位置、文件、复制进度                                                               |
+| Docs                                                                | Description                                                                                                          |
+| ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| [活跃会话诊断（Active Sessions）](./active-sessions.md)             | 查看当前活跃 Session、定位 CPU 高占用与慢查询、终止会话                                                              |
+| [查看慢查询（Slow Query）](./slow-queries.md)                       | 慢查询定位：日志记录（log_min_duration_statement / auto_explain）与实时统计（pg_stat_activity / pg_stat_statements） |
+| [磁盘占用查看（Table Size / Datafile）](./disk-usage.md)            | 数据库/表/索引/TOAST 空间占用、数据文件位置与膨胀排查                                                                |
+| [内存占用查看（Memory / Buffers / Connections）](./memory-usage.md) | 内存分层、查看与配置修改：shared_buffers / work_mem / 临时表与临时文件 / 连接数 / ALTER SYSTEM 持久化                |
+| [WAL 与 LSN](./wal-lsn.md)                                          | WAL 机制、LSN 概念与常用查询：当前位置、文件、复制进度                                                               |
