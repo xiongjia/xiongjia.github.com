@@ -74,7 +74,6 @@ hide:
 
 - [sampler](https://github.com/sqshq/sampler) - Go 终端图表工具
 - [shaper](https://github.com/taleshape-com/shaper) - 数据可视化
-- [Hands-On Data Visualization](https://handsondataviz.org/) - 数据可视化互动书籍 (免费在线，图表/地图/表格，从电子表格到代码)
 
 ## Browser & Headless
 
