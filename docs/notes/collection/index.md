@@ -44,7 +44,7 @@ poe collect-todo "看这个视频"
 poe collect-idea "用 MapLibre 做热力图"
 ```
 
-> 上次整理：2026-08-28
+> 上次整理：2026-08-29
 
 Then run `/skill:collect-organize arch` to batch-organize the inbox:
 

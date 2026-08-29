@@ -20,6 +20,10 @@ hide:
 - [PGSimCity Github](https://github.com/NikolayS/PGSimCity) - 源码（TypeScript + three.js，Apache-2.0，早期原型）
 - [pglayers](https://github.com/pglayers/pglayers) - 预编译的 PG extension 层（`pgx-*` 镜像），通过 multi-stage COPY 自由组合各类扩展（pg_duckdb、pgvector、pgmq 等），用于构建含 pg_duckdb 的 Docker 镜像，详见 [pg_duckdb + force_execution](../research/topics/duckdb/postgresql-acceleration.md) ([pglayers.github.io](https://pglayers.github.io/))
 
+## PostgreSQL Emulation
+
+- [pg-mem](https://github.com/oguimbal/pg-mem) - 内存版 PostgreSQL 模拟器（Node.js，无真实数据库，纯内存执行 SQL，用于单元测试）
+
 ## DuckDB
 
 - [DuckDB 实战研究](../../notes/research/topics/duckdb/index.md) - 环境与基本使用、模拟数据构造、PostgreSQL 数据加速查询（postgres_scanner 直连 / 导出 Parquet，实测 ~35x）

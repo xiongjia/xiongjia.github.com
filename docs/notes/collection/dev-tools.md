@@ -30,6 +30,11 @@ hide:
 - [thrift](https://thrift.apache.org/)
 - [avro](https://avro.apache.org/)
 
+## Job Queue
+
+- [Graphile Worker](https://github.com/graphile/worker) - PostgreSQL 异步任务队列（job queue）
+- [pg-boss](https://github.com/timgit/pg-boss) - PostgreSQL 任务队列，支持 cron 定时调度
+
 ## Serialization
 
 - [msgpack](https://msgpack.org/) - 类 JSON 压缩格式
