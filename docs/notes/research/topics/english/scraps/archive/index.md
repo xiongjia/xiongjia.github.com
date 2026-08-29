@@ -17,6 +17,7 @@ categories: [dev]
 <ul>
 <li><a href="./2026-w33/">2026-W33</a></li>
 <li><a href="./2026-w34/">2026-W34</a></li>
+<li><a href="./2026-w35/">2026-W35</a></li>
 </ul>
 
 </details>

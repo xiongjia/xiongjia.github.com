@@ -11,7 +11,7 @@
 - **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running` / `sync-running-splits`
 - **Bot** — `bot <task>` / `bot --plan` / `bot list` / `bot submit` / `bot abort` / `bot cleanup`
 - **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `bucket-upload` / `rclone-config-init`
-- **English Scraps flow** — collect → batch-organize → review
+- **English Scraps flow** — collect → batch-organize → review → Anki export
 
 ## Dev & Build
 
@@ -43,6 +43,7 @@
 | `poe create-post "Title"`  | New blog post (draft by default; `--no-draft` publish; `--time` backdate; `--category`/`--tags`)                                                                                                               |
 | `poe create-moment "Text"` | New Moment micro-post (`--image` auto-WebP + bucket upload; `--tags`; geo `--place/--lng/--lat`; `--draft` hidden in prod; `--time` backdate; `--time-from-exif` = photo EXIF capture time as the moment date) |
 | `poe enu add "scrap"`      | English Scraps: append a scrap to the inbox (auto date; `--date` backdate)                                                                                                                                     |
+| `poe enu export`           | English Scraps: export `status: new` cards → `.anki/english-scraps-<date>.apkg` (`--format csv` fallback; `--type`/`--tag` filter; `--all`; `--dry-run`; rewrites `new → learning`)                            |
 
 ## Health
 
@@ -240,6 +241,11 @@ uv run poe create-moment "Trip" --image photo.jpg --tags travel,shanghai \
 # English Scraps — jot down English learning scraps
 uv run poe enu add "cumbersome"
 uv run poe enu add "The implementation is cumbersome to maintain." --date 2026-08-08
+uv run poe enu export                      # all status:new cards → .anki/english-scraps-<date>.apkg
+uv run poe enu export --format csv         # CSV fallback (UTF-8 BOM, one file per type)
+uv run poe enu export --type word --tag technical   # filter: word cards with tag technical
+uv run poe enu export --all --dry-run      # all statuses; generate without rewriting status
+# export rewrites status: new → learning on success (not with --dry-run); import is manual (Anki / AnkiDroid, sync via AnkiWeb)
 
 # Weight
 uv run poe update-weight 82
@@ -290,6 +296,7 @@ invocations, `/skill:enu-organize <action>`):
 1. **Organize**: when a batch accumulates (inbox ≥ 15 lines / ≥ 2 weeks / on demand) →
    `/skill:enu-organize arch`
 1. **Review**: `/skill:enu-organize quiz [范围]` / `/skill:enu-organize review <tag>`
+1. **Export (optional)**: `poe enu export` — all `status: new` cards → `.anki/english-scraps-<date>.apkg` (CSV fallback with `--format csv`; `--type`/`--tag` filter; `--all` for all statuses; `--dry-run` preview); on success rewrites `new → learning` in the week files; import is manual (Anki / AnkiDroid + AnkiWeb sync), no AnkiConnect
 
 Full workflow & fields: `docs/notes/research/topics/english/scraps/index.md`;
 skill workflow doc: `.pi/skills/enu-organize/SKILL.md`.
