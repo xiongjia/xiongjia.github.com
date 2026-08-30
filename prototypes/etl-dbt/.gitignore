@@ -1,3 +1,6 @@
+# macOS
+.DS_Store
+
 # Python venv
 .venv/
 
@@ -5,17 +8,13 @@
 __pycache__/
 *.pyc
 
-# Local duckdb files
+# Local duckdb database files
 data/*.duckdb
 data/*.duckdb.wal
-# reserved: future CSV/Parquet exports from the generator
-data/*.csv
-data/*.parquet
 
 # dbt artifacts
 target/
 logs/
-# reserved: appears when `dbt deps` installs packages
 dbt_packages/
 
 # dbt-generated user file

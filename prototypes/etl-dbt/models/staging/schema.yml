@@ -1,34 +1,23 @@
 version: 2
 
 models:
-  - name: stg_customers
-    description: Standardized customers view
-    columns:
-      - name: customer_id
-        tests: [unique, not_null]
-      - name: email
-        tests: [not_null]
-
-  - name: stg_products
-    description: Standardized products view
-    columns:
-      - name: product_id
-        tests: [unique, not_null]
-
-  - name: stg_orders
-    description: Valid order headers view (cancelled removed)
+  - name: stg_test_data
+    description: Cleaned valid orders (cancelled filtered out)
     columns:
       - name: order_id
-        tests: [unique, not_null]
-      - name: customer_id
-        tests: [not_null]
-
-  - name: stg_order_items
-    description: Order line items view (with line_total)
-    columns:
-      - name: item_id
-        tests: [unique, not_null]
-      - name: order_id
-        tests: [not_null]
-      - name: product_id
-        tests: [not_null]
+        description: Order id
+        tests:
+          - unique
+          - not_null
+      - name: qty
+        description: Quantity ordered (never NULL; line_total depends on it)
+        tests:
+          - not_null
+      - name: unit_price
+        description: Unit price (never NULL; line_total depends on it)
+        tests:
+          - not_null
+      - name: line_total
+        description: Line total qty * unit_price (computed in staging)
+        tests:
+          - not_null

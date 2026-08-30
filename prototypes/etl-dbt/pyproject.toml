@@ -1,13 +1,27 @@
 [project]
 name = "etl-dbt"
 version = "0.1.0"
-description = "Local dbt-core + DuckDB ETL demo: mock raw data -> staging -> marts (with incremental)"
+description = "Local dbt-core + DuckDB ETL demo: CSV seed -> staging transformation"
 requires-python = ">=3.13"
 dependencies = [
     "dbt-core>=1.10",
     "dbt-duckdb>=1.10",
     "duckdb>=1.2",
+    "shandy-sqlfmt>=0.9",  # PyPI name; CLI/import name is sqlfmt
+    "mdformat>=0.7",
+    "mdformat-gfm>=1.0",  # GFM pipe tables: alignment/width normalization
+    "poethepoet>=0.32",    # provides the `poe` task runner
 ]
 
 [tool.uv]
 # Self-contained prototype env; excluded from the repo toolchain fmt/lint
+
+[tool.poe.tasks]
+# Format SQL (sqlfmt, handles dbt Jinja) + Markdown in one command.
+fmt = ["fmt-sql", "fmt-md"]
+fmt-sql = "sqlfmt models tests"
+fmt-md = "mdformat README.md"
+# Check-only variants (no writes) for CI-style verification.
+fmt-check = ["fmt-sql-check", "fmt-md-check"]
+fmt-sql-check = "sqlfmt --check models tests"
+fmt-md-check = "mdformat --check README.md"

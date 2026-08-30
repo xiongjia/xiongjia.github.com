@@ -6,6 +6,7 @@ config-version: 2
 profile: etl_dbt
 
 model-paths: ["models"]
+seed-paths: ["seeds"]
 test-paths: ["tests"]
 
 target-path: "target"
@@ -18,14 +19,14 @@ clean-targets:
 models:
   etl_dbt:
     staging:
-      # Light cleaning/typing only; keep as views (no landing)
+      # Staging is lightweight cleaning; keep as views, no landing table
       +materialized: view
-    marts:
-      # Target analytical tables are materialized
-      +materialized: table
-      daily_sales:
-        # Incremental model: only processes new partitions per run
-        +materialized: incremental
-        +incremental_strategy: delete+insert
-        +unique_key: order_date
-        +on_schema_change: sync_all_columns
+
+seeds:
+  etl_dbt:
+    test_data:
+      # CSV column types declared explicitly (seed otherwise infers from values)
+      +column_types:
+        qty: integer
+        unit_price: double
+        order_date: date

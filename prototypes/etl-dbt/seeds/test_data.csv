@@ -1,0 +1,11 @@
+order_id,order_date,customer_name,product,category,qty,unit_price,status
+1,2026-06-01,Alice,Keyboard,Peripherals,2,199.00,valid
+2,2026-06-01,Bob,Mouse,Peripherals,1,89.00,valid
+3,2026-06-02,Carol,Monitor,Display,1,1299.00,cancelled
+4,2026-06-02,Alice,Headset,Audio,3,299.00,valid
+5,2026-06-03,Dave,Keyboard,Peripherals,1,199.00,valid
+6,2026-06-03,Carol,Mouse Pad,Peripherals,5,29.00,valid
+7,2026-06-04,Bob,Monitor,Display,2,1299.00,valid
+8,2026-06-04,Eve,Headset,Audio,1,299.00,cancelled
+9,2026-06-05,Dave,Speaker,Audio,1,899.00,valid
+10,2026-06-05,Alice,Webcam,Peripherals,2,349.00,valid
