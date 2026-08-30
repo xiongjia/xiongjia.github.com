@@ -23,6 +23,7 @@ hide:
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
 | [etl-dbt](#etl-dbt)                                 | [Others](#others)                 | 🟡 Experimental | 2026-08-26 |
+| [pg-boss-demo](#pg-boss-demo)                       | [Others](#others)                 | 🟢 Working      | 2026-08-30 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -110,6 +111,27 @@ Python 原型：**dbt-core + DuckDB** 的本地 ETL 最小链路（无服务器�
 - uv 管理：Python 3.13，dbt-core 1.12.3 / dbt-duckdb 1.11.0 / DuckDB 1.5.5
 - 相关文档：[ETL 研究](./research/topics/etl/index.md)
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/etl-dbt)
+
+### pg-boss-demo
+
+NestJS 12 + **pg-boss 12** 的 Job Queue 原型（pnpm 管理）：pg-boss 封装为
+NestJS Service（DI / Config / Logger，配置从 `@nestjs/config` 读入），REST API
+布置任务、查询状态与结果，演示队列执行、并行控制、重试、状态/结果查询等日常用法。
+
+- 三个演示队列（handler 注册表驱动，1 类型 = 1 队列）：`echo`（立即完成并
+  存结果）/ `flaky`（随机失败演示重试，`retryLimit`/`retryBackoff`）/ `slow`
+  （sleep 演示并发，`localConcurrency` 控制每队列并行数）
+- REST API：`POST /jobs`、`GET /jobs?queue=&state=`、`GET /jobs/:id`、
+  `POST /jobs/:id/cancel|retry`、`GET /queues`、`GET /health`；
+  Swagger UI `/api/docs`
+- handler 为 `@Injectable()` 类，经 DI 容器解析（`ModuleRef.get`），构造函数可
+  注入其它 service（演示 `NotificationService`）
+- 单测（NestJS `Test.createTestingModule` + `useValue` mock，无 DB）+ e2e
+  （真实 Postgres，随机端口，跑完只删除自己创建的任务，实测 0 残留）
+- Postgres 18 用 docker compose 启动（`pnpm db:start`，schema 由 pg-boss 自动迁移）；
+  `@pg-boss/dashboard` 调试面板（`pnpm dashboard`，http://localhost:3001）
+- 状态 Working：端到端已验证（布置三类任务、状态流转、重试、结果查询）
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/pg-boss-demo)
 
 ______________________________________________________________________
 

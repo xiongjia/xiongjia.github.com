@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgres:18-alpine
+    container_name: pg-boss-demo-db
+    environment:
+      POSTGRES_USER: pgboss
+      POSTGRES_PASSWORD: pgboss
+      POSTGRES_DB: pgboss
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-boss-demo-data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pgboss -d pgboss"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pg-boss-demo-data:

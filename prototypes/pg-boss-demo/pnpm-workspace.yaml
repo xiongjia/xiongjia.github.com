@@ -1,0 +1,8 @@
+# pnpm 11 settings — allowBuilds replaces onlyBuiltDependencies (package.json no longer read)
+allowBuilds:
+  esbuild: true
+  "@swc/core": true
+  "@scarf/scarf": true
+# pg-boss@12.28.1 is the newest release we intentionally pinned.
+minimumReleaseAgeExclude:
+  - pg-boss@12.28.1

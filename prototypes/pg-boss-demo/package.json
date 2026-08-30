@@ -1,0 +1,51 @@
+{
+  "name": "pg-boss-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "NestJS 12 + pg-boss 12 job queue prototype: enqueue/inspect jobs over REST, demonstrate concurrency control, retries, status & result queries, Swagger docs.",
+  "packageManager": "pnpm@11.4.0",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "build": "nest build",
+    "typecheck": "tsc --noEmit",
+    "start": "node dist/main.js",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "dashboard": "node scripts/dashboard.mjs",
+    "db:start": "docker compose up -d db",
+    "db:stop": "docker compose down",
+    "db:reset": "docker compose down -v"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.0",
+    "@nestjs/config": "^12.0.0",
+    "@nestjs/core": "^12.0.0",
+    "@nestjs/platform-express": "^12.0.1",
+    "@nestjs/swagger": "^12.0.1",
+    "pg-boss": "^12.28.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/testing": "^12.0.0",
+    "@pg-boss/dashboard": "^1.6.6",
+    "@swc/core": "^1.16.1",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "@types/supertest": "^7.2.1",
+    "prettier": "^3.9.6",
+    "supertest": "^7.2.2",
+    "typescript": "~6.0.3",
+    "unplugin-swc": "^1.5.11",
+    "vitest": "^4.0.0"
+  }
+}
