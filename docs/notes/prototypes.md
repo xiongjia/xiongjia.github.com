@@ -22,7 +22,7 @@ hide:
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
-| [etl-dbt](#etl-dbt)                                 | [Others](#others)                 | 🟡 Experimental | 2026-08-26 |
+| [etl-dbt](#etl-dbt)                                 | [Others](#others)                 | 🟢 Working      | 2026-08-26 |
 | [pg-boss-demo](#pg-boss-demo)                       | [Others](#others)                 | 🟢 Working      | 2026-08-30 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
@@ -100,16 +100,16 @@ Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfav
 
 ### etl-dbt
 
-Python 原型：**dbt-core + DuckDB** 的本地 ETL 最小链路（无服务器、无容器），
-模拟电商原始数据 → staging 清洗 → marts（订单事实 / 客户维度 / 商品维度 / 每日汇总）。
+Python 原型：**dbt-core + DuckDB** 的最小调用链演示（无服务器、无容器），
+CSV 源数据 → seed → 单个 staging 视图转换。
 
-- 源库/目标库分离：`data/raw.duckdb` 经 dbt `attach` 挂载为 `raw` catalog，
-  转换结果写入 `data/analytics.duckdb`
-- 增量演示：`daily_sales` 为 incremental 模型（`delete+insert` + `is_incremental()`），
-  模拟数据用 `--append-days` 追加新日期后只增量重建（30→32 行实测）
-- 确定性 mock：固定 seed（默认 42）；订单/明细 id 在追加时自动续号
+- 源数据：`seeds/test_data.csv` **10 条固定订单记录**（无随机），`dbt seed` 直接载入
+- 唯一转换模型 `stg_test_data`（视图）：过滤 `cancelled`、新增计算列 `line_total`
+- 测试两层：schema.yml 通用测试（unique / not_null）+ 两个 singular 测试
+  （断言无 cancelled 泄漏、断言 `line_total = qty * unit_price` 重算一致）
+- 完整调用链演示：seed → run → test → build → compile，编译产物可审查真实 SQL
+- 工程化：`uv run poe fmt`（sqlfmt 格式化 dbt Jinja SQL + mdformat）、`poe fmt-check`
 - uv 管理：Python 3.13，dbt-core 1.12.3 / dbt-duckdb 1.11.0 / DuckDB 1.5.5
-- 相关文档：[ETL 研究](./research/topics/etl/index.md)
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/etl-dbt)
 
 ### pg-boss-demo
