@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment — never commit real credentials (.env.example IS committed)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Tests
+coverage/
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/

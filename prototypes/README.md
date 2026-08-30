@@ -29,6 +29,11 @@ Python `.venv/`, Node `node_modules/`).
 
 ## Others
 
+- **[pg-boss-demo](./pg-boss-demo/README.md)** — NestJS 12 + pg-boss 12 job
+  queue prototype (pnpm): REST API to enqueue/inspect/cancel/retry jobs, three
+  demo queues (echo / flaky-retry / slow-concurrency), Swagger docs, unit + e2e
+  tests, Postgres 18 via docker compose, @pg-boss/dashboard debug UI
+  (`pnpm dashboard`) · created 2026-08-30 · status `working`
 - **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
   urfave/cli **v3** (migrated from v2): root command with global `--name` flag,
   subcommands (`hello`, `bye` alias `b`), nested commands (`team add/remove`),
