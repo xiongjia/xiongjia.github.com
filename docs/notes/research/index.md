@@ -25,12 +25,12 @@ graph LR
   click J "/projects/" "Projects"
 ```
 
-| Topic                                    | Category                | Status    | Description                                                                      |
-| ---------------------------------------- | ----------------------- | --------- | -------------------------------------------------------------------------------- |
-| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读                                      |
-| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成                                   |
-| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询                                      |
-| [shadcn/ui](./topics/shadcn-ui/index.md) | Libraries or Frameworks | polishing | 实用研究：环境/组件使用/进阶（pnpm+Vite8+Tailwind v4 实测，打磨中）              |
+| Topic                                    | Category                | Status    | Description                                                         |
+| ---------------------------------------- | ----------------------- | --------- | ------------------------------------------------------------------- |
+| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读                         |
+| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成                      |
+| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询                         |
+| [shadcn/ui](./topics/shadcn-ui/index.md) | Libraries or Frameworks | polishing | 实用研究：环境/组件使用/进阶（pnpm+Vite8+Tailwind v4 实测，打磨中） |
 
 > **Status**: `polished` — notes polished and ready to use; `polishing` — notes drafted, still being refined; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
 >
