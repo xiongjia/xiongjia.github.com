@@ -27,13 +27,24 @@ Python `.venv/`, Node `node_modules/`).
   presigned URLs, delete; local MinIO test included (no Cloudflare account
   needed to try it) · created 2026-08-05 · status `working`
 
-## Others
+## Job Queue
 
 - **[pg-boss-demo](./pg-boss-demo/README.md)** — NestJS 12 + pg-boss 12 job
   queue prototype (pnpm): REST API to enqueue/inspect/cancel/retry jobs, three
   demo queues (echo / flaky-retry / slow-concurrency), Swagger docs, unit + e2e
   tests, Postgres 18 via docker compose, @pg-boss/dashboard debug UI
   (`pnpm dashboard`) · created 2026-08-30 · status `working`
+
+## ETL
+
+- **[etl-dbt](./etl-dbt/README.md)** — Minimal dbt call-chain demo with
+  **dbt-core + DuckDB** (no server): fixed 10-row CSV → `dbt seed` → one staging
+  view (`stg_test_data`, filters cancelled + adds `line_total`), tests, and the
+  full command walkthrough (seed/run/test/build/compile) · created 2026-08-26 ·
+  status `working`
+
+## Utilities
+
 - **[go-cli-urfave](./go-cli-urfave/README.md)** — Go CLI built with
   urfave/cli **v3** (migrated from v2): root command with global `--name` flag,
   subcommands (`hello`, `bye` alias `b`), nested commands (`team add/remove`),
@@ -41,6 +52,9 @@ Python `.venv/`, Node `node_modules/`).
   (`just build`/`run`/`fmt`/`vet`/`test`/`clean`); originally under
   `research/experiments/`, migrated here; `go.sum` tracked for reproducible
   builds · created 2026-08-03 · status `working`
+
+## Others
+
 - **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS
   generic map view component on a local Protomaps basemap (MapLibre GL JS +
   pmtiles + @protomaps/basemaps): env-configured local cache (gitignored
@@ -48,11 +62,6 @@ Python `.venv/`, Node `node_modules/`).
   plugins, no CDN), center HUD, markers (emoji or dots + labels/popups), track
   lines, runtime basemap switching, 5 demos with tab switching, embeddable
   widget (build:widget, plain-HTML / S3 distribution) · created 2026-08-07 ·
-  status `working`
-- **[etl-dbt](./etl-dbt/README.md)** — Minimal dbt call-chain demo with
-  **dbt-core + DuckDB** (no server): fixed 10-row CSV → `dbt seed` → one staging
-  view (`stg_test_data`, filters cancelled + adds `line_total`), tests, and the
-  full command walkthrough (seed/run/test/build/compile) · created 2026-08-26 ·
   status `working`
 - **[prototype-example](./prototype-example/README.md)** — Minimal Rust
   hello-world **example** validating the prototype mechanism (not a practical

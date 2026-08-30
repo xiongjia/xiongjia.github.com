@@ -18,12 +18,12 @@ hide:
 | --------------------------------------------------- | --------------------------------- | --------------- | ---------- |
 | [ali-oss-client](#ali-oss-client)                   | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-01 |
 | [prototype-example](#prototype-example)             | [Others](#others)                 | 🟡 Experimental | 2026-08-01 |
-| [go-cli-urfave](#go-cli-urfave)                     | [Others](#others)                 | 🟢 Working      | 2026-08-03 |
+| [go-cli-urfave](#go-cli-urfave)                     | [Utilities](#utilities)           | 🟢 Working      | 2026-08-03 |
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
-| [etl-dbt](#etl-dbt)                                 | [Others](#others)                 | 🟢 Working      | 2026-08-26 |
-| [pg-boss-demo](#pg-boss-demo)                       | [Others](#others)                 | 🟢 Working      | 2026-08-30 |
+| [etl-dbt](#etl-dbt)                                 | [ETL](#etl)                       | 🟢 Working      | 2026-08-26 |
+| [pg-boss-demo](#pg-boss-demo)                       | [Job Queue](#job-queue)           | 🟢 Working      | 2026-08-30 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -75,42 +75,7 @@ TypeScript 原型，用 S3 兼容 AWS SDK v3（`@aws-sdk/client-s3` + `@aws-sdk/
 
 ______________________________________________________________________
 
-## Others
-
-### go-cli-urfave
-
-Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfave.org/>）写的命令行程序，已从 v2 迁移至 v3。
-
-- 根命令 `greet`：全局 `--name` / `-n` 参数（默认 `World`）与根 Action
-- 子命令：`hello` / `bye`（`bye` 带别名 `b`；`hello` 不加 `h` 别名以避免与内建 `help` 冲突）
-- 嵌套命令：`team add <name> --role <role>` / `team remove <name>`，演示二级命令树、局部参数与位置参数（缺参、多余参数、未知命令或空 `--name` 时报错并退出码 2）
-- `Justfile`：`just build` / `run` / `fmt` / `vet` / `test` / `clean`
-- VS Code 调试：自带 `.vscode/launch.json`（Go/Delve），README 含调试说明
-- 原为研究 [Lux](https://github.com/iawia002/lux) 时在 `research/experiments/` 下的实验代码，已迁移至此
-- `go.sum` 纳入版本控制，保证依赖可复现构建
-- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/go-cli-urfave)
-
-### prototype-example
-
-最小 Rust hello-world **示例**，用于验证原型机制的完整流程（不是实际功能原型）。
-
-- 证明非 Python 工具链项目可以干净地放在 `prototypes/` 下
-- 不影响 MkDocs 构建、ruff / mdformat 格式化与 lint
-- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
-
-### etl-dbt
-
-Python 原型：**dbt-core + DuckDB** 的最小调用链演示（无服务器、无容器），
-CSV 源数据 → seed → 单个 staging 视图转换。
-
-- 源数据：`seeds/test_data.csv` **10 条固定订单记录**（无随机），`dbt seed` 直接载入
-- 唯一转换模型 `stg_test_data`（视图）：过滤 `cancelled`、新增计算列 `line_total`
-- 测试两层：schema.yml 通用测试（unique / not_null）+ 两个 singular 测试
-  （断言无 cancelled 泄漏、断言 `line_total = qty * unit_price` 重算一致）
-- 完整调用链演示：seed → run → test → build → compile，编译产物可审查真实 SQL
-- 工程化：`uv run poe fmt`（sqlfmt 格式化 dbt Jinja SQL + mdformat）、`poe fmt-check`
-- uv 管理：Python 3.13，dbt-core 1.12.3 / dbt-duckdb 1.11.0 / DuckDB 1.5.5
-- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/etl-dbt)
+## Job Queue
 
 ### pg-boss-demo
 
@@ -132,6 +97,47 @@ NestJS Service（DI / Config / Logger，配置从 `@nestjs/config` 读入），R
   `@pg-boss/dashboard` 调试面板（`pnpm dashboard`，http://localhost:3001）
 - 状态 Working：端到端已验证（布置三类任务、状态流转、重试、结果查询）
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/pg-boss-demo)
+
+## ETL
+
+### etl-dbt
+
+Python 原型：**dbt-core + DuckDB** 的最小调用链演示（无服务器、无容器），
+CSV 源数据 → seed → 单个 staging 视图转换。
+
+- 源数据：`seeds/test_data.csv` **10 条固定订单记录**（无随机），`dbt seed` 直接载入
+- 唯一转换模型 `stg_test_data`（视图）：过滤 `cancelled`、新增计算列 `line_total`
+- 测试两层：schema.yml 通用测试（unique / not_null）+ 两个 singular 测试
+  （断言无 cancelled 泄漏、断言 `line_total = qty * unit_price` 重算一致）
+- 完整调用链演示：seed → run → test → build → compile，编译产物可审查真实 SQL
+- 工程化：`uv run poe fmt`（sqlfmt 格式化 dbt Jinja SQL + mdformat）、`poe fmt-check`
+- uv 管理：Python 3.13，dbt-core 1.12.3 / dbt-duckdb 1.11.0 / DuckDB 1.5.5
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/etl-dbt)
+
+## Utilities
+
+### go-cli-urfave
+
+Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfave.org/>）写的命令行程序，已从 v2 迁移至 v3。
+
+- 根命令 `greet`：全局 `--name` / `-n` 参数（默认 `World`）与根 Action
+- 子命令：`hello` / `bye`（`bye` 带别名 `b`；`hello` 不加 `h` 别名以避免与内建 `help` 冲突）
+- 嵌套命令：`team add <name> --role <role>` / `team remove <name>`，演示二级命令树、局部参数与位置参数（缺参、多余参数、未知命令或空 `--name` 时报错并退出码 2）
+- `Justfile`：`just build` / `run` / `fmt` / `vet` / `test` / `clean`
+- VS Code 调试：自带 `.vscode/launch.json`（Go/Delve），README 含调试说明
+- 原为研究 [Lux](https://github.com/iawia002/lux) 时在 `research/experiments/` 下的实验代码，已迁移至此
+- `go.sum` 纳入版本控制，保证依赖可复现构建
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/go-cli-urfave)
+
+## Others
+
+### prototype-example
+
+最小 Rust hello-world **示例**，用于验证原型机制的完整流程（不是实际功能原型）。
+
+- 证明非 Python 工具链项目可以干净地放在 `prototypes/` 下
+- 不影响 MkDocs 构建、ruff / mdformat 格式化与 lint
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
 
 ______________________________________________________________________
 

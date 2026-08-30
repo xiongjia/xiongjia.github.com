@@ -35,6 +35,12 @@ hide:
 - [DragonFly DB](https://dragonflydb.io/) - 类 Redis，更快更省内存
 - [TiKV](https://github.com/tikv/tikv) - Rust 实现的分布式 KV 存储（Raft 共识，TiDB 底层）
 - [LevelDB](https://github.com/google/leveldb) - Google 的嵌入式 KV 存储（LSM 树）
+- [RocksDB](https://github.com/facebook/rocksdb) - Facebook 的嵌入式 KV 存储（LSM 树，LevelDB 优化版，C++）
+- [Pebble](https://github.com/cockroachdb/pebble) - CockroachDB 用 Go 实现的嵌入式 KV 存储（LSM 树，LevelDB/RocksDB 思想的 Go 移植）
+- [Badger](https://github.com/dgraph-io/badger) - Dgraph 用 Go 实现的嵌入式 KV 存储（LSM 树，针对 SSD 优化）
+- [LMDB](https://github.com/LMDB/lmdb) - Symas 用 C 实现的嵌入式 KV 存储（B+ 树 + 内存映射文件，以极速闻名）
+- [redb](https://github.com/cberner/redb) - 纯 Rust 实现的嵌入式 KV 存储（B+ 树）
+- [bbolt](https://github.com/etcd-io/bbolt) - Go 实现的嵌入式 KV 存储（B+ 树，etcd 底层存储引擎，原 BoltDB 维护分支）
 
 ## DB Tools
 

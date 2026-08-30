@@ -35,7 +35,12 @@
     {# top-level topic (knowledge/<topic>/index.md): back to Knowledge overview #}
     <div class="back-link"><a href="{{ base_url }}/notes/knowledge/">← 返回 Knowledge</a></div>
   {% else %}
-    {# deeper page: back to its parent directory (see header for the rule) #}
-    <div class="back-link"><a href="{{ base_url }}/notes/knowledge/{{ kparts[:-1] | join('/') }}/">← 返回 {{ kparts[-2] | replace('-', ' ') | title }}</a></div>
+    {# deeper page: back to its parent directory (see header for the rule);
+       special labels come from dir_label_map, otherwise title-cased.
+       dir names are lowercase, so all-caps abbreviations need an explicit
+       label (e.g. kv → "KV" instead of "Kv"); add new entries here. #}
+    {% set dir_label_map = {'kv': 'KV'} %}
+    {% set dir_label = dir_label_map.get(kparts[-2], kparts[-2] | replace('-', ' ') | title) %}
+    <div class="back-link"><a href="{{ base_url }}/notes/knowledge/{{ kparts[:-1] | join('/') }}/">← 返回 {{ dir_label }}</a></div>
   {% endif %}
 {% endif %}
