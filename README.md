@@ -36,6 +36,7 @@ uv run poe fmt && uv run poe lint-py && uv run poe test   # quality checks
 uv run poe create-post "Title"     # new blog post
 uv run poe create-moment "Text"    # new Moment
 uv run poe enu add "cumbersome"    # English Scraps capture
+uv run poe reading-assist list    # list Reading Items (cache [slug] → read [slug], or run [slug] for both)
 ```
 
 ## CI / Deployment
@@ -71,6 +72,7 @@ Detailed design docs live in `internal/`:
 - [Weight Tracker Design](internal/weight-tracker-design.md) — weight data & tooling
 - [Running Track Design](internal/running-track-design.md) — Garmin CN API sync, splits/polyline in R2, heatmap + route maps
 - [Health Summary Design](internal/health-summary-design.md) — AI health summary via local `pi`
+- [Reading Assistant Design](internal/reading-assist-design.md) — AI chapter-level reading notes from plan Reading Items (web URL / local pdf·epub → `reading/<slug>/`; self-review ≤ 10 rounds; manual on-demand, user adjusts notes then commits)
 - [Bot Auto PR Design](internal/bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)
 - [Bot Remote API Design](internal/bot-api-design.md) — web console + Telegram bot + cron jobs over FastAPI (`poe api-server`; cron config: mkdocs.yml `extra.bot.cron`)
 - [Discuss System Design](internal/discuss-design.md) — Giscus comment system
@@ -98,6 +100,7 @@ docs/
 │   ├── collection/   # Curated links by domain + capture inbox & plans
 │   ├── research/     # Deep-dive notes (source code analysis, learning plans) under topics/
 │   ├── knowledge/    # Long-term knowledge base (topic dirs, sub-projects)
+│   ├── reading/      # Reading Assistant chapter notes (one dir per item, ch-XX + notes)
 │   ├── prototypes.md # Prototype index page (GitHub jumps)
 │   ├── health/       # Health tracking (weight, retirement, running, AI summary)
 │   └── posts/        # Blog archive (MkDocs blog plugin)

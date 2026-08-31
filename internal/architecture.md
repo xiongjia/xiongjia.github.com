@@ -82,6 +82,8 @@ xiongjia.github.com/
 │   │   │           └── object-storage/
 │   │   │               ├── index.md
 │   │   │               └── signed-url.md
+│   │   ├── reading/               # Reading Assistant chapter notes (one dir per item)
+│   │   │   └── index.md           # Reading overview (by type: dev books / novels / articles / papers)
 │   │   ├── health/                # Personal health tracking
 │   │   │   ├── index.md           # Health Monitor dashboard (mermaid + AI summary)
 │   │   │   ├── _summary.md        # AI health summary fragment (poe update-health-summary)
@@ -119,12 +121,14 @@ xiongjia.github.com/
 │   ├── sync_running.py            # Sync running data from Garmin CN API
 │   ├── sync_running_splits.py     # Upload running splits/polyline to R2
 │   ├── update_health_summary.py   # Regenerate AI health summary (local pi CLI)
+│   ├── reading_assist.py          # Reading Assistant: run next Reading Item via local pi CLI
 │   ├── md2wechat.py               # MkDocs → WeChat HTML converter
 │   └── md2wechat/                 # Converter assets (sample.md)
 ├── tests/                         # Unit tests (pytest)
 │   ├── test_md2wechat.py
 │   ├── test_sync_running.py
 │   ├── test_update_health_summary.py
+│   ├── test_reading_assist.py
 │   └── …                          # remaining test files
 ├── plugins/                       # Custom MkDocs hooks
 │   ├── draft_filter.py            # Draft page filter
@@ -308,6 +312,8 @@ targets are skipped). `max_backlinks` caps each list with
 | `GARMIN_SECRET_STRING_CN`                                             | Garmin CN OAuth token for `poe sync-running` (from `garth.client.dumps()`; local `.env` only)                                     | unset                                     |
 | `SYNC_RUNNING_CONFIRM`                                                | `1`/`true` uploads `.running/splits.json` without `--confirm` (`poe sync-running-splits`)                                         | unset (dry-run)                           |
 | `R2_ACCOUNT_ID` / `R2_ACCESS_KEY_ID` / `R2_SECRET_ACCESS_KEY`         | R2 API credentials for `poe rclone-config-init` (local `.env` only)                                                               | unset                                     |
+| `READING_PROXY`                                                       | Proxy for the reading-assist URL fetch (per-machine `.env`, loaded via `shared/env.py`)                                           | `$https_proxy` → `http://127.0.0.1:1095`  |
+| `READING_CACHE_DIR`                                                   | Local cache for extracted chapter text / pre-fetched pages (`reading-assist`; kept after the run for manual note editing)         | system temp dir                           |
 | `SITE_NAME`                                                           | Override site name in HTML title                                                                                                  | `recycle.bin`                             |
 | `SITE_URL`                                                            | Override canonical URL                                                                                                            | `https://xiongjia.github.io`              |
 | `GIT_HASH`                                                            | Embed current commit hash in page meta                                                                                            | empty                                     |
@@ -410,6 +416,7 @@ Content pages themselves are mixed Chinese/English depending on the section.
 - [Discuss System Design](./discuss-design.md)
 - [Retirement Countdown Design](./retirement-countdown-design.md)
 - [Health Summary Design](./health-summary-design.md)
+- [Reading Assistant Design](./reading-assist-design.md) — AI chapter-level reading notes from plan Reading Items (web URL / local pdf·epub → `reading/<slug>/`; self-review ≤ 10 rounds; manual on-demand, user adjusts notes then commits)
 - [Med Tracker Design](./med-tracker-design.md)
 - [GPS Tracker Design](./gps-tracker-design.md)
 - [Bot Auto PR Design](./bot-auto-pr-design.md) — local bot: worktree-isolated auto PR (weight/moment/… → draft PR → CI gate → auto-merge)

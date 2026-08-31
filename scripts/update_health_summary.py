@@ -98,6 +98,7 @@ def compute_retire_stats(data: dict, today: date) -> dict:
         gender,
         data.get("work_start_age", 22),
         data.get("expected_retire_age"),
+        today=today,
     )
     if not ret:
         return {}
