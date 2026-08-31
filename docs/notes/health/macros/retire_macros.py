@@ -53,7 +53,7 @@ def _month_diff(a, b):
     return max(0, (b.year - a.year) * 12 + (b.month - a.month))
 
 
-def _compute_retirement(birth, gender, work_start_age=22, expected_retire_age=None):
+def _compute_retirement(birth, gender, work_start_age=22, expected_retire_age=None, today=None):
     cfg = _GENDER_CONFIG.get(gender)
     if not cfg:
         return None
@@ -66,7 +66,8 @@ def _compute_retirement(birth, gender, work_start_age=22, expected_retire_age=No
         delay = min(cfg["max_delay"], elapsed // cfg["delay_rate"])
     final_retire = _add_months(orig_retire, delay)
     total_m = _month_diff(birth, final_retire)
-    today = date.today()
+    # injectable clock for deterministic tests; page rendering uses the real date
+    today = today or date.today()
 
     # Expected retirement (user's own plan).
     # Ignored if >= original retirement age (no early retirement scenario).

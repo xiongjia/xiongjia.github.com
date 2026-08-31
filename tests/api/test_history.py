@@ -95,7 +95,7 @@ def test_prune_old(tmp_path):
     old = date.today() - timedelta(days=40)
     stale = tmp_path / f".bot-api-history.jsonl.{old.isoformat()}"
     stale.write_text("x\n", encoding="utf-8")
-    recent = tmp_path / ".bot-api-history.jsonl.2026-08-01"
+    recent = tmp_path / f".bot-api-history.jsonl.{date.today().isoformat()}"
     recent.write_text("x\n", encoding="utf-8")
     history._prune_old()
     assert not stale.exists()
