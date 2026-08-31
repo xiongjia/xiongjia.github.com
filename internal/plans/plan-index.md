@@ -92,6 +92,7 @@ tags: [refactor, mkdocs]
 ### Reading
 
 - [reading-list.md](./reading-list.md) — 阅读计划（定期维护清单）：理解 CloudFlare-ImgBed、阅读 Python for GIS 等
+- [reading-items.md](./reading-items.md) — Reading Items 队列文件：机器可读阅读条目 + 完成/失败记录（独立于已归档的 reading-assist 开发计划，见 `arch/reading-assist.md`；`poe reading-assist list` 读取，`cache`/`read`/`run` 处理）
 
 ### Learning
 

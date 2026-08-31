@@ -1,6 +1,7 @@
 {#-
   "← 返回" link rendered on pages whose sidebar navigation is hidden
-  (research topics, knowledge topics). It is included twice: below the
+  (research topics, knowledge topics, reading items: subpages → the item's
+  index.md; the item index → the Reading overview). It is included twice: below the
   table of contents in the right sidebar (`partials/toc.html` override,
   desktop ≥ 1220px) and above the article (main.html content block,
   mobile/tablet fallback). back-link.css shows exactly one instance per
@@ -42,5 +43,16 @@
     {% set dir_label_map = {'kv': 'KV'} %}
     {% set dir_label = dir_label_map.get(kparts[-2], kparts[-2] | replace('-', ' ') | title) %}
     <div class="back-link"><a href="{{ base_url }}/notes/knowledge/{{ kparts[:-1] | join('/') }}/">← 返回 {{ dir_label }}</a></div>
+  {% endif %}
+{% elif page.url.startswith('notes/reading/') and page.url != 'notes/reading/' %}
+  {% set rparts = page.url.replace('notes/reading/', '', 1).split('/') | reject('equalto', '') | list %}
+  {% if rparts | length == 1 %}
+    {# item index (notes/reading/<slug>/index.md): back to the Reading overview #}
+    <div class="back-link"><a href="{{ base_url }}/notes/reading/">← 返回 Reading</a></div>
+  {% else %}
+    {# item subpage (notes/reading/<slug>/ch-*.md / notes.md / characters.md /
+       storyline.md): back to the item index (notes/reading/<slug>/, served by its
+       index.md) #}
+    <div class="back-link"><a href="{{ base_url }}/notes/reading/{{ rparts[-2] }}/">← 返回 {{ rparts[-2] }}</a></div>
   {% endif %}
 {% endif %}
