@@ -9,7 +9,7 @@ categories: [reading]
 
 > 阅读助手的章节式阅读笔记归档区：每项一个目录 `<slug>/`
 > （`index.md` 书目入口 · `ch-0001…` 章节摘要 · `notes.md` 笔记；小说/叙事类另含
-> 人物列表与故事线）。与 `collection/reading.md`（想读清单）区分；
+> 人物列表与故事线）。与 `collection/reading.md`（学习资料 / Study Materials）区分；
 > `poe reading-assist` 见 `internal/commands.md`。
 
 - **上次更新**: 2026-08-31（新增 Hands-On Data Visualization 阅读笔记）
