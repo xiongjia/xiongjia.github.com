@@ -93,3 +93,4 @@ hide:
 - [AlmaLinux](https://almalinux.org/) - CentOS 替代
 - [ClearOS](https://www.clearos.com/) - NAS 管理 Linux
 - [cordis](https://github.com/cordiverse/cordis) - DHS 的 Plugin 管理机制
+- [Omarchy](https://omarchy.org/) - "Beautiful, Fun & Agentic Linux" by DHH（AI 原生的 Linux 发行版，Omacom 基金会支持）

@@ -39,3 +39,4 @@ hide:
 - [System Design Notes](https://github.com/liquidslr/system-design-notes) - 系统设计笔记
 - [Container Filesystem from Scratch](https://labs.iximiuz.com/tutorials/container-filesystem-from-scratch) - 容器文件系统原理
 - [Harness Engineering (马书)](https://github.com/ZhangHanDong/harness-engineering-from-cc-to-ai-coding) - C/C++ 到 AI 编程
+- [modern-cpp-tutorial](https://github.com/changkun/modern-cpp-tutorial) - 现代 C++ 教程

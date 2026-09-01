@@ -75,6 +75,10 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 | `book` | `- 📖 <title> — <author>`            | `### 📚 Reading` 小节（不存在则新建） |
 | `note` | `- 📝 <title> — <summary>`           | `### 📝 Notes` 小节（不存在则新建）   |
 
+> **book 子小节路由**：若目标页 `### 📚 Reading` 下已有学习方向子小节（如 `#### 🗣️ English Learning` /
+> `#### 🤖 AI Learning` / `#### 💻 Programming`），按内容方向追加到对应子小节；无匹配或没有子小节时，
+> 追加到 `### 📚 Reading` 末尾（不存在则新建）。
+
 ### 追加格式：行动型（todo / idea / misc → `plans.md`）
 
 | type   | 格式                       | 位置                                |

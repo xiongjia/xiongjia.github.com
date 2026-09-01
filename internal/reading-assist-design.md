@@ -242,7 +242,7 @@ notes; removal is manual.
 - Build-time AI generation (offline, deterministic builds — AI runs on demand
   only, same rule as `update-health-summary`)
 - Replacing `reading-list.md` (long-term wishlist) or `collection/reading.md`
-  (Book Shelf) — items migrate in only when actually starting to read
+  (Study Materials) — items migrate in only when actually starting to read
 
 ## Related
 
