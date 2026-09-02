@@ -9,7 +9,9 @@
 - **本地文件**: book/novel 的 pdf/epub 放 `external/` 下任意位置（推荐 `external/book/`，
   git-ignored 永不提交）；原材料三种写法都行：`{projectRoot}/external/book/x.pdf`
   （显式，推荐，不受目录约定限制）、相对路径 `external/book/x.pdf` / `book/x.pdf` /
-  `x.pdf`（脚本按 仓库根 → `external/` → `external/book/` 顺序查找）、绝对路径直接用
+  `x.pdf`（脚本按 仓库根 → `external/` → `external/book/` 顺序查找）、绝对路径直接用。
+  **paper/article 也接受下载到本地的 pdf/epub** —— 模式由原材料形态决定：
+  全 http(s) URL → 预抓取（web）；否则按本地文件解析（local-file），同 book/novel
 - **多个源（系列）**: 原材料支持**空格分隔多个源** —— 文章/论文系列=多个 URL
   （每篇一个 `part-000N` 页，跨篇概念进 notes.md）；书籍分卷=多个本地文件
   （每个文件一卷 → `part-000N`）。任一源不可用 → 该条目放弃
@@ -22,7 +24,7 @@
 - **类型**: book | novel | article | paper
 - **出处**: Douban 条目 / URL / DOI（书籍只给书目信息）
 - **状态**: not-started | reading | organized（整理完成）
-- **原材料**: book/novel=本地 pdf/epub 路径，推荐 `{projectRoot}/external/book/<文件名>`（git-ignored，永不提交）；article/paper=URL（系列多篇用空格分隔多个 URL）
+- **原材料**: book/novel=本地 pdf/epub 路径，推荐 `{projectRoot}/external/book/<文件名>`（git-ignored，永不提交）；article/paper=URL（系列多篇用空格分隔多个 URL）；article/paper 给了下载到本地的 pdf/epub 也接受（全 URL → 预抓取；否则按本地文件）
 - **输出**: docs/notes/reading/<slug>/
 -->
 
@@ -84,6 +86,24 @@
 - **原材料**: {projectRoot}/external/books/HandsOnDataViz.pdf
 - **输出**: docs/notes/reading/hands-on-data-visualization/
 
+### curious-incident — The Curious Incident of the Dog in the Night-Time
+
+- **slug**: curious-incident
+- **类型**: novel
+- **出处**: Douban / https://book.douban.com/subject/1291231/
+- **状态**: organized
+- **原材料**: {projectRoot}/external/books/the_curious_incident_of_the_dog_in_the_night_time.epub
+- **输出**: docs/notes/reading/curious-incident/
+
+### end-of-software-engineering — The End of Software Engineering: How AI Agents Are Fundamentally Restructuring the Software Paradigm
+
+- **slug**: end-of-software-engineering
+- **类型**: paper
+- **出处**: https://arxiv.org/html/2606.05608v1
+- **状态**: organized
+- **原材料**: {projectRoot}/external/books/2606.05608v1.pdf
+- **输出**: docs/notes/reading/end-of-software-engineering/
+
 ## 记录（Log）
 
 ### 完成（Organized）
@@ -99,11 +119,30 @@
 - **备注**: 本地 pdf（HandsOnDataViz.pdf，443 页）经 pymupdf 按书签拆分 17 章 + Preface；
   内容只含摘要与短摘录，无全文引用
 
+### end-of-software-engineering — The End of Software Engineering: How AI Agents Are Fundamentally Restructuring the Software Paradigm
+
+- **完成时间**: 2026-09-03
+- **结果**: organized（整理完成）
+- **产出**: docs/notes/reading/end-of-software-engineering/（index.md + part-0001…part-0008 + notes.md）
+- **备注**: 素材为 external/reading-assist/end-of-software-engineering/ 下预提取文本
+  source-01…08.txt（本地 pdf 2606.05608v1.pdf，15 页，按书签拆成 8 个文件，部分拆分点
+  落在正文句子中间，与论文章节不完全对齐）；每文件一页（part-000N）；内容只含摘要与
+  短摘录，无全文引用
+
+### curious-incident — The Curious Incident of the Dog in the Night-Time
+
+- **完成时间**: 2026-09-03
+- **结果**: organized（整理完成）
+- **产出**: docs/notes/reading/curious-incident/（index.md + ch-0001…ch-0002 + notes.md +
+  characters.md + storyline.md）
+- **备注**: 素材为 external/reading-assist/curious-incident/ 下预提取文本 source-03.txt /
+  source-04.txt（epub 按 spine 拆出的两个大文件，拆分点落在原书第 163 章中间；全书 51 章
+  质数编号）；每文件一页；内容只含摘要与短摘录，无全文引用
+
 ### 失败 / 放弃（Failed / Aborted）
 
 > 运行中途失败（pi 错误 / 未产出 index / mdformat 失败）或原材料不可用被放弃的条目。
-> 脚本自动写入并**按条目刷新**为最近一次（同 slug 不叠加）；「无条目」的静默退出不记录。
+> 脚本自动写入并**按条目刷新**为最近一次（同 slug 不叠加），随后成功会清除同 slug 的
+> 失败记录；「无条目」的静默退出不记录。
 
 （暂无）
-
-- 2026-08-31 → hands-on-data-visualization（pages written but entry not marked organized）

@@ -239,6 +239,43 @@ def mark_organized(slug: str) -> bool:
     return True
 
 
+# Record lines written to the Log look like `- YYYY-MM-DD → slug` or
+# `- YYYY-MM-DD → slug（reason）` (tool writes fullwidth parens; hand-edited
+# halfwidth `(reason)` is tolerated when matching). Shared by the refresh and
+# clear paths so they can never drift apart.
+_REC_DATE = r"- \d{4}-\d{2}-\d{2} → "
+_REC_REASON = r"(?:[（(][^\n]*)?"
+
+
+def _strip_record(text: str, heading: str, slug: str) -> str:
+    """Remove the dated outcome line for `slug` from the `heading` section.
+
+    Used so a later success supersedes an earlier failure record of the same
+    slug (the Log keeps per-section latest only; a done must also clear a
+    prior fail). Collapses blank runs left by the removal so the section stays
+    tidy. Returns the text unchanged when the section or record is absent.
+    """
+    start = text.find(heading)
+    if start < 0:
+        return text
+    tail = text[start + len(heading) :]
+    nxt = re.search(r"^#{2,3} ", tail, re.M)
+    end = start + len(heading) + (nxt.start() if nxt else len(tail))
+    section = text[start:end]
+    # After the slug require an opening-paren reason or end-of-line so a
+    # hyphen-continued sibling slug (e.g. `paper-2024` when targeting
+    # `paper`) never matches — neither as a full line nor as a mangling
+    # prefix.
+    pat = re.compile(r"(?m)^" + _REC_DATE + re.escape(slug) + _REC_REASON + r"(?:\n|$)")
+    new = pat.sub("", section)
+    if new == section:
+        return text
+    new = re.sub(r"\n{3,}", "\n\n", new)
+    if end == len(text):  # last section in the file: no dangling blank lines at EOF
+        new = new.rstrip("\n") + "\n"
+    return text.replace(section, new)
+
+
 def _append_record(slug: str, kind: str, why: str = "") -> bool:
     """Write (append or refresh) a one-line outcome record in the items Log.
 
@@ -257,6 +294,10 @@ def _append_record(slug: str, kind: str, why: str = "") -> bool:
         return False
     head = LOG_DONE if kind == "done" else LOG_FAIL
     text = ITEMS_FILE.read_text(encoding="utf-8")
+    if kind == "done":
+        # a later success supersedes any earlier failure record of the slug
+        # (a stale fail line next to a done line would misreport the item)
+        text = _strip_record(text, LOG_FAIL, slug)
     start = text.find(head)
     if start < 0:
         return False
@@ -268,7 +309,7 @@ def _append_record(slug: str, kind: str, why: str = "") -> bool:
     today = date.today().isoformat()
     reason = f"（{why}）" if why else ""
     line = f"- {today} → {slug}{reason}"
-    pat = re.compile(r"^- \d{4}-\d{2}-\d{2} → " + re.escape(slug) + r"\b[^\n]*", re.M)
+    pat = re.compile(r"^" + _REC_DATE + re.escape(slug) + _REC_REASON + r"(?=\n|$)", re.M)
     m = pat.search(section)
     if m:
         new_section = section[: m.start()] + line + section[m.end() :]
@@ -459,7 +500,10 @@ def _extract_epub_chapters(path: Path, dest_dir: Path, start: int = 1) -> tuple[
             opf_path = rootfile.get("full-path", "content.opf")
             opf = ET.fromstring(z.read(opf_path))
             opf_ns = {"o": "http://www.idpf.org/2007/opf"}
-            base = opf_path.rsplit("/", 1)[0]
+            # dirname of the OPF; empty when the OPF sits at the zip root
+            # (flat epub). rsplit()[0] would return the whole path for a
+            # slash-free value, so use dirname instead.
+            base = posixpath.dirname(opf_path)
             manifest: dict[str, str] = {}
             for item in opf.findall(".//o:manifest/o:item", opf_ns):
                 manifest[item.get("id", "")] = item.get("href", "")
@@ -659,15 +703,45 @@ def _write_manifest(cache_dir: Path, sources: list[str]) -> None:
     (cache_dir / "manifest.txt").write_text("\n".join(sources) + "\n", encoding="utf-8")
 
 
+def _purge_cache_sources(cache_dir: Path) -> None:
+    """Remove stale extracted source-*.txt before a full re-extraction.
+
+    Only invoked when the cache manifest no longer matches the current source
+    list (slug re-used for a different source set, or the input mode switched
+    between URL and local file), so leftover chapter text from an earlier
+    source set is never picked up later by build_prompt's glob. Fetched
+    source-*.html need no purge: they are always rewritten per URL.
+    """
+    if not cache_dir.exists():
+        return
+    for p in cache_dir.glob("source-*.txt"):
+        # missing_ok: a concurrent `cache`/bot run may have removed the file
+        # between glob and unlink; ignore rather than crash the pipeline
+        p.unlink(missing_ok=True)
+
+
+def _sources_are_urls(raw: str) -> bool:
+    """True when every space-separated source is an http(s) URL.
+
+    Decides the input mode for article/paper sources: all-URLs → web
+    (pre-fetch each URL); anything else (typically a local pdf/epub path the
+    user downloaded) → local-file mode, the same as book/novel.
+    """
+    parts = raw.split()
+    return bool(parts) and all(u.startswith(("http://", "https://")) for u in parts)
+
+
 def _prepare_cache(item: Item) -> tuple[bool, str]:
     """Ensure the item's raw material is usable and locally cached.
 
-    Idempotent: for article/paper, if ``CACHE_DIR/<slug>/`` already holds the
-    expected number of ``source-*.txt`` files the cache is reused (no
-    re-fetch); otherwise each URL is checked, fetched (with retries + UA) and
-    stripped to plain text, with a complexity guard that aborts and asks for a
-    local pdf for JS-rendered/oversize pages. For book/novel, the local files
-    are validated in place (they are their own "cache"). Returns (ok, reason).
+    Idempotent: for web sources (article/paper with all-URL 原材料), if
+    ``CACHE_DIR/<slug>/`` already holds the expected number of ``source-*.txt``
+    files the cache is reused (no re-fetch); otherwise each URL is checked,
+    fetched (with retries + UA) and stripped to plain text, with a complexity
+    guard that aborts and asks for a local pdf for JS-rendered/oversize pages.
+    For local-file sources (book/novel, or paper/article given a downloaded
+    pdf/epub), the local files are validated and chapter text pre-extracted
+    into the cache. Returns (ok, reason).
     """
     slug = (item.get(K_SLUG) or "").strip()
     if not SLUG_RE.fullmatch(slug):
@@ -684,18 +758,25 @@ def _prepare_cache(item: Item) -> tuple[bool, str]:
     if not raw:
         return False, "source is empty"
     # A single source value may hold several space-separated sources:
-    # article/paper = several URLs (an article series), book/novel = several
-    # local files (volumes). Any source unusable → the whole item aborts.
-    if typ in ("article", "paper"):
-        urls = raw.split()
-        if not urls or not all(u.startswith(("http://", "https://")) for u in urls):
-            return (
-                False,
-                "source is not a URL (article/paper needs URL; series = space-separated URLs)",
-            )
+    # all-URLs → web mode (article/paper, each URL its own file); local
+    # files → local-file mode (book/novel, or paper/article with a downloaded
+    # pdf/epub; each file a volume). Any source unusable → the whole item
+    # aborts.
+    sources = raw.split()
+    is_web = _sources_are_urls(raw)
+    if (
+        typ in ("article", "paper")
+        and sources
+        and not is_web
+        and any(s.startswith(("http://", "https://")) for s in sources)
+    ):
+        return False, "mixed sources (URL + local file) are unsupported for article/paper"
+    if typ in ("article", "paper") and is_web:
+        urls = sources
         cache_dir = CACHE_DIR / slug
         if _cache_matches(cache_dir, urls):
             return True, ""
+        _purge_cache_sources(cache_dir)
         for url in urls:
             if not _url_reachable(url):
                 return False, f"URL unreachable: {url}"
@@ -721,13 +802,16 @@ def _prepare_cache(item: Item) -> tuple[bool, str]:
                 )
         _write_manifest(cache_dir, urls)
         return True, ""
-    # book/novel: validate each local file AND pre-extract chapter text into
-    # the cache (idempotent — a manifest-matching cache is reused, so `read`
-    # after `cache` does not re-extract; changing 原材料 re-extracts).
+    # local-file mode (book/novel by design; paper/article when the user
+    # supplies a local pdf/epub): validate each local file AND pre-extract
+    # chapter text into the cache (idempotent — a manifest-matching cache is
+    # reused, so `read` after `cache` does not re-extract; changing 原材料
+    # re-extracts).
     cache_dir = CACHE_DIR / slug
-    files = raw.split()
+    files = sources
     if _cache_matches(cache_dir, files):
         return True, ""
+    _purge_cache_sources(cache_dir)
     idx = 0
     for f in files:
         path = _resolve_local_path(f)
@@ -784,7 +868,7 @@ def build_prompt(item: Item) -> str:
     slug = item.get(K_SLUG) or "?"
     raw = item.get(K_SOURCE) or ""
     out = item.get(K_OUTPUT) or f"docs/notes/reading/{slug}/"
-    if typ in ("article", "paper"):
+    if typ in ("article", "paper") and _sources_are_urls(raw):
         urls = raw.split()
         txts = [str(CACHE_DIR / slug / f"source-{i:02d}.txt") for i in range(1, len(urls) + 1)]
         if len(urls) == 1:
@@ -798,7 +882,8 @@ def build_prompt(item: Item) -> str:
                 + "\n".join(f"  - {p}" for p in txts)
             )
     else:
-        # book/novel: chapter text was pre-extracted into the cache by `cache`
+        # local-file mode (book/novel; paper/article with a local pdf/epub):
+        # chapter text was pre-extracted into the cache by `cache`
         # (source-NN.txt per chapter / volume group)
         cache_dir = CACHE_DIR / slug
         txts = sorted(str(p) for p in cache_dir.glob("source-*.txt")) if cache_dir.exists() else []
@@ -823,17 +908,17 @@ Item:
 - raw material (原材料): {source}
 - output dir (输出): {out}
 
-1. Raw material is a local file (book/novel): the script already extracted
-   chapter text into source-NN.txt files under {CACHE_DIR}/{slug}/ (epub split
-   by spine/toc; pdf by bookmarks, else page groups). Directly read every
-   source-*.txt — **each file → one page (ch-0001… or part-0001…, in file
-   order)**. Do NOT re-extract the pdf/epub yourself. If a file has no
-   readable text (scanned pdf), say so and stop — the user must provide a
-   text-based pdf.
-2. Raw material is pre-fetched text (article/paper): directly read every
-   source-*.txt in {CACHE_DIR}/{slug}/ (the script already fetched and stripped
-   tags to plain text; no network needed; JS-rendered pages may leave very
-   short text — that is expected, summarize the readable content).
+1. Raw material is a local pdf/epub file (book/novel, or paper/article with
+   a downloaded file): the script already extracted chapter text into
+   source-NN.txt files under {CACHE_DIR}/{slug}/ (epub split by spine/toc;
+   pdf by bookmarks, else page groups). Directly read every source-*.txt —
+   **each file → one page (ch-0001… or part-0001…, in file order)**. Do NOT
+   re-extract the pdf/epub yourself. If a file has no readable text (scanned
+   pdf), say so and stop — the user must provide a text-based pdf.
+2. Raw material is pre-fetched web text (article/paper from URL(s)): directly
+   read every source-*.txt in {CACHE_DIR}/{slug}/ (the script already fetched
+   and stripped tags to plain text; no network needed; JS-rendered pages may
+   leave very short text — that is expected, summarize the readable content).
    **One page per file → part-0001… (in file order); cross-file concepts and
    the series storyline go into notes.md and index.md**. Long articles may be
    split further. **If a file's plain text is empty or too short (JS-rendered
@@ -842,8 +927,8 @@ Item:
    (If future fetching is ever needed, curl must use
    `-m 20` timeout to avoid hanging; proxy fallback chain:
    $READING_PROXY → $https_proxy → default local proxy http://127.0.0.1:1095.)
-3. Write the full page set under {out}: index.md (book entry: type / state
-   (reading ↔ organized) / author / provenance (出处) + whole-book
+3. Write the full page set under {out}: index.md (entry: type / state
+   (reading ↔ organized) / author / provenance (出处) + whole-work
    storyline + **organizing-done date** (reading-done date is NOT auto-filled)
    + reading-notes entry first + chapter entries) + ch-0001…/part-0001… +
    notes.md (reading notes); novel/narrative types additionally get
@@ -1034,10 +1119,10 @@ def _read_flow(args, item: Item) -> int:
     _append_record(slug, "done")
     # Cache sources under $READING_CACHE_DIR/<slug>/ are intentionally KEPT:
     # the user may re-open them while reading (edit summaries, re-extract a
-    # pdf/epub), so nothing is deleted on any path. For local files (book /
-    # novel) the source itself is the cache, so point at it instead.
+    # pdf/epub), so nothing is deleted on any path. For local-file sources the
+    # source itself is the cache, so point at it instead.
     raw = (item.get(K_SOURCE) or "").strip()
-    is_url = bool(raw) and all(u.startswith(("http://", "https://")) for u in raw.split())
+    is_url = _sources_are_urls(raw)
     print(f"✓ {slug} organized; pages under {index.parent}")
     if is_url:
         print(f"  (raw sources kept in {CACHE_DIR / slug}/ — delete manually when done)")
@@ -1064,7 +1149,7 @@ def _cmd_cache(args) -> int:
         return 0
     slug = item.get(K_SLUG) or "?"
     raw = (item.get(K_SOURCE) or "").strip()
-    is_url = bool(raw) and all(u.startswith(("http://", "https://")) for u in raw.split())
+    is_url = _sources_are_urls(raw)
     print(f"cache {slug}: preparing sources…", flush=True)
     ok, why = _prepare_cache(item)
     if not ok:
