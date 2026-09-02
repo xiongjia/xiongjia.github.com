@@ -24,10 +24,10 @@ description: "Reading Assistant: read/ask/done on Reading Items entries — chap
 
 ## 输入模式（原材料只有两种）
 
-| 模式         | 说明                                                                                                                                                                                                                                                                           |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `web`        | 文章/教程/论文：**脚本预抓取**到 `$READING_CACHE_DIR/<slug>/source.html`（默认系统临时目录；`curl -S -L -m 20` **带浏览器 UA + 克制式重试 ≤3 次（2s/4s 退避，防反爬）**，代理回退链 `$READING_PROXY` → `$https_proxy` → `http://127.0.0.1:1095`），AI 只读本地文本，不需要联网 |
-| `local-file` | 书籍/小说：用户给**本地 pdf/epub 文件名/路径**（写 `{projectRoot}/external/…` 显式路径，或相对路径；文件放 git-ignored 的 `external/`，永不提交）。多个文件（分卷）空格分隔，每卷一个 part 页                                                                                  |
+| 模式         | 说明                                                                                                                                                                                                                                                                                                           |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `web`        | 文章/教程/论文：**原材料全为 http(s) URL** 时脚本预抓取到 `$READING_CACHE_DIR/<slug>/source.html`（默认系统临时目录；`curl -S -L -m 20` **带浏览器 UA + 克制式重试 ≤3 次（2s/4s 退避，防反爬）**，代理回退链 `$READING_PROXY` → `$https_proxy` → `http://127.0.0.1:1095`），AI 只读本地文本，不需要联网        |
+| `local-file` | 书籍/小说：用户给**本地 pdf/epub 文件名/路径**（写 `{projectRoot}/external/…` 显式路径，或相对路径；文件放 git-ignored 的 `external/`，永不提交）。paper/article 给了下载到本地的 pdf/epub 也走本模式（模式由原材料形态决定：全 URL → `web`，否则 → `local-file`）。多个文件（分卷）空格分隔，每卷一个 part 页 |
 
 - **不做聊天粘贴原文**；本地 pdf/epub 只在用户本地设备上
 - 提取：epub = 标准库 `zipfile`（toc/spine 拆章节）；pdf = `pymupdf`（首选）或 `pypdf`；
@@ -54,7 +54,8 @@ description: "Reading Assistant: read/ask/done on Reading Items entries — chap
    - `web`：脚本已预抓取 `$READING_CACHE_DIR/<slug>/source-01.html…`（每篇一个文件，curl -S -L -m 20 带超时 + 浏览器 UA + 重试 ≤3 次），直接读本地文本；系列文章=多个文件，**每篇一个 `part-000N` 页**，跨篇概念进 notes.md；若仍需联网抓取，curl 一律带 `-m 20`（避免挂死）
    - `local-file`：从本地文件提取章节文本到 `$READING_CACHE_DIR/<slug>/`（epub=zipfile、
      pdf=pymupdf/pypdf），按书目录（epub toc/spine、pdf 书签）拆章节；无目录结构 →
-     按页/卷分组降级 `part-0001…`
+     按页/卷分组降级 `part-0001…`。paper/article 给了下载好的本地 pdf/epub 时也走本模式
+     （模式由原材料形态决定：全 URL → `web`，否则 → `local-file`）
 1. 建 `docs/notes/reading/<slug>/`：
    - `index.md`（书目入口：出处 + 全书主线 + 笔记入口在最前 + 章节入口）
    - 章节逐章 `ch-0001.md`…；网络长文拆段 `part-0001.md`…

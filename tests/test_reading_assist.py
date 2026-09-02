@@ -307,6 +307,44 @@ def test_extract_epub_chapters(tmp_path):
     assert "gamma delta" in (dest / "source-02.txt").read_text(encoding="utf-8")
 
 
+def test_extract_epub_chapters_flat_root_opf(tmp_path):
+    # OPF at the zip root (no directory) — dirname must be empty, not the
+    # OPF filename; a regression: chapter paths became "content.opf/ch1"
+    # and every spine file was skipped ("no extractable text").
+    import zipfile
+    from xml.etree import ElementTree as ET
+
+    epub = tmp_path / "book.epub"
+    ns_c = "urn:oasis:names:tc:opendocument:xmlns:container"
+    container = ET.Element("container", {"version": "1.0", "xmlns": ns_c})
+    rootfiles = ET.SubElement(container, "rootfiles")
+    ET.SubElement(
+        rootfiles,
+        "rootfile",
+        {"full-path": "content.opf", "media-type": "application/oebps-package+xml"},
+    )
+    opf_ns = "http://www.idpf.org/2007/opf"
+    opf = ET.Element("package", {"xmlns": opf_ns, "version": "2.0"})
+    man = ET.SubElement(opf, "manifest")
+    for mid, href in (("c1", "ch1.xhtml"), ("c2", "ch2.xhtml")):
+        ET.SubElement(man, "item", {"id": mid, "href": href, "media-type": "application/xhtml+xml"})
+    sp = ET.SubElement(opf, "spine")
+    ET.SubElement(sp, "itemref", {"idref": "c1"})
+    ET.SubElement(sp, "itemref", {"idref": "c2"})
+    with zipfile.ZipFile(epub, "w") as z:
+        z.writestr("META-INF/container.xml", ET.tostring(container))
+        z.writestr("content.opf", ET.tostring(opf))
+        z.writestr("ch1.xhtml", "<html><body><h1>Ch1</h1><p>alpha beta</p></body></html>")
+        z.writestr("ch2.xhtml", "<html><body><h1>Ch2</h1><p>gamma delta</p></body></html>")
+
+    dest = tmp_path / "out"
+    ok, why, n = ra._extract_epub_chapters(epub, dest)
+    assert ok, why
+    assert n == 2
+    assert "alpha beta" in (dest / "source-01.txt").read_text(encoding="utf-8")
+    assert "gamma delta" in (dest / "source-02.txt").read_text(encoding="utf-8")
+
+
 def test_extract_pdf_chapters_mock(tmp_path):
     # pymupdf not guaranteed in the test env — fake the module and its objects
     class FakePage:
@@ -470,6 +508,47 @@ def test_validate_article_series_unreachable():
     assert "URL unreachable" in why
 
 
+def test_validate_mixed_url_and_file_aborts(tmp_path):
+    # article/paper may be all-URL or all-local; a mix is a config error that
+    # must abort with a clear reason instead of a confusing "file missing".
+    item = {
+        ra.K_SLUG: "mix",
+        ra.K_TYPE: "paper",
+        ra.K_SOURCE: "https://ok.example/1 local.pdf",
+    }
+    with mock.patch.object(ra, "CACHE_DIR", tmp_path):
+        ok, why = ra.validate(item)
+    assert not ok
+    assert "mixed sources" in why
+
+
+def test_prepare_cache_reextract_purges_stale_sources(tmp_path):
+    # when the source set changes (or the input mode switches), leftover
+    # source files from the earlier set must not survive to be globbed later
+    cache = tmp_path / "c" / "vols"
+    cache.mkdir(parents=True)
+    (cache / "source-01.txt").write_text("stale", encoding="utf-8")
+    (cache / "source-02.txt").write_text("stale", encoding="utf-8")
+    ra._write_manifest(cache, ["old.pdf"])  # mismatched manifest → forces re-extract
+
+    item = {ra.K_SLUG: "vols", ra.K_TYPE: "book", ra.K_SOURCE: "book/v1.pdf"}
+
+    def fake_extract(path, dest_dir, start=1):
+        (dest_dir / f"source-{start:02d}.txt").write_text("fresh", encoding="utf-8")
+        return (True, "", 1)
+
+    with (
+        mock.patch.object(ra, "_file_parseable", return_value=(True, "ok")),
+        mock.patch.object(ra, "_extract_to_cache", side_effect=fake_extract),
+        mock.patch.object(ra, "CACHE_DIR", tmp_path / "c"),
+    ):
+        ok, why = ra.validate(item)
+    assert ok, why
+    files = sorted(p.name for p in cache.glob("source-*.txt"))
+    assert files == ["source-01.txt"]  # stale source-02 dropped
+    assert (cache / "source-01.txt").read_text(encoding="utf-8") == "fresh"
+
+
 def test_validate_multi_local_files(tmp_path):
     item = {ra.K_SLUG: "vols", ra.K_TYPE: "book", ra.K_SOURCE: "book/v1.pdf book/v2.pdf"}
     with (
@@ -502,6 +581,121 @@ def test_build_prompt_series_source(tmp_path):
         p = ra.build_prompt(item)
     assert "source-01.txt" in p and "source-02.txt" in p
     assert "article series" in p
+
+
+def test_validate_paper_with_local_epub(tmp_path):
+    # paper/article now also accept a downloaded local pdf/epub (mode decided
+    # by the source shape, not the type alone): all-URL → web, else local-file.
+    import zipfile
+    from xml.etree import ElementTree as ET
+
+    epub = tmp_path / "paper.epub"
+    ns_c = "urn:oasis:names:tc:opendocument:xmlns:container"
+    container = ET.Element("container", {"version": "1.0", "xmlns": ns_c})
+    rootfiles = ET.SubElement(container, "rootfiles")
+    ET.SubElement(
+        rootfiles,
+        "rootfile",
+        {"full-path": "OEBPS/content.opf", "media-type": "application/oebps-package+xml"},
+    )
+    opf_ns = "http://www.idpf.org/2007/opf"
+    opf = ET.Element("package", {"xmlns": opf_ns, "version": "3.0"})
+    man = ET.SubElement(opf, "manifest")
+    ET.SubElement(
+        man,
+        "item",
+        {"id": "c1", "href": "ch1.xhtml", "media-type": "application/xhtml+xml"},
+    )
+    sp = ET.SubElement(opf, "spine")
+    ET.SubElement(sp, "itemref", {"idref": "c1"})
+    with zipfile.ZipFile(epub, "w") as z:
+        z.writestr("META-INF/container.xml", ET.tostring(container))
+        z.writestr("OEBPS/content.opf", ET.tostring(opf))
+        z.writestr(
+            "OEBPS/ch1.xhtml",
+            "<html><body><h1>Abstract</h1><p>paper body text</p></body></html>",
+        )
+
+    item = {ra.K_SLUG: "paper", ra.K_TYPE: "paper", ra.K_SOURCE: str(epub)}
+    cache = tmp_path / "cache"
+    with mock.patch.object(ra, "CACHE_DIR", cache):
+        ok, why = ra.validate(item)
+    assert ok, why
+    txt = cache / "paper" / "source-01.txt"
+    assert txt.exists()
+    assert "paper body text" in txt.read_text(encoding="utf-8")
+
+
+def test_validate_paper_with_local_pdf_mock(tmp_path):
+    # paper + downloaded pdf goes through the local-file path with the real
+    # pymupdf code — faked module (not guaranteed in the test env)
+    class FakePage:
+        def __init__(self, i):
+            self._t = f"page {i}"
+
+        def get_text(self):
+            return self._t
+
+    class FakeDoc:
+        page_count = 15
+
+        def __init__(self):
+            self.pages = [FakePage(i) for i in range(15)]
+
+        def get_toc(self, simple=False):
+            return []  # no bookmarks → fixed page-group fallback
+
+        def load_page(self, i):
+            return self.pages[i]
+
+        def close(self):
+            pass
+
+    fake = type("Mod", (), {"open": staticmethod(lambda path: FakeDoc())})()
+    pdf = tmp_path / "paper.pdf"
+    pdf.write_bytes(b"%PDF-1.4")
+    item = {ra.K_SLUG: "paper", ra.K_TYPE: "paper", ra.K_SOURCE: str(pdf)}
+    cache = tmp_path / "cache"
+    with (
+        mock.patch.dict("sys.modules", {"pymupdf": fake}),
+        mock.patch.object(ra, "CACHE_DIR", cache),
+    ):
+        ok, why = ra.validate(item)
+    assert ok, why
+    txt = cache / "paper" / "source-01.txt"
+    assert txt.exists()
+    assert "page 14" in txt.read_text(encoding="utf-8")
+
+
+def test_build_prompt_paper_local_file(tmp_path):
+    # paper with a local file → local-file source description (no "article
+    # series" / pre-fetched wording)
+    item = {ra.K_SLUG: "paper", ra.K_TYPE: "paper", ra.K_SOURCE: "external/paper.pdf"}
+    cache = tmp_path / "paper"
+    cache.mkdir(parents=True)
+    (cache / "source-01.txt").write_text("x", encoding="utf-8")
+    with mock.patch.object(ra, "CACHE_DIR", tmp_path):
+        p = ra.build_prompt(item)
+    assert "pre-extracted chapter text" in p
+    assert "article series" not in p
+    assert "source-01.txt" in p
+
+
+def test_build_prompt_paper_url_still_web(tmp_path):
+    # paper with all-URL sources keeps the web (pre-fetched) description
+    item = {ra.K_SLUG: "paper", ra.K_TYPE: "paper", ra.K_SOURCE: "http://example.com/p"}
+    with mock.patch.object(ra, "CACHE_DIR", tmp_path):
+        p = ra.build_prompt(item)
+    assert "pre-fetched text" in p
+    assert "source-01.txt" in p
+
+
+def test_sources_are_urls():
+    assert ra._sources_are_urls("https://arxiv.org/html/2606.05608v1") is True
+    assert ra._sources_are_urls("http://a.example http://b.example") is True
+    assert ra._sources_are_urls("external/paper.pdf") is False
+    assert ra._sources_are_urls("https://a.example /tmp/local.pdf") is False
+    assert ra._sources_are_urls("") is False
 
 
 def test_validate_resolves_external_book():
@@ -831,6 +1025,145 @@ def test_append_record_missing_section(tmp_path):
     with mock.patch.object(ra, "ITEMS_FILE", p):
         assert ra._append_record("ddia", "done") is False  # no Log section → not written
     assert "→ ddia" not in p.read_text(encoding="utf-8")
+
+
+def test_append_record_done_supersedes_prior_fail(tmp_path):
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n（暂无）\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("ddia", "fail", "source is not a URL") is True
+        assert ra._append_record("ddia", "done") is True
+    text = p.read_text(encoding="utf-8")
+    done_section = text.split("### 完成（Organized）")[1].split("### 失败")[0]
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert done_section.count("→ ddia") == 1
+    assert "ddia" not in fail_section  # later success cleared the earlier failure
+    assert fail_section.strip() == "（暂无）"
+
+
+def test_append_record_done_keeps_other_fails(tmp_path):
+    # clearing on success must only touch the successful slug
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n（暂无）\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("alpha", "fail", "url dead") is True
+        assert ra._append_record("beta", "fail", "file missing") is True
+        assert ra._append_record("beta", "done") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert "alpha" in fail_section
+    assert "beta" not in fail_section
+
+
+def test_strip_record_prefix_sibling_slug(tmp_path):
+    # completing `paper` must not delete the fail record of `paper-2024`
+    # (a `\b` anchor after the slug would match through the hyphen)
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n"
+        "- 2026-09-01 → paper（url dead）\n\n"
+        "- 2026-09-02 → paper-2024（file missing）\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("paper", "done") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert "paper（url dead）" not in fail_section
+    assert "paper-2024" in fail_section  # sibling fail record survives
+    assert "file missing" in fail_section
+
+
+def test_append_record_refresh_prefix_sibling_slug(tmp_path):
+    # refreshing `paper` must replace only `paper`'s line, not `paper-2024`'s
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n"
+        "- 2026-09-01 → paper（url dead）\n\n"
+        "- 2026-09-02 → paper-2024（file missing）\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("paper", "fail", "pdf broken") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert "pdf broken" in fail_section  # paper's line refreshed with new reason
+    assert "paper（url dead）" not in fail_section
+    assert "file missing" in fail_section  # paper-2024 untouched
+    assert fail_section.count("paper-2024") == 1
+
+
+def test_append_record_done_clears_midfile_fail_section(tmp_path):
+    # removing a fail record from a section that is NOT the last in the file
+    # (a following heading exists) must keep the layout and the later section
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n"
+        "- 2026-09-02 → ddia（file missing）\n\n"
+        "## 其他\n\n内容\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("ddia", "done") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1].split("## 其他")[0]
+    done_section = text.split("### 完成（Organized）")[1].split("### 失败")[0]
+    assert "ddia" not in fail_section
+    assert done_section.count("→ ddia") == 1
+    assert "## 其他" in text  # later section intact
+
+
+def test_append_record_handwritten_halfwidth_reason(tmp_path):
+    # hand-edited fail records may use halfwidth `(reason)` — refresh and the
+    # done-clear must still find them (and normalize to the fullwidth form)
+    p = tmp_path / "reading-items.md"
+    p.write_text(
+        "## Reading Items\n\n（暂无条目）\n\n## 记录（Log）\n\n"
+        "### 完成（Organized）\n\n（暂无）\n\n"
+        "### 失败 / 放弃（Failed / Aborted）\n\n"
+        "- 2026-09-01 → ddia(file missing)\n",
+        encoding="utf-8",
+    )
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("ddia", "fail", "pdf broken") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert "（pdf broken）" in fail_section  # refreshed + normalized to fullwidth
+    assert fail_section.count("→ ddia") == 1  # no duplicate appended
+    with mock.patch.object(ra, "ITEMS_FILE", p):
+        assert ra._append_record("ddia", "done") is True
+    text = p.read_text(encoding="utf-8")
+    fail_section = text.split("### 失败 / 放弃（Failed / Aborted）")[1]
+    assert "ddia" not in fail_section  # done cleared the halfwidth-origin record
+
+
+def test_purge_cache_sources_tolerates_vanished_files(tmp_path):
+    # a file removed between glob and unlink (concurrent run) must not crash:
+    # Path.unlink(missing_ok=True) swallows the ENOENT from the underlying
+    # os.unlink
+    d = tmp_path / "c"
+    d.mkdir(parents=True)
+    (d / "source-01.txt").write_text("x", encoding="utf-8")
+    (d / "source-02.txt").write_text("y", encoding="utf-8")
+    with mock.patch("os.unlink", side_effect=FileNotFoundError):
+        ra._purge_cache_sources(d)  # must not raise
+    assert len(list(d.glob("source-*.txt"))) == 2  # os.unlink was faked → nothing deleted
 
 
 def test_commented_template_skipped(tmp_path):

@@ -12,7 +12,7 @@ categories: [reading]
 > 人物列表与故事线）。与 `collection/reading.md`（学习资料 / Study Materials）区分；
 > `poe reading-assist` 见 `internal/commands.md`。
 
-- **上次更新**: 2026-08-31（新增 Hands-On Data Visualization 阅读笔记）
+- **上次更新**: 2026-09-03（新增 The End of Software Engineering 论文阅读笔记）
 
 ## 📚 开发 / 技术书籍
 
@@ -22,7 +22,9 @@ categories: [reading]
 
 ## 📖 小说 / 叙事
 
-- （暂无条目）
+| 状态                  | 书名                                                             | 入口                              |
+| --------------------- | ---------------------------------------------------------------- | --------------------------------- |
+| organized（整理完成） | The Curious Incident of the Dog in the Night-Time（Mark Haddon） | [→ 阅读笔记](./curious-incident/) |
 
 ## 📄 文章
 
@@ -30,4 +32,6 @@ categories: [reading]
 
 ## 📜 论文
 
-- （暂无条目）
+| 状态                  | 标题                                                                | 入口                                         |
+| --------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
+| organized（整理完成） | The End of Software Engineering（Zhenfeng Cao，arXiv:2606.05608v1） | [→ 阅读笔记](./end-of-software-engineering/) |
