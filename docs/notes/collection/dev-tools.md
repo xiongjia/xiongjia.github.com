@@ -79,6 +79,8 @@ hide:
 
 - [sampler](https://github.com/sqshq/sampler) - Go 终端图表工具
 - [shaper](https://github.com/taleshape-com/shaper) - 数据可视化
+- [seaborn](https://seaborn.pydata.org/) - Python 统计可视化库
+- [Matplotlib](https://matplotlib.org/) - Python 数据可视化基础库
 
 ## Browser & Headless
 
@@ -91,6 +93,6 @@ hide:
 - [go-guerrilla](https://github.com/flashmob/go-guerrilla) - Mini SMTP server in Go
 - [scoop](https://scoop.sh/) - Windows package management
 - [AlmaLinux](https://almalinux.org/) - CentOS 替代
-- [ClearOS](https://www.clearos.com/) - NAS 管理 Linux
 - [cordis](https://github.com/cordiverse/cordis) - DHS 的 Plugin 管理机制
 - [Omarchy](https://omarchy.org/) - "Beautiful, Fun & Agentic Linux" by DHH（AI 原生的 Linux 发行版，Omacom 基金会支持）
+- [Homepage](https://gethomepage.dev/) - 自托管首页导航/仪表盘

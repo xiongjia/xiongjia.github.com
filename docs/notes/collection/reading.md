@@ -7,7 +7,9 @@ hide:
 # :material-book-open-page-variant: Study Materials
 
 > 学习资料收藏：实体书、电子书与在线资源（教程、课程、配套仓库），按学习方向分门别类。
-> 归档自动追加：📚 books 按学习方向追加到「### 📚 Reading」下对应小节（🗣️ English Learning / 🤖 AI Learning / 💻 Programming），📝 文章/笔记追加到「### 📝 Notes」。
+> 归档自动追加：📚 books 按学习方向追加到「### 📚 Reading」下对应小节
+> （🗣️ English Learning / 🤖 AI Learning / 💻 Programming）；找论文/文献入口追加到
+> 🗞️ Paper Discovery；📝 文章/笔记追加到「### 📝 Notes」。
 
 ### 📚 Reading
 
@@ -27,6 +29,11 @@ hide:
 - 📖 [Go Optimization Guide](https://goperf.dev/) — 在线书：Go 性能优化
 - 📖 [Mostly Adequate Guide to FP (in JavaScript)](https://github.com/MostlyAdequate/mostly-adequate-guide) — Professor Frisby（FP 教程，免费在线书）
 - 📖 [Hands-On Data Visualization](https://handsondataviz.org/) — 免费在线互动书籍（数据可视化：图表/地图/表格，从电子表格到代码）
+- 📖 [CS50P 中文精读笔记](https://github.com/LesleyFung/cs50p-notes/) — LesleyFung（CS50's Introduction to Programming with Python 课程精读笔记）
+
+#### 🗞️ Paper Discovery
+
+- [arXiv Daily](https://www.arxivdaily.com/) - 每日 arXiv 论文/趋势推送
 
 ### 📝 Notes
 
