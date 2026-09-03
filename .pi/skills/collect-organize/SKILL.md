@@ -56,9 +56,10 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 ### domain 判定
 
 从现有 `collection/` 目录的页面名匹配（`dev-tools` / `ai` / `database` / `media` /
-`monitor` / `frontend` / `languages` / `game-dev` / `maps` / `emoji`）。
+`monitor` / `frontend` / `languages` / `game-dev` / `maps` / `emoji` / `reading` / `storage`）。
 
-- 用 tags + 内容判断：包含 AI 关键词 → `ai`，包含 SQL/DB → `database`，包含 CLI/tool → `dev-tools`
+- 用 tags + 内容判断：包含 AI 关键词 → `ai`，包含 SQL/DB → `database`，包含 CLI/tool → `dev-tools`，
+  书/课程/学习资料/论文/文献 → `reading`，对象存储/S3/NAS/备份 → `storage`
 - 仅对 `link` / `book` / `note` 类型生效；`todo` / `idea` / `misc` 类型全进 `plans.md`，不匹配 domain
 
 ### 去重规则
@@ -69,14 +70,20 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 
 ### 追加格式：资源型（link / book / note → `<domain>.md`）
 
-| type   | 格式                                 | 位置                                  |
-| ------ | ------------------------------------ | ------------------------------------- |
-| `link` | `- [<title>](<url>) — <description>` | 主列表末尾                            |
-| `book` | `- 📖 <title> — <author>`            | `### 📚 Reading` 小节（不存在则新建） |
-| `note` | `- 📝 <title> — <summary>`           | `### 📝 Notes` 小节（不存在则新建）   |
+| type   | 格式                                                 | 位置                                                              |
+| ------ | ---------------------------------------------------- | ----------------------------------------------------------------- |
+| `link` | `- [<title>](<url>) — <description>`（分隔符见下注） | 目标页合适小节末尾 / 文件末尾（见下注）                           |
+| `book` | `- 📖 <title> — <author>`                            | `reading.md` → `### 📚 Reading` 对应方向子小节（见下注）          |
+| `note` | `- 📝 <title> — <summary>`                           | `reading.md` → `### 📝 Notes`（其他页无此小节，按 `link` 行处理） |
+
+> **页面结构**：`### 📚 Reading` / `### 📝 Notes` 小节只存在于 `reading.md`
+> （books 按方向入子小节、笔记入 📝）；其余收藏页无这些小节，统一按 `link` 行
+> 追加到合适 `##` 小节末尾，无匹配则文件末尾。
+> **分隔符**：沿用目标页现有约定 —— `reading.md` 用 `—`，其余收藏页（dev-tools /
+> ai / storage / media 等）用空格包围的短横线 `-`。
 
 > **book 子小节路由**：若目标页 `### 📚 Reading` 下已有学习方向子小节（如 `#### 🗣️ English Learning` /
-> `#### 🤖 AI Learning` / `#### 💻 Programming`），按内容方向追加到对应子小节；无匹配或没有子小节时，
+> `#### 🤖 AI Learning` / `#### 💻 Programming` / `#### 🗞️ Paper Discovery`），按内容方向追加到对应子小节；无匹配或没有子小节时，
 > 追加到 `### 📚 Reading` 末尾（不存在则新建）。
 
 ### 追加格式：行动型（todo / idea / misc → `plans.md`）
@@ -98,7 +105,7 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 给 `collection/dev-tools.md` 追加 link：
 
 ```markdown
-- [yt-dlp](https://github.com/yt-dlp/yt-dlp) — Feature-rich YouTube downloader
+- [yt-dlp](https://github.com/yt-dlp/yt-dlp) - Feature-rich YouTube downloader
 ```
 
 给 `collection/scraps/plans.md` 追加 todo（在 `### 📋 TODOs` 小节下）：
