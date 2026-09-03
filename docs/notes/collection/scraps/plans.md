@@ -21,6 +21,8 @@ ______________________________________________________________________
 
 - 2026-09-01 增加一些 RPC 库的比较, 如 gRPC
 
+- 2026-09-03 阅读 https://www.arxivdaily.com/industry-trends/2026-09-01/2608.30730
+
 ### 💡 Ideas
 
 <!-- Items go here via: poe collect-idea "content" -->
