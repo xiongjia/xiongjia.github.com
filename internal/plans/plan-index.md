@@ -76,7 +76,6 @@ tags: [refactor, mkdocs]
 - [tauri-ui-research.md](./tauri-ui-research.md) — Tauri UI Research/Prototype: Tauri 2 桌面 + 移动端（架构、IPC、插件、打包）
 - [improve-lux-research.md](./improve-lux-research.md) — Improve Lux Research: 核对上游更新、补全缺失、修正过时内容
 - [improve-trip-research.md](./improve-trip-research.md) — Improve TRIP Research: 核对上游、补全前后端机制与实操说明
-- [shadcn-ui-usage-research.md](./shadcn-ui-usage-research.md) — shadcn/ui usage research: environment → basic usage (setup / components / advanced, hands-on; replaced the old source-reading guide)
 
 ### Posts
 
