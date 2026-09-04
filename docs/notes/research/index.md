@@ -25,12 +25,12 @@ graph LR
   click J "/projects/" "Projects"
 ```
 
-| Topic                                    | Category                | Status    | Description                                                         |
-| ---------------------------------------- | ----------------------- | --------- | ------------------------------------------------------------------- |
-| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读                         |
-| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成                      |
-| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询                         |
-| [shadcn/ui](./topics/shadcn-ui/index.md) | Libraries or Frameworks | polishing | 实用研究：环境/组件使用/进阶（pnpm+Vite8+Tailwind v4 实测，打磨中） |
+| Topic                                    | Category                | Status    | Description                                                          |
+| ---------------------------------------- | ----------------------- | --------- | -------------------------------------------------------------------- |
+| [English](./topics/english/index.md)     | Learning Plans          | long-term | English Scraps 随手收集 + AI 归档；主题阅读                          |
+| [Protomaps](./topics/protomaps/index.md) | Libraries or Frameworks | polished  | PMTiles 自建底图：上海地区裁剪与 MapLibre 集成                       |
+| [DuckDB](./topics/duckdb/index.md)       | Libraries or Frameworks | polished  | 实战研究：环境/模拟数据/PostgreSQL 加速查询                          |
+| [shadcn/ui](./topics/shadcn-ui/index.md) | Libraries or Frameworks | polished  | 实用研究：环境/组件使用/进阶使用（pnpm + Vite 8 + Tailwind v4 实测） |
 
 > **Status**: `polished` — notes polished and ready to use; `polishing` — notes drafted, still being refined; `long-term` — continuously maintained accumulation topics; `draft` — work in progress, may be removed.
 >
@@ -70,6 +70,6 @@ ______________________________________________________________________
 - [Better Auth](./topics/better-auth/index.md): Better Auth 源码阅读指南
 - [NestJS](./topics/nestjs/index.md): NestJS Module 注入原理与核心源码分析
 - [Jellyfin](./topics/jellyfin/index.md): Jellyfin 源码阅读指南，视频流播放原理与 Rust 最小原型
-- [shadcn/ui](./topics/shadcn-ui/index.md): shadcn/ui 实用研究 —— 环境与初始化、组件添加与基本使用、进阶玩法（v4.19 + Base UI 实测，打磨中）
+- [shadcn/ui](./topics/shadcn-ui/index.md): shadcn/ui 实用研究 —— 环境与初始化、组件添加与基本使用、进阶使用（v4.20.1 + Base UI 实测）
 - [Protomaps](./topics/protomaps/index.md): PMTiles 自建底图研究 —— 上海地区底图裁剪、验证与 MapLibre 集成
 - [DuckDB](./topics/duckdb/index.md): DuckDB 实战研究 —— 环境与基本使用、模拟数据构造、PostgreSQL 数据加速查询

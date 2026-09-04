@@ -1,7 +1,7 @@
 ---
 hide:
   - navigation
-title: shadcn/ui 进阶玩法
+title: shadcn/ui 进阶使用
 tags:
   - research
   - tech
@@ -11,11 +11,11 @@ categories:
   - dev
 ---
 
-# :material-rocket-launch-outline: 进阶玩法
+# :material-rocket-launch-outline: 进阶使用
 
 > **本页目的：** 组件更新（diff/overwrite）、主题定制（oklch 变量）、表单集成
 > （react-hook-form + zod + field）、registry 机制与框架差异。全部基于
-> external/shadcn-demo 实测。
+> 本机实测（macOS arm64）。
 >
 > 上一篇：[组件添加与基本使用](./components.md)。
 
@@ -112,7 +112,7 @@ const schema = z.object({ email: z.string().email() })
 | `registryDependencies` | 依赖的其他 registry 组件    | `field → label, separator`        |
 | `files`                | 组件文件（registry 内路径） | `registry/base-nova/ui/field.tsx` |
 
-> ⚠️ 实测：base-nova registry 中 `form` 的 files 为**空数组**（stub，已移除）；
+> 实测：base-nova registry 中 `form` 的 files 为空数组（stub，已移除）；
 > `field` 才是真正表单组件。
 
 ### 4.2 组件检索

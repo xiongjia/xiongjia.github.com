@@ -1,8 +1,9 @@
 ---
 title: shadcn/ui Usage Research (from environment to basic usage)
 created: 2026-08-17
-updated: 2026-08-26
-status: in-progress
+updated: 2026-09-04
+archived: 2026-09-04
+status: completed
 tags: [shadcn, research, frontend, usage]
 ---
 
@@ -69,12 +70,12 @@ The old "source code reading guide" is replaced.
   - Compiler note: full-stack type check passed (`tsc -b`), `vite build`
     2.2–2.6s
 
-- [ ] **Custom registry hands-on** (optional follow-up)
+- [x] **Custom registry hands-on** —— decided not to pursue (optional)
 
-  - Not yet measured: publishing a local custom registry (CLI `build` /
-    `registry` / `preset` / `apply` commands, components.json `registries`
-    field). Keep the docs honest — currently referenced with official docs
-    links only
+  - Not measured by decision: publishing a local custom registry (CLI
+    `build` / `registry` / `preset` / `apply` commands, components.json
+    `registries` field). Docs stay honest — currently referenced with
+    official docs links only (advanced.md §4.3)
 
 - [x] **Maintain indexes & cross-references**
 
@@ -89,19 +90,25 @@ The old "source code reading guide" is replaced.
   guide, 7.6K) was fully replaced; `external/shadcn-ui` clone is no longer a
   research target (the dir itself stays under `external/`, never committed,
   nothing to delete)
-- Hands-on project lives at `external/shadcn-demo/` (git-ignored, not
-  committed), accessible for development reference. Full stack: pnpm 11.4 /
-  Vite 8.2.2 / React 19.2.8 / TypeScript 7.0.2 / Tailwind 4.3.3 / shadcn CLI
-  4.19.0 (style=base-nova, @base-ui/react 1.7.0) / lucide-react 1.34.0
+- Hands-on baseline project lives at `external/shadcn-demo/` (git-ignored, not
+  committed), accessible for development reference. It reflects the older
+  baseline (pnpm 11.4 / shadcn 4.19.0); the flow documented in the topic
+  (shadcn CLI 4.20.1 / pnpm 11.25.0, root-tsconfig `@/*` paths so components
+  land in `src/`) was re-verified on 2026-09-04 with demo projects under
+  `$HOME/Work/tmp/gui/shadcn-demo` and `/tmp`
 - Measured pitfalls recorded in the docs:
   1. `init` does not auto-install Tailwind — must pre-install Tailwind v4 +
      `@import "tailwindcss"` + valid `@/*` alias, else "No Tailwind CSS
      configuration found" / "Could not find valid path aliases"
-  1. Path aliases: use relative `paths` (`"./src/*"`), no `baseUrl`
+  1. Path aliases: use relative `paths` (`"./src/*"`), no `baseUrl` — since
+     2026-09-04 the root `tsconfig.json` (solution-style) also carries
+     `baseUrl: "."` + `paths` so the CLI writes into `src/` (see topic
+     setup.md §3); the app tsconfig keeps relative paths
   1. v4.19 writes components to a literal root-level `@/components/ui/`
      directory under Vite 8 solution-style tsconfig (alias not resolved on
      disk) — manually `mv` to `src/components/ui/`; component code builds
-     fine either way
+     fine either way. Now prevented by the root-tsconfig paths above
+     (re-verified on 4.20.1)
   1. `add form` is a silent no-op: the `form` registry item has empty files
      (stub); the real form component is `field` (Base UI Field)
   1. `search` needs an explicit namespace (`shadcn search @shadcn -q ...`),

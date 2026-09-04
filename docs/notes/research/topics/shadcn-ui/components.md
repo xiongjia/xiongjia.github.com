@@ -14,16 +14,17 @@ categories:
 # :material-plus-box: 组件添加与基本使用
 
 > **本页目的：** 用 `shadcn add` 把常用组件装进来，理解依赖如何自动解析，
-> 并掌握 v4 / Base UI 的新用法范式。全部基于 external/shadcn-demo 实测。
+> 并掌握 v4 / Base UI 的新用法范式。全部基于本机实测（macOS arm64，
+> shadcn CLI 4.20.1）。
 >
-> 上一篇：[环境与初始化](./setup.md)；下一篇：[进阶玩法](./advanced.md)。
+> 上一篇：[环境与初始化](./setup.md)；下一篇：[进阶使用](./advanced.md)。
 
 ## 1. add 基本用法
 
 ```bash
-# 添加一个或多个组件（用 pnpm dlx / pnpm exec，项目内已含 shadcn 包时用 exec）
-pnpm dlx shadcn@latest add button
-pnpm dlx shadcn@latest add card dialog table
+# 添加一个或多个组件（用环境篇 §2 装的本地固定版 CLI，不用 dlx @latest）
+pnpm shadcn add button
+pnpm shadcn add card dialog table tabs
 ```
 
 | 选项                | 作用                                         |
@@ -35,36 +36,22 @@ pnpm dlx shadcn@latest add card dialog table
 | `--dry-run`         | 预览变更不写盘                               |
 | `--diff [path]`     | 查看与 registry 的差异（取代旧 `diff` 命令） |
 
-实测输出（一次加 7 个组件）：
+实测输出（shadcn 4.20.1，别名已按环境篇 §3 映射到 `src/`）：
 
 ```
 - Checking registry.        ✔
-- Installing dependencies.  ✔
 - Updating files.
-✔ Created 9 files:
-  - @/components/ui/card.tsx
-  - @/components/ui/table.tsx
-  - @/components/ui/tabs.tsx
-  - @/components/ui/badge.tsx
-  - @/components/ui/sonner.tsx
-  - @/components/ui/label.tsx
-  - @/components/ui/separator.tsx
-  - @/components/ui/dialog.tsx
-  - @/components/ui/field.tsx
+✔ Created 4 files:
+  - src/components/ui/card.tsx
+  - src/components/ui/table.tsx
+  - src/components/ui/tabs.tsx
+  - src/components/ui/dialog.tsx
 ℹ Skipped 1 file: (files might be identical, use --overwrite to overwrite)
-  - @/components/ui/button.tsx
+  - src/components/ui/button.tsx
 ```
 
-> ⚠️ 与 init 相同，v4.19 在 Vite 8（solution-style tsconfig）下把组件写到
-> **项目根的字面 `@/components/ui/`** 目录。手动归位：
->
-> ```bash
-> mkdir -p src/components/ui src/lib
-> mv @/components/ui/*.tsx src/components/ui/
-> mv @/lib/utils.ts src/lib/utils.ts
-> ```
->
-> 组件代码本身可用（`tsc -b` + `vite build` 均通过），仅落盘位置问题。
+> 组件直接写入 `src/components/ui/` —— 前提是已按 [环境与初始化](./setup.md)
+> 第 3 节在根 `tsconfig.json` 也配好 `@/*` paths（否则会落到项目根字面 `@/`）。
 
 ## 2. 依赖如何自动解析
 
@@ -80,22 +67,21 @@ add 背后两层依赖：
 
 ## 3. 常用组件清单（实测可用）
 
-| 组件     | 用途                              | 关键依赖/连带                                |
-| -------- | --------------------------------- | -------------------------------------------- |
-| `button` | 按钮（init 自带）                 | `@base-ui/react/button` + CVA                |
-| `card`   | 卡片容器                          | —                                            |
-| `dialog` | 模态对话框                        | `button` + `@base-ui/react/dialog`           |
-| `field`  | **表单字段（v4 表单核心，见坑）** | `label` + `separator`                        |
-| `input`  | 输入框                            | —                                            |
-| `label`  | 标签                              | —                                            |
-| `tabs`   | 标签页                            | `@base-ui/react/tabs`                        |
-| `table`  | 表格                              | —（纯 HTML `<table>` 元素 + cn）             |
-| `badge`  | 徽标/标签                         | `merge-props` + `use-render`（Base UI 工具） |
-| `sonner` | toast 通知                        | `sonner` npm 包                              |
+| 组件     | 用途                        | 关键依赖/连带                                |
+| -------- | --------------------------- | -------------------------------------------- |
+| `button` | 按钮（init 自带）           | `@base-ui/react/button` + CVA                |
+| `card`   | 卡片容器                    | —                                            |
+| `dialog` | 模态对话框                  | `button` + `@base-ui/react/dialog`           |
+| `field`  | **表单字段（v4 表单核心）** | `label` + `separator`                        |
+| `input`  | 输入框                      | —                                            |
+| `label`  | 标签                        | —                                            |
+| `tabs`   | 标签页                      | `@base-ui/react/tabs`                        |
+| `table`  | 表格                        | —（纯 HTML `<table>` 元素 + cn）             |
+| `badge`  | 徽标/标签                   | `merge-props` + `use-render`（Base UI 工具） |
+| `sonner` | toast 通知                  | `sonner` npm 包                              |
 
-> ⚠️ **坑：v4 的 `form` 组件是空 stub。** `add form` 实测静默无产出——
-> base-nova registry 中 `form` 项的 `files` 为空（已移除，由 `field` 取代）。
-> 表单请用 `field`（基于 Base UI Field）。
+> v4 registry 中 `form` 项是空 stub（files 为空），真实表单组件是 `field`
+> （基于 Base UI Field）——表单请 `add field`。
 
 ## 4. v4 / Base UI 新用法范式
 
@@ -123,6 +109,11 @@ v4（style=base-nova）组件基于 **Base UI**，写法与旧版 Radix 有两�
 
 （实测：直接传 `asChild` 会类型报错，Base UI 没有这个 prop。）
 
+**示例放哪：** 上面的整段代码直接替换 `src/App.tsx` 即可（组件
+`import` 自 `@/components/ui/…`），保存后 `pnpm dev` 打开
+http://localhost:5173 就能点开对话框看效果。前置：先
+`pnpm shadcn add dialog`（自动连带 `button`）把组件装进项目。
+
 ### 4.2 Field 组合子组件，而非标签/错误 prop
 
 Base UI 的 Field 是一组子组件（`field.tsx` 导出
@@ -141,7 +132,8 @@ Base UI 的 Field 是一组子组件（`field.tsx` 导出
 
 ### 4.3 cn() 与 CVA
 
-- `@/lib/utils` 的 `cn()` = `clsx` + `tailwind-merge`（后者负责类名去重覆盖）
+- `@/lib/utils` 的 `cn()`（4.20 起由 `cn` 包提供 —— utils.ts 仅一行
+  `export { cn } from "cn"`；类名合并 + 去重覆盖逻辑封装在包内）
 - 组件变体用 `class-variance-authority`（CVA）：`buttonVariants` 导出
   `variant` / `size` 两个维度，改样式 = 改 base/variants 字符串
 
@@ -151,7 +143,7 @@ Base UI 的 Field 是一组子组件（`field.tsx` 导出
 | -------- | ----------------------------------------------------------------------------- |
 | 改源码   | 组件就在 `src/components/ui/`，直接编辑（这就是 shadcn 的哲学：代码归你所有） |
 | 改变体   | 在 CVA 的 `variants` 里加/改 `variant`、`size`                                |
-| 改主题   | 动 `src/index.css` 的 oklch 变量（见 [进阶玩法](./advanced.md)）              |
+| 改主题   | 动 `src/index.css` 的 oklch 变量（见 [进阶使用](./advanced.md)）              |
 | 组合使用 | `cn(buttonVariants({ variant: "outline" }), "自定义类")`                      |
 
 ## 6. 参考链接
@@ -162,4 +154,4 @@ Base UI 的 Field 是一组子组件（`field.tsx` 导出
 | 组件自定义 | <https://ui.shadcn.com/docs/components/customization> |
 | Base UI    | <https://base-ui.com/>                                |
 
-→ 下一站：[进阶玩法](./advanced.md)
+→ 下一站：[进阶使用](./advanced.md)
