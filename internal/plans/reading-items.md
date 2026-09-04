@@ -70,14 +70,14 @@
 
 ## Reading Items
 
-> 当前无正式条目。开读新书/文章时按上方模板新增一条；新增后状态初始化为
+> 开读新书/文章时按上方模板新增一条；新增后状态初始化为
 > `not-started`。处理分两步：`poe reading-assist cache <slug>`（取原材料/提取到
 > 本地缓存，不做 AI）→ `poe reading-assist read <slug>`（AI 分析产页面）；
 > `poe reading-assist run <slug>` 两步合一。不带 slug 时默认取第一个未开始条目。
 > 条目解析规则：`## Reading Items` 区段内的 `### <slug>` 块即一条，任何时刻只有
 > 这一个区块被解析为条目；「记录」区段不会被解析。
 
-### Hands-On Data Visualization
+### hands-on-data-visualization — Hands-On Data Visualization
 
 - **slug**: hands-on-data-visualization
 - **类型**: book
@@ -104,12 +104,22 @@
 - **原材料**: {projectRoot}/external/books/2606.05608v1.pdf
 - **输出**: docs/notes/reading/end-of-software-engineering/
 
+### e-commerce-bench — E-Commerce Bench: Evaluating LLM Agents on Long-Horizon Autonomous Business Operation
+
+- **slug**: e-commerce-bench
+- **类型**: paper
+- **出处**: https://arxiv.org/html/2608.30730v1
+- **状态**: organized
+- **原材料**: {projectRoot}/external/books/2608.30730v1.pdf
+- **输出**: docs/notes/reading/e-commerce-bench/
+
 ## 记录（Log）
 
 ### 完成（Organized）
 
-> `poe reading-assist run` 成功产出并归档的条目。脚本自动写入并**按条目刷新**：
-> 同一 slug 已有记录则更新为最近一次，不叠加增长。
+> `poe reading-assist run` 成功产出并归档的条目：脚本写入一行记录并**按条目刷新**
+> （`- YYYY-MM-DD → slug`，同 slug 不叠加增长）；完成详情以 `### <slug> — <标题>`
+> 小节为准（人工维护：完成时间 / 结果 / 产出 / 备注）。
 
 ### hands-on-data-visualization — Hands-On Data Visualization
 
@@ -138,6 +148,16 @@
 - **备注**: 素材为 external/reading-assist/curious-incident/ 下预提取文本 source-03.txt /
   source-04.txt（epub 按 spine 拆出的两个大文件，拆分点落在原书第 163 章中间；全书 51 章
   质数编号）；每文件一页；内容只含摘要与短摘录，无全文引用
+
+### e-commerce-bench — E-Commerce Bench: Evaluating LLM Agents on Long-Horizon Autonomous Business Operation
+
+- **完成时间**: 2026-09-05
+- **结果**: organized（整理完成）
+- **产出**: docs/notes/reading/e-commerce-bench/（index.md + part-0001…part-0013 + notes.md）
+- **备注**: 素材为 external/reading-assist/e-commerce-bench/ 下预提取文本
+  source-01…13.txt（本地 pdf 2608.30730v1.pdf，按页分组拆成 13 个文件）；每文件一页
+  （part-000N）；作者列表取自 arXiv abs 页（提取文本无标题页）；内容只含摘要与短摘录，
+  无全文引用
 
 ### 失败 / 放弃（Failed / Aborted）
 

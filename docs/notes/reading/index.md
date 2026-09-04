@@ -12,7 +12,7 @@ categories: [reading]
 > 人物列表与故事线）。与 `collection/reading.md`（学习资料 / Study Materials）区分；
 > `poe reading-assist` 见 `internal/commands.md`。
 
-- **上次更新**: 2026-09-03（新增 The End of Software Engineering 论文阅读笔记）
+- **上次更新**: 2026-09-05（新增 E-Commerce Bench 论文阅读笔记）
 
 ## 📚 开发 / 技术书籍
 
@@ -35,3 +35,4 @@ categories: [reading]
 | 状态                  | 标题                                                                | 入口                                         |
 | --------------------- | ------------------------------------------------------------------- | -------------------------------------------- |
 | organized（整理完成） | The End of Software Engineering（Zhenfeng Cao，arXiv:2606.05608v1） | [→ 阅读笔记](./end-of-software-engineering/) |
+| organized（整理完成） | E-Commerce Bench（Wei Fan 等，arXiv:2608.30730v1）                  | [→ 阅读笔记](./e-commerce-bench/)            |
