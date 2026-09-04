@@ -8,22 +8,19 @@ When invoked, this skill instructs the AI agent to act as a senior staff enginee
 
 ## Files
 
-| File        | Purpose                                                                                        |
-| ----------- | ---------------------------------------------------------------------------------------------- |
-| `skill.md`  | Skill content installed to agent (Claude Code / Pi Agent). This is the prompt the agent reads. |
-| `README.md` | This file — developer documentation for the skill itself.                                      |
+| File        | Purpose                                                                  |
+| ----------- | ------------------------------------------------------------------------ |
+| `skill.md`  | Skill content installed to Pi Agent. This is the prompt the agent reads. |
+| `README.md` | This file — developer documentation for the skill itself.                |
 
 ## Usage
 
 ```bash
-# Install globally for Claude Code
-npx tsx shared/install.ts --skill code-review --target claude-code --scope global
-
-# Install globally for Pi Agent
+# Install for Pi Agent (the AI tool this repo uses)
 npx tsx shared/install.ts --skill code-review --target pi-agent --scope global
 
 # Uninstall
-npx tsx shared/uninstall.ts --skill code-review --target claude-code --scope global
+npx tsx shared/uninstall.ts --skill code-review --target pi-agent --scope global
 ```
 
 ## How It Works
@@ -52,7 +49,7 @@ Registered in `skills/registry.json` as:
   "name": "code-review",
   "description": "Review code changes for bugs, security, and quality — also serves as a skill template",
   "version": "0.1.0",
-  "targets": ["claude-code", "pi-agent"],
+  "targets": ["pi-agent"],
   "path": "skills/code-review/skill.md"
 }
 ```

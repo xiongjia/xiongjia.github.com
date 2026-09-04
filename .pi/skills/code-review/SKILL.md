@@ -1,7 +1,7 @@
 ---
 name: code-review
 description: Perform strict code review on diffs — correctness, security, naming, and project conventions
-compatibility: [claude-code, pi-agent]
+compatibility: [pi-agent]
 tools: [bash, git, filesystem]
 ---
 

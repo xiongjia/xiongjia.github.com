@@ -52,7 +52,7 @@ running.yml─┘        │ 1. compute deterministic stats (reuse macros math)
   - `-p` print mode: process the prompt once and exit
   - `--no-session`: no session persistence between runs (one-shot)
   - `--no-tools`: pure text generation — the agent cannot read/edit files
-  - `--no-context-files`: ignore `AGENTS.md`/`CLAUDE.md` — the prompt is
+  - `--no-context-files`: ignore repo context file `AGENTS.md` — the prompt is
     self-contained
   - `--mode json`: emits a JSON event stream; the final assistant text is
     parsed from the last `message_end` event (`content[].type == "text"`,

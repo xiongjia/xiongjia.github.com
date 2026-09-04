@@ -109,9 +109,9 @@ See [internal/architecture.md](internal/architecture.md) for full command refere
   listing page `docs/notes/prototypes.md` is in Chinese (it is a `docs/`
   page, not prototype content)
 
-- **Prototypes are committed**: unlike agent-tool dirs (`.claude/*`, `.pi/*`),
-  prototype code goes into the repo — no root-level ignore rules for
-  `prototypes/`
+- **Prototypes are committed**: unlike AI-tool dirs (`.pi/*`), which are
+  git-ignored (only shared skills/prompts are tracked), prototype code goes
+  into the repo — no root-level ignore rules for `prototypes/`
 
 - **Per-prototype `.gitignore`**: each prototype ignores its own build
   artifacts (e.g. Rust `/target`, Python `.venv/`, Node `node_modules/`)
