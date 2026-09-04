@@ -59,18 +59,18 @@ build-drafts = { cmd = "mkdocs build", env = { MKDOCS_INCLUDE_DRAFTS = "true" },
 build-selfhost = { cmd = "mkdocs build --site-dir site-selfhost", env = { SITE_NAME = "recycle.bin", SITE_URL = "https://xiongjia.github.io" } }
 create-post = { cmd = "python scripts/create_post.py", help = "Create a new blog post (defaults to draft): uv run poe create-post \"Title\" --category bits --time \"yesterday 9am\"" }
 format-py = "ruff format ."
-format-md = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md"
+format-md = "mdformat AGENTS.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md"
 format = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md" },
+    { cmd = "mdformat AGENTS.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md" },
 ]
 fmt = [
     { cmd = "ruff format ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md" },
+    { cmd = "mdformat AGENTS.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md" },
 ]
 check-fmt = [
     { cmd = "ruff format --check ." },
-    { cmd = "mdformat AGENTS.md CLAUDE.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md --check" },
+    { cmd = "mdformat AGENTS.md README.md docs/ internal/ shared/ tests/ .pi/skills/ --exclude docs/notes/health/_summary.md --exclude internal/local-draft.md --check" },
 ]
 lint-py = "ruff check ."
 optimize-images = { cmd = "python scripts/optimize_images.py", help = "Convert PNG/JPG/JPEG images in docs/ to WebP and update .md references (quality: --quality flag, else mkdocs.yml extra.optimize_images.quality)" }

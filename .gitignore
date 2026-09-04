@@ -25,10 +25,6 @@ site-selfhost/
 !.env.example
 env-*
 
-# claude code — track skills, ignore local settings
-.claude/*
-!.claude/skills/
-
 # pi coding agent — commit shared skills/prompts, ignore personal config & artifacts
 .pi/*
 !.pi/skills/
