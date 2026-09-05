@@ -231,6 +231,7 @@ extra:
       tag_emoji:
         film: 🎬
         food: 🍽️
+        hospital: 🏥
       # Marker emoji for the generic 其他 bucket (moments whose tags have no
       # tag_emoji entry). Separate key on purpose: tag_emoji's own ``_other``
       # entry is reserved for a literal "_other" tag and never applies here.
