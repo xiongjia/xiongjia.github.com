@@ -10,3 +10,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 -->
 
 2026-09-08 jsonrepair https://josdejong.github.io/jsonrepair/
+2026-09-09 https://github.com/vbskycn/iptv
