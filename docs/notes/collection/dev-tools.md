@@ -48,6 +48,7 @@ hide:
 - [ion](https://amzn.github.io/ion-docs/) - Amazon 开发
 - [npy](https://numpy.org/devdocs/reference/generated/numpy.lib.format.html) - NumPy 格式
 - [Json LD](https://json-ld.org/) - 适合重复数据多的场景
+- [jsonrepair](https://josdejong.github.io/jsonrepair/) - 修复非法 JSON 文档（JS 库 + CLI）；日常主要用于修复 AI 回复中夹带非 JSON 文本导致的解析失败
 
 ## DevOps
 

@@ -31,3 +31,7 @@ hide:
 ## Games
 
 - [NS Emulator](https://github.com/Ryujinx/Ryujinx) - .NET 实现的 NS 模拟器（已停止维护）
+
+## IPTV
+
+- [vbskycn/iptv](https://github.com/vbskycn/iptv) - 第三方整理的 IPTV 直播源清单（IPv4/IPv6 双栈，可用性随上游变化）

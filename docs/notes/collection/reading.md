@@ -38,3 +38,4 @@ hide:
 ### 📝 Notes
 
 - 📝 [Write a TSDB from scratch](https://nakabonne.dev/posts/write-tsdb-from-scratch/) — tstorage 作者系列文章：从零实现 TSDB
+- 📝 [Various things in MetaPost](https://m.habr.com/en/post/454376/) — jemmybutton：用 MetaPost 程序化为物理教科书画黑白插画（配套库 [fiziko](https://github.com/jemmybutton/fiziko)），工具本身没什么实用性，重点学这套绘图方法
