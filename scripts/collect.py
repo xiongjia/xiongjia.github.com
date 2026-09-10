@@ -61,6 +61,12 @@ def cmd_add(parser: argparse.ArgumentParser, args) -> int:
             with inbox.open("a", encoding="utf-8") as f:
                 f.write("\n")
 
+    # Keep a blank line between the header comment and the entries (an empty
+    # inbox stays `-->\n` so `poe check-fmt` keeps accepting it as formatted).
+    if inbox.read_text(encoding="utf-8").rstrip("\n").endswith("-->"):
+        with inbox.open("a", encoding="utf-8") as f:
+            f.write("\n")
+
     # Build line with optional metadata
     parts = [f"{dt.strftime('%Y-%m-%d')}"]
     if args.source:
