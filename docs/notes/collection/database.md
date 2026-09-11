@@ -19,6 +19,7 @@ hide:
 - [PGSimCity](https://nikolays.github.io/PGSimCity/) - PostgreSQL 工作原理 3D 可视化模拟：把集群映射为一座虚拟城市（缓冲池、WAL、检查点、autovacuum、复制），可调事务频率/读写比例并跑预设场景（检查点风暴、缓存激冷等）
 - [PGSimCity Github](https://github.com/NikolayS/PGSimCity) - 源码（TypeScript + three.js，Apache-2.0，早期原型）
 - [pglayers](https://github.com/pglayers/pglayers) - 预编译的 PG extension 层（`pgx-*` 镜像），通过 multi-stage COPY 自由组合各类扩展（pg_duckdb、pgvector、pgmq 等），用于构建含 pg_duckdb 的 Docker 镜像，详见 [pg_duckdb + force_execution](../research/topics/duckdb/postgresql-acceleration.md) ([pglayers.github.io](https://pglayers.github.io/))
+- [pgrx](https://github.com/pgcentralfoundation/pgrx) - 用 Rust 开发 PostgreSQL 扩展的框架（含 cargo-pgrx 工具链）
 
 ## PostgreSQL Emulation
 
@@ -41,6 +42,7 @@ hide:
 - [LMDB](https://github.com/LMDB/lmdb) - Symas 用 C 实现的嵌入式 KV 存储（B+ 树 + 内存映射文件，以极速闻名）
 - [redb](https://github.com/cberner/redb) - 纯 Rust 实现的嵌入式 KV 存储（B+ 树）
 - [bbolt](https://github.com/etcd-io/bbolt) - Go 实现的嵌入式 KV 存储（B+ 树，etcd 底层存储引擎，原 BoltDB 维护分支）
+- [rosedb](https://github.com/rosedblabs/rosedb) - Go 实现的轻量级嵌入式 KV 存储引擎（Bitcask 模型）
 
 ## DB Tools
 

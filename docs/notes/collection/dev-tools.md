@@ -16,7 +16,6 @@ hide:
 - [coreutils rust](https://github.com/uutils/coreutils) - unix core utils 的 rust 实现
 - [podman](https://podman.io/) - daemonless container engine
 - [ttar](https://github.com/ideaship/ttar) - 文本文件打包工具
-- [jmespath](https://jmespath.org/) - JSON 查询语言
 - [mole](https://github.com/tw93/Mole) - macOS 端口转发工具
 - [csvq](https://github.com/mithrandie/csvq) - CLI CSV 数据库查询
 - [tini](https://github.com/krallin/tini) - 容器 init 进程
@@ -49,6 +48,11 @@ hide:
 - [npy](https://numpy.org/devdocs/reference/generated/numpy.lib.format.html) - NumPy 格式
 - [Json LD](https://json-ld.org/) - 适合重复数据多的场景
 - [jsonrepair](https://josdejong.github.io/jsonrepair/) - 修复非法 JSON 文档（JS 库 + CLI）；日常主要用于修复 AI 回复中夹带非 JSON 文本导致的解析失败
+
+## Expression Languages
+
+- [jmespath](https://jmespath.org/) - JSON 查询语言
+- [CEL (cel-spec)](https://github.com/cel-expr/cel-spec) - Google 定义的非图灵完备表达式求值语言规范（K8s 准入策略、Envoy/IAM 条件等场景）
 
 ## DevOps
 
