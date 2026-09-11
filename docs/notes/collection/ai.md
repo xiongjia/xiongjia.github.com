@@ -54,6 +54,11 @@ hide:
 
 - [langfuse](https://github.com/langfuse/langfuse) - 开源 LLM 可观测性平台（evals、指标监控、prompt 管理、playground）
 
+## Prompt Engineering
+
+- [COSTAR-A: A prompting framework for enhancing LLM performance on Point-of-View questions](https://arxiv.org/abs/2510.12637) - 在 COSTAR（Context/Objective/Style/Tone/Audience/Response）基础上增加 Answer 组件，实测在部分任务上可提升 ≤8B 本地微调模型的输出结构与决断力（效果因模型与场景而异）
+- [Prompt Engineering Playbook (Beta v3)](https://www.developer.tech.gov.sg/products/collections/data-science-and-artificial-intelligence/playbooks/prompt-engineering-playbook-beta-v3.pdf) - 新加坡 GovTech 提示工程手册（直链 PDF，约 5 MB；该 CDN 会拒绝代理/非浏览器请求，需用浏览器打开）
+
 ## Other
 
 - [AIRI](https://github.com/moeru-ai/airi) / [XSAI](https://github.com/moeru-ai/xsai) - AI 运行时

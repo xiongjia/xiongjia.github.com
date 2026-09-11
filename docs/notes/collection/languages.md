@@ -29,6 +29,7 @@ hide:
 ## C/C++
 
 - [abseil](https://abseil.io/) - C++ 标准库扩展
+- [QuickJS](https://bellard.org/quickjs/) - 轻量可嵌入的 JavaScript 引擎（C，ES2020，作者 Fabrice Bellard）
 
 ## Tutorials / Learning
 

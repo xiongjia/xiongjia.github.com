@@ -18,9 +18,9 @@ ______________________________________________________________________
 | [:material-chart-bell-curve: Monitor](./monitor.md)               | TSDB、Prometheus、APM、系统监控                                                    |
 | [:material-movie-open-play: Media](./media.md)                    | Streaming, trackers, automation                                                    |
 | [:material-playlist-check: Plans](./scraps/plans.md)              | TODOs & ideas (action items, deletable)                                            |
-| [:material-wrench: Dev Tools](./dev-tools.md)                     | CLI, RPC, serialization, DevOps                                                    |
+| [:material-wrench: Dev Tools](./dev-tools.md)                     | CLI, RPC, serialization, expression languages, DevOps                              |
 | [:material-monitor-dashboard: Frontend](./frontend.md)            | React, UI tools, frameworks                                                        |
-| [:material-robot: AI](./ai.md)                                    | Local AI, AI Skills, MCP, AI CLI                                                   |
+| [:material-robot: AI](./ai.md)                                    | Local AI, AI Skills, MCP, AI CLI, Prompt Engineering                               |
 | [:material-code-tags: Languages](./languages.md)                  | Go, Java, C/C++ toolchains                                                         |
 | [:material-book-open-page-variant: Study Materials](./reading.md) | 学习资料：实体书、电子书与在线资源（English Learning / AI Learning / Programming） |
 | [:material-gamepad-variant: Game Dev](./game-dev.md)              | Godot, Krita, LDTK, 2D game dev tools                                              |
@@ -44,7 +44,7 @@ poe collect-todo "看这个视频"
 poe collect-idea "用 MapLibre 做热力图"
 ```
 
-> 上次整理：2026-09-10
+> 上次整理：2026-09-11
 
 Then run `/skill:collect-organize arch` to batch-organize the inbox:
 
