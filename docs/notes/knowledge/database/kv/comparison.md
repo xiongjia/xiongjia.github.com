@@ -32,21 +32,28 @@ KV 存储引擎横向对比：RocksDB / LevelDB / Pebble / Badger / LMDB / redb 
 
 以上 7 个引擎均为进程内运行（随应用进程启动、无需独立服务）的 KV 引擎。
 
+## 另一类模型：Bitcask
+
+以上 7 个引擎非 LSM 即 B+Tree。KV 还有第三类经典模型 —— **Bitcask（日志结构
+哈希表）**：append-only 日志 + 全部 key 常驻内存的 keydir。详见
+[Bitcask 存储模型](./bitcask.md)。
+
 ## 分布式实现对比
 
-上面的引擎多数都有对应的分布式产品：以「引擎 + 共识复制」拼出分布式 KV。
+上表中的引擎多数都有对应的分布式产品：以「引擎 + 共识复制」拼出分布式 KV。
 
-| 分布式 KV            | 底层存储引擎                         | 共识 / 复制                      | 语言       |
-| -------------------- | ------------------------------------ | -------------------------------- | ---------- |
-| TiKV                 | RocksDB                              | Raft                             | Rust       |
-| YugabyteDB (DocDB)   | RocksDB（每 tablet 一个实例）        | Raft                             | C++        |
-| etcd                 | bbolt                                | Raft                             | Go         |
-| CockroachDB          | Pebble                               | Raft（etcd/raft 的 fork）        | Go         |
-| Dgraph               | Badger                               | Raft（alpha 节点间复制）         | Go         |
-| FoundationDB         | Redwood（自研 B+ 树，早期用 SQLite） | Paxos 类事务协议                 | C++        |
-| HBase                | HFile（LSM，存 HDFS）                | HDFS 复制 + ZooKeeper 协调       | Java       |
-| Cassandra / ScyllaDB | 自研 LSM                             | Gossip + 仲裁复制（Dynamo 风格） | Java / C++ |
-| Redis Cluster        | 内存                                 | Gossip + 哈希槽（无共识协议）    | C          |
+| 分布式 KV            | 底层存储引擎                         | 共识 / 复制                                            | 语言       |
+| -------------------- | ------------------------------------ | ------------------------------------------------------ | ---------- |
+| TiKV                 | RocksDB                              | Raft                                                   | Rust       |
+| YugabyteDB (DocDB)   | RocksDB（每 tablet 一个实例）        | Raft                                                   | C++        |
+| etcd                 | bbolt                                | Raft                                                   | Go         |
+| CockroachDB          | Pebble                               | Raft（etcd/raft 的 fork）                              | Go         |
+| Dgraph               | Badger                               | Raft（alpha 节点间复制）                               | Go         |
+| FoundationDB         | Redwood（自研 B+ 树，早期用 SQLite） | Paxos 类事务协议                                       | C++        |
+| HBase                | HFile（LSM，存 HDFS）                | HDFS 复制 + ZooKeeper 协调                             | Java       |
+| Cassandra / ScyllaDB | 自研 LSM                             | Gossip + 仲裁复制（Dynamo 风格）                       | Java / C++ |
+| Redis Cluster        | 内存                                 | Gossip + 哈希槽（无共识协议）                          | C          |
+| Riak                 | bitcask（basho/bitcask）             | Dynamo 风格 vnode 复制（默认最终一致，2.x 可选强一致） | Erlang     |
 
 **对应关系速记**：
 
@@ -54,6 +61,7 @@ KV 存储引擎横向对比：RocksDB / LevelDB / Pebble / Badger / LMDB / redb 
 - bbolt → etcd
 - Pebble → CockroachDB（Pebble 本身不含分布式，复制在 CockroachDB 层实现）
 - Badger → Dgraph
+- basho/bitcask（Bitcask 模型）→ Riak
 - LevelDB / LMDB / redb → 无主流分布式形态
 - Cassandra 5 / ScyllaDB 5+ 引入 Raft 仅用于元数据管理，数据复制仍是 Gossip 仲裁
 
@@ -73,3 +81,4 @@ KV 存储引擎横向对比：RocksDB / LevelDB / Pebble / Badger / LMDB / redb 
 - **读密集 / 低内存 / 简单** → LMDB（C）或 redb（Rust）
 - **Rust 项目** → redb
 - **Go 项目** → Pebble（CockroachDB 系）或 Badger（Dgraph 系）；读密集/简单场景 → bbolt（etcd 系）
+- **写吞吐高 / 点查为主 / key 能装进内存** → Bitcask（rosedb）
