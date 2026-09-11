@@ -12,3 +12,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 2026-09-11 https://github.com/rosedblabs/rosedb
 2026-09-11 https://github.com/cel-expr/cel-spec
 2026-09-11 https://github.com/pgcentralfoundation/pgrx
+2026-09-11 https://bellard.org/quickjs/
