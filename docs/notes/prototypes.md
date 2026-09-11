@@ -24,6 +24,7 @@ hide:
 | [protomaps-map-view](#protomaps-map-view)           | [Maps](#maps)                     | 🟢 Working      | 2026-08-07 |
 | [etl-dbt](#etl-dbt)                                 | [ETL](#etl)                       | 🟢 Working      | 2026-08-26 |
 | [pg-boss-demo](#pg-boss-demo)                       | [Job Queue](#job-queue)           | 🟢 Working      | 2026-08-30 |
+| [tiny-bitcask](#tiny-bitcask)                       | [Database](#database)             | 🟡 Experimental | 2026-09-11 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -128,6 +129,43 @@ Go CLI 原型，用 `urfave/cli` **v3** 框架（官方文档 <https://cli.urfav
 - 原为研究 [Lux](https://github.com/iawia002/lux) 时在 `research/experiments/` 下的实验代码，已迁移至此
 - `go.sum` 纳入版本控制，保证依赖可复现构建
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/go-cli-urfave)
+
+## Database
+
+> 相关文档：[Bitcask 存储模型](./knowledge/database/kv/bitcask.md)
+
+### tiny-bitcask
+
+Rust 原型：最小可用的 Bitcask 风格 KV 存储（append-only 数据文件 + 内存
+keydir，`clap` 命令行）。目标是学 Rust（语法 / 文件操作 / 模块 / 异步 IO）与
+Bitcask 数据结构，README 即设计文档。
+
+> 状态：实验性，仍在手工验证中；磁盘格式 / API / 命令行都可能再变。
+
+- 记录格式与论文一致（14 字节头部：CRC32 + 时间戳 + key 长度 + value 长度），
+  删除写 tombstone（value size 哨兵），CRC 覆盖头部剩余字段 + key + value
+- 子命令：`put` / `get` / `del` / `list` / `files` / `stats` / `merge` / `bench`；
+  `--max-file-size` 控制文件 rotate，`--sync` 控制每次写是否 fsync，
+  `--verify-reads` 让 `get` 重新读取整条记录并校验 CRC（默认走 keydir 快路径）
+- `merge`：只重写 live 记录、丢弃旧版本与 tombstone，写 `*.hint` 加速文件
+  （最后一个文件除外，它成为新的 active file）；输出全部写盘后先写 `.merge-ready`
+  标记，再把新文件 rename 进目录、最后删旧文件。中断的 merge 由下次 `open` 收尾
+  （有标记则把残留文件接入，无标记则丢弃），不会丢最新数据
+- 崩溃恢复：数据文件即日志（无需 replay WAL），启动扫描重建 keydir；活动文件
+  尾部的半写 / CRC 损坏记录截断丢弃，非最后文件损坏则报 `Corrupt` 错误；头部
+  声明的 key/value 长度先与文件剩余字节比对再分配缓冲区
+- hint 文件不会被无条件信任：需要按 offset 完整铺满对应数据文件（无空洞）才
+  采用，否则回退全量扫描 —— 截断/损坏的 hint 不会静默丢 key
+- 异步层：核心引擎保持同步，`Arc<Mutex<Bitcask>>` + `spawn_blocking` 包装；
+  `backup_to` 用 `tokio::fs::copy` 备份数据 / hint 文件；`bench` 对比顺序与
+  并发读写吞吐
+- 42 个测试（单元 + 集成 + `#[tokio::test]`），覆盖 rotate、torn tail、CRC
+  损坏、merge 回收与 hint 文件（含截断 hint 回退扫描、中断 merge 的标记恢复）、
+  单写者锁、并发无丢键
+- 局限（README 有完整说明）：keyspace 必须放进内存、merge 的 rename/prune 之间
+  崩溃可能复活合并前已删除的 key（但既不会丢数据也不会读到旧版本）、单写者
+  （不做只读并发打开）、无范围扫描 / TTL / batch / 压缩
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/tiny-bitcask)
 
 ## Others
 
