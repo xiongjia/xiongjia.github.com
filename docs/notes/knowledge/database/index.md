@@ -17,4 +17,4 @@ categories:
 ## Sub Topics
 
 - [PostgreSQL](./postgresql/index.md)：日常运维与机制知识 —— 会话诊断、WAL 与 LSN、复制等
-- [KV 数据库](./kv/index.md)：KV 存储引擎知识 —— RocksDB / LevelDB / Pebble / Badger / LMDB / redb / bbolt 对比与机制
+- [KV 数据库](./kv/index.md)：KV 存储引擎知识 —— RocksDB / LevelDB / Pebble / Badger / LMDB / redb / bbolt 对比，以及 Bitcask（日志结构哈希表）模型
