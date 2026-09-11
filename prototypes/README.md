@@ -53,6 +53,15 @@ Python `.venv/`, Node `node_modules/`).
   `research/experiments/`, migrated here; `go.sum` tracked for reproducible
   builds · created 2026-08-03 · status `working`
 
+## Database
+
+- **[tiny-bitcask](./tiny-bitcask/README.md)** — minimal Bitcask-style KV store
+  in Rust (append-only data files + in-memory keydir, `clap` CLI): put / get /
+  del / full scan, file rotation, `merge` with hint files, crash-tail
+  truncation, plus a `tokio` async wrapper with a sync-vs-async benchmark; 42
+  tests, design notes (disk format, data flow, deviations from the paper) in
+  the README · created 2026-09-11 · status `experimental` (still being tested)
+
 ## Others
 
 - **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS

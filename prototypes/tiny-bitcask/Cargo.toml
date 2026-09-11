@@ -1,0 +1,19 @@
+[package]
+name = "tiny-bitcask"
+version = "0.1.0"
+edition = "2021"
+description = "Minimal Bitcask-style KV store: append-only data files + in-memory keydir, with an async wrapper"
+license = "MIT"
+
+[dependencies]
+# CRC32 checksum of every log record (the paper's data-file header starts with it).
+crc32fast = "1.5"
+# CLI parsing (derive API).
+clap = { version = "4.6", features = ["derive"] }
+# Async runtime used by the AsyncBitcask wrapper and the `bench` command.
+tokio = { version = "1.53", features = ["rt-multi-thread", "macros", "fs"] }
+# Temporary directories for the `bench` command and the integration tests.
+tempfile = "3.27"
+
+[dev-dependencies]
+# Integration tests live in tests/, no extra crates needed beyond tempfile.
