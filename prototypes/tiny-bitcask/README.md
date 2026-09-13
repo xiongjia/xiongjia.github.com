@@ -87,6 +87,23 @@ record instead of trusting the keydir and reading only the value (see
 | 2    | invalid command line (produced by `clap`)                                  |
 | 3    | `get`/`del`: the key is not in the store (`not found: ...` on stderr)      |
 
+### Editor setup (rust-analyzer)
+
+Opening the repo root in VS Code reports `rust-analyzer failed to fetch workspace`
+(all `.rs` files unlinked, no completion or diagnostics). The editor's workspace
+root is the repo root, which has no `Cargo.toml`, and rust-analyzer's project
+discovery only scans that root plus its direct subdirectories — this crate sits
+two levels down in `prototypes/tiny-bitcask/`. The repo's `.vscode/settings.json`
+therefore links it explicitly:
+
+```jsonc
+"rust-analyzer.linkedProjects": ["prototypes/tiny-bitcask/Cargo.toml"]
+```
+
+That disables auto-discovery, so a new Rust prototype has to be added to the
+list. Opening `prototypes/tiny-bitcask` itself as the VS Code folder needs no
+configuration.
+
 ## The model in one picture
 
 ```mermaid
