@@ -25,5 +25,16 @@
   "[jsonc]": {
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  // Rust prototypes live two levels down (prototypes/<name>/Cargo.toml), which
+  // rust-analyzer's project discovery does not reach: it only looks at the
+  // workspace root and its direct subdirectories, so it would report
+  // "failed to find any projects" / "failed to fetch workspace" and treat all
+  // .rs files as unlinked. Link them explicitly here.
+  // NOTE: setting linkedProjects disables automatic discovery — add new Rust
+  // prototypes to this list.
+  "rust-analyzer.linkedProjects": [
+    "prototypes/prototype-example/Cargo.toml",
+    "prototypes/tiny-bitcask/Cargo.toml"
+  ]
 }
