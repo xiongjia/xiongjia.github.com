@@ -10,3 +10,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 -->
 
 2026-09-14 https://allendowney.github.io/ThinkStats/
+2026-09-14 https://github.com/pika-monitor/pika
