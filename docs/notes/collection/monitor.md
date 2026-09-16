@@ -49,3 +49,4 @@ hide:
 - [netdata](https://github.com/netdata/netdata) - Real-time performance monitoring
 - [nmon](https://nmon.sourceforge.net/pmwiki.php) - CLI 监控 + CSV 导出分析
 - [monoscope](https://github.com/monoscope-tech/monoscope) - 监控工具
+- [Pika Monitor](https://github.com/pika-monitor/pika) - Go 实现的轻量级探针监控（VictoriaMetrics + PostgreSQL/SQLite）：实时指标、HTTP/ICMP 探针检查、防篡改与安全审计 ([pika.termark.app](https://pika.termark.app))
