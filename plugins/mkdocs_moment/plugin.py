@@ -31,6 +31,7 @@ from shared.bucket import is_enabled as bucket_is_enabled
 from shared.bucket import load_mappings as bucket_load_mappings
 from shared.bucket import rewrite_html as bucket_rewrite_html
 from shared.bucket import rewrite_url as bucket_rewrite_url
+from shared.chart_labels import thin_labels
 from shared.date import parse_date_strict
 from shared.frontmatter import has_draft_flag, parse_frontmatter
 from shared.gcj02 import gcj02_to_wgs84
@@ -884,16 +885,19 @@ class MomentPlugin(BasePlugin):
 
         All values are numbers / tag names — zero presentation text lives in
         Python (labels come from the template, like other moment pages).
-        Returns ``{totals, month_rows, top_tags, max_tag_count, year_grids}``:
-        ``month_rows`` is chronological ``{label, count}`` for the Mermaid
-        chart — gap-filled (zero-activity months included) and capped at the
-        last 24 months; ``top_tags`` is count-desc ``{name, count}`` capped
-        at 15; ``year_grids`` is per-year ``{year, rows}`` with rows = month
-        1..12 → ``{day, count, level}`` cells for the activity heatmap.
+        Returns ``{totals, month_rows, chart_labels, top_tags, max_tag_count,
+        year_grids}``: ``month_rows`` is chronological ``{label, count}`` for
+        the Mermaid chart — gap-filled (zero-activity months included) and
+        capped at the last 24 months; ``chart_labels`` is the same labels with
+        the ones that would overlap blanked out (see `shared.chart_labels`);
+        ``top_tags`` is count-desc ``{name, count}`` capped at 15;
+        ``year_grids`` is per-year ``{year, rows}`` with rows = month 1..12 →
+        ``{day, count, level}`` cells for the activity heatmap.
         """
         empty = {
             "totals": {},
             "month_rows": [],
+            "chart_labels": [],
             "top_tags": [],
             "max_tag_count": 1,
             "year_grids": [],
@@ -976,6 +980,7 @@ class MomentPlugin(BasePlugin):
                 "max_month_count": max_month_count,
             },
             "month_rows": chart_rows,
+            "chart_labels": thin_labels([row["label"] for row in chart_rows]),
             "top_tags": top_tags,
             "max_tag_count": max_tag_count,
             "year_grids": year_grids,

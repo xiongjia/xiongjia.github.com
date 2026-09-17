@@ -5,8 +5,35 @@ Loads and combines macros from weight, retire, and running modules.
 
 import importlib.util
 import os
+import sys
 
-_dir = os.path.dirname(__file__)
+_dir = os.path.dirname(os.path.abspath(__file__))
+_MKDOCS_YML = "mkdocs.yml"
+
+
+def _find_repo_root(start: str) -> str:
+    """Walk up from *start* until a directory holding mkdocs.yml is found.
+
+    Avoids a hardcoded ``parents[N]``: that silently points at the wrong
+    directory if the macros move, and the failure then surfaces much later as a
+    confusing ModuleNotFoundError from an unrelated module.
+    """
+    candidate = start
+    while True:
+        if os.path.isfile(os.path.join(candidate, _MKDOCS_YML)):
+            return candidate
+        parent = os.path.dirname(candidate)
+        if parent == candidate:
+            return os.getcwd()
+        candidate = parent
+
+
+# the macros plugin loads this file by path (no package), so make the repo root
+# importable before exec'ing the sibling modules — they import the root-level
+# `shared/` package (see shared/__init__.py)
+_REPO_ROOT = _find_repo_root(_dir)
+if _REPO_ROOT not in sys.path:
+    sys.path.insert(0, _REPO_ROOT)
 
 
 def _load_from_file(filename):

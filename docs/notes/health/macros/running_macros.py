@@ -19,21 +19,9 @@ from typing import Any
 
 import yaml
 
-_DATA_PATH = os.path.join("notes", "health", "data", "running.yml")
+from shared.chart_labels import format_x_axis
 
-# Find repo root: try __file__ based path, then CWD, then up from docs/
-_THIS_DIR = os.path.dirname(os.path.abspath(__file__))
-_REPO_ROOT = _THIS_DIR
-for _ in range(5):  # up to 5 levels up
-    if os.path.isfile(os.path.join(_REPO_ROOT, "mkdocs.yml")):
-        break
-    parent = os.path.dirname(_REPO_ROOT)
-    if parent == _REPO_ROOT:
-        _REPO_ROOT = os.getcwd()
-        break
-    _REPO_ROOT = parent
-else:
-    _REPO_ROOT = os.getcwd()
+_DATA_PATH = os.path.join("notes", "health", "data", "running.yml")
 
 # Bucket/config copied into data attributes for client-side splits loading:
 # running-route.js fetches splits.json from `_splits_bucket_url()` and uses the
@@ -209,7 +197,7 @@ def _monthly_chart(data: dict) -> str:
         return f"> No runs in {year} yet"
 
     ordered = sorted(months)
-    labels = ", ".join(f'"{_MONTHS[m - 1]}"' for m in ordered)
+    labels = format_x_axis([_MONTHS[m - 1] for m in ordered])
     bars = ", ".join(f"{months[m]['km']:.1f}" for m in ordered)
     # every activity today carries HR, so the 0 fallback is defensive only:
     # mermaid 10.9 xychart rejects null values, so the month shows as 0

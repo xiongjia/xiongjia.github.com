@@ -147,7 +147,7 @@
         <div class="mermaid" pre>
 xychart-beta
     title "Posting Frequency by Month"
-    x-axis [{% for r in stats.month_rows %}{{ "\"" ~ r.label ~ "\"" }}{{ ", " if not loop.last }}{% endfor %}]
+    x-axis [{% for label in stats.chart_labels %}{{ "\"" ~ label ~ "\"" }}{{ ", " if not loop.last }}{% endfor %}]
     y-axis "moments" 0 --> {{ stats.totals.max_month_count + 2 }}
     bar [{% for r in stats.month_rows %}{{ r.count }}{{ ", " if not loop.last }}{% endfor %}]
         </div>
