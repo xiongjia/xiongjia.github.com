@@ -15,6 +15,9 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 from xml.etree import ElementTree as ET
 
+import htmlmin
+from jinja2 import Template
+
 # the plugin package lives under plugins/ (the mkdocs hook loader puts it on
 # sys.path at build time); tests must add it explicitly
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "plugins"))
@@ -28,6 +31,17 @@ from mkdocs_moment.plugin import (  # noqa: E402
     _resolve_htmlmin_opts,
     _tag_segment,
     _valid_htmlmin_value,
+)
+
+from shared.chart_labels import BLANK_LABEL, label_budget, thin_labels  # noqa: E402
+
+# same path constant as tests/test_running_css.py (palette parity)
+MOMENT_TEMPLATE = (
+    Path(__file__).resolve().parent.parent
+    / "plugins"
+    / "mkdocs_moment"
+    / "templates"
+    / "moment_stats.html"
 )
 
 
@@ -744,12 +758,9 @@ def test_build_stats_gap_fills_zero_months():
     assert stats["totals"]["most_active_month"] == "2026-07"  # tie → earliest
 
 
-def test_build_stats_chart_capped_at_24_months():
-    """The chart only shows the last 24 months (summary cards keep lifetime)."""
-    plugin = MomentPlugin()
-    plugin._load_config({"path": "moments"})
-    # one moment per month across 30 months
-    plugin._moments = [
+def _monthly_moments(count: int) -> list[Moment]:
+    """One moment per month starting 2024-01."""
+    return [
         _rss_moment(
             f"2024-{mo:02d}-15-1200",
             datetime(2024 + (mo - 1) // 12, (mo - 1) % 12 + 1, 15, 12, 0),
@@ -757,8 +768,15 @@ def test_build_stats_chart_capped_at_24_months():
             f"m{mo}",
             "<p>x</p>",
         )
-        for mo in range(1, 31)
+        for mo in range(1, count + 1)
     ]
+
+
+def test_build_stats_chart_capped_at_24_months():
+    """The chart only shows the last 24 months (summary cards keep lifetime)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = _monthly_moments(30)
     stats = plugin._build_stats()
     assert len(stats["month_rows"]) == 24
     assert stats["month_rows"][0]["label"] == "2024-07"
@@ -768,6 +786,53 @@ def test_build_stats_chart_capped_at_24_months():
     assert stats["totals"]["most_active_month"] == "2024-01"  # earliest of 30 ties
 
 
+def test_build_stats_chart_labels_thinned_to_fit():
+    """24 x-axis labels of `YYYY-MM` would overlap: the chart gets a thinned
+    copy, index-aligned with month_rows (blank slots keep the positions)."""
+    plugin = MomentPlugin()
+    plugin._load_config({"path": "moments"})
+    plugin._moments = _monthly_moments(30)
+    stats = plugin._build_stats()
+    labels = stats["chart_labels"]
+    month_labels = [r["label"] for r in stats["month_rows"]]
+    assert len(labels) == len(month_labels) == 24
+    # kept labels are the originals, dropped ones are the blank placeholder
+    assert all(
+        label == month or label == BLANK_LABEL
+        for label, month in zip(labels, month_labels, strict=True)
+    )
+    kept = [label for label in labels if label != BLANK_LABEL]
+    assert 1 < len(kept) <= label_budget(month_labels)
+    assert labels[-1] == month_labels[-1]  # latest month always labeled
+
+
+def test_stats_chart_axis_survives_minification():
+    """The thinned x-axis is emitted inside `<div class="mermaid" pre>` and then
+    minified: the single-space placeholders must survive, because mermaid
+    rejects an empty `""` label (the chart would fail to parse).
+
+    Pinned on the shipped HTML (not the decoded DOM): htmlmin leaves the
+    preformatted block verbatim, and a browser would decode `&#34;` into `"`
+    for mermaid's textContent reader anyway — so only the space itself matters.
+    """
+    labels = thin_labels([f"2025-{mo:02d}" for mo in range(1, 13)])
+    labels += [f"2026-{mo:02d}" for mo in range(1, 13)]
+    blanks = [label for label in labels if label == BLANK_LABEL]
+    assert blanks, "fixture must actually produce placeholders"
+    # render the template's own x-axis line, not a copy of it
+    line = next(
+        raw
+        for raw in MOMENT_TEMPLATE.read_text(encoding="utf-8").splitlines()
+        if raw.strip().startswith("x-axis [")
+    )
+    axis = Template(line).render(stats={"chart_labels": labels}).strip()
+    diagram = f'<div class="mermaid" pre>\nxychart-beta\n    {axis}\n    bar [1, 2]\n        </div>'
+
+    out = htmlmin.minify(diagram, **_HTMLMIN_OPTS)
+
+    assert out.count(f'"{BLANK_LABEL}"') == len(blanks)
+
+
 def test_build_stats_empty():
     plugin = MomentPlugin()
     plugin._load_config({"path": "moments"})
@@ -775,6 +840,7 @@ def test_build_stats_empty():
     stats = plugin._build_stats()
     assert stats["totals"] == {}
     assert stats["month_rows"] == []
+    assert stats["chart_labels"] == []
     assert stats["top_tags"] == []
     assert stats["year_grids"] == []
 

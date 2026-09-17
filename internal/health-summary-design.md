@@ -80,9 +80,11 @@ The prompt embeds concrete numbers, not raw YAML dumps:
   reuses `running_macros`
 
 The macros' pure helpers are imported by adding
-`docs/notes/health/macros/` to `sys.path` (same trick as `tests/conftest.py`),
-so the script can never drift from what the pages render. Guards return `{}`
-for missing/invalid data and the prompt simply skips that section.
+`docs/notes/health/macros/` and the repo root to `sys.path` (the repo root
+because the macros import the root-level `shared/` package; same trick as
+`tests/conftest.py`, extended), so the script can never drift from what the
+pages render. Guards return `{}` for missing/invalid data and the prompt simply
+skips that section.
 
 ### Prompt
 

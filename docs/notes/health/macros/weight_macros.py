@@ -10,6 +10,8 @@ from typing import Any
 
 import yaml
 
+from shared.chart_labels import format_x_axis
+
 _DAY_KEYS = ["grid_mon", "grid_tue", "grid_wed", "grid_thu", "grid_fri", "grid_sat", "grid_sun"]
 
 
@@ -408,17 +410,23 @@ def _chart(data: dict) -> str:
     if not start or len(weeks) < 2:
         return "> Trend chart will appear once you have at least 2 weeks of data"
 
-    avgs, date_labels = [], []
+    avgs, week_starts = [], []
     for i, week in enumerate(weeks, 1):
         valid = [float(d) for d in week.get("days", []) if d is not None]
         if valid:
             avgs.append(round(sum(valid) / len(valid), 2))
-            ws = start + timedelta(days=(i - 1) * 7)
-            we = ws + timedelta(days=6)
-            date_labels.append(f'"{_full_date_str(ws)} ~ {_full_date_str(we)}"')
+            week_starts.append(start + timedelta(days=(i - 1) * 7))
 
     if len(avgs) < 2:
         return "> Trend chart will appear once you have at least 2 complete weeks of data"
+
+    # compress the x-axis to short dates and let the shared helper blank out
+    # labels that would overlap (mermaid never rotates or wraps them); a
+    # series spanning calendar years needs the year to stay unambiguous
+    spans_multiple_years = week_starts[0].year != week_starts[-1].year
+    raw_labels = [
+        ws.strftime("%y-%m-%d") if spans_multiple_years else _date_str(ws) for ws in week_starts
+    ]
 
     pad = 0.5
     lo = round(min(avgs) - pad, 1)
@@ -428,7 +436,7 @@ def _chart(data: dict) -> str:
         "```mermaid\n"
         "xychart-beta\n"
         f'    title "{labels_i18n["chart_title"]}"\n'
-        f"    x-axis [{', '.join(date_labels)}]\n"
+        f"    x-axis [{format_x_axis(raw_labels)}]\n"
         f'    y-axis "Weight (kg)" {lo} --> {hi}\n'
         f"    line [{', '.join(map(str, avgs))}]\n"
         "```"

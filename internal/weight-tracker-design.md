@@ -96,7 +96,10 @@ Two collapsible accordion sections:
 
 Renders `xychart-beta` Mermaid block:
 
-- X-axis: week date ranges
+- X-axis: week start dates — `MM-DD`, widening to `YY-MM-DD` once the series
+  spans calendar years; labels that would overlap are blanked by
+  `shared/chart_labels.py` (Mermaid xychart never rotates or wraps axis
+  labels, so longer labels collide)
 - Y-axis: weight kg (auto-scaled with 0.5 padding)
 - Line: weekly average values
 
@@ -119,9 +122,12 @@ Chinese standard classification:
 
 ## Aggregator (`health_macros.py`)
 
-A lightweight module that imports `weight_macros.py` and `retire_macros.py` at
-runtime and delegates `define_env(env)` to both. This is the module referenced
-in `mkdocs.yml` → `plugins.macros.module_name`.
+A lightweight module that loads `weight_macros.py`, `retire_macros.py` and
+`running_macros.py` at runtime and delegates `define_env(env)` to all three. It
+first walks up to the repo root and puts it on `sys.path`, because those
+modules import the root-level `shared/` package (the macros plugin loads this
+file by path, so nothing else supplies it). This is the module referenced in
+`mkdocs.yml` → `plugins.macros.module_name`.
 
 ## Tool Layer (`add_weight_week.py`)
 
@@ -234,9 +240,19 @@ Generated as a ```` ```mermaid ```` code block rendered by the mermaid2 plugin:
 
 - The mermaid2 plugin injects `<script>` tags on pages containing mermaid blocks
 - The `mermaid_assets.py` hook ensures the mermaid JS bundle is cached locally
-- Chart width: 100% of content area (no fixed width)
-- Chart height: auto-calculated by Mermaid based on data points
+- Chart canvas: Mermaid's fixed 700×500 `viewBox`, rendered at its natural
+  700px on desktop and capped/scaled down uniformly on narrow screens — label
+  proportions are unchanged, which is what keeps the thinning budget valid at
+  any viewport width
+- X-axis labels come from `shared/chart_labels.py`: overlapping ones are
+  blanked with a `" "` placeholder so the survivors stay aligned with their
+  data points, and the newest week always keeps its label
 - Requires ≥2 data points; otherwise renders a plain text placeholder
+- Verifying the rendered chart needs a browser trick: Material consumes
+  `pre.mermaid` into a **closed** shadow root (it calls
+  `mermaid.render(id, element.textContent)`), so the SVG is invisible to
+  `--dump-dom`. Force `Element.prototype.attachShadow` to `open` before the
+  bundle runs, or read `textContent` before Material does
 
 ### Dark Mode
 
@@ -250,9 +266,15 @@ dark background.
 
 ## Dependencies
 
-| Package  | Usage        |
-| -------- | ------------ |
-| `pyyaml` | YAML parsing |
+| Package             | Usage                                            |
+| ------------------- | ------------------------------------------------ |
+| `pyyaml`            | YAML parsing                                     |
+| `shared/` (in-repo) | x-axis label thinning (`shared/chart_labels.py`) |
+
+Importing the macros also requires the **repo root** on `sys.path`: the macro
+modules import the root-level `shared/` package and do not bootstrap it
+themselves — `health_macros.py` (and `scripts/update_health_summary.py`) supply
+the path.
 
 Note: `Pillow` is used project-wide by `scripts/optimize_images.py` for
 WebP conversion, but is not a direct dependency of the weight macros.

@@ -40,7 +40,11 @@ DEFAULT_OUTPUT = REPO_ROOT / "docs" / "notes" / "health" / "_summary.md"
 
 # The health macros own the retirement/weight/running math. Reuse their pure
 # helpers (same import trick as tests/conftest.py) so this script can never
-# drift from what the pages render.
+# drift from what the pages render. The repo root goes on sys.path too: the
+# macros import the root-level `shared/` package (see shared/__init__.py).
+if str(REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(REPO_ROOT))
+
 _MACROS_DIR = REPO_ROOT / "docs" / "notes" / "health" / "macros"
 if str(_MACROS_DIR) not in sys.path:
     sys.path.insert(0, str(_MACROS_DIR))
