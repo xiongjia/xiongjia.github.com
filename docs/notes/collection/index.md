@@ -23,7 +23,7 @@ ______________________________________________________________________
 | [:material-robot: AI](./ai.md)                                    | Local AI, AI Skills, MCP, AI CLI, Prompt Engineering                               |
 | [:material-code-tags: Languages](./languages.md)                  | Go, Java, C/C++ toolchains                                                         |
 | [:material-book-open-page-variant: Study Materials](./reading.md) | 学习资料：实体书、电子书与在线资源（English Learning / AI Learning / Programming） |
-| [:material-gamepad-variant: Game Dev](./game-dev.md)              | Godot, Krita, LDTK, 2D game dev tools                                              |
+| [:material-gamepad-variant: Game Dev](./game-dev.md)              | Godot, Krita, LDTK, 2D game dev tools, open-source reference games                 |
 | [:material-map: Maps](./maps.md)                                  | MapLibre, Protomaps, PMTiles, Tippecanoe                                           |
 | [:material-emoticon-happy-outline: Emoji](./emoji.md)             | 常用 emoji 复制清单                                                                |
 
@@ -44,7 +44,7 @@ poe collect-todo "看这个视频"
 poe collect-idea "用 MapLibre 做热力图"
 ```
 
-> 上次整理：2026-09-16
+> 上次整理：2026-09-18
 
 Then run `/skill:collect-organize arch` to batch-organize the inbox:
 

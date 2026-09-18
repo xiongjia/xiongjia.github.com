@@ -6,8 +6,8 @@ hide:
 
 # :material-gamepad-variant: Game Development
 
-> Indie game dev tools for 2D Metroidvania (Hollow Knight-like) development.
-> All tools are free / open-source, zero-cost startup.
+> Indie game dev tools, plus open-source reference games, for 2D Metroidvania (Hollow Knight-like) development.
+> All tools and games are free / open-source, zero-cost startup; CorsixTH is the exception, as it needs the original Theme Hospital data.
 
 ## Digital Painting — Krita
 
@@ -62,3 +62,13 @@ Industry standard 2D map editor.
 - [Tiled Download](https://www.mapeditor.org/download.html)
 - [Tiled Docs](https://doc.mapeditor.org/)
 - [GitHub: mapeditor/tiled](https://github.com/mapeditor/tiled)
+
+## Open-Source Games — Reference
+
+Playable open-source games worth studying as design / code references.
+
+> Source: inbox capture (2026-09-17) with no recorded provenance; factual descriptions checked against upstream repo metadata (GitHub / GitLab, 2026-09-18), the `study:` angles are editorial.
+
+- [CorsixTH](https://github.com/CorsixTH/CorsixTH) - Open-source clone of Theme Hospital (C++ engine / Lua game logic; study: how the C++ and Lua layers divide; needs the original game data to run)
+- [Mindustry](https://github.com/Anuken/Mindustry/) - Open-source automation tower defense RTS (Java; study: 2D game architecture and its mod API)
+- [Veloren](https://gitlab.com/veloren/veloren) - Open-source open-world multiplayer voxel RPG (Rust; study: ECS and voxel world generation; the GitHub repo is a read-only mirror)
