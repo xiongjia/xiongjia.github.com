@@ -10,3 +10,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 -->
 
 2026-09-21 https://github.com/skyzh/mini-lsm
+2026-09-24 https://github.com/ChenLiu-1996/figures4papers
