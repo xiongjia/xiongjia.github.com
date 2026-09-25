@@ -31,6 +31,7 @@ hide:
 - 📖 [Hands-On Data Visualization](https://handsondataviz.org/) — 免费在线互动书籍（数据可视化：图表/地图/表格，从电子表格到代码）
 - 📖 [CS50P 中文精读笔记](https://github.com/LesleyFung/cs50p-notes/) — LesleyFung（CS50's Introduction to Programming with Python 课程精读笔记）
 - 📖 [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/) — Allen B. Downey（免费在线书：Python 程序员的概率统计入门）
+- 📖 [Mini-LSM](https://github.com/skyzh/mini-lsm) — skyzh（三周动手课程：用 Rust 从零实现 LSM 存储引擎，覆盖 memtable/SST、compaction、崩溃恢复、MVCC 与事务）
 
 #### 🗞️ Paper Discovery
 

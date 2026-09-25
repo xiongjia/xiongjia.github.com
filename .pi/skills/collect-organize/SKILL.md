@@ -33,7 +33,7 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 1. 读取 inbox 全部条目
 1. 逐条判定 `type`（见下）和 `domain`（见下），无法判定 → `type: misc` + `domain: uncategorized`
 1. **去重**：
-   - 有 URL → 在目标页面中搜索该 URL，存在则跳过
+   - 有 URL → 先在整个 `collection/` 目录（含 `scraps/plans.md`）搜索该 URL，任一页面存在则跳过
    - 无 URL → 在目标页面中模糊匹配标题关键词，存在则跳过
 1. **路由追加**（按 type 分流）：
    - `link` / `book` / `note` → 追加到 `collection/<domain>.md`
@@ -47,7 +47,7 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 | type   | 判定                         | 示例                              | 路由目标      |
 | ------ | ---------------------------- | --------------------------------- | ------------- |
 | `link` | URL / 工具推荐 / GitHub 仓库 | 「yt-dlp — YouTube 下载器」       | `<domain>.md` |
-| `book` | 想读或读过的书               | 《Designing Data-Intensive Apps》 | `<domain>.md` |
+| `book` | 书 / 课程、教程              | 《Designing Data-Intensive Apps》 | `<domain>.md` |
 | `note` | 阅读笔记 / 文章摘要          | 某篇文章的核心观点                | `<domain>.md` |
 | `todo` | 待办事项 / 计划              | 「研究一下 XX 的源码」            | `plans.md`    |
 | `idea` | 想法 / 灵感 / 项目构思       | 「用 XX 技术做一个 YY 工具」      | `plans.md`    |
@@ -64,9 +64,9 @@ description: "Collection Scraps: collect, organize & append to collection pages 
 
 ### 去重规则
 
-- **主 key**：URL（在目标页面全文搜索 `https?://` 链接行）
+- **主 key**：URL（先在整个 `collection/` 目录全文搜索 `https?://` 链接行，跨页命中即跳过）
 - **次 key**：标题关键词模糊匹配
-- **范围**：只搜索目标页面（`<domain>.md` 或 `plans.md`）
+- **范围**：URL 跨全部 collection 页面（含 `scraps/plans.md`）；标题模糊匹配只在目标页面
 
 ### 追加格式：资源型（link / book / note → `<domain>.md`）
 

@@ -86,6 +86,7 @@ hide:
 - [shaper](https://github.com/taleshape-com/shaper) - 数据可视化
 - [seaborn](https://seaborn.pydata.org/) - Python 统计可视化库
 - [Matplotlib](https://matplotlib.org/) - Python 数据可视化基础库
+- [Figures for Papers](https://github.com/ChenLiu-1996/figures4papers) - Chen Liu 的论文配图 Python 脚本合集（条形图/雷达图/3D 球体等；作者发表于 Nature Machine Intelligence、ICML、NeurIPS、ECCV 等论文的配图脚本）
 
 ## Browser & Headless
 
