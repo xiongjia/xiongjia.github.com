@@ -9,6 +9,12 @@
 //! reasoning lives on [`Error`], and `#[cfg(test)] mod tests` at the bottom of
 //! this file pins the behaviour (exact messages, where `source()` exists, how
 //! `?` converts).
+//!
+//! The walkthrough also goes one layer up, with the application-layer error the
+//! demo wraps this module in (`AppError`): a library error is the outermost
+//! error only for as long as nobody wraps it, so that wrapper — not anything
+//! inside the library — is what makes the `source()` chain longer than one
+//! link.
 
 use std::error::Error as StdError;
 use std::fmt;
@@ -246,6 +252,53 @@ fn open_file_at(path: &Path) -> Result<File> {
     Ok(file)
 }
 
+/// The layer above this module: the error a binary's `main` (or an API handler)
+/// defines for its own failure modes.
+///
+/// The point of this type is the wrapping, not its shape. A real application
+/// error is an enum with a variant per failure mode, one of which holds the
+/// library error; a single field is enough here. What it buys is the second
+/// link: [`AppError::source`] returns the library [`Error`], whose `source()`
+/// returns the `io::Error`, so a reporter now walks
+/// `AppError -> Error -> io::Error`. Nothing *inside* this module can produce
+/// that — see [`Error::source`].
+#[derive(Debug)]
+struct AppError {
+    /// The failure of the storage engine this layer calls into.
+    store_error: Error,
+}
+
+impl fmt::Display for AppError {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "cannot open the record store: {}", self.store_error)
+    }
+}
+
+impl StdError for AppError {
+    /// The library error — the link between this layer's message and the
+    /// `io::Error` underneath it.
+    fn source(&self) -> Option<&(dyn StdError + 'static)> {
+        Some(&self.store_error)
+    }
+}
+
+impl From<Error> for AppError {
+    /// What `?` uses when a library error crosses into this layer.
+    fn from(store_error: Error) -> Self {
+        Self { store_error }
+    }
+}
+
+/// Open a record through the application layer.
+///
+/// The one `?` below is the whole trick: it calls [`From::from`], so the library
+/// error becomes `AppError`'s `source()` and the chain grows by a link. The
+/// library side of the call ([`open_file_at`]) needed no change to allow this.
+fn open_record(path: &Path) -> std::result::Result<File, AppError> {
+    let file = open_file_at(path)?;
+    Ok(file)
+}
+
 /// Printed when the probe path does exist after all — impossible by
 /// construction, but the demo says so instead of pretending to fail.
 const UNEXPECTED_PROBE_EXISTS: &str = "unexpected: the probe path exists after all";
@@ -289,6 +342,9 @@ pub fn demo(sink: &Demo) -> DemoResult {
     sink.step("Mapping at the call site does the same thing in one step");
     report_open(sink, open_file_at(&missing));
 
+    sink.step("One layer up, the app error wraps this one, so the chain has two links");
+    report_open(sink, open_record(&missing));
+
     sink.step("An impossible invariant gets its own variant, never confused with the above");
     report(
         sink,
@@ -299,6 +355,7 @@ pub fn demo(sink: &Demo) -> DemoResult {
     sink.detail("Display  is one sentence for humans (see every line above)");
     sink.detail("Debug    is derived, for tests and logs, and shows every field");
     sink.detail("source() is what a reporter walks to print the whole cause chain");
+    sink.detail("the chain is as long as the layers: the app error above this module adds one");
     Ok(())
 }
 
@@ -316,10 +373,11 @@ fn missing_path() -> PathBuf {
 
 /// Print the outcome of one of the demo's opening attempts.
 ///
-/// The three call sites differ only in *how* they get their error (bare `?`,
-/// `with_path` afterwards, mapping at the call site), so the printing lives
-/// here once.
-fn report_open(sink: &Demo, opened: Result<File>) {
+/// The four call sites differ only in *how* they get their error (bare `?`,
+/// `with_path` afterwards, mapping at the call site, and the application layer
+/// wrapping the result), so the printing lives here once. Generic, because the
+/// last one fails with [`AppError`] rather than [`Error`].
+fn report_open<E: StdError>(sink: &Demo, opened: std::result::Result<File, E>) {
     match opened {
         Ok(_) => sink.detail(UNEXPECTED_PROBE_EXISTS),
         Err(err) => report(sink, &err),
@@ -327,7 +385,11 @@ fn report_open(sink: &Demo, opened: Result<File>) {
 }
 
 /// Print one error three ways, so the difference is visible side by side.
-fn report(sink: &Demo, err: &Error) {
+///
+/// Takes a trait object, the way a reporter at the top of a program does: it
+/// does not know (or care) whether it is looking at [`Error`] or at the
+/// [`AppError`] wrapping it — only at how deep the chain reaches.
+fn report(sink: &Demo, err: &dyn StdError) {
     sink.detail(format!("Display : {err}"));
     sink.detail(format!("Debug   : {err:?}"));
     sink.detail(format!("source  : {}", source_chain(err)));
@@ -445,14 +507,56 @@ mod tests {
     }
 
     #[test]
-    fn source_chain_flattens_nested_causes() {
-        let err = Error::io(io::Error::from(io::ErrorKind::NotFound));
-        let rendered = source_chain(&err);
-        assert!(
-            !rendered.contains("(none)"),
-            "the io error must show up in the chain, got {rendered:?}"
+    fn source_chain_lists_every_layer() {
+        // One layer is all the library can offer: it is the outermost error
+        // until something wraps it, and its cause is a leaf `io::Error`.
+        let probe = missing_path();
+        let err = open_file_at(&probe).expect_err("the probe path does not exist");
+        // The one link is the io::Error itself — compare against its own Display
+        // instead of hard-coding the platform's wording for "file not found".
+        let cause = err.source().expect("Io wraps an io::Error").to_string();
+        assert_eq!(
+            source_chain(&err),
+            cause,
+            "the library error's only cause is the io::Error"
         );
+        assert!(
+            !source_chain(&err).contains(" -> "),
+            "and it is the only one: the walk stops at the io::Error"
+        );
+
+        // The app error on top of it is what makes the walk worth writing: two
+        // links, the library error first, the `io::Error` it wraps last. Moving
+        // the error in (instead of opening the probe again) also pins
+        // `From<Error> for AppError`.
+        let rendered = source_chain(&AppError::from(err));
+        assert!(
+            rendered.starts_with(&format!("io error on {}: ", probe.display())),
+            "the library error is the first link, got {rendered:?}"
+        );
+        assert!(
+            rendered.ends_with(&format!(" -> {cause}")),
+            "the io error is the last link, got {rendered:?}"
+        );
+
+        // Variants that wrap nothing end the walk instead of looping it.
         assert_eq!(source_chain(&Error::Internal("boom".into())), "(none)");
+    }
+
+    #[test]
+    fn app_error_wraps_the_library_error_and_says_so() {
+        // The same two things every `Error` variant is pinned for above: the
+        // exact sentence, and whether `source()` has a link. `Internal` keeps
+        // the message deterministic (no platform io wording).
+        let err = AppError::from(Error::Internal("boom".into()));
+        assert_eq!(
+            err.to_string(),
+            "cannot open the record store: internal error: boom"
+        );
+        assert!(
+            err.source().is_some(),
+            "the library error is the app error's link, so source() must be Some"
+        );
     }
 
     #[test]
@@ -474,6 +578,7 @@ mod tests {
             "corrupt record in file 3 at offset 4096: crc32 mismatch",
             "io error: ",
             with_path.as_str(),
+            "cannot open the record store: io error on ",
             "internal error: file id space exhausted",
         ] {
             assert!(

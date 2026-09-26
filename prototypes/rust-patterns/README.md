@@ -18,8 +18,9 @@ cargo run error_enum     # run one pattern's walkthrough
 just                     # same as `cargo run`
 just run error_enum      # same as `cargo run error_enum`
 just test                # unit tests + doc tests
-just check               # cargo fmt --check + clippy -D warnings + Markdown check
+just check               # cargo fmt --check + clippy -D warnings + Markdown/rustdoc check
 just check-md            # report unformatted Markdown only
+just check-doc           # report rustdoc warnings only (broken or private doc links)
 just fmt                 # format everything: Rust, Markdown, the Justfile
 just fmt-md              # format Markdown only
 just doc                 # rustdoc: the write-ups live in doc comments
@@ -45,10 +46,13 @@ reads like a sentence:
   the `source()` chain a reporter walks, `?` working through
   `From<io::Error>`, and `with_path` to complete a path-less error afterwards
 - **Run it**: `cargo run error_enum` (the demo opens a throwaway
-  path that cannot exist, so a real `io::Error` shows up)
+  path that cannot exist, so a real `io::Error` shows up, and ends with an
+  application-layer `AppError` wrapping the library error — that wrapper is what
+  makes the `source()` chain two links long)
 - **Source**: [src/patterns/error_enum.rs](./src/patterns/error_enum.rs)
 - **Comes from**: [tiny-bitcask](../tiny-bitcask/src/error.rs)'s real `error.rs`,
-  simplified; closest book section:
+  simplified (the application-layer `AppError` at the end of the demo is added by
+  the walkthrough — the real file has no such wrapper); closest book section:
   [Idiomatic Errors](https://rust-unofficial.github.io/patterns/idioms/ffi/errors.html)
 
 ## Possible next patterns

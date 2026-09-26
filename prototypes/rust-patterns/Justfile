@@ -44,8 +44,8 @@ fmt-md:
         echo "no mdformat available (PATH, repo venv or uvx): skipped Markdown"; \
     fi
 
-# Check what CI would check: formatting (Rust, Markdown, Justfile) + clippy on all targets
-check: check-md
+# Check what CI would check: formatting, clippy, Markdown and rustdoc
+check: check-md check-doc
     cargo fmt --check
     cargo clippy --all-targets --quiet -- -D warnings
     just --fmt --check
@@ -63,6 +63,10 @@ check-md:
         echo "no mdformat available (PATH, repo venv or uvx): cannot check Markdown"; \
         exit 1; \
     fi
+
+# Report rustdoc warnings for lib + bin (no --document-private-items: it hides them)
+check-doc:
+    RUSTDOCFLAGS="${RUSTDOCFLAGS-} -D warnings" cargo doc --no-deps --lib --bins --quiet
 
 # Build the crate docs (the write-ups live in doc comments)
 doc:
