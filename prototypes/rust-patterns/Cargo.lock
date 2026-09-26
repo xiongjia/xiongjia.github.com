@@ -3,5 +3,5 @@
 version = 4
 
 [[package]]
-name = "prototype-example"
+name = "rust-patterns"
 version = "0.1.0"

@@ -34,7 +34,7 @@
   // NOTE: setting linkedProjects disables automatic discovery — add new Rust
   // prototypes to this list.
   "rust-analyzer.linkedProjects": [
-    "prototypes/prototype-example/Cargo.toml",
+    "prototypes/rust-patterns/Cargo.toml",
     "prototypes/tiny-bitcask/Cargo.toml"
   ]
 }

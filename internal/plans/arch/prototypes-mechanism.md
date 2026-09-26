@@ -14,7 +14,7 @@ tags: [prototype, repo, workflow, gitignore, poe]
 ## Goal
 
 Add a **prototype mechanism** to this repo: keep experimental mini-projects
-directly under the repo root (e.g. `prototypes/prototype-example`) so ideas can be
+directly under the repo root (e.g. `prototypes/tiny-bitcask`) so ideas can be
 validated quickly and captured in place, without disturbing the main MkDocs
 build, formatting, or lint workflow.
 
@@ -23,7 +23,7 @@ build, formatting, or lint workflow.
 ### Directory Convention
 
 - [x] Place all prototypes under repo root `prototypes/<name>/`, one subdirectory per prototype
-- [x] Use kebab-case naming (e.g. `prototype-example`, `pmtiles-viewer`)
+- [x] Use kebab-case naming (e.g. `tiny-bitcask`, `protomaps-map-view`)
 - [x] Each prototype has its own `README.md` describing purpose, usage, and
   current status, and may maintain its own environment (e.g. a local `.venv`)
 - [x] Prototypes are NOT part of the MkDocs build (not registered in
@@ -48,7 +48,7 @@ build, formatting, or lint workflow.
   `*.pdb`), while keeping `Cargo.lock` tracked (binary crate convention):
 
   ```gitignore
-  # prototypes/prototype-example/.gitignore
+  # prototypes/<name>/.gitignore
   debug/
   target/
   **/*.rs.bk
@@ -105,7 +105,7 @@ build, formatting, or lint workflow.
 
 ### First Prototype Validation
 
-- [x] Create `prototypes/prototype-example` as the first prototype to validate the whole flow
+- [x] Create the first prototype to validate the whole flow
 - [x] Keep it a **minimal Rust app** (hello-world style, no external deps):
   validates that a non-Python toolchain project sits cleanly in the repo
   without disturbing the MkDocs / ruff / mdformat workflow
@@ -158,8 +158,8 @@ build, formatting, or lint workflow.
 - **Prototype vs. real project**: a validated prototype can be promoted to a
   real project (e.g. a plan under `internal/plans/` or a standalone repo) instead of
   being maintained long-term inside `prototypes/`
-- **First prototype is language-agnostic**: `prototype-example` (Rust) proves the
-  mechanism works for any toolchain; prototypes may use any language/toolchain
+- **Toolchain-agnostic by design**: the first prototype was Rust, which proved
+  the mechanism works for any toolchain; prototypes may use any language
   (Python `.venv`, Node, Rust cargo, etc.), each keeping its own environment
 - **Site listing**: prototypes are committed, so a `docs/notes/prototypes.md`
   page documents each prototype and jumps to its GitHub tree path
@@ -172,9 +172,9 @@ build, formatting, or lint workflow.
   per-prototype READMEs, code comments) is written in English; the site
   listing page `docs/notes/prototypes.md` is in Chinese (it is a `docs/`
   page, not prototype content)
-- **prototype-example is an example, not a practical prototype**: its
-  descriptions (index, README, site page) state it only validates the
-  mechanism — it has no real feature
+- **A throwaway validation is fine**: when a prototype only proves the
+  mechanism and has no real feature, its descriptions (index, README, site
+  page) should say so
 - Related files (paths relative to this archive location): `../../../pyproject.toml`,
   `../../../AGENTS.md`, `../../../prototypes/README.md`, `../../../mkdocs.yml`,
   `../../../docs/notes/`
