@@ -99,6 +99,12 @@ just check             # cargo fmt --check && cargo clippy --all-targets -- -D w
 just doc               # cargo doc --no-deps --open
 ```
 
+> **Post-archive note (2026-09-26).** These snapshots lag the prototype: the
+> Justfile now also has `check-doc` (`cargo doc --no-deps --lib --bins` with
+> rustdoc warnings as errors, wired into `just check`), and the prototype
+> `README.md` is the live recipe list. Recorded so the gap is not mistaken for an
+> omission; the milestone checklists above are left as written.
+
 **Not chosen for now (reason kept, so it is not relitigated each time):** a
 `clap`-based CLI with subcommands; an `examples/<id>.rs` entry per pattern; a
 `registry.rs` / `runner.rs` split; a separate `tests/<id>.rs` per pattern. Each
