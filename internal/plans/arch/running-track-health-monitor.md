@@ -165,7 +165,7 @@ running_page-deployed fetch was replaced). `scripts/sync_running.py` uses the
 ## Iterations after the initial phases (completed)
 
 Beyond the checklist above, the following product iterations were implemented
-and are documented in the [design doc](../running-track-design.md):
+and are documented in the [design doc](../../running-track-design.md):
 
 - **Heart-rate data**: `Avg HR` column added to activity tables; merged into
   the monthly chart as a `line` series
@@ -188,11 +188,11 @@ and are documented in the [design doc](../running-track-design.md):
 
 ## References
 
-- [Running Track — Design Doc](../running-track-design.md) — architecture & rendering decisions
+- [Running Track — Design Doc](../../running-track-design.md) — architecture & rendering decisions
 - [Deployed running_page site](https://xiongjia.github.io/running_page/) — data source
 - [running_page: run_data_sync.yml](https://github.com/xiongjia/running_page/blob/master/.github/workflows/run_data_sync.yml) — upstream sync schedule
 - [running_page: Activity model](https://github.com/xiongjia/running_page/blob/master/run_page/generator/db.py)
-- [Health Monitor](../../docs/notes/health/index.md)
-- [Weight Track macros](../../docs/notes/health/macros/weight_macros.py) — reference pattern
-- [Retirement macros](../../docs/notes/health/macros/retire_macros.py) — reference pattern
-- [add_weight_week.py](../../scripts/add_weight_week.py) — script + poe task + test pattern
+- [Health Monitor](../../../docs/notes/health/index.md)
+- [Weight Track macros](../../../docs/notes/health/macros/weight_macros.py) — reference pattern
+- [Retirement macros](../../../docs/notes/health/macros/retire_macros.py) — reference pattern
+- [add_weight_week.py](../../../scripts/add_weight_week.py) — script + poe task + test pattern

@@ -137,5 +137,5 @@ service (`PgBossService`) has **unit tests** (pg-boss mocked, no real DB) and an
 - [@pg-boss/dashboard](https://www.npmjs.com/package/@pg-boss/dashboard) — web debugging UI
 - [NestJS](https://docs.nestjs.com/) — DI / ConfigModule / Logger / [testing guide](https://docs.nestjs.com/fundamentals/testing)
 - [NestJS Swagger](https://docs.nestjs.com/openapi/introduction) — manual decorator mode
-- [Collection: dev-tools → Job Queue](../../docs/notes/collection/dev-tools.md) — pg-boss entry
+- [Collection: dev-tools → Job Queue](../../../docs/notes/collection/dev-tools.md) — pg-boss entry
 - Prototype conventions: `AGENTS.md` → Prototype Convention

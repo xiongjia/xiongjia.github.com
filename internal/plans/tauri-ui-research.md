@@ -10,7 +10,7 @@ tags: [tauri, desktop, mobile, rust, research, prototype]
 
 学习 Tauri 框架做桌面端（Tauri 2）与移动端（iOS/Android）应用：
 架构原理（Rust core + WebView 前端）、IPC、插件体系、打包分发，
-评估与本项目 Rust 学习路线（`docs/notes/research/topics/rust/`）的衔接。
+评估与本项目 Rust 学习路径（`prototypes/rust-patterns/`）的衔接。
 
 产出形式：research 笔记或 prototype。内容落在
 `docs/notes/research/topics/tauri/`；原型放 `prototypes/tauri-app/`。

@@ -1,0 +1,69 @@
+# Command recipes for the rust-patterns prototype.
+# Requires: just (https://github.com/casey/just), cargo.
+# Markdown is formatted with mdformat, resolved in this order: mdformat on PATH,
+# the repo's uv environment (this prototype lives inside it -> uv run --project),
+# then a standalone uvx run with the gfm/frontmatter plugins (mdformat alone
+# cannot format GFM tables). Every branch scans '.' from this directory because
+# mdformat's --exclude matches relative to the scanned path, so `target/**` has
+# to be spelled the same way everywhere -- rustdoc copies licence .md files into
+# target/ and those must never be reformatted.
+# All recipes run inside this prototype directory: `just run error_enum`
+
+# Show every runnable pattern (same as `cargo run` with no argument)
+default:
+    cargo run --quiet
+
+# Run one pattern's demo, e.g. `just run error_enum`
+run id:
+    cargo run --quiet -- {{ id }}
+
+# Unit tests + doc tests (doc tests need a lib target, which is why src/lib.rs exists)
+test:
+    cargo test --quiet
+
+# Format everything: Rust, Markdown, this Justfile, and Cargo.toml when taplo exists
+fmt: fmt-md
+    cargo fmt
+    just --fmt
+    @if command -v taplo >/dev/null 2>&1; then \
+        taplo fmt Cargo.toml; \
+    else \
+        echo "taplo not installed, skipped Cargo.toml (cargo install taplo-cli)"; \
+    fi
+
+# Format Markdown only (mdformat from the repo venv, or a standalone uvx run)
+fmt-md:
+    @if command -v mdformat >/dev/null 2>&1; then \
+        mdformat . --exclude 'target/**'; \
+    elif [ -f ../../pyproject.toml ]; then \
+        uv run --quiet --project ../.. mdformat . --exclude 'target/**'; \
+    elif command -v uvx >/dev/null 2>&1; then \
+        uvx --quiet --with mdformat-gfm --with mdformat-frontmatter \
+            mdformat . --exclude 'target/**'; \
+    else \
+        echo "no mdformat available (PATH, repo venv or uvx): skipped Markdown"; \
+    fi
+
+# Check what CI would check: formatting (Rust, Markdown, Justfile) + clippy on all targets
+check: check-md
+    cargo fmt --check
+    cargo clippy --all-targets --quiet -- -D warnings
+    just --fmt --check
+
+# Report Markdown that is not formatted, without rewriting it
+check-md:
+    @if command -v mdformat >/dev/null 2>&1; then \
+        mdformat . --exclude 'target/**' --check; \
+    elif [ -f ../../pyproject.toml ]; then \
+        uv run --quiet --project ../.. mdformat . --exclude 'target/**' --check; \
+    elif command -v uvx >/dev/null 2>&1; then \
+        uvx --quiet --with mdformat-gfm --with mdformat-frontmatter \
+            mdformat . --exclude 'target/**' --check; \
+    else \
+        echo "no mdformat available (PATH, repo venv or uvx): cannot check Markdown"; \
+        exit 1; \
+    fi
+
+# Build the crate docs (the write-ups live in doc comments)
+doc:
+    cargo doc --no-deps --open

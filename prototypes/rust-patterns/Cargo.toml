@@ -1,0 +1,13 @@
+[package]
+name = "rust-patterns"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+description = "Learning prototype: runnable Rust patterns (library + a single CLI entry)"
+license = "MIT"
+publish = false
+
+# No dependencies on purpose: the prototype is a place to write the abstractions
+# by hand (error enums, builders, typestates, ...) rather than to pull crates in.
+
+[dependencies]

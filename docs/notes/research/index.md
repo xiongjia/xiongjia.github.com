@@ -45,7 +45,6 @@ graph LR
 | [Lux](./topics/lux/index.md)                       | Tools                   | draft  | Go 视频下载器，支持多个视频网站下载视频和音频   |
 | [Redash](./topics/redash/index.md)                 | Tools                   | draft  | 查询结果缓存机制与 Dashboard 自定义布局实现原理 |
 | [trip](./topics/trip/index.md)                     | Tools                   | draft  | TRIP 项目核心原理与代码阅读指南                 |
-| [Rust](./topics/rust/index.md)                     | Learning Plans          | draft  | 7 阶段学习路线图：基础语法到并发异步            |
 | [nest-commander](./topics/nest-commander/index.md) | Libraries or Frameworks | draft  | NestJS CLI 构建工具                             |
 | [Better Auth](./topics/better-auth/index.md)       | Libraries or Frameworks | draft  | 源码阅读指南                                    |
 | [NestJS](./topics/nestjs/index.md)                 | Libraries or Frameworks | draft  | Module 注入原理与核心源码分析                   |
@@ -61,7 +60,6 @@ ______________________________________________________________________
 
 ## Learning Plans
 
-- [Rust](./topics/rust/index.md): Rust 学习计划 — 从基础语法到并发异步的 7 阶段路线图。
 - [English](./topics/english/index.md): English Scraps — 日常英语碎片（生词/语法/难句/搭配）随手收集 + AI 归档整理；特殊主题（如 Hollow Knight）阅读按需展开。
 
 ## Libraries or Frameworks

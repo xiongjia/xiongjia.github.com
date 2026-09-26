@@ -123,6 +123,6 @@ The old "source code reading guide" is replaced.
 
 - [shadcn/ui docs](https://ui.shadcn.com/docs)
 - [shadcn/ui installation](https://ui.shadcn.com/docs/installation)
-- [shadcn/ui Topic](../../docs/notes/research/topics/shadcn-ui/)
-- [DuckDB Topic (structure reference)](../../docs/notes/research/topics/duckdb/index.md)
-- [Protomaps Topic (structure reference)](../../docs/notes/research/topics/protomaps/index.md)
+- [shadcn/ui Topic](../../../docs/notes/research/topics/shadcn-ui/)
+- [DuckDB Topic (structure reference)](../../../docs/notes/research/topics/duckdb/index.md)
+- [Protomaps Topic (structure reference)](../../../docs/notes/research/topics/protomaps/index.md)

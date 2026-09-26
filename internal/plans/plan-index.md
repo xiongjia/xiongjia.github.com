@@ -55,6 +55,8 @@ tags: [refactor, mkdocs]
 
 - `status: completed` — all tasks done
 - `status: cancelled` — abandoned / superseded (note the reason in the body)
+- Moving into `arch/` adds a directory level: bump the plan's relative links
+  accordingly (`../../docs/...` → `../../../docs/...`), or they break silently
 
 ## Plan List
 

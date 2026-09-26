@@ -17,7 +17,6 @@ hide:
 | Prototype                                           | Category                          | Status          | Created    |
 | --------------------------------------------------- | --------------------------------- | --------------- | ---------- |
 | [ali-oss-client](#ali-oss-client)                   | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-01 |
-| [prototype-example](#prototype-example)             | [Others](#others)                 | 🟡 Experimental | 2026-08-01 |
 | [go-cli-urfave](#go-cli-urfave)                     | [Utilities](#utilities)           | 🟢 Working      | 2026-08-03 |
 | [supabase-storage-client](#supabase-storage-client) | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-04 |
 | [r2-client](#r2-client)                             | [Object Storage](#object-storage) | 🟢 Working      | 2026-08-05 |
@@ -25,6 +24,7 @@ hide:
 | [etl-dbt](#etl-dbt)                                 | [ETL](#etl)                       | 🟢 Working      | 2026-08-26 |
 | [pg-boss-demo](#pg-boss-demo)                       | [Job Queue](#job-queue)           | 🟢 Working      | 2026-08-30 |
 | [tiny-bitcask](#tiny-bitcask)                       | [Database](#database)             | 🟡 Experimental | 2026-09-11 |
+| [rust-patterns](#rust-patterns)                     | [Rust](#rust)                     | 🟡 Experimental | 2026-09-25 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -167,15 +167,14 @@ Bitcask 数据结构，README 即设计文档。
   （不做只读并发打开）、无范围扫描 / TTL / batch / 压缩
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/tiny-bitcask)
 
-## Others
+## Rust
 
-### prototype-example
+### rust-patterns
 
-最小 Rust hello-world **示例**，用于验证原型机制的完整流程（不是实际功能原型）。
+Rust 抽象的学习原型（长期维护）：把平时反复遇到的抽象写成能跑的小例子，为什么这么
+写就写在代码旁边（用法与各模式的说明见原型 README）。
 
-- 证明非 Python 工具链项目可以干净地放在 `prototypes/` 下
-- 不影响 MkDocs 构建、ruff / mdformat 格式化与 lint
-- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/prototype-example)
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/rust-patterns)
 
 ______________________________________________________________________
 

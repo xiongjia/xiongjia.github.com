@@ -45,4 +45,4 @@ Topic 增加一个「状态」维度，让读者一眼看出该主题是活跃�
 
 ## References
 
-- [Research Index](../../docs/notes/research/index.md)
+- [Research Index](../../../docs/notes/research/index.md)

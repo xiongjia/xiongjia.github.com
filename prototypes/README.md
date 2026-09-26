@@ -62,7 +62,14 @@ Python `.venv/`, Node `node_modules/`).
   tests, design notes (disk format, data flow, deviations from the paper) in
   the README · created 2026-09-11 · status `experimental` (still being tested)
 
-## Others
+## Rust
+
+- **[rust-patterns](./rust-patterns/README.md)** — Rust abstractions written out
+  as small runnable examples, with the why-notes next to the code (long-term
+  learning prototype; usage and the pattern list are in its README) · created
+  2026-09-25 · status `experimental`
+
+## Maps
 
 - **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS
   generic map view component on a local Protomaps basemap (MapLibre GL JS +
@@ -72,9 +79,6 @@ Python `.venv/`, Node `node_modules/`).
   lines, runtime basemap switching, 5 demos with tab switching, embeddable
   widget (build:widget, plain-HTML / S3 distribution) · created 2026-08-07 ·
   status `working`
-- **[prototype-example](./prototype-example/README.md)** — Minimal Rust
-  hello-world **example** validating the prototype mechanism (not a practical
-  prototype) · created 2026-08-01 · status `experimental`
 
 ## Convention
 
