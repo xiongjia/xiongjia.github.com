@@ -71,6 +71,55 @@ class TestPull:
         _main(monkeypatch, ["pull", "--bucket", "bucket1", "--remote-prefix", "abc/123"])
         assert "r2:bucket1/abc/123/" in run[0]
 
+    def test_mapping_selects_one_named_mapping(self, run, monkeypatch):
+        monkeypatch.setattr(
+            bs,
+            "_bucket_config",
+            lambda: {
+                "mappings": [
+                    {
+                        "prefix": "assets/bucket/film-tv/",
+                        "name": "film-tv",
+                        "bucket": "b",
+                        "base_url": "http://film",
+                    },
+                    {
+                        "prefix": "assets/bucket/",
+                        "remote_prefix": "web-assets/img",
+                        "base_url": "http://generic",
+                    },
+                ]
+            },
+        )
+        assert _main(monkeypatch, ["pull", "--mapping", "film-tv"]) == 0
+        assert len(run) == 1  # only the named mapping is synced
+        assert "r2:b/" in run[0]
+
+    def test_unknown_mapping_fails(self, run, monkeypatch):
+        with pytest.raises(SystemExit, match="unknown bucket mapping"):
+            _main(monkeypatch, ["pull", "--mapping", "nope"])
+
+    def test_local_prefix_narrows_both_sides(self, run, monkeypatch):
+        monkeypatch.setattr(
+            bs,
+            "_bucket_config",
+            lambda: {
+                "mappings": [
+                    {
+                        "prefix": "assets/bucket/film-tv/",
+                        "name": "film-tv",
+                        "bucket": "b",
+                        "remote_prefix": "data/film-tv",
+                        "base_url": "http://film",
+                    }
+                ]
+            },
+        )
+        _main(monkeypatch, ["pull", "--mapping", "film-tv", "--local-prefix", "covers/1292052"])
+        cmd = run[0]
+        assert "r2:b/data/film-tv/covers/1292052" in cmd  # no doubled slash
+        assert str(bs.REPO_ROOT / "docs/assets/bucket/film-tv/covers/1292052") in cmd
+
 
 class TestIncrementalFlags:
     """pull defaults to checksum + fast-list (incremental, fast on S3/R2);

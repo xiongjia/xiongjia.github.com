@@ -197,7 +197,7 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 
 - **`minify`** — Minifies HTML output (`minify_html: true`). `mkdocs-minify-plugin` (third-party)
 - **`search`** — Full-text site search via lunr.js. Built-in
-- **`macros`** — Jinja2 template engine (runs `health_macros.py`). Config: `module_name: docs/notes/health/macros/health_macros`, `render_by_default: false`, `force_render_paths: "notes/health/*"`. `mkdocs-macros-plugin` (third-party)
+- **`macros`** — Jinja2 template engine (runs the site's macro modules). Config: `module_name: shared/macros/loader` (a path, not a dotted name; it delegates to the health module + `shared/macros/film_tv_macros.py`), `render_by_default: false`, `force_render_paths: "notes/health/*" + "notes/film-tv/*"`. `mkdocs-macros-plugin` (third-party)
 - **`mermaid2`** — Renders Mermaid diagrams from fenced code blocks. Config: `version: 10.9.0`, `javascript: assets/javascripts/mermaid.min.js`. `mkdocs-mermaid2-plugin` (third-party)
 - **`drawio`** — Embeds drawio diagrams via `![alt](file.drawio)`. `mkdocs-drawio` (third-party)
 - **`glightbox`** — Lightbox image viewer. `mkdocs-glightbox` (third-party)

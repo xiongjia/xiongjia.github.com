@@ -8,6 +8,36 @@
 >
 > Plan: `internal/plans/arch/bucket-assets.md` (archived, completed).
 
+## Film & TV covers mapping（按 `name` 取 mapping）
+
+影视封面走同一个 bucket 的独立目录，不写回本地 md，因此它是**按名字取 mapping** 的第一个用例：
+
+```yaml
+extra:
+  bucket:
+    mappings:
+      - prefix: assets/bucket/film-tv/   # 更具体，放在通用 assets/bucket/ 之前
+        name: film-tv                     # ← 归档标识（连字符）
+        bucket: web-assets
+        remote_prefix: data/film-tv
+        base_url: "https://<r2>.r2.dev/data/film-tv"   # 必须与 remote_prefix 同路径
+```
+
+- **`name` 的能力**（`shared/bucket.py`）：`load_mappings()` 输出带 `name` / `bucket` /
+  `remote_prefix`；`find_mapping(cfg, name)` 按名精确取用（未知名返回 `None`）；
+  `pick_mapping(cfg, name)` 供 CLI 的 `--mapping <name>` 复用，未知名**直接报错**（不静默回退到
+  通用 mapping）；`bucket-upload` / `bucket-sync` / `bucket-check` 都有这个参数
+- **上传类工具不要求 `base_url`**：`load_mappings()` 默认丢掉没有 `base_url` 的 mapping（URL
+  重写需要它），但 CLI 选择 mapping 只为拿 `prefix` / `bucket` / `remote_prefix`，所以
+  `bucket-sync` / `bucket-check` / `bucket-upload` / `film-tv-upload-covers` 传
+  `require_base_url=False` —— 只上传、暂未配置公开域名的 mapping 也能被 `--mapping` 选中
+- **按名覆写 base_url**：`MKDOCS_BUCKET_BASE_URL_FILM_TV`（名字里的非字母数字 → `_` 且大写）
+  优先于全局 `MKDOCS_BUCKET_BASE_URL`，用来把某一个 mapping 指到 staging 前缀测试
+- **`bucket-sync --local-prefix`**：同时收窄远端与本地子目录（如只同步某一个条目的封面），
+  避免 `rclone sync` 的删除语义波及别处；help 里点明它是 sync 语义
+- 影视归档自己的封面流程（本地缓存 → 开发者上传 → 校验）见
+  [film-tv-design.md](./film-tv-design.md) §5 与 `poe film-tv-upload-covers`
+
 ## Background & Goals
 
 - The site is a static MkDocs build; large images are committed to git and

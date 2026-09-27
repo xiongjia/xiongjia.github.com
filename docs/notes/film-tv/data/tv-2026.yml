@@ -1,0 +1,683 @@
+# Film & TV archive — top-level fields are machine-owned and rewritten from
+# Douban on every sync; edit the `user:` block freely, it is never touched.
+# generated_at: 2026-09-27T16:34+08:00
+- id: "37501131"
+  title: 现在不是出轨的问题
+  original_title: 지금 불륜이 문제가 아닙니다
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 5
+  douban_score: 8.7
+  douban_score_count: 79322
+  marked_at: "2026-09-23"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 惊悚, 犯罪]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 50
+  credits:
+    directors: [李昌熙]
+    casts: [金惠秀, 金志勋, 赵汝贞, 金宰澈, 都嬴㥠, 全诗仙]
+    writers: [郑恩庆, 朴秀莲]
+  episodes: 8
+  slug: the-affair-was-just-the-beginning
+  covers:
+  - covers/37501131/01.webp
+  douban_url: https://movie.douban.com/subject/37501131/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: f088a456
+    machine_hash: 5df96dc1
+    missing_since: null
+- id: "36660844"
+  title: 早春晴朗
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 1
+  douban_score: 6.7
+  douban_score_count: 76443
+  marked_at: "2026-09-13"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
+  credits:
+    directors: [蒋继正]
+    casts: [井柏然, 孙千, 刘小北, 齐天晴, 张晔子, 宁心, 赵振宇, 张优, 彭杨, 郭晓婷]
+    writers: [高小娴]
+  episodes: 24
+  slug: the-early-spring
+  covers:
+  - covers/36660844/01.webp
+  douban_url: https://movie.douban.com/subject/36660844/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: d8a656e1
+    machine_hash: f096a3eb
+    missing_since: null
+- id: "37523009"
+  title: 金特务：本色回归
+  original_title: 김부장
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 7.3
+  douban_score_count: 44279
+  marked_at: "2026-08-30"
+  douban_comment: null
+  tags: []
+  genres: [动作, 惊悚, 犯罪]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 67
+  credits:
+    directors: [李胜英, 李昭垠]
+    casts: [苏志燮, 崔大勋, 尹敬浩, 朱相昱, 孙娜恩, 金成圭, 李在勇, 元贤俊, 朴真宇, 赵福来]
+    writers: [南大中]
+  episodes: 10
+  slug: agent-kim
+  covers:
+  - covers/37523009/01.webp
+  douban_url: https://movie.douban.com/subject/37523009/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 84c10f62
+    machine_hash: 5aaf32d1
+    missing_since: null
+- id: "37296558"
+  title: 择天记
+  original_title: null
+  year: 2026
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2026-07-11"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
+  credits:
+    directors: [曾元俊, 高鹏]
+    casts: [杨昕燃, 段艺璇, 三石, 叶宝华, 刘明月, 李兰陵, 刘峥, 柳真颜, 林帽帽, 瞳音]
+    writers: [施浩文, 徐铭妍, 田芳]
+  episodes: 26
+  slug: fighter-of-the-destiny
+  covers:
+  - covers/37296558/01.webp
+  douban_url: https://movie.douban.com/subject/37296558/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 17d9426d
+    machine_hash: d74021e9
+    missing_since: null
+- id: "36800343"
+  title: 降世神通：最后的气宗 第二季
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 6.1
+  douban_score_count: 1208
+  marked_at: "2026-07-04"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动作, 悬疑, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
+  credits:
+    directors: [Jabbar Raisani（贾巴尔·赖萨尼）]
+    casts: [Gordon Cormier（戈登·科米尔）, 齐亚文提奥, Ian Ousley（伊恩·欧斯利）, Dallas Liu（达拉斯·刘）, 李善亨, 乔恩·琼·布里恩斯, 坦图·卡丁诺, 特瑞·陈, 钱裕扬, 黄经汉]
+    writers: []
+  episodes: 7
+  slug: avatar-the-last-airbender-season-2
+  covers:
+  - covers/36800343/01.webp
+  douban_url: https://movie.douban.com/subject/36800343/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: bae4adb8
+    machine_hash: f430558b
+    missing_since: null
+- id: "36247879"
+  title: 某大叔的VRMMO活动记
+  original_title: とあるおっさんのVRMMO活動記
+  year: 2023
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 4.6
+  douban_score_count: 520
+  marked_at: "2026-06-28"
+  douban_comment: null
+  tags: []
+  genres: [动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
+  credits:
+    directors: [中澤勇一]
+    casts: [石川界人, 浪川大辅, 上田丽奈, 畠中祐, 冈咲美保]
+    writers: [待田堂子]
+  episodes: 12
+  slug: vrmmo
+  covers:
+  - covers/36247879/01.webp
+  douban_url: https://movie.douban.com/subject/36247879/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 747ce931
+    machine_hash: bc48b3f9
+    missing_since: null
+- id: "37167536"
+  title: 深空彼岸
+  original_title: null
+  year: 2026
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2026-06-27"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 18
+  credits:
+    directors: [周琛]
+    casts: [梁达伟, 唐雅菁, 孙恺寅, 曹真, 黄莺, 李卓霆, 王宇航, 桑毓泽, 伍凯立, 林子渝]
+    writers: [袁洁]
+  episodes: 26
+  slug: the-other-side-of-deep-space
+  covers:
+  - covers/37167536/01.webp
+  douban_url: https://movie.douban.com/subject/37167536/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: a47c6aa9
+    machine_hash: e99ed81f
+    missing_since: null
+- id: "37441858"
+  title: 躲在超市后门抽烟的两人
+  original_title: スーパーの裏でヤニ吸うふたり
+  year: 2026
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 8.0
+  douban_score_count: 23059
+  marked_at: "2026-06-14"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
+  credits:
+    directors: [铃木理人, 森葵]
+    casts: [佐藤拓也, 星希成奏, 行成桃姬, 丰口惠美, 安田陆矢, 日笠阳子, 高桥伸也]
+    writers: [井上美绪]
+  episodes: 12
+  slug: smoking-behind-the-supermarket-with-you
+  covers:
+  - covers/37441858/01.webp
+  douban_url: https://movie.douban.com/subject/37441858/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 845e014a
+    machine_hash: dd58ac87
+    missing_since: null
+- id: "37071123"
+  title: 铁拳教育
+  original_title: 참교육
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 8.7
+  douban_score_count: 192784
+  marked_at: "2026-06-14"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 60
+  credits:
+    directors: [洪忠灿]
+    casts: [金武烈, 李星民, 秦基周, 表志勋, 贺营]
+    writers: [李南奎]
+  episodes: 10
+  slug: teach-you-a-lesson
+  covers:
+  - covers/37071123/01.webp
+  douban_url: https://movie.douban.com/subject/37071123/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 47f9977f
+    machine_hash: 195093bd
+    missing_since: null
+- id: "37296314"
+  title: 大唐迷雾
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 5.8
+  douban_score_count: 4831
+  marked_at: "2026-06-08"
+  douban_comment: null
+  tags: []
+  genres: [悬疑, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
+  credits:
+    directors: [项秋良, 项河生]
+    casts: [冯绍峰, 邬君梅, 李彧, 邵芸, 单敬尧, 徐海乔]
+    writers: [张兆喆]
+  episodes: 25
+  slug: douban-37296314
+  covers:
+  - covers/37296314/01.webp
+  douban_url: https://movie.douban.com/subject/37296314/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 01594c2b
+    machine_hash: 7b770975
+    missing_since: null
+- id: "35517044"
+  title: 低智商犯罪
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.2
+  douban_score_count: 240896
+  marked_at: "2026-06-02"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 犯罪]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
+  credits:
+    directors: [刘海波]
+    casts: [王骁, 田曦薇, 王传君, 朱云峰, 张瑞涵, 姜冠南, 马旭东, 宋郁河, 董宝石, 雷佳音]
+    writers: [王少雄, 孙晚成, 张金梦]
+  episodes: 24
+  slug: born-with-luck
+  covers:
+  - covers/35517044/01.webp
+  douban_url: https://movie.douban.com/subject/35517044/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: d52b4bce
+    machine_hash: 3e2f05e1
+    missing_since: null
+- id: "37220896"
+  title: 剑来 第二季
+  original_title: null
+  year: 2025
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 5
+  douban_score: 8.4
+  douban_score_count: 28051
+  marked_at: "2026-04-27"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 30
+  credits:
+    directors: [田刚, 尹立权, 马华]
+    casts: [陈浩, 陈张太康, 张惠霖, 吴磊, 李潇宇, 黄莺, 刘浏, 胡霖, 张如麟, 陈诗语]
+    writers: [马华, 屈亦张, 夏应哲, 左晓慧]
+  episodes: 27
+  slug: sword-of-coming-2
+  covers:
+  - covers/37220896/01.webp
+  douban_url: https://movie.douban.com/subject/37220896/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: abdee0a8
+    machine_hash: 4e91f598
+    missing_since: null
+- id: "37239408"
+  title: 匹兹堡医护前线 第二季
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 5
+  douban_score: 8.6
+  douban_score_count: 32151
+  marked_at: "2026-04-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
+  credits:
+    directors: [John Wells（约翰·威尔斯）, Noah Wyle（诺亚·怀尔）, 肖恩·海托西]
+    casts: [Noah Wyle（诺亚·怀尔）, Patrick Ball（帕特里克·鲍尔）, Katherine LaNasa（凯瑟琳·拉纳萨）, Supriya Ganesh（苏普丽雅·加内什）, 菲奥娜·道里夫, 泰勒·德尔登, 伊莎·布里昂斯, 杰乐伦·霍威尔, 莎巴娜·阿齐兹, 肖恩·海托西]
+    writers: [R·斯科特·格雷米尔, 乔·萨克斯, Noah Wyle（诺亚·怀尔）, 辛西娅·阿达克瓦, 西姆兰·拜德万, 瓦莱丽·楚, Kirsten Pierre-Geyfman]
+  episodes: 15
+  slug: the-pitt-season-2
+  covers:
+  - covers/37239408/01.webp
+  douban_url: https://movie.douban.com/subject/37239408/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 9e9b2665
+    machine_hash: b8329890
+    missing_since: null
+- id: "36838220"
+  title: 刃牙道：无敌武士
+  original_title: バキ道
+  year: 2026
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 6.9
+  douban_score_count: 1004
+  marked_at: "2026-03-22"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
+  credits:
+    directors: [平野俊贵]
+    casts: [岛崎信长, 大塚明夫, 内田直哉, 小山力也, 江口拓也, 菅生隆之, 川原庆久, 岛田敏, 三宅健太, 金尾哲夫]
+    writers: [浦畑达彦]
+  episodes: 13
+  slug: douban-36838220
+  covers:
+  - covers/36838220/01.webp
+  douban_url: https://movie.douban.com/subject/36838220/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: abc83a80
+    machine_hash: c061c090
+    missing_since: null
+- id: "36559697"
+  title: 海贼王(真人版) 第二季
+  original_title: null
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 5
+  douban_score: 8.7
+  douban_score_count: 18749
+  marked_at: "2026-03-16"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 奇幻, 冒险]
+  regions: [美国, 英国, 南非, 日本]
+  languages: [英语]
+  runtime: 60
+  credits:
+    directors: [Emma Sullivan（艾玛·沙利文）, Josef Kubota Wladyka（约瑟夫·久保田·瓦迪卡）, 克里斯托夫·施雷韦, 卢卡斯·艾特林]
+    casts: [伊纳基·戈多伊, 新田真剑佑, Emily Rudd（埃米莉·拉德）, Jacob Gibson（雅各布·吉布森）, 塔兹·斯凯拉, 大卫·达斯马齐连, 凯蒂·萨加尔, 蕾拉·阿波娃, 马克·哈雷利克, 查瑞莎·钱德兰]
+    writers: [马特·欧文斯, 伊恩·斯托克斯, 阿什莉·威格菲尔德, 汤姆·海因德曼, 琳赛·盖尔芬德, 艾莉森·温特劳布, 乔·特拉奇, Alex Regnery, 伊丽莎白·亨特]
+  episodes: 8
+  slug: one-piece-season-2
+  covers:
+  - covers/36559697/01.webp
+  douban_url: https://movie.douban.com/subject/36559697/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 70f5dc6a
+    machine_hash: b4c4dc9a
+    missing_since: null
+- id: "36576840"
+  title: 机智住院医生生活
+  original_title: 언젠가는 슬기로울 전공의생활
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.4
+  douban_score_count: 22987
+  marked_at: "2026-03-06"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 80
+  credits:
+    directors: [李敏洙]
+    casts: [高允贞, 申始雅, 韩怡芝, 姜有皙, 郑浚远, 柳演锡, 郑敬淏, 安恩真, 李凤辇, 李昌勋]
+    writers: [金松熙]
+  episodes: 12
+  slug: resident-playbook
+  covers:
+  - covers/36576840/01.webp
+  douban_url: https://movie.douban.com/subject/36576840/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 056e6a23
+    machine_hash: 3c602f98
+    missing_since: null
+- id: "36363991"
+  title: 爱情怎么翻译？
+  original_title: 이 사랑 통역 되나요?
+  year: 2026
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 8.3
+  douban_score_count: 140508
+  marked_at: "2026-02-20"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 爱情]
+  regions: [韩国]
+  languages: [韩语, 英语, 日语, 意大利语]
+  runtime: 60
+  credits:
+    directors: [刘英恩]
+    casts: [金宣虎, 高允贞, 福士苍汰, 李伊潭, 崔佑成]
+    writers: [洪静恩, 洪美兰]
+  episodes: 12
+  slug: can-this-love-be-translated
+  covers:
+  - covers/36363991/01.webp
+  douban_url: https://movie.douban.com/subject/36363991/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: f49d29ea
+    machine_hash: 14f5fbc2
+    missing_since: null

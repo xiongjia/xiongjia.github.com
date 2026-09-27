@@ -43,6 +43,13 @@ extra:
         bucket: web-assets
         remote_prefix: data/metadata/running
         base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/metadata/running"
+      # Film & TV archive covers (see internal/film-tv-design.md §5). Same
+      # bucket, own remote dir; `name` is used by --mapping / the check script.
+      - prefix: assets/bucket/film-tv/
+        name: film-tv
+        bucket: web-assets
+        remote_prefix: data/film-tv
+        base_url: "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv"
       # Images (generic, placed after more specific prefixes)
       - prefix: assets/bucket/
         bucket: web-assets
@@ -75,6 +82,17 @@ extra:
     # Setting it (e.g. 2000) is the single biggest size win for phone photos
     # — a 2186x2729 q90 photo is ~1.0MB, q85+max2000 is ~0.5MB.
     # max_dimension: 2000
+  # Film & TV archive (Douban sync; see internal/film-tv-design.md)
+  film_tv:
+    local_prefix: assets/bucket/film-tv/   # cover keys are archive-relative; consumers prepend this
+    covers_default: 1                 # 1 = main poster from the subject page (no extra request)
+    cover_max_dimension: 800          # cover-only long-edge cap (not optimize_images.max_dimension)
+    cover_quality: 80                 # covers do not need full article quality
+    # 影人 name display: hint (only transliterated names flip to 原文（中文）),
+    # latin (always prefer the Latin form), zh (always keep Douban's Chinese)
+    person_name_style: hint
+    data_dir: docs/notes/film-tv/data/
+    json_dir: docs/notes/film-tv/assets/
   # local bot task registry for `poe bot` (see internal/bot-auto-pr-design.md).
   # Builtin tasks (weight / health-summary / sync-running / enu) stay in
   # scripts/git_bot.py; entries here add or override template tasks —
@@ -272,6 +290,7 @@ extra:
 # docs fragments pulled in via `<!-- include: ... -->` — never built as pages
 exclude_docs: |
   notes/health/_summary.md
+  notes/film-tv/data/
 
 # extra CSS
 extra_css:
@@ -283,11 +302,15 @@ extra_css:
   - assets/stylesheets/back-link.css
   - assets/stylesheets/fitness.css
   - assets/stylesheets/running.css
+  - assets/stylesheets/film-tv.css
 extra_javascript:
   - assets/javascripts/retire.js
   - assets/javascripts/fitness.js
   - notes/health/running-route-core.js
   - notes/health/running-route.js
+  - assets/javascripts/film-tv-core.js
+  - assets/javascripts/film-tv.js
+  - assets/javascripts/film-tv-chart.js
   
 # hooks (custom Python modules treated as plugins)
 hooks:
@@ -313,14 +336,23 @@ plugins:
         - assets/stylesheets/weight.css
         - assets/stylesheets/fitness.css
         - assets/stylesheets/running.css
+        - assets/stylesheets/film-tv.css
       js_files:
         - assets/javascripts/retire.js
         - assets/javascripts/fitness.js
+        - assets/javascripts/film-tv-core.js
+        - assets/javascripts/film-tv.js
+        - assets/javascripts/film-tv-chart.js
   - search:
   - macros:
-      module_name: docs/notes/health/macros/health_macros
+      # single local module_name allowed by the plugin → shared/macros/loader.py
+      # (resolved as a *path* under the project root, not a dotted module name);
+      # it delegates to the health and film-tv macro modules
+      module_name: shared/macros/loader
       render_by_default: false
-      force_render_paths: "notes/health/*"
+      force_render_paths: |
+        notes/health/*
+        notes/film-tv/*
   - mermaid2:
       version: 10.9.0
       javascript: assets/javascripts/mermaid.min.js
@@ -466,6 +498,11 @@ nav:
       - Retirement Countdown: notes/health/retire.md
       - Weight Track: notes/health/weight.md
       - Running Track: notes/health/running.md
+    - Film & TV:
+      - notes/film-tv/index.md
+      - Movies: notes/film-tv/movies.md
+      - TV: notes/film-tv/tv.md
+      - People: notes/film-tv/people.md
     - Posts: notes/posts/index.md
   - Projects: projects/index.md
   - Moments: moments/index.md

@@ -1,0 +1,2846 @@
+{
+ "count": 60,
+ "first_date": "2026-09-25",
+ "items": [
+  {
+   "casts": [
+    "薛景求",
+    "红炅",
+    "柳承范",
+    "朴海秀",
+    "柊木阳太",
+    "全度妍",
+    "尹敬浩",
+    "山田孝之",
+    "笠松将",
+    "椎名桔平"
+   ],
+   "category": "feature",
+   "cover": "covers/36909418/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36909418/01.webp",
+   "date": "2026-09-25",
+   "directors": [
+    "卞成贤"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "喜剧",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "36909418",
+   "missing": false,
+   "original_title": "굿뉴스",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 136,
+   "slug": "good-news",
+   "status": "collect",
+   "tags": [
+    "Movie"
+   ],
+   "title": "凶降喜讯",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36909418/",
+   "writers": [
+    "卞成贤"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "金惠秀",
+    "金志勋",
+    "赵汝贞",
+    "金宰澈",
+    "都嬴㥠",
+    "全诗仙"
+   ],
+   "category": "series",
+   "cover": "covers/37501131/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37501131/01.webp",
+   "date": "2026-09-23",
+   "directors": [
+    "李昌熙"
+   ],
+   "douban_score": 8.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "37501131",
+   "missing": false,
+   "original_title": "지금 불륜이 문제가 아닙니다",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 50,
+   "slug": "the-affair-was-just-the-beginning",
+   "status": "collect",
+   "tags": [],
+   "title": "现在不是出轨的问题",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37501131/",
+   "writers": [
+    "郑恩庆",
+    "朴秀莲"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "张若昀",
+    "白客",
+    "高叶",
+    "大鹏",
+    "庄达菲",
+    "孙艺洲",
+    "田雨",
+    "王耀庆",
+    "李乃文",
+    "李晨"
+   ],
+   "category": "feature",
+   "cover": "covers/36850814/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36850814/01.webp",
+   "date": "2026-09-23",
+   "directors": [
+    "董润年"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "36850814",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 125,
+   "slug": "make-zhonghe-great-again",
+   "status": "collect",
+   "tags": [],
+   "title": "年会不能停！2",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36850814/",
+   "writers": [
+    "董润年",
+    "应萝佳"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "绫濑遥",
+    "大悟",
+    "桑木里梦",
+    "清野菜名",
+    "宽一郎",
+    "柊木阳太",
+    "角田晃广",
+    "野吕佳代",
+    "星野真里",
+    "中岛步"
+   ],
+   "category": "feature",
+   "cover": "covers/37227467/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37227467/01.webp",
+   "date": "2026-09-19",
+   "directors": [
+    "是枝裕和"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "剧情",
+    "科幻"
+   ],
+   "id": "37227467",
+   "missing": false,
+   "original_title": "箱の中の羊",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 126,
+   "slug": "sheep-in-the-box",
+   "status": "collect",
+   "tags": [],
+   "title": "盒子里的羊",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37227467/",
+   "writers": [
+    "是枝裕和"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "于毅",
+    "刘智扬",
+    "肖茵"
+   ],
+   "category": "feature",
+   "cover": "covers/38509943/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/38509943/01.webp",
+   "date": "2026-09-18",
+   "directors": [
+    "丁宽",
+    "韩志达"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "剧情",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "38509943",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 60,
+   "slug": "douban-38509943",
+   "status": "collect",
+   "tags": [],
+   "title": "灵魂摆渡·蝴蝶梦",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/38509943/",
+   "writers": [
+    "小吉祥天"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "白敬亭",
+    "魏翔",
+    "张国强",
+    "赵海燕",
+    "苏小玎",
+    "于洋",
+    "黄才伦",
+    "丁勇岱",
+    "王智",
+    "刘流"
+   ],
+   "category": "feature",
+   "cover": "covers/36953973/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36953973/01.webp",
+   "date": "2026-09-13",
+   "directors": [
+    "邢文雄"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "36953973",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 123,
+   "slug": "keep-real",
+   "status": "collect",
+   "tags": [],
+   "title": "特立独行",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36953973/",
+   "writers": [
+    "邢文雄",
+    "李舒野",
+    "李天亮",
+    "史倩"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "井柏然",
+    "孙千",
+    "刘小北",
+    "齐天晴",
+    "张晔子",
+    "宁心",
+    "赵振宇",
+    "张优",
+    "彭杨",
+    "郭晓婷"
+   ],
+   "category": "series",
+   "cover": "covers/36660844/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36660844/01.webp",
+   "date": "2026-09-13",
+   "directors": [
+    "蒋继正"
+   ],
+   "douban_score": 6.7,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "36660844",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "the-early-spring",
+   "status": "collect",
+   "tags": [],
+   "title": "早春晴朗",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36660844/",
+   "writers": [
+    "高小娴"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "郑恺",
+    "刘浩存",
+    "邱泽",
+    "李晨",
+    "姜妍",
+    "黄小蕾",
+    "李梦",
+    "张琪",
+    "毕雯珺",
+    "冯兵"
+   ],
+   "category": "feature",
+   "cover": "covers/36965301/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36965301/01.webp",
+   "date": "2026-09-04",
+   "directors": [
+    "程伟豪"
+   ],
+   "douban_score": 7.0,
+   "genres": [
+    "悬疑",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "36965301",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 140,
+   "slug": "vanishing-point",
+   "status": "collect",
+   "tags": [],
+   "title": "消失的人",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36965301/",
+   "writers": [
+    "程伟豪"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "雷佳音",
+    "胡歌",
+    "啜妮",
+    "张瑶",
+    "林晓凡",
+    "杨舒伊",
+    "刘佩琦",
+    "姜武",
+    "杨青",
+    "陈国星"
+   ],
+   "category": "feature",
+   "cover": "covers/36812879/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36812879/01.webp",
+   "date": "2026-09-02",
+   "directors": [
+    "冯小刚"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "剧情"
+   ],
+   "id": "36812879",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 141,
+   "slug": "i-know-who-you-are",
+   "status": "collect",
+   "tags": [],
+   "title": "抓特务",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36812879/",
+   "writers": [
+    "史建全"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "苏志燮",
+    "崔大勋",
+    "尹敬浩",
+    "朱相昱",
+    "孙娜恩",
+    "金成圭",
+    "李在勇",
+    "元贤俊",
+    "朴真宇",
+    "赵福来"
+   ],
+   "category": "series",
+   "cover": "covers/37523009/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37523009/01.webp",
+   "date": "2026-08-30",
+   "directors": [
+    "李胜英",
+    "李昭垠"
+   ],
+   "douban_score": 7.3,
+   "episodes": 10,
+   "genres": [
+    "动作",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "37523009",
+   "missing": false,
+   "original_title": "김부장",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 67,
+   "slug": "agent-kim",
+   "status": "collect",
+   "tags": [],
+   "title": "金特务：本色回归",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37523009/",
+   "writers": [
+    "南大中"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "陈意涵",
+    "翁倩玉",
+    "钟欣凌",
+    "安心亚",
+    "孙淑媚",
+    "苗可丽",
+    "陈庭妮",
+    "何曼希",
+    "陈姿陵",
+    "曾恺玹"
+   ],
+   "category": "feature",
+   "cover": "covers/37193250/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37193250/01.webp",
+   "date": "2026-08-29",
+   "directors": [
+    "林孝谦"
+   ],
+   "douban_score": 7.3,
+   "genres": [
+    "剧情"
+   ],
+   "id": "37193250",
+   "missing": false,
+   "original_title": "陽光女子合唱團",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "台湾"
+   ],
+   "runtime": 134,
+   "slug": "sunshine-women-s-choir",
+   "status": "collect",
+   "tags": [],
+   "title": "阳光女子合唱团",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37193250/",
+   "writers": [
+    "吕安弦"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Tom Holland（汤姆·霍兰德）",
+    "赞达亚",
+    "Sadie Sink（萨迪·辛克）",
+    "Jacob Batalon（雅各布·贝塔隆）",
+    "Mark Ruffalo（马克·鲁法洛）",
+    "乔·博恩瑟",
+    "弗洛伦丝·皮尤",
+    "莉莎·科伦-扎亚斯",
+    "特拉梅尔·提尔曼",
+    "玛丽莎·托梅"
+   ],
+   "category": "feature",
+   "cover": "covers/36246195/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36246195/01.webp",
+   "date": "2026-08-08",
+   "directors": [
+    "Destin Daniel Cretton（德斯汀·丹尼尔·克雷顿）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
+   "id": "36246195",
+   "missing": false,
+   "original_title": "Spider-Man: Brand New Day",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国",
+    "加拿大",
+    "英国",
+    "德国"
+   ],
+   "runtime": 145,
+   "slug": "spider-man-brand-new-day",
+   "status": "collect",
+   "tags": [],
+   "title": "蜘蛛侠：崭新之日",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36246195/",
+   "writers": [
+    "克里斯·麦克纳",
+    "埃里克·萨默斯"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Matt Damon（马特·达蒙）",
+    "Tom Holland（汤姆·霍兰德）",
+    "Anne Hathaway（安妮·海瑟薇）",
+    "Robert Pattinson（罗伯特·帕丁森）",
+    "Charlize Theron（查理兹·塞隆）",
+    "赞达亚",
+    "萨曼莎·莫顿",
+    "约翰·雷吉扎莫",
+    "露皮塔·尼永奥",
+    "艾利奥特·佩吉"
+   ],
+   "category": "feature",
+   "cover": "covers/36808876/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36808876/01.webp",
+   "date": "2026-08-01",
+   "directors": [
+    "Christopher Nolan（克里斯托弗·诺兰）"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "动作",
+    "历史",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36808876",
+   "missing": false,
+   "original_title": "The Odyssey",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国",
+    "加拿大",
+    "冰岛",
+    "新西兰",
+    "摩洛哥",
+    "英国"
+   ],
+   "runtime": 173,
+   "slug": "the-odyssey",
+   "status": "collect",
+   "tags": [],
+   "title": "奥德赛",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36808876/",
+   "writers": [
+    "Christopher Nolan（克里斯托弗·诺兰）"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "全智贤",
+    "具教焕",
+    "池昌旭",
+    "申铉彬",
+    "金新绿",
+    "高洙",
+    "李仲玉",
+    "李玄均",
+    "金炯默",
+    "黄在烈"
+   ],
+   "category": "feature",
+   "cover": "covers/37096700/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37096700/01.webp",
+   "date": "2026-07-25",
+   "directors": [
+    "延尚昊"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "动作",
+    "科幻",
+    "悬疑",
+    "惊悚"
+   ],
+   "id": "37096700",
+   "missing": false,
+   "original_title": "군체",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 122,
+   "slug": "colony",
+   "status": "collect",
+   "tags": [],
+   "title": "群体",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37096700/",
+   "writers": [
+    "延尚昊"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "陈浩",
+    "李绍哲",
+    "立冬",
+    "果子哥哥",
+    "董天弋",
+    "喻鹏力",
+    "黄豫硕",
+    "张运气",
+    "邓先森",
+    "曹知善"
+   ],
+   "category": "anime",
+   "cover": "covers/36882191/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36882191/01.webp",
+   "date": "2026-07-18",
+   "directors": [
+    "牟正洋"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "喜剧",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36882191",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 144,
+   "slug": "all-wishes-come-true",
+   "status": "collect",
+   "tags": [],
+   "title": "八仙！",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36882191/",
+   "writers": [
+    "牟正洋"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Michael Johnston（迈克尔·约翰斯顿）",
+    "Inde Navarrette（印达·纳瓦雷特）",
+    "Cooper Tomlinson（库珀·汤姆林森）",
+    "Megan Lawless（梅根·劳利斯）",
+    "Andy Richter（安迪·里克特）",
+    "黑莉·菲茨杰拉德",
+    "达林·图恩德",
+    "安东尼·帕沃内",
+    "贾斯蒂斯",
+    "安东尼·卡萨比安卡"
+   ],
+   "category": "feature",
+   "cover": "covers/37450627/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37450627/01.webp",
+   "date": "2026-07-12",
+   "directors": [
+    "Curry Barker（库里·巴克）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "恐怖",
+    "奇幻"
+   ],
+   "id": "37450627",
+   "missing": false,
+   "original_title": "Obsession",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 110,
+   "slug": "obsession",
+   "status": "collect",
+   "tags": [],
+   "title": "痴迷",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37450627/",
+   "writers": [
+    "Curry Barker（库里·巴克）"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "易烊千玺",
+    "朱一龙",
+    "宋佳",
+    "雷佳音",
+    "杨幂",
+    "张译",
+    "刘诗诗",
+    "刘耀文",
+    "林博洋",
+    "潘斌龙"
+   ],
+   "category": "feature",
+   "cover": "covers/37242440/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37242440/01.webp",
+   "date": "2026-07-12",
+   "directors": [
+    "张艺谋"
+   ],
+   "douban_score": 5.7,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
+   "id": "37242440",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 104,
+   "slug": "scare-out",
+   "status": "collect",
+   "tags": [],
+   "title": "惊蛰无声",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37242440/",
+   "writers": [
+    "陈亮"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "杨昕燃",
+    "段艺璇",
+    "三石",
+    "叶宝华",
+    "刘明月",
+    "李兰陵",
+    "刘峥",
+    "柳真颜",
+    "林帽帽",
+    "瞳音"
+   ],
+   "category": "anime",
+   "cover": "covers/37296558/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37296558/01.webp",
+   "date": "2026-07-11",
+   "directors": [
+    "曾元俊",
+    "高鹏"
+   ],
+   "douban_score": null,
+   "episodes": 26,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
+   "id": "37296558",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 25,
+   "slug": "fighter-of-the-destiny",
+   "status": "collect",
+   "tags": [],
+   "title": "择天记",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37296558/",
+   "writers": [
+    "施浩文",
+    "徐铭妍",
+    "田芳"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "谢苗",
+    "林科灯",
+    "杨恩又",
+    "黎唯",
+    "Yayan Ruhian（雅彦·鲁伊安）",
+    "杰佳·亚宁",
+    "岩永丞威",
+    "萨哈贾克·波斯安吉特",
+    "玛娜莎楠·潘叻翁固",
+    "郭峻卿"
+   ],
+   "category": "feature",
+   "cover": "covers/36877245/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36877245/01.webp",
+   "date": "2026-07-11",
+   "directors": [
+    "谷垣健治"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "动作",
+    "犯罪"
+   ],
+   "id": "36877245",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "香港",
+    "中国"
+   ],
+   "runtime": 113,
+   "slug": "the-furious",
+   "status": "collect",
+   "tags": [],
+   "title": "火遮眼",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36877245/",
+   "writers": [
+    "麦天枢",
+    "雷志龙",
+    "岑君茜",
+    "许学文"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Dwayne Johnson（道恩·强森）",
+    "Catherine Laga'aia（凯瑟琳·拉加艾亚）",
+    "Rena Owen（丽纳·欧文）",
+    "John Tui（约翰·图伊）",
+    "Frankie Adams（弗兰基·亚当斯）",
+    "杰梅奈·克莱门特",
+    "艾玛·普阿希-沙帕齐安",
+    "阿玛亚·马索利",
+    "萨姆·普埃富阿",
+    "西奥内·米尔福德"
+   ],
+   "category": "feature",
+   "cover": "covers/36343469/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36343469/01.webp",
+   "date": "2026-07-11",
+   "directors": [
+    "Thomas Kail（托马斯·凯尔）"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "喜剧",
+    "动作",
+    "歌舞",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36343469",
+   "missing": false,
+   "original_title": "Moana",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国",
+    "新西兰",
+    "加拿大",
+    "匈牙利"
+   ],
+   "runtime": 115,
+   "slug": "moana",
+   "status": "collect",
+   "tags": [],
+   "title": "海洋奇缘：启航",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36343469/",
+   "writers": [
+    "杰拉德·布什",
+    "达娜·莱杜克斯·米勒",
+    "罗恩·克莱蒙兹",
+    "约翰·马斯克"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Gordon Cormier（戈登·科米尔）",
+    "齐亚文提奥",
+    "Ian Ousley（伊恩·欧斯利）",
+    "Dallas Liu（达拉斯·刘）",
+    "李善亨",
+    "乔恩·琼·布里恩斯",
+    "坦图·卡丁诺",
+    "特瑞·陈",
+    "钱裕扬",
+    "黄经汉"
+   ],
+   "category": "series",
+   "cover": "covers/36800343/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36800343/01.webp",
+   "date": "2026-07-04",
+   "directors": [
+    "Jabbar Raisani（贾巴尔·赖萨尼）"
+   ],
+   "douban_score": 6.1,
+   "episodes": 7,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "悬疑",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36800343",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "avatar-the-last-airbender-season-2",
+   "status": "collect",
+   "tags": [],
+   "title": "降世神通：最后的气宗 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36800343/",
+   "writers": [],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "石川界人",
+    "浪川大辅",
+    "上田丽奈",
+    "畠中祐",
+    "冈咲美保"
+   ],
+   "category": "anime",
+   "cover": "covers/36247879/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36247879/01.webp",
+   "date": "2026-06-28",
+   "directors": [
+    "中澤勇一"
+   ],
+   "douban_score": 4.6,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36247879",
+   "missing": false,
+   "original_title": "とあるおっさんのVRMMO活動記",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "vrmmo",
+   "status": "collect",
+   "tags": [],
+   "title": "某大叔的VRMMO活动记",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36247879/",
+   "writers": [
+    "待田堂子"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "梁达伟",
+    "唐雅菁",
+    "孙恺寅",
+    "曹真",
+    "黄莺",
+    "李卓霆",
+    "王宇航",
+    "桑毓泽",
+    "伍凯立",
+    "林子渝"
+   ],
+   "category": "anime",
+   "cover": "covers/37167536/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37167536/01.webp",
+   "date": "2026-06-27",
+   "directors": [
+    "周琛"
+   ],
+   "douban_score": null,
+   "episodes": 26,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
+   "id": "37167536",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 18,
+   "slug": "the-other-side-of-deep-space",
+   "status": "collect",
+   "tags": [],
+   "title": "深空彼岸",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37167536/",
+   "writers": [
+    "袁洁"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Milly Alcock（米莉·阿尔柯克）",
+    "Eve Ridley（伊芙·雷德利）",
+    "Jason Momoa（杰森·莫玛）",
+    "Matthias Schoenaerts（马提亚斯·修奈尔）",
+    "David Corenswet（大卫·科伦斯韦）",
+    "大卫·克朗姆霍茨",
+    "艾米丽·比查姆",
+    "迪尔梅德·默塔",
+    "费迪南德·金斯利",
+    "艾米莉·皮格福德"
+   ],
+   "category": "feature",
+   "cover": "covers/36225840/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36225840/01.webp",
+   "date": "2026-06-27",
+   "directors": [
+    "Craig Gillespie（克雷格·吉勒斯佩）"
+   ],
+   "douban_score": 5.0,
+   "genres": [
+    "动作",
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36225840",
+   "missing": false,
+   "original_title": "Supergirl",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 108,
+   "slug": "supergirl",
+   "status": "collect",
+   "tags": [],
+   "title": "超级少女",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36225840/",
+   "writers": [
+    "安娜·诺盖拉"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Andrew Scott（安德鲁·斯科特）",
+    "Brendan Fraser（布兰登·费舍）",
+    "Kerry Condon（凯瑞·康顿）",
+    "Chris Messina（克里斯·梅西纳）",
+    "Damian Lewis（戴米恩·路易斯）",
+    "康·奥尼尔",
+    "乔乔·马卡里",
+    "亚历山大·汉森",
+    "塔姆馨·托波尔斯基",
+    "罗伯特·波特尔"
+   ],
+   "category": "feature",
+   "cover": "covers/36916000/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36916000/01.webp",
+   "date": "2026-06-19",
+   "directors": [
+    "Anthony Maras（安东尼·马拉斯）"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "剧情",
+    "历史",
+    "战争"
+   ],
+   "id": "36916000",
+   "missing": false,
+   "original_title": "Pressure",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "英国",
+    "法国",
+    "美国"
+   ],
+   "runtime": 100,
+   "slug": "pressure",
+   "status": "collect",
+   "tags": [],
+   "title": "诺曼底72小时",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36916000/",
+   "writers": [
+    "大卫·海格",
+    "Anthony Maras（安东尼·马拉斯）"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "佐藤拓也",
+    "星希成奏",
+    "行成桃姬",
+    "丰口惠美",
+    "安田陆矢",
+    "日笠阳子",
+    "高桥伸也"
+   ],
+   "category": "anime",
+   "cover": "covers/37441858/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37441858/01.webp",
+   "date": "2026-06-14",
+   "directors": [
+    "铃木理人",
+    "森葵"
+   ],
+   "douban_score": 8.0,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "爱情",
+    "动画"
+   ],
+   "id": "37441858",
+   "missing": false,
+   "original_title": "スーパーの裏でヤニ吸うふたり",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "smoking-behind-the-supermarket-with-you",
+   "status": "collect",
+   "tags": [],
+   "title": "躲在超市后门抽烟的两人",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37441858/",
+   "writers": [
+    "井上美绪"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "金武烈",
+    "李星民",
+    "秦基周",
+    "表志勋",
+    "贺营"
+   ],
+   "category": "series",
+   "cover": "covers/37071123/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37071123/01.webp",
+   "date": "2026-06-14",
+   "directors": [
+    "洪忠灿"
+   ],
+   "douban_score": 8.7,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "动作"
+   ],
+   "id": "37071123",
+   "missing": false,
+   "original_title": "참교육",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 60,
+   "slug": "teach-you-a-lesson",
+   "status": "collect",
+   "tags": [],
+   "title": "铁拳教育",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37071123/",
+   "writers": [
+    "李南奎"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "柳海真",
+    "朴志训",
+    "刘智泰",
+    "田美都",
+    "朴智焕",
+    "金旻",
+    "李浚赫",
+    "安宰弘",
+    "郑镇云",
+    "韩钟训"
+   ],
+   "category": "feature",
+   "cover": "covers/36978169/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36978169/01.webp",
+   "date": "2026-06-13",
+   "directors": [
+    "张抗俊"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "剧情",
+    "历史"
+   ],
+   "id": "36978169",
+   "missing": false,
+   "original_title": "왕과 사는 남자",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 116,
+   "slug": "the-man-who-lives-with-the-king",
+   "status": "collect",
+   "tags": [],
+   "title": "与王生活的男人",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36978169/",
+   "writers": [
+    "张抗俊",
+    "黄成求"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "冯绍峰",
+    "邬君梅",
+    "李彧",
+    "邵芸",
+    "单敬尧",
+    "徐海乔"
+   ],
+   "category": "series",
+   "cover": "covers/37296314/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37296314/01.webp",
+   "date": "2026-06-08",
+   "directors": [
+    "项秋良",
+    "项河生"
+   ],
+   "douban_score": 5.8,
+   "episodes": 25,
+   "genres": [
+    "悬疑",
+    "古装"
+   ],
+   "id": "37296314",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 25,
+   "slug": "douban-37296314",
+   "status": "collect",
+   "tags": [],
+   "title": "大唐迷雾",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37296314/",
+   "writers": [
+    "张兆喆"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Nicholas Galitzine（尼古拉斯·加利齐纳）",
+    "Camila Mendes（卡米拉·门德斯）",
+    "Jared Leto（杰瑞德·莱托）",
+    "Idris Elba（伊德瑞斯·艾尔巴）",
+    "Alison Brie（爱丽森·布里）",
+    "詹姆斯·鲍弗",
+    "莫蕾娜·巴卡琳",
+    "约翰内斯·豪克尔·约翰内森",
+    "夏洛特·莱利",
+    "克里斯汀·韦格"
+   ],
+   "category": "feature",
+   "cover": "covers/1951286/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1951286/01.webp",
+   "date": "2026-06-06",
+   "directors": [
+    "Travis Knight（特拉维斯·奈特）"
+   ],
+   "douban_score": 5.3,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1951286",
+   "missing": false,
+   "original_title": "Masters of the Universe",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 140,
+   "slug": "masters-of-the-universe",
+   "status": "collect",
+   "tags": [
+    "Movie"
+   ],
+   "title": "宇宙巨人：希曼崛起",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1951286/",
+   "writers": [
+    "克里斯·巴特勒",
+    "艾伦·尼",
+    "亚当·尼",
+    "戴夫·卡拉汉姆"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "王骁",
+    "田曦薇",
+    "王传君",
+    "朱云峰",
+    "张瑞涵",
+    "姜冠南",
+    "马旭东",
+    "宋郁河",
+    "董宝石",
+    "雷佳音"
+   ],
+   "category": "series",
+   "cover": "covers/35517044/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35517044/01.webp",
+   "date": "2026-06-02",
+   "directors": [
+    "刘海波"
+   ],
+   "douban_score": 8.2,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
+   "id": "35517044",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "born-with-luck",
+   "status": "collect",
+   "tags": [],
+   "title": "低智商犯罪",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35517044/",
+   "writers": [
+    "王少雄",
+    "孙晚成",
+    "张金梦"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "段艺璇",
+    "余昊威",
+    "胡良伟",
+    "赵成晨",
+    "巴赫",
+    "胡正健",
+    "露西"
+   ],
+   "category": "anime",
+   "cover": "covers/30226070/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30226070/01.webp",
+   "date": "2026-05-30",
+   "directors": [
+    "王羽熙",
+    "黄山川"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "喜剧",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "30226070",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 97,
+   "slug": "master-zhong",
+   "status": "collect",
+   "tags": [],
+   "title": "钟馗",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/30226070/",
+   "writers": [
+    "彭可欣",
+    "施一凡"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "李思潼",
+    "王彦桐",
+    "吴少卿",
+    "郑润奇",
+    "王晓慧",
+    "赵曙光",
+    "李德如",
+    "李树浩",
+    "乌萨·萨梅坎姆",
+    "方培松"
+   ],
+   "category": "feature",
+   "cover": "covers/37116446/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37116446/01.webp",
+   "date": "2026-05-23",
+   "directors": [
+    "蓝鸿春"
+   ],
+   "douban_score": 9.3,
+   "genres": [
+    "剧情",
+    "家庭"
+   ],
+   "id": "37116446",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 118,
+   "slug": "dear-you",
+   "status": "collect",
+   "tags": [],
+   "title": "给阿嬷的情书",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37116446/",
+   "writers": [
+    "蓝鸿春",
+    "郑萱轩",
+    "杨冷",
+    "朱丽云"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Pedro Pascal（佩德罗·帕斯卡）",
+    "Jeremy Allen White（杰瑞米·艾伦·怀特）",
+    "Sigourney Weaver（西格妮·韦弗）",
+    "Steve Blum（史蒂夫·布卢姆）",
+    "Jonny Coyne（乔尼·科因）",
+    "马丁·斯科塞斯",
+    "马修·维利希",
+    "李善亨",
+    "哈姆基·马戴拉",
+    "安东尼·丹尼尔斯"
+   ],
+   "category": "feature",
+   "cover": "covers/36723035/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36723035/01.webp",
+   "date": "2026-05-23",
+   "directors": [
+    "Jon Favreau（乔恩·费儒）"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "动作",
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36723035",
+   "missing": false,
+   "original_title": "Star Wars: The Mandalorian & Grogu",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 132,
+   "slug": "star-wars-the-mandalorian-grogu",
+   "status": "collect",
+   "tags": [],
+   "title": "星球大战：曼达洛人与古古",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36723035/",
+   "writers": [
+    "Jon Favreau（乔恩·费儒）",
+    "戴夫·菲洛尼",
+    "诺亚·克鲁尔"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "成龙",
+    "马丽",
+    "乔杉",
+    "于洋",
+    "王影璐",
+    "张子栋",
+    "王成思",
+    "柯达",
+    "宋木子",
+    "冯满"
+   ],
+   "category": "feature",
+   "cover": "covers/37211128/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37211128/01.webp",
+   "date": "2026-05-05",
+   "directors": [
+    "许宏宇"
+   ],
+   "douban_score": 5.2,
+   "genres": [
+    "喜剧",
+    "奇幻"
+   ],
+   "id": "37211128",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 100,
+   "slug": "panda-plan-2",
+   "status": "collect",
+   "tags": [],
+   "title": "熊猫计划之部落奇遇记",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37211128/",
+   "writers": [
+    "潘克扬"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "成龙",
+    "魏翔",
+    "史策",
+    "韩彦博",
+    "贾冰",
+    "安地",
+    "马铁摩",
+    "莎莎",
+    "芮丹尼",
+    "诺克"
+   ],
+   "category": "feature",
+   "cover": "covers/36441385/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36441385/01.webp",
+   "date": "2026-05-05",
+   "directors": [
+    "张栾"
+   ],
+   "douban_score": 5.5,
+   "genres": [
+    "喜剧",
+    "动作"
+   ],
+   "id": "36441385",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 99,
+   "slug": "panda-plan",
+   "status": "collect",
+   "tags": [],
+   "title": "熊猫计划",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36441385/",
+   "writers": [
+    "孟易达",
+    "徐伟",
+    "张栾"
+   ],
+   "year": 2024
+  },
+  {
+   "casts": [
+    "徐粹彬",
+    "张慧珍",
+    "金郑植",
+    "姜彩允",
+    "李宰锡",
+    "朴知玧",
+    "金艺昶",
+    "高旻示",
+    "白贤珠",
+    "卞重熙"
+   ],
+   "category": "feature",
+   "cover": "covers/37116612/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37116612/01.webp",
+   "date": "2026-05-03",
+   "directors": [
+    "尹佳恩"
+   ],
+   "douban_score": 9.0,
+   "genres": [
+    "剧情"
+   ],
+   "id": "37116612",
+   "missing": false,
+   "original_title": "세계의 주인",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 119,
+   "slug": "the-world-of-love",
+   "status": "collect",
+   "tags": [],
+   "title": "世界的主人",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37116612/",
+   "writers": [
+    "尹佳恩"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "王鹤棣",
+    "宋茜",
+    "祖峰",
+    "罗海琼",
+    "汪铎",
+    "谢楠",
+    "庞博"
+   ],
+   "category": "feature",
+   "cover": "covers/36883105/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36883105/01.webp",
+   "date": "2026-05-03",
+   "directors": [
+    "韩延"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36883105",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 111,
+   "slug": "per-aspera-ad-astra",
+   "status": "collect",
+   "tags": [],
+   "title": "星河入梦",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36883105/",
+   "writers": [
+    "韩延",
+    "钱宁黄",
+    "高璐",
+    "刘达林",
+    "徐忱",
+    "马佩斯"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Meryl Streep（梅丽尔·斯特里普）",
+    "Anne Hathaway（安妮·海瑟薇）",
+    "Emily Blunt（艾米莉·布朗特）",
+    "Stanley Tucci（斯坦利·图齐）",
+    "Justin Theroux（贾斯汀·塞洛克斯）",
+    "西蒙娜·阿什利",
+    "肯尼思·布拉纳",
+    "刘玉玲",
+    "翠茜·索姆斯",
+    "B·J·诺瓦克"
+   ],
+   "category": "feature",
+   "cover": "covers/36956594/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36956594/01.webp",
+   "date": "2026-05-01",
+   "directors": [
+    "David Frankel（大卫·弗兰科尔）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "36956594",
+   "missing": false,
+   "original_title": "The Devil Wears Prada 2",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 120,
+   "slug": "the-devil-wears-prada-2",
+   "status": "collect",
+   "tags": [],
+   "title": "穿普拉达的女王2",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36956594/",
+   "writers": [
+    "艾莲·布洛什·麦肯纳"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "陈浩",
+    "陈张太康",
+    "张惠霖",
+    "吴磊",
+    "李潇宇",
+    "黄莺",
+    "刘浏",
+    "胡霖",
+    "张如麟",
+    "陈诗语"
+   ],
+   "category": "anime",
+   "cover": "covers/37220896/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37220896/01.webp",
+   "date": "2026-04-27",
+   "directors": [
+    "田刚",
+    "尹立权",
+    "马华"
+   ],
+   "douban_score": 8.4,
+   "episodes": 27,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
+   "id": "37220896",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 30,
+   "slug": "sword-of-coming-2",
+   "status": "collect",
+   "tags": [],
+   "title": "剑来 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37220896/",
+   "writers": [
+    "马华",
+    "屈亦张",
+    "夏应哲",
+    "左晓慧"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "李在仁",
+    "刘亚仁",
+    "安宰弘",
+    "罗美兰",
+    "金熙元",
+    "朴珍荣",
+    "吴正世",
+    "申久",
+    "张矿",
+    "陈熙琼"
+   ],
+   "category": "feature",
+   "cover": "covers/35351910/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35351910/01.webp",
+   "date": "2026-04-18",
+   "directors": [
+    "姜炯哲"
+   ],
+   "douban_score": 6.2,
+   "genres": [
+    "喜剧",
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "35351910",
+   "missing": false,
+   "original_title": "하이파이브",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 119,
+   "slug": "high-five",
+   "status": "collect",
+   "tags": [],
+   "title": "超异能特攻",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35351910/",
+   "writers": [
+    "姜炯哲"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Noah Wyle（诺亚·怀尔）",
+    "Patrick Ball（帕特里克·鲍尔）",
+    "Katherine LaNasa（凯瑟琳·拉纳萨）",
+    "Supriya Ganesh（苏普丽雅·加内什）",
+    "Fiona Dourif（菲奥娜·道里夫）",
+    "Taylor Dearden（泰勒·德尔登）",
+    "伊莎·布里昂斯",
+    "杰乐伦·霍威尔",
+    "莎巴娜·阿齐兹",
+    "肖恩·海托西"
+   ],
+   "category": "series",
+   "cover": "covers/37239408/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37239408/01.webp",
+   "date": "2026-04-17",
+   "directors": [
+    "John Wells（约翰·威尔斯）",
+    "Noah Wyle（诺亚·怀尔）",
+    "肖恩·海托西"
+   ],
+   "douban_score": 8.6,
+   "episodes": 15,
+   "genres": [
+    "剧情"
+   ],
+   "id": "37239408",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "the-pitt-season-2",
+   "status": "collect",
+   "tags": [],
+   "title": "匹兹堡医护前线 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37239408/",
+   "writers": [
+    "R·斯科特·格雷米尔",
+    "乔·萨克斯",
+    "Noah Wyle（诺亚·怀尔）",
+    "辛西娅·阿达克瓦",
+    "西姆兰·拜德万",
+    "瓦莱丽·楚",
+    "Kirsten Pierre-Geyfman"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "道枝骏佑",
+    "福本莉子",
+    "古川琴音",
+    "松本穗香",
+    "萩原圣人",
+    "野波麻帆",
+    "水野真纪",
+    "野间口彻",
+    "前田航基"
+   ],
+   "category": "feature",
+   "cover": "covers/35772573/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35772573/01.webp",
+   "date": "2026-04-11",
+   "directors": [
+    "三木孝浩"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "35772573",
+   "missing": false,
+   "original_title": "今夜、世界からこの恋が消えても",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 121,
+   "slug": "even-if-this-love-disappears-tonight",
+   "status": "collect",
+   "tags": [],
+   "title": "今夜，就算这份爱恋从世界上消失",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35772573/",
+   "writers": [
+    "月川翔",
+    "松本花奈"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "岛崎信长",
+    "大塚明夫",
+    "内田直哉",
+    "小山力也",
+    "江口拓也",
+    "菅生隆之",
+    "川原庆久",
+    "岛田敏",
+    "三宅健太",
+    "金尾哲夫"
+   ],
+   "category": "anime",
+   "cover": "covers/36838220/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36838220/01.webp",
+   "date": "2026-03-22",
+   "directors": [
+    "平野俊贵"
+   ],
+   "douban_score": 6.9,
+   "episodes": 13,
+   "genres": [
+    "动作",
+    "动画"
+   ],
+   "id": "36838220",
+   "missing": false,
+   "original_title": "バキ道",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "douban-36838220",
+   "status": "collect",
+   "tags": [],
+   "title": "刃牙道：无敌武士",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36838220/",
+   "writers": [
+    "浦畑达彦"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "伊纳基·戈多伊",
+    "新田真剑佑",
+    "Emily Rudd（埃米莉·拉德）",
+    "Jacob Gibson（雅各布·吉布森）",
+    "塔兹·斯凯拉",
+    "大卫·达斯马齐连",
+    "凯蒂·萨加尔",
+    "蕾拉·阿波娃",
+    "马克·哈雷利克",
+    "查瑞莎·钱德兰"
+   ],
+   "category": "series",
+   "cover": "covers/36559697/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36559697/01.webp",
+   "date": "2026-03-16",
+   "directors": [
+    "Emma Sullivan（艾玛·沙利文）",
+    "Josef Kubota Wladyka（约瑟夫·久保田·瓦迪卡）",
+    "克里斯托夫·施雷韦",
+    "卢卡斯·艾特林"
+   ],
+   "douban_score": 8.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36559697",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "美国",
+    "英国",
+    "南非",
+    "日本"
+   ],
+   "runtime": 60,
+   "slug": "one-piece-season-2",
+   "status": "collect",
+   "tags": [],
+   "title": "海贼王(真人版) 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36559697/",
+   "writers": [
+    "马特·欧文斯",
+    "伊恩·斯托克斯",
+    "阿什莉·威格菲尔德",
+    "汤姆·海因德曼",
+    "琳赛·盖尔芬德",
+    "艾莉森·温特劳布",
+    "乔·特拉奇",
+    "Alex Regnery",
+    "伊丽莎白·亨特"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "高允贞",
+    "申始雅",
+    "韩怡芝",
+    "姜有皙",
+    "郑浚远",
+    "柳演锡",
+    "郑敬淏",
+    "安恩真",
+    "李凤辇",
+    "李昌勋"
+   ],
+   "category": "series",
+   "cover": "covers/36576840/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36576840/01.webp",
+   "date": "2026-03-06",
+   "directors": [
+    "李敏洙"
+   ],
+   "douban_score": 8.4,
+   "episodes": 12,
+   "genres": [
+    "剧情"
+   ],
+   "id": "36576840",
+   "missing": false,
+   "original_title": "언젠가는 슬기로울 전공의생활",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 80,
+   "slug": "resident-playbook",
+   "status": "collect",
+   "tags": [],
+   "title": "机智住院医生生活",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36576840/",
+   "writers": [
+    "金松熙"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "金宣虎",
+    "高允贞",
+    "福士苍汰",
+    "李伊潭",
+    "崔佑成"
+   ],
+   "category": "series",
+   "cover": "covers/36363991/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36363991/01.webp",
+   "date": "2026-02-20",
+   "directors": [
+    "刘英恩"
+   ],
+   "douban_score": 8.3,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
+   "id": "36363991",
+   "missing": false,
+   "original_title": "이 사랑 통역 되나요?",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 60,
+   "slug": "can-this-love-be-translated",
+   "status": "collect",
+   "tags": [],
+   "title": "爱情怎么翻译？",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36363991/",
+   "writers": [
+    "洪静恩",
+    "洪美兰"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "蔡海婷",
+    "姜秋再",
+    "李诗萌",
+    "聂曦映",
+    "乔木心",
+    "陈怡帆",
+    "孙路路",
+    "尹博一",
+    "陈泊羽",
+    "杨凯祺"
+   ],
+   "category": "anime",
+   "cover": "covers/37060852/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37060852/01.webp",
+   "date": "2025-12-20",
+   "directors": [
+    "邬卫东",
+    "七月",
+    "王昊"
+   ],
+   "douban_score": 6.4,
+   "episodes": 26,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
+   "id": "37060852",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 22,
+   "slug": "1-26",
+   "status": "collect",
+   "tags": [],
+   "title": "云深不知梦",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37060852/",
+   "writers": [
+    "李奕桐",
+    "顾虓",
+    "赵培珊",
+    "程前",
+    "李子涵",
+    "郭晨辰",
+    "毕文琪",
+    "黄燕晖",
+    "孙易",
+    "高嘉",
+    "陈倩倩",
+    "陆晓曦",
+    "曾紫妍",
+    "邓惠元",
+    "王焕梓"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "能年玲奈"
+   ],
+   "category": "series",
+   "cover": "covers/37434078/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37434078/01.webp",
+   "date": "2025-11-29",
+   "directors": [
+    "山岸圣太",
+    "椿本庆次郎"
+   ],
+   "douban_score": 6.4,
+   "episodes": 8,
+   "genres": [
+    "剧情"
+   ],
+   "id": "37434078",
+   "missing": false,
+   "original_title": "MISS KING",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "miss-king",
+   "status": "collect",
+   "tags": [],
+   "title": "将棋女王",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37434078/",
+   "writers": [
+    "荒木哉仁",
+    "石田剛太",
+    "山岸圣太"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "霍建华",
+    "朱珠",
+    "费启鸣",
+    "李凯馨",
+    "范静祎",
+    "张瑶",
+    "刘佳",
+    "董思怡",
+    "李易祥"
+   ],
+   "category": "series",
+   "cover": "covers/36544257/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36544257/01.webp",
+   "date": "2025-11-28",
+   "directors": [
+    "郄国伟"
+   ],
+   "douban_score": 6.9,
+   "episodes": 16,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "36544257",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "douban-36544257",
+   "status": "collect",
+   "tags": [],
+   "title": "他为什么依然单身",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36544257/",
+   "writers": [
+    "步晓峰",
+    "桂东鸣"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "杨旭文",
+    "杨志刚",
+    "郜思雯",
+    "陈创",
+    "孙雪宁",
+    "石悦安鑫",
+    "岳丽娜"
+   ],
+   "category": "series",
+   "cover": "covers/36318037/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36318037/01.webp",
+   "date": "2025-11-24",
+   "directors": [
+    "巨兴茂"
+   ],
+   "douban_score": 8.0,
+   "episodes": 40,
+   "genres": [
+    "动作",
+    "悬疑",
+    "惊悚",
+    "犯罪",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36318037",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "horror-stories-of-tang-dynasty-iii",
+   "status": "collect",
+   "tags": [],
+   "title": "唐朝诡事录之长安",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36318037/",
+   "writers": [
+    "魏风华",
+    "郭靖宇"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "姚铭舜",
+    "李欣",
+    "程玉珠",
+    "杜晴晴",
+    "虞晓旭",
+    "于凯隆",
+    "高嗣航",
+    "王宇航",
+    "唐昊",
+    "贾志超"
+   ],
+   "category": "anime",
+   "cover": "covers/36576581/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36576581/01.webp",
+   "date": "2025-10-28",
+   "directors": [
+    "沈乐平"
+   ],
+   "douban_score": 8.8,
+   "episodes": 52,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36576581",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "1-52",
+   "status": "collect",
+   "tags": [],
+   "title": "牧神记 年番1",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36576581/",
+   "writers": [
+    "沈乐平"
+   ],
+   "year": 2024
+  },
+  {
+   "casts": [
+    "林允儿",
+    "李彩玟",
+    "姜汉娜",
+    "崔奎华"
+   ],
+   "category": "series",
+   "cover": "covers/36996293/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36996293/01.webp",
+   "date": "2025-09-29",
+   "directors": [
+    "张太维"
+   ],
+   "douban_score": 5.6,
+   "episodes": 12,
+   "genres": [
+    "喜剧",
+    "奇幻",
+    "古装"
+   ],
+   "id": "36996293",
+   "missing": false,
+   "original_title": "폭군의 셰프",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 80,
+   "slug": "chef-of-tyranny",
+   "status": "collect",
+   "tags": [],
+   "title": "暴君的厨师",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36996293/",
+   "writers": [
+    "HapJak"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Jared Harris（杰瑞德·哈里斯）",
+    "Lee Pace（李·佩斯）",
+    "Lou Llobell（卢·洛贝尔）",
+    "Laura Birn（劳拉·比尔恩）",
+    "卡西安·比尔顿",
+    "特伦斯·曼",
+    "切莉·琼斯",
+    "布兰登·P·贝尔",
+    "黄耀成·莱-星",
+    "亚历山大·希迪格"
+   ],
+   "category": "series",
+   "cover": "covers/36160375/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36160375/01.webp",
+   "date": "2025-09-13",
+   "directors": [
+    "David S. Goyer（大卫·S·高耶）",
+    "Tim Southam（蒂姆·索瑟姆）",
+    "罗克珊·道森",
+    "克里斯托弗·J·伯恩"
+   ],
+   "douban_score": 7.9,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "科幻"
+   ],
+   "id": "36160375",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "foundation-season-3",
+   "status": "collect",
+   "tags": [],
+   "title": "基地 第三季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36160375/",
+   "writers": [
+    "David S. Goyer（大卫·S·高耶）",
+    "乔什·弗莱德曼",
+    "艾萨克·阿西莫夫"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Jenna Ortega（詹娜·奥尔特加）",
+    "Steve Buscemi（史蒂夫·布西密）",
+    "Emma Myers（艾玛·迈尔斯）",
+    "Hunter Doohan（亨特·杜汉）",
+    "乔伊·桑迪",
+    "凯瑟琳·泽塔-琼斯",
+    "路易斯·古兹曼",
+    "格温多兰·克里斯蒂",
+    "穆萨·穆斯塔法",
+    "乔基·法默"
+   ],
+   "category": "series",
+   "cover": "covers/36208369/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36208369/01.webp",
+   "date": "2025-09-06",
+   "directors": [
+    "Tim Burton（蒂姆·波顿）",
+    "Paco Cabezas（帕科·卡贝萨斯）",
+    "安吉拉·罗宾森"
+   ],
+   "douban_score": 8.4,
+   "episodes": 8,
+   "genres": [
+    "喜剧",
+    "悬疑",
+    "犯罪",
+    "奇幻"
+   ],
+   "id": "36208369",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "wednesday-season-2",
+   "status": "collect",
+   "tags": [],
+   "title": "星期三 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36208369/",
+   "writers": [
+    "艾尔弗雷德·高福",
+    "迈尔斯·米勒",
+    "马特·兰伯特",
+    "凯拉·阿尔伯特",
+    "詹姆斯·马德斯基",
+    "瓦伦蒂娜·加尔萨",
+    "劳伦·奥特罗",
+    "埃里卡·巴斯克斯",
+    "西耶娜·巴特菲尔德"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "赵双",
+    "常蓉珊",
+    "曹云图",
+    "戈昕宇",
+    "藤新",
+    "皇贞季"
+   ],
+   "category": "anime",
+   "cover": "covers/37167535/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37167535/01.webp",
+   "date": "2025-09-05",
+   "directors": [
+    "董易"
+   ],
+   "douban_score": null,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "37167535",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "fairies-album-5",
+   "status": "collect",
+   "tags": [],
+   "title": "百妖谱·洛阳篇",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/37167535/",
+   "writers": [
+    "董易"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "杨洋",
+    "金晨",
+    "汪铎",
+    "赵小棠",
+    "赵晴",
+    "金佳悦",
+    "荣梓希",
+    "张婉儿",
+    "胡宇轩",
+    "张翔"
+   ],
+   "category": "series",
+   "cover": "covers/35861087/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35861087/01.webp",
+   "date": "2025-08-13",
+   "directors": [
+    "杨阳"
+   ],
+   "douban_score": 7.5,
+   "episodes": 30,
+   "genres": [
+    "奇幻",
+    "古装"
+   ],
+   "id": "35861087",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "the-immortal-ascension",
+   "status": "collect",
+   "tags": [],
+   "title": "凡人修仙传",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35861087/",
+   "writers": [
+    "王裕仁",
+    "贾东岩",
+    "李文",
+    "段柯豪",
+    "唐川",
+    "廖雨嫣",
+    "刘若汀"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "李政宰",
+    "李炳宪",
+    "魏嘏隽",
+    "任时完",
+    "朴珪瑛",
+    "李阵郁",
+    "姜河那",
+    "朴成焄",
+    "杨东根",
+    "姜爱心"
+   ],
+   "category": "series",
+   "cover": "covers/36407380/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36407380/01.webp",
+   "date": "2025-07-05",
+   "directors": [
+    "黄东赫"
+   ],
+   "douban_score": 6.4,
+   "episodes": 6,
+   "genres": [
+    "剧情",
+    "动作",
+    "悬疑",
+    "惊悚"
+   ],
+   "id": "36407380",
+   "missing": false,
+   "original_title": "오징어 게임 시즌 3",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 60,
+   "slug": "squid-game-3",
+   "status": "collect",
+   "tags": [],
+   "title": "鱿鱼游戏 第三季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36407380/",
+   "writers": [
+    "黄东赫"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Noah Wyle（诺亚·怀尔）",
+    "Tracy Ifeachor（特蕾西·伊芙艾策尔）",
+    "Fiona Dourif（菲奥娜·道里夫）",
+    "Taylor Dearden（泰勒·德尔登）",
+    "伊莎·布里昂斯",
+    "杰乐伦·霍威尔",
+    "莎巴娜·阿齐兹",
+    "布兰登·门德斯·霍默",
+    "Patrick Ball（帕特里克·鲍尔）",
+    "Katherine LaNasa（凯瑟琳·拉纳萨）"
+   ],
+   "category": "series",
+   "cover": "covers/36831851/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36831851/01.webp",
+   "date": "2025-05-17",
+   "directors": [
+    "Damian Marcano（达米安·马尔卡诺）",
+    "Amanda Marsalis（阿曼达·马尔萨利斯）",
+    "约翰·卡梅伦",
+    "陈权",
+    "John Wells（约翰·威尔斯）",
+    "西尔弗·特里"
+   ],
+   "douban_score": 9.5,
+   "episodes": 15,
+   "genres": [
+    "剧情"
+   ],
+   "id": "36831851",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "the-pitt-season-1",
+   "status": "collect",
+   "tags": [],
+   "title": "匹兹堡医护前线 第一季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36831851/",
+   "writers": [
+    "R·斯科特·格雷米尔",
+    "乔·萨克斯",
+    "Noah Wyle（诺亚·怀尔）",
+    "辛西娅·阿达克瓦",
+    "西姆兰·拜德万",
+    "瓦莱丽·楚",
+    "艾丽莎·格什曼"
+   ],
+   "year": 2025
+  },
+  {
+   "casts": [
+    "Anthony Kiedis（安东尼·凯迪斯）",
+    "弗利",
+    "John Frusciante（约翰·弗拉西特）",
+    "Chad Smith（查德·史密斯）",
+    "艾米丽·奥布莱恩",
+    "费奥多尔·钱恩",
+    "彼得·迈克尔",
+    "素玛立·蒙塔诺",
+    "约翰·博耶加",
+    "艾德·斯克林"
+   ],
+   "category": "anime",
+   "cover": "covers/36056894/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36056894/01.webp",
+   "date": "2025-05-17",
+   "directors": [
+    "David Fincher（大卫·芬奇）",
+    "Robert Bisi（罗伯特·比斯）",
+    "安迪·里昂",
+    "吕寅荣",
+    "罗伯特·瓦利",
+    "帕特里克·奥斯本",
+    "蒂姆·米勒",
+    "迭戈·波拉尔",
+    "埃米莉·迪恩"
+   ],
+   "douban_score": 4.8,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "科幻",
+    "动画",
+    "恐怖",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "36056894",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 15,
+   "slug": "love-death-robots-season-4",
+   "status": "collect",
+   "tags": [],
+   "title": "爱，死亡和机器人 第四季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36056894/",
+   "writers": [
+    "Robert Bisi（罗伯特·比斯）",
+    "安迪·里昂",
+    "乔·阿克罗比",
+    "蒂姆·米勒",
+    "约翰·斯卡尔齐",
+    "J·T·佩蒂",
+    "塔姆辛·缪尔"
+   ],
+   "year": 2025
+  }
+ ],
+ "last_date": "2025-05-17"
+}

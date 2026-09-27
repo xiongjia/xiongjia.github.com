@@ -1,0 +1,835 @@
+.film-tv {
+  margin: 1.2rem 0 2rem;
+}
+
+.film-tv__banner {
+  margin: 0.6rem 0;
+  font-size: 0.85rem;
+}
+
+.film-tv__banner:empty {
+  display: none;
+}
+
+.film-tv__banner--info {
+  padding: 0.5rem 0.8rem;
+  border-left: 4px solid var(--md-accent-fg-color);
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+}
+
+.film-tv__banner--error {
+  padding: 0.6rem 0.8rem;
+  border-left: 4px solid var(--md-error-fg-color, #d32f2f);
+  background: rgba(211, 47, 47, 0.08);
+}
+
+/* --- month calendar (mirrors the moments archive calendar layout: years stacked
+   vertically, months in a 6-column grid, cells with a name + count) ---------- */
+
+.film-tv__calendar {
+  margin: 0 0 1rem;
+  /* collapsible month picker: the month navigation is the primary browser */
+  padding: 0.9rem 1.1rem 1.1rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 10px;
+}
+
+.film-tv__calendar[hidden] {
+  display: none;
+}
+
+.film-tv-calendar__nav {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.film-tv-calendar__year-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-calendar__hint {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-calendar__year-btn,
+.film-tv-chart__year-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0;
+  border: 1px solid var(--md-default-fg-color--lighter, var(--md-default-fg-color--light));
+  border-radius: 4px;
+  background: none;
+  color: var(--md-typeset-a-color);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.film-tv-calendar__year-btn:hover:not(:disabled),
+.film-tv-chart__year-btn:hover:not(:disabled) {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+.film-tv-calendar__year-btn:disabled,
+.film-tv-chart__year-btn:disabled {
+  border-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  cursor: default;
+}
+
+.film-tv-chart__year-label {
+  min-width: 3.6rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.film-tv-calendar__months {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .film-tv-calendar__months {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.film-tv-calendar__cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  padding: 0.45rem 0.2rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.film-tv-calendar__cell:hover:not(.is-empty) {
+  border-color: var(--md-typeset-a-color);
+  color: var(--md-typeset-a-color);
+}
+
+/* months without records: dashed + dimmed, and clicking them jumps to the
+   previous month that has records */
+.film-tv-calendar__cell.is-empty {
+  border-style: dashed;
+  background: transparent;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-calendar__cell.is-current {
+  border-color: var(--md-typeset-a-color);
+  box-shadow: inset 0 0 0 1px var(--md-typeset-a-color);
+  color: var(--md-typeset-a-color);
+}
+
+.film-tv-calendar__month-name {
+  font-weight: 600;
+}
+
+.film-tv-calendar__count {
+  font-size: 0.7rem;
+  color: inherit;
+  opacity: 0.85;
+}
+
+/* --- filters ------------------------------------------------------------- */
+
+.film-tv__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.6rem;
+  padding: 0.8rem;
+  margin-bottom: 0.6rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+}
+
+.film-tv__select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  font-size: 0.75rem;
+}
+
+.film-tv__select-label {
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv__filters select,
+.film-tv__search {
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.8rem;
+}
+
+.film-tv__search {
+  min-width: 14rem;
+}
+
+.film-tv__clear {
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 4px;
+  background: none;
+  color: var(--md-default-fg-color);
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+/* --- active filter chips ------------------------------------------------- */
+
+.film-tv__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.6rem;
+}
+
+.film-tv__chips[hidden] {
+  display: none;
+}
+
+.film-tv__chip {
+  padding: 0.15rem 0.5rem;
+  border: 1px solid var(--md-accent-fg-color);
+  border-radius: 999px;
+  background: none;
+  color: var(--md-accent-fg-color);
+  font-size: 0.72rem;
+  cursor: pointer;
+}
+
+.film-tv__chip:hover {
+  background: var(--md-accent-fg-color);
+  color: var(--md-primary-bg-color);
+}
+
+.film-tv__count {
+  margin: 0.3rem 0 0.8rem;
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* --- list ---------------------------------------------------------------- */
+
+.film-tv__empty {
+  margin: 1.2rem 0;
+  color: var(--md-default-fg-color);
+  font-size: 0.85rem;
+}
+
+.film-tv-month {
+  display: block;  /* heading on its own line, card grid below (keeps the grid aligned) */
+}
+
+.film-tv-month__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  margin: 1.4rem 0 0.6rem;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.25rem;
+}
+
+.film-tv-month__count {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-month__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 0.9rem;
+}
+
+.film-tv-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  /* `--lightest` maps to a translucent tint in both palettes; the border keeps
+     the card outline visible on the dark slate background */
+  background: var(--md-default-fg-color--lightest);
+  border: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  cursor: pointer;
+  transition: transform 120ms ease;
+}
+
+.film-tv-card:hover,
+.film-tv-card:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* the card is focusable (role=button): keep the ring visible against the tint */
+.film-tv-card:focus-visible {
+  outline: 2px solid var(--md-accent-fg-color);
+  outline-offset: 2px;
+}
+
+.film-tv-card__cover {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.film-tv-card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.film-tv-card__noimage {
+  font-size: 0.75rem;
+  opacity: 0.55;
+}
+
+.film-tv-card__flag {
+  position: absolute;
+  top: 0.3rem;
+  left: 0.3rem;
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.65rem;
+}
+
+.film-tv-card__body {
+  padding: 0.45rem 0.55rem 0.6rem;
+}
+
+.film-tv-card__title {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.25;
+}
+
+.film-tv-card__meta,
+.film-tv-card__line,
+.film-tv-card__regions {
+  margin: 0.15rem 0 0;
+  font-size: 0.7rem;
+  /* full-strength foreground: the card tints the background, and the dimmed
+     variant only reached 4.06 contrast on the dark palette */
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-card__stars {
+  /* amber reads fine on both palettes; no theme variable exists for it */
+  color: #f0a92b;
+  letter-spacing: -1px;
+}
+
+.film-tv-card__douban,
+.film-tv-card__date {
+  margin-left: 0.4rem;
+}
+
+/* --- pager (explicit: one month per page in time order, 10 rows otherwise) -- */
+
+/* one line, always: the nav (month/page + tools) must never wrap into two rows —
+   it scrolls horizontally on a very narrow screen instead */
+.film-tv__pager {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  margin: 0.2rem 0 0.9rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  overflow-x: auto;
+}
+
+.film-tv__pager > * {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.film-tv__pager[hidden] {
+  display: none;
+}
+
+.film-tv__page-btn {
+  padding: 0.25rem 0.55rem;
+  border: 1px solid var(--md-default-fg-color--lighter, var(--md-default-fg-color--light));
+  border-radius: 4px;
+  background: none;
+  color: var(--md-typeset-a-color);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.film-tv__page-btn:hover:not(:disabled) {
+  border-color: var(--md-accent-fg-color);
+  color: var(--md-accent-fg-color);
+}
+
+.film-tv__page-btn:disabled {
+  border-color: var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  cursor: default;
+}
+
+.film-tv__page-info {
+  font-size: 0.78rem;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv__nav-tools {
+  display: inline-flex;
+  gap: 0.4rem;
+  margin-left: 0.4rem;
+}
+
+.film-tv__nav-tools .film-tv__page-btn {
+  font-size: 0.72rem;
+  padding: 0.22rem 0.5rem;
+}
+
+/* --- detail dialog ------------------------------------------------------- */
+
+.film-tv-dialog {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  max-width: min(46rem, 92vw);
+  max-height: 88vh;
+  padding: 1rem;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  overflow: auto;
+}
+
+.film-tv-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.film-tv-dialog__body {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.film-tv-dialog__cover {
+  flex: 0 0 9rem;
+}
+
+.film-tv-dialog__cover img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+.film-tv-dialog__main {
+  flex: 1 1 auto;
+}
+
+.film-tv-dialog__title {
+  margin: 0 0 0.15rem;
+  font-size: 1.1rem;
+}
+
+.film-tv-dialog__original {
+  margin: 0 0 0.6rem;
+  font-size: 0.8rem;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-dialog__facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
+  gap: 0.35rem 1rem;
+  margin: 0 0 0.8rem;
+}
+
+.film-tv-dialog__fact {
+  display: flex;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+}
+
+.film-tv-dialog__fact dt {
+  color: var(--md-default-fg-color--light);
+  white-space: nowrap;
+}
+
+.film-tv-dialog__fact dd {
+  margin: 0;
+}
+
+/* people inside the dialog: the entry point into 影人 */
+.film-tv-dialog__person {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--md-typeset-a-color);
+  font: inherit;
+  text-decoration: underline dotted;
+  cursor: pointer;
+}
+
+.film-tv-dialog__person:hover {
+  color: var(--md-accent-fg-color);
+}
+
+.film-tv-dialog__comment h4 {
+  margin: 0.6rem 0 0.2rem;
+  font-size: 0.85rem;
+}
+
+.film-tv-dialog__comment p {
+  margin: 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.film-tv-dialog__actions {
+  margin-top: 0.9rem;
+  font-size: 0.8rem;
+}
+
+/* the link keeps material's site-wide link colour; the underline carries the
+   affordance so it does not rely on colour alone (dark-mode contrast of that
+   colour is ~3.3 by design) */
+.film-tv-dialog__link {
+  text-decoration: underline;
+}
+
+.film-tv-dialog__close {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.6rem;
+  border: none;
+  background: none;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  color: var(--md-default-fg-color);
+}
+
+/* --- statistics (index page, build-time) --------------------------------- */
+
+.film-tv-stat__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.8rem;
+  margin: 1rem 0;
+}
+
+.film-tv-stat__card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 6px;
+  background: var(--md-default-fg-color--lightest);
+  border: 1px solid var(--md-default-fg-color--lightest);
+}
+
+.film-tv-stat__label {
+  font-size: 0.72rem;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-stat__number {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.film-tv-stat__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
+}
+
+/* the single collapsible statistics block (same <details> pattern as running.md) */
+details.film-tv-stat {
+  margin: 1rem 0;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+}
+
+.film-tv-stat h3 {
+  margin: 0 0 0.4rem;
+  font-size: 0.9rem;
+}
+
+details.film-tv-stat > summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  list-style: none;
+}
+
+details.film-tv-stat > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.film-tv-stat > summary::after {
+  content: "▾";
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+details.film-tv-stat[open] > summary {
+  margin-bottom: 0.5rem;
+}
+
+details.film-tv-stat[open] > summary::after {
+  content: "▴";
+}
+
+.film-tv-stat__hint {
+  /* full-strength foreground: the dimmed variant measured 4.47 contrast in light
+     mode (below 4.5 for small text); size/weight already set it apart */
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-stat__rows {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.film-tv-stat__row {
+  display: grid;
+  grid-template-columns: 6.5rem 1fr 2.2rem;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  margin-bottom: 0.2rem;
+}
+
+.film-tv-stat__bar {
+  height: 0.5rem;
+  border-radius: 2px;
+  /* link colour, not primary: primary is black on the slate palette */
+  background: linear-gradient(
+    90deg,
+    var(--md-typeset-a-color) var(--film-tv-bar, 0%),
+    var(--md-default-fg-color--lightest) var(--film-tv-bar, 0%)
+  );
+}
+
+.film-tv-stat__name {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;  /* labels like "Anne Hathaway（安妮·海瑟薇）" must not stretch the row */
+}
+
+.film-tv-stat__value {
+  text-align: right;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-stat__empty {
+  margin: 0.6rem 0;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-note {
+  font-size: 0.82rem;
+  color: var(--md-default-fg-color);
+}
+
+/* --- people boards (people.md, build-time rendered) ----------------------- */
+
+.film-tv-people__board {
+  margin: 1.4rem 0;
+}
+
+.film-tv-people__board h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1rem;
+}
+
+.film-tv-people__scroll {
+  overflow-x: auto;
+}
+
+.film-tv-people {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.film-tv-people th,
+.film-tv-people td {
+  padding: 0.28rem 0.5rem;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  text-align: left;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-people th {
+  color: var(--md-default-fg-color--light);
+  font-weight: 500;
+}
+
+.film-tv-people__rank,
+.film-tv-people__num {
+  width: 3.5rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.film-tv-people__span,
+.film-tv-people__roles {
+  white-space: nowrap;
+  color: var(--md-default-fg-color--light);
+}
+
+.film-tv-people a {
+  color: var(--md-typeset-a-color);
+}
+
+.film-tv-people__douban {
+  width: 3rem;
+  white-space: nowrap;
+}
+
+.film-tv-people__douban a {
+  font-size: 0.72rem;
+  color: var(--md-typeset-a-color);
+}
+
+details.film-tv-chart {
+  margin: 1.2rem 0 1.6rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 6px;
+}
+
+details.film-tv-chart > summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  list-style: none;
+}
+
+details.film-tv-chart > summary::-webkit-details-marker {
+  display: none;
+}
+
+details.film-tv-chart > summary::after {
+  content: "▾";
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+details.film-tv-chart[open] > summary {
+  margin-bottom: 0.6rem;
+}
+
+details.film-tv-chart[open] > summary::after {
+  content: "▴";
+}
+
+.film-tv-chart__hint {
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-chart__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.film-tv-chart__control {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-chart__control[hidden] {
+  display: none;
+}
+
+.film-tv-chart__control select,
+.film-tv-chart__control input {
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 4px;
+  background: var(--md-default-bg-color);
+  color: var(--md-default-fg-color);
+  font-size: 0.75rem;
+}
+
+.film-tv-chart__legend {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-left: auto;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color);
+}
+
+.film-tv-chart__summary {
+  margin: 0 0 0.5rem;
+  font-size: 0.75rem;
+  color: var(--md-default-fg-color--light);
+}
+
+/* Each mermaid chart wants the full content width (a squeezed xychart is hard to
+   read); two columns only appear when the layout is genuinely wide enough
+   (2 × 30rem + gap), so the normal content column shows one wide chart per row. */
+.film-tv-chart__canvas {
+  overflow-x: auto;  /* a very long range scrolls instead of being clipped */
+}
+
+.film-tv-chart__plot svg {
+  max-width: 100%;
+  height: auto;
+}

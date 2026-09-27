@@ -1,0 +1,523 @@
+# Film & TV archive — top-level fields are machine-owned and rewritten from
+# Douban on every sync; edit the `user:` block freely, it is never touched.
+# generated_at: 2026-09-27T16:34+08:00
+- id: "37060852"
+  title: 云深不知梦
+  original_title: null
+  year: 2025
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.4
+  douban_score_count: 3424
+  marked_at: "2025-12-20"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
+  credits:
+    directors: [邬卫东, 七月, 王昊]
+    casts: [蔡海婷, 姜秋再, 李诗萌, 聂曦映, 乔木心, 陈怡帆, 孙路路, 尹博一, 陈泊羽, 杨凯祺]
+    writers: [李奕桐, 顾虓, 赵培珊, 程前, 李子涵, 郭晨辰, 毕文琪, 黄燕晖, 孙易, 高嘉, 陈倩倩, 陆晓曦, 曾紫妍, 邓惠元, 王焕梓]
+  episodes: 26
+  slug: 1-26
+  covers:
+  - covers/37060852/01.webp
+  douban_url: https://movie.douban.com/subject/37060852/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 06977e49
+    machine_hash: ca437afb
+    missing_since: null
+- id: "37434078"
+  title: 将棋女王
+  original_title: MISS KING
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 6.4
+  douban_score_count: 2939
+  marked_at: "2025-11-29"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
+  credits:
+    directors: [山岸圣太, 椿本庆次郎]
+    casts: [能年玲奈]
+    writers: [荒木哉仁, 石田剛太, 山岸圣太]
+  episodes: 8
+  slug: miss-king
+  covers:
+  - covers/37434078/01.webp
+  douban_url: https://movie.douban.com/subject/37434078/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: c94e363f
+    machine_hash: 583d621a
+    missing_since: null
+- id: "36544257"
+  title: 他为什么依然单身
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 2
+  douban_score: 6.9
+  douban_score_count: 38447
+  marked_at: "2025-11-28"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
+  credits:
+    directors: [郄国伟]
+    casts: [霍建华, 朱珠, 费启鸣, 李凯馨, 范静祎, 张瑶, 刘佳, 董思怡, 李易祥]
+    writers: [步晓峰, 桂东鸣]
+  episodes: 16
+  slug: douban-36544257
+  covers:
+  - covers/36544257/01.webp
+  douban_url: https://movie.douban.com/subject/36544257/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 12b6a821
+    machine_hash: c178ad40
+    missing_since: null
+- id: "36318037"
+  title: 唐朝诡事录之长安
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 8.0
+  douban_score_count: 202758
+  marked_at: "2025-11-24"
+  douban_comment: null
+  tags: []
+  genres: [动作, 悬疑, 惊悚, 犯罪, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
+  credits:
+    directors: [巨兴茂]
+    casts: [杨旭文, 杨志刚, 郜思雯, 陈创, 孙雪宁, 石悦安鑫, 岳丽娜]
+    writers: [魏风华, 郭靖宇]
+  episodes: 40
+  slug: horror-stories-of-tang-dynasty-iii
+  covers:
+  - covers/36318037/01.webp
+  douban_url: https://movie.douban.com/subject/36318037/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: f8065cce
+    machine_hash: ea4ff59f
+    missing_since: null
+- id: "36576581"
+  title: 牧神记 年番1
+  original_title: null
+  year: 2024
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 8.8
+  douban_score_count: 25280
+  marked_at: "2025-10-28"
+  douban_comment: null
+  tags: []
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
+  credits:
+    directors: [沈乐平]
+    casts: [姚铭舜, 李欣, 程玉珠, 杜晴晴, 虞晓旭, 于凯隆, 高嗣航, 王宇航, 唐昊, 贾志超]
+    writers: [沈乐平]
+  episodes: 52
+  slug: 1-52
+  covers:
+  - covers/36576581/01.webp
+  douban_url: https://movie.douban.com/subject/36576581/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 982dc60b
+    machine_hash: 2105ff20
+    missing_since: null
+- id: "36996293"
+  title: 暴君的厨师
+  original_title: 폭군의 셰프
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 2
+  douban_score: 5.6
+  douban_score_count: 13739
+  marked_at: "2025-09-29"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 奇幻, 古装]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 80
+  credits:
+    directors: [张太维]
+    casts: [林允儿, 李彩玟, 姜汉娜, 崔奎华]
+    writers: [HapJak]
+  episodes: 12
+  slug: chef-of-tyranny
+  covers:
+  - covers/36996293/01.webp
+  douban_url: https://movie.douban.com/subject/36996293/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 0b5b2bcf
+    machine_hash: 98485dfe
+    missing_since: null
+- id: "36160375"
+  title: 基地 第三季
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 7.9
+  douban_score_count: 3372
+  marked_at: "2025-09-13"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 科幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
+  credits:
+    directors: [David S. Goyer（大卫·S·高耶）, Tim Southam（蒂姆·索瑟姆）, 罗克珊·道森, 克里斯托弗·J·伯恩]
+    casts: [Jared Harris（杰瑞德·哈里斯）, Lee Pace（李·佩斯）, Lou Llobell（卢·洛贝尔）, Laura Birn（劳拉·比尔恩）, 卡西安·比尔顿, 特伦斯·曼, 切莉·琼斯, 布兰登·P·贝尔, 黄耀成·莱-星, 亚历山大·希迪格]
+    writers: [David S. Goyer（大卫·S·高耶）, 乔什·弗莱德曼, 艾萨克·阿西莫夫]
+  episodes: 10
+  slug: foundation-season-3
+  covers:
+  - covers/36160375/01.webp
+  douban_url: https://movie.douban.com/subject/36160375/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: a69113cd
+    machine_hash: 8a734dce
+    missing_since: null
+- id: "36208369"
+  title: 星期三 第二季
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.4
+  douban_score_count: 57384
+  marked_at: "2025-09-06"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 悬疑, 犯罪, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
+  credits:
+    directors: [Tim Burton（蒂姆·波顿）, Paco Cabezas（帕科·卡贝萨斯）, 安吉拉·罗宾森]
+    casts: [Jenna Ortega（詹娜·奥尔特加）, Steve Buscemi（史蒂夫·布西密）, Emma Myers（艾玛·迈尔斯）, Hunter Doohan（亨特·杜汉）, 乔伊·桑迪, 凯瑟琳·泽塔-琼斯, 路易斯·古兹曼, 格温多兰·克里斯蒂, 穆萨·穆斯塔法, 乔基·法默]
+    writers: [艾尔弗雷德·高福, 迈尔斯·米勒, 马特·兰伯特, 凯拉·阿尔伯特, 詹姆斯·马德斯基, 瓦伦蒂娜·加尔萨, 劳伦·奥特罗, 埃里卡·巴斯克斯, 西耶娜·巴特菲尔德]
+  episodes: 8
+  slug: wednesday-season-2
+  covers:
+  - covers/36208369/01.webp
+  douban_url: https://movie.douban.com/subject/36208369/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: e8cf0ed5
+    machine_hash: 680e1e49
+    missing_since: null
+- id: "37167535"
+  title: 百妖谱·洛阳篇
+  original_title: null
+  year: 2025
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2025-09-05"
+  douban_comment: null
+  tags: []
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
+  credits:
+    directors: [董易]
+    casts: [赵双, 常蓉珊, 曹云图, 戈昕宇, 藤新, 皇贞季]
+    writers: [董易]
+  episodes: 12
+  slug: fairies-album-5
+  covers:
+  - covers/37167535/01.webp
+  douban_url: https://movie.douban.com/subject/37167535/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: fea2a527
+    machine_hash: 825ff90b
+    missing_since: null
+- id: "35861087"
+  title: 凡人修仙传
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 7.5
+  douban_score_count: 141717
+  marked_at: "2025-08-13"
+  douban_comment: null
+  tags: []
+  genres: [奇幻, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
+  credits:
+    directors: [杨阳]
+    casts: [杨洋, 金晨, 汪铎, 赵小棠, 赵晴, 金佳悦, 荣梓希, 张婉儿, 胡宇轩, 张翔]
+    writers: [王裕仁, 贾东岩, 李文, 段柯豪, 唐川, 廖雨嫣, 刘若汀]
+  episodes: 30
+  slug: the-immortal-ascension
+  covers:
+  - covers/35861087/01.webp
+  douban_url: https://movie.douban.com/subject/35861087/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: e5054284
+    machine_hash: 6dbacfab
+    missing_since: null
+- id: "36407380"
+  title: 鱿鱼游戏 第三季
+  original_title: 오징어 게임 시즌 3
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 6.4
+  douban_score_count: 122799
+  marked_at: "2025-07-05"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 悬疑, 惊悚]
+  regions: [韩国]
+  languages: [韩语, 英语]
+  runtime: 60
+  credits:
+    directors: [黄东赫]
+    casts: [李政宰, 李炳宪, 魏嘏隽, 任时完, 朴珪瑛, 李阵郁, 姜河那, 朴成焄, 杨东根, 姜爱心]
+    writers: [黄东赫]
+  episodes: 6
+  slug: squid-game-3
+  covers:
+  - covers/36407380/01.webp
+  douban_url: https://movie.douban.com/subject/36407380/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: ff55ffaf
+    machine_hash: d02c5f48
+    missing_since: null
+- id: "36831851"
+  title: 匹兹堡医护前线 第一季
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 5
+  douban_score: 9.5
+  douban_score_count: 76776
+  marked_at: "2025-05-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
+  credits:
+    directors: [Damian Marcano（达米安·马尔卡诺）, Amanda Marsalis（阿曼达·马尔萨利斯）, 约翰·卡梅伦, 陈权, 约翰·威尔斯, 西尔弗·特里]
+    casts: [Noah Wyle（诺亚·怀尔）, Tracy Ifeachor（特蕾西·伊芙艾策尔）, Fiona Dourif（菲奥娜·道里夫）, Taylor Dearden（泰勒·德尔登）, 伊莎·布里昂斯, 杰乐伦·霍威尔, 莎巴娜·阿齐兹, 布兰登·门德斯·霍默, 帕特里克·鲍尔, 凯瑟琳·拉纳萨]
+    writers: [R·斯科特·格雷米尔, 乔·萨克斯, Noah Wyle（诺亚·怀尔）, 辛西娅·阿达克瓦, 西姆兰·拜德万, 瓦莱丽·楚, 艾丽莎·格什曼]
+  episodes: 15
+  slug: the-pitt-season-1
+  covers:
+  - covers/36831851/01.webp
+  douban_url: https://movie.douban.com/subject/36831851/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: 78e74b93
+    machine_hash: c1c5cde6
+    missing_since: null
+- id: "36056894"
+  title: 爱，死亡和机器人 第四季
+  original_title: null
+  year: 2025
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 4.8
+  douban_score_count: 72707
+  marked_at: "2025-05-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动作, 科幻, 动画, 恐怖, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语, 汉语普通话]
+  runtime: 15
+  credits:
+    directors: [David Fincher（大卫·芬奇）, Robert Bisi（罗伯特·比斯）, 安迪·里昂, 吕寅荣, 罗伯特·瓦利, 帕特里克·奥斯本, 蒂姆·米勒, 迭戈·波拉尔, 埃米莉·迪恩]
+    casts: [Anthony Kiedis（安东尼·凯迪斯）, 弗利, John Frusciante（约翰·弗拉西特）, Chad Smith（查德·史密斯）, 艾米丽·奥布莱恩, 费奥多尔·钱恩, 彼得·迈克尔, 素玛立·蒙塔诺, 约翰·博耶加, 艾德·斯克林]
+    writers: [Robert Bisi（罗伯特·比斯）, 安迪·里昂, 乔·阿克罗比, 蒂姆·米勒, 约翰·斯卡尔齐, J·T·佩蒂, 塔姆辛·缪尔]
+  episodes: 10
+  slug: love-death-robots-season-4
+  covers:
+  - covers/36056894/01.webp
+  douban_url: https://movie.douban.com/subject/36056894/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 1
+    fingerprint: a4a31408
+    machine_hash: 7275d9a7
+    missing_since: null
