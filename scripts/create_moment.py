@@ -18,8 +18,9 @@ Usage:
     uv run python scripts/create_moment.py "Content text" --meta name="La Mian" --meta rating=4
 
 Images (``--image``, repeatable): each source is converted to WebP
-(PNG/JPG/JPEG at ``extra.optimize_images.quality``; .webp sources are copied
-as-is), staged under ``docs/assets/bucket/`` (git-ignored preview copy) and
+(PNG/JPG/JPEG at ``extra.optimize_images.quality``, optionally downscaled to
+``extra.optimize_images.max_dimension``; .webp sources are copied as-is),
+staged under ``docs/assets/bucket/`` (git-ignored preview copy) and
 uploaded to the bucket with ``bucket-upload``'s key rule
 (``extra.bucket.upload.rule``). The md link is written as a local relative
 path under ``assets/bucket/``, which the build rewrites to the bucket URL
@@ -62,7 +63,7 @@ from scripts.bucket_upload import (
     resolve_quality,
     sanitize_filename,
 )
-from scripts.optimize_images import IMAGE_EXTENSIONS, convert_to_webp
+from scripts.optimize_images import IMAGE_EXTENSIONS, config_max_dimension, convert_to_webp
 from shared.bucket import is_enabled as bucket_is_enabled
 from shared.date import parse_datetime_arg
 from shared.env import load_env_files
@@ -175,10 +176,18 @@ def exif_camera_date(path: Path) -> tuple[str, str]:
     """Read ``(camera, photo_date)`` from the image EXIF, else ``("", "")``.
 
     ``camera`` = Make + Model joined (e.g. ``SONY ILCE-7M4``); ``photo_date``
-    = DateTimeOriginal normalized to ``YYYY-MM-DD HH:MM``. Missing/empty
+    = the capture time normalized to ``YYYY-MM-DD HH:MM``. Missing/empty
     values come back as ``""``; unreadable EXIF prints a warning (like
     ``exif_gps``). EXIF survives the WebP conversion (see
     internal/moment-design.md), but this reads the SOURCE before conversion.
+
+    Date lookup order (first hit wins): the Exif **sub-IFD** (0x8769) tags
+    0x9003 (DateTimeOriginal) then 0x9004 (DateTimeDigitized), then the same
+    tags at the top level (some writers — including Pillow's own
+    ``exif[0x9003] = …`` — put them there). Standards-compliant
+    cameras/Lightroom keep 0x9003 in the sub-IFD, where a top-level-only read
+    would miss it. IFD0 0x0132 (DateTime) is deliberately NOT consulted: it
+    is the file's modified/export time, not the capture time.
     """
     camera = photo_date = ""
     try:
@@ -191,7 +200,12 @@ def exif_camera_date(path: Path) -> tuple[str, str]:
         parts = [p for p in (make, model) if p]
         if parts:
             camera = " ".join(parts)
-        raw_date = str(exif.get(0x9003) or "").strip()  # DateTimeOriginal
+        sub = exif.get_ifd(0x8769)  # Exif sub-IFD (real cameras store dates here)
+        raw_date = ""
+        for tag in (0x9003, 0x9004):  # DateTimeOriginal, DateTimeDigitized
+            raw_date = str(sub.get(tag) or exif.get(tag) or "").strip()
+            if raw_date:
+                break
         m = re.match(r"^(\d{4}):(\d{2}):(\d{2}) (\d{2}):(\d{2})(?::\d{2})?$", raw_date)
         if m:
             year, mon, day, hour, minute = (int(m.group(i)) for i in range(1, 6))
@@ -210,12 +224,14 @@ def exif_camera_date(path: Path) -> tuple[str, str]:
 
 
 def _dt_from_exif(images: list[str]) -> tuple[datetime, dict[str, tuple[str, str]]]:
-    """Moment date from the first image with a usable EXIF DateTimeOriginal.
+    """Moment date from the first image with a usable EXIF capture time.
 
     Inline ``path|caption`` forms are stripped; photos without a date are
-    skipped (first usable wins, mirroring the EXIF-GPS rule). When no photo
-    carries a date the moment still gets created with the current time plus a
-    warning — the ``date:`` field always stays valid.
+    skipped (first usable wins, mirroring the EXIF-GPS rule). The date itself
+    is resolved by ``exif_camera_date`` (DateTimeOriginal → DateTimeDigitized,
+    sub-IFD first). When no photo carries a date the moment still
+    gets created with the current time plus a warning — the ``date:`` field
+    always stays valid.
 
     Returns ``(dt, cache)``: ``cache`` maps each inspected path to its
     ``(camera, photo_date)`` EXIF read, so the caller's per-image pass reuses
@@ -232,19 +248,21 @@ def _dt_from_exif(images: list[str]) -> tuple[datetime, dict[str, tuple[str, str
             print(f"  Time:    {dt.strftime('%Y-%m-%d %H:%M')} (from EXIF)")
             return dt, cache
     print(
-        "  [WARN]  no EXIF DateTimeOriginal on the photos — falling back to now",
+        "  [WARN]  no EXIF capture time (DateTimeOriginal/DateTimeDigitized) on the "
+        "photos — falling back to now",
         file=sys.stderr,
     )
     return parse_datetime_arg(None), cache
 
 
-def _stage_webp(src: Path, webp: Path, quality: int) -> bool:
+def _stage_webp(src: Path, webp: Path, quality: int, max_dimension: int | None) -> bool:
     """Produce the WebP at *webp* from *src* (True on success).
 
     PNG/JPG/JPEG are re-encoded at *quality* via ``convert_to_webp`` (EXIF
-    preserved, mirrors ``bucket-upload``); .webp sources are copied as-is. The
-    target is removed first so a stale file from a failed run never masks a
-    fresh conversion.
+    preserved, mirrors ``bucket-upload``); ``max_dimension`` optionally caps
+    the longest edge (opt-in, off by default); .webp sources are copied as-is
+    (no re-encode, so the cap does not apply). The target is removed first so
+    a stale file from a failed run never masks a fresh conversion.
     """
     webp.parent.mkdir(parents=True, exist_ok=True)
     if src.suffix.lower() == ".webp":
@@ -252,7 +270,7 @@ def _stage_webp(src: Path, webp: Path, quality: int) -> bool:
             shutil.copy2(src, webp)
         return True
     webp.unlink(missing_ok=True)
-    dst = convert_to_webp(src, quality=quality, dst=webp)
+    dst = convert_to_webp(src, quality=quality, dst=webp, max_dimension=max_dimension)
     return dst is not None or webp.is_file()
 
 
@@ -262,6 +280,7 @@ def _process_image(
     now,
     local_dir: Path,
     quality: int,
+    max_dimension: int | None,
     max_bytes: int,
     fallback: str,
     rule: str,
@@ -299,7 +318,7 @@ def _process_image(
     rel = _unique_relative_path(rendered, local_dir)
     webp = local_dir / rel
 
-    if not _stage_webp(src, webp, quality):
+    if not _stage_webp(src, webp, quality, max_dimension):
         print(f"  [SKIP]  {src}: conversion failed", file=sys.stderr)
         return None
 
@@ -381,8 +400,9 @@ def main():
         "--time-from-exif",
         action="store_true",
         help=(
-            "use the EXIF DateTimeOriginal of the first --image photo as the "
-            "moment date (default: --time or now); mutually exclusive with --time"
+            "use the first --image photo's EXIF capture time as the moment date "
+            "(DateTimeOriginal, else DateTimeDigitized; default: --time or now); "
+            "mutually exclusive with --time"
         ),
     )
     parser.add_argument(
@@ -462,6 +482,7 @@ def main():
             mapping = {}
         upload_cfg = cfg.get("upload") or {}
         quality = _clamp_quality(resolve_quality(None, config_quality()))
+        max_dimension = config_max_dimension()
         max_bytes = int(
             _resolve_max_size_mb(None, str(upload_cfg.get("max_size_mb") or "")) * 1024 * 1024
         )
@@ -520,6 +541,7 @@ def main():
                 now=dt,
                 local_dir=local_dir,
                 quality=quality,
+                max_dimension=max_dimension,
                 max_bytes=max_bytes,
                 fallback=fallback,
                 rule=rule,

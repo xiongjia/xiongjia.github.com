@@ -41,3 +41,15 @@ def tg_off(monkeypatch):
 
     monkeypatch.setattr(tg_settings, "bot_token", "")
     monkeypatch.setattr(tg_settings, "allowed_user_ids", "")
+
+
+@pytest.fixture(autouse=True)
+def no_local_mode(monkeypatch):
+    """``BOT_API_LOCAL`` is server-wide state — never inherit the developer's
+    value (from `.env.local`) into tests: a worktree/PR test would silently go
+    local. Tests that exercise local mode set the env/setting explicitly."""
+    monkeypatch.delenv("BOT_API_LOCAL", raising=False)
+    from api.config import settings
+
+    monkeypatch.setattr(settings, "local", False)
+    yield

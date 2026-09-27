@@ -24,6 +24,8 @@ class RunRequest(BaseModel):
     handoff: bool = True  # True: draft PR immediately (default); False: wait for CI checks
     # NOTE: no auto_merge field — never auto-merge by dev decision; any
     # extra client field (incl. auto_merge) is ignored by pydantic.
+    # NOTE: no local field — local mode is server-wide (BOT_API_LOCAL), not
+    # a per-request choice.
 
 
 class FieldSchema(BaseModel):
@@ -59,6 +61,24 @@ class FieldSchema(BaseModel):
     # console-only: repeat fields with a browser file-picker — files are
     # staged via POST /api/upload and the returned paths fill the values
     upload: bool = False
+    # console-only: detailed help rendered as a muted line under the field
+    # (and as its tooltip), so users understand the expected format and
+    # semantics — e.g. text-moment's `meta` KEY=VALUE block. UI copy: the
+    # text may contain Chinese examples (unlike the rest of this module).
+    help: str | None = None
+    # comma-separated sibling field names that must NOT be set together with
+    # this one (e.g. text-moment's "Time from photo EXIF" vs "Time"): a
+    # both-set submission raises a ValueError naming both fields.
+    conflicts_with: str | None = None
+    # comma-separated sibling field names that MUST be set for this field to
+    # make sense (e.g. "Time from photo EXIF" requires the uploaded images).
+    # A missing dependency raises a ValueError before any worktree starts.
+    requires: str | None = None
+    # checkbox-only, console-only: sibling field names turned OFF (disabled +
+    # cleared) while the box is checked — the inverse of ``enables``. Prevents
+    # a conflict in the UI instead of only rejecting it server-side (e.g.
+    # "Time from photo EXIF" disables the manual "Time" input).
+    disables: str | None = None
 
 
 class UploadFileItem(BaseModel):
@@ -119,6 +139,12 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "required": True,
             "arg": 0,
             "tab": "Content",
+            "help": (
+                "Moment body text (Markdown supported, e.g. **bold**, "
+                "[links](https://…), lists). Required: photo-only moments are "
+                "Telegram-only (the console cannot pass --no-editor), so add "
+                "at least one character even for a picture."
+            ),
         },
         {
             "name": "time",
@@ -126,6 +152,32 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Time (no spaces: 9am / 21:30 / 2026-08-09T14:30)",
             "arg": "--time",
             "tab": "Content",
+            "conflicts_with": "time_from_exif",
+            "help": (
+                "Publish time; leave empty to use now. No spaces — the bot "
+                "spec re-splits on whitespace, so use 2026-08-09T14:30 (not "
+                "2026-08-09 14:30). Cannot be combined with 'Time from photo "
+                "EXIF'."
+            ),
+        },
+        {
+            "name": "time_from_exif",
+            "type": "checkbox",
+            "label": "Time from photo EXIF",
+            "default": False,
+            "arg": "--time-from-exif",
+            "emit": "checked",
+            "tab": "Content",
+            "conflicts_with": "time",
+            "requires": "images",
+            "disables": "time",
+            "help": (
+                "Use the uploaded photo's EXIF capture time (DateTimeOriginal) "
+                "as the moment date — the first photo carrying one wins, the "
+                "rest are ignored. Requires at least one uploaded image and is "
+                "mutually exclusive with Time. Photos without EXIF (screenshots, "
+                "stripped files) fall back to now with a warning."
+            ),
         },
         {
             "name": "slug",
@@ -133,6 +185,10 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Slug (optional, no spaces)",
             "arg": "--slug",
             "tab": "Content",
+            "help": (
+                "Optional filename slug appended as DD-HHMM-<slug>.md — letters, "
+                "digits, underscore and hyphen only (no spaces or slashes)."
+            ),
         },
         {
             "name": "tags",
@@ -140,6 +196,11 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Tags (comma-separated, e.g. food,film)",
             "arg": "--tags",
             "tab": "Content",
+            "help": (
+                "Comma-separated tags shown as #tag links on the timeline. "
+                "`general` is always added automatically. Tags also decide which "
+                "Meta fields apply (see the Meta tab)."
+            ),
         },
         {
             "name": "draft",
@@ -149,6 +210,10 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "arg": "--draft",
             "emit": "checked",
             "tab": "Content",
+            "help": (
+                "Draft moments are hidden from the production build but stay "
+                "visible on the dev server (MKDOCS_INCLUDE_DRAFTS)."
+            ),
         },
         {
             "name": "images",
@@ -156,6 +221,12 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Images (each row: path + optional caption)",
             "tab": "Images",
             "upload": True,
+            "help": (
+                "Each photo is converted to WebP and uploaded to the bucket; the "
+                "moment links it with a relative assets/bucket/ path. The caption "
+                "becomes the image alt text. 'save as' (optional) renames every "
+                "file in this batch, keeping the original extension."
+            ),
         },
         {
             "name": "no_upload",
@@ -165,6 +236,11 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "arg": "--no-upload",
             "emit": "checked",
             "tab": "Images",
+            "help": (
+                "Convert + stage the WebP under docs/assets/bucket/ without "
+                "uploading it to R2 — upload later with PicList or "
+                "`poe bucket-upload`."
+            ),
         },
         {
             "name": "place",
@@ -172,6 +248,10 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Place (display text, no spaces)",
             "arg": "--place",
             "tab": "Location",
+            "help": (
+                "Location label shown on the moment (display text only). "
+                "Coordinates come from the photo EXIF or the fields below."
+            ),
         },
         {
             "name": "set_gps",
@@ -180,6 +260,12 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": False,
             "enables": "lng,lat,crs",
             "tab": "Location",
+            "help": (
+                "Leave OFF to take GPS from the uploaded photo's EXIF (WGS-84) "
+                "automatically — no coordinates are sent in that case. Turn ON "
+                "to type coordinates or use '📍 Use my location'; explicit "
+                "values always win over photo EXIF."
+            ),
         },
         {
             "name": "lng",
@@ -188,6 +274,7 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "step": 0.000001,
             "arg": "--lng",
             "tab": "Location",
+            "help": "Longitude in the selected coordinate system (e.g. 121.473701).",
         },
         {
             "name": "lat",
@@ -196,6 +283,7 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "step": 0.000001,
             "arg": "--lat",
             "tab": "Location",
+            "help": "Latitude in the selected coordinate system (e.g. 31.230416).",
         },
         {
             "name": "crs",
@@ -205,6 +293,10 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "default": "wgs84",
             "arg": "--crs",
             "tab": "Location",
+            "help": (
+                "wgs84 = GPS / OpenStreetMap (photo EXIF and browser location). "
+                "gcj02 = Amap/Baidu; converted to WGS-84 before saving."
+            ),
         },
         {
             "name": "region",
@@ -212,6 +304,10 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Map region (optional: shanghai)",
             "arg": "--region",
             "tab": "Location",
+            "help": (
+                "Basemap region override (e.g. shanghai). Leave empty to "
+                "auto-probe the region from the coordinates."
+            ),
         },
         {
             "name": "meta",
@@ -219,6 +315,16 @@ _TASK_FIELDS: dict[str, list[dict[str, Any]]] = {
             "label": "Meta KEY=VALUE (no spaces, e.g. rating=4)",
             "arg": "--meta",
             "tab": "Meta",
+            "help": (
+                "Structured metadata, one KEY=VALUE row each (values must not "
+                "contain spaces). Keys depend on the moment's tags, as "
+                "configured in mkdocs.yml extra.moment.meta_fields: "
+                "food → name + rating, film → name + rating, misc → name. "
+                "Examples: name=老上海面馆, rating=4 — rating is an integer "
+                "1–5 rendered as ★ stars (out-of-range values are hidden). "
+                "A photo's EXIF camera/photo_date are added automatically. "
+                "Unknown keys are kept in the frontmatter but not rendered."
+            ),
         },
     ],
     "enu": [
@@ -280,20 +386,57 @@ def validate_schemas() -> None:
     if unknown:
         raise RuntimeError(f"schema metadata for unknown engine tasks: {unknown}")
     for task, fields in _TASK_FIELDS.items():
-        by_name = {f["name"]: f for f in fields}
+        by_name: dict[str, dict[str, Any]] = {}
         for f in fields:
-            enables = f.get("enables")
-            if enables is None:
-                continue
-            for name in _split_names(enables):
-                if name not in by_name:
+            # duplicate names would collide in collectFields + the help ids
+            if f["name"] in by_name:
+                raise RuntimeError(f"task {task!r}: duplicate field name {f['name']!r}")
+            by_name[f["name"]] = f
+        enabled_targets: set[str] = set()
+        disabled_targets: set[str] = set()
+        for f in fields:
+            name = f["name"]
+            relations = {
+                "enables": _split_names(f.get("enables") or ""),
+                "conflicts_with": _split_names(f.get("conflicts_with") or ""),
+                "requires": _split_names(f.get("requires") or ""),
+                "disables": _split_names(f.get("disables") or ""),
+            }
+            enabled_targets.update(relations["enables"])
+            disabled_targets.update(relations["disables"])
+            # enables/disables only act on checkbox inputs (the console wires
+            # them in the checkbox branch) — anywhere else is dead config
+            for prop in ("enables", "disables"):
+                if relations[prop] and f.get("type") != "checkbox":
                     raise RuntimeError(
-                        f"task {task!r}: field {f['name']!r} enables unknown field {name!r}"
+                        f"task {task!r}: field {name!r} declares {prop!r} but is not a checkbox"
                     )
-                # a gated field is an optional option by definition — required +
-                # gate is contradictory (assemble_args would silently drop it)
-                if by_name[name].get("required"):
-                    raise RuntimeError(f"task {task!r}: gated field {name!r} must not be required")
+            for target in relations["enables"]:
+                # a gated field is an optional option by definition —
+                # required + gate is contradictory (assemble_args would
+                # silently drop it)
+                if target in by_name and by_name[target].get("required"):
+                    raise RuntimeError(
+                        f"task {task!r}: gated field {target!r} must not be required"
+                    )
+            for prop, targets in relations.items():
+                for target in targets:
+                    if target not in by_name:
+                        verb = "conflicts with" if prop == "conflicts_with" else prop
+                        raise RuntimeError(
+                            f"task {task!r}: field {name!r} {verb} unknown field {target!r}"
+                        )
+                    if target == name:
+                        raise RuntimeError(
+                            f"task {task!r}: field {name!r} lists itself in {prop!r}"
+                        )
+        # one field governed by both an `enables` and a `disables` checkbox
+        # would have its disabled state decided by call order in the console
+        overlap = sorted(enabled_targets & disabled_targets)
+        if overlap:
+            raise RuntimeError(
+                f"task {task!r}: fields both enabled and disabled by checkboxes: {overlap}"
+            )
 
 
 validate_schemas()
@@ -360,6 +503,35 @@ def _as_bool(value: Any) -> bool:
     return bool(value)
 
 
+def _is_field_set(field: FieldSchema, value: Any) -> bool:
+    """Whether a submitted value counts as present (``requires``/``conflicts_with``).
+
+    Checkboxes use the same truthiness as assembly (``_as_bool``), so a raw
+    client sending ``"false"`` is treated as unchecked; list/dict fields
+    (``images``/``repeat``) count only when non-empty; everything else counts
+    when it carries non-blank text.
+    """
+    if field.type == "checkbox":
+        return _as_bool(value)
+    if value is None:
+        return False
+    if isinstance(value, dict):
+        return bool(value)
+    if isinstance(value, list):
+        if field.type == "images":
+            # mirror assembly: only a row with a path yields an --image arg,
+            # so [{"path": ""}] must NOT satisfy `requires: images`
+            return any(
+                str(row.get("path") or "").strip()
+                if isinstance(row, dict)
+                else str(row or "").partition("|")[0].strip()
+                for row in value
+            )
+        # a list of blank strings (e.g. [""]) is not a value either
+        return any(str(v).strip() for v in value)
+    return str(value).strip() != ""
+
+
 def _no_space(value: str, fname: str) -> None:
     """Reject whitespace in a flag value that rides the spec string.
 
@@ -383,7 +555,9 @@ def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
     fields append ``[--flag, value]`` (checkbox flags append bare when
     unchecked). A field gated by an unchecked checkbox (``enables``) is
     dropped — the API contract matches the console's gated UI. Raises
-    ``ValueError`` on a missing required field.
+    ``ValueError`` on a missing required field, on a set field whose
+    ``requires`` dependency is absent, and on ``conflicts_with`` fields that
+    are both set.
     """
     schema = task_schema(task)
     if schema is None:
@@ -395,6 +569,33 @@ def assemble_args(task: str, fields: dict[str, Any]) -> list[str]:
     for g in schema.fields:
         if g.type == "checkbox" and g.enables and not _as_bool(fields.get(g.name, g.default)):
             gated_off.update(_split_names(g.enables))
+    # cross-field constraints (`requires` / `conflicts_with`): validate BEFORE
+    # building args, so a bad combination fails with a clear 422 instead of a
+    # CLI error after a worktree + subprocess have already been started. A
+    # gated-off field is dropped from the args, so it neither satisfies a
+    # `requires` nor triggers a `conflicts_with`.
+    by_name = {f.name: f for f in schema.fields}
+    for f in schema.fields:
+        if f.name in gated_off or not (f.requires or f.conflicts_with):
+            continue
+        if not _is_field_set(f, fields.get(f.name, f.default)):
+            continue
+        for dep in _split_names(f.requires or ""):
+            dep_field = by_name.get(dep)
+            if dep_field is None:
+                continue
+            if dep in gated_off or not _is_field_set(dep_field, fields.get(dep, dep_field.default)):
+                raise ValueError(
+                    f"field {f.name!r} requires {dep!r} — provide {dep!r} or clear {f.name!r}"
+                )
+        for other in _split_names(f.conflicts_with or ""):
+            other_field = by_name.get(other)
+            if other in gated_off or other_field is None:
+                continue
+            if _is_field_set(other_field, fields.get(other, other_field.default)):
+                raise ValueError(
+                    f"fields {f.name!r} and {other!r} are mutually exclusive — clear one of them"
+                )
     positional: list[str] = []
     flags: list[str] = []
     skipped_positional = False

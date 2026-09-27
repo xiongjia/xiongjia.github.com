@@ -25,6 +25,12 @@ class Settings(BaseSettings):
     # runtime data dir: history JSONL (+ rotation) and uploads staging.
     # Absolute path or repo-relative; default: repo-local .bot-api/
     log_dir: str = ".bot-api"
+    # server-wide local mode (``BOT_API_LOCAL=true`` / ``poe api-server
+    # --local``): every bot run executes with ``poe bot run … --local`` in
+    # the API server's own checkout — no worktree/branch/PR, so uncommitted
+    # changes are exercised directly. Meant for local testing; edits are
+    # left uncommitted.
+    local: bool = False
 
 
 class TgSettings(BaseSettings):

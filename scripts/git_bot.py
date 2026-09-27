@@ -3,6 +3,7 @@
 Usage (``poe bot`` — the first argument auto-selects the subcommand):
 
     poe bot "weight 82" "text-moment hello"    # one-step draft PR (--now)
+    poe bot "weight 82" --local                   # run in THIS working tree (no worktree/PR)
     poe bot "weight 82" --preview                # stop after local preview (port 8123)
     poe bot "weight 82" --auto-merge             # + squash-merge when CI is green
     poe bot --plan morning 81.5                  # plan file with vars (positional / --var)
@@ -18,6 +19,7 @@ from __future__ import annotations
 
 import argparse
 import base64
+import hashlib
 import json
 import os
 import re
@@ -753,6 +755,13 @@ def do_submit(
     auto_merge: bool,
     handoff: bool = False,
 ) -> None:
+    # safety net (see is_local_mode): never commit/push/PR in local mode, even if
+    # some path reaches submit without going through cmd_run's local branch
+    if _env_true("BOT_API_LOCAL"):
+        raise BotError(
+            "BOT_API_LOCAL=true — refusing to commit/push/open a PR; unset "
+            "BOT_API_LOCAL to publish, or commit manually"
+        )
     now_tag = run_time_tag()  # one run time shared by commit title + PR desc
     subject, body = aggregate_commit(tasks_run, now_tag=now_tag)
     if not commit_workdir(workdir, subject, body):
@@ -800,6 +809,71 @@ def do_submit(
 # ---------------------------------------------------------------------------
 
 
+def status_lines() -> list[str]:
+    """``git status --porcelain`` lines for the main repo (change summary)."""
+    out = git("status", "--porcelain", cwd=REPO_ROOT, check=False)
+    return [ln for ln in out.splitlines() if ln.strip()]
+
+
+def worktree_fingerprint() -> str:
+    """Hash of the main repo's working-tree state (status + content diffs).
+
+    Used by local mode to tell whether a run touched anything. A plain
+    status comparison misreports edits to already-dirty files (their
+    porcelain line is unchanged), so the diff body is folded in too:
+    ``git diff HEAD`` covers staged AND unstaged changes in one call (status
+    alone still catches untracked files, which a diff does not).
+    """
+    parts = [
+        git("status", "--porcelain", cwd=REPO_ROOT, check=False),
+        git("diff", "HEAD", cwd=REPO_ROOT, check=False),
+    ]
+    # SHA-1 is used as a change signal, never for security
+    return hashlib.sha1("\n".join(parts).encode(), usedforsecurity=False).hexdigest()
+
+
+def is_local_mode(args=None) -> bool:
+    """Local mode: ``--local`` OR the ``BOT_API_LOCAL`` env (true/1/yes).
+
+    The env check is a safety net: the API passes ``--local`` explicitly, but
+    honoring the env here as well means **no code path can open a PR** while
+    the server runs with ``BOT_API_LOCAL=true`` (``git_bot.main`` loads
+    ``.env``/``.env.local``, so the engine sees it too).
+    """
+    return bool(getattr(args, "local", False)) or _env_true("BOT_API_LOCAL")
+
+
+def run_local(tasks: list[tuple[str, list[str]]]) -> None:
+    """Run task(s) in the CURRENT working tree — no worktree, branch or PR.
+
+    Backs ``BOT_API_LOCAL`` / ``poe api-server --local`` (and the CLI flag
+    directly): the tasks run against the developer's checkout, so uncommitted
+    changes are exercised without any commit or push (the point of the mode —
+    otherwise the worktree is always checked out from ``origin/<base>`` and
+    never sees them). This path never stages, commits, pushes or opens a PR;
+    edits are left uncommitted and a ``git status`` summary is printed for
+    review.
+    """
+    before = worktree_fingerprint()
+    print("🧪 local run — working tree directly (no worktree / branch / PR)")
+    try:
+        for name, targs in tasks:
+            info = _plan_task(name, targs)
+            print(f"▶ {name} {' '.join(targs)}")
+            run(info["cmd"], cwd=REPO_ROOT)
+    finally:
+        # show the tree state even when a task failed — the caller needs to
+        # see what the partial run left behind. The fingerprint (not a status
+        # diff) decides whether anything changed: an edit to an already-dirty
+        # file keeps the same porcelain line but changes the diff body.
+        if worktree_fingerprint() == before:
+            print("✅ no changes")
+        else:
+            print("📝 working tree after the run (git status --short; includes pre-existing):")
+            for line in status_lines():
+                print(f"   {line}")
+
+
 def cmd_run(args) -> None:
     specs = list(args.tasks)
     if args.plan:
@@ -807,6 +881,24 @@ def cmd_run(args) -> None:
     tasks = parse_task_specs(specs)
     if not tasks:
         raise BotError('no tasks given — e.g. `poe bot "weight 82"`')
+
+    incompatible = [
+        flag
+        for flag, attr in (
+            ("--preview", "preview"),
+            ("--wait-ci", "wait_ci"),
+            ("--auto-merge", "auto_merge"),
+            ("--handoff", "handoff"),
+        )
+        if getattr(args, attr, False)
+    ]
+    if is_local_mode(args):
+        if incompatible:
+            # warn, don't fail: BOT_API_LOCAL can be set globally (`.env.local`),
+            # and a habitual --handoff/--preview must not break a local run
+            print(f"⚠ local mode ignores {', '.join(incompatible)} — no worktree/PR")
+        run_local(tasks)
+        return
 
     branch = branch_for([name for name, _ in tasks])
     base = worktree_base(args)
@@ -1078,6 +1170,13 @@ def build_parser() -> argparse.ArgumentParser:
         "(default; ignored when --wait-ci/--auto-merge is given)",
     )
     p_run.add_argument("--resync", action="store_true", help="force uv sync instead of symlink")
+    p_run.add_argument(
+        "--local",
+        action="store_true",
+        help="run in the CURRENT working tree (no worktree/branch/PR) — for verifying "
+        "uncommitted changes; edits are left uncommitted for review. Also implied by "
+        "BOT_API_LOCAL=true (which additionally blocks any PR submit)",
+    )
     p_run.set_defaults(func=cmd_run)
 
     p_list = sub.add_parser("list", help="list bot instances")

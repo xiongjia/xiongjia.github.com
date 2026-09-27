@@ -100,8 +100,9 @@ keeping the directory per-month for manageable file counts.
 ### Image placement
 
 `create-moment --image` handles images automatically: the source is converted
-to WebP (PNG/JPG/JPEG at `extra.optimize_images.quality`; .webp sources are
-copied as-is), staged under `docs/assets/bucket/` (git-ignored preview copy)
+to WebP (PNG/JPG/JPEG at `extra.optimize_images.quality`, optionally
+downscaled to `extra.optimize_images.max_dimension` — off by default; .webp
+sources are copied as-is), staged under `docs/assets/bucket/` (git-ignored preview copy)
 with the `extra.bucket.upload.rule` key, uploaded to the bucket via rclone
 (`--no-upload` stages locally only) and referenced from the moment with a
 local relative path:
@@ -121,8 +122,10 @@ with EXIF GPS auto-fill `lng`/`lat` (WGS-84) unless explicit `--lng/--lat`
 are given, and the WebP conversion **bakes EXIF Orientation into the pixels**
 (dropping the Orientation tag) so sideways photos render upright in viewers
 that ignore WebP orientation tags. `--time-from-exif` additionally uses the
-photo's EXIF DateTimeOriginal as the moment `date:` (first photo with one
-wins; mutually exclusive with `--time`).
+photo's EXIF capture time as the moment `date:` (DateTimeOriginal — read from
+the Exif sub-IFD as real cameras write it — falling back to DateTimeDigitized;
+first photo with one wins; mutually exclusive with `--time`. IFD0 `DateTime`
+(the file's modified/export time) is never used).
 
 Moment images always target the **generic** bucket mapping
 (`assets/bucket/` → `data/img`), selected by shortest-prefix

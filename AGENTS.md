@@ -56,6 +56,12 @@ Site runs at `http://localhost:8000` by default.
 Note: the dev servers bind 0.0.0.0 (`poe server*` on :8000, `poe api-server*` on :8100); the API has **no auth** — keep it on a trusted
 network or pin `BOT_API_HOST=127.0.0.1` for local-only.
 
+`poe api-server --local` (or `BOT_API_LOCAL=true`) runs **every** bot task with
+`poe bot run … --local` in the server's own checkout — no worktree/branch/PR,
+edits left uncommitted — for testing uncommitted changes; the console shows a
+🧪 LOCAL badge. The engine honors the env too and `do_submit()` refuses, so no
+PR can be opened while it is set.
+
 **Bot scheduled jobs (cron)**: configured in `mkdocs.yml` → `extra.bot.cron`
 (schedule / spec / handoff per job; text DOW names like `SAT` — APScheduler
 maps numeric DOW 0=Monday…6=Sunday). Runs inside the API process
@@ -83,13 +89,15 @@ Large site files (mainly WebP images) live outside git on an R2/S3 bucket.
 
 ## Network / Proxy tips
 
-访问 GitHub 等外部资源失败时，优先使用环境变量中已有的代理：
+When fetching external resources (e.g. GitHub) fails, first try the proxy
+already present in the environment:
 
 ```bash
-curl -x "$https_proxy" ...   # 或 $http_proxy / $HTTPS_PROXY
+curl -x "$https_proxy" ...   # or $http_proxy / $HTTPS_PROXY
 ```
 
-若 `$http_proxy` / `$https_proxy` 未设置，可尝试默认本地代理 `http://127.0.0.1:1095`：
+If `$http_proxy` / `$https_proxy` are unset, try the default local proxy
+`http://127.0.0.1:1095`:
 
 ```bash
 curl -x http://127.0.0.1:1095 ...
@@ -158,7 +166,7 @@ See [internal/architecture.md](internal/architecture.md) for full command refere
 - **Developer approval required before committing**: AI must not execute `git commit` unless the developer explicitly approves. All changes must remain in the working directory for developer review first.
 - **Never push**: AI **must never** execute `git push` or any equivalent remote push operation. Push can only be performed manually by the developer.
 - **Code review required before push**: All changes must be reviewed and approved by a human before pushing to remote branches.
-- **AI assistance disclaimer (Notes-level)**: The Notes landing page (`docs/notes/_index_content.md`) carries a single "部分内容由 AI 生成" disclaimer; per-page disclaimers under `docs/notes/research/` and `docs/notes/knowledge/` are not required.
+- **AI assistance disclaimer (Notes-level)**: The Notes landing page (`docs/notes/_index_content.md`) carries a single AI-assistance disclaimer, written in Chinese ("part of this content is AI-generated"); per-page disclaimers under `docs/notes/research/` and `docs/notes/knowledge/` are not required.
 - **Chinese content for research docs**: Research notes and knowledge docs are written in Chinese; blog posts and tech reference pages may be in either language.
 - **Knowledge topic structure**: Knowledge docs (`docs/notes/knowledge/`) are a long-term knowledge base organized as Topics. A Topic = a directory with an `index.md` entry (e.g. `infrastructure/`); sub-topics are subdirectories or docs inside it, and a topic may evolve into multiple files/layers over time. Each knowledge point is its own doc file under the topic dir (e.g. `object-storage/signed-url.md`), never the topic's `index.md`. Topics can incubate from Collection link pages or settle from Research reading notes.
 - **Use relative links**: All internal links between docs pages should use relative paths (e.g. `./topics/lux/`).

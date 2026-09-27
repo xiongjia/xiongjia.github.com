@@ -198,6 +198,39 @@ def test_run_wait_ci_when_handoff_off(client):
     assert "--handoff" not in client._runner.argv
 
 
+def test_run_uses_server_local_mode(client, monkeypatch):
+    """BOT_API_LOCAL (``poe api-server --local``) is server-wide: every run
+    passes ``--local`` and drops the handoff/CI flags, with no request change."""
+    from api import config
+
+    monkeypatch.setattr(config.settings, "local", True)
+    r = client.post("/api/bot/run", json={"task": "weight", "fields": {"value": 80}})
+    assert r.status_code == 200
+    for _ in range(100):  # wait for the background task to spawn
+        if client._runner.argv:
+            break
+        time.sleep(0.01)
+    assert "--local" in client._runner.argv
+    assert "--handoff" not in client._runner.argv
+    assert "--wait-ci" not in client._runner.argv
+
+
+def test_run_ignores_request_local_field(client):
+    """Local mode is NOT a per-request choice — an extra ``local`` field is
+    ignored and the normal worktree/PR path is used."""
+    r = client.post(
+        "/api/bot/run",
+        json={"task": "weight", "fields": {"value": 80}, "local": True},
+    )
+    assert r.status_code == 200
+    for _ in range(100):
+        if client._runner.argv:
+            break
+        time.sleep(0.01)
+    assert "--local" not in client._runner.argv
+    assert "--handoff" in client._runner.argv
+
+
 def test_run_subprocess_env_merges_not_replaces(client):
     # the PYTHONUNBUFFERED flag must be merged into the current env, not
     # replace it — a bare dict loses PATH and the `uv` exec fails ENOENT

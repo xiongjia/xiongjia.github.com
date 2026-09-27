@@ -2847,6 +2847,32 @@ def test_create_moment_time_from_exif(tmp_path, monkeypatch, capsys, clear_bucke
     assert "09_143000_photo.webp" in text
 
 
+def test_create_moment_time_from_exif_sub_ifd(tmp_path, monkeypatch, capsys, clear_bucket_env):
+    """Real cameras/Lightroom write DateTimeOriginal into the Exif sub-IFD
+    (0x8769) — a top-level-only read used to miss it and fall back to now."""
+    from PIL import Image
+
+    src = tmp_path / "camera.jpg"
+    im = Image.new("RGB", (4, 4), "red")
+    exif = Image.Exif()
+    exif.get_ifd(0x8769)[0x9003] = "2026:09:25 17:37:26"  # sub-IFD, not IFD0
+    im.save(src, exif=exif)
+
+    _moment_bucket_run(monkeypatch)
+    _run_create_moment(
+        monkeypatch,
+        ["hello", "--image", str(src), "--no-upload", "--time-from-exif"],
+        tmp_path,
+    )
+    out = capsys.readouterr()
+    assert "Time:    2026-09-25 17:37 (from EXIF)" in out.out
+
+    md = list((tmp_path / "docs" / "moments").rglob("*.md"))
+    assert md[0].name == "25-1737.md"
+    text = md[0].read_text(encoding="utf-8")
+    assert "date: 2026-09-25 17:37" in text
+
+
 def test_create_moment_time_from_exif_first_usable(tmp_path, monkeypatch, capsys, clear_bucket_env):
     """Photos without a DateTimeOriginal are skipped; the first usable EXIF
     date wins (mirrors the EXIF-GPS "first usable" rule)."""

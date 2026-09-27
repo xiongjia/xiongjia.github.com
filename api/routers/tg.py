@@ -146,9 +146,14 @@ def _submitted_message(run) -> str:
 
 
 async def _push_result(chat_id: int, run) -> None:
-    emoji = {"submitted": "📦", "merged": "✅", "failed": "❌", "aborted": "⏹", "noop": "⏭"}.get(
-        run.status, "ℹ️"
-    )
+    emoji = {
+        "submitted": "📦",
+        "merged": "✅",
+        "failed": "❌",
+        "aborted": "⏹",
+        "noop": "⏭",
+        "local": "🧪",
+    }.get(run.status, "ℹ️")
     lines = [f"{emoji} {run.task}: {run.status}", f"Run ID: {run.run_id}", f"Args: {run.args}"]
     if run.status == NOOP:
         lines.append("No changes (already recorded) — no PR created.")

@@ -21,10 +21,12 @@ from collections.abc import Callable
 from pathlib import Path
 
 from api import history as history_store
+from api.config import settings
 from api.models import RunRequest, assemble_args, task_schema
 from api.state import (
     ABORTED,
     FAILED,
+    LOCAL,
     MERGED,
     NOOP,
     RUNNING,
@@ -86,20 +88,32 @@ def assemble_argv(
     args: list[str],
     auto_merge: bool = False,
     handoff: bool = True,
+    local: bool = False,
 ) -> list[str]:
-    """``uv run poe bot run "<task> <args…>" --handoff|--wait-ci …``.
+    """``uv run poe bot run "<task> <args…>" [--handoff | --wait-ci | --local]``.
 
     The task spec is a single argv token; ``git_bot.parse_task_specs``
     splits it, and template tasks with a rest arg rejoin free-text tokens.
     ``--handoff`` (draft PR immediately) is the default; unchecked handoff
     passes ``--wait-ci`` instead (wait for CI checks, still draft, never
-    merged — ``--auto-merge`` stays an internal test-only knob).
+    merged — ``--auto-merge`` stays an internal test-only knob). ``local``
+    switches to ``--local`` (run in the working tree, no worktree/branch/PR)
+    and suppresses the handoff/CI flags, which are meaningless there.
     """
     argv = ["uv", "run", "poe", "bot", "run", " ".join([task, *args])]
+    if local:
+        argv.append("--local")
+        return argv
     argv.append("--handoff" if handoff else "--wait-ci")
     if auto_merge:
         argv.append("--auto-merge")
     return argv
+
+
+def _resolve_local(local: bool | None) -> bool:
+    """Resolve local mode: an explicit flag wins, else the server-wide
+    ``BOT_API_LOCAL`` setting (``poe api-server --local``)."""
+    return settings.local if local is None else local
 
 
 def execute_bot_task(
@@ -109,11 +123,15 @@ def execute_bot_task(
     handoff: bool = True,
     chat_id: int | None = None,
     on_done: Callable[[BotRun], None] | None = None,
+    local: bool | None = None,
 ) -> BotRun:
-    """Create a run, schedule the subprocess in the background, return now."""
+    """Create a run, schedule the subprocess in the background, return now.
+
+    ``local=None`` (default) follows the server's ``BOT_API_LOCAL`` setting.
+    """
     if task_schema(task) is None:
         raise ValueError(f"unknown task {task!r}")
-    return _spawn_run(task, args, auto_merge, handoff, chat_id, on_done)
+    return _spawn_run(task, args, auto_merge, handoff, chat_id, on_done, _resolve_local(local))
 
 
 def execute_bot_spec(
@@ -121,6 +139,7 @@ def execute_bot_spec(
     handoff: bool = True,
     chat_id: int | None = None,
     on_done: Callable[[BotRun], None] | None = None,
+    local: bool | None = None,
 ) -> BotRun:
     """Run a raw ``poe bot run`` spec (cron entry point).
 
@@ -135,7 +154,15 @@ def execute_bot_spec(
         parse_task_specs([spec])
     except BotError as exc:
         raise ValueError(f"invalid spec {spec!r}: {exc}") from exc
-    return _spawn_run(spec, [], auto_merge=False, handoff=handoff, chat_id=chat_id, on_done=on_done)
+    return _spawn_run(
+        spec,
+        [],
+        auto_merge=False,
+        handoff=handoff,
+        chat_id=chat_id,
+        on_done=on_done,
+        local=_resolve_local(local),
+    )
 
 
 def _spawn_run(
@@ -145,6 +172,7 @@ def _spawn_run(
     handoff: bool,
     chat_id: int | None,
     on_done: Callable[[BotRun], None] | None,
+    local: bool = False,
 ) -> BotRun:
     """Common spawn: create the run, schedule the subprocess, return now.
 
@@ -160,8 +188,9 @@ def _spawn_run(
     )
     active_runs[run.run_id] = run
     trim_active()
-    run.log(f"▶ submitting: {task} {' '.join(args)}".rstrip())
-    asyncio.get_running_loop().create_task(_run_bot(run, task, args, auto_merge, handoff))
+    label = "local run" if local else "submitting"
+    run.log(f"▶ {label}: {task} {' '.join(args)}".rstrip())
+    asyncio.get_running_loop().create_task(_run_bot(run, task, args, auto_merge, handoff, local))
     return run
 
 
@@ -171,9 +200,10 @@ async def _run_bot(
     args: list[str],
     auto_merge: bool,
     handoff: bool,
+    local: bool = False,
 ) -> None:
     try:
-        argv = assemble_argv(task, args, auto_merge, handoff)
+        argv = assemble_argv(task, args, auto_merge, handoff, local)
         run.log(f"$ {' '.join(argv)}", level="cmd")
         # PYTHONUNBUFFERED keeps engine stderr/stdout arriving in real order
         # (block-buffered stdout piped into the log stream otherwise reorders
@@ -197,7 +227,7 @@ async def _run_bot(
         code = await proc.wait()
         if run.status == ABORTED:
             return  # abort_run already persisted the record
-        _finalize(run, code)
+        _finalize(run, code, local)
     except asyncio.CancelledError:
         run.finish(ABORTED)
         raise
@@ -206,10 +236,13 @@ async def _run_bot(
         run.finish(FAILED)
 
 
-def _finalize(run: BotRun, code: int) -> None:
+def _finalize(run: BotRun, code: int, local: bool = False) -> None:
     if code == 0:
         text = "\n".join(e["msg"] for e in run.logs)
-        if m := RE_SUBMITTED.search(text):
+        if local:
+            # no PR by design — "submitted" would be a lie
+            run.finish(LOCAL)
+        elif m := RE_SUBMITTED.search(text):
             run.finish(SUBMITTED, pr_url=m.group(2))
         elif RE_MERGED.search(text):
             run.finish(MERGED)

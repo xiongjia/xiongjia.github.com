@@ -66,10 +66,15 @@ extra:
     # internal/plans/arch/bot-cronjob.md）
     running:
       data_key: splits.json
-  # default WebP quality for `poe optimize-images` (converts PNG/JPG to WebP);
-  # CLI --quality overrides this; the script falls back to 90 if both absent
+  # default WebP encoding for `poe optimize-images` / `bucket-upload` /
+  # `create-moment` (PNG/JPG → WebP). CLI --quality / --max-dimension override
+  # the first two; the script falls back to q85 / no scaling if both absent.
   optimize_images:
-    quality: 90
+    quality: 85
+    # Long-edge pixel cap for web photos (opt-in, 0/absent = no scaling).
+    # Setting it (e.g. 2000) is the single biggest size win for phone photos
+    # — a 2186x2729 q90 photo is ~1.0MB, q85+max2000 is ~0.5MB.
+    # max_dimension: 2000
   # local bot task registry for `poe bot` (see internal/bot-auto-pr-design.md).
   # Builtin tasks (weight / health-summary / sync-running / enu) stay in
   # scripts/git_bot.py; entries here add or override template tasks —

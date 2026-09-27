@@ -18,6 +18,10 @@
 > - **Handoff-only** (dev decision): `auto_merge` is not in the API
 >   contract; every run ends in a draft PR. The console has a Handoff
 >   checkbox (off = `--wait-ci`, still draft, never merges).
+> - **Local mode is server-wide** (`BOT_API_LOCAL=true` / `poe api-server --local`, *not* a per-request field): every run then executes in the
+>   server's working tree (`poe bot run … --local`) with no
+>   worktree/branch/PR — for exercising uncommitted changes. The console
+>   header shows a **🧪 LOCAL** badge so a run can't be mistaken for a PR.
 > - Task list is **derived from the engine** (`mkdocs.yml extra.bot.tasks`
 >   - `git_bot.TASKS`), not a hardcoded `TASK_SCHEMAS` dict.
 > - Runtime data lives in `.bot-api/` (configurable via `BOT_API_LOG_DIR`):
@@ -177,6 +181,9 @@ BOT_API_HOST=127.0.0.1          # default
 BOT_API_PORT=8100               # default (NOT 8000 — mkdocs dev server owns it)
 # Runtime data dir: history JSONL + uploads staging (absolute or repo-relative)
 BOT_API_LOG_DIR=.bot-api
+# Server-wide local mode: every bot run uses THIS working tree (no worktree/PR).
+# Equivalent to `poe api-server --local`; for testing uncommitted changes.
+BOT_API_LOCAL=false
 # Run `poe bot cleanup` for stale worktrees at startup (default true)
 BOT_API_STARTUP_CLEANUP=true
 
@@ -231,10 +238,42 @@ console that fills them from the browser geolocation API (WGS-84),
 auto-checking the gate. Console forms group fields into tabs via `tab`
 (labels = first-seen order; moment: Content / Images / Location / Meta);
 tasks without `tab` metadata keep a single pane.
+A field may also declare `conflicts_with` (comma-separated siblings that
+must NOT be set together), `requires` (siblings that MUST be set for it to
+make sense) and checkbox-only `disables` (siblings turned off and cleared
+while the box is checked — the inverse of `enables`, so a conflict is
+prevented in the UI instead of only rejected server-side). `assemble_args`
+enforces `conflicts_with`/`requires` with a clear 422 naming the fields,
+instead of letting the CLI fail after a worktree + subprocess have started;
+a gated-off field is skipped (it is dropped from the args anyway), while a
+gated-off `requires` dependency counts as missing.
+`validate_schemas` rejects unknown targets and self-references at import.
+Moment's Time-from-photo-EXIF declares all three: `requires: images`,
+`disables: time`, `conflicts_with: time`.
+Every field may carry `help` — user-facing detail rendered as a muted line
+under the control (and as its tooltip), so the format/semantics are
+learnable in the console (e.g. moment's `meta` KEY=VALUE keys, the 1–5
+rating scale, and the EXIF GPS/time behaviour).
 Flags are forwarded as a single token `--flag=value` — the bot spec format
 (`poe bot run "<task> <args>"`) re-splits on whitespace, so flag values ride
 the flag itself; values with spaces are therefore not supported through the
 console/API (labels warn: "no spaces").
+
+### Moment image EXIF (console path)
+
+`text-moment`'s Images tab accepts photos whose EXIF the CLI reads:
+
+- **Time** — the "Time from photo EXIF" checkbox forwards
+  `--time-from-exif`, using the first photo's `DateTimeOriginal` as the
+  moment `date:` (mutually exclusive with the `Time` field).
+- **GPS** — when "Set coordinates" is off no `--lng/--lat` are sent, so the
+  CLI auto-fills them from the photo's EXIF GPS (WGS-84); explicit
+  coordinates always win.
+- **Camera/photo date** — EXIF Make/Model + DateTimeOriginal are added to
+  `meta.camera` / `meta.photo_date` automatically (unless `--meta` sets
+  them).
+
+The Telegram path is unchanged (see the Telegram Bot Design section).
 
 ### 2. Run endpoint
 
@@ -248,6 +287,22 @@ Content-Type: application/json
   "handoff": true                # default; false = --wait-ci (still draft)
 }
 ```
+
+## Server-wide local mode (`BOT_API_LOCAL`)
+
+Start the API with `poe api-server --local` (or `BOT_API_LOCAL=true`) and
+**every** bot run — console, Telegram and cron — executes with
+`poe bot run … --local`: directly in the server's checkout instead of a fresh
+worktree checked out from `origin/master` (a normal worktree run never sees
+uncommitted changes). The run finishes with status `local`, leaves the edits
+uncommitted and prints a `git status` summary. It is deliberately **not** a
+per-request field — the whole server is either local or normal, so a test
+session can't half-open PRs. `handoff` is ignored in local mode.
+
+The engine enforces it too (not just the API): `git_bot.main()` loads
+`.env`/`.env.local`, `local_mode()` treats `BOT_API_LOCAL` as if `--local`
+were passed, and `do_submit()` refuses with a hard error whenever the env is
+set — so **no code path can commit/push/open a PR** in local mode.
 
 Response (immediate, does not wait for completion):
 
@@ -289,7 +344,7 @@ Response:
 }
 ```
 
-Statuses: `running | submitted | failed | aborted` (handoff-only —
+Statuses: `running | submitted | failed | aborted | noop | local` (handoff-only —
 `merged` only appears if someone runs the engine with `--auto-merge`
 manually).
 

@@ -51,13 +51,24 @@ For each image:
 - Unsupported extensions (not `.png`/`.jpg`/`.jpeg`) → WARN, skipped
 - Returns `(paths, has_errors)`
 
-### `convert_to_webp(src, dry_run=False, quality=DEFAULT_WEBP_QUALITY)`
+### `convert_to_webp(src, dry_run=False, quality=DEFAULT_WEBP_QUALITY, max_dimension=None)`
 
-- Quality: default 90; resolution order `--quality` CLI arg > mkdocs.yml `extra.optimize_images.quality` > `DEFAULT_WEBP_QUALITY` (90). Out-of-range values are clamped to 1-100 (above → 100, below → 1)
+- Quality: default 85; resolution order `--quality` CLI arg > mkdocs.yml `extra.optimize_images.quality` > `DEFAULT_WEBP_QUALITY` (85). Out-of-range values are clamped to 1-100 (above → 100, below → 1)
+- `max_dimension` (optional): long-edge pixel cap — downscales with LANCZOS before encoding. Resolution order `--max-dimension` CLI arg > mkdocs.yml `extra.optimize_images.max_dimension` > off. **Opt-in** (`None`/0/absent = no scaling), since it is the single biggest size win for phone photos but changes pixel dimensions
 - Method: 6 (slowest, best compression)
-- EXIF preservation: reads EXIF from source before conversion, passes to `save()`
+- EXIF preservation: reads EXIF from source before conversion (after `exif_transpose`), passes to `save()` — so GPS/Make/Model survive the resize too
+- Params logging: prints the effective `quality` / `max_dimension` / dimensions / size ratio for every conversion (so bot-run logs record exactly how each file was encoded)
 - Skip condition: if `.webp` already exists AND `dst.stat().st_size <= src.stat().st_size`
 - PIL failure (corrupted image, unsupported format) → SKIP, non-fatal
+
+Measured on a 2186×2729 phone photo (2.4 MB JPEG):
+
+| Encoding                  | Output  |
+| ------------------------- | ------- |
+| q90, no scaling           | ~1051 K |
+| q85, no scaling           | ~806 K  |
+| q85, `max_dimension=2000` | ~487 K  |
+| q80, `max_dimension=1600` | ~283 K  |
 
 ### `update_md_references(src, dst, dry_run=False)`
 
@@ -89,26 +100,32 @@ uv run poe optimize-images --all
 # Preview only (no writes)
 uv run poe optimize-images --dry-run docs/path/to/img.png
 
-# Override quality (default 90; or set extra.optimize_images.quality in mkdocs.yml)
+# Override quality (default 85; or set extra.optimize_images.quality in mkdocs.yml)
 uv run poe optimize-images img1.png --quality 80
+
+# Cap the longest edge (off by default; or set extra.optimize_images.max_dimension)
+uv run poe optimize-images --all --max-dimension 2000
 ```
 
 ## Configuration
 
-Quality is resolved per run: `--quality` CLI arg beats mkdocs.yml
-`extra.optimize_images.quality`, which beats the module default. mkdocs.yml is
-read via `shared/mkdocs_yaml.py` (tolerates `!ENV` / `!!python:name` tags); an
-invalid or non-integer value falls back to the default with a warning.
-Out-of-range values are clamped to 1-100 (above → 100, below → 1) rather than
-rejected.
+Quality and scaling are resolved per run: the CLI flag beats mkdocs.yml,
+which beats the module default. mkdocs.yml is read via
+`shared/mkdocs_yaml.py` (tolerates `!ENV` / `!!python:name` tags); an invalid
+or non-integer value falls back to the default with a warning. Out-of-range
+quality values are clamped to 1-100 (above → 100, below → 1) rather than
+rejected; `max_dimension` `0`/absent/junk disables scaling.
 
-| Parameter                       | Value                       | Description                                                             |
-| ------------------------------- | --------------------------- | ----------------------------------------------------------------------- |
-| `--quality` (CLI)               | `1-100`                     | WebP quality override, beats mkdocs.yml config (out-of-range → clamped) |
-| `extra.optimize_images.quality` | `90`                        | Default WebP quality in mkdocs.yml                                      |
-| `DEFAULT_WEBP_QUALITY`          | `90`                        | Fallback default in `scripts/optimize_images.py`                        |
-| `method`                        | `6`                         | Compression method (0=fast, 6=best)                                     |
-| `IMAGE_EXTENSIONS`              | `{".png", ".jpg", ".jpeg"}` | Supported input formats                                                 |
+| Parameter                             | Value                       | Description                                                             |
+| ------------------------------------- | --------------------------- | ----------------------------------------------------------------------- |
+| `--quality` (CLI)                     | `1-100`                     | WebP quality override, beats mkdocs.yml config (out-of-range → clamped) |
+| `--max-dimension` (CLI)               | `PX` (0 = off)              | Long-edge cap override, beats mkdocs.yml config                         |
+| `extra.optimize_images.quality`       | `85`                        | Default WebP quality in mkdocs.yml                                      |
+| `extra.optimize_images.max_dimension` | unset (off)                 | Optional long-edge cap in mkdocs.yml                                    |
+| `DEFAULT_WEBP_QUALITY`                | `85`                        | Fallback quality in `scripts/optimize_images.py`                        |
+| `DEFAULT_MAX_DIMENSION`               | `None`                      | Fallback cap (off)                                                      |
+| `method`                              | `6`                         | Compression method (0=fast, 6=best)                                     |
+| `IMAGE_EXTENSIONS`                    | `{".png", ".jpg", ".jpeg"}` | Supported input formats                                                 |
 
 ## Edge Cases
 

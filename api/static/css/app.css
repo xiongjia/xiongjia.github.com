@@ -36,6 +36,16 @@ header h1 { font-size: 18px; margin: 0; }
 .api-link:hover { text-decoration: underline; }
 .muted { color: var(--muted); }
 
+/* BOT_API_LOCAL banner: every run executes in the server's working tree */
+.local-badge {
+  padding: 2px 8px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .dot { color: var(--err); font-size: 16px; }
 .dot.online { color: var(--ok); }
 
@@ -116,6 +126,13 @@ form textarea {
 form textarea { min-height: 64px; resize: vertical; }
 form .row { display: flex; align-items: center; gap: 8px; }
 form .row input { width: auto; }
+/* per-field help (schema `help`): muted detail line under the control */
+form .field-help {
+  margin: -2px 0 10px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.45;
+}
 /* checkbox-gated option: checkbox + gated field share one row */
 form .gate-row { display: flex; align-items: center; gap: 10px; }
 form .gate-row label {
@@ -224,6 +241,9 @@ form .locate-btn:hover { border-color: var(--accent); }
 /* gated-off: hidden until its gate checkbox is checked — declared after the
    label display rules so it wins the specificity tie by source order */
 form label.gated-off { display: none; }
+form .field-help.gated-off { display: none; }
+/* help for a control turned off by a `disables` checkbox — dim, don't hide */
+form .field-help.field-off { opacity: .5; }
 form input:disabled,
 form select:disabled,
 form textarea:disabled { opacity: .5; }
@@ -273,7 +293,7 @@ td { padding: 5px 6px; border-bottom: 1px solid var(--border); }
 tr.clickable { cursor: pointer; }
 tr.clickable:hover td { background: #21262d; }
 td.status { font-weight: 600; }
-td.merged, td.submitted { color: var(--ok); }
+td.merged, td.submitted, td.local { color: var(--ok); }
 td.failed { color: var(--err); }
 td.running { color: var(--accent); }
 

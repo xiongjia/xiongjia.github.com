@@ -193,14 +193,15 @@ Tasks are registered in `mkdocs.yml` → `extra.bot.tasks` (template tasks:
 `enu` / `reading-assist` live in `scripts/git_bot.py` and can be overridden by
 name.
 
-| Command                        | Summary                                      |
-| ------------------------------ | -------------------------------------------- |
-| \`poe bot "<task>"... \[--now  | --preview\]\`                                |
-| `poe bot --plan <name> [args]` | Run a local plan file                        |
-| `poe bot list`                 | List bot instances                           |
-| `poe bot submit <name>`        | Submit a previewed instance (commit+push+PR) |
-| `poe bot abort <name>`         | Discard an unfinished instance               |
-| `poe bot cleanup [<name>]`     | Clean merged instances                       |
+| Command                        | Summary                                          |
+| ------------------------------ | ------------------------------------------------ |
+| \`poe bot "<task>"... \[--now  | --preview\]\`                                    |
+| `poe bot --plan <name> [args]` | Run a local plan file                            |
+| `poe bot "<task>" --local`     | Run in the current working tree (no worktree/PR) |
+| `poe bot list`                 | List bot instances                               |
+| `poe bot submit <name>`        | Submit a previewed instance (commit+push+PR)     |
+| `poe bot abort <name>`         | Discard an unfinished instance                   |
+| `poe bot cleanup [<name>]`     | Clean merged instances                           |
 
 Details:
 
@@ -226,12 +227,18 @@ Thin FastAPI shell over `poe bot` (single process, no auth — bind
 | Command / URL                              | Summary                                                                          |
 | ------------------------------------------ | -------------------------------------------------------------------------------- |
 | `poe api-server` / `api-server-prod`       | Start the API (default 0.0.0.0:8100; `BOT_API_HOST`/`BOT_API_PORT` override)     |
+| `poe api-server --local`                   | Local mode: every bot run uses THIS working tree (no worktree/PR)                |
 | `GET /api/cron`                            | Cron jobs (schedule / spec / `next_run_at` / `last_run` / runtime disable state) |
 | `POST /api/cron/{name}/run`                | Manual run-now — fires the job's spec through the handoff flow                   |
 | `POST /api/cron/{name}/disable` / `enable` | Toggle a cron job at runtime (persisted in `.bot-api/cron-state.json`)           |
 
 Details:
 
+- **Local mode** (`--local` or `BOT_API_LOCAL=true`): all runs (console,
+  Telegram, cron) execute `poe bot run … --local` — directly in the server's
+  checkout, no worktree/branch/PR, edits left uncommitted. For testing
+  uncommitted changes; the console shows a 🧪 LOCAL badge. It is a startup
+  switch, not a per-run option.
 - Cron jobs are configured in `mkdocs.yml` → `extra.bot.cron` (5-field cron
   string in the server-local timezone; text DOW names like `SAT` — APScheduler
   maps numeric DOW 0=Monday…6=Sunday, unlike standard cron). Each job fires a
@@ -250,14 +257,25 @@ Details:
 | `poe bucket-upload <images>`        | Convert to WebP, rename + upload to R2                          |
 | `poe rclone-config-init`            | Configure rclone R2 remote from `.env` (local credentials only) |
 
+`poe optimize-images` details:
+
+- **Quality**: `--quality 1-100` (default `extra.optimize_images.quality`, else
+  85); out-of-range clamps to 1-100.
+- **Scaling** (opt-in, off by default): `--max-dimension PX` (or
+  `extra.optimize_images.max_dimension`) downscales so the longest edge is at
+  most PX — the biggest size win for phone photos (2186×2729: q85 ≈ 0.8 MB,
+  q85 + `max_dimension: 2000` ≈ 0.5 MB). `0` disables it.
+- The effective `quality` / `max_dimension` / dimensions / ratio are printed
+  for every conversion.
+
 `poe bucket-upload` details:
 
 - **Safety**: **dry-run by default** — nothing is written/uploaded without
   `--confirm`. Source files larger than `extra.bucket.upload.max_size_mb`
   (default 10 MB) fail immediately (`--max-size-mb` /
   `BUCKET_UPLOAD_MAX_SIZE_MB` override).
-- **Flow**: convert to WebP (`--quality 1-100`, default from
-  `extra.optimize_images.quality`) → render the key → stage in the temp dir →
+- **Flow**: convert to WebP (`--quality 1-100` / `--max-dimension PX`, defaults
+  from `extra.optimize_images`) → render the key → stage in the temp dir →
   `rclone copyto` → save a local copy under `docs/assets/bucket/` → print the
   md link.
 - **Key rule** (`extra.bucket.upload.rule`, default
@@ -381,8 +399,9 @@ uv run poe create-moment "Photo date" --image photo.jpg --time-from-exif
 #   ^ date: = the photo's EXIF DateTimeOriginal (first photo with one wins);
 #     mutually exclusive with --time; needs --image; falls back to now if none
 
-# Images — --image auto-converts to WebP (PNG/JPG/JPEG; quality from extra.optimize_images)
-# and uploads to the bucket (key = extra.bucket.upload.rule); the md link uses a relative
+# Images — --image auto-converts to WebP (PNG/JPG/JPEG; quality + optional
+# extra.optimize_images.max_dimension long-edge cap) and uploads to the bucket
+# (key = extra.bucket.upload.rule); the md link uses a relative
 # assets/bucket/ path that the build rewrites to the bucket URL. Repeat for multiple photos.
 # Needs a read-write R2 token in .env + rclone; on failure the WebP stays staged locally.
 # EXIF Orientation is baked into the WebP pixels (sideways photos stay upright in any
@@ -457,6 +476,7 @@ uv run poe bot "weight 81.5" "enu cumbersome" "health-summary"  # composed daily
 uv run poe bot "text-moment Test content" --preview  # text-only moment, stop before commit
 uv run poe bot "weight 81.5" --auto-merge        # + auto merge when CI green
 uv run poe bot "weight 81.5" --handoff        # draft PR then clean, dev handles PR (default)
+uv run poe bot "text-moment Test" --local     # run in THIS working tree (no worktree/PR) — verify uncommitted changes
 uv run poe bot --plan morning 81.5               # local plan file (create .bot/plans/morning.yml first)
 uv run poe bot list
 uv run poe bot abort bot/weight/20260811-213000

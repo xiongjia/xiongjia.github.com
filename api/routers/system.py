@@ -8,6 +8,7 @@ import subprocess
 
 from fastapi import APIRouter, HTTPException
 
+from api.config import settings
 from api.models import UploadRequest, task_names, task_schema
 from api.uploads import save_uploads
 
@@ -50,7 +51,8 @@ async def health() -> dict:
 async def version() -> dict:
     # to_thread: don't block the event loop on the git subprocess
     git_hash = os.environ.get("GIT_HASH") or await asyncio.to_thread(_git_short_hash)
-    return {"version": "0.1.0", "git_hash": git_hash}
+    # ``local`` lets the console flag BOT_API_LOCAL (every run in this tree)
+    return {"version": "0.1.0", "git_hash": git_hash, "local": settings.local}
 
 
 @router.get("/tasks")
