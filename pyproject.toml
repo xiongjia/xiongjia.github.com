@@ -42,6 +42,9 @@ dependencies = [
     "python-telegram-bot>=20.6",
     "apscheduler>=3.10,<4",
     "pytest-xdist>=3.0",
+    # Douban login (CDP cookie capture, see shared/douban_auth.py) — imported
+    # lazily there, so the browser stack is never needed at build/CI time.
+    "websocket-client>=1.8.0",
 ]
 requires-python = "==3.13.*"
 readme = "README.md"
@@ -83,6 +86,12 @@ sync-running-splits = { cmd = "python scripts/sync_running_splits.py", help = "F
 bucket-sync = { cmd = "python scripts/bucket_sync.py", help = "Pull docs/assets/bucket/ from R2/S3 via rclone (incremental; checksum+fast-list by default; read-only; dry-run by default, --confirm to apply; uploads happen in PicList)" }
 bucket-upload = { cmd = "python scripts/bucket_upload.py", help = "Upload images to the R2 bucket as WebP with a configured rename rule (dry-run by default; needs a read-write R2 token in .env): uv run poe bucket-upload photo.png --confirm" }
 bucket-check = { cmd = "python scripts/bucket_check.py", help = "Cross-check bucket assets vs markdown references: unreferenced local files (cleanup candidates) + md links missing from the bucket (--check-remote checks against R2): uv run poe bucket-check [--check-remote]" }
+film-tv-login = { cmd = "python scripts/film_tv_login.py", help = "Capture/validate the Douban cookie used by the film & TV sync (CDP; log in by hand, then cookies are read from the browser): uv run poe film-tv-login [--check] [--force] [--manual]" }
+sync-film-tv = { cmd = "python scripts/sync_film_tv.py", help = "Sync the Douban film & TV collection into docs/notes/film-tv/data/*.yml (lists are read anonymously; details need the cookie): uv run poe sync-film-tv [--full] [--limit N] [--only slug] [--refresh-details N] [--prune] [--dry-run]" }
+film-tv-derive = { cmd = "python scripts/film_tv_derive.py", help = "Regenerate the film & TV archive's derived data (JSON shards + month index + stats/people yml); deterministic and no-op when unchanged: uv run poe film-tv-derive [--dry-run]" }
+update-film-tv-summary = { cmd = "python scripts/update_film_tv_summary.py", help = "Regenerate the film & TV viewing summary on the archive index page (calls local pi CLI): uv run poe update-film-tv-summary [--dry-run] [--model M]" }
+film-tv-upload-covers = { cmd = "python scripts/film_tv_upload_covers.py", help = "Upload the locally cached film & TV covers to R2 (developer step; dry-run by default, --confirm to upload): uv run poe film-tv-upload-covers [--confirm] [--limit N] [--only <id|slug>]" }
+film-tv-check = { cmd = "python scripts/film_tv_check.py", help = "Validate the film & TV archive (cover keys, year files, slugs, machine hashes, taxonomy, derived JSON; --check-remote also compares against R2): uv run poe film-tv-check [--check-remote] [--data-quality]" }
 rclone-config-init = { cmd = "python scripts/rclone_config.py", help = "Non-interactively configure the rclone R2 remote from .env (R2_ACCOUNT_ID / R2_ACCESS_KEY_ID / R2_SECRET_ACCESS_KEY)" }
 bot = { cmd = "python scripts/git_bot.py", help = "Local bot: run tasks in an isolated worktree and publish as a PR (e.g. poe bot \"weight 82\" / --plan morning / list / submit / abort / cleanup)" }
 md2wechat = { cmd = "python scripts/md2wechat.py", help = "Convert a blog post Markdown to WeChat-compatible HTML: uv run poe md2wechat [path]" }
@@ -94,7 +103,10 @@ collect-todo = { cmd = "python scripts/collect.py todo", help = "Add a TODO → 
 collect-idea = { cmd = "python scripts/collect.py idea", help = "Add an idea → plans.md (no AI): poe collect-idea '用 MapLibre 做热力图'" }
 test = { cmd = "uv run pytest -q -n auto --dist worksteal", help = "Run unit tests in parallel (pytest-xdist work-stealing; cap workers with PYTEST_XDIST_AUTO_NUM_WORKERS=n)" }
 test-serial = { cmd = "uv run pytest -q", help = "Run unit tests serially (debugging: poe test-serial -x -k pattern)" }
-test-js = { cmd = "node tests/test_running_route_core.cjs", help = "Run running-route core JS unit tests (node): uv run poe test-js" }
+test-js = [
+    { cmd = "node tests/test_running_route_core.cjs" },
+    { cmd = "node tests/test_film_tv_core.cjs" },
+]
 api-server = { cmd = "uv run python scripts/api_server.py", help = "Start remote API (binds 0.0.0.0; BOT_API_HOST/BOT_API_PORT override): uv run poe api-server" }
 api-server-prod = { ref = "api-server", help = "Start remote API (prod; alias of api-server): uv run poe api-server-prod" }
 

@@ -3,7 +3,7 @@
 笔记📒 & 碎片🧩 & 垃圾回收♻️
 
 Collect → Research → Build
-Posts · Moments · Health Monitor
+Posts · Moments · Health Monitor · Film & TV
 
 > ⚠️ 本站笔记**部分内容由 AI 生成**，仅供参考学习使用。
 
@@ -17,6 +17,7 @@ graph TD
   A --> E["📰 Posts"]
   A --> F["⏰ Moments"]
   A --> G["❤️ Health Monitor"]
+  A --> J["🎬 Film & TV"]
   B --> I["🛠️ Tools"]
   B --> H["🧪 Prototypes"]
 
@@ -28,6 +29,7 @@ graph TD
   click E "/notes/posts/" "Posts"
   click F "/moments/" "Moments"
   click G "/notes/health/" "Health Monitor"
+  click J "/notes/film-tv/" "Film & TV"
   click H "/notes/prototypes/" "Prototypes"
   click I "/notes/tools/" "Tools"
 ```

@@ -1,0 +1,140 @@
+{
+ "months": {
+  "2025-05": {
+   "by_type": {
+    "tv": 2
+   },
+   "count": 2,
+   "offset": 58,
+   "shard": "shard-0001.json"
+  },
+  "2025-07": {
+   "by_type": {
+    "tv": 1
+   },
+   "count": 1,
+   "offset": 57,
+   "shard": "shard-0001.json"
+  },
+  "2025-08": {
+   "by_type": {
+    "tv": 1
+   },
+   "count": 1,
+   "offset": 56,
+   "shard": "shard-0001.json"
+  },
+  "2025-09": {
+   "by_type": {
+    "tv": 4
+   },
+   "count": 4,
+   "offset": 52,
+   "shard": "shard-0001.json"
+  },
+  "2025-10": {
+   "by_type": {
+    "tv": 1
+   },
+   "count": 1,
+   "offset": 51,
+   "shard": "shard-0001.json"
+  },
+  "2025-11": {
+   "by_type": {
+    "tv": 3
+   },
+   "count": 3,
+   "offset": 48,
+   "shard": "shard-0001.json"
+  },
+  "2025-12": {
+   "by_type": {
+    "tv": 1
+   },
+   "count": 1,
+   "offset": 47,
+   "shard": "shard-0001.json"
+  },
+  "2026-02": {
+   "by_type": {
+    "tv": 1
+   },
+   "count": 1,
+   "offset": 46,
+   "shard": "shard-0001.json"
+  },
+  "2026-03": {
+   "by_type": {
+    "tv": 3
+   },
+   "count": 3,
+   "offset": 43,
+   "shard": "shard-0001.json"
+  },
+  "2026-04": {
+   "by_type": {
+    "movie": 2,
+    "tv": 2
+   },
+   "count": 4,
+   "offset": 39,
+   "shard": "shard-0001.json"
+  },
+  "2026-05": {
+   "by_type": {
+    "movie": 8
+   },
+   "count": 8,
+   "offset": 31,
+   "shard": "shard-0001.json"
+  },
+  "2026-06": {
+   "by_type": {
+    "movie": 4,
+    "tv": 6
+   },
+   "count": 10,
+   "offset": 21,
+   "shard": "shard-0001.json"
+  },
+  "2026-07": {
+   "by_type": {
+    "movie": 6,
+    "tv": 2
+   },
+   "count": 8,
+   "offset": 13,
+   "shard": "shard-0001.json"
+  },
+  "2026-08": {
+   "by_type": {
+    "movie": 3,
+    "tv": 1
+   },
+   "count": 4,
+   "offset": 9,
+   "shard": "shard-0001.json"
+  },
+  "2026-09": {
+   "by_type": {
+    "movie": 7,
+    "tv": 2
+   },
+   "count": 9,
+   "offset": 0,
+   "shard": "shard-0001.json"
+  }
+ },
+ "shard_size": 200,
+ "shards": [
+  "shard-0001.json"
+ ],
+ "totals": {
+  "movies": 30,
+  "pending": 0,
+  "rated": 60,
+  "records": 60,
+  "tv": 30
+ }
+}

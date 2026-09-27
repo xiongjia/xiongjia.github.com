@@ -54,6 +54,7 @@ from pathlib import Path
 # bootstrap repo root so `shared/` is importable regardless of how this runs
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from shared.bucket import pick_mapping
 from shared.env import load_env_files
 from shared.mkdocs_yaml import load_extra
 
@@ -206,8 +207,20 @@ def main() -> int:
         "remote name with a warning if unset)",
     )
     parser.add_argument(
+        "--mapping",
+        help="target a named mapping from extra.bucket.mappings (e.g. film-tv) "
+        "instead of every mapping",
+    )
+    parser.add_argument(
         "--prefix",
         help="local prefix under docs/ (default: first mapping's 'prefix', e.g. assets/bucket/)",
+    )
+    parser.add_argument(
+        "--local-prefix",
+        help="narrow the sync to a subdirectory of the mapping on BOTH sides "
+        "(e.g. covers/shawshank-redemption for one film's covers). Note this is "
+        "rclone sync semantics: local files outside the narrowed path are left "
+        "alone, but extra files INSIDE it are deleted",
     )
     parser.add_argument(
         "--remote-prefix",
@@ -244,6 +257,14 @@ def main() -> int:
     cfg = _bucket_config()
     mappings = _all_mappings(cfg)  # raises SystemExit when no mappings
     remote = resolve_remote(args.remote, label="bucket-sync")
+
+    # --mapping <name> is sugar for --prefix <that mapping's prefix>
+    if args.mapping:
+        try:
+            named = pick_mapping(cfg, args.mapping, require_base_url=False)
+        except ValueError as exc:
+            raise SystemExit(f"bucket-sync: {exc}") from exc
+        args.prefix = str(named.get("prefix") or "")
 
     # When --prefix is given, sync only the matching mapping; otherwise sync all
     if args.prefix:
@@ -295,8 +316,15 @@ def main() -> int:
             use_env=single,
         )
 
+        # --local-prefix narrows both sides so rclone sync can never wander
+        # outside the requested subdirectory (its delete semantics only apply
+        # inside the synced path). _rclone_path already ends with "/".
+        sub = str(args.local_prefix or "").strip("/")
         local = _local_dir(prefix)
         rpath = _rclone_path(remote, bucket, remote_prefix)
+        if sub:
+            local = local / sub
+            rpath = f"{rpath.rstrip('/')}/{sub}"
 
         dry_run = not args.confirm
         cmd = [

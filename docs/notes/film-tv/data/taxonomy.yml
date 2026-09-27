@@ -1,0 +1,51 @@
+# Film & TV archive taxonomy — region aliases + category rules.
+#
+# Applied by `scripts/sync_film_tv.py` (and re-applied by `poe film-tv-check`
+# when `rules_version` below is newer than a record's `meta.taxonomy_version`).
+# Bumping `rules_version` is how a rule change becomes visible: the check lists
+# exactly which records would change `regions` / `category` if recomputed.
+#
+# All values here are JSON/YAML-clean and English-keyed; the *data* is Chinese
+# because it must match Douban's raw strings.
+
+rules_version: 2
+
+# 豆瓣「制片国家/地区」原文 → 规范短名。
+# Only real aliases belong here: any raw value that is missing falls back to
+# itself and is reported by `film-tv-check` as a candidate new alias.
+# A value may be a **list**: a compound raw label then contributes one count to
+# each region (`港台` → 香港 + 台湾). Plain 1:1 aliases stay strings.
+regions:
+  中国大陆: 中国
+  中国香港: 香港
+  中国台湾: 台湾
+  中国澳门: 澳门
+  中國大陸: 中国
+  中國香港: 香港
+  中國台灣: 台湾
+  # historical / compound names Douban still uses on older entries
+  西德: 德国
+  东德: 德国
+  苏联: 俄罗斯
+  南斯拉夫: 塞尔维亚
+  捷克斯洛伐克: [捷克, 斯洛伐克]
+  港台: [香港, 台湾]
+
+# `category` 判定：**按顺序取第一个命中**（与 `type` 正交，见 design §6）。
+# 每条规则可选 `genres`（命中任一即算）与 `type`（movie / tv）；两者都给时
+# 需要同时满足。最后一条不设条件 = 兜底。
+#
+# 已确认（开发者）：只要 genre 命中「动画」就归 `anime` —— 含动画剧集
+# （tv + 动画）、动画剧场版、多集 OVA，所以 anime 规则排在 series/feature 之前。
+categories:
+  - category: documentary
+    genres: [纪录片]
+  - category: variety
+    genres: [真人秀, 脱口秀, 综艺, 舞台艺术]
+  - category: anime
+    genres: [动画]
+  - category: series
+    type: tv
+  - category: feature
+    type: movie
+  - category: other

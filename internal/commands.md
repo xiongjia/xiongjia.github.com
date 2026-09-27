@@ -9,6 +9,7 @@
 - **Quality** — `fmt` / `lint-py` / `test`
 - **Content** — `create-post` / `create-moment` / `enu add` / `enu export`
 - **Health** — `update-weight` / `add-weight-week` / `update-health-summary` / `sync-running` / `sync-running-splits`
+- **Film & TV** — `film-tv-login` / `sync-film-tv` / `film-tv-check`
 - **Reading** — `reading-assist list` / `reading-assist run [slug]` / `--dry-run`
 - **Bot** — `bot "<task>"...` / `bot --plan` / `bot list` / `bot submit` / `bot abort` / `bot cleanup`
 - **Assets & Conversion** — `optimize-images` / `md2wechat` / `bucket-sync pull` / `bucket-upload` / `rclone-config-init`
@@ -343,6 +344,111 @@ bucket-check: prefix 'assets/bucket/' — local dir docs/assets/bucket (3 file(s
 
 Summary: 2 issue(s) found → exit 1
 ```
+
+## Film & TV Archive (Douban)
+
+| Command                              | Summary                                                       |
+| ------------------------------------ | ------------------------------------------------------------- |
+| `poe film-tv-login [--check]`        | Capture/validate the Douban cookie (CDP; log in by hand once) |
+| `poe sync-film-tv`                   | Sync the collection into `docs/notes/film-tv/data/*.yml`      |
+| `poe film-tv-check [--check-remote]` | Validate the archive (keys, year files, slugs, taxonomy, R2)  |
+
+**四个常用场景（照着做即可）**：
+
+### 1. 首次同步（把豆瓣记录全量落到本站）
+
+```bash
+# 1) 登录一次（弹出浏览器，手工过滑块/验证码，之后自动取 cookie）
+uv run poe film-tv-login
+
+# 2) 第一遍：把整个收藏列表落成骨架（约 144 页，会中途从匿名回退到账号会话）
+uv run poe sync-film-tv --full --limit 0
+
+# 3) 补详情 + 封面：分批跑（每批 300 条≈15–20 分钟；新条目永远优先）
+uv run poe sync-film-tv --limit 300      # 反复执行，直到 queue: 0 details
+```
+
+- 进度看每批结尾的 `details N | covers M | failed F | …`；`film-tv-check` 的
+  `details pending` 归零即补齐
+- 每批结束会自动跑 `film-tv-derive`（分片/索引/stats/people 都是它生成的）
+
+### 2. 上传封面到 bucket（R2）
+
+```bash
+uv run poe film-tv-upload-covers                 # 先 dry-run：看有哪些没传
+uv run poe film-tv-upload-covers --confirm       # 真传（rclone copy，绝不删远端）
+uv run poe film-tv-check --check-remote          # 校对：引用都在 R2、列出孤儿
+```
+
+- 同步只把封面**缓存到本地** `docs/assets/bucket/film-tv/covers/<douban_id>/`（git-ignored），
+  上传是开发者的动作；凭据只在本地 rclone 配置里
+- 远端目录与本地镜像同构：`<remote_prefix>/covers/<douban_id>/NN.webp`（`covers/` 这一段
+  必须保留，否则 `cover_url` 全部 404）
+- 分批可用 `--limit 200`；单条补传 `--only <id|slug>`
+- 传完页面走 R2 主链接；没传时前端自动回退本地镜像（本地预览正常，控制台会有一次 404）
+
+### 3. 增量更新（日常只有这一步）
+
+```bash
+uv run poe sync-film-tv                   # 新增/变更条目 + 继续补 50 条待补详情
+uv run poe film-tv-upload-covers --confirm   # 有新封面才需要
+```
+
+- 默认列表走查只翻 1–3 页（指纹短路），**列表请求匿名、账号零调用**；详情才用 cookie
+- 想连续补齐待补详情：`uv run poe sync-film-tv --limit 300`（可反复跑）
+- 在豆瓣改了几条短评/标签：`uv run poe sync-film-tv --refresh-details 20`（绕过指纹短路重读详情）
+- 只看某一条：`uv run poe sync-film-tv --only <slug> [--covers 8]`
+- 清理已从收藏里移除的条目：`uv run poe sync-film-tv --prune --dry-run`（确认后去掉 `--dry-run`）
+- 手改了年份 yml 之后：`uv run poe film-tv-derive`（只重算派生文件）
+
+### 4. AI 总结（归档页「🤖 观影总结」区块）
+
+```bash
+uv run poe update-film-tv-summary              # 调本地 pi CLI 生成，写入页面区块
+uv run poe update-film-tv-summary --dry-run    # 只看提示词（不调 AI）
+uv run poe update-film-tv-summary --model anthropic/claude-sonnet-4
+uv run poe update-film-tv-summary --output /tmp/summary.md   # 写到别处预览
+```
+
+- 只重写 `docs/notes/film-tv/index.md` 里 `<!-- ai-summary:begin -->…<!-- ai-summary:end -->`
+  之间的内容，**不碰页面其它文字**；pi 调用失败则页面保持原样
+- 摘要正文用中文（页面内容），数据来自 `assets/stats.yml` / `people.yml` / 分片
+
+Pages: `/notes/film-tv/` (overview + all records), `/notes/film-tv/movies/`,
+`/notes/film-tv/tv/`, `/notes/film-tv/people/` (影人榜). The index page carries the
+aggregate statistics + AI summary, and each of the three list pages carries its own
+collapsible watch-volume chart (scoped to 「电影」/「剧集」 on the type pages). Person
+names in the detail dialog and in the people boards link back to
+`/notes/film-tv/?person=<名字>`.
+
+Notes:
+
+- **Account safety**: collection lists are read **anonymously** (no cookie);
+  only subject pages / photo albums use the login. Cover candidates default to
+  the single main poster from the subject page (`extra.film_tv.covers_default`),
+  so a first pass costs exactly one account request per item. A long anonymous
+  walk can hit Douban's anti-bot gate (`sec.douban.com`); the sync then
+  continues on the account session and says so. On `403`/challenge with the
+  account too, it stops instead of hammering.
+- **Idempotent**: a re-run with no Douban-side change writes no files at all
+  (details and page cursors are cached under `.cache/film-tv/`).
+- **Records are "skeleton first"**: the list pass stores every row
+  (`slug: ""`, detail fields `null`); the detail pass fills them in. Pending
+  records show up as `details pending` in `film-tv-check`.
+- **Person directory**: `docs/notes/film-tv/data/person-ids.yml` holds
+  `personage id → 显示名`, grown by every sync. Use the id to fetch extra person info
+  later (`https://www.douban.com/personage/<id>/`); `assets/people.yml` carries it as
+  `douban_id` / `douban_url` for the 影人 boards.
+- **Cover flow**: the sync only **caches covers locally**
+  (`docs/assets/bucket/film-tv/covers/<douban_id>/`, git-ignored) — it never touches
+  the bucket and needs no R2 credentials. `poe film-tv-upload-covers` is the
+  developer's upload step (dry-run by default, `--confirm` to transfer, copy-only),
+  followed by `poe film-tv-check --check-remote`.
+- **Pages are data-driven**: the year YAMLs are `exclude_docs`; the pages read
+  the committed `notes/film-tv/assets/*.json` shards. After editing a YAML by
+  hand, run `poe film-tv-derive` (the sync calls it too) or the page will show
+  the previous data. Cover URLs are baked into that JSON — re-run derive after
+  changing the bucket base_url.
 
 ## .env Configuration
 

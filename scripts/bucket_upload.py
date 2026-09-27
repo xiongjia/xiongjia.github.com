@@ -82,6 +82,7 @@ from scripts.optimize_images import (
     resolve_max_dimension,
     resolve_quality,
 )
+from shared.bucket import pick_mapping
 from shared.env import load_env_files
 from shared.mkdocs_yaml import load_extra
 
@@ -269,6 +270,12 @@ def main() -> int:
         "remote name with a warning if unset)",
     )
     parser.add_argument(
+        "--mapping",
+        help="target a named mapping from extra.bucket.mappings (e.g. film-tv) "
+        "instead of the generic assets/bucket/ one; its prefix / remote_prefix / "
+        "bucket become the defaults",
+    )
+    parser.add_argument(
         "--prefix",
         help="local prefix under docs/ (default: first mapping's 'prefix', e.g. assets/bucket/)",
     )
@@ -283,8 +290,12 @@ def main() -> int:
 
     cfg = _bucket_config()
     # Image uploads target the most general mapping (assets/bucket/), not the
-    # more specific running-data mapping (which is listed first for URL rewrite).
-    mapping = _generic_mapping(cfg)  # raises SystemExit when no mappings
+    # more specific running-data mapping (which is listed first for URL rewrite);
+    # --mapping selects a named one instead (e.g. film-tv covers).
+    try:
+        mapping = pick_mapping(cfg, args.mapping, require_base_url=False) or _generic_mapping(cfg)
+    except ValueError as exc:
+        raise SystemExit(f"bucket-upload: {exc}") from exc
     upload_cfg = cfg.get("upload") or {}
     rule = _pick(args.rule, UPLOAD_RULE_ENV, str(upload_cfg.get("rule") or DEFAULT_RULE))
     fallback = _pick(

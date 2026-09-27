@@ -1,0 +1,32 @@
+average_rating: 3.3
+by_category:
+  anime: 12
+  feature: 28
+  series: 20
+by_region:
+  中国: 25
+  冰岛: 1
+  加拿大: 3
+  匈牙利: 1
+  南非: 1
+  台湾: 1
+  德国: 1
+  摩洛哥: 1
+  新西兰: 2
+  日本: 7
+  法国: 1
+  美国: 16
+  英国: 4
+  韩国: 12
+  香港: 2
+by_type:
+  movie: 30
+  tv: 30
+by_year:
+  '2025': 13
+  '2026': 47
+hours: 388
+pending: 0
+people: 33
+rated: 60
+total: 60

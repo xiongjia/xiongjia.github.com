@@ -9,8 +9,11 @@ import pytest
 from shared.bucket import (
     MKDOCS_BUCKET_BASE_URL_ENV,
     MKDOCS_BUCKET_ENABLED_ENV,
+    find_mapping,
     is_enabled,
     load_mappings,
+    mapping_env_var,
+    pick_mapping,
     rewrite_html,
     rewrite_url,
 )
@@ -104,19 +107,104 @@ class TestLoadMappings:
 
     def test_prefix_normalized_with_trailing_slash(self):
         out = load_mappings({"mappings": [{"prefix": "assets/bucket", "base_url": "http://x/"}]})
-        assert out == [{"prefix": "assets/bucket/", "base_url": "http://x"}]
+        assert out == [
+            {
+                "prefix": "assets/bucket/",
+                "name": None,
+                "bucket": "",
+                "remote_prefix": "",
+                "base_url": "http://x",
+            }
+        ]
+
+    def test_mapping_name_is_kept(self):
+        out = load_mappings(
+            {
+                "mappings": [
+                    {"prefix": "assets/bucket/film-tv/", "name": "film-tv", "base_url": "http://x"}
+                ]
+            }
+        )
+        assert out == [
+            {
+                "prefix": "assets/bucket/film-tv/",
+                "name": "film-tv",
+                "bucket": "",
+                "remote_prefix": "",
+                "base_url": "http://x",
+            }
+        ]
 
     def test_drops_incomplete_mappings(self):
         out = load_mappings(
             {"mappings": [{"prefix": "assets/bucket/", "base_url": "http://x"}, {"prefix": ""}]}
         )
-        assert out == [{"prefix": "assets/bucket/", "base_url": "http://x"}]
+        assert out == [
+            {
+                "prefix": "assets/bucket/",
+                "name": None,
+                "bucket": "",
+                "remote_prefix": "",
+                "base_url": "http://x",
+            }
+        ]
 
     def test_env_base_url_enables_empty_config_url(self, monkeypatch):
         # config has no base_url yet; env override must still produce a mapping
         monkeypatch.setenv(MKDOCS_BUCKET_BASE_URL_ENV, "http://test.example.com")
         out = load_mappings({"mappings": [{"prefix": "assets/bucket/", "base_url": ""}]})
-        assert out == [{"prefix": "assets/bucket/", "base_url": "http://test.example.com"}]
+        assert out == [
+            {
+                "prefix": "assets/bucket/",
+                "name": None,
+                "bucket": "",
+                "remote_prefix": "",
+                "base_url": "http://test.example.com",
+            }
+        ]
+
+
+class TestNamedMappings:
+    """`name` lets a tool target one mapping (film-tv covers, running data…)."""
+
+    CFG = {
+        "mappings": [
+            {"prefix": "assets/bucket/film-tv/", "name": "film-tv", "base_url": "http://film"},
+            {"prefix": "assets/bucket/", "base_url": "http://generic"},
+        ]
+    }
+
+    def test_find_mapping_by_name(self):
+        assert find_mapping(self.CFG, "film-tv")["base_url"] == "http://film"
+        assert find_mapping(self.CFG, "nope") is None
+
+    def test_mapping_without_base_url_is_selectable_by_the_cli_tools(self):
+        # an upload-only mapping (no public URL yet) must still be targetable:
+        # `load_mappings` (URL rewriting) drops it, the CLI lookup keeps it
+        cfg = {"mappings": [{"prefix": "assets/bucket/film-tv/", "name": "film-tv", "bucket": "b"}]}
+        assert load_mappings(cfg) == []
+        assert find_mapping(cfg, "film-tv") is None
+        picked = find_mapping(cfg, "film-tv", require_base_url=False)
+        assert picked is not None and picked["bucket"] == "b"
+        assert pick_mapping(cfg, "film-tv", require_base_url=False) == picked
+
+    def test_pick_mapping_returns_none_without_name(self):
+        assert pick_mapping(self.CFG, None) is None
+
+    def test_pick_mapping_unknown_name_raises(self):
+        with pytest.raises(ValueError, match="unknown bucket mapping"):
+            pick_mapping(self.CFG, "tv-film")
+
+    def test_per_name_env_override(self, monkeypatch):
+        monkeypatch.setenv(MKDOCS_BUCKET_BASE_URL_ENV, "http://everything")
+        monkeypatch.setenv(mapping_env_var("film-tv"), "http://staging-film-tv")
+        mappings = load_mappings(self.CFG)
+        assert mappings[0]["base_url"] == "http://staging-film-tv"  # only this one
+        assert mappings[1]["base_url"] == "http://everything"
+
+    def test_mapping_env_var_name(self):
+        assert mapping_env_var("film-tv") == "MKDOCS_BUCKET_BASE_URL_FILM_TV"
+        assert mapping_env_var("running") == "MKDOCS_BUCKET_BASE_URL_RUNNING"
 
 
 class TestIsEnabled:

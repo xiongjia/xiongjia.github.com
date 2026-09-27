@@ -6,6 +6,10 @@ hide:
 
 # :material-movie-open-play: Media & Entertainment
 
+## My Archive
+
+- 🎬 [**Film & TV**](../film-tv/index.md) —— 豆瓣看过 / 在看归档：评分、短评、影评、封面与影人统计
+
 ## Media System
 
 - [Selene-TV](https://github.com/MoonTechLab/Selene-TV) - Android TV 客户端，基于 MoonTV v100 / Helios 后端，针对遥控器优化

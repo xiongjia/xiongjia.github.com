@@ -66,7 +66,7 @@ tags: [refactor, mkdocs]
 
 - [moment-phase3-personal.md](./moment-phase3-personal.md) — Moment Plugin Phase 3: Location ✅ + Map ✅ + multi-image ✅ + lightbox grouping ✅ + EXIF camera/date ✅ + Stats ✅; cancelled: Grid/Masonry (G1); parked: search filter, City-Log (G5/G6); open: JSON Feed, auto-tag, streak stat
 - [tools-assets-externalize.md](./tools-assets-externalize.md) — Notes Tools: extract inline JS/CSS from tool pages into standalone assets (deferred)
-- [mkdocs-media-archive.md](./mkdocs-media-archive.md) — MkDocs Media Archive: 用 MkDocs 归档看过的书/影片/游戏（调研方案 → 数据模型 → 索引页）
+- [film-tv.md](./film-tv.md) — Film & TV Archive: 豆瓣影视记录同步归档（年份 yml + CDP 取 cookie + R2 封面 + 展示页/影人榜单）
 - [collection-scrape.md](./arch/collection-scrape.md) — Collection Scrape: 日常随手收集（poe collect-add/todo/idea）+ AI 整理 + Plans 面板 ✅
 
 ### Research
