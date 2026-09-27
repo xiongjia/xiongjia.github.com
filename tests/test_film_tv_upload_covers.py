@@ -103,6 +103,9 @@ def tree(tmp_path, monkeypatch) -> Path:
     monkeypatch.setattr(
         up, "load_config", lambda: FakeConfig(data_dir=data_dir, cover_dir=cover_root)
     )
+    # `main()` probes for the rclone binary before doing anything; CI runners do
+    # not have it installed, and the probe is environment, not logic
+    monkeypatch.setattr(up.shutil, "which", lambda _name: "/usr/bin/rclone")
     monkeypatch.setattr(up, "REPO_ROOT", root)
     monkeypatch.setattr(up, "load_env_files", lambda: None)
     return root
