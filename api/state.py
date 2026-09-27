@@ -21,6 +21,9 @@ ABORTED = "aborted"
 # idempotent task produced no diff (engine printed "⏭ no changes") —
 # nothing to push, no PR; distinct from submitted so the UI/push can say so
 NOOP = "noop"
+# ran in the working tree via ``poe bot --local`` (no worktree/branch/PR) —
+# for verifying uncommitted changes; edits are left uncommitted
+LOCAL = "local"
 
 ACTIVE_CAP = 50
 # cap on the in-memory log list so a long noisy run can't grow unbounded
@@ -39,6 +42,7 @@ _LEVELS = {
     "⏭": "warn",
     "⚠": "warn",
     "❌": "err",
+    "🧪": "ok",
 }
 
 

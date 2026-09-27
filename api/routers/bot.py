@@ -25,7 +25,8 @@ async def run(req: RunRequest) -> dict:
         task, args = run_from_request(req)
     except ValueError as exc:
         raise HTTPException(status_code=422, detail=str(exc)) from exc
-    run = execute_bot_task(task, args, handoff=req.handoff)  # never auto-merge
+    # never auto-merge; local mode (if any) comes from BOT_API_LOCAL
+    run = execute_bot_task(task, args, handoff=req.handoff)
     return {
         "run_id": run.run_id,
         "task": run.task,

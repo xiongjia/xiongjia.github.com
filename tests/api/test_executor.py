@@ -49,6 +49,28 @@ def test_assemble_argv_wait_ci_when_handoff_off():
     assert "--auto-merge" not in argv  # wait-ci still never merges
 
 
+def test_assemble_argv_local_mode():
+    """Local runs use ``--local`` and drop the handoff/CI flags (meaningless
+    without a worktree/branch/PR)."""
+    argv = assemble_argv("weight", ["82"], local=True)
+    assert argv == ["uv", "run", "poe", "bot", "run", "weight 82", "--local"]
+    assert "--handoff" not in argv and "--wait-ci" not in argv
+    # auto_merge is irrelevant in local mode too
+    assert "--auto-merge" not in assemble_argv("weight", ["82"], auto_merge=True, local=True)
+
+
+def test_local_mode_resolution(monkeypatch):
+    """``local=None`` follows BOT_API_LOCAL; an explicit flag always wins."""
+    from api import config, executor
+
+    monkeypatch.setattr(config.settings, "local", False)
+    assert executor._resolve_local(None) is False
+    assert executor._resolve_local(True) is True
+    monkeypatch.setattr(config.settings, "local", True)
+    assert executor._resolve_local(None) is True
+    assert executor._resolve_local(False) is False
+
+
 def test_assemble_args_positional_and_flag():
     args = assemble_args("weight", {"value": 82.5, "use_date": True, "date": "2026-08-14"})
     assert args == ["82.5", "--date=2026-08-14"]
@@ -159,6 +181,7 @@ def test_text_moment_schema_exposes_all_parameters():
     assert {f"{n}:{f.type}" for n, f in s.items()} >= {
         "content:textarea",
         "time:text",
+        "time_from_exif:checkbox",
         "slug:text",
         "tags:text",
         "images:images",
@@ -189,10 +212,89 @@ def test_text_moment_tab_grouping():
         if f.tab:
             tabs.setdefault(f.tab, []).append(f.name)
     assert list(tabs) == ["Content", "Images", "Location", "Meta"]
-    assert tabs["Content"] == ["content", "time", "slug", "tags", "draft"]
+    assert tabs["Content"] == ["content", "time", "time_from_exif", "slug", "tags", "draft"]
     assert tabs["Images"] == ["images", "no_upload"]
     assert tabs["Location"] == ["place", "set_gps", "lng", "lat", "crs", "region"]
     assert tabs["Meta"] == ["meta"]
+
+
+def test_text_moment_time_from_exif_flag():
+    """The EXIF-time checkbox maps to --time-from-exif (checked-only emit)."""
+    s = _moment_schema()
+    f = s["time_from_exif"]
+    assert f.type == "checkbox" and f.arg == "--time-from-exif" and f.emit == "checked"
+    # the checkbox requires an image and turns the manual Time input off in
+    # the console (the conflict is prevented in the UI, still guarded here)
+    assert f.requires == "images" and f.disables == "time" and f.conflicts_with == "time"
+    # the flag rides the uploaded photos' EXIF DateTimeOriginal
+    assert assemble_args(
+        "text-moment",
+        {"content": "x", "time_from_exif": True, "images": [{"path": "a.jpg"}]},
+    ) == ["x", "--time-from-exif", "--image=a.jpg"]
+    assert assemble_args("text-moment", {"content": "x", "time_from_exif": False}) == ["x"]
+    # a raw client sending the string spelling "false" is unchecked (matches
+    # _as_bool elsewhere) so it does not trip the mutual-exclusion check
+    assert assemble_args(
+        "text-moment", {"content": "x", "time": "9am", "time_from_exif": "false"}
+    ) == ["x", "--time=9am"]
+
+
+def test_text_moment_time_and_exif_are_mutually_exclusive():
+    """--time and --time-from-exif both set must fail early, naming both fields
+    (the CLI would otherwise error after a worktree + subprocess started)."""
+    # the photo is included so the `requires: images` rule cannot mask the
+    # conflict regardless of field order in the schema
+    with pytest.raises(ValueError, match="'time' and 'time_from_exif' are mutually exclusive"):
+        assemble_args(
+            "text-moment",
+            {
+                "content": "x",
+                "time": "9am",
+                "time_from_exif": True,
+                "images": [{"path": "a.jpg"}],
+            },
+        )
+    # either one alone is fine
+    assert assemble_args("text-moment", {"content": "x", "time": "9am"}) == ["x", "--time=9am"]
+    assert assemble_args(
+        "text-moment",
+        {"content": "x", "time_from_exif": True, "images": [{"path": "a.jpg"}]},
+    ) == ["x", "--time-from-exif", "--image=a.jpg"]
+
+
+def test_text_moment_time_from_exif_requires_images():
+    """Checking the EXIF-time box without any photo must fail early (422),
+    not inside the CLI after a worktree has been created."""
+    with pytest.raises(ValueError, match="'time_from_exif' requires 'images'"):
+        assemble_args("text-moment", {"content": "x", "time_from_exif": True})
+    # an empty images list is not a photo either
+    with pytest.raises(ValueError, match="requires 'images'"):
+        assemble_args("text-moment", {"content": "x", "time_from_exif": True, "images": []})
+    # nor is a list of blank strings (repeat-field edge case)
+    with pytest.raises(ValueError, match="requires 'images'"):
+        assemble_args("text-moment", {"content": "x", "time_from_exif": True, "images": [""]})
+    # a row with no path emits no --image, so it must not satisfy the requires
+    with pytest.raises(ValueError, match="requires 'images'"):
+        assemble_args(
+            "text-moment", {"content": "x", "time_from_exif": True, "images": [{"path": ""}]}
+        )
+    # a real photo satisfies it
+    assert assemble_args(
+        "text-moment", {"content": "x", "time_from_exif": True, "images": [{"path": "a.jpg"}]}
+    ) == ["x", "--time-from-exif", "--image=a.jpg"]
+
+
+def test_text_moment_fields_carry_help_text():
+    """Every text-moment field has user-facing help (the meta explanation
+    must be detailed enough to learn the KEY=VALUE format and rating scale)."""
+    s = _moment_schema()
+    assert all(f.help for f in s.values())
+    meta_help = s["meta"].help
+    assert "KEY=VALUE" in meta_help
+    assert "rating" in meta_help and "1–5" in meta_help
+    # the EXIF/GPS behaviour is spelled out where users look for it
+    assert "EXIF" in s["time_from_exif"].help
+    assert "EXIF" in s["set_gps"].help and "WGS-84" in s["set_gps"].help
 
 
 def test_non_moment_tasks_have_no_tabs():
@@ -351,6 +453,123 @@ def test_validate_schemas_catches_task_drift(monkeypatch):
         models.validate_schemas()
 
 
+def test_validate_schemas_catches_unknown_conflicts_with(monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "value", "type": "number", "arg": 0},
+                {"name": "use_date", "type": "checkbox", "conflicts_with": "nope"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match="conflicts with unknown field 'nope'"):
+        models.validate_schemas()
+
+
+@pytest.mark.parametrize("prop", ["requires", "disables"])
+def test_validate_schemas_catches_unknown_relation(prop, monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "value", "type": "number", "arg": 0},
+                {"name": "use_date", "type": "checkbox", prop: "nope"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match=f"{prop} unknown field 'nope'"):
+        models.validate_schemas()
+
+
+def test_validate_schemas_rejects_duplicate_field_names(monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "value", "type": "number", "arg": 0},
+                {"name": "value", "type": "text"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match="duplicate field name 'value'"):
+        models.validate_schemas()
+
+
+@pytest.mark.parametrize("prop", ["enables", "disables"])
+def test_validate_schemas_rejects_gate_on_non_checkbox(prop, monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "value", "type": "number", "arg": 0},
+                {"name": "note", "type": "text", prop: "value"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match=f"declares '{prop}' but is not a checkbox"):
+        models.validate_schemas()
+
+
+def test_validate_schemas_rejects_self_reference(monkeypatch):
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {"weight": [{"name": "value", "type": "checkbox", "conflicts_with": "value"}]},
+    )
+    with pytest.raises(RuntimeError, match="lists itself in 'conflicts_with'"):
+        models.validate_schemas()
+
+
+def test_validate_schemas_rejects_enable_disable_overlap(monkeypatch):
+    """A field governed by both an `enables` and a `disables` checkbox would
+    have its disabled state decided by call order — reject it at import."""
+    from api import models
+
+    monkeypatch.setattr(
+        models,
+        "_TASK_FIELDS",
+        {
+            "weight": [
+                {"name": "value", "type": "number", "arg": 0},
+                {"name": "a", "type": "checkbox", "enables": "note"},
+                {"name": "b", "type": "checkbox", "disables": "note"},
+                {"name": "note", "type": "text"},
+            ]
+        },
+    )
+    with pytest.raises(RuntimeError, match="both enabled and disabled"):
+        models.validate_schemas()
+
+
+def test_text_moment_meta_help_matches_mkdocs_config():
+    """The meta help hardcodes the configured keys — fail when mkdocs.yml
+    gains/loses a category or key so the help cannot silently drift."""
+    from shared.mkdocs_yaml import load_extra
+
+    meta_fields = load_extra("moment", label="test").get("meta_fields") or {}
+    assert meta_fields, "mkdocs.yml extra.moment.meta_fields must not be empty"
+    help_text = _moment_schema()["meta"].help
+    for tag, fields in meta_fields.items():
+        assert tag in help_text, f"tag {tag!r} missing from the meta help"
+        for f in fields:
+            assert f["key"] in help_text, f"key {f['key']!r} missing from the meta help"
+
+
 def test_validate_schemas_catches_bad_enables(monkeypatch):
     from api import models
 
@@ -399,6 +618,18 @@ def test_finalize_outcomes():
     run3 = BotRun(run_id="z", task="weight", args="82")
     _finalize(run3, 1)
     assert run3.status == "failed"
+
+
+def test_finalize_local_run():
+    """A local run finishes as LOCAL (no PR) even though the output has no
+    Draft-PR line."""
+    from api.state import LOCAL
+
+    run = BotRun(run_id="l", task="text-moment", args="hi")
+    run.log("🧪 local run — working tree directly (no worktree / branch / PR)")
+    _finalize(run, 0, local=True)
+    assert run.status == LOCAL
+    assert run.pr_url is None
 
 
 def test_finalize_noop_no_changes():

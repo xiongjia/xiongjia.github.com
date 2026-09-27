@@ -4,11 +4,14 @@ Converts specified image(s) to WebP and updates .md references to point to
 the new .webp files. Originals are left untouched.
 
 WebP quality resolution: ``--quality`` CLI arg > ``extra.optimize_images.quality``
-in mkdocs.yml > default 90. Out-of-range values are clamped to 1-100.
+in mkdocs.yml > default 85. Out-of-range values are clamped to 1-100.
+Optional long-edge scaling: ``--max-dimension`` CLI arg >
+``extra.optimize_images.max_dimension`` in mkdocs.yml > off (opt-in).
 
 Usage:
     uv run poe optimize-images docs/path/to/img.png
     uv run poe optimize-images img1.png img2.jpg --quality 80
+    uv run poe optimize-images --all --max-dimension 2000
     uv run poe optimize-images --all          # process everything under docs/
     uv run poe optimize-images --dry-run docs/path/to/img.png   # preview only
 """
@@ -29,7 +32,10 @@ from shared.mkdocs_yaml import load_extra
 
 DOCS = Path("docs")
 IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg"}
-DEFAULT_WEBP_QUALITY = 90
+# WebP defaults: q85 is visually near-lossless for photos while much smaller
+# than q90; the long-edge cap is OPT-IN (None = no scaling).
+DEFAULT_WEBP_QUALITY = 85
+DEFAULT_MAX_DIMENSION: int | None = None
 
 
 def config_quality() -> int | None:
@@ -52,6 +58,25 @@ def config_quality() -> int | None:
     return None
 
 
+def config_max_dimension() -> int | None:
+    """Read ``extra.optimize_images.max_dimension`` from mkdocs.yml.
+
+    Long-edge pixel cap for the WebP conversion; absent/0/invalid → ``None``
+    (no scaling — opt-in). Non-positive values disable it explicitly.
+    """
+    value = load_extra("optimize_images", label="optimize-images").get("max_dimension")
+    if type(value) is int:
+        return value if value > 0 else None
+    if isinstance(value, str) and value.strip().isdigit():
+        return int(value) if int(value) > 0 else None
+    if value is not None:
+        print(
+            f"  [WARN] invalid max_dimension in mkdocs.yml extra.optimize_images: {value!r}",
+            file=sys.stderr,
+        )
+    return None
+
+
 def resolve_quality(cli_quality: int | None, cfg_quality: int | None) -> int:
     """Resolve WebP quality: ``--quality`` CLI arg > mkdocs.yml > module default."""
     if cli_quality is not None:
@@ -59,6 +84,17 @@ def resolve_quality(cli_quality: int | None, cfg_quality: int | None) -> int:
     if cfg_quality is not None:
         return cfg_quality
     return DEFAULT_WEBP_QUALITY
+
+
+def resolve_max_dimension(cli_max: int | None, cfg_max: int | None) -> int | None:
+    """Resolve the long-edge cap: ``--max-dimension`` > mkdocs.yml > off.
+
+    A non-positive CLI value (``--max-dimension 0``) explicitly disables the
+    cap even when mkdocs.yml sets one.
+    """
+    if cli_max is not None:
+        return cli_max if cli_max > 0 else None
+    return cfg_max
 
 
 def _clamp_quality(quality: int) -> int:
@@ -79,14 +115,20 @@ def convert_to_webp(
     dry_run: bool = False,
     quality: int = DEFAULT_WEBP_QUALITY,
     dst: Path | None = None,
+    max_dimension: int | None = DEFAULT_MAX_DIMENSION,
 ) -> Path | None:
     """Convert a single image to WebP at the given *quality*.
 
     Out-of-range *quality* values are clamped to 1-100 (above → 100, below → 1).
     *dst* overrides the output location (default: next to *src* with a .webp
     suffix) — used by bucket-upload to convert straight into the keyed target
-    path. Returns the path to the new .webp file, or None if the WebP already
-    exists and is not smaller.
+    path. *max_dimension* downscales so the longest edge is at most that many
+    pixels (``None``/0 = no scaling — opt-in; the biggest size win for phone
+    photos). Returns the path to the new .webp file, or None if the WebP
+    already exists and is not smaller.
+
+    The effective parameters (quality / max_dimension / dimensions / ratio)
+    are printed so a bot run's log records exactly how the file was encoded.
 
     EXIF orientation is baked into the pixels via ``ImageOps.exif_transpose``
     (and the Orientation tag dropped) — WebP viewers often ignore the EXIF
@@ -95,13 +137,17 @@ def convert_to_webp(
     into the WebP.
     """
     quality = _clamp_quality(quality)
+    max_dimension = max_dimension if (max_dimension or 0) > 0 else None
     dst = dst or src.with_suffix(".webp")
     if dst.exists() and dst.stat().st_size <= src.stat().st_size:
         print(f"  [SKIP] {src} -> {dst} (already exists and not larger)")
         return None
 
     if dry_run:
-        print(f"  [DRY-RUN] would convert {src} -> {dst}")
+        print(
+            f"  [DRY-RUN] would convert {src} -> {dst} "
+            f"[WebP q={quality}, max_dimension={max_dimension or 'off'}]"
+        )
         return dst
 
     try:
@@ -114,17 +160,32 @@ def convert_to_webp(
             # every correctly-oriented photo.
             if im.getexif().get(0x0112) not in (None, 1):
                 im = ImageOps.exif_transpose(im)
+            # read EXIF AFTER the transpose (the resized copy loses .info)
             exif = im.info.get("exif")
+            src_size = im.size
+            scaled = im
+            if max_dimension and max(src_size) > max_dimension:
+                scale = max_dimension / max(src_size)
+                scaled = im.resize(
+                    (max(1, round(src_size[0] * scale)), max(1, round(src_size[1] * scale))),
+                    Image.LANCZOS,
+                )
             save_kwargs: dict = {"quality": quality, "method": 6}
             if exif is not None:
                 save_kwargs["exif"] = exif
-            im.save(dst, "WEBP", **save_kwargs)
+            scaled.save(dst, "WEBP", **save_kwargs)
     except Exception as exc:
         print(f"  [SKIP] {src}: {exc}")
         return None
 
     ratio = dst.stat().st_size / src.stat().st_size
-    print(f"  {src} -> {dst} ({ratio:.0%})")
+    dims = f"{src_size[0]}x{src_size[1]}"
+    if scaled.size != src_size:
+        dims += f"->{scaled.size[0]}x{scaled.size[1]}"
+    print(
+        f"  {src} -> {dst} ({ratio:.0%})  "
+        f"[WebP q={quality}, max_dimension={max_dimension or 'off'}, {dims}]"
+    )
     return dst
 
 
@@ -223,6 +284,15 @@ def main() -> None:
         ),
     )
     parser.add_argument(
+        "--max-dimension",
+        type=int,
+        metavar="PX",
+        help=(
+            "downscale so the longest edge is at most PX pixels "
+            "(0 = off; default: extra.optimize_images.max_dimension in mkdocs.yml, else off)"
+        ),
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Preview changes without writing anything",
@@ -236,6 +306,7 @@ def main() -> None:
     args = parser.parse_args()
 
     quality = _clamp_quality(resolve_quality(args.quality, config_quality()))
+    max_dimension = resolve_max_dimension(args.max_dimension, config_max_dimension())
 
     if args.all:
         images = list(iter_images(DOCS))
@@ -251,11 +322,16 @@ def main() -> None:
         sys.exit(1 if has_errors else 0)
 
     mode = " (dry-run)" if args.dry_run else ""
-    print(f"Found {len(images)} image(s), WebP quality={quality}{mode}\n")
+    print(
+        f"Found {len(images)} image(s), WebP quality={quality}, "
+        f"max_dimension={max_dimension or 'off'}{mode}\n"
+    )
 
     converted = 0
     for img in images:
-        dst = convert_to_webp(img, dry_run=args.dry_run, quality=quality)
+        dst = convert_to_webp(
+            img, dry_run=args.dry_run, quality=quality, max_dimension=max_dimension
+        )
         if dst is not None:
             update_md_references(img, dst, dry_run=args.dry_run)
             converted += 1

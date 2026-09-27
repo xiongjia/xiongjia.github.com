@@ -76,8 +76,10 @@ from scripts.bucket_sync import _generic_mapping, _pick, resolve_remote
 from scripts.optimize_images import (
     IMAGE_EXTENSIONS,
     _clamp_quality,
+    config_max_dimension,
     config_quality,
     convert_to_webp,
+    resolve_max_dimension,
     resolve_quality,
 )
 from shared.env import load_env_files
@@ -220,7 +222,16 @@ def main() -> int:
         "--quality",
         type=int,
         metavar="1-100",
-        help="WebP quality (default: extra.optimize_images.quality in mkdocs.yml, else 90)",
+        help="WebP quality (default: extra.optimize_images.quality in mkdocs.yml, else 85)",
+    )
+    parser.add_argument(
+        "--max-dimension",
+        type=int,
+        metavar="PX",
+        help=(
+            "downscale so the longest edge is at most PX pixels "
+            "(0 = off; default: extra.optimize_images.max_dimension in mkdocs.yml, else off)"
+        ),
     )
     parser.add_argument(
         "--confirm",
@@ -304,6 +315,7 @@ def main() -> int:
     )
 
     quality = _clamp_quality(resolve_quality(args.quality, config_quality()))
+    max_dimension = resolve_max_dimension(args.max_dimension, config_max_dimension())
     max_size_mb = _resolve_max_size_mb(args.max_size_mb, str(upload_cfg.get("max_size_mb") or ""))
     max_bytes = int(max_size_mb * 1024 * 1024)
     dry_run = not args.confirm
@@ -313,7 +325,7 @@ def main() -> int:
     mode = " (dry-run)" if dry_run else ""
     print(
         f"bucket-upload: {len(args.paths)} image(s), rule={rule!r}, WebP quality={quality}, "
-        f"max size={max_size_mb:g}MB{mode}"
+        f"max_dimension={max_dimension or 'off'}, max size={max_size_mb:g}MB{mode}"
     )
 
     failed = 0
@@ -348,7 +360,9 @@ def main() -> int:
         if not dry_run:
             tmp.parent.mkdir(parents=True, exist_ok=True)
             tmp.unlink(missing_ok=True)  # stale temp from a failed upload — re-convert
-        dst = convert_to_webp(src, dry_run=dry_run, quality=quality, dst=tmp)
+        dst = convert_to_webp(
+            src, dry_run=dry_run, quality=quality, dst=tmp, max_dimension=max_dimension
+        )
         if dst is None:
             print(f"  [SKIP]  {src}: conversion failed", file=sys.stderr)
             failed += 1

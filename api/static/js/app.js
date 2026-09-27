@@ -38,6 +38,8 @@ async function init() {
     const info = await api("/api/version");
     $("version").textContent = `v${info.version} · ${info.git_hash || ""}`.trim();
     $("online").classList.add("online");
+    // BOT_API_LOCAL: every run executes in the server's working tree
+    if (info.local) $("local-badge").hidden = false;
   } catch { /* server reachable? health will show */ }
   try {
     const { tasks } = await api("/api/tasks");
@@ -115,6 +117,7 @@ function renderFields(fields) {
   }
   pairGatedFields(box);
   syncGatedFields(box);
+  syncDisabledFields(box);
 }
 
 function switchTab(bar, box, tab) {
@@ -126,10 +129,28 @@ function switchTab(bar, box, tab) {
   }
 }
 
+// schema `help` → one muted line under the field, plus the same text as the
+// label's tooltip so compact/gated rows stay self-explanatory. Returns null
+// when the field has no help.
+function makeHelp(f) {
+  if (!f.help) return null;
+  const help = document.createElement("div");
+  help.className = "field-help";
+  help.id = `help-${f.name}`; // referenced by the control's aria-describedby
+  help.dataset.helpFor = f.name; // syncGatedFields hides it with its field
+  help.textContent = f.help;
+  return help;
+}
+
 function renderFieldList(container, fields) {
+  // change listeners must re-sync against the WHOLE form, not just this
+  // pane — a `disables`/`enables` target may live in another tab
+  const root = container.closest("#fields") || container;
   for (const f of fields) {
     const labelText = f.label + (f.required ? " *" : "");
     const label = document.createElement("label");
+    const help = makeHelp(f);
+    if (f.help) label.title = f.help;
     let input;
     if (f.type === "select") {
       input = document.createElement("select");
@@ -147,7 +168,11 @@ function renderFieldList(container, fields) {
       input.checked = f.default !== false;
       if (f.enables) {
         input.dataset.enables = f.enables;
-        input.addEventListener("change", () => syncGatedFields(container));
+        input.addEventListener("change", () => syncGatedFields(root));
+      }
+      if (f.disables) {
+        input.dataset.disables = f.disables;
+        input.addEventListener("change", () => syncDisabledFields(root));
       }
     } else if (f.type === "repeat") {
       // repeatable value list (--image / --meta): a text input + add button;
@@ -162,6 +187,7 @@ function renderFieldList(container, fields) {
       input.placeholder = f.label;
       input.dataset.name = f.name;
       input.dataset.type = "repeat"; // base input — never collected directly
+      if (help) input.setAttribute("aria-describedby", help.id);
       input.addEventListener("keydown", (e) => {
         if (e.key === "Enter") {
           e.preventDefault();
@@ -180,6 +206,7 @@ function renderFieldList(container, fields) {
       label.textContent = labelText;
       container.appendChild(label);
       container.appendChild(wrap);
+      if (help) container.appendChild(help);
       continue;
     } else if (f.type === "images") {
       // paired image rows: each row = [path | caption | ×] — the image↔
@@ -189,6 +216,11 @@ function renderFieldList(container, fields) {
       const wrap = document.createElement("div");
       wrap.className = "images-wrap";
       wrap.dataset.name = f.name;
+      if (help) {
+        // group semantics so the help is announced when entering the rows
+        wrap.setAttribute("role", "group");
+        wrap.setAttribute("aria-describedby", help.id);
+      }
       if (f.upload) {
         const bar = document.createElement("div");
         bar.className = "images-bar";
@@ -229,6 +261,7 @@ function renderFieldList(container, fields) {
       label.textContent = labelText;
       container.appendChild(label);
       container.appendChild(wrap);
+      if (help) container.appendChild(help);
       continue;
     } else if (f.type === "textarea") {
       input = document.createElement("textarea");
@@ -240,10 +273,12 @@ function renderFieldList(container, fields) {
     }
     input.dataset.name = f.name;
     input.dataset.type = f.type;
+    if (help) input.setAttribute("aria-describedby", help.id);
     label.textContent = labelText; // set once — checkbox prepends its input
     if (f.type === "checkbox") label.prepend(input);
     else label.appendChild(input);
     container.appendChild(label);
+    if (help) container.appendChild(help);
   }
 }
 
@@ -425,7 +460,32 @@ function syncGatedFields(box) {
       target.disabled = !cb.checked;
       const targetLabel = target.closest("label") || target;
       targetLabel.classList.toggle("gated-off", !cb.checked);
+      // hide the gated field's help with it (stays visible otherwise)
+      const help = box.querySelector(`.field-help[data-help-for="${target.dataset.name}"]`);
+      if (help) help.classList.toggle("gated-off", !cb.checked);
       if (!cb.checked) target.value = "";
+    }
+  }
+}
+
+// checkbox that turns OFF sibling fields while checked — the inverse of
+// `enables` (e.g. "Time from photo EXIF" disables the manual "Time" input).
+// The field stays visible (greyed out) so the user sees it was replaced;
+// collectFields already skips disabled controls, so it is never submitted.
+function syncDisabledFields(box) {
+  for (const cb of box.querySelectorAll('input[type="checkbox"][data-disables]')) {
+    const targets = (cb.dataset.disables || "")
+      .split(",")
+      .map((s) => s.trim())
+      .filter(Boolean);
+    for (const name of targets) {
+      const target = box.querySelector(`[data-name="${name}"]`);
+      if (!target) continue;
+      target.disabled = cb.checked;
+      if (cb.checked) target.value = "";
+      // dim the help with the disabled control (same "replaced" signal)
+      const help = box.querySelector(`.field-help[data-help-for="${name}"]`);
+      if (help) help.classList.toggle("field-off", cb.checked);
     }
   }
 }
@@ -532,7 +592,7 @@ async function showRunResult(runId) {
     const st = await api(`/api/bot/status/${runId}`);
     appendLog({
       time: "--:--:--",
-      level: ["submitted", "merged", "noop"].includes(st.status) ? "ok" : "err",
+      level: ["submitted", "merged", "noop", "local"].includes(st.status) ? "ok" : "err",
       msg: `done: ${st.status}${st.pr_url ? " " + st.pr_url : ""}`,
     });
   } catch { /* ignore — history pane still refreshes */ }

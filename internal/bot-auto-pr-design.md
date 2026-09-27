@@ -28,16 +28,23 @@
 
 ### Submission modes (one flag decides)
 
-| Mode              | Command                          | Behavior                                                                                                   |
-| ----------------- | -------------------------------- | ---------------------------------------------------------------------------------------------------------- |
-| default (`--now`) | `poe bot weight 82`              | One step: task → format → CI checks → commit → push → **draft PR**                                         |
-| handoff           | `poe bot weight 82 --handoff`    | Same as default, explicit: draft PR → **clean up the local worktree** → dev handles the PR (no wait/merge) |
-| preview           | `poe bot weight 82 --preview`    | Stop after local preview (state `ready`); then `submit` / `abort` / edit worktree & `submit`               |
-| auto-merge        | `poe bot weight 82 --auto-merge` | One step + merge: draft PR → CI green → ready → auto squash-merge                                          |
+| Mode              | Command                          | Behavior                                                                                                                                                                            |
+| ----------------- | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| default (`--now`) | `poe bot weight 82`              | One step: task → format → CI checks → commit → push → **draft PR**                                                                                                                  |
+| handoff           | `poe bot weight 82 --handoff`    | Same as default, explicit: draft PR → **clean up the local worktree** → dev handles the PR (no wait/merge)                                                                          |
+| preview           | `poe bot weight 82 --preview`    | Stop after local preview (state `ready`); then `submit` / `abort` / edit worktree & `submit`                                                                                        |
+| auto-merge        | `poe bot weight 82 --auto-merge` | One step + merge: draft PR → CI green → ready → auto squash-merge                                                                                                                   |
+| local             | `poe bot weight 82 --local`      | Run in the **current working tree** (no worktree/branch/PR); edits left uncommitted — for verifying uncommitted changes. Server-wide via `BOT_API_LOCAL` / `poe api-server --local` |
 
 Safety net for every mode: a **draft PR** is opened first (not merged = not
 published), and `poe bot abort <name>` can discard it at any point with zero
 remote trace.
+
+`--local` is the one mode that never forks a worktree: the normal flow always
+checks out `origin/<base>` (step 2 below), so uncommitted local changes are
+invisible to it. Local mode runs the task scripts directly in the repo and
+prints a `git status` summary instead of committing. The API server exposes
+this as a **startup switch** (`BOT_API_LOCAL=true` / `poe api-server --local`) that turns it on for every run — console, Telegram and cron.
 
 ### Phase A — prepare (only mutates the isolated worktree)
 

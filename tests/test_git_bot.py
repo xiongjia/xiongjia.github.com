@@ -132,6 +132,81 @@ def test_main_unknown_option_hint(monkeypatch, capsys):
     assert "quote" in capsys.readouterr().err
 
 
+def test_cmd_run_local_skips_worktree(monkeypatch, capsys):
+    """``--local`` runs the task in the main repo (no worktree/branch/PR) so
+    uncommitted changes are exercised — the point of server-wide local mode."""
+    calls: dict = {"runs": [], "worktree": 0}
+
+    def _create_worktree(*a, **k):
+        calls["worktree"] += 1
+
+    monkeypatch.setattr(gb, "create_worktree", _create_worktree)
+    monkeypatch.setattr(gb, "run", lambda cmd, cwd, env=None: calls["runs"].append((cmd, cwd)))
+    # fingerprint differs before/after → the run reports the changed tree
+    prints = iter(["before", "after"])
+    monkeypatch.setattr(gb, "worktree_fingerprint", lambda: next(prints))
+    monkeypatch.setattr(gb, "status_lines", lambda: ["?? docs/moments/2026-09/25-1737.md"])
+
+    args = SimpleNamespace(tasks=["weight 82"], plan=None, local=True)
+    gb.cmd_run(args)
+
+    assert calls["worktree"] == 0  # never forks a branch/worktree
+    assert calls["runs"] and calls["runs"][0][1] == gb.REPO_ROOT
+    out = capsys.readouterr().out
+    assert "🧪 local run" in out
+    assert "25-1737.md" in out  # change summary printed for review
+
+
+def test_local_mode_flag_or_env(monkeypatch):
+    """Local mode = ``--local`` OR ``BOT_API_LOCAL`` (the env is a hard safety
+    net so a server-level setting can't be bypassed into opening a PR)."""
+    monkeypatch.delenv("BOT_API_LOCAL", raising=False)
+    assert gb.is_local_mode(SimpleNamespace(local=True)) is True
+    assert gb.is_local_mode(SimpleNamespace(local=False)) is False
+    monkeypatch.setenv("BOT_API_LOCAL", "true")
+    assert gb.is_local_mode(SimpleNamespace(local=False)) is True  # env wins
+    assert gb.is_local_mode(None) is True
+
+
+def test_cmd_run_env_forces_local(monkeypatch, capsys):
+    """``BOT_API_LOCAL=true`` alone (no ``--local``) keeps a run local — no
+    worktree, no branch, no PR."""
+    calls: dict = {"worktree": 0, "runs": []}
+    monkeypatch.setenv("BOT_API_LOCAL", "1")
+    monkeypatch.setattr(gb, "create_worktree", lambda *a, **k: calls.__setitem__("worktree", 1))
+    monkeypatch.setattr(gb, "run", lambda cmd, cwd, env=None: calls["runs"].append(cwd))
+    monkeypatch.setattr(gb, "worktree_fingerprint", lambda: "unchanged")
+    monkeypatch.setattr(gb, "status_lines", lambda: [])
+
+    gb.cmd_run(SimpleNamespace(tasks=["weight 82"], plan=None, local=False))
+    assert calls["worktree"] == 0
+    assert calls["runs"] == [gb.REPO_ROOT]
+    assert "🧪 local run" in capsys.readouterr().out
+
+
+def test_cmd_run_local_warns_incompatible_flags(monkeypatch, capsys):
+    """``--local`` never opens a PR: PR-only flags are ignored with a warning
+    (not silently) — and not an error, since BOT_API_LOCAL may be env-forced."""
+    monkeypatch.delenv("BOT_API_LOCAL", raising=False)
+    calls = {"worktree": 0}
+    monkeypatch.setattr(gb, "create_worktree", lambda *a, **k: calls.__setitem__("worktree", 1))
+    monkeypatch.setattr(gb, "run", lambda cmd, cwd, env=None: None)
+    monkeypatch.setattr(gb, "worktree_fingerprint", lambda: "unchanged")
+    monkeypatch.setattr(gb, "status_lines", lambda: [])
+    args = SimpleNamespace(tasks=["weight 82"], plan=None, local=True, preview=True)
+    gb.cmd_run(args)
+    assert calls["worktree"] == 0
+    assert "ignores --preview" in capsys.readouterr().out
+
+
+def test_do_submit_refuses_in_local_mode(monkeypatch, tmp_path):
+    """Belt-and-suspenders: even if a path reaches submit, BOT_API_LOCAL blocks
+    any commit/push/PR."""
+    monkeypatch.setenv("BOT_API_LOCAL", "true")
+    with pytest.raises(gb.BotError, match="refusing to commit/push"):
+        gb.do_submit(tmp_path, "bot/weight/x", [], wait_ci=False, auto_merge=False)
+
+
 def test_build_pr_body_fits_limit():
     body = gb.build_pr_body(["- weight 81.9 kg (2026-08-12)"], now_tag="2026-08-12 10:31")
     assert len(body) <= gb.PR_DESC_LIMIT

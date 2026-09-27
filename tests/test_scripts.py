@@ -132,6 +132,7 @@ def test_optimize_images_quality_passthrough(tmp_path, monkeypatch):
 
     class FakeImage:
         info = {}
+        size = (64, 64)  # convert_to_webp reads it for the param log / scaling
 
         def __enter__(self):
             return self
@@ -175,6 +176,57 @@ def test_optimize_images_resolve_quality():
     assert optimize_images.resolve_quality(None, None) == default
     assert optimize_images.resolve_quality(None, 70) == 70
     assert optimize_images.resolve_quality(80, 70) == 80
+
+
+def test_optimize_images_config_max_dimension(tmp_path, monkeypatch):
+    yml = tmp_path / "mkdocs.yml"
+    monkeypatch.setattr(shared.mkdocs_yaml, "MKDOCS_YML", yml)
+
+    # absent key -> None (scaling is opt-in)
+    yml.write_text("extra:\n  optimize_images:\n    quality: 85\n", encoding="utf-8")
+    assert optimize_images.config_max_dimension() is None
+
+    yml.write_text("extra:\n  optimize_images:\n    max_dimension: 2000\n", encoding="utf-8")
+    assert optimize_images.config_max_dimension() == 2000
+
+    # numeric string accepted; 0 / bool / junk -> disabled (None)
+    yml.write_text("extra:\n  optimize_images:\n    max_dimension: '1600'\n", encoding="utf-8")
+    assert optimize_images.config_max_dimension() == 1600
+    yml.write_text("extra:\n  optimize_images:\n    max_dimension: 0\n", encoding="utf-8")
+    assert optimize_images.config_max_dimension() is None
+    yml.write_text("extra:\n  optimize_images:\n    max_dimension: true\n", encoding="utf-8")
+    assert optimize_images.config_max_dimension() is None
+
+
+def test_optimize_images_resolve_max_dimension():
+    assert optimize_images.resolve_max_dimension(None, None) is None  # off by default
+    assert optimize_images.resolve_max_dimension(None, 2000) == 2000
+    assert optimize_images.resolve_max_dimension(1600, 2000) == 1600  # CLI wins
+    assert optimize_images.resolve_max_dimension(0, 2000) is None  # explicit off
+
+
+def test_optimize_images_scales_long_edge(tmp_path):
+    """max_dimension caps the long edge (opt-in); the default keeps the size."""
+    from PIL import Image
+
+    src = tmp_path / "wide.png"
+    Image.new("RGB", (400, 200), (10, 20, 30)).save(src)
+
+    # default: no scaling — the WebP keeps the source dimensions
+    default = optimize_images.convert_to_webp(src, dst=tmp_path / "default.webp")
+    with Image.open(default) as im:
+        assert im.size == (400, 200)
+
+    scaled = optimize_images.convert_to_webp(
+        src, dst=tmp_path / "scaled.webp", max_dimension=100, quality=80
+    )
+    with Image.open(scaled) as im:
+        assert im.size == (100, 50)  # long edge capped, aspect ratio kept
+
+    # a cap larger than the source is a no-op
+    big = optimize_images.convert_to_webp(src, dst=tmp_path / "big.webp", max_dimension=9999)
+    with Image.open(big) as im:
+        assert im.size == (400, 200)
 
 
 def test_optimize_images_quality_clamped(tmp_path):
@@ -273,6 +325,46 @@ def test_exif_camera_date_extracts_make_model_datetime(tmp_path):
     camera, photo_date = create_moment.exif_camera_date(src)
     assert camera == "Apple iPhone 15 Pro"
     assert photo_date == "2026-08-01 15:30"
+
+
+def test_exif_camera_date_reads_exif_sub_ifd(tmp_path):
+    """Real cameras/Lightroom store DateTimeOriginal (0x9003) in the Exif
+    sub-IFD (0x8769), where a top-level-only read misses it."""
+    from PIL import Image
+
+    from scripts import create_moment
+
+    src = tmp_path / "camera.jpg"
+    exif = Image.Exif()
+    exif[0x010F] = "OnePlus"
+    exif[0x0110] = "IN2013"
+    exif.get_ifd(0x8769)[0x9003] = "2026:09:25 17:37:26"  # sub-IFD, not IFD0
+    Image.new("RGB", (16, 16)).save(src, "JPEG", exif=exif)
+
+    camera, photo_date = create_moment.exif_camera_date(src)
+    assert camera == "OnePlus IN2013"
+    assert photo_date == "2026-09-25 17:37"
+
+
+def test_exif_camera_date_falls_back_to_datetime_digitized(tmp_path):
+    """Capture time = DateTimeOriginal (0x9003) then DateTimeDigitized (0x9004)."""
+    from PIL import Image
+
+    from scripts import create_moment
+
+    digitized = tmp_path / "digitized.jpg"
+    exif = Image.Exif()
+    exif.get_ifd(0x8769)[0x9004] = "2025:03:04 08:09:10"
+    Image.new("RGB", (16, 16)).save(digitized, "JPEG", exif=exif)
+    assert create_moment.exif_camera_date(digitized)[1] == "2025-03-04 08:09"
+
+    # IFD0 DateTime (0x0132) is the file's modified/export time, NOT a capture
+    # time — a moment date must fall back to now instead of using it
+    modified = tmp_path / "modified.jpg"
+    exif = Image.Exif()
+    exif[0x0132] = "2024:12:31 23:59:00"
+    Image.new("RGB", (16, 16)).save(modified, "JPEG", exif=exif)
+    assert create_moment.exif_camera_date(modified)[1] == ""
 
 
 def test_exif_camera_date_missing_fields(tmp_path):
