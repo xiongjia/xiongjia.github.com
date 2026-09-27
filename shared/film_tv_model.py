@@ -377,6 +377,7 @@ def merge_record(
     detail_fetched: bool = False,
     today: str,
     missing_since: str | None = None,
+    missing_reason: str | None = None,
 ) -> Entry:
     """Merge fresh Douban fields into a record, preserving human + sticky parts.
 
@@ -387,7 +388,10 @@ def merge_record(
     - ``user`` (block text included) is carried over untouched;
     - ``meta`` keeps ``detail_synced_at`` from earlier syncs, refreshes
       ``fingerprint`` / ``machine_hash`` / ``taxonomy_version``, and records
-      ``missing_since`` when the subject vanished on Douban.
+      ``missing_since`` / ``missing_reason`` when the record stopped being
+      fetchable (``gone`` = the subject was taken down, ``pruned`` = the row left
+      my collection). A successful detail fetch proves the subject is alive, so it
+      clears both.
     """
     machine = dict(fields)
     if existing is not None and subject is None:
@@ -422,7 +426,16 @@ def merge_record(
     if detail_fetched:
         meta["detail_synced_at"] = today
     meta.setdefault("detail_synced_at", None)
-    meta["missing_since"] = missing_since or meta.get("missing_since") or None
+    if detail_fetched and subject is not None:
+        # the subject answered with content: whatever made it "missing" is over
+        # (a restored subject, a re-added row)
+        meta["missing_since"] = None
+        meta["missing_reason"] = None
+    else:
+        meta["missing_since"] = missing_since or meta.get("missing_since") or None
+        meta["missing_reason"] = missing_reason or meta.get("missing_reason") or None
+    if not meta["missing_since"]:
+        meta["missing_reason"] = None
     meta["machine_hash"] = machine_hash(machine)
     for key in META_KEY_ORDER:
         meta.setdefault(key, None)

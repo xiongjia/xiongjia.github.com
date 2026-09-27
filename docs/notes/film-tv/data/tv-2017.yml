@@ -1,0 +1,1602 @@
+# Film & TV archive — top-level fields are machine-owned and rewritten from
+# Douban on every sync; edit the `user:` block freely, it is never touched.
+# generated_at: 2026-09-27T22:32+08:00
+- id: "26994912"
+  title: 鬼灯的冷彻 第二季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-31"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26994912/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: a1b56122
+    machine_hash: 8b433f22
+    missing_since: null
+- id: "26898192"
+  title: 黑镜 第四季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-30"
+  douban_comment: null
+  tags: [Sci-Fi, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26898192/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: f4d6c9da
+    machine_hash: 3b8c130f
+    missing_since: null
+- id: "27065127"
+  title: 民众之敌：这个世界不是很可笑吗？！
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-29"
+  douban_comment: null
+  tags: [JPN, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27065127/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 8e24c2ee
+    machine_hash: 5a6446f9
+    missing_since: null
+- id: "26853460"
+  title: 校对女孩河野悦子
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-29"
+  douban_comment: null
+  tags: [Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26853460/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 7f21464a
+    machine_hash: fcc57ef1
+    missing_since: null
+- id: "27015988"
+  title: 干物妹！小埋R
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-25"
+  douban_comment: null
+  tags: [Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27015988/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 3c6732f1
+    machine_hash: 8e3d918c
+    missing_since: null
+- id: "27097746"
+  title: 监狱的公主大人
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-24"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27097746/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: bbd2f0f0
+    machine_hash: 369828af
+    missing_since: null
+- id: "4925398"
+  title: 命运石之门
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-16"
+  douban_comment: null
+  tags: [Animation, JPN, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/4925398/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: d1f765a4
+    machine_hash: 6e591927
+    missing_since: null
+- id: "26761935"
+  title: 孤单又灿烂的神：鬼怪
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-11"
+  douban_comment: null
+  tags: [Teleplay, KOR]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26761935/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 4308ce54
+    machine_hash: 62a38182
+    missing_since: null
+- id: "25843131"
+  title: 55岁开始的Hello Life
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-10"
+  douban_comment: null
+  tags: [Movie, JPN]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/25843131/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 3abdcb20
+    machine_hash: ee0f7d36
+    missing_since: null
+- id: "26864121"
+  title: 龙的牙医
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-12-02"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26864121/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 79be73b3
+    machine_hash: f9d0dd5c
+    missing_since: null
+- id: "26868392"
+  title: 急诊科医生
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 2
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-11-23"
+  douban_comment: null
+  tags: [CHS, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26868392/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 3f5de9bc
+    machine_hash: 45c335ca
+    missing_since: null
+- id: "27061479"
+  title: 警视厅生物股长
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-29"
+  douban_comment: null
+  tags: [JPN, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27061479/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: e047a524
+    machine_hash: ad77bf92
+    missing_since: null
+- id: "27043697"
+  title: 手造中国
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-28"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27043697/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 474b0d1d
+    machine_hash: 8474f3b6
+    missing_since: null
+- id: "26954791"
+  title: 寻找手艺
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-27"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26954791/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: f0d37304
+    machine_hash: e558d86d
+    missing_since: null
+- id: "26639179"
+  title: 亚尔斯兰战记 风尘乱舞
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-21"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26639179/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 1695648a
+    machine_hash: 92ed7a39
+    missing_since: null
+- id: "26984197"
+  title: 地狱少女 宵伽
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-15"
+  douban_comment: null
+  tags: [Movie, JPN, Animation]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26984197/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 52c833b1
+    machine_hash: 8ab96a7f
+    missing_since: null
+- id: "26429803"
+  title: 甲午
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-15"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26429803/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: f79424e1
+    machine_hash: 46328c19
+    missing_since: null
+- id: "26883064"
+  title: 白夜追凶
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-14"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26883064/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: b7316e44
+    machine_hash: 24109f15
+    missing_since: null
+- id: "4249704"
+  title: 神秘博士 第五季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-10-02"
+  douban_comment: null
+  tags: [Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/4249704/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 9f084960
+    machine_hash: 92f17ef4
+    missing_since: null
+- id: "3124002"
+  title: 世纪人生：董竹君传奇
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-09-28"
+  douban_comment: null
+  tags: [CHS, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/3124002/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: cd74b3c3
+    machine_hash: bcbf8ead
+    missing_since: null
+- id: "26996687"
+  title: 骑士＆魔法
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-09-24"
+  douban_comment: null
+  tags: [JPN, Animation]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26996687/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: bd2ad5f6
+    machine_hash: c6247822
+    missing_since: null
+- id: "26951886"
+  title: 紧急救命3
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-09-23"
+  douban_comment: null
+  tags: [JPN, Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26951886/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 1ac391f5
+    machine_hash: 144365da
+    missing_since: null
+- id: "26100432"
+  title: 锵锵三人行
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-09-12"
+  douban_comment: null
+  tags: [talkshow, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26100432/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 5a175acd
+    machine_hash: 0927c9d3
+    missing_since: null
+- id: "26235354"
+  title: 权力的游戏 第七季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-08-29"
+  douban_comment: null
+  tags: [Movie, ENU]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26235354/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 28b66507
+    machine_hash: 2b5bd8ca
+    missing_since: null
+- id: "27046738"
+  title: 圆桌派 第二季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-08-13"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/27046738/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: "41696497"
+    machine_hash: 280ce94c
+    missing_since: null
+- id: "26989838"
+  title: 圆桌女生派
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 2
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-08-13"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26989838/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 09605a61
+    machine_hash: 8d2b9433
+    missing_since: null
+- id: "26876107"
+  title: 有顶天家族2
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-08-06"
+  douban_comment: null
+  tags: [Animation, JPN]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26876107/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 6b36096e
+    machine_hash: 9f3d4f6f
+    missing_since: null
+- id: "26727352"
+  title: 老广的味道 第一季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-07-22"
+  douban_comment: null
+  tags: [Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26727352/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 3bc877ee
+    machine_hash: 6a0a7303
+    missing_since: null
+- id: "26982974"
+  title: 恶魔城 第一季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-07-15"
+  douban_comment: null
+  tags: [Movie]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26982974/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 5dc8b258
+    machine_hash: 67fc901c
+    missing_since: null
+- id: "26605881"
+  title: 大军师司马懿之军师联盟
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 2
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-07-15"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26605881/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 29f6a401
+    machine_hash: c271a609
+    missing_since: null
+- id: "26877401"
+  title: 锦绣纪
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-05-28"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26877401/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 58be2bd2
+    machine_hash: 1e917c22
+    missing_since: null
+- id: "20515991"
+  title: 中国通史
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-05-21"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/20515991/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 9f6d3a25
+    machine_hash: 360d119f
+    missing_since: null
+- id: "26776531"
+  title: 热血长安
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 2
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-03-25"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26776531/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 87b22005
+    machine_hash: 9430838e
+    missing_since: null
+- id: "5923466"
+  title: 大秦帝国之崛起
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-03-07"
+  douban_comment: null
+  tags: [CHS, Teleplay, History]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/5923466/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: e5071d99
+    machine_hash: d47f397c
+    missing_since: null
+- id: "26387719"
+  title: 民王
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-02-05"
+  douban_comment: null
+  tags: [Teleplay, Sci-Fi, Movie, JPN]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26387719/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: e36eb751
+    machine_hash: 07b1afcd
+    missing_since: null
+- id: "26897019"
+  title: 圆桌派 第一季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-02-03"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26897019/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: f9c68231
+    machine_hash: 1f5792f7
+    missing_since: null
+- id: "26754896"
+  title: 夏目友人帐 第五季
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-01-31"
+  douban_comment: null
+  tags: []
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26754896/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: b4588579
+    machine_hash: a34db3e3
+    missing_since: null
+- id: "25884841"
+  title: 真田丸
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-01-27"
+  douban_comment: null
+  tags: [JPN, Teleplay]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/25884841/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 7440d019
+    machine_hash: 8c8dbee4
+    missing_since: null
+- id: "1830558"
+  title: 神雕侠侣
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 3
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-01-15"
+  douban_comment: null
+  tags: [Teleplay, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/1830558/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 245cbcd9
+    machine_hash: 2a4f2534
+    missing_since: null
+- id: "26784894"
+  title: 寻味顺德
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 5
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-01-08"
+  douban_comment: null
+  tags: [Movie, CHS]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/26784894/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 431aeca8
+    machine_hash: cd9b34fc
+    missing_since: null
+- id: "2210001"
+  title: 大明王朝1566
+  original_title: null
+  year: null
+  type: tv
+  category: null
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2017-01-02"
+  douban_comment: null
+  tags: [CHS, Teleplay, History]
+  genres: []
+  regions: []
+  languages: []
+  runtime: null
+  credits:
+    directors: []
+    casts: []
+    writers: []
+  episodes: null
+  slug: ""
+  covers: []
+  douban_url: https://movie.douban.com/subject/2210001/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: null
+    taxonomy_version: 2
+    fingerprint: 010a6f98
+    machine_hash: c46b8222
+    missing_since: null

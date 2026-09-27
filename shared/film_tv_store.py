@@ -63,6 +63,10 @@ META_KEY_ORDER = (
     "fingerprint",
     "machine_hash",
     "missing_since",
+    # why the record stopped being fetchable: "gone" (subject taken down on
+    # Douban) or "pruned" (row left my collection) — only the latter is undone
+    # automatically when the row shows up in a walk again
+    "missing_reason",
 )
 
 #: short attribute lists rendered in flow style (``tags: [a, b]``)

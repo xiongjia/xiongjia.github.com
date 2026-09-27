@@ -72,6 +72,13 @@ estimate that included the wish list; this archive excludes it.
   safe anonymously, and **the first full pass switches to the account session midway** (the
   script prints a notice; `--full` runs once). After a challenge, anonymous access from that
   IP stays restricted for a while.
+- **2026-09-27 observation (the fallback is normal now, not rare):** the anonymous session was
+  challenged on the **very first** list page, so a whole 117-page walk ran on the account
+  session. The walk now (a) retries the anonymous session once per challenge and starts every
+  tab cookie-free again, and (b) **counts** the pages it had to take through the account
+  (`walk: … [account session: 117/117 pages]`) so that cost is visible instead of silently
+  assumed to be zero. Once a challenge has been seen, **an empty list page can be Douban's
+  soft-throttle answer** — see the walk guard in §4.
 
 ### 1.2 Collection lists (`collect` / `do`)
 
@@ -439,6 +446,32 @@ Douban metadata = `id`, `title`, `year`, `type`, `category`, `status`, `user_rat
   backwards, and a truly empty filter result says "当前筛选没有结果" (distinct from "归档里还没有记录").
   Touching a filter or a sort loads every shard once (~3 MB, filtered in memory) while the
   default view stays lazy.
+- **`"undated"` is a pseudo-month, never a date:** the year list behind the calendar rotation
+  and the chart's 「按年」 selector is built by `core.calendarYears()`, which only accepts real
+  `YYYY-MM` keys (`core.isMonthKey`). Slicing a month key blindly turned the pseudo-month into
+  the year `"unda"` and, because the panel is open on page load, the very first render titled
+  itself 「unda 年」 until a month was picked (the same slice ran in `film-tv-chart.js`).
+- **An entry without a date is not shown as 「未知」; it gets a real date or is dropped:** the
+  date is always *my* watch/mark time — the subject page's `#interest_sect_level` date (which is
+  why a record's row in \*-undated.yml is a **pending** record, not a broken one), else the
+  list row's date, else a hand-set `user.watched_at`. A subject that is **gone** is skipped: it is
+  kept in the year yml as an archive entry (`meta.missing_since` + `meta.missing_reason`, nothing
+  left to fetch) but `film-tv-derive` leaves a gone **and** dateless record out of the published
+  JSON, so the pages have neither an 「未知」 bucket nor an empty 「未知电影」 row. Gone records
+  that *do* carry a date stay published (a pruned record was really watched), and a date-less
+  record whose subject is still alive is the only case that needs `user.watched_at` by hand —
+  `film-tv-check` lists those (`undated` finding, split into pending / gone / needs-a-date).
+- **"Gone" is three signals and one confirmation** (`_fetch_detail` / `_mark_gone`): Douban's
+  `item-show deleted` row class, an HTTP `404`, or a `200` whose page parses empty (no title, no
+  score, no interest block). An empty page is also what a *throttled* session gets, and the mark is
+  permanent (a missing record is neither fetched nor published again), so it is re-fetched once
+  before it counts — and a record that already **has a date** is never marked gone from an empty
+  page: that case is a failure and is retried later. `meta.missing_reason` records why
+  (`gone` = subject taken down, `pruned` = the row left my collection); only `pruned` is undone
+  automatically when a walk sees the row again, and any successful detail fetch clears both fields
+  (a restored subject is a live subject). Records that are gone are **not** pending anywhere:
+  `backfill_progress` and `film-tv-check` report them separately (`gone N`), so "pending 0" stays a
+  reachable target.
 - **Pages and assets:** the section pages contain only a heading plus macro calls;
   `shared/macros/film_tv_macros.py` renders them (`film_tv_page` / `film_tv_stats` / `film_tv_chart` /
   `film_tv_people` / `film_tv_note`). Because mkdocs-macros accepts exactly one local
@@ -502,8 +535,21 @@ Douban metadata = `id`, `title`, `year`, `type`, `category`, `status`, `user_rat
 - **Newest first:** the lists are already reverse-chronological, so the detail queue starts with
   the newest records; `--limit N` batches them (300 recommended, no hard cap).
 - **Resumable:** progress and the detail cache live in the git-ignored
-  `.cache/film-tv/state/` (failures, page cursor, parsed detail JSON), so a re-run never repeats
-  requests; `--data-quality` reports go to `.cache/film-tv/reports/<ts>.json`.
+  `.cache/film-tv/state/` (`details/` parsed JSON, `covers.json`, `failures.json`,
+  `walk.json`), so a re-run never repeats requests; `--data-quality` reports go to
+  `.cache/film-tv/reports/<ts>.json`.
+- **Walk progress (`walk.json`)** = `{cursor: {tab → next start}, total: {tab → page-header total}}`. A `--full` walk writes the cursor after every page, so an interrupted first pass
+  **resumes** instead of re-requesting 100+ pages; the cursor is cleared when a tab reaches its
+  natural end. An incremental run neither reads nor writes it (the newest rows always live on
+  the first pages), and `--prune` never resumes (it compares the whole archive against the
+  walk — skipping the head would mark it deleted). `total` is what makes the offline
+  completeness check possible (`film-tv-check`).
+- **An empty page is never "the list ends here" (required by the 2026-09-27 full pass):** an
+  empty page mid-list was a soft throttle, and treating it as the end silently dropped the
+  oldest ~900 movies — the archive still looked complete (3390 rows vs the 4292 the page
+  headers advertised). The walk retries an empty page (`EMPTY_PAGE_RETRIES`) and, while the
+  header still advertises more rows than were stored, **aborts with the progress kept** instead
+  of finishing quietly.
 - A watching-progress change only updates fields and **never resets `detail_synced_at`**, and is
   throttled separately so details are not re-fetched weekly.
 - Write-back keeps the record order and the `user:` block; nothing is written when the content is
@@ -517,6 +563,13 @@ Douban metadata = `id`, `title`, `year`, `type`, `category`, `status`, `user_rat
 - **List fetch resilience (required by the spike):** `ReadTimeout`, connection resets, `429` and
   `503` are retried with exponential backoff (max 2 attempts); a failure after that aborts while
   keeping progress.
+- **Completeness is checked, not assumed:** `film-tv-check` compares the live records against
+  `sum(walk.json totals)` and reports `walk-total` (error) when the archive is short, plus
+  `local-orphan` for local cover files no record references (`poe sync-film-tv --dedupe-covers` repairs those: byte-identical duplicates of a referenced cover in the same
+  subject dir are deleted).
+- **Cover-map durability:** the `photo_id → covers/<id>/NN.webp` map is persisted **after every
+  item**, not only at the 50-item flush — a killed batch used to lose the map for the last
+  records, re-download the same poster as the next `NN` and orphan the previous file.
 - **Write semantics:** the local yml is written directly (diffable, revertible, consistent with the
   repo's other scripts); `--dry-run` only prints what would be added / updated / migrated / marked
   missing.

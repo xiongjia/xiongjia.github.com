@@ -37,10 +37,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: f088a456
     machine_hash: 5df96dc1
     missing_since: null
+    missing_reason: null
 - id: "36660844"
   title: 早春晴朗
   original_title: null
@@ -77,10 +78,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: d8a656e1
     machine_hash: f096a3eb
     missing_since: null
+    missing_reason: null
 - id: "37523009"
   title: 金特务：本色回归
   original_title: 김부장
@@ -117,10 +119,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 84c10f62
     machine_hash: 5aaf32d1
     missing_since: null
+    missing_reason: null
 - id: "37296558"
   title: 择天记
   original_title: null
@@ -157,10 +160,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 17d9426d
     machine_hash: d74021e9
     missing_since: null
+    missing_reason: null
 - id: "36800343"
   title: 降世神通：最后的气宗 第二季
   original_title: null
@@ -197,10 +201,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: bae4adb8
     machine_hash: f430558b
     missing_since: null
+    missing_reason: null
 - id: "36247879"
   title: 某大叔的VRMMO活动记
   original_title: とあるおっさんのVRMMO活動記
@@ -237,10 +242,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 747ce931
     machine_hash: bc48b3f9
     missing_since: null
+    missing_reason: null
 - id: "37167536"
   title: 深空彼岸
   original_title: null
@@ -277,10 +283,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: a47c6aa9
     machine_hash: e99ed81f
     missing_since: null
+    missing_reason: null
 - id: "37441858"
   title: 躲在超市后门抽烟的两人
   original_title: スーパーの裏でヤニ吸うふたり
@@ -317,10 +324,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 845e014a
     machine_hash: dd58ac87
     missing_since: null
+    missing_reason: null
 - id: "37071123"
   title: 铁拳教育
   original_title: 참교육
@@ -357,10 +365,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 47f9977f
     machine_hash: 195093bd
     missing_since: null
+    missing_reason: null
 - id: "37296314"
   title: 大唐迷雾
   original_title: null
@@ -397,10 +406,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 01594c2b
     machine_hash: 7b770975
     missing_since: null
+    missing_reason: null
 - id: "35517044"
   title: 低智商犯罪
   original_title: null
@@ -437,10 +447,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: d52b4bce
     machine_hash: 3e2f05e1
     missing_since: null
+    missing_reason: null
 - id: "37220896"
   title: 剑来 第二季
   original_title: null
@@ -477,10 +488,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: abdee0a8
     machine_hash: 4e91f598
     missing_since: null
+    missing_reason: null
 - id: "37239408"
   title: 匹兹堡医护前线 第二季
   original_title: null
@@ -517,10 +529,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 9e9b2665
     machine_hash: b8329890
     missing_since: null
+    missing_reason: null
 - id: "36838220"
   title: 刃牙道：无敌武士
   original_title: バキ道
@@ -557,10 +570,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: abc83a80
     machine_hash: c061c090
     missing_since: null
+    missing_reason: null
 - id: "36559697"
   title: 海贼王(真人版) 第二季
   original_title: null
@@ -597,10 +611,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 70f5dc6a
     machine_hash: b4c4dc9a
     missing_since: null
+    missing_reason: null
 - id: "36576840"
   title: 机智住院医生生活
   original_title: 언젠가는 슬기로울 전공의생활
@@ -637,10 +652,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 056e6a23
     machine_hash: 3c602f98
     missing_since: null
+    missing_reason: null
 - id: "36363991"
   title: 爱情怎么翻译？
   original_title: 이 사랑 통역 되나요?
@@ -677,7 +693,8 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: f49d29ea
     machine_hash: 14f5fbc2
     missing_since: null
+    missing_reason: null

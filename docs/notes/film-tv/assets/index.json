@@ -1,84 +1,1928 @@
 {
  "months": {
-  "2025-05": {
+  "2008-06": {
    "by_type": {
-    "tv": 2
+    "movie": 24,
+    "tv": 39
+   },
+   "count": 63,
+   "offset": 11,
+   "shard": "shard-0022.json"
+  },
+  "2008-07": {
+   "by_type": {
+    "movie": 2
    },
    "count": 2,
-   "offset": 58,
-   "shard": "shard-0001.json"
+   "offset": 9,
+   "shard": "shard-0022.json"
   },
-  "2025-07": {
+  "2008-08": {
    "by_type": {
+    "movie": 2,
     "tv": 1
    },
-   "count": 1,
-   "offset": 57,
-   "shard": "shard-0001.json"
+   "count": 3,
+   "offset": 6,
+   "shard": "shard-0022.json"
   },
-  "2025-08": {
+  "2008-09": {
    "by_type": {
+    "movie": 3,
     "tv": 1
-   },
-   "count": 1,
-   "offset": 56,
-   "shard": "shard-0001.json"
-  },
-  "2025-09": {
-   "by_type": {
-    "tv": 4
    },
    "count": 4,
-   "offset": 52,
-   "shard": "shard-0001.json"
+   "offset": 2,
+   "shard": "shard-0022.json"
   },
-  "2025-10": {
+  "2008-10": {
    "by_type": {
+    "movie": 75,
+    "tv": 9
+   },
+   "count": 84,
+   "offset": 118,
+   "shard": "shard-0021.json"
+  },
+  "2008-11": {
+   "by_type": {
+    "movie": 6,
     "tv": 1
    },
-   "count": 1,
+   "count": 7,
+   "offset": 111,
+   "shard": "shard-0021.json"
+  },
+  "2008-12": {
+   "by_type": {
+    "movie": 14,
+    "tv": 5
+   },
+   "count": 19,
+   "offset": 92,
+   "shard": "shard-0021.json"
+  },
+  "2009-01": {
+   "by_type": {
+    "movie": 21,
+    "tv": 10
+   },
+   "count": 31,
+   "offset": 61,
+   "shard": "shard-0021.json"
+  },
+  "2009-02": {
+   "by_type": {
+    "movie": 6,
+    "tv": 4
+   },
+   "count": 10,
    "offset": 51,
-   "shard": "shard-0001.json"
+   "shard": "shard-0021.json"
   },
-  "2025-11": {
+  "2009-03": {
    "by_type": {
+    "movie": 26,
+    "tv": 9
+   },
+   "count": 35,
+   "offset": 16,
+   "shard": "shard-0021.json"
+  },
+  "2009-04": {
+   "by_type": {
+    "movie": 15,
     "tv": 3
    },
-   "count": 3,
-   "offset": 48,
-   "shard": "shard-0001.json"
+   "count": 18,
+   "offset": 198,
+   "shard": "shard-0020.json"
   },
-  "2025-12": {
+  "2009-05": {
    "by_type": {
-    "tv": 1
+    "movie": 15,
+    "tv": 6
    },
-   "count": 1,
-   "offset": 47,
-   "shard": "shard-0001.json"
+   "count": 21,
+   "offset": 177,
+   "shard": "shard-0020.json"
   },
-  "2026-02": {
+  "2009-06": {
    "by_type": {
-    "tv": 1
+    "movie": 5,
+    "tv": 12
    },
-   "count": 1,
-   "offset": 46,
-   "shard": "shard-0001.json"
+   "count": 17,
+   "offset": 160,
+   "shard": "shard-0020.json"
   },
-  "2026-03": {
+  "2009-07": {
    "by_type": {
+    "movie": 1,
     "tv": 3
    },
-   "count": 3,
-   "offset": 43,
-   "shard": "shard-0001.json"
+   "count": 4,
+   "offset": 156,
+   "shard": "shard-0020.json"
   },
-  "2026-04": {
+  "2009-08": {
+   "by_type": {
+    "movie": 13,
+    "tv": 5
+   },
+   "count": 18,
+   "offset": 138,
+   "shard": "shard-0020.json"
+  },
+  "2009-09": {
+   "by_type": {
+    "movie": 34,
+    "tv": 21
+   },
+   "count": 55,
+   "offset": 83,
+   "shard": "shard-0020.json"
+  },
+  "2009-10": {
+   "by_type": {
+    "movie": 77,
+    "tv": 54
+   },
+   "count": 131,
+   "offset": 152,
+   "shard": "shard-0019.json"
+  },
+  "2009-11": {
+   "by_type": {
+    "movie": 19,
+    "tv": 11
+   },
+   "count": 30,
+   "offset": 122,
+   "shard": "shard-0019.json"
+  },
+  "2009-12": {
+   "by_type": {
+    "movie": 47,
+    "tv": 20
+   },
+   "count": 67,
+   "offset": 55,
+   "shard": "shard-0019.json"
+  },
+  "2010-01": {
+   "by_type": {
+    "movie": 20,
+    "tv": 12
+   },
+   "count": 32,
+   "offset": 23,
+   "shard": "shard-0019.json"
+  },
+  "2010-02": {
+   "by_type": {
+    "movie": 22,
+    "tv": 2
+   },
+   "count": 24,
+   "offset": 199,
+   "shard": "shard-0018.json"
+  },
+  "2010-03": {
+   "by_type": {
+    "movie": 13,
+    "tv": 5
+   },
+   "count": 18,
+   "offset": 181,
+   "shard": "shard-0018.json"
+  },
+  "2010-04": {
+   "by_type": {
+    "movie": 17,
+    "tv": 6
+   },
+   "count": 23,
+   "offset": 158,
+   "shard": "shard-0018.json"
+  },
+  "2010-05": {
+   "by_type": {
+    "movie": 15,
+    "tv": 6
+   },
+   "count": 21,
+   "offset": 137,
+   "shard": "shard-0018.json"
+  },
+  "2010-06": {
+   "by_type": {
+    "movie": 11,
+    "tv": 4
+   },
+   "count": 15,
+   "offset": 122,
+   "shard": "shard-0018.json"
+  },
+  "2010-07": {
+   "by_type": {
+    "movie": 8,
+    "tv": 4
+   },
+   "count": 12,
+   "offset": 110,
+   "shard": "shard-0018.json"
+  },
+  "2010-08": {
+   "by_type": {
+    "movie": 10,
+    "tv": 2
+   },
+   "count": 12,
+   "offset": 98,
+   "shard": "shard-0018.json"
+  },
+  "2010-09": {
+   "by_type": {
+    "movie": 5,
+    "tv": 4
+   },
+   "count": 9,
+   "offset": 89,
+   "shard": "shard-0018.json"
+  },
+  "2010-10": {
+   "by_type": {
+    "movie": 15,
+    "tv": 3
+   },
+   "count": 18,
+   "offset": 71,
+   "shard": "shard-0018.json"
+  },
+  "2010-11": {
+   "by_type": {
+    "movie": 10,
+    "tv": 2
+   },
+   "count": 12,
+   "offset": 59,
+   "shard": "shard-0018.json"
+  },
+  "2010-12": {
+   "by_type": {
+    "movie": 13,
+    "tv": 9
+   },
+   "count": 22,
+   "offset": 37,
+   "shard": "shard-0018.json"
+  },
+  "2011-01": {
+   "by_type": {
+    "movie": 9,
+    "tv": 4
+   },
+   "count": 13,
+   "offset": 24,
+   "shard": "shard-0018.json"
+  },
+  "2011-02": {
+   "by_type": {
+    "movie": 9,
+    "tv": 5
+   },
+   "count": 14,
+   "offset": 10,
+   "shard": "shard-0018.json"
+  },
+  "2011-03": {
    "by_type": {
     "movie": 2,
     "tv": 2
    },
    "count": 4,
+   "offset": 6,
+   "shard": "shard-0018.json"
+  },
+  "2011-04": {
+   "by_type": {
+    "movie": 21,
+    "tv": 11
+   },
+   "count": 32,
+   "offset": 174,
+   "shard": "shard-0017.json"
+  },
+  "2011-05": {
+   "by_type": {
+    "movie": 10,
+    "tv": 6
+   },
+   "count": 16,
+   "offset": 158,
+   "shard": "shard-0017.json"
+  },
+  "2011-06": {
+   "by_type": {
+    "movie": 12,
+    "tv": 5
+   },
+   "count": 17,
+   "offset": 141,
+   "shard": "shard-0017.json"
+  },
+  "2011-07": {
+   "by_type": {
+    "movie": 7,
+    "tv": 3
+   },
+   "count": 10,
+   "offset": 131,
+   "shard": "shard-0017.json"
+  },
+  "2011-08": {
+   "by_type": {
+    "movie": 10,
+    "tv": 2
+   },
+   "count": 12,
+   "offset": 119,
+   "shard": "shard-0017.json"
+  },
+  "2011-09": {
+   "by_type": {
+    "movie": 2,
+    "tv": 1
+   },
+   "count": 3,
+   "offset": 116,
+   "shard": "shard-0017.json"
+  },
+  "2011-10": {
+   "by_type": {
+    "movie": 37,
+    "tv": 3
+   },
+   "count": 40,
+   "offset": 76,
+   "shard": "shard-0017.json"
+  },
+  "2011-11": {
+   "by_type": {
+    "movie": 13
+   },
+   "count": 13,
+   "offset": 63,
+   "shard": "shard-0017.json"
+  },
+  "2011-12": {
+   "by_type": {
+    "movie": 9,
+    "tv": 3
+   },
+   "count": 12,
+   "offset": 51,
+   "shard": "shard-0017.json"
+  },
+  "2012-01": {
+   "by_type": {
+    "movie": 11,
+    "tv": 2
+   },
+   "count": 13,
+   "offset": 38,
+   "shard": "shard-0017.json"
+  },
+  "2012-02": {
+   "by_type": {
+    "movie": 11,
+    "tv": 1
+   },
+   "count": 12,
+   "offset": 26,
+   "shard": "shard-0017.json"
+  },
+  "2012-03": {
+   "by_type": {
+    "movie": 20,
+    "tv": 6
+   },
+   "count": 26,
+   "offset": 0,
+   "shard": "shard-0017.json"
+  },
+  "2012-04": {
+   "by_type": {
+    "movie": 14,
+    "tv": 6
+   },
+   "count": 20,
+   "offset": 180,
+   "shard": "shard-0016.json"
+  },
+  "2012-05": {
+   "by_type": {
+    "movie": 17,
+    "tv": 8
+   },
+   "count": 25,
+   "offset": 155,
+   "shard": "shard-0016.json"
+  },
+  "2012-06": {
+   "by_type": {
+    "movie": 19,
+    "tv": 4
+   },
+   "count": 23,
+   "offset": 132,
+   "shard": "shard-0016.json"
+  },
+  "2012-07": {
+   "by_type": {
+    "movie": 4,
+    "tv": 3
+   },
+   "count": 7,
+   "offset": 125,
+   "shard": "shard-0016.json"
+  },
+  "2012-08": {
+   "by_type": {
+    "movie": 18,
+    "tv": 1
+   },
+   "count": 19,
+   "offset": 106,
+   "shard": "shard-0016.json"
+  },
+  "2012-09": {
+   "by_type": {
+    "movie": 11,
+    "tv": 3
+   },
+   "count": 14,
+   "offset": 92,
+   "shard": "shard-0016.json"
+  },
+  "2012-10": {
+   "by_type": {
+    "movie": 42,
+    "tv": 7
+   },
+   "count": 49,
+   "offset": 43,
+   "shard": "shard-0016.json"
+  },
+  "2012-11": {
+   "by_type": {
+    "movie": 19
+   },
+   "count": 19,
+   "offset": 24,
+   "shard": "shard-0016.json"
+  },
+  "2012-12": {
+   "by_type": {
+    "movie": 33,
+    "tv": 11
+   },
+   "count": 44,
+   "offset": 180,
+   "shard": "shard-0015.json"
+  },
+  "2013-01": {
+   "by_type": {
+    "movie": 11,
+    "tv": 5
+   },
+   "count": 16,
+   "offset": 164,
+   "shard": "shard-0015.json"
+  },
+  "2013-02": {
+   "by_type": {
+    "movie": 29,
+    "tv": 3
+   },
+   "count": 32,
+   "offset": 132,
+   "shard": "shard-0015.json"
+  },
+  "2013-03": {
+   "by_type": {
+    "movie": 22,
+    "tv": 4
+   },
+   "count": 26,
+   "offset": 106,
+   "shard": "shard-0015.json"
+  },
+  "2013-04": {
+   "by_type": {
+    "movie": 7,
+    "tv": 2
+   },
+   "count": 9,
+   "offset": 97,
+   "shard": "shard-0015.json"
+  },
+  "2013-05": {
+   "by_type": {
+    "movie": 8,
+    "tv": 3
+   },
+   "count": 11,
+   "offset": 86,
+   "shard": "shard-0015.json"
+  },
+  "2013-06": {
+   "by_type": {
+    "movie": 17,
+    "tv": 3
+   },
+   "count": 20,
+   "offset": 66,
+   "shard": "shard-0015.json"
+  },
+  "2013-07": {
+   "by_type": {
+    "movie": 3,
+    "tv": 2
+   },
+   "count": 5,
+   "offset": 61,
+   "shard": "shard-0015.json"
+  },
+  "2013-08": {
+   "by_type": {
+    "movie": 11,
+    "tv": 4
+   },
+   "count": 15,
+   "offset": 46,
+   "shard": "shard-0015.json"
+  },
+  "2013-09": {
+   "by_type": {
+    "movie": 16,
+    "tv": 6
+   },
+   "count": 22,
+   "offset": 24,
+   "shard": "shard-0015.json"
+  },
+  "2013-10": {
+   "by_type": {
+    "movie": 8,
+    "tv": 6
+   },
+   "count": 14,
+   "offset": 10,
+   "shard": "shard-0015.json"
+  },
+  "2013-11": {
+   "by_type": {
+    "movie": 7,
+    "tv": 4
+   },
+   "count": 11,
+   "offset": 199,
+   "shard": "shard-0014.json"
+  },
+  "2013-12": {
+   "by_type": {
+    "movie": 18,
+    "tv": 6
+   },
+   "count": 24,
+   "offset": 175,
+   "shard": "shard-0014.json"
+  },
+  "2014-01": {
+   "by_type": {
+    "movie": 11,
+    "tv": 1
+   },
+   "count": 12,
+   "offset": 163,
+   "shard": "shard-0014.json"
+  },
+  "2014-02": {
+   "by_type": {
+    "movie": 22,
+    "tv": 11
+   },
+   "count": 33,
+   "offset": 130,
+   "shard": "shard-0014.json"
+  },
+  "2014-03": {
+   "by_type": {
+    "movie": 8,
+    "tv": 4
+   },
+   "count": 12,
+   "offset": 118,
+   "shard": "shard-0014.json"
+  },
+  "2014-04": {
+   "by_type": {
+    "movie": 21,
+    "tv": 4
+   },
+   "count": 25,
+   "offset": 93,
+   "shard": "shard-0014.json"
+  },
+  "2014-05": {
+   "by_type": {
+    "movie": 23,
+    "tv": 5
+   },
+   "count": 28,
+   "offset": 65,
+   "shard": "shard-0014.json"
+  },
+  "2014-06": {
+   "by_type": {
+    "movie": 10,
+    "tv": 9
+   },
+   "count": 19,
+   "offset": 46,
+   "shard": "shard-0014.json"
+  },
+  "2014-07": {
+   "by_type": {
+    "movie": 19,
+    "tv": 7
+   },
+   "count": 26,
+   "offset": 20,
+   "shard": "shard-0014.json"
+  },
+  "2014-08": {
+   "by_type": {
+    "movie": 10,
+    "tv": 2
+   },
+   "count": 12,
+   "offset": 8,
+   "shard": "shard-0014.json"
+  },
+  "2014-09": {
+   "by_type": {
+    "movie": 12,
+    "tv": 8
+   },
+   "count": 20,
+   "offset": 188,
+   "shard": "shard-0013.json"
+  },
+  "2014-10": {
+   "by_type": {
+    "movie": 16,
+    "tv": 6
+   },
+   "count": 22,
+   "offset": 166,
+   "shard": "shard-0013.json"
+  },
+  "2014-11": {
+   "by_type": {
+    "movie": 14,
+    "tv": 15
+   },
+   "count": 29,
+   "offset": 137,
+   "shard": "shard-0013.json"
+  },
+  "2014-12": {
+   "by_type": {
+    "movie": 44,
+    "tv": 4
+   },
+   "count": 48,
+   "offset": 89,
+   "shard": "shard-0013.json"
+  },
+  "2015-01": {
+   "by_type": {
+    "movie": 10,
+    "tv": 4
+   },
+   "count": 14,
+   "offset": 75,
+   "shard": "shard-0013.json"
+  },
+  "2015-02": {
+   "by_type": {
+    "movie": 19,
+    "tv": 1
+   },
+   "count": 20,
+   "offset": 55,
+   "shard": "shard-0013.json"
+  },
+  "2015-03": {
+   "by_type": {
+    "movie": 27,
+    "tv": 20
+   },
+   "count": 47,
+   "offset": 8,
+   "shard": "shard-0013.json"
+  },
+  "2015-04": {
+   "by_type": {
+    "movie": 24,
+    "tv": 7
+   },
+   "count": 31,
+   "offset": 177,
+   "shard": "shard-0012.json"
+  },
+  "2015-05": {
+   "by_type": {
+    "movie": 25,
+    "tv": 4
+   },
+   "count": 29,
+   "offset": 148,
+   "shard": "shard-0012.json"
+  },
+  "2015-06": {
+   "by_type": {
+    "movie": 24,
+    "tv": 4
+   },
+   "count": 28,
+   "offset": 120,
+   "shard": "shard-0012.json"
+  },
+  "2015-07": {
+   "by_type": {
+    "movie": 25,
+    "tv": 9
+   },
+   "count": 34,
+   "offset": 86,
+   "shard": "shard-0012.json"
+  },
+  "2015-08": {
+   "by_type": {
+    "movie": 25,
+    "tv": 7
+   },
+   "count": 32,
+   "offset": 54,
+   "shard": "shard-0012.json"
+  },
+  "2015-09": {
+   "by_type": {
+    "movie": 46,
+    "tv": 8
+   },
+   "count": 54,
+   "offset": 0,
+   "shard": "shard-0012.json"
+  },
+  "2015-10": {
+   "by_type": {
+    "movie": 30,
+    "tv": 4
+   },
+   "count": 34,
+   "offset": 166,
+   "shard": "shard-0011.json"
+  },
+  "2015-11": {
+   "by_type": {
+    "movie": 30,
+    "tv": 6
+   },
+   "count": 36,
+   "offset": 130,
+   "shard": "shard-0011.json"
+  },
+  "2015-12": {
+   "by_type": {
+    "movie": 33,
+    "tv": 9
+   },
+   "count": 42,
+   "offset": 88,
+   "shard": "shard-0011.json"
+  },
+  "2016-01": {
+   "by_type": {
+    "movie": 23,
+    "tv": 5
+   },
+   "count": 28,
+   "offset": 60,
+   "shard": "shard-0011.json"
+  },
+  "2016-02": {
+   "by_type": {
+    "movie": 22,
+    "tv": 6
+   },
+   "count": 28,
+   "offset": 32,
+   "shard": "shard-0011.json"
+  },
+  "2016-03": {
+   "by_type": {
+    "movie": 13
+   },
+   "count": 13,
+   "offset": 19,
+   "shard": "shard-0011.json"
+  },
+  "2016-04": {
+   "by_type": {
+    "movie": 14
+   },
+   "count": 14,
+   "offset": 5,
+   "shard": "shard-0011.json"
+  },
+  "2016-05": {
+   "by_type": {
+    "movie": 21,
+    "tv": 6
+   },
+   "count": 27,
+   "offset": 178,
+   "shard": "shard-0010.json"
+  },
+  "2016-06": {
+   "by_type": {
+    "movie": 13,
+    "tv": 8
+   },
+   "count": 21,
+   "offset": 157,
+   "shard": "shard-0010.json"
+  },
+  "2016-07": {
+   "by_type": {
+    "movie": 22,
+    "tv": 7
+   },
+   "count": 29,
+   "offset": 128,
+   "shard": "shard-0010.json"
+  },
+  "2016-08": {
+   "by_type": {
+    "movie": 13,
+    "tv": 1
+   },
+   "count": 14,
+   "offset": 114,
+   "shard": "shard-0010.json"
+  },
+  "2016-09": {
+   "by_type": {
+    "movie": 17,
+    "tv": 9
+   },
+   "count": 26,
+   "offset": 88,
+   "shard": "shard-0010.json"
+  },
+  "2016-10": {
+   "by_type": {
+    "movie": 45,
+    "tv": 5
+   },
+   "count": 50,
+   "offset": 38,
+   "shard": "shard-0010.json"
+  },
+  "2016-11": {
+   "by_type": {
+    "movie": 16,
+    "tv": 3
+   },
+   "count": 19,
+   "offset": 19,
+   "shard": "shard-0010.json"
+  },
+  "2016-12": {
+   "by_type": {
+    "movie": 18,
+    "tv": 2
+   },
+   "count": 20,
+   "offset": 199,
+   "shard": "shard-0009.json"
+  },
+  "2017-01": {
+   "by_type": {
+    "movie": 18,
+    "tv": 5
+   },
+   "count": 23,
+   "offset": 176,
+   "shard": "shard-0009.json"
+  },
+  "2017-02": {
+   "by_type": {
+    "movie": 12,
+    "tv": 2
+   },
+   "count": 14,
+   "offset": 162,
+   "shard": "shard-0009.json"
+  },
+  "2017-03": {
+   "by_type": {
+    "movie": 15,
+    "tv": 2
+   },
+   "count": 17,
+   "offset": 145,
+   "shard": "shard-0009.json"
+  },
+  "2017-04": {
+   "by_type": {
+    "movie": 11
+   },
+   "count": 11,
+   "offset": 134,
+   "shard": "shard-0009.json"
+  },
+  "2017-05": {
+   "by_type": {
+    "movie": 9,
+    "tv": 2
+   },
+   "count": 11,
+   "offset": 123,
+   "shard": "shard-0009.json"
+  },
+  "2017-06": {
+   "by_type": {
+    "movie": 13
+   },
+   "count": 13,
+   "offset": 110,
+   "shard": "shard-0009.json"
+  },
+  "2017-07": {
+   "by_type": {
+    "movie": 10,
+    "tv": 3
+   },
+   "count": 13,
+   "offset": 97,
+   "shard": "shard-0009.json"
+  },
+  "2017-08": {
+   "by_type": {
+    "movie": 25,
+    "tv": 4
+   },
+   "count": 29,
+   "offset": 68,
+   "shard": "shard-0009.json"
+  },
+  "2017-09": {
+   "by_type": {
+    "movie": 20,
+    "tv": 4
+   },
+   "count": 24,
+   "offset": 44,
+   "shard": "shard-0009.json"
+  },
+  "2017-10": {
+   "by_type": {
+    "movie": 21,
+    "tv": 8
+   },
+   "count": 29,
+   "offset": 15,
+   "shard": "shard-0009.json"
+  },
+  "2017-11": {
+   "by_type": {
+    "movie": 21,
+    "tv": 1
+   },
+   "count": 22,
+   "offset": 193,
+   "shard": "shard-0008.json"
+  },
+  "2017-12": {
+   "by_type": {
+    "movie": 29,
+    "tv": 10
+   },
+   "count": 39,
+   "offset": 154,
+   "shard": "shard-0008.json"
+  },
+  "2018-01": {
+   "by_type": {
+    "movie": 21,
+    "tv": 12
+   },
+   "count": 33,
+   "offset": 121,
+   "shard": "shard-0008.json"
+  },
+  "2018-02": {
+   "by_type": {
+    "movie": 35,
+    "tv": 14
+   },
+   "count": 49,
+   "offset": 72,
+   "shard": "shard-0008.json"
+  },
+  "2018-03": {
+   "by_type": {
+    "movie": 21,
+    "tv": 9
+   },
+   "count": 30,
+   "offset": 42,
+   "shard": "shard-0008.json"
+  },
+  "2018-04": {
+   "by_type": {
+    "movie": 30,
+    "tv": 15
+   },
+   "count": 45,
+   "offset": 197,
+   "shard": "shard-0007.json"
+  },
+  "2018-05": {
+   "by_type": {
+    "movie": 20,
+    "tv": 6
+   },
+   "count": 26,
+   "offset": 171,
+   "shard": "shard-0007.json"
+  },
+  "2018-06": {
+   "by_type": {
+    "movie": 18,
+    "tv": 6
+   },
+   "count": 24,
+   "offset": 147,
+   "shard": "shard-0007.json"
+  },
+  "2018-07": {
+   "by_type": {
+    "movie": 11,
+    "tv": 7
+   },
+   "count": 18,
+   "offset": 129,
+   "shard": "shard-0007.json"
+  },
+  "2018-08": {
+   "by_type": {
+    "movie": 14,
+    "tv": 6
+   },
+   "count": 20,
+   "offset": 109,
+   "shard": "shard-0007.json"
+  },
+  "2018-09": {
+   "by_type": {
+    "movie": 10,
+    "tv": 6
+   },
+   "count": 16,
+   "offset": 93,
+   "shard": "shard-0007.json"
+  },
+  "2018-10": {
+   "by_type": {
+    "movie": 16,
+    "tv": 6
+   },
+   "count": 22,
+   "offset": 71,
+   "shard": "shard-0007.json"
+  },
+  "2018-11": {
+   "by_type": {
+    "movie": 16,
+    "tv": 3
+   },
+   "count": 19,
+   "offset": 52,
+   "shard": "shard-0007.json"
+  },
+  "2018-12": {
+   "by_type": {
+    "movie": 10,
+    "tv": 7
+   },
+   "count": 17,
+   "offset": 35,
+   "shard": "shard-0007.json"
+  },
+  "2019-01": {
+   "by_type": {
+    "movie": 28,
+    "tv": 3
+   },
+   "count": 31,
+   "offset": 4,
+   "shard": "shard-0007.json"
+  },
+  "2019-02": {
+   "by_type": {
+    "movie": 11,
+    "tv": 1
+   },
+   "count": 12,
+   "offset": 192,
+   "shard": "shard-0006.json"
+  },
+  "2019-03": {
+   "by_type": {
+    "movie": 27,
+    "tv": 3
+   },
+   "count": 30,
+   "offset": 162,
+   "shard": "shard-0006.json"
+  },
+  "2019-04": {
+   "by_type": {
+    "movie": 9,
+    "tv": 8
+   },
+   "count": 17,
+   "offset": 145,
+   "shard": "shard-0006.json"
+  },
+  "2019-05": {
+   "by_type": {
+    "movie": 14,
+    "tv": 7
+   },
+   "count": 21,
+   "offset": 124,
+   "shard": "shard-0006.json"
+  },
+  "2019-06": {
+   "by_type": {
+    "movie": 10,
+    "tv": 4
+   },
+   "count": 14,
+   "offset": 110,
+   "shard": "shard-0006.json"
+  },
+  "2019-07": {
+   "by_type": {
+    "movie": 9,
+    "tv": 1
+   },
+   "count": 10,
+   "offset": 100,
+   "shard": "shard-0006.json"
+  },
+  "2019-08": {
+   "by_type": {
+    "movie": 17,
+    "tv": 4
+   },
+   "count": 21,
+   "offset": 79,
+   "shard": "shard-0006.json"
+  },
+  "2019-09": {
+   "by_type": {
+    "movie": 9,
+    "tv": 3
+   },
+   "count": 12,
+   "offset": 67,
+   "shard": "shard-0006.json"
+  },
+  "2019-10": {
+   "by_type": {
+    "movie": 10,
+    "tv": 5
+   },
+   "count": 15,
+   "offset": 52,
+   "shard": "shard-0006.json"
+  },
+  "2019-11": {
+   "by_type": {
+    "movie": 9,
+    "tv": 3
+   },
+   "count": 12,
+   "offset": 40,
+   "shard": "shard-0006.json"
+  },
+  "2019-12": {
+   "by_type": {
+    "movie": 12,
+    "tv": 11
+   },
+   "count": 23,
+   "offset": 17,
+   "shard": "shard-0006.json"
+  },
+  "2020-01": {
+   "by_type": {
+    "movie": 12,
+    "tv": 8
+   },
+   "count": 20,
+   "offset": 197,
+   "shard": "shard-0005.json"
+  },
+  "2020-02": {
+   "by_type": {
+    "movie": 11,
+    "tv": 9
+   },
+   "count": 20,
+   "offset": 177,
+   "shard": "shard-0005.json"
+  },
+  "2020-03": {
+   "by_type": {
+    "movie": 2,
+    "tv": 9
+   },
+   "count": 11,
+   "offset": 166,
+   "shard": "shard-0005.json"
+  },
+  "2020-04": {
+   "by_type": {
+    "movie": 7,
+    "tv": 6
+   },
+   "count": 13,
+   "offset": 153,
+   "shard": "shard-0005.json"
+  },
+  "2020-05": {
+   "by_type": {
+    "movie": 8,
+    "tv": 2
+   },
+   "count": 10,
+   "offset": 143,
+   "shard": "shard-0005.json"
+  },
+  "2020-06": {
+   "by_type": {
+    "movie": 3,
+    "tv": 7
+   },
+   "count": 10,
+   "offset": 133,
+   "shard": "shard-0005.json"
+  },
+  "2020-07": {
+   "by_type": {
+    "movie": 5,
+    "tv": 6
+   },
+   "count": 11,
+   "offset": 122,
+   "shard": "shard-0005.json"
+  },
+  "2020-08": {
+   "by_type": {
+    "movie": 11,
+    "tv": 7
+   },
+   "count": 18,
+   "offset": 104,
+   "shard": "shard-0005.json"
+  },
+  "2020-09": {
+   "by_type": {
+    "movie": 9,
+    "tv": 4
+   },
+   "count": 13,
+   "offset": 91,
+   "shard": "shard-0005.json"
+  },
+  "2020-10": {
+   "by_type": {
+    "movie": 12,
+    "tv": 12
+   },
+   "count": 24,
+   "offset": 67,
+   "shard": "shard-0005.json"
+  },
+  "2020-11": {
+   "by_type": {
+    "movie": 5,
+    "tv": 5
+   },
+   "count": 10,
+   "offset": 57,
+   "shard": "shard-0005.json"
+  },
+  "2020-12": {
+   "by_type": {
+    "movie": 7,
+    "tv": 3
+   },
+   "count": 10,
+   "offset": 47,
+   "shard": "shard-0005.json"
+  },
+  "2021-01": {
+   "by_type": {
+    "movie": 4,
+    "tv": 6
+   },
+   "count": 10,
+   "offset": 37,
+   "shard": "shard-0005.json"
+  },
+  "2021-02": {
+   "by_type": {
+    "movie": 12,
+    "tv": 5
+   },
+   "count": 17,
+   "offset": 20,
+   "shard": "shard-0005.json"
+  },
+  "2021-03": {
+   "by_type": {
+    "movie": 7,
+    "tv": 3
+   },
+   "count": 10,
+   "offset": 10,
+   "shard": "shard-0005.json"
+  },
+  "2021-04": {
+   "by_type": {
+    "movie": 7,
+    "tv": 4
+   },
+   "count": 11,
+   "offset": 199,
+   "shard": "shard-0004.json"
+  },
+  "2021-05": {
+   "by_type": {
+    "movie": 20,
+    "tv": 6
+   },
+   "count": 26,
+   "offset": 173,
+   "shard": "shard-0004.json"
+  },
+  "2021-06": {
+   "by_type": {
+    "movie": 10,
+    "tv": 7
+   },
+   "count": 17,
+   "offset": 156,
+   "shard": "shard-0004.json"
+  },
+  "2021-07": {
+   "by_type": {
+    "movie": 15,
+    "tv": 8
+   },
+   "count": 23,
+   "offset": 133,
+   "shard": "shard-0004.json"
+  },
+  "2021-08": {
+   "by_type": {
+    "movie": 16,
+    "tv": 2
+   },
+   "count": 18,
+   "offset": 115,
+   "shard": "shard-0004.json"
+  },
+  "2021-09": {
+   "by_type": {
+    "movie": 11,
+    "tv": 6
+   },
+   "count": 17,
+   "offset": 98,
+   "shard": "shard-0004.json"
+  },
+  "2021-10": {
+   "by_type": {
+    "movie": 10,
+    "tv": 11
+   },
+   "count": 21,
+   "offset": 77,
+   "shard": "shard-0004.json"
+  },
+  "2021-11": {
+   "by_type": {
+    "movie": 13,
+    "tv": 6
+   },
+   "count": 19,
+   "offset": 58,
+   "shard": "shard-0004.json"
+  },
+  "2021-12": {
+   "by_type": {
+    "movie": 8,
+    "tv": 8
+   },
+   "count": 16,
+   "offset": 42,
+   "shard": "shard-0004.json"
+  },
+  "2022-01": {
+   "by_type": {
+    "movie": 9,
+    "tv": 8
+   },
+   "count": 17,
+   "offset": 25,
+   "shard": "shard-0004.json"
+  },
+  "2022-02": {
+   "by_type": {
+    "movie": 11,
+    "tv": 4
+   },
+   "count": 15,
+   "offset": 10,
+   "shard": "shard-0004.json"
+  },
+  "2022-03": {
+   "by_type": {
+    "movie": 5,
+    "tv": 2
+   },
+   "count": 7,
+   "offset": 3,
+   "shard": "shard-0004.json"
+  },
+  "2022-04": {
+   "by_type": {
+    "movie": 10,
+    "tv": 6
+   },
+   "count": 16,
+   "offset": 187,
+   "shard": "shard-0003.json"
+  },
+  "2022-05": {
+   "by_type": {
+    "movie": 13,
+    "tv": 7
+   },
+   "count": 20,
+   "offset": 167,
+   "shard": "shard-0003.json"
+  },
+  "2022-06": {
+   "by_type": {
+    "movie": 3,
+    "tv": 6
+   },
+   "count": 9,
+   "offset": 158,
+   "shard": "shard-0003.json"
+  },
+  "2022-07": {
+   "by_type": {
+    "movie": 9,
+    "tv": 12
+   },
+   "count": 21,
+   "offset": 137,
+   "shard": "shard-0003.json"
+  },
+  "2022-08": {
+   "by_type": {
+    "movie": 16,
+    "tv": 3
+   },
+   "count": 19,
+   "offset": 118,
+   "shard": "shard-0003.json"
+  },
+  "2022-09": {
+   "by_type": {
+    "movie": 10,
+    "tv": 4
+   },
+   "count": 14,
+   "offset": 104,
+   "shard": "shard-0003.json"
+  },
+  "2022-10": {
+   "by_type": {
+    "movie": 13,
+    "tv": 12
+   },
+   "count": 25,
+   "offset": 79,
+   "shard": "shard-0003.json"
+  },
+  "2022-11": {
+   "by_type": {
+    "movie": 12,
+    "tv": 2
+   },
+   "count": 14,
+   "offset": 65,
+   "shard": "shard-0003.json"
+  },
+  "2022-12": {
+   "by_type": {
+    "movie": 12,
+    "tv": 7
+   },
+   "count": 19,
+   "offset": 46,
+   "shard": "shard-0003.json"
+  },
+  "2023-01": {
+   "by_type": {
+    "movie": 17,
+    "tv": 9
+   },
+   "count": 26,
+   "offset": 20,
+   "shard": "shard-0003.json"
+  },
+  "2023-02": {
+   "by_type": {
+    "movie": 4,
+    "tv": 6
+   },
+   "count": 10,
+   "offset": 10,
+   "shard": "shard-0003.json"
+  },
+  "2023-03": {
+   "by_type": {
+    "movie": 6,
+    "tv": 3
+   },
+   "count": 9,
+   "offset": 1,
+   "shard": "shard-0003.json"
+  },
+  "2023-04": {
+   "by_type": {
+    "movie": 9,
+    "tv": 6
+   },
+   "count": 15,
+   "offset": 186,
+   "shard": "shard-0002.json"
+  },
+  "2023-05": {
+   "by_type": {
+    "movie": 6,
+    "tv": 3
+   },
+   "count": 9,
+   "offset": 177,
+   "shard": "shard-0002.json"
+  },
+  "2023-06": {
+   "by_type": {
+    "movie": 10,
+    "tv": 3
+   },
+   "count": 13,
+   "offset": 164,
+   "shard": "shard-0002.json"
+  },
+  "2023-07": {
+   "by_type": {
+    "movie": 6,
+    "tv": 7
+   },
+   "count": 13,
+   "offset": 151,
+   "shard": "shard-0002.json"
+  },
+  "2023-08": {
+   "by_type": {
+    "movie": 5,
+    "tv": 3
+   },
+   "count": 8,
+   "offset": 143,
+   "shard": "shard-0002.json"
+  },
+  "2023-09": {
+   "by_type": {
+    "movie": 11,
+    "tv": 8
+   },
+   "count": 19,
+   "offset": 124,
+   "shard": "shard-0002.json"
+  },
+  "2023-10": {
+   "by_type": {
+    "movie": 2,
+    "tv": 13
+   },
+   "count": 15,
+   "offset": 109,
+   "shard": "shard-0002.json"
+  },
+  "2023-11": {
+   "by_type": {
+    "movie": 8,
+    "tv": 3
+   },
+   "count": 11,
+   "offset": 98,
+   "shard": "shard-0002.json"
+  },
+  "2023-12": {
+   "by_type": {
+    "movie": 9,
+    "tv": 5
+   },
+   "count": 14,
+   "offset": 84,
+   "shard": "shard-0002.json"
+  },
+  "2024-01": {
+   "by_type": {
+    "movie": 9,
+    "tv": 5
+   },
+   "count": 14,
+   "offset": 70,
+   "shard": "shard-0002.json"
+  },
+  "2024-02": {
+   "by_type": {
+    "movie": 10,
+    "tv": 5
+   },
+   "count": 15,
+   "offset": 55,
+   "shard": "shard-0002.json"
+  },
+  "2024-03": {
+   "by_type": {
+    "movie": 5,
+    "tv": 2
+   },
+   "count": 7,
+   "offset": 48,
+   "shard": "shard-0002.json"
+  },
+  "2024-04": {
+   "by_type": {
+    "movie": 4,
+    "tv": 5
+   },
+   "count": 9,
    "offset": 39,
+   "shard": "shard-0002.json"
+  },
+  "2024-05": {
+   "by_type": {
+    "movie": 11,
+    "tv": 5
+   },
+   "count": 16,
+   "offset": 23,
+   "shard": "shard-0002.json"
+  },
+  "2024-06": {
+   "by_type": {
+    "movie": 7,
+    "tv": 1
+   },
+   "count": 8,
+   "offset": 15,
+   "shard": "shard-0002.json"
+  },
+  "2024-07": {
+   "by_type": {
+    "movie": 2
+   },
+   "count": 2,
+   "offset": 13,
+   "shard": "shard-0002.json"
+  },
+  "2024-08": {
+   "by_type": {
+    "movie": 7,
+    "tv": 5
+   },
+   "count": 12,
+   "offset": 1,
+   "shard": "shard-0002.json"
+  },
+  "2024-09": {
+   "by_type": {
+    "movie": 4,
+    "tv": 1
+   },
+   "count": 5,
+   "offset": 196,
+   "shard": "shard-0001.json"
+  },
+  "2024-10": {
+   "by_type": {
+    "movie": 8,
+    "tv": 2
+   },
+   "count": 10,
+   "offset": 186,
+   "shard": "shard-0001.json"
+  },
+  "2024-11": {
+   "by_type": {
+    "movie": 4,
+    "tv": 4
+   },
+   "count": 8,
+   "offset": 178,
+   "shard": "shard-0001.json"
+  },
+  "2024-12": {
+   "by_type": {
+    "movie": 10,
+    "tv": 3
+   },
+   "count": 13,
+   "offset": 165,
+   "shard": "shard-0001.json"
+  },
+  "2025-01": {
+   "by_type": {
+    "movie": 10,
+    "tv": 3
+   },
+   "count": 13,
+   "offset": 152,
+   "shard": "shard-0001.json"
+  },
+  "2025-02": {
+   "by_type": {
+    "movie": 8,
+    "tv": 2
+   },
+   "count": 10,
+   "offset": 142,
+   "shard": "shard-0001.json"
+  },
+  "2025-03": {
+   "by_type": {
+    "movie": 8,
+    "tv": 2
+   },
+   "count": 10,
+   "offset": 132,
+   "shard": "shard-0001.json"
+  },
+  "2025-04": {
+   "by_type": {
+    "movie": 5,
+    "tv": 2
+   },
+   "count": 7,
+   "offset": 125,
+   "shard": "shard-0001.json"
+  },
+  "2025-05": {
+   "by_type": {
+    "movie": 6,
+    "tv": 4
+   },
+   "count": 10,
+   "offset": 115,
+   "shard": "shard-0001.json"
+  },
+  "2025-06": {
+   "by_type": {
+    "movie": 2
+   },
+   "count": 2,
+   "offset": 113,
+   "shard": "shard-0001.json"
+  },
+  "2025-07": {
+   "by_type": {
+    "movie": 10,
+    "tv": 1
+   },
+   "count": 11,
+   "offset": 102,
+   "shard": "shard-0001.json"
+  },
+  "2025-08": {
+   "by_type": {
+    "movie": 4,
+    "tv": 1
+   },
+   "count": 5,
+   "offset": 97,
+   "shard": "shard-0001.json"
+  },
+  "2025-09": {
+   "by_type": {
+    "movie": 5,
+    "tv": 4
+   },
+   "count": 9,
+   "offset": 88,
+   "shard": "shard-0001.json"
+  },
+  "2025-10": {
+   "by_type": {
+    "movie": 5,
+    "tv": 1
+   },
+   "count": 6,
+   "offset": 82,
+   "shard": "shard-0001.json"
+  },
+  "2025-11": {
+   "by_type": {
+    "movie": 2,
+    "tv": 3
+   },
+   "count": 5,
+   "offset": 77,
+   "shard": "shard-0001.json"
+  },
+  "2025-12": {
+   "by_type": {
+    "movie": 6,
+    "tv": 1
+   },
+   "count": 7,
+   "offset": 70,
+   "shard": "shard-0001.json"
+  },
+  "2026-01": {
+   "by_type": {
+    "movie": 7
+   },
+   "count": 7,
+   "offset": 63,
+   "shard": "shard-0001.json"
+  },
+  "2026-02": {
+   "by_type": {
+    "movie": 8,
+    "tv": 1
+   },
+   "count": 9,
+   "offset": 54,
+   "shard": "shard-0001.json"
+  },
+  "2026-03": {
+   "by_type": {
+    "movie": 3,
+    "tv": 3
+   },
+   "count": 6,
+   "offset": 48,
+   "shard": "shard-0001.json"
+  },
+  "2026-04": {
+   "by_type": {
+    "movie": 6,
+    "tv": 2
+   },
+   "count": 8,
+   "offset": 40,
    "shard": "shard-0001.json"
   },
   "2026-05": {
@@ -86,7 +1930,7 @@
     "movie": 8
    },
    "count": 8,
-   "offset": 31,
+   "offset": 32,
    "shard": "shard-0001.json"
   },
   "2026-06": {
@@ -95,7 +1939,7 @@
     "tv": 6
    },
    "count": 10,
-   "offset": 21,
+   "offset": 22,
    "shard": "shard-0001.json"
   },
   "2026-07": {
@@ -104,7 +1948,7 @@
     "tv": 2
    },
    "count": 8,
-   "offset": 13,
+   "offset": 14,
    "shard": "shard-0001.json"
   },
   "2026-08": {
@@ -113,28 +1957,50 @@
     "tv": 1
    },
    "count": 4,
-   "offset": 9,
+   "offset": 10,
    "shard": "shard-0001.json"
   },
   "2026-09": {
    "by_type": {
-    "movie": 7,
+    "movie": 8,
     "tv": 2
    },
-   "count": 9,
+   "count": 10,
    "offset": 0,
    "shard": "shard-0001.json"
   }
  },
  "shard_size": 200,
  "shards": [
-  "shard-0001.json"
+  "shard-0001.json",
+  "shard-0002.json",
+  "shard-0003.json",
+  "shard-0004.json",
+  "shard-0005.json",
+  "shard-0006.json",
+  "shard-0007.json",
+  "shard-0008.json",
+  "shard-0009.json",
+  "shard-0010.json",
+  "shard-0011.json",
+  "shard-0012.json",
+  "shard-0013.json",
+  "shard-0014.json",
+  "shard-0015.json",
+  "shard-0016.json",
+  "shard-0017.json",
+  "shard-0018.json",
+  "shard-0019.json",
+  "shard-0020.json",
+  "shard-0021.json",
+  "shard-0022.json"
  ],
  "totals": {
-  "movies": 30,
-  "pending": 0,
-  "rated": 60,
-  "records": 60,
-  "tv": 30
+  "movies": 3083,
+  "pending": 3837,
+  "rated": 4273,
+  "records": 4293,
+  "skipped": 19,
+  "tv": 1191
  }
 }

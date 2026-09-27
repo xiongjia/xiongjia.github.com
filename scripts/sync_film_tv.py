@@ -8,6 +8,12 @@ Usage::
     uv run poe sync-film-tv --refresh-details 20  # re-read details after editing comments
     uv run poe sync-film-tv --only shawshank-redemption --covers 8
     uv run poe sync-film-tv --prune --dry-run
+    uv run poe sync-film-tv --dedupe-covers --confirm  # drop duplicated local covers
+
+A ``--full`` walk keeps its per-tab cursor in ``.cache/film-tv/state/walk.json``
+and resumes there on the next ``--full`` run; an empty list page mid-walk is
+retried and, when the page header still reports more rows than were stored, the
+walk aborts instead of silently truncating the archive.
 
 Session policy (design §1.1/§4 — account-call minimisation): collection lists are
 read **anonymously** (Douban serves them to anyone; the logged-in variant only
@@ -21,6 +27,7 @@ exactly one account request per item and nothing more.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import io
 import json
 import re
@@ -95,6 +102,10 @@ COVER_DELAY = 0.5
 MAX_RETRIES = 2
 RETRY_BACKOFF = 5.0
 REQUEST_TIMEOUT = 30
+#: an empty list page mid-walk is retried this many times before the walk aborts
+EMPTY_PAGE_RETRIES = 2
+#: extra fetches an empty *subject* page gets before it counts as gone
+EMPTY_SUBJECT_RETRIES = 1
 #: default detail-fetch cap per run (batching keeps the account traffic gentle);
 #: ``--limit 0`` means "everything queued"
 DEFAULT_LIMIT = 50
@@ -111,6 +122,17 @@ class SyncError(RuntimeError):
 
 class BlockedError(SyncError):
     """Douban answered with its anti-bot gate — stop instead of hammering."""
+
+
+class GoneError(SyncError):
+    """The subject no longer exists on Douban (``404``) — a permanent answer.
+
+    The row can still be in the collection list (Douban keeps 看过 rows whose
+    subject was taken down), and such a row is exactly the one without a date:
+    the list carries no date span and the subject page cannot supply the 看过 /
+    标记 date. Nothing can be recovered, so the record is marked gone
+    (``meta.missing_since``) and skipped from the published archive.
+    """
 
 
 @dataclass
@@ -177,16 +199,23 @@ def load_config() -> Config:
 
 
 class State:
-    """Local, git-ignored scratch: detail cache, cover id map, failures."""
+    """Local, git-ignored scratch: detail cache, cover id map, failures, walk progress.
+
+    ``walk.json`` keeps ``{"cursor": {tab: next start}, "total": {tab: header total}}``
+    so an interrupted ``--full`` walk resumes instead of re-walking 100+ pages, and
+    ``film-tv-check`` can tell an incomplete archive from a complete one.
+    """
 
     def __init__(self, directory: Path):
         self.directory = directory
         self.details_dir = directory / "details"
         self.cover_map_path = directory / "covers.json"
         self.failures_path = directory / "failures.json"
+        self.walk_path = directory / "walk.json"
         self.directory.mkdir(parents=True, exist_ok=True)
         self.cover_map: dict[str, dict[str, str]] = self._load_json(self.cover_map_path, {})
         self.failures: dict[str, str] = self._load_json(self.failures_path, {})
+        self.walk: dict[str, dict] = self._load_json(self.walk_path, {})
 
     @staticmethod
     def _load_json(path: Path, default):
@@ -218,13 +247,39 @@ class State:
     def remember_cover(self, subject_id: str, photo_id: str, key: str) -> None:
         self.cover_map.setdefault(subject_id, {})[photo_id] = key
 
+    # --- walk progress (survives an interrupted `--full` walk) ---------------
+
+    def walk_cursor(self, tab: str) -> int:
+        """Next ``start`` for a tab, or 0 when the tab has never been walked."""
+        value = (self.walk.get("cursor") or {}).get(tab)
+        return int(value) if isinstance(value, int) else 0
+
+    def set_walk_cursor(self, tab: str, start: int) -> None:
+        self.walk.setdefault("cursor", {})[tab] = int(start)
+
+    def clear_walk_cursor(self, tab: str) -> None:
+        (self.walk.get("cursor") or {}).pop(tab, None)
+
+    def walk_total(self, tab: str) -> int | None:
+        """Last page-header total seen for a tab (``None`` when never recorded)."""
+        value = (self.walk.get("total") or {}).get(tab)
+        return int(value) if isinstance(value, int) else None
+
+    def set_walk_total(self, tab: str, total: int) -> None:
+        self.walk.setdefault("total", {})[tab] = int(total)
+
+    def save_walk(self) -> None:
+        self._write_json(self.walk_path, self.walk)
+
     def save(self) -> None:
-        self.cover_map_path.write_text(
-            json.dumps(self.cover_map, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
-            encoding="utf-8",
-        )
-        self.failures_path.write_text(
-            json.dumps(self.failures, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
+        self._write_json(self.cover_map_path, self.cover_map)
+        self._write_json(self.failures_path, self.failures)
+        self.save_walk()
+
+    @staticmethod
+    def _write_json(path: Path, payload: dict) -> None:
+        path.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=1, sort_keys=True) + "\n",
             encoding="utf-8",
         )
 
@@ -289,6 +344,8 @@ def request(
             continue
         if response.status_code == 403:
             raise BlockedError(f"{what}: HTTP 403 (rate limited / blocked) — stopping")
+        if response.status_code == 404:
+            raise GoneError(f"{what}: HTTP 404 (gone on Douban)")
         if response.status_code != 200:
             raise SyncError(f"{what}: HTTP {response.status_code}")
         return response
@@ -352,6 +409,7 @@ def walk_lists(
     baseline: dict[str, Entry],
     max_pages: int | None,
     full: bool,
+    resume: bool = False,
 ) -> tuple[list[tuple[ListItem, str, str]], list[tuple[ListItem, str, str]], int]:
     """Walk every list tab, storing each row's skeleton.
 
@@ -361,19 +419,47 @@ def walk_lists(
 
     Default mode stops as soon as a whole page brings nothing new or changed: a
     page-sized margin over the per-item rule in the design, so an older edit on
-    the next page is never missed because of one unchanged row. When Douban
-    challenges the anonymous session mid-walk, the rest of the walk continues on
-    the account session (the logged-in variant is tolerated longer) and says so.
+    the next page is never missed because of one unchanged row.
+
+    Two failure modes are handled explicitly, because a truncated archive looks
+    exactly like a complete one afterwards:
+
+    * an **empty page mid-list** is retried (Douban answers an empty list while
+      it is soft-throttling a session — the first full walk lost the oldest ~900
+      movies that way) and, when the page header still advertises more rows than
+      were stored, the walk **aborts loudly** with the progress kept;
+    * a ``--full`` walk records its per-tab progress in ``walk.json``, so an
+      interrupted first pass resumes where it stopped. An incremental run never
+      resumes (the newest rows are always on the first pages) and never writes a
+      cursor; ``--prune`` must not resume either — it compares *every* row in the
+      archive against the walk, so skipping the head would mark it deleted.
+
+    When the anonymous session is challenged, the page is retried anonymously
+    once, then the rest of the walk continues on the account session (the
+    logged-in variant is tolerated longer); ``ctx.list_account_pages`` counts how
+    many pages that cost, so the account traffic stays visible.
     """
     rows: list[tuple[ListItem, str, str]] = []
     queue: list[tuple[ListItem, str, str]] = []
     pages = 0
     flushed = 0
-    session = ctx.list_session
     for kind in KINDS:
         for type_filter in TYPE_TABS:
-            start = 0
+            tab = f"{kind}/{type_filter}"
+            # a fresh cookie-free session per tab: a challenge on one tab must not
+            # push the whole walk onto the account session (the cookie is the last
+            # resort, and list traffic is supposed to stay anonymous)
+            session = ctx.list_session
+            resume_from = ctx.state.walk_cursor(tab) if resume else 0
+            start = resume_from
+            tab_total = ctx.state.walk_total(tab)
+            remaining = None if tab_total is None else max(0, tab_total - resume_from)
+            seen_here: set[str] = set()
+            empty_pages = 0
             tab_pages = 0
+            completed = False
+            if resume_from:
+                print(f"  {tab}: resuming the full walk at start={resume_from}", flush=True)
             while True:
                 try:
                     page = fetch_list_page(
@@ -383,25 +469,89 @@ def walk_lists(
                     if session is ctx.account_session:
                         raise
                     print(
-                        "  anonymous list access was challenged — continuing on the "
-                        "account session (this is what the cookie is for)",
+                        "  anonymous list access was challenged — retrying it once",
                         file=sys.stderr,
                         flush=True,
                     )
-                    session = ctx.account_session
-                    ctx.list_used_account = True
-                    page = fetch_list_page(
-                        session, user_id=user_id, kind=kind, type_filter=type_filter, start=start
-                    )
+                    time.sleep(RETRY_BACKOFF)
+                    try:
+                        page = fetch_list_page(
+                            ctx.list_session,
+                            user_id=user_id,
+                            kind=kind,
+                            type_filter=type_filter,
+                            start=start,
+                        )
+                    except BlockedError:
+                        print(
+                            "  … anonymous access is still challenged — continuing on the "
+                            "account session (this is what the cookie is for)",
+                            file=sys.stderr,
+                            flush=True,
+                        )
+                        session = ctx.account_session
+                        ctx.list_used_account = True
+                        page = fetch_list_page(
+                            session,
+                            user_id=user_id,
+                            kind=kind,
+                            type_filter=type_filter,
+                            start=start,
+                        )
                 pages += 1
                 tab_pages += 1
+                if session is ctx.account_session:
+                    ctx.list_account_pages += 1
+                if page.total is not None:
+                    tab_total = page.total
+                    remaining = max(0, page.total - resume_from)
+                    ctx.state.set_walk_total(tab, page.total)
                 if not page.items:
-                    break
+                    if not remaining or len(seen_here) >= remaining:
+                        completed = True
+                        break
+                    empty_pages += 1
+                    if empty_pages > EMPTY_PAGE_RETRIES:
+                        raise SyncError(
+                            f"list {tab}: page start={start} came back empty while the header "
+                            f"reports {tab_total} item(s) and only {len(seen_here)} were stored "
+                            "— Douban is throttling the walk. Progress is kept: re-run "
+                            "`poe sync-film-tv --full` (it resumes from the recorded cursor)."
+                        )
+                    print(
+                        f"  {tab}: empty page at start={start} but only "
+                        f"{len(seen_here)}/{remaining} row(s) stored — retrying",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                    time.sleep(RETRY_BACKOFF * empty_pages)
+                    continue
+                empty_pages = 0
                 for item in page.items:
                     if needs_detail(item, kind, type_filter, baseline):
                         queue.append((item, kind, type_filter))
                     rows.append((item, kind, type_filter))
-                    ctx.merge(item, kind=kind, type_filter=type_filter, subject=None)
+                    seen_here.add(item.id)
+                    # `item-show deleted` is Douban's own mark that the subject was
+                    # taken down (its title is then the 未知电影 placeholder and it
+                    # carries no date). Remember that here: a backlog task rebuilt
+                    # from the stored record no longer sees the flag, and fetching
+                    # such a subject only answers 404 / an empty page.
+                    entry = ctx.merge(
+                        item,
+                        kind=kind,
+                        type_filter=type_filter,
+                        subject=None,
+                        missing_since=ctx.today if item.deleted else None,
+                        missing_reason="gone" if item.deleted else None,
+                    )
+                    if not item.deleted and entry.meta.get("missing_reason") == "pruned":
+                        # the row is back in my collection: only a *pruned* record is
+                        # revived here — a subject that answered 404 stays marked
+                        # (probing it again is exactly what the mark avoids)
+                        entry.meta["missing_since"] = None
+                        entry.meta["missing_reason"] = None
+                        print(f"  {tab}: {item.id} is back in the collection", flush=True)
                 stop = (max_pages is not None and tab_pages >= max_pages) or (
                     not full
                     and not any(
@@ -409,18 +559,24 @@ def walk_lists(
                     )
                 )
                 print(
-                    f"  {kind}/{type_filter} start={start:5d}: {len(page.items):2d} items"
-                    f" (total {page.total})",
+                    f"  {tab} start={start:5d}: {len(page.items):2d} items (total {page.total})",
                     flush=True,
                 )
                 if len(rows) - flushed >= FLUSH_EVERY:
                     ctx.state.save()
                     ctx.write()
                     flushed = len(rows)
+                start += PAGE_SIZE
+                if full:
+                    # this page is stored: a later `--full` run continues here
+                    ctx.state.set_walk_cursor(tab, start)
+                    ctx.state.save_walk()
                 if stop:
                     break
-                start += PAGE_SIZE
                 time.sleep(LIST_DELAY)
+            if completed and full:
+                ctx.state.clear_walk_cursor(tab)
+                ctx.state.save_walk()
     return rows, queue, pages
 
 
@@ -599,6 +755,69 @@ def ensure_covers(
     return sorted(set(ensured))
 
 
+def cover_digest(path: Path) -> str:
+    return hashlib.md5(path.read_bytes()).hexdigest()
+
+
+def dedupe_local_covers(
+    config: Config,
+    index: dict[str, Entry],
+    *,
+    dry_run: bool,
+    sample: int = 10,
+) -> int:
+    """Drop local cover files that duplicate a *referenced* file in the same dir.
+
+    A run interrupted between two state saves used to lose the ``photo_id → key``
+    map for the last records it fetched, so the same poster was downloaded again
+    as the next ``NN`` and the first copy stayed behind as an orphan (never
+    referenced, therefore never uploaded — but downloaded for nothing). The sync
+    now saves the map per item; this repairs the damage already done.
+
+    Only byte-identical siblings of a referenced file are removed: an
+    unreferenced file that nothing duplicates is kept, because it may belong to a
+    record whose skeleton has not been written yet.
+    """
+    root = config.cover_dir
+    if not root.is_dir():
+        print("film-tv-dedupe: no local cover directory — nothing to do")
+        return 0
+    referenced = {
+        str(key)
+        for entry in index.values()
+        for key in [*(entry.machine.get("covers") or []), entry.user.get("cover")]
+        if key
+    }
+    known: dict[str, dict[str, str]] = {}
+    for key in sorted(referenced):
+        path = root / key
+        if path.is_file():
+            known.setdefault(str(Path(key).parent), {})[cover_digest(path)] = key
+
+    duplicates: list[tuple[Path, str]] = []
+    for path in sorted(root.rglob("*.webp")):
+        key = path.relative_to(root).as_posix()
+        if key in referenced:
+            continue
+        twin = known.get(str(path.parent.relative_to(root)), {}).get(cover_digest(path))
+        if twin:
+            duplicates.append((path, twin))
+
+    freed = sum(path.stat().st_size for path, _ in duplicates) / 1024 / 1024
+    for path, twin in duplicates[:sample]:
+        print(f"    - {path.relative_to(root)} (same bytes as {twin})")
+    if len(duplicates) > sample:
+        print(f"    … and {len(duplicates) - sample} more")
+    if not dry_run:
+        for path, _twin in duplicates:
+            path.unlink()
+    print(
+        f"film-tv-dedupe: {len(duplicates)} duplicate local cover file(s) ({freed:.1f} MB)"
+        + (" — dry-run, re-run with --confirm to delete" if dry_run else " deleted")
+    )
+    return len(duplicates)
+
+
 # --- record updates ----------------------------------------------------------
 
 
@@ -619,9 +838,26 @@ def taken_slugs(index: dict[str, Entry]) -> set[str]:
 
 
 def pending_details(index: dict[str, Entry]) -> list[Entry]:
-    """Records whose detail page was never fetched, newest first."""
-    pending = [entry for entry in index.values() if not entry.meta.get("detail_synced_at")]
-    return sort_entries(pending)
+    """Records whose detail page was never fetched, newest first.
+
+    Records with **no date at all** come first: their list row carried no date
+    span, so the detail page is the only source of the 看过 date (``interest``
+    block) — and until it lands the record cannot be placed in a year file, the
+    pages have nothing to group it under and the year statistics are incomplete.
+    They sort last by date, so without this they would wait for the whole backfill
+    (19 of 4292 records on the first pass). Records that are gone on Douban are
+    not pending at all and are skipped here.
+    """
+    pending = [
+        entry
+        for entry in index.values()
+        if not entry.meta.get("detail_synced_at") and not entry.meta.get("missing_since")
+    ]
+    dateless: list[Entry] = []
+    dated: list[Entry] = []
+    for entry in sort_entries(pending):
+        (dateless if not entry.effective_date() else dated).append(entry)
+    return dateless + dated
 
 
 def write_records(config: Config, index: dict[str, Entry]) -> list[str]:
@@ -699,7 +935,7 @@ def build_queue(
     index: dict[str, Entry],
     refresh_details: int | None,
 ) -> list[Task]:
-    """Detail queue: new/changed rows first, then the backfill (newest first).
+    """Detail queue: new/changed rows first, then the backfill (dateless, newest).
 
     ``--refresh-details N`` replaces the backfill with the N most recently marked
     records that already have details (the "I edited some comments on Douban"
@@ -751,6 +987,8 @@ class SyncContext:
     persons: dict[str, str] = field(default_factory=dict)
     dry_run: bool = False
     list_used_account: bool = False
+    #: list pages that had to go through the account session (see `walk_lists`)
+    list_account_pages: int = 0
     today: str = field(default_factory=lambda: date.today().isoformat())
 
     def merge(
@@ -761,6 +999,7 @@ class SyncContext:
         type_filter: str,
         subject: Subject | None,
         missing_since: str | None = None,
+        missing_reason: str | None = None,
         covers_added: list[str] | None = None,
     ) -> Entry:
         """Merge one row (+ detail) into the index and return the stored entry."""
@@ -793,6 +1032,7 @@ class SyncContext:
             detail_fetched=subject is not None,
             today=self.today,
             missing_since=missing_since,
+            missing_reason=missing_reason,
         )
         if existing is None:
             self.counts["new"] = self.counts.get("new", 0) + 1
@@ -853,6 +1093,11 @@ def run_sync(args) -> int:
         f"{'dry-run' if args.dry_run else 'writing'}"
     )
 
+    if args.dedupe_covers:
+        # offline maintenance: no cookie, no network, nothing else to sync
+        dedupe_local_covers(config, index, dry_run=not args.confirm)
+        return 0
+
     if args.only:
         return sync_one(args, config=config, taxonomy=taxonomy, state=state, index=index)
 
@@ -883,11 +1128,23 @@ def run_sync(args) -> int:
     )
     baseline = dict(index)
     seen, queued, pages = walk_lists(
-        ctx, user_id=user_id, baseline=baseline, max_pages=args.pages, full=args.full
+        ctx,
+        user_id=user_id,
+        baseline=baseline,
+        max_pages=args.pages,
+        full=args.full,
+        # `--prune` compares the whole archive against the walk, so it must never
+        # resume mid-list (the skipped head would be marked as deleted)
+        resume=args.full and not args.prune,
+    )
+    account_note = (
+        f" [account session: {ctx.list_account_pages}/{pages} pages]"
+        if ctx.list_used_account
+        else " [anonymous]"
     )
     print(
         f"  walk: {len(seen)} rows from {pages} page(s), {len(queued)} need a detail refill"
-        + (" [account session]" if ctx.list_used_account else " [anonymous]")
+        + account_note
     )
     if not args.dry_run:
         ctx.write()
@@ -940,17 +1197,125 @@ def run_sync(args) -> int:
     return 0
 
 
+def subject_is_empty(subject: Subject) -> bool:
+    """True when the page carried nothing: the subject was taken down.
+
+    Douban answers an empty shell for some removed subjects — no title, no score,
+    no genres and no ``#interest_sect_level``. The HTML fixtures in
+    ``tests/fixtures/film_tv/`` pin the parsers, so an empty parse means the page
+    really is empty rather than the markup having drifted.
+    """
+    interest = subject.interest
+    return not any(
+        (
+            str(subject.title or "").strip(),
+            subject.douban_score is not None,
+            subject.year,
+            subject.genres,
+            subject.directors,
+            subject.casts,
+            subject.runtime,
+            subject.cover_url,
+            interest.status,
+            interest.marked_at,
+            interest.user_rating is not None,
+        )
+    )
+
+
+def _fetch_detail(
+    ctx: SyncContext,
+    item: ListItem,
+    label: str,
+    *,
+    kind: str,
+    type_filter: str,
+    dated: bool,
+) -> Subject | None:
+    """Fetch one detail page, confirming an empty answer once.
+
+    Returns the subject, or ``None`` when there is nothing more to do with this
+    item: it is **gone** on Douban (the record has been marked missing) or the
+    fetch **failed** (recorded in ``state.failures``, retried on a later run).
+
+    An empty page is what Douban answers both for a taken-down subject and while
+    it is throttling a session, and being wrong is expensive: a record marked
+    missing is neither fetched nor published again (the mark is cleared only when
+    a later fetch succeeds). So an empty page is re-fetched once, and a record
+    that *has* a date is never marked missing from it — an empty page for a
+    dated record is treated as a failure and retried later.
+    """
+    for attempt in range(EMPTY_SUBJECT_RETRIES + 1):
+        try:
+            subject = fetch_subject(ctx.session, item.id, person_style=ctx.config.person_name_style)
+            ctx.counts["details"] += 1
+            time.sleep(DETAIL_DELAY)
+        except BlockedError:
+            raise
+        except GoneError as exc:
+            _mark_gone(ctx, item, kind=kind, type_filter=type_filter, label=label, why=str(exc))
+            return None
+        except SyncError as exc:
+            ctx.counts["failed"] += 1
+            ctx.state.failures[item.id] = str(exc)
+            print(f"  {label} {item.id} FAILED: {exc}", file=sys.stderr, flush=True)
+            return None
+        if not subject_is_empty(subject):
+            ctx.state.save_detail(item.id, subject)
+            ctx.persons = merge_person_ids(
+                ctx.persons, {pid: name for name, pid in subject.person_ids.items()}
+            )
+            return subject
+        if attempt < EMPTY_SUBJECT_RETRIES:
+            print(
+                f"  {label} {item.id} empty subject page — retrying once (a throttled "
+                "session answers empty too)",
+                file=sys.stderr,
+                flush=True,
+            )
+            time.sleep(RETRY_BACKOFF)
+    if dated:
+        ctx.counts["failed"] += 1
+        ctx.state.failures[item.id] = "empty subject page"
+        print(f"  {label} {item.id} FAILED: empty subject page", file=sys.stderr, flush=True)
+        return None
+    _mark_gone(ctx, item, kind=kind, type_filter=type_filter, label=label, why="empty page")
+    return None
+
+
+def _mark_gone(
+    ctx: SyncContext,
+    item: ListItem,
+    *,
+    kind: str,
+    type_filter: str,
+    label: str,
+    why: str,
+) -> None:
+    """Keep the record as an archive entry, marked so it is never fetched again."""
+    ctx.counts["missing"] = ctx.counts.get("missing", 0) + 1
+    ctx.state.failures.pop(item.id, None)
+    print(f"  {label} {item.id} gone on Douban — skipped ({why})", flush=True)
+    ctx.merge(
+        item,
+        kind=kind,
+        type_filter=type_filter,
+        subject=None,
+        missing_since=ctx.today,
+        missing_reason="gone",
+    )
+
+
 def _sync_item(ctx: SyncContext, task: Task, *, progress: tuple[int, int]) -> None:
     """Fetch (or reuse) one row's detail page and merge it into the index."""
     item, kind, type_filter = task.item, task.kind, task.type_filter
     label = f"[{progress[0]}/{progress[1]}]"
     if item.deleted:
-        ctx.counts["missing"] += 1
-        ctx.merge(item, kind=kind, type_filter=type_filter, subject=None, missing_since=ctx.today)
-        print(f"  {label} {item.id} {item.title[:30]} — deleted on Douban", flush=True)
+        _mark_gone(ctx, item, kind=kind, type_filter=type_filter, label=label, why="deleted")
         return
 
     existing = ctx.index.get(item.id)
+    dated = bool(item.marked_at) or bool(existing and existing.user.get("watched_at"))
     # The cache only rescues a crashed run: a record that already has a detail
     # timestamp is either unchanged (not queued), changed (must be re-fetched) or
     # explicitly refreshed. A record without one may still have a cached parse
@@ -958,24 +1323,13 @@ def _sync_item(ctx: SyncContext, task: Task, *, progress: tuple[int, int]) -> No
     cached = None
     if not task.refresh and (existing is None or not existing.meta.get("detail_synced_at")):
         cached = ctx.state.detail(item.id)
-    subject = cached
+    # an empty page is not usable as a cache entry: fetching again either confirms
+    # "gone" or gets the real page
+    subject = cached if cached is not None and not subject_is_empty(cached) else None
     if subject is None:
-        try:
-            subject = fetch_subject(ctx.session, item.id, person_style=ctx.config.person_name_style)
-            ctx.counts["details"] += 1
-            time.sleep(DETAIL_DELAY)
-        except BlockedError:
-            raise
-        except SyncError as exc:
-            ctx.counts["failed"] += 1
-            ctx.state.failures[item.id] = str(exc)
-            print(f"  {label} {item.id} FAILED: {exc}", file=sys.stderr, flush=True)
-            return
-        ctx.state.save_detail(item.id, subject)
-        ctx.persons = merge_person_ids(
-            ctx.persons, {pid: name for name, pid in subject.person_ids.items()}
-        )
-
+        subject = _fetch_detail(ctx, item, label, kind=kind, type_filter=type_filter, dated=dated)
+        if subject is None:
+            return  # gone (marked as missing) or failed (recorded) — nothing to do
     entry = ctx.merge(item, kind=kind, type_filter=type_filter, subject=subject)
     verb = "refreshed" if task.refresh else "synced"
     print(
@@ -984,6 +1338,10 @@ def _sync_item(ctx: SyncContext, task: Task, *, progress: tuple[int, int]) -> No
         flush=True,
     )
     ctx.apply_covers(item, kind=kind, type_filter=type_filter, subject=subject, entry=entry)
+    # the cover map is what keeps a re-run from downloading the same poster as a
+    # new `NN.webp`; saving it per item (instead of only at the 50-item flush)
+    # means an interrupted batch cannot orphan the files it just wrote
+    ctx.state.save()
 
 
 def _report_prune(seen, index: dict[str, Entry]) -> int:
@@ -1017,6 +1375,8 @@ def _apply_prune(ctx: SyncContext, seen) -> int:
             continue
         missing += 1
         entry.meta["missing_since"] = ctx.today
+        # the row left my collection: a later walk that sees it again undoes this
+        entry.meta["missing_reason"] = "pruned"
         print(f"    missing: {subject_id} {entry.machine.get('title', '')[:30]}")
     return missing
 
@@ -1075,13 +1435,24 @@ def backfill_progress(index: dict[str, Entry]) -> str:
 
     The per-item counter only shows the current batch, which says nothing about
     how far the 4292-record backfill has come — this line does.
+
+    Records marked missing are **not** pending: nothing can be fetched for them
+    (``gone`` on Douban, or pruned from the collection), so counting them would
+    leave this line stuck above zero for good. They are reported separately; the
+    ``details`` share still counts every synced record against the whole archive.
     """
     total = len(index)
-    done = sum(1 for entry in index.values() if entry.meta.get("detail_synced_at"))
     if not total:
         return "progress: no records yet"
+    fetchable = [entry for entry in index.values() if not entry.meta.get("missing_since")]
+    done = sum(1 for entry in index.values() if entry.meta.get("detail_synced_at"))
+    pending = sum(1 for entry in fetchable if not entry.meta.get("detail_synced_at"))
     share = done / total * 100
-    return f"progress: details {done}/{total} ({share:.1f}%) | pending {total - done}"
+    line = f"progress: details {done}/{total} ({share:.1f}%) | pending {pending}"
+    gone = total - len(fetchable)
+    if gone:
+        line += f" | gone {gone}"
+    return line
 
 
 def save_person_ids(ctx: SyncContext) -> None:
@@ -1146,6 +1517,17 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
         default=None,
         help="re-read the details of the N most recently marked records, ignoring fingerprints "
         f"(default {REFRESH_DETAILS_DEFAULT}) — use after editing comments on Douban",
+    )
+    parser.add_argument(
+        "--dedupe-covers",
+        action="store_true",
+        help="offline: delete local cover files that duplicate a referenced one "
+        "(dry-run unless --confirm)",
+    )
+    parser.add_argument(
+        "--confirm",
+        action="store_true",
+        help="with --dedupe-covers: actually delete the reported duplicates",
     )
     parser.add_argument(
         "--dry-run", action="store_true", help="print the plan without fetching or writing"

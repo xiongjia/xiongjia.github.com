@@ -371,6 +371,13 @@ uv run poe sync-film-tv --limit 300      # 反复执行，直到 queue: 0 detail
 - 进度看每批结尾的 `details N | covers M | failed F | …`；`film-tv-check` 的
   `details pending` 归零即补齐
 - 每批结束会自动跑 `film-tv-derive`（分片/索引/stats/people 都是它生成的）
+- 走查可中断可续：`--full` 每页把游标写进 `.cache/film-tv/state/walk.json`，下次 `--full` 从
+  断点继续（增量跑不读也不写游标，`--prune` 绝不复用游标）；空列表页会先重试，**页头
+  `total` 还没收齐就中止**而不是静默截断
+- 完整性自检：`film-tv-check` 现在把「活记录数」和 `walk.json` 里各 tab 的页头 total 比对，
+  偏少直接报 `walk-total` 错误（截断不会再被当成同步成功）
+- 本地封面重复文件：`uv run poe sync-film-tv --dedupe-covers`（默认 dry-run，`--confirm`
+  才真删；只删同一 subject 目录下与「已被引用」封面字节相同的孤立副本）
 
 ### 2. 上传封面到 bucket（R2）
 

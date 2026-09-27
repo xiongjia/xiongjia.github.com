@@ -332,6 +332,7 @@ def test_merge_record_allocates_slug_and_sets_meta(taxonomy):
         "fingerprint": "a1b2c3d4",
         "machine_hash": entry.meta["machine_hash"],
         "missing_since": None,
+        "missing_reason": None,
     }
     assert entry.user_raw == ""  # the store substitutes the default block
 
@@ -410,3 +411,72 @@ def test_merge_record_marks_missing_subjects(taxonomy):
     )
     assert entry.meta["missing_since"] == "2026-09-27"
     assert entry.machine["slug"] == ""  # no detail → no slug yet
+
+
+def test_merge_record_clears_missing_when_the_detail_fetch_succeeds(taxonomy):
+    """A live subject page disproves "gone": the mark must not outlive it."""
+    subj = subject()
+    existing = Entry(
+        machine={"id": "1292052", "slug": "s", "covers": [], "title": "旧标题"},
+        user={},
+        user_raw="",
+        meta={
+            "detail_synced_at": "2020-01-01",
+            "missing_since": "2026-01-01",
+            "missing_reason": "gone",
+        },
+    )
+
+    entry = merge_record(
+        existing,
+        fields=_fields(taxonomy, subj=subj),
+        subject=subj,
+        subject_id="1292052",
+        taxonomy=taxonomy,
+        taken_slugs=set(),
+        fingerprint_value="new",
+        detail_fetched=True,
+        today="2026-09-28",
+    )
+
+    assert entry.meta["missing_since"] is None
+    assert entry.meta["missing_reason"] is None
+
+
+def test_merge_record_keeps_and_stamps_the_missing_reason(taxonomy):
+    """A list-only merge records *why* the record is away, and never clears it."""
+    subj = subject()
+    existing = Entry(
+        machine={"id": "1292052", "slug": "s", "covers": [], "title": "旧标题"},
+        user={},
+        user_raw="",
+        meta={"detail_synced_at": "2020-01-01", "missing_since": "2026-01-01"},
+    )
+
+    stale = merge_record(
+        existing,
+        fields=_fields(taxonomy, subj=subj),
+        subject=None,
+        subject_id="1292052",
+        taxonomy=taxonomy,
+        taken_slugs=set(),
+        fingerprint_value="new2",
+        detail_fetched=False,
+        today="2026-09-28",
+    )
+    assert stale.meta["missing_since"] == "2026-01-01"  # sticky
+
+    pruned = merge_record(
+        existing,
+        fields=_fields(taxonomy, subj=subj),
+        subject=None,
+        subject_id="1292052",
+        taxonomy=taxonomy,
+        taken_slugs=set(),
+        fingerprint_value="new3",
+        detail_fetched=False,
+        today="2026-09-28",
+        missing_since="2026-09-28",
+        missing_reason="pruned",
+    )
+    assert pruned.meta["missing_reason"] == "pruned"
