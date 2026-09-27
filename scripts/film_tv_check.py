@@ -14,6 +14,10 @@ with a notice instead of reporting false orphans):
 - ``meta.taxonomy_version`` is current, and the check lists which records would
   change ``regions`` / ``category`` if recomputed under the current taxonomy;
 - undated records, pending details, deleted subjects, duplicate ids;
+- **completeness**: the rows in the archive must cover the totals the list pages
+  advertised (``.cache/film-tv/state/walk.json``) — an incomplete ``--full`` walk
+  is otherwise indistinguishable from a complete archive;
+- local cover files that no record references (orphans of an interrupted run);
 - region aliases that the taxonomy does not know yet (candidates to add);
 - with ``--check-remote``: cover keys missing from R2 + orphaned cover files.
 
@@ -112,6 +116,9 @@ def check_records(records, taxonomy: Taxonomy, findings: Findings) -> dict:
     """Local, cheap checks (no network, no R2)."""
     slugs: dict[str, str] = {}
     undated: list[str] = []
+    undated_pending: list[str] = []
+    undated_confirmed: list[str] = []
+    undated_gone: list[str] = []
     regions_seen: Counter = Counter()
     categories: Counter = Counter()
     types: Counter = Counter()
@@ -120,6 +127,10 @@ def check_records(records, taxonomy: Taxonomy, findings: Findings) -> dict:
         "records": len(records),
         "details_pending": 0,
         "undated": 0,
+        "undated_ids": [],
+        "undated_pending": [],
+        "undated_confirmed": [],
+        "undated_gone": [],
         "deleted": 0,
         "hidden": 0,
         "hidden_comment": 0,
@@ -137,7 +148,12 @@ def check_records(records, taxonomy: Taxonomy, findings: Findings) -> dict:
         # --- slugs ---------------------------------------------------------
         slug = str(machine.get("slug") or "")
         if not slug:
-            stats["details_pending"] += 1
+            # an empty slug never enters the uniqueness map (it would collide with
+            # every other slug-less record). A record that is gone on Douban can
+            # never get one: nothing is left to fetch, so it is finished rather
+            # than pending.
+            if not meta.get("missing_since"):
+                stats["details_pending"] += 1
         elif slug in slugs:
             findings.add(
                 "error",
@@ -177,6 +193,15 @@ def check_records(records, taxonomy: Taxonomy, findings: Findings) -> dict:
         if not machine.get("marked_at") and not watched_at:
             stats["undated"] += 1
             undated.append(subject_id)
+            # three very different situations: the detail page may still bring the
+            # 看过 date, the subject may be gone (nothing left to publish), or the
+            # details are in and the date really has to be set by hand
+            if meta.get("missing_since"):
+                undated_gone.append(subject_id)
+            elif meta.get("detail_synced_at"):
+                undated_confirmed.append(subject_id)
+            else:
+                undated_pending.append(subject_id)
 
         # --- machine hash (hand edits of machine fields) --------------------
         stored_hash = meta.get("machine_hash")
@@ -228,13 +253,32 @@ def check_records(records, taxonomy: Taxonomy, findings: Findings) -> dict:
         categories[str(machine.get("category"))] += 1
 
     if undated:
+        parts = []
+        if undated_confirmed:
+            parts.append(
+                f"{len(undated_confirmed)} already synced and will stay dateless — they need "
+                f"a user.watched_at by hand (e.g. {', '.join(undated_confirmed[:5])})"
+            )
+        if undated_pending:
+            parts.append(
+                f"{len(undated_pending)} still waiting for their detail page — the date may "
+                "still arrive with it"
+            )
+        if undated_gone:
+            parts.append(
+                f"{len(undated_gone)} are gone on Douban — no date can be recovered, so they "
+                "are skipped from the published data"
+            )
         findings.add(
-            "info",
+            "warn" if undated_confirmed else "info",
             "undated",
-            f"{len(undated)} record(s) have neither marked_at nor user.watched_at — "
-            f"they live in *-undated.yml and need a date by hand (e.g. {', '.join(undated[:5])})",
+            f"{len(undated)} record(s) have neither marked_at nor user.watched_at; "
+            + "; ".join(parts),
         )
     stats["undated_ids"] = undated
+    stats["undated_confirmed"] = undated_confirmed
+    stats["undated_pending"] = undated_pending
+    stats["undated_gone"] = undated_gone
     stats["slugs"] = slugs
     stats["regions"] = regions_seen
     stats["categories"] = categories
@@ -306,6 +350,7 @@ def check_derived_json(json_dir: Path, records, findings: Findings) -> dict:
     # intent, without storing a hash)
     totals = index.get("totals") or {}
     expected = totals.get("records")
+    skipped = int(totals.get("skipped") or 0)
     actual = len(records)
     if isinstance(expected, int) and expected != actual:
         findings.add(
@@ -314,13 +359,99 @@ def check_derived_json(json_dir: Path, records, findings: Findings) -> dict:
             f"derived data is stale: index.json says {expected} records, the year files have "
             f"{actual} — run `poe film-tv-derive`",
         )
+    # records gone on Douban *and* dateless are deliberately not published
+    info["skipped"] = skipped
+    info["published"] = actual - skipped
     shard_total = sum(shard.get("count") or 0 for shard in info.get("shards_loaded", []))
-    if info["shards"] and shard_total != actual:
+    published = info["published"]
+    if info["shards"] and shard_total != published:
         findings.add(
             "error",
             "derived-stale",
             f"derived data is stale: shards hold {shard_total} records, the year files"
-            f" have {actual} — run `poe film-tv-derive`",
+            f" have {published} publishable ones ({actual} − {skipped} gone/dateless) — run"
+            " `poe film-tv-derive`",
+        )
+    return info
+
+
+def check_walk_total(state_dir: Path, records, findings: Findings) -> dict:
+    """The archive must cover the totals the collection lists advertised.
+
+    ``walk.json`` holds each tab's page-header total from the last ``--full`` walk
+    (``collect/movie`` = 3092, ``collect/tv`` = 1200, …). Fewer archived records
+    than the sum of those totals means the walk never finished — the failure mode
+    that used to be silent: an empty page mid-list ended a tab and the resulting
+    archive looked perfectly healthy to every other check.
+
+    ``missing_since`` records are counted: a subject Douban reports as deleted is
+    still one of the rows the header counts (only `--prune` takes a row out of the
+    list, and those leftover records merely *inflate* the count — an equal number
+    of prunes could mask a truncation, but a healthy archive is never flagged).
+    """
+    path = Path(state_dir) / "walk.json"
+    info: dict = {"state": str(path), "totals": {}, "expected": 0, "records": 0}
+    if not path.is_file():
+        findings.add(
+            "info",
+            "walk-total",
+            "no walk state yet (no `--full` walk recorded) — skipping the completeness check",
+        )
+        return info
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError:
+        findings.add("warn", "walk-total", "walk.json is not valid JSON — skipped")
+        return info
+    totals = {
+        str(tab): int(value)
+        for tab, value in (payload.get("total") or {}).items()
+        if isinstance(value, int) and value
+    }
+    info["totals"] = totals
+    info["expected"] = sum(totals.values())
+    info["records"] = len(records)
+    if info["expected"] and info["records"] < info["expected"]:
+        findings.add(
+            "error",
+            "walk-total",
+            f"the archive holds {info['records']} record(s) but the list pages report "
+            f"{info['expected']} ({', '.join(f'{tab}={n}' for tab, n in sorted(totals.items()))}) "
+            "— an earlier `--full` walk did not finish. Re-run "
+            "`uv run poe sync-film-tv --full` (it resumes from the recorded cursor)",
+        )
+    return info
+
+
+def check_local_covers(cover_dir: Path, records, findings: Findings) -> dict:
+    """Local cover files that no record references (orphans of an interrupted run).
+
+    Missing local files are fine (only recent years are kept locally, the rest is
+    uploaded to R2), but a file that exists *and* is referenced by nothing is
+    either a leftover duplicate or a cover whose record never landed.
+    """
+    root = Path(cover_dir)
+    info: dict = {"local": 0, "referenced": 0, "orphans": []}
+    if not root.is_dir():
+        return info
+    referenced = {
+        str(key)
+        for _path, entry in records
+        for key in [*(entry.machine.get("covers") or []), entry.user.get("cover")]
+        if key
+    }
+    local = sorted(path.relative_to(root).as_posix() for path in root.rglob("*.webp"))
+    info["local"] = len(local)
+    info["referenced"] = len(set(local) & referenced)
+    orphans = [key for key in local if key not in referenced]
+    info["orphans"] = orphans
+    if orphans:
+        findings.add(
+            "info",
+            "local-orphan",
+            f"{len(orphans)} local cover file(s) are referenced by no record "
+            f"(e.g. {', '.join(orphans[:3])}) — `uv run poe sync-film-tv --dedupe-covers`"
+            " reports the byte-identical duplicates of a referenced cover",
         )
     return info
 
@@ -400,7 +531,15 @@ def _remote_listing(mapping: dict | None, findings: Findings) -> list[str] | Non
     return [line.strip() for line in result.stdout.splitlines() if line.strip()]
 
 
-def data_quality_report(stats: dict, findings: Findings, taxonomy: Taxonomy) -> dict:
+def data_quality_report(
+    stats: dict,
+    findings: Findings,
+    taxonomy: Taxonomy,
+    *,
+    walk: dict | None = None,
+    covers: dict | None = None,
+    derived: dict | None = None,
+) -> dict:
     """Fixed-shape report (written to .cache/film-tv/reports/<ts>.json)."""
     total = stats["records"] or 1
     return {
@@ -414,6 +553,12 @@ def data_quality_report(stats: dict, findings: Findings, taxonomy: Taxonomy) -> 
         "details_pending_ratio": round(stats["details_pending"] / total, 4),
         "undated": stats["undated"],
         "undated_ids": stats["undated_ids"],
+        "undated_confirmed": len(stats["undated_confirmed"]),
+        "undated_pending": len(stats["undated_pending"]),
+        "undated_gone": len(stats["undated_gone"]),
+        # comes from the derived index (the derivation decides what is publishable),
+        # so the report follows the derive if its skip rule ever changes
+        "records_published": (derived or {}).get("published") or stats["records"],
         "deleted": stats["deleted"],
         "hidden": stats["hidden"],
         "hidden_comment": stats["hidden_comment"],
@@ -425,6 +570,10 @@ def data_quality_report(stats: dict, findings: Findings, taxonomy: Taxonomy) -> 
         ],
         "regions": dict(stats["regions"].most_common()),
         "findings": findings.counts(),
+        "list_totals": (walk or {}).get("totals") or {},
+        "records_expected": (walk or {}).get("expected", 0),
+        "local_covers": (covers or {}).get("local", 0),
+        "local_cover_orphans": len((covers or {}).get("orphans") or []),
     }
 
 
@@ -453,10 +602,19 @@ def main(argv: list[str] | None = None) -> int:
     taxonomy = Taxonomy.load(config.taxonomy_path)
 
     records = load_archive(config.data_dir, only=args.only, since=args.since)
+    filtered = args.only is not None or args.since is not None
     findings = Findings()
     stats = check_records(records, taxonomy, findings)
     bucket_info = check_bucket_config(findings, local_prefix=config.local_prefix)
     json_info = check_derived_json(config.json_dir, records, findings)
+    # a filtered run sees a subset of the archive: no completeness answer, and
+    # "unreferenced" covers would be meaningless
+    if filtered:
+        walk_info: dict = {"expected": 0, "records": 0, "totals": {}}
+        cover_info: dict = {"local": 0, "referenced": 0, "orphans": []}
+    else:
+        walk_info = check_walk_total(config.state_dir, records, findings)
+        cover_info = check_local_covers(config.cover_dir, records, findings)
     remote_info = {"checked": False}
     if args.check_remote:
         remote_info = check_remote(bucket_info.get("mapping"), records, findings)
@@ -486,6 +644,20 @@ def main(argv: list[str] | None = None) -> int:
         if json_info["shards"] or json_info["entries"]
         else "  derived json: not generated yet (run `poe film-tv-derive`)"
     )
+    if not filtered:
+        expected = walk_info.get("expected") or 0
+        if expected:
+            print(
+                f"  completeness: {walk_info.get('records', 0)} record(s) vs {expected} "
+                "advertised by the lists"
+            )
+        else:
+            print("  completeness: no walk state yet (run `poe sync-film-tv --full`)")
+        if cover_info.get("local"):
+            print(
+                f"  local covers: {cover_info['local']} file(s), "
+                f"{cover_info['referenced']} referenced, {len(cover_info['orphans'])} orphaned"
+            )
     if remote_info.get("checked"):
         print(
             f"  remote: {remote_info['missing']} missing, {remote_info['orphans']} orphaned covers"
@@ -507,7 +679,18 @@ def main(argv: list[str] | None = None) -> int:
         stamp = datetime.now().strftime("%Y%m%dT%H%M%S")
         path = reports / f"{stamp}.json"
         path.write_text(
-            json.dumps(data_quality_report(stats, findings, taxonomy), ensure_ascii=False, indent=2)
+            json.dumps(
+                data_quality_report(
+                    stats,
+                    findings,
+                    taxonomy,
+                    walk=walk_info,
+                    covers=cover_info,
+                    derived=json_info,
+                ),
+                ensure_ascii=False,
+                indent=2,
+            )
             + "\n",
             encoding="utf-8",
         )

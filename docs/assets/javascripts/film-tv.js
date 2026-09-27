@@ -306,7 +306,10 @@
     app.view = "month";
     app.monthIndex = Math.min(Math.max(1, index), months.length);
     app.currentMonth = months[app.monthIndex - 1].month;
-    app.calendarYear = app.currentMonth.slice(0, 4);
+    // "undated" has no year: keep the year the calendar is already showing
+    app.calendarYear = core.isMonthKey(app.currentMonth)
+      ? app.currentMonth.slice(0, 4)
+      : app.calendarYear || "";
     syncUrl(app);
     renderList(app, { scrollToTop: true });
   }
@@ -547,9 +550,9 @@
     } else {
       Object.assign(counts, core.monthCounts(app.index.months, app.kind));
     }
-    const years = [...new Set(Object.keys(counts).map((month) => month.slice(0, 4)))]
-      .filter((year) => year !== "undated")
-      .sort();
+    // `core.calendarYears` ignores the "undated" pseudo-month: slicing the key
+    // instead would offer "unda 年" (and then select it on the first render)
+    const years = core.calendarYears(counts);
     if (!years.length) {
       host.textContent = "";
       return;

@@ -106,6 +106,7 @@ def test_derive_writes_shards_index_stats_and_people(config):
     assert index["shard_size"] == 2
     assert index["totals"] == {
         "records": 3,
+        "skipped": 0,
         "movies": 2,
         "tv": 1,
         "rated": 3,
@@ -570,3 +571,37 @@ def test_people_rows_escape_and_quote_messy_names(tmp_path, monkeypatch):
     html = load_macros().macros["film_tv_people"]()
     assert "&amp; B" in html and "&lt;b&gt;" in html  # escaped for the markup
     assert "?person=A%20%26%20B" in html  # and quoted for the query string
+
+
+def test_derive_skips_gone_dateless_records(config):
+    """A subject gone on Douban with no date has nothing left to publish.
+
+    It stays in the year yml (the archive keeps the fact that it was watched) but
+    must not show up as an 「日期未知」 entry on the pages.
+    """
+    gone = make_entry("9", date=None, meta={"missing_since": "2026-09-28"})
+    write_file(config.data_dir / "movies-undated.yml", [gone])
+    write_file(config.data_dir / "movies-2026.yml", [make_entry("1")])
+
+    assert run_derive() == 0
+
+    index = json.loads((config.json_dir / "index.json").read_text(encoding="utf-8"))
+    assert index["totals"]["records"] == 2  # both are still in the archive
+    assert index["totals"]["skipped"] == 1  # but only one is published
+    assert "undated" not in index["months"]
+    shard = json.loads((config.json_dir / "shard-0001.json").read_text(encoding="utf-8"))
+    assert [item["id"] for item in shard["items"]] == ["1"]
+
+
+def test_derive_still_publishes_a_gone_record_that_has_a_date(config):
+    """Pruned records keep their date: they are still part of the archive."""
+    gone = make_entry("9", date="2026-08-01", meta={"missing_since": "2026-09-28"})
+    write_file(config.data_dir / "movies-2026.yml", [gone, make_entry("1")])
+
+    assert run_derive() == 0
+
+    index = json.loads((config.json_dir / "index.json").read_text(encoding="utf-8"))
+    assert index["totals"]["skipped"] == 0
+    shard = json.loads((config.json_dir / "shard-0001.json").read_text(encoding="utf-8"))
+    assert sorted(item["id"] for item in shard["items"]) == ["1", "9"]
+    assert [item for item in shard["items"] if item["id"] == "9"][0]["missing"] is True

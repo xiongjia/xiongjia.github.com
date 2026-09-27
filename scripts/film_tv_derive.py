@@ -152,6 +152,11 @@ def person_aliases(records: list[Entry]) -> dict[str, str]:
     return aliases
 
 
+def skipped(entry: Entry) -> bool:
+    """Gone on Douban *and* dateless: nothing to publish (see the main flow)."""
+    return bool(entry.meta.get("missing_since")) and not entry.effective_date()
+
+
 def present(entry: Entry, config: Config, aliases: dict[str, str] | None = None) -> dict:
     """One record as the front end needs it (no hidden data, no bucket prefix)."""
     machine, user = entry.machine, entry.user
@@ -220,7 +225,7 @@ def build_shards(records: list[dict], *, shard_size: int) -> list[dict]:
     return shards
 
 
-def build_index(records: list[dict], *, shard_size: int) -> dict:
+def build_index(records: list[dict], *, shard_size: int, skipped_count: int = 0) -> dict:
     """Month → shard/offset/count map, plus the totals the UI needs."""
     months: dict[str, dict] = {}
     for position, record in enumerate(records):
@@ -248,7 +253,10 @@ def build_index(records: list[dict], *, shard_size: int) -> dict:
         # record, so it can skip shards (a month can span two of them)
         "shards": [SHARD_NAME.format(index=number) for number in range(1, shard_count + 1)],
         "totals": {
-            "records": len(records),
+            # `records` is what the year files hold; `skipped` is how many of them
+            # are not published (gone + dateless)
+            "records": len(records) + skipped_count,
+            "skipped": skipped_count,
             "movies": sum(1 for r in records if r["type"] == "movie"),
             "tv": sum(1 for r in records if r["type"] == "tv"),
             "rated": sum(1 for r in records if r["rating"] is not None),
@@ -397,12 +405,21 @@ def run(*, dry_run: bool = False, shard_size: int | None = None) -> int:
         return 1
 
     aliases = person_aliases(entries)
-    records = [present(entry, config, aliases) for entry in entries if not entry.user.get("hidden")]
-    hidden = len(entries) - len(records)
+    # A record whose subject is gone (`--prune`, or Douban answering 404) and that
+    # has no date either has nothing left to publish: no title, no details and no
+    # month to group it under. It stays in the year yml (the archive keeps the
+    # fact that it was watched) but is skipped here instead of showing up as an
+    # 「日期未知」 entry.
+    publishable = [
+        entry for entry in entries if not entry.user.get("hidden") and not skipped(entry)
+    ]
+    records = [present(entry, config, aliases) for entry in publishable]
+    hidden = sum(1 for entry in entries if entry.user.get("hidden"))
+    unused = len(entries) - len(records) - hidden
     records.sort(key=lambda r: (r["date"], r["id"]), reverse=True)
 
     shards = build_shards(records, shard_size=config.shard_size)
-    index = build_index(records, shard_size=config.shard_size)
+    index = build_index(records, shard_size=config.shard_size, skipped_count=unused)
     directory = read_person_ids(config.data_dir / PERSON_IDS_FILE)
     people_entries = people_payload(records, ids=person_id_map(aliases, directory))
     stats = stats_payload(records)
@@ -426,8 +443,9 @@ def run(*, dry_run: bool = False, shard_size: int | None = None) -> int:
         name for name, text in planned.items() if not _same(config.json_dir / name, text)
     )
     print(
-        f"film-tv-derive: {len(records)} records ({hidden} hidden), {len(shards)} shard(s), "
-        f"{len(changed)} file(s) to write" + (f", {len(stale)} stale to remove" if stale else "")
+        f"film-tv-derive: {len(records)} records ({hidden} hidden, {unused} gone without a "
+        f"date), {len(shards)} shard(s), {len(changed)} file(s) to write"
+        + (f", {len(stale)} stale to remove" if stale else "")
     )
     for name in changed:
         print(f"  write {name}")

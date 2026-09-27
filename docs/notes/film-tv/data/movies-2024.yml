@@ -1,0 +1,3162 @@
+# Film & TV archive — top-level fields are machine-owned and rewritten from
+# Douban on every sync; edit the `user:` block freely, it is never touched.
+# generated_at: 2026-09-27T22:28+08:00
+- id: "1460996"
+  title: 十兄弟
+  original_title: null
+  year: 1995
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.0
+  douban_score_count: 77096
+  marked_at: "2024-12-29"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动作, 奇幻, 冒险]
+  regions: [香港]
+  languages: [粤语, 汉语普通话, 英语]
+  runtime: 100
+  credits:
+    directors: [李力持]
+    casts: [张敏, 钟镇涛, 释小龙, 郝劭文, 罗家英, 徐锦江, 黄一飞, 苑琼丹, 李健仁, 郑祖]
+    writers: [谷德昭, 李慕琼, 郑文辉]
+  slug: ten-brothers
+  covers:
+  - covers/1460996/01.webp
+  douban_url: https://movie.douban.com/subject/1460996/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 3dd7bfe2
+    machine_hash: c2cd6256
+    missing_since: null
+- id: "26747919"
+  title: 749局
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 1
+  douban_score: 3.2
+  douban_score_count: 225241
+  marked_at: "2024-12-22"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 123
+  credits:
+    directors: [陆川]
+    casts: [王俊凯, 苗苗, 郑恺, 任敏, 辛柏青, 李晨, 张钧甯, 杨皓宇, 余皑磊, 李梦]
+    writers: [陆川]
+  slug: bureau-749
+  covers:
+  - covers/26747919/01.webp
+  douban_url: https://movie.douban.com/subject/26747919/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 7561c75d
+    machine_hash: 7b2f8905
+    missing_since: null
+- id: "1292220"
+  title: 情书
+  original_title: Love Letter
+  year: 1995
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 5
+  douban_score: 8.9
+  douban_score_count: 1346516
+  marked_at: "2024-12-22"
+  douban_comment: null
+  tags: [Movie]
+  genres: [剧情, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 117
+  credits:
+    directors: [岩井俊二]
+    casts: [中山美穗, 丰川悦司, 酒井美纪, 柏原崇, 范文雀, 篠原胜之, 铃木庆一, 田口智朗, 加贺麻理子, 光石研]
+    writers: [岩井俊二]
+  slug: love-letter
+  covers:
+  - covers/1292220/01.webp
+  douban_url: https://movie.douban.com/subject/1292220/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d5387ac9
+    machine_hash: 7852ac09
+    missing_since: null
+- id: "35516034"
+  title: 红色一号：冬日行动
+  original_title: Red One
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 2
+  douban_score: 5.8
+  douban_score_count: 28643
+  marked_at: "2024-12-21"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动作, 悬疑, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 123
+  credits:
+    directors: [Jake Kasdan（杰克·卡斯丹）]
+    casts: [Dwayne Johnson（道恩·强森）, Chris Evans（克里斯·埃文斯）, 刘玉玲, J.K. Simmons（J·K·西蒙斯）, Kiernan Shipka（琪兰·席普卡）, 邦妮·亨特, 雷纳尔多·法伯勒, 克里斯托弗·海维尤, 玛丽·伊丽莎白·埃利斯, 韦斯利·坎摩尔]
+    writers: [克里斯·摩根, 海拉姆·加西亚]
+  slug: red-one
+  covers:
+  - covers/35516034/01.webp
+  douban_url: https://movie.douban.com/subject/35516034/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: e2b397f0
+    machine_hash: aff7dedc
+    missing_since: null
+- id: "35212342"
+  title: 狮子王：木法沙传奇
+  original_title: 'Mufasa: The Lion King'
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.6
+  douban_score_count: 35432
+  marked_at: "2024-12-20"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动画, 歌舞, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 119
+  credits:
+    directors: [Barry Jenkins（巴里·詹金斯）]
+    casts: [Aaron Pierre（亚伦·皮埃尔）, Kelvin Harrison Jr.（小凯文·哈里森）, Tiffany Boone（蒂凡尼·布恩）, Mads Mikkelsen（麦斯·米科尔森）, Preston Nyman（普雷斯顿·尼曼）, 卡吉索·莱迪加, 布鲁·艾薇·卡特, 约翰·卡尼, 塞斯·罗根, 比利·艾希纳]
+    writers: [杰夫·内桑森]
+  slug: mufasa-the-lion-king
+  covers:
+  - covers/35212342/01.webp
+  douban_url: https://movie.douban.com/subject/35212342/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 797f1aeb
+    machine_hash: 2bc12d8f
+    missing_since: null
+- id: "35883131"
+  title: 雄狮少年2
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 8.5
+  douban_score_count: 228258
+  marked_at: "2024-12-14"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动作, 动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 133
+  credits:
+    directors: [孙海鹏]
+    casts: [李昕, 郭皓, 陈业雄, 蔡欣然, 王一郎, 张杰]
+    writers: [孙海鹏, 沈诚, 张挺, 史迈]
+  slug: i-am-what-i-am-2
+  covers:
+  - covers/35883131/01.webp
+  douban_url: https://movie.douban.com/subject/35883131/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 8d305663
+    machine_hash: 2499eb16
+    missing_since: null
+- id: "35493148"
+  title: 指环王：洛汗之战
+  original_title: 'The Lord of the Rings: The War of the Rohirrim'
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 6.0
+  douban_score_count: 10209
+  marked_at: "2024-12-14"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 动画, 奇幻, 冒险]
+  regions: [美国, 新西兰, 日本]
+  languages: [英语]
+  runtime: 134
+  credits:
+    directors: [神山健治]
+    casts: [Brian Cox（布莱恩·考克斯）, Gaia Wise（盖亚·怀斯）, Miranda Otto（米兰达·奥图）, Luke Pasqualino（卢克·帕斯夸里诺）, Lorraine Ashbourne（洛琳·阿什伯恩）, 肖恩·杜利, 本杰明·温赖特, 亚兹丹·卡富里, 劳伦斯·乌邦·威廉斯, 迈克尔·怀德曼]
+    writers: [杰弗里·阿迪斯, 威尔·马修斯, 菲比·吉廷斯, 阿尔蒂·帕帕乔治乌]
+  slug: the-lord-of-the-rings-the-war-of-the-rohirrim
+  covers:
+  - covers/35493148/01.webp
+  douban_url: https://movie.douban.com/subject/35493148/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 6ecb3442
+    machine_hash: 39b2b0b0
+    missing_since: null
+- id: "35172702"
+  title: 小倩
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 6.7
+  douban_score_count: 10025
+  marked_at: "2024-12-07"
+  douban_comment: null
+  tags: []
+  genres: [爱情, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 112
+  credits:
+    directors: [毛启超]
+    casts: [边江, 张惠霖, 陈张太康, 张思王之, 傅晨阳, 卢力峰, 孙睿扬, 郭政建, 林兰, 玄耳]
+    writers: [毛启超, 陈金鹏, 李朋宵, 黄科憬, 刘枭羽, 林增雨]
+  slug: nie-xiaoqian
+  covers:
+  - covers/35172702/01.webp
+  douban_url: https://movie.douban.com/subject/35172702/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: be013b76
+    machine_hash: 0c7b1f82
+    missing_since: null
+- id: "3148694"
+  title: 魔法坏女巫
+  original_title: Wicked
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 6.9
+  douban_score_count: 64855
+  marked_at: "2024-12-07"
+  douban_comment: null
+  tags: []
+  genres: [爱情, 歌舞, 奇幻]
+  regions: [英国, 美国, 加拿大]
+  languages: [英语]
+  runtime: 161
+  credits:
+    directors: [朱浩伟]
+    casts: [Cynthia Erivo（辛西娅·埃里沃）, Ariana Grande（爱莉安娜·格兰德）, Jeff Goldblum（杰夫·高布伦）, 杨紫琼, Jonathan Bailey（乔纳森·贝利）, 伊桑·斯莱特, 玛丽莎·博德, 彼特·丁拉基, 安迪·尼曼, 考特尼-梅·布里格斯]
+    writers: [温妮·霍尔兹曼, 达纳·福克斯]
+  slug: wicked
+  covers:
+  - covers/3148694/01.webp
+  douban_url: https://movie.douban.com/subject/3148694/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 602c8a4a
+    machine_hash: b53a7180
+    missing_since: null
+- id: "36587974"
+  title: 出走的决心
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.8
+  douban_score_count: 442760
+  marked_at: "2024-12-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 家庭]
+  regions: [中国]
+  languages: [汉语普通话, 河南方言, 四川方言]
+  runtime: 106
+  credits:
+    directors: [尹丽川]
+    casts: [咏梅, 姜武, 吴倩, 张本煜, 马苏, 艾丽娅, 李易祥, 李嘉鑫, 吴泽南, 陈玺旭]
+    writers: [阿美, 尹丽川]
+  slug: like-a-rolling-stone
+  covers:
+  - covers/36587974/01.webp
+  douban_url: https://movie.douban.com/subject/36587974/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 82b4348b
+    machine_hash: "74378099"
+    missing_since: null
+- id: "36768946"
+  title: 海洋奇缘2
+  original_title: Moana 2
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.6
+  douban_score_count: 42988
+  marked_at: "2024-11-30"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动画, 歌舞, 奇幻, 冒险]
+  regions: [美国, 加拿大]
+  languages: [英语, 夏威夷语, 毛利语, 萨摩亚语]
+  runtime: 100
+  credits:
+    directors: [David G. Derrick Jr.（小戴夫·德里克）, Jason Hand（杰森·汉德）, 达娜·莱杜克斯·米勒]
+    casts: [Auli'i Cravalho（奥丽伊·卡瓦洛）, Dwayne Johnson（道恩·强森）, Hualalai Chung（华拉莱·钟）, Rose Matafeo（罗丝·马塔费奥）, 戴维·法恩, 阿华麦·弗雷泽, 卡乐西·兰伯特-苏打, 特穆拉·莫里森, 尼可·斯彻金格, 瑞切尔·豪斯]
+    writers: [杰拉德·布什, 达娜·莱杜克斯·米勒, 贝克·史密斯, 布莱森·春]
+  slug: moana-2
+  covers:
+  - covers/36768946/01.webp
+  douban_url: https://movie.douban.com/subject/36768946/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: ccd2e2dd
+    machine_hash: fdf1d15a
+    missing_since: null
+- id: "30368790"
+  title: 角斗士2
+  original_title: Gladiator II
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.3
+  douban_score_count: 48593
+  marked_at: "2024-11-23"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 冒险]
+  regions: [英国, 美国]
+  languages: [英语]
+  runtime: 148
+  credits:
+    directors: [Ridley Scott（雷德利·斯科特）]
+    casts: [Paul Mescal（保罗·麦斯卡）, Pedro Pascal（佩德罗·帕斯卡）, Connie Nielsen（康妮·尼尔森）, Denzel Washington（丹泽尔·华盛顿）, Joseph Quinn（约瑟夫·奎恩）, 弗雷德·赫辛格, 德里克·雅各比, 尤瓦·戈南, 罗伊·麦克凯恩, 彼得·门萨]
+    writers: [大卫·斯卡尔帕]
+  slug: gladiator-ii
+  covers:
+  - covers/30368790/01.webp
+  douban_url: https://movie.douban.com/subject/30368790/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4aa51aff
+    machine_hash: b41daa23
+    missing_since: null
+- id: "35882838"
+  title: 某种物质
+  original_title: The Substance
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 7.5
+  douban_score_count: 310057
+  marked_at: "2024-11-16"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 恐怖]
+  regions: [法国, 英国, 美国]
+  languages: [英语]
+  runtime: 141
+  credits:
+    directors: [Coralie Fargeat（科拉莉·法尔雅）]
+    casts: [Demi Moore（黛米·摩尔）, Margaret Qualley（玛格丽特·库里）, Dennis Quaid（丹尼斯·奎德）, Edward Hamilton-Clark（爱德华·汉密尔顿-克拉克）, Gore Abrams（戈雷·阿布拉姆斯）, 奥斯卡·莱斯格, 克里斯蒂安·埃里克森, 罗宾·格里尔, 汤姆·莫顿, 雨果·迭戈·加西亚]
+    writers: [Coralie Fargeat（科拉莉·法尔雅）]
+  slug: the-substance
+  covers:
+  - covers/35882838/01.webp
+  douban_url: https://movie.douban.com/subject/35882838/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 0a7597d7
+    machine_hash: 74b8f769
+    missing_since: null
+- id: "36680228"
+  title: 最后的里程
+  original_title: ラストマイル
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 7.0
+  douban_score_count: 45307
+  marked_at: "2024-11-09"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 悬疑]
+  regions: [日本]
+  languages: [日语, 英语]
+  runtime: 128
+  credits:
+    directors: [冢原亚由子]
+    casts: [满岛光, 冈田将生, 阿部贞夫, 藤冈靛, 火野正平, 宇野祥平, 安藤玉惠, 根本真阳, 磯村アメリ, 丸山智己]
+    writers: [野木亚纪子]
+  slug: last-mile
+  covers:
+  - covers/36680228/01.webp
+  douban_url: https://movie.douban.com/subject/36680228/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 27711a76
+    machine_hash: 139d6e1d
+    missing_since: null
+- id: "36765646"
+  title: 蓦然回首
+  original_title: ルックバック
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 5
+  douban_score: 8.1
+  douban_score_count: 180999
+  marked_at: "2024-10-26"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 75
+  credits:
+    directors: [押山清高]
+    casts: [河合优实, 吉田美月喜]
+    writers: [押山清高]
+  slug: look-back
+  covers:
+  - covers/36765646/01.webp
+  douban_url: https://movie.douban.com/subject/36765646/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 284e1589
+    machine_hash: 28636b66
+    missing_since: null
+- id: "35087675"
+  title: 毒液：最后一舞
+  original_title: 'Venom: The Last Dance'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.2
+  douban_score_count: 211134
+  marked_at: "2024-10-26"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 惊悚, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 109
+  credits:
+    directors: [Kelly Marcel（凯莉·马塞尔）]
+    casts: [Tom Hardy（汤姆·哈迪）, Chiwetel Ejiofor（切瓦特·埃加福）, Juno Temple（朱诺·坦普尔）, Rhys Ifans（瑞斯·伊凡斯）, Stephen Graham（斯蒂芬·格拉汉姆）, 佩吉·陆, 安迪·瑟金斯, 克拉克·巴茨科, 阿兰娜·乌巴赫, 克里斯托·费尔南德斯]
+    writers: [Kelly Marcel（凯莉·马塞尔）, Tom Hardy（汤姆·哈迪）]
+  slug: venom-the-last-dance
+  covers:
+  - covers/35087675/01.webp
+  douban_url: https://movie.douban.com/subject/35087675/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 7fe78c83
+    machine_hash: 8f6197de
+    missing_since: null
+- id: "34909341"
+  title: 小丑2：双重妄想
+  original_title: 'Joker: Folie à Deux'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.0
+  douban_score_count: 104430
+  marked_at: "2024-10-19"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 惊悚, 歌舞, 犯罪]
+  regions: [美国, 加拿大]
+  languages: [英语]
+  runtime: 138
+  credits:
+    directors: [Todd Phillips（托德·菲利普斯）]
+    casts: [Joaquin Phoenix（华金·菲尼克斯）, Lady Gaga, Brendan Gleeson（布莱丹·格里森）, Catherine Keener（凯瑟琳·基纳）, Zazie Beetz（莎姬·贝兹）, 史蒂夫·库根, 哈利·劳蒂, 雷伊·吉尔, 梁振邦, 雅库布·洛弗兰德]
+    writers: [斯科特·西尔弗, Todd Phillips（托德·菲利普斯）]
+  slug: joker-folie-a-deux
+  covers:
+  - covers/34909341/01.webp
+  douban_url: https://movie.douban.com/subject/34909341/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: b8dbfa0c
+    machine_hash: 76d34a91
+    missing_since: null
+- id: "1306664"
+  title: 共同警备区
+  original_title: 공동경비구역 JSA
+  year: 2000
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 9.0
+  douban_score_count: 184598
+  marked_at: "2024-10-19"
+  douban_comment: null
+  tags: [Movie, KOR]
+  genres: [剧情, 战争]
+  regions: [韩国]
+  languages: [韩语, 英语, 德语]
+  runtime: 110
+  credits:
+    directors: [朴赞郁]
+    casts: [李英爱, 李炳宪, 宋康昊, 申河均, 金太祐, 赫伯特·乌利齐, 克里斯托夫·霍夫里希特, 李汉伟, 奇周峯, 陈泰贤]
+    writers: [金炫锡, 李无影, 郑成山, 朴赞郁, 朴尚渊]
+  slug: jsa
+  covers:
+  - covers/1306664/01.webp
+  douban_url: https://movie.douban.com/subject/1306664/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d69ee01c
+    machine_hash: fb29318f
+    missing_since: null
+- id: "36823396"
+  title: 完美世界剧场版 火之灰烬
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 5.9
+  douban_score_count: 3171
+  marked_at: "2024-10-07"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 90
+  credits:
+    directors: [陈成, 张帅]
+    casts: [锦鲤, 刘晴, 边江, 常蓉珊, 刘思岑]
+    writers: [袁洁, 陈肯]
+  slug: perfect-world-movie-ashes-of-the-fire
+  covers:
+  - covers/36823396/01.webp
+  douban_url: https://movie.douban.com/subject/36823396/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 8549264d
+    machine_hash: 5f7a3caa
+    missing_since: null
+- id: "37060861"
+  title: 盒中之海
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.2
+  douban_score_count: 2371
+  marked_at: "2024-10-06"
+  douban_comment: null
+  tags: []
+  genres: [科幻, 动画, 悬疑, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 129
+  credits:
+    directors: [平安夜的噩梦, 阳刻]
+    casts: [幽舞越山, 大白, 蒋静菊, 万舒心, 季骜杰, 李姗姗, 苏阳林, 张远韬, 林帽帽]
+    writers: [艾叶]
+  slug: douban-37060861
+  covers:
+  - covers/37060861/01.webp
+  douban_url: https://movie.douban.com/subject/37060861/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: fbd088da
+    machine_hash: 5a2aaa41
+    missing_since: null
+- id: "36774001"
+  title: 逆行人生
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.6
+  douban_score_count: 257795
+  marked_at: "2024-10-03"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 121
+  credits:
+    directors: [徐峥]
+    casts: [徐峥, 辛芷蕾, 王骁, 贾冰, 冯兵, 丁勇岱, 丁嘉丽, 陈哈琳, 邬家楷, 刘美含]
+    writers: [何可可, 徐峥]
+  slug: upstream
+  covers:
+  - covers/36774001/01.webp
+  douban_url: https://movie.douban.com/subject/36774001/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d8be1ae8
+    machine_hash: cee6aa06
+    missing_since: null
+- id: "36653918"
+  title: 抓娃娃
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.1
+  douban_score_count: 860769
+  marked_at: "2024-10-01"
+  douban_comment: null
+  tags: []
+  genres: [喜剧]
+  regions: [中国]
+  languages: [汉语普通话, 英语]
+  runtime: 133
+  credits:
+    directors: [闫非, 彭大魔]
+    casts: [沈腾, 马丽, 史彭元, 萨日娜, 肖帛辰, 张子栋, 李嘉琦, 魏翔, 贾冰, 于洋]
+    writers: [彭大魔, 闫非, 林炳宝]
+  slug: successor
+  covers:
+  - covers/36653918/01.webp
+  douban_url: https://movie.douban.com/subject/36653918/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 379a4341
+    machine_hash: "81559085"
+    missing_since: null
+- id: "34960078"
+  title: 变形金刚：起源
+  original_title: Transformers One
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 7.9
+  douban_score_count: 96443
+  marked_at: "2024-09-28"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 动画, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 104
+  credits:
+    directors: [Josh Cooley（乔什·库雷）]
+    casts: [Chris Hemsworth（克里斯·海姆斯沃斯）, Brian Tyree Henry（布莱恩·泰里·亨利）, Scarlett Johansson（斯嘉丽·约翰逊）, Keegan-Michael Key（科甘-迈克尔·凯）, Jon Hamm（乔恩·哈姆）, 史蒂夫·布西密, 劳伦斯·菲什伯恩, 凡妮莎·利古力, 乔恩·贝利, 杰森·科诺皮索斯]
+    writers: [埃里克·皮尔森, 安德鲁·贝伦, 加百利·法拉利]
+  slug: transformers-one
+  covers:
+  - covers/34960078/01.webp
+  douban_url: https://movie.douban.com/subject/34960078/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: db46a351
+    machine_hash: 0d233274
+    missing_since: null
+- id: "1296693"
+  title: 醉拳
+  original_title: null
+  year: 1978
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.8
+  douban_score_count: 89103
+  marked_at: "2024-09-28"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动作]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 111
+  credits:
+    directors: [袁和平]
+    casts: [成龙, 黄正利, 石天]
+    writers: [袁和平]
+  slug: drunken-monkey-in-the-tiger-s-eyes
+  covers:
+  - covers/1296693/01.webp
+  douban_url: https://movie.douban.com/subject/1296693/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: ce3f2ef4
+    machine_hash: c8dd843d
+    missing_since: null
+- id: "36689857"
+  title: 荒野机器人
+  original_title: The Wild Robot
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 8.2
+  douban_score_count: 125903
+  marked_at: "2024-09-21"
+  douban_comment: null
+  tags: []
+  genres: [科幻, 动画, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 102
+  credits:
+    directors: [Chris Sanders（克里斯·桑德斯）]
+    casts: [Lupita Nyong'o（露皮塔·尼永奥）, Pedro Pascal（佩德罗·帕斯卡）, Kit Connor（基特·康纳）, Catherine O'Hara（凯瑟琳·奥哈拉）, Bill Nighy（比尔·奈伊）, 许玮伦, 亚历桑德拉·诺薇儿, 马特·贝里, 文·瑞姆斯, 马克·哈米尔]
+    writers: [Chris Sanders（克里斯·桑德斯）]
+  slug: the-wild-robot
+  covers:
+  - covers/36689857/01.webp
+  douban_url: https://movie.douban.com/subject/36689857/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 7a4a502a
+    machine_hash: 4ed179c3
+    missing_since: null
+- id: "36934908"
+  title: 因果报应
+  original_title: Maharaja
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 8.7
+  douban_score_count: 451455
+  marked_at: "2024-09-15"
+  douban_comment: null
+  tags: []
+  genres: [动作, 悬疑, 犯罪]
+  regions: [印度]
+  languages: [泰米尔语]
+  runtime: 141
+  credits:
+    directors: [Nithilan Saminathan（尼蒂兰·萨米纳坦）]
+    casts: [Vijay Sethupathi（维杰·西图帕提）, Anurag Kashyap（阿努拉格·卡施亚普）, Mamta Mohandas（玛玛塔·莫汉达斯）, Natarajan Subramaniam（那塔拉简·苏布拉马尼亚姆）, 阿比拉米, 迪维亚·巴拉蒂, 辛加姆普利, 阿鲁多斯, 穆尼什坎特, 萨沙纳·纳米达斯]
+    writers: [Nithilan Saminathan（尼蒂兰·萨米纳坦）]
+  slug: maharaja
+  covers:
+  - covers/36934908/01.webp
+  douban_url: https://movie.douban.com/subject/36934908/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 9d7e79e5
+    machine_hash: edcf5fec
+    missing_since: null
+- id: "35228399"
+  title: 异人之下
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 2
+  douban_score: 5.1
+  douban_score_count: 127910
+  marked_at: "2024-08-31"
+  douban_comment: null
+  tags: []
+  genres: [动作, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 134
+  credits:
+    directors: [乌尔善, 夏鹏]
+    casts: [胡先煦, 李宛妲, 冯绍峰, 乔振宇, 宋宁峰, 娜然, 那尔那茜, 兰西雅, 邬家楷, 尚铁龙]
+    writers: [乌尔善, 孙家宇, 王莉莉, 周梦洁, 胡笳]
+  slug: the-traveller
+  covers:
+  - covers/35228399/01.webp
+  douban_url: https://movie.douban.com/subject/35228399/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: b42a8e78
+    machine_hash: 1c1f371a
+    missing_since: null
+- id: "35705627"
+  title: 通往夏天的隧道，再见的出口
+  original_title: 夏へのトンネル、さよならの出口
+  year: 2022
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 7.2
+  douban_score_count: 25718
+  marked_at: "2024-08-30"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 83
+  credits:
+    directors: [田口智久]
+    casts: [铃鹿央士, 饭丰万理江, 畠中祐, 小宫有纱, 照井春佳, 小山力也, 小林星兰]
+    writers: [田口智久]
+  slug: the-tunnel-to-summer-the-exit-of-goodbyes
+  covers:
+  - covers/35705627/01.webp
+  douban_url: https://movie.douban.com/subject/35705627/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: c8a27737
+    machine_hash: ce5bf501
+    missing_since: null
+- id: "36090457"
+  title: 头脑特工队2
+  original_title: Inside Out 2
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 8.4
+  douban_score_count: 383017
+  marked_at: "2024-08-24"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动画, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 96
+  credits:
+    directors: [Kelsey Mann（凯尔西·曼）]
+    casts: [Amy Poehler（艾米·波勒）, Maya Hawke（玛雅·霍克）, Kensington Tallman（肯辛顿·托尔曼）, Liza Lapira（莉萨·拉皮拉）, Tony Hale（托尼·海尔）, 刘易斯·布莱克, 菲利丝·史密斯, 阿尤·艾德维利, 莉莉玛, 格蕾丝·陆]
+    writers: [梅格·勒福夫, 达沃·荷尔斯泰因]
+  slug: inside-out-2
+  covers:
+  - covers/36090457/01.webp
+  douban_url: https://movie.douban.com/subject/36090457/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 622bdd67
+    machine_hash: 892d7e28
+    missing_since: null
+- id: "36089988"
+  title: 云边有个小卖部
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 2
+  douban_score: 5.0
+  douban_score_count: 130281
+  marked_at: "2024-08-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情, 家庭]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 131
+  credits:
+    directors: [张嘉佳]
+    casts: [彭昱畅, 周也, 艾丽娅, 陈贤恩, 孔连顺, 张艺凡, 田依桐, 林家川, 王珞丹, 王大陆]
+    writers: [张嘉佳]
+  slug: moments-we-shared
+  covers:
+  - covers/36089988/01.webp
+  douban_url: https://movie.douban.com/subject/36089988/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 5f9533a9
+    machine_hash: 1b902771
+    missing_since: null
+- id: "35792500"
+  title: 异形：夺命舰
+  original_title: 'Alien: Romulus'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 7.3
+  douban_score_count: 392357
+  marked_at: "2024-08-16"
+  douban_comment: null
+  tags: []
+  genres: [科幻, 惊悚, 恐怖]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 119
+  credits:
+    directors: [Fede Alvarez（费德·阿尔瓦雷兹）]
+    casts: [Cailee Spaeny（卡莉·史派妮）, David Jonsson（戴维·荣松）, Archie Renaux（阿奇·雷诺）, Isabela Merced（伊莎贝拉·莫塞德）, Spike Fearn（斯派克·费恩）, 吴爱玲, 丹尼尔·贝茨, 伊安·霍姆, 特雷弗·纽林, 罗伯特·博布罗茨基]
+    writers: [Fede Alvarez（费德·阿尔瓦雷兹）, 罗多·赛亚格斯, 丹·欧班农, 罗纳德·舒塞特]
+  slug: alien-romulus
+  covers:
+  - covers/35792500/01.webp
+  douban_url: https://movie.douban.com/subject/35792500/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 98c6aa0b
+    machine_hash: 71d8d4b5
+    missing_since: null
+- id: "36463483"
+  title: 白蛇：浮生
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 7.0
+  douban_score_count: 155931
+  marked_at: "2024-08-10"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 爱情, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 133
+  credits:
+    directors: [陈健喜, 李佳锴]
+    casts: [张喆, 杨天翔, 唐小喜, 张赫, 刘琮, 郑小璞, 马程, 林强, 李楠, 李佳锴]
+    writers: [王微]
+  slug: white-snake-afloat
+  covers:
+  - covers/36463483/01.webp
+  douban_url: https://movie.douban.com/subject/36463483/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 55656e95
+    machine_hash: c0885a52
+    missing_since: null
+- id: "34929906"
+  title: 二郎神之深海蛟龙
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 4.8
+  douban_score_count: 2440
+  marked_at: "2024-08-08"
+  douban_comment: null
+  tags: []
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 100
+  credits:
+    directors: [王君]
+    casts: [齐克建, 梁晓强, 凌振赫, 朱祎, 李昊甲, 胡亚捷, 郭政建, 栾立胜, 魏一凡]
+    writers: [王君]
+  slug: god-with-three-eyes
+  covers:
+  - covers/34929906/01.webp
+  douban_url: https://movie.douban.com/subject/34929906/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: a3ffa857
+    machine_hash: 929f8acf
+    missing_since: null
+- id: "26957900"
+  title: 死侍与金刚狼
+  original_title: Deadpool & Wolverine
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 6.9
+  douban_score_count: 299827
+  marked_at: "2024-07-27"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动作, 科幻]
+  regions: [美国]
+  languages: [英语, 法语, 西班牙语]
+  runtime: 127
+  credits:
+    directors: [Shawn Levy（肖恩·利维）]
+    casts: [Ryan Reynolds（瑞安·雷诺兹）, Hugh Jackman（休·杰克曼）, Emma Corrin（艾玛·科林）, Matthew Macfadyen（马修·麦克费登）, Dafne Keen（达芙妮·基恩）, 莫蕾娜·巴卡琳, 乔恩·费儒, 罗伯·德兰尼, 莱斯利·格塞斯, 克里斯·埃文斯]
+    writers: [Ryan Reynolds（瑞安·雷诺兹）, 雷特·瑞斯, 保罗·韦尼克, 泽布·韦尔斯, Shawn Levy（肖恩·利维）]
+  slug: deadpool-wolverine
+  covers:
+  - covers/26957900/01.webp
+  douban_url: https://movie.douban.com/subject/26957900/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 73c37be6
+    machine_hash: 2b39ecae
+    missing_since: null
+- id: "36624248"
+  title: 落凡尘
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 7.7
+  douban_score_count: 73555
+  marked_at: "2024-07-12"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 118
+  credits:
+    directors: [钟鼎]
+    casts: [李昕, 刘校妤, 星潮, 刘琮, 孙路路, 关帅, 付博文]
+    writers: [康夫]
+  slug: fall-into-the-mortal-world
+  covers:
+  - covers/36624248/01.webp
+  douban_url: https://movie.douban.com/subject/36624248/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d892c76c
+    machine_hash: 061b50ce
+    missing_since: null
+- id: "24284175"
+  title: 九龙城寨之围城
+  original_title: 九龍城寨·圍城
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.2
+  douban_score_count: 350068
+  marked_at: "2024-06-29"
+  douban_comment: null
+  tags: []
+  genres: [动作, 犯罪]
+  regions: [香港, 中国]
+  languages: [粤语, 汉语普通话]
+  runtime: 126
+  credits:
+    directors: [郑保瑞]
+    casts: [古天乐, 洪金宝, 任贤齐, 林峯, 刘俊谦, 黄德斌, 伍允龙, 胡子彤, 张文杰, 廖子妤]
+    writers: [欧健儿, 岑君茜, 陈大利, 黎俊]
+  slug: twilight-of-the-warriors-walled-in
+  covers:
+  - covers/24284175/01.webp
+  douban_url: https://movie.douban.com/subject/24284175/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: fe1a7109
+    machine_hash: d04a012b
+    missing_since: null
+- id: "35307624"
+  title: 渔港的肉子酱
+  original_title: 漁港の肉子ちゃん
+  year: 2021
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 8.1
+  douban_score_count: 38473
+  marked_at: "2024-06-22"
+  douban_comment: null
+  tags: []
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 97
+  credits:
+    directors: [渡边步]
+    casts: [大竹忍, 木村心美, 花江夏树, 吉冈里帆, 松子DELUXE, 石井泉, 中村育二, 山西惇, 八十田勇一]
+    writers: [西加奈子, 大岛里美]
+  slug: fortune-favors-lady-nikuko
+  covers:
+  - covers/35307624/01.webp
+  douban_url: https://movie.douban.com/subject/35307624/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: bce30d68
+    machine_hash: a815628c
+    missing_since: null
+- id: "34436818"
+  title: 来自汪星的你
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 4.3
+  douban_score_count: 4182
+  marked_at: "2024-06-15"
+  douban_comment: null
+  tags: []
+  genres: [家庭, 儿童, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 105
+  credits:
+    directors: [陆可]
+    casts: [郭富城, 蓝盈莹, 王大陆, 黄龄, 戴军, 毛衍七, 孙越, 范湉湉, 肖骁, 常海波]
+    writers: [张弘毅, 文雅]
+  slug: woof-woof-daddy
+  covers:
+  - covers/34436818/01.webp
+  douban_url: https://movie.douban.com/subject/34436818/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 419db3a7
+    machine_hash: 70b68080
+    missing_since: null
+- id: "36093500"
+  title: 正欲
+  original_title: null
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.3
+  douban_score_count: 2875
+  marked_at: "2024-06-10"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 134
+  credits:
+    directors: [岸善幸]
+    casts: [稻垣吾郎, 新垣结衣, 矶村勇斗, 佐藤宽太, 东野绚香, 山田真步, 宇野祥平, 渡边大知, 德永绘里, 岩濑亮]
+    writers: [港岳彦]
+  slug: normal-desire
+  covers:
+  - covers/36093500/01.webp
+  douban_url: https://movie.douban.com/subject/36093500/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 352843b5
+    machine_hash: 890c128b
+    missing_since: null
+- id: "34822168"
+  title: 机动战士高达SEED FREEDOM
+  original_title: 機動戦士ガンダムSEED FREEDOM
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.2
+  douban_score_count: 7587
+  marked_at: "2024-06-08"
+  douban_comment: null
+  tags: []
+  genres: [科幻, 动画, 战争]
+  regions: [日本]
+  languages: [日语]
+  runtime: 124
+  credits:
+    directors: [福田己津央]
+    casts: [保志总一朗, 田中理惠, 石田彰, 森奈奈子, 铃村健一, 坂本真绫, 三石琴乃, 子安武人]
+    writers: [两泽千晶, 福田己津央]
+  slug: seed-freedom
+  covers:
+  - covers/34822168/01.webp
+  douban_url: https://movie.douban.com/subject/34822168/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: b94404d7
+    machine_hash: efe8b482
+    missing_since: null
+- id: "34996127"
+  title: 疯狂的麦克斯：狂暴女神
+  original_title: 'Furiosa: A Mad Max Saga'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.4
+  douban_score_count: 158405
+  marked_at: "2024-06-07"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 惊悚, 冒险]
+  regions: [澳大利亚, 美国]
+  languages: [英语]
+  runtime: 148
+  credits:
+    directors: [George Miller（乔治·米勒）]
+    casts: [Anya Taylor-Joy（安雅·泰勒-乔伊）, Chris Hemsworth（克里斯·海姆斯沃斯）, Tom Burke（汤姆·伯克）, Alyla Browne（艾莉拉·布朗）, George Shevtsov（乔治·谢夫佐夫）, 拉黑·休姆, 约翰·霍华德, 安格斯·桑普森, 查理·弗雷泽, 埃尔莎·帕塔奇]
+    writers: [George Miller（乔治·米勒）, 尼克·拉图里]
+  slug: furiosa-a-mad-max-saga
+  covers:
+  - covers/34996127/01.webp
+  douban_url: https://movie.douban.com/subject/34996127/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: db9740a4
+    machine_hash: 3e0489f3
+    missing_since: null
+- id: "35426925"
+  title: 机器人之梦
+  original_title: Robot Dreams
+  year: 2023
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 5
+  douban_score: 9.1
+  douban_score_count: 467052
+  marked_at: "2024-06-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动画, 音乐]
+  regions: [西班牙, 法国]
+  languages: [无对白]
+  runtime: 102
+  credits:
+    directors: [Pablo Berger（巴勃罗·贝格尔）]
+    casts: [Ivan Labanda（伊万·拉班达）]
+    writers: [Pablo Berger（巴勃罗·贝格尔）, 萨拉·瓦伦]
+  slug: robot-dreams
+  covers:
+  - covers/35426925/01.webp
+  douban_url: https://movie.douban.com/subject/35426925/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 2a6941a2
+    machine_hash: 024b2a43
+    missing_since: null
+- id: "35750081"
+  title: 美国内战
+  original_title: Civil War
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.4
+  douban_score_count: 67749
+  marked_at: "2024-05-26"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [美国, 英国, 芬兰]
+  languages: [英语]
+  runtime: 109
+  credits:
+    directors: [Alex Garland（亚历克斯·加兰）]
+    casts: [Kirsten Dunst（克尔斯滕·邓斯特）, Wagner Moura（瓦格纳·马拉）, Stephen McKinley Henderson（斯蒂芬·麦金利·亨德森）, Cailee Spaeny（卡莉·史派妮）, 水野索诺娅, 尼克·奥弗曼, 杰西·普莱蒙, 杰佛逊·怀特, 卡尔·格洛斯曼, 阿历萨·芒索]
+    writers: [Alex Garland（亚历克斯·加兰）]
+  slug: civil-war
+  covers:
+  - covers/35750081/01.webp
+  douban_url: https://movie.douban.com/subject/35750081/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: e0c67959
+    machine_hash: b05717c5
+    missing_since: null
+- id: "34971728"
+  title: 盟军敢死队
+  original_title: The Ministry of Ungentlemanly Warfare
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.6
+  douban_score_count: 45433
+  marked_at: "2024-05-25"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动作, 战争]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 120
+  credits:
+    directors: [Guy Ritchie（盖·里奇）]
+    casts: [Henry Cavill（亨利·卡维尔）, 艾莎·冈萨雷斯, Alan Ritchson（阿兰·里奇森）, Alex Pettyfer（亚历克斯·帕蒂弗）, Hero Fiennes Tiffin（赫洛·费因斯-提芬）, 巴布斯·奥卢桑莫昆, 亨利·扎格, 蒂尔·施威格, 亨利·戈尔丁, 加利·艾尔维斯]
+    writers: [保罗·塔马西, 埃瑞克·约翰逊, 阿拉什·阿梅尔, Guy Ritchie（盖·里奇）]
+  slug: the-ministry-of-ungentlemanly-warfare
+  covers:
+  - covers/34971728/01.webp
+  douban_url: https://movie.douban.com/subject/34971728/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 8ed72c6a
+    machine_hash: 4c7e47ef
+    missing_since: null
+- id: "35238024"
+  title: 母亲的直觉
+  original_title: Mothers' Instinct
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.4
+  douban_score_count: 31510
+  marked_at: "2024-05-19"
+  douban_comment: null
+  tags: [Movie]
+  genres: [悬疑]
+  regions: [美国, 卢森堡]
+  languages: [英语]
+  runtime: 94
+  credits:
+    directors: [伯努瓦·德洛姆]
+    casts: [Jessica Chastain（杰西卡·查斯坦）, Anne Hathaway（安妮·海瑟薇）, Anders Danielsen Lie（安德斯·丹尼尔森·李）, Josh Charles（乔西·查尔斯）, Eamon Patrick O'Connell（埃蒙·帕特里克·欧康奈）, 卡罗琳·拉格菲尔特, 贝伦·D·比利兹, 史蒂夫·罗特曼, 姬莉·米勒, 乔尔·奈格勒]
+    writers: [萨拉·康拉德, 芭芭拉·亚伯]
+  slug: mothers-instinct
+  covers:
+  - covers/35238024/01.webp
+  douban_url: https://movie.douban.com/subject/35238024/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: f4fb8201
+    machine_hash: c4075c53
+    missing_since: null
+- id: "35268614"
+  title: 特技狂人
+  original_title: The Fall Guy
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.6
+  douban_score_count: 52640
+  marked_at: "2024-05-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动作]
+  regions: [美国]
+  languages: [英语]
+  runtime: 127
+  credits:
+    directors: [David Leitch（大卫·雷奇）]
+    casts: [Ryan Gosling（瑞恩·高斯林）, Emily Blunt（艾米莉·布朗特）, Aaron Taylor-Johnson（亚伦·泰勒-约翰逊）, Hannah Waddingham（汉娜·沃丁厄姆）, Winston Duke（温斯顿·杜克）, 泰莉莎·帕尔墨, 许玮伦, 本·奈特, 马图斯, 亚当·杜恩]
+    writers: [德鲁·皮尔斯]
+  slug: the-fall-guy
+  covers:
+  - covers/35268614/01.webp
+  douban_url: https://movie.douban.com/subject/35268614/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: f874d8b7
+    machine_hash: 90de4105
+    missing_since: null
+- id: "36207371"
+  title: 没有一顿火锅解决不了的事
+  original_title: null
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 2
+  douban_score: 4.8
+  douban_score_count: 78923
+  marked_at: "2024-05-12"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 悬疑, 犯罪]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 128
+  credits:
+    directors: [丁晟]
+    casts: [杨幂, 于谦, 田雨, 余皑磊, 李九霄, 黄小蕾]
+    writers: [修潇楠, 丁晟, 王航]
+  slug: nothing-can-t-be-undone-by-a-hotpot
+  covers:
+  - covers/36207371/01.webp
+  douban_url: https://movie.douban.com/subject/36207371/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: f47834a4
+    machine_hash: 9f5feb7d
+    missing_since: null
+- id: "36069854"
+  title: 猩球崛起：新世界
+  original_title: Kingdom of the Planet of the Apes
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.1
+  douban_score_count: 83303
+  marked_at: "2024-05-11"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 145
+  credits:
+    directors: [Wes Ball（韦斯·鲍尔）]
+    casts: [Owen Teague（欧文·提格）, Freya Allan（弗蕾娅·艾伦）, Kevin Durand（凯文·杜兰）, Peter Macon（彼德·梅肯）, William H. Macy（威廉·H·梅西）, 艾卡·达维尔, 特拉维斯·杰弗里, 莉迪亚·佩克汉, 尼尔·桑迪兰兹, 迪辰·拉克曼]
+    writers: [乔什·弗莱德曼, 里克·杰法, 阿曼达·斯尔沃]
+  slug: kingdom-of-the-planet-of-the-apes
+  covers:
+  - covers/36069854/01.webp
+  douban_url: https://movie.douban.com/subject/36069854/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4c650931
+    machine_hash: e61dce9a
+    missing_since: null
+- id: "34768157"
+  title: 冠军亚瑟
+  original_title: Arthur the King
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.3
+  douban_score_count: 7457
+  marked_at: "2024-05-04"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 冒险, 运动]
+  regions: [美国, 加拿大]
+  languages: [英语]
+  runtime: 107
+  credits:
+    directors: [Simon Cellan Jones（西蒙·赛伦·琼斯）]
+    casts: [Mark Wahlberg（马克·沃尔伯格）, 刘思慕, Juliet Rylance（朱丽叶·赖伦斯）, Nathalie Emmanuel（娜塔莉·伊曼纽尔）, Ali Suliman（阿里·苏莱曼）, 贝尔·格里尔斯, 保罗·吉尔福伊尔, 罗伯·柯林斯, 阿拉尼·伊隆圭, 塞塞·瓦伦蒂娜]
+    writers: [迈克尔·布拉德特, 米凯尔·林德诺德]
+  slug: arthur-the-king
+  covers:
+  - covers/34768157/01.webp
+  douban_url: https://movie.douban.com/subject/34768157/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: e6e08e8a
+    machine_hash: 57391afd
+    missing_since: null
+- id: "36369452"
+  title: 飞驰人生2
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.6
+  douban_score_count: 830344
+  marked_at: "2024-05-03"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 运动]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 121
+  credits:
+    directors: [韩寒]
+    casts: [沈腾, 范丞丞, 尹正, 张本煜, 孙艺洲, 魏翔, 贾冰, 郑恺, 冯绍峰, 黄景瑜]
+    writers: [韩寒]
+  slug: pegasus-2
+  covers:
+  - covers/36369452/01.webp
+  douban_url: https://movie.douban.com/subject/36369452/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 1e105b18
+    machine_hash: b93a1efc
+    missing_since: null
+- id: "35503073"
+  title: 对你的想象
+  original_title: The Idea of You
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 5.9
+  douban_score_count: 43869
+  marked_at: "2024-05-03"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 115
+  credits:
+    directors: [Michael Showalter（迈克尔·肖沃特）]
+    casts: [Anne Hathaway（安妮·海瑟薇）, Nicholas Galitzine（尼古拉斯·加利齐纳）, Ella Rubin（艾拉·鲁宾）, Annie Mumolo（安妮·玛莫罗）, Reid Scott（瑞德·斯科特）, 帕芮·马费尔德, 乔丹·亚伦·霍尔, 玛蒂尔达·吉安诺普洛斯, Meg Millidge, 奇克·曼诺哈]
+    writers: [Michael Showalter（迈克尔·肖沃特）, 詹妮弗·威斯菲尔德]
+  slug: the-idea-of-you
+  covers:
+  - covers/35503073/01.webp
+  douban_url: https://movie.douban.com/subject/35503073/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: cd35903c
+    machine_hash: 5db31a77
+    missing_since: null
+- id: "36208094"
+  title: 第二十条
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.5
+  douban_score_count: 818503
+  marked_at: "2024-05-02"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 家庭]
+  regions: [中国]
+  languages: [汉语普通话, 中国手语]
+  runtime: 141
+  credits:
+    directors: [张艺谋]
+    casts: [雷佳音, 马丽, 赵丽颖, 高叶, 刘耀文, 王骁, 陈明昊, 潘斌龙, 张译, 范伟]
+    writers: [李萌, 张艺谋]
+  slug: article-20
+  covers:
+  - covers/36208094/01.webp
+  douban_url: https://movie.douban.com/subject/36208094/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4f1f3285
+    machine_hash: 8e9ae6e8
+    missing_since: null
+- id: "35914398"
+  title: 哥斯拉-1.0
+  original_title: ゴジラ-1.0
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.5
+  douban_score_count: 42564
+  marked_at: "2024-05-02"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 科幻, 灾难]
+  regions: [日本]
+  languages: [日语]
+  runtime: 125
+  credits:
+    directors: [山崎贵]
+    casts: [神木隆之介, 滨边美波, 山田裕贵, 青木崇高, 吉冈秀隆, 安藤樱, 佐佐木藏之介]
+    writers: [山崎贵]
+  slug: godzilla-minus-one
+  covers:
+  - covers/35914398/01.webp
+  douban_url: https://movie.douban.com/subject/35914398/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 7d688ae8
+    machine_hash: c529519e
+    missing_since: null
+- id: "36190889"
+  title: 间谍过家家 代号：白
+  original_title: '劇場版 Spy x Family Code: White'
+  year: 2023
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 7.3
+  douban_score_count: 115561
+  marked_at: "2024-04-30"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 110
+  credits:
+    directors: [片桐崇]
+    casts: [江口拓也, 早见沙织, 种崎敦美, 松田健一郎, 甲斐田裕子, 佐仓绫音, 吉野裕行, 小野贤章, 山路和弘, 藤原夏海]
+    writers: [大河内一楼]
+  slug: spy-x-family-code-white
+  covers:
+  - covers/36190889/01.webp
+  douban_url: https://movie.douban.com/subject/36190889/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4cac484b
+    machine_hash: 68ccc165
+    missing_since: null
+- id: "35490167"
+  title: 破墓
+  original_title: 파묘
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.7
+  douban_score_count: 182317
+  marked_at: "2024-04-29"
+  douban_comment: null
+  tags: []
+  genres: [悬疑, 惊悚, 恐怖]
+  regions: [韩国]
+  languages: [韩语, 日语, 英语]
+  runtime: 134
+  credits:
+    directors: [张在现]
+    casts: [崔岷植, 金高银, 柳海真, 李到晛, 全镇基, 洪瑞俊, 郑允荷, 金宰澈, 尹正勋, 李英兰]
+    writers: [张在现]
+  slug: the-unearthed-grave
+  covers:
+  - covers/35490167/01.webp
+  douban_url: https://movie.douban.com/subject/35490167/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 1448687c
+    machine_hash: 013dcfa3
+    missing_since: null
+- id: "36081094"
+  title: 热辣滚烫
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 2
+  douban_score: 7.5
+  douban_score_count: 944782
+  marked_at: "2024-04-20"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 运动]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 129
+  credits:
+    directors: [贾玲]
+    casts: [贾玲, 雷佳音, 张小斐, 杨紫, 沙溢, 乔杉, 李雪琴, 马丽, 魏翔, 赵海燕]
+    writers: [贾玲, 孙集斌, 刘宏禄, 郭宇鹏, 卜钰]
+  slug: yolo
+  covers:
+  - covers/36081094/01.webp
+  douban_url: https://movie.douban.com/subject/36081094/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: bca2c9a8
+    machine_hash: 4b23a860
+    missing_since: null
+- id: "26925611"
+  title: 你想活出怎样的人生
+  original_title: 君たちはどう生きるか
+  year: 2023
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 4
+  douban_score: 7.5
+  douban_score_count: 460047
+  marked_at: "2024-04-04"
+  douban_comment: null
+  tags: []
+  genres: [动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 124
+  credits:
+    directors: [宫崎骏]
+    casts: [山时聪真, 菅田将晖, 柴崎幸, 爱缪, 木村佳乃, 木村拓哉, 竹下景子, 风吹淳, 大竹忍, 阿川佐和子]
+    writers: [宫崎骏]
+  slug: the-boy-and-the-heron
+  covers:
+  - covers/26925611/01.webp
+  douban_url: https://movie.douban.com/subject/26925611/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 924e7e3b
+    machine_hash: b92fa604
+    missing_since: null
+- id: "35633650"
+  title: 坠落的审判
+  original_title: Anatomie d'une chute
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 8.7
+  douban_score_count: 412842
+  marked_at: "2024-03-30"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 家庭]
+  regions: [法国]
+  languages: [法语, 英语, 德语]
+  runtime: 151
+  credits:
+    directors: [Justine Triet（茹斯汀·特里耶）]
+    casts: [桑德拉·惠勒, Swann Arlaud（斯万·阿劳德）, Milo Machado Graner（米洛·马查多·格拉纳）, Antoine Reinartz（安托万·赖纳茨）, Samuel Theis（塞缪尔·泰斯）, 珍妮·贝丝, 梅西, 萨迪亚·本塔伊布, 卡米莉·拉瑟福德, 安妮·罗特格]
+    writers: [Justine Triet（茹斯汀·特里耶）, 亚瑟·阿拉里]
+  slug: anatomie-d-une-chute
+  covers:
+  - covers/35633650/01.webp
+  douban_url: https://movie.douban.com/subject/35633650/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: af19b76e
+    machine_hash: 7dfe7cb4
+    missing_since: null
+- id: "35453251"
+  title: 哥斯拉大战金刚2：帝国崛起
+  original_title: 'Godzilla x Kong: The New Empire'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 6.5
+  douban_score_count: 200170
+  marked_at: "2024-03-30"
+  douban_comment: null
+  tags: []
+  genres: [动作, 科幻, 冒险]
+  regions: [美国, 澳大利亚]
+  languages: [英语, 美国手语]
+  runtime: 115
+  credits:
+    directors: [Adam Wingard（亚当·温加德）]
+    casts: [Rebecca Hall（丽贝卡·豪尔）, Brian Tyree Henry（布莱恩·泰里·亨利）, Dan Stevens（丹·史蒂文斯）, Kaylee Hottle（凯莉·霍特尔）, Alex Ferns（亚历克斯·费恩斯）, 陈法拉, 瑞切尔·豪斯, 朗·斯迈克, 尚特尔·贾米森, 格雷格·哈顿]
+    writers: [特里·鲁西奥, 西蒙·巴雷特, 杰瑞米·斯莱特, Adam Wingard（亚当·温加德）]
+  slug: godzilla-x-kong-the-new-empire
+  covers:
+  - covers/35453251/01.webp
+  douban_url: https://movie.douban.com/subject/35453251/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 9adf96b4
+    machine_hash: d0662816
+    missing_since: null
+- id: "36151692"
+  title: 周处除三害
+  original_title: 周處除三害
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.1
+  douban_score_count: 1206039
+  marked_at: "2024-03-17"
+  douban_comment: null
+  tags: []
+  genres: [动作, 犯罪]
+  regions: [台湾]
+  languages: [汉语普通话, 闽南语, 粤语]
+  runtime: 134
+  credits:
+    directors: [黄精甫]
+    casts: [阮经天, 袁富华, 陈以文, 王净, 谢琼煖, 李李仁, 刘子铨, 曾珮瑜, 陈秉佑, 游安顺]
+    writers: [黄精甫]
+  slug: the-pig-the-snake-and-the-pigeon
+  covers:
+  - covers/36151692/01.webp
+  douban_url: https://movie.douban.com/subject/36151692/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 5a4d86f4
+    machine_hash: d8a5baf9
+    missing_since: null
+- id: "35520056"
+  title: 阿盖尔：神秘特工
+  original_title: Argylle
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 5.6
+  douban_score_count: 31262
+  marked_at: "2024-03-10"
+  douban_comment: null
+  tags: []
+  genres: [动作, 惊悚]
+  regions: [英国, 美国]
+  languages: [英语]
+  runtime: 139
+  credits:
+    directors: [Matthew Vaughn（马修·沃恩）]
+    casts: [Bryce Dallas Howard（布莱丝·达拉斯·霍华德）, Sam Rockwell（山姆·洛克威尔）, Henry Cavill（亨利·卡维尔）, Samuel L. Jackson（塞缪尔·杰克逊）, Bryan Cranston（布莱恩·克兰斯顿）, 凯瑟琳·奥哈拉, 奇普, 阿丽亚娜·德博斯, 杜阿·利帕, 约翰·塞纳]
+    writers: [杰森·富克斯]
+  slug: argylle
+  covers:
+  - covers/35520056/01.webp
+  douban_url: https://movie.douban.com/subject/35520056/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d3c6c11e
+    machine_hash: 544b90f8
+    missing_since: null
+- id: "35575567"
+  title: 沙丘2
+  original_title: 'Dune: Part Two'
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.1
+  douban_score_count: 559815
+  marked_at: "2024-03-08"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 科幻, 冒险]
+  regions: [美国, 加拿大]
+  languages: [英语]
+  runtime: 166
+  credits:
+    directors: [Denis Villeneuve（丹尼斯·维伦纽瓦）]
+    casts: [提莫西·查拉梅, 赞达亚, Rebecca Ferguson（丽贝卡·弗格森）, Javier Bardem（哈维尔·巴登）, Josh Brolin（乔什·布洛林）, 奥斯汀·巴特勒, 弗洛伦丝·皮尤, 戴夫·巴蒂斯塔, 克里斯托弗·沃肯, 蕾雅·赛杜]
+    writers: [Denis Villeneuve（丹尼斯·维伦纽瓦）, 乔·斯派茨]
+  slug: dune-part-two
+  covers:
+  - covers/35575567/01.webp
+  douban_url: https://movie.douban.com/subject/35575567/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: bf2dd15b
+    machine_hash: 4f225072
+    missing_since: null
+- id: "34902583"
+  title: 继母与女儿的蓝调 SP
+  original_title: 義母と娘のブルース 2020年謹賀新年スペシャル
+  year: 2020
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.2
+  douban_score_count: 3697
+  marked_at: "2024-02-17"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 家庭]
+  regions: [日本]
+  languages: [日语]
+  runtime: 119
+  credits:
+    directors: [平川雄一朗]
+    casts: [绫濑遥, 竹野内丰, 佐藤健, 上白石萌歌, 井之胁海, 武田铁矢, 吉川爱]
+    writers: [森下佳子]
+  slug: gibo-to-musume-no-blues
+  covers:
+  - covers/34902583/01.webp
+  douban_url: https://movie.douban.com/subject/34902583/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 04a5fec0
+    machine_hash: 2b571768
+    missing_since: null
+- id: "36645798"
+  title: 一人之下·锈铁重现
+  original_title: null
+  year: 2024
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 5.9
+  douban_score_count: 12355
+  marked_at: "2024-02-15"
+  douban_comment: null
+  tags: []
+  genres: [动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话, 日语]
+  runtime: 70
+  credits:
+    directors: [陈烨]
+    casts: [吴俊全, 曹云图, 小连杀, 马正阳, 王肖兵, 刘明月, 叶知秋, 邓宥希, 柳真颜, 张闻天]
+    writers: [竹林闲者, 陈烨]
+  slug: douban-36645798
+  covers:
+  - covers/36645798/01.webp
+  douban_url: https://movie.douban.com/subject/36645798/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 79179abd
+    machine_hash: bb5cd364
+    missing_since: null
+- id: "34450521"
+  title: 美少女战士Eternal 剧场版 后篇
+  original_title: 劇場版 美少女戦士セーラームーンEternal 後編
+  year: 2021
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 7.1
+  douban_score_count: 1658
+  marked_at: "2024-02-15"
+  douban_comment: null
+  tags: []
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 80
+  credits:
+    directors: [今千秋]
+    casts: [三石琴乃, 福圆美里, 金元寿子, 佐藤利奈, 小清水亚美, 伊藤静, 野岛健儿, 藤井雪代, 大原沙耶香, 前田爱]
+    writers: [笔安一幸, 武内直子]
+  slug: eternal
+  covers:
+  - covers/34450521/01.webp
+  douban_url: https://movie.douban.com/subject/34450521/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4c5fb8d1
+    machine_hash: d56f3294
+    missing_since: null
+- id: "35725869"
+  title: 年会不能停！
+  original_title: null
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 1
+  douban_score: 8.1
+  douban_score_count: 1133651
+  marked_at: "2024-02-13"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 117
+  credits:
+    directors: [董润年]
+    casts: [大鹏, 白客, 庄达菲, 王迅, 孙艺洲, 李乃文, 欧阳奋强, 童漠男, 大木, 晃晃]
+    writers: [董润年, 应萝佳]
+  slug: johnny-keep-walking
+  covers:
+  - covers/35725869/01.webp
+  douban_url: https://movie.douban.com/subject/35725869/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: f1e0b04a
+    machine_hash: 3816abfd
+    missing_since: null
+- id: "35712804"
+  title: 首尔之春
+  original_title: 서울의 봄
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 5
+  douban_score: 8.8
+  douban_score_count: 320575
+  marked_at: "2024-02-12"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 141
+  credits:
+    directors: [金性洙]
+    casts: [黄政民, 郑雨盛, 李星民, 朴解浚, 金成畇, 朴勋, 安世镐, 郑东焕, 金义城, 徐光载]
+    writers: [金性洙]
+  slug: 12-12-the-day
+  covers:
+  - covers/35712804/01.webp
+  douban_url: https://movie.douban.com/subject/35712804/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: e6cc5fd2
+    machine_hash: ad859058
+    missing_since: null
+- id: "26769592"
+  title: 非诚勿扰3
+  original_title: null
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 1
+  douban_score: 5.4
+  douban_score_count: 126762
+  marked_at: "2024-02-12"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 爱情, 科幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 119
+  credits:
+    directors: [冯小刚]
+    casts: [葛优, 舒淇, 范伟, 姚晨, 李诚儒, 关晓彤, 虞书欣, 岳云鹏, 常远, 邬逸聪]
+    writers: [冯小刚, 张耀之]
+  slug: if-you-are-the-one-iii
+  covers:
+  - covers/26769592/01.webp
+  douban_url: https://movie.douban.com/subject/26769592/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 25f885bf
+    machine_hash: 7a86ea97
+    missing_since: null
+- id: "36212386"
+  title: 目中无人2
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.3
+  douban_score_count: 62674
+  marked_at: "2024-02-11"
+  douban_comment: null
+  tags: []
+  genres: [动作, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 90
+  credits:
+    directors: [杨秉佳]
+    casts: [谢苗, 杨恩又, 黄涛, 裴魁山, 班玛加, 刘峰超, 强巴才丹, 萧松原, 江易轩, 张皓森]
+    writers: [杨秉佳]
+  slug: eye-for-an-eye-2
+  covers:
+  - covers/36212386/01.webp
+  douban_url: https://movie.douban.com/subject/36212386/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d80477bc
+    machine_hash: d40a8d6a
+    missing_since: null
+- id: "36149032"
+  title: 我们一起摇太阳
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.0
+  douban_score_count: 300820
+  marked_at: "2024-02-10"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情, 家庭]
+  regions: [中国, 香港]
+  languages: [汉语普通话]
+  runtime: 129
+  credits:
+    directors: [韩延]
+    casts: [彭昱畅, 李庚希, 徐帆, 高亚麟, 刘丹, 王迅, 宋伊人, 刘迅, 李晨, 杨玏]
+    writers: [韩延, 李亮文, 王小艾, 杨富芝]
+  slug: viva-la-vida
+  covers:
+  - covers/36149032/01.webp
+  douban_url: https://movie.douban.com/subject/36149032/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: acd18b99
+    machine_hash: 700e5c8e
+    missing_since: null
+- id: "25995192"
+  title: 露梁海战
+  original_title: '노량: 죽음의 바다'
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 5.3
+  douban_score_count: 4383
+  marked_at: "2024-02-10"
+  douban_comment: null
+  tags: []
+  genres: [动作, 传记, 历史, 战争]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 153
+  credits:
+    directors: [金汉珉]
+    casts: [金伦奭, 白润植, 郑在泳, 许峻豪, 周锡泰, 吕珍九]
+    writers: [金汉珉, 尹洪基]
+  slug: noryang
+  covers:
+  - covers/25995192/01.webp
+  douban_url: https://movie.douban.com/subject/25995192/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4fe2b233
+    machine_hash: 6e4f1063
+    missing_since: null
+- id: "35579652"
+  title: 养蜂人
+  original_title: The Beekeeper
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.1
+  douban_score_count: 97208
+  marked_at: "2024-02-03"
+  douban_comment: null
+  tags: []
+  genres: [动作, 惊悚]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 105
+  credits:
+    directors: [David Ayer（大卫·阿耶）]
+    casts: [Jason Statham（杰森·斯坦森）, Josh Hutcherson（乔什·哈切森）, Jeremy Irons（杰瑞米·艾恩斯）, Emmy Raver-Lampman（艾美·拉韦尔-兰普曼）, Bobby Naderi（鲍比·纳德利）, 大卫·威茨, 米迦勒·埃普, 泰勒·詹姆斯, 菲利西亚·拉斯海德, 吉玛·雷德格里夫]
+    writers: [科特·维莫]
+  slug: the-beekeeper
+  covers:
+  - covers/35579652/01.webp
+  douban_url: https://movie.douban.com/subject/35579652/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4167e3f4
+    machine_hash: 4bc4a7fd
+    missing_since: null
+- id: "35797506"
+  title: 鱼之子
+  original_title: さかなのこ
+  year: 2022
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.1
+  douban_score_count: 36711
+  marked_at: "2024-01-28"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 139
+  credits:
+    directors: [冲田修一]
+    casts: [能年玲奈, 柳乐优弥, 夏帆, 矶村勇斗, 冈山天音, 三宅弘城, 井川遥, 朝仓亚纪, 西村瑞季, 宇野祥平]
+    writers: [冲田修一, 前田司郎]
+  slug: the-fish-tale
+  covers:
+  - covers/35797506/01.webp
+  douban_url: https://movie.douban.com/subject/35797506/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 24d7a75e
+    machine_hash: 19ef01a9
+    missing_since: null
+- id: "36318462"
+  title: 父与女的风景
+  original_title: 父と娘の風景
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 8.7
+  douban_score_count: 1138
+  marked_at: "2024-01-27"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 短片]
+  regions: [日本]
+  languages: [日语]
+  runtime: 3
+  credits:
+    directors: [柳泽翔]
+    casts: [小田切让, 山崎天]
+    writers: []
+  slug: father-and-daughter
+  covers:
+  - covers/36318462/01.webp
+  douban_url: https://movie.douban.com/subject/36318462/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d506e9a0
+    machine_hash: a833cbce
+    missing_since: null
+- id: "11584024"
+  title: 我们仍未知道那天所看见的花的名字 剧场版
+  original_title: 劇場版 あの日見た花の名前を僕達はまだ知らない。
+  year: 2013
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 8.6
+  douban_score_count: 49898
+  marked_at: "2024-01-27"
+  douban_comment: null
+  tags: []
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 99
+  credits:
+    directors: [长井龙雪]
+    casts: [入野自由, 茅野爱衣, 户松遥, 樱井孝宏, 早见沙织, 近藤孝行, 田村睦心, 濑户麻沙美, 丰崎爱生, 小形满]
+    writers: [冈田麿里]
+  slug: anohana
+  covers:
+  - covers/11584024/01.webp
+  douban_url: https://movie.douban.com/subject/11584024/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: e58a7348
+    machine_hash: 71d5e8c3
+    missing_since: null
+- id: "35797709"
+  title: 怪物
+  original_title: null
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 5
+  douban_score: 8.6
+  douban_score_count: 266848
+  marked_at: "2024-01-20"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 125
+  credits:
+    directors: [是枝裕和]
+    casts: [安藤樱, 永山瑛太, 黑川想矢, 柊木阳太, 角田晃广, 黑田大辅, 森冈龙, 北浦爱, 片山萌美, 野吕佳代]
+    writers: [坂元裕二]
+  slug: monster
+  covers:
+  - covers/35797709/01.webp
+  douban_url: https://movie.douban.com/subject/35797709/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: dc4183ad
+    machine_hash: 1f8989bb
+    missing_since: null
+- id: "35737692"
+  title: 嗷呜
+  original_title: ハウ
+  year: 2022
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: 6.4
+  douban_score_count: 628
+  marked_at: "2024-01-20"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 118
+  credits:
+    directors: [犬童一心]
+    casts: [田中圭, 池田依来沙, 野间口彻, 渡边真起子, 长泽树, 莫托拉·世理奈, 宫本信子, 石桥莲司, 深川麻衣, 田中要次]
+    writers: [齐藤浩史]
+  slug: haw
+  covers:
+  - covers/35737692/01.webp
+  douban_url: https://movie.douban.com/subject/35737692/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 7a5aedd8
+    machine_hash: e2b94983
+    missing_since: null
+- id: "30337845"
+  title: 活出“树木希林”
+  original_title: “樹木希林”を生きる
+  year: 2018
+  type: movie
+  category: documentary
+  status: collect
+  user_rating: 4
+  douban_score: 8.4
+  douban_score_count: 5805
+  marked_at: "2024-01-20"
+  douban_comment: null
+  tags: []
+  genres: [纪录片]
+  regions: [日本]
+  languages: [日语]
+  runtime: 73
+  credits:
+    directors: [木寺一孝]
+    casts: [树木希林, 是枝裕和]
+    writers: []
+  slug: douban-30337845
+  covers:
+  - covers/30337845/01.webp
+  douban_url: https://movie.douban.com/subject/30337845/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 9c6755d2
+    machine_hash: 12218eef
+    missing_since: null
+- id: "36721222"
+  title: 女儿国前传
+  original_title: null
+  year: 2024
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 1
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2024-01-13"
+  douban_comment: null
+  tags: []
+  genres: [动作, 爱情]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 86
+  credits:
+    directors: [王凯, 杨海艇]
+    casts: [姚星彤, 朱庭北, 安琥, 曹禹澄]
+    writers: []
+  slug: douban-36721222
+  covers:
+  - covers/36721222/01.webp
+  douban_url: https://movie.douban.com/subject/36721222/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: f200bba3
+    machine_hash: c8b3fce5
+    missing_since: null
+- id: "36666748"
+  title: 孤独的美食家 2023除夕特别篇
+  original_title: 孤独のグルメ 2023大晦日スペシャル
+  year: 2023
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 8.5
+  douban_score_count: 6279
+  marked_at: "2024-01-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 74
+  credits:
+    directors: [北畑龙一]
+    casts: [松重丰, 国仲凉子, 豊本明长, 川平慈英]
+    writers: [田口佳宏]
+  slug: douban-36666748
+  covers:
+  - covers/36666748/01.webp
+  douban_url: https://movie.douban.com/subject/36666748/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: ad96707f
+    machine_hash: f3bfcc31
+    missing_since: null
+- id: "36590123"
+  title: 第74届NHK红白歌会
+  original_title: 第74回NHK紅白歌合戦
+  year: 2023
+  type: movie
+  category: variety
+  status: collect
+  user_rating: 3
+  douban_score: 7.4
+  douban_score_count: 679
+  marked_at: "2024-01-01"
+  douban_comment: null
+  tags: []
+  genres: [音乐, 歌舞, 真人秀]
+  regions: [日本]
+  languages: [日语]
+  runtime: 260
+  credits:
+    directors: []
+    casts: [有吉弘行, 桥本环奈, 滨边美波]
+    writers: []
+  slug: 74nhk
+  covers:
+  - covers/36590123/01.webp
+  douban_url: https://movie.douban.com/subject/36590123/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d206c830
+    machine_hash: 7108560c
+    missing_since: null

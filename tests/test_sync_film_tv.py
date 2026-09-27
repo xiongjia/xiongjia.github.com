@@ -18,7 +18,7 @@ from PIL import Image
 
 from scripts import film_tv_check, sync_film_tv
 from shared.film_tv_model import Taxonomy, cover_key, machine_hash
-from shared.film_tv_parse import Interest, ListItem, Subject
+from shared.film_tv_parse import Interest, ListItem, ListPage, Subject
 from shared.film_tv_store import Entry, read_entries, write_file
 
 TAXONOMY_PATH = (
@@ -180,6 +180,21 @@ def test_new_row_is_never_starved_by_the_pending_backfill():
     # and with no limit the backfill is still queued behind it
     assert len(sync_film_tv.cap_queue(tasks, 0)) == 60
     assert [task.item.id for task in sync_film_tv.cap_queue(tasks, 3)][0] == "999"
+
+
+def test_pending_details_puts_the_dateless_records_first():
+    """Their detail page is the only source of a date, so they must not wait."""
+    index = {
+        "1": make_entry("1", marked_at="2021-10-01"),
+        "2": make_entry("2", marked_at=None),  # no date: needs the detail
+        "3": make_entry("3", marked_at="2026-09-25"),
+    }
+    for entry in index.values():
+        entry.meta["detail_synced_at"] = None
+
+    pending = sync_film_tv.pending_details(index)
+
+    assert [entry.id for entry in pending] == ["2", "3", "1"]
 
 
 # --- prune ------------------------------------------------------------------
@@ -792,3 +807,567 @@ def test_build_machine_survives_a_skeleton_merge(taxonomy):
     assert merged.machine["genres"] == ["科幻"]  # detail value kept
     assert merged.machine["runtime"] == 155
     assert merged.machine["slug"] == entry.machine["slug"]
+
+
+# --- list walk: truncation guard + resume ------------------------------------
+
+
+def _walk_ctx(tmp_path: Path, *, index: dict[str, Entry] | None = None):
+    """A real context (the walk merges rows, so taxonomy/config must be live)."""
+    return sync_film_tv.SyncContext(
+        config=_config(tmp_path),
+        taxonomy=Taxonomy.load(TAXONOMY_PATH),
+        state=sync_film_tv.State(tmp_path / "state"),
+        index=index if index is not None else {},
+        session=FakeSession(),
+        list_session="anonymous",
+        account_session="account",
+        counts={"details": 0, "covers": 0, "failed": 0, "missing": 0, "new": 0},
+        taken=set(),
+        covers=1,
+        persons={},
+        dry_run=True,
+    )
+
+
+def _fake_pages(script, calls: list[tuple[str, str, int]]):
+    """Build a `fetch_list_page` stub; *script* maps (kind, type_filter, start)."""
+
+    def fake_fetch(session, *, user_id, kind, type_filter, start):
+        calls.append((kind, type_filter, start))
+        return script(kind, type_filter, start)
+
+    return fake_fetch
+
+
+def _movie_rows(start: int, count: int = 30) -> list[ListItem]:
+    return [row(id=str(start + offset + 100)) for offset in range(count)]
+
+
+def test_walk_aborts_instead_of_truncating_on_a_persistent_empty_page(tmp_path, monkeypatch):
+    """An empty page mid-list is throttling, not the end — never lose the tail."""
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    calls: list[tuple[str, str, int]] = []
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) == ("collect", "movie"):
+            # 90 rows advertised, 30 served, then the list goes quiet
+            return ListPage(total=90, items=_movie_rows(start) if start == 0 else [])
+        return ListPage(total=0, items=[])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, calls))
+
+    with pytest.raises(sync_film_tv.SyncError, match="came back empty"):
+        sync_film_tv.walk_lists(
+            ctx, user_id="u", baseline={}, max_pages=None, full=True, resume=True
+        )
+
+    empty_calls = [call for call in calls if call == ("collect", "movie", 30)]
+    assert len(empty_calls) == sync_film_tv.EMPTY_PAGE_RETRIES + 1  # retried, then aborted
+    assert ctx.state.walk_cursor("collect/movie") == 30  # progress kept for the resume
+    assert ctx.state.walk_total("collect/movie") == 90
+
+
+def test_walk_recovers_when_the_empty_page_was_transient(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    calls: list[tuple[str, str, int]] = []
+    seen: dict[int, int] = {}
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) != ("collect", "movie"):
+            return ListPage(total=0, items=[])
+        seen[start] = seen.get(start, 0) + 1
+        if start == 30 and seen[start] == 1:
+            return ListPage(total=60, items=[])  # the soft-throttle answer
+        return ListPage(total=60, items=_movie_rows(start) if start < 60 else [])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, calls))
+
+    rows, _queue, _pages = sync_film_tv.walk_lists(
+        ctx, user_id="u", baseline={}, max_pages=None, full=True, resume=True
+    )
+
+    assert len({item.id for item, _kind, _type in rows}) == 60  # both pages stored
+    assert ctx.state.walk_cursor("collect/movie") == 0  # completed → cursor cleared
+    assert seen[30] == 2  # the empty page was retried, not believed
+
+
+def test_walk_resumes_from_the_recorded_cursor(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.state.set_walk_cursor("collect/movie", 30)
+    calls: list[tuple[str, str, int]] = []
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) != ("collect", "movie"):
+            return ListPage(total=0, items=[])
+        return ListPage(total=60, items=_movie_rows(start) if start < 60 else [])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, calls))
+
+    rows, _queue, _pages = sync_film_tv.walk_lists(
+        ctx, user_id="u", baseline={}, max_pages=None, full=True, resume=True
+    )
+
+    movie_starts = [
+        start for kind, type_filter, start in calls if (kind, type_filter) == ("collect", "movie")
+    ]
+    assert movie_starts == [30, 60]  # page 0 was not requested again
+    assert len(rows) == 30
+    assert ctx.state.walk_cursor("collect/movie") == 0
+
+
+def test_incremental_walk_ignores_and_never_writes_a_cursor(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.state.set_walk_cursor("collect/movie", 30)
+    calls: list[tuple[str, str, int]] = []
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) != ("collect", "movie"):
+            return ListPage(total=0, items=[])
+        return ListPage(total=60, items=_movie_rows(start))
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, calls))
+
+    # `baseline={}` means every row is new, so the incremental short-circuit would
+    # never fire on this stub list — stop after one page instead (the `--pages`
+    # debugging limit)
+    sync_film_tv.walk_lists(ctx, user_id="u", baseline={}, max_pages=1, full=False)
+
+    # the newest rows live on page 0: an incremental run must not skip them
+    assert calls[0] == ("collect", "movie", 0)
+    assert calls.count(("collect", "movie", 30)) == 0
+    assert ctx.state.walk_cursor("collect/movie") == 30  # untouched by an incremental run
+
+
+def test_walk_retries_the_anonymous_session_before_using_the_account(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    challenged = {"count": 0}
+
+    def script(kind, type_filter, start):
+        return ListPage(total=0, items=[])
+
+    def fetch(session, *, user_id, kind, type_filter, start):
+        if session == "anonymous" and challenged["count"] == 0:
+            challenged["count"] += 1
+            raise sync_film_tv.BlockedError("challenged")
+        return script(kind, type_filter, start)
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", fetch)
+
+    sync_film_tv.walk_lists(ctx, user_id="u", baseline={}, max_pages=None, full=True)
+
+    assert challenged["count"] == 1
+    assert ctx.list_used_account is False  # the retry was enough
+    assert ctx.list_account_pages == 0
+
+
+def test_walk_falls_back_to_the_account_and_counts_the_pages(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    calls: list[tuple[str, str, int]] = []
+
+    def fetch(session, *, user_id, kind, type_filter, start):
+        calls.append((str(session), kind, type_filter, start))
+        if session == "anonymous":
+            raise sync_film_tv.BlockedError("challenged")
+        return ListPage(total=0, items=[])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", fetch)
+
+    sync_film_tv.walk_lists(ctx, user_id="u", baseline={}, max_pages=None, full=True)
+
+    assert ctx.list_used_account is True
+    assert ctx.list_account_pages == 4  # one page per tab, on the account session
+    assert ctx.list_account_pages < len(calls)
+
+
+# --- local cover files -------------------------------------------------------
+
+
+def test_dedupe_local_covers_removes_only_byte_identical_orphans(tmp_path):
+    config = _config(tmp_path)
+    subject_dir = config.cover_dir / "covers" / "1"
+    subject_dir.mkdir(parents=True)
+    kept = subject_dir / "02.webp"
+    kept.write_bytes(b"poster")
+    duplicate = subject_dir / "01.webp"
+    duplicate.write_bytes(b"poster")  # the same poster, re-downloaded under a new NN
+    unique = config.cover_dir / "covers" / "2" / "01.webp"
+    unique.parent.mkdir(parents=True)
+    unique.write_bytes(b"a poster whose record has no skeleton yet")
+    index = {"1": make_entry("1", covers=[cover_key("1", 2)])}
+
+    assert sync_film_tv.dedupe_local_covers(config, index, dry_run=True) == 1
+    assert duplicate.is_file()  # a dry run reports, never deletes
+    assert sync_film_tv.dedupe_local_covers(config, index, dry_run=False) == 1
+
+    assert not duplicate.exists()
+    assert kept.is_file() and unique.is_file()
+
+
+def test_dedupe_local_covers_keeps_referenced_duplicates(tmp_path):
+    """Two records may legitimately reference byte-identical posters."""
+    config = _config(tmp_path)
+    (config.cover_dir / "covers" / "1").mkdir(parents=True)
+    (config.cover_dir / "covers" / "2").mkdir(parents=True)
+    (config.cover_dir / "covers" / "1" / "01.webp").write_bytes(b"shared poster")
+    (config.cover_dir / "covers" / "2" / "01.webp").write_bytes(b"shared poster")
+    index = {
+        "1": make_entry("1", covers=[cover_key("1", 1)]),
+        "2": make_entry("2", covers=[cover_key("2", 1)]),
+    }
+
+    assert sync_film_tv.dedupe_local_covers(config, index, dry_run=False) == 0
+    assert (config.cover_dir / "covers" / "1" / "01.webp").is_file()
+
+
+def test_sync_item_persists_the_cover_map_right_away(tmp_path):
+    """The map must survive an interrupt: it is what stops a second download."""
+    config = _config(tmp_path)
+    (config.cover_dir / "covers" / "1").mkdir(parents=True)
+    (config.cover_dir / "covers" / "1" / "01.webp").write_bytes(b"poster")
+    state = sync_film_tv.State(tmp_path / "state")
+    state.remember_cover("1", "p1.jpg", "covers/1/01.webp")
+    subject = Subject(
+        id="1",
+        title="Dune",
+        cover_url="https://img3.doubanio.com/view/photo/s_ratio_poster/public/p1.jpg",
+    )
+    state.save_detail("1", subject)
+    ctx = _walk_ctx(tmp_path)
+    ctx.state = state
+    ctx.dry_run = False
+
+    sync_film_tv._sync_item(ctx, sync_film_tv.Task(row(), "collect", "movie"), progress=(1, 1))
+
+    saved = json.loads((tmp_path / "state" / "covers.json").read_text(encoding="utf-8"))
+    assert saved["1"]["p1.jpg"] == "covers/1/01.webp"
+
+
+# --- completeness / local covers (check script) ------------------------------
+
+
+def _state_with_walk(tmp_path: Path, totals: dict[str, int]) -> Path:
+    state_dir = tmp_path / "state"
+    state_dir.mkdir(parents=True, exist_ok=True)
+    (state_dir / "walk.json").write_text(json.dumps({"total": totals}), encoding="utf-8")
+    return state_dir
+
+
+def test_check_walk_total_flags_an_incomplete_walk(tmp_path, taxonomy):
+    _write_archive(tmp_path, [make_entry("1", marked_at="2021-10-01")])
+    state_dir = _state_with_walk(tmp_path, {"collect/movie": 90, "collect/tv": 30})
+    findings = film_tv_check.Findings()
+
+    info = film_tv_check.check_walk_total(
+        state_dir, film_tv_check.load_archive(tmp_path, only=None, since=None), findings
+    )
+
+    assert (info["expected"], info["records"]) == (120, 1)
+    assert any(item["check"] == "walk-total" for item in findings.errors)
+
+
+def test_check_walk_total_accepts_a_complete_archive(tmp_path, taxonomy):
+    _write_archive(
+        tmp_path,
+        [make_entry("1", marked_at="2021-10-01"), make_entry("2", marked_at="2021-10-02")],
+    )
+    state_dir = _state_with_walk(tmp_path, {"collect/movie": 2})
+    findings = film_tv_check.Findings()
+
+    film_tv_check.check_walk_total(
+        state_dir, film_tv_check.load_archive(tmp_path, only=None, since=None), findings
+    )
+
+    assert findings.errors == []
+
+
+def test_check_walk_total_counts_missing_since_records(tmp_path, taxonomy):
+    """A subject Douban marks deleted still occupies one of the header's rows.
+
+    That is the live case that produced a false alarm: the full walk stored 4292
+    rows, one of them `deleted on Douban`, and excluding it made a complete
+    archive look truncated by one.
+    """
+    entry = make_entry("1", marked_at="2021-10-01")
+    entry.meta["missing_since"] = "2026-01-01"
+    _write_archive(tmp_path, [entry])
+    state_dir = _state_with_walk(tmp_path, {"collect/movie": 1})
+    findings = film_tv_check.Findings()
+
+    info = film_tv_check.check_walk_total(
+        state_dir, film_tv_check.load_archive(tmp_path, only=None, since=None), findings
+    )
+
+    assert info["records"] == 1
+    assert findings.errors == []
+
+
+def test_check_walk_total_skips_without_walk_state(tmp_path, taxonomy):
+    findings = film_tv_check.Findings()
+
+    info = film_tv_check.check_walk_total(tmp_path / "missing", [], findings)
+
+    assert info["expected"] == 0
+    assert findings.errors == []
+    assert any(item["check"] == "walk-total" for item in findings.items)
+
+
+def test_check_local_covers_reports_orphans(tmp_path, taxonomy):
+    cover_dir = tmp_path / "covers"
+    (cover_dir / "covers" / "1").mkdir(parents=True)
+    (cover_dir / "covers" / "1" / "01.webp").write_bytes(b"poster")
+    (cover_dir / "covers" / "1" / "02.webp").write_bytes(b"duplicate")
+    _write_archive(tmp_path, [make_entry("1", covers=[cover_key("1", 1)])])
+    records = film_tv_check.load_archive(tmp_path, only=None, since=None)
+    findings = film_tv_check.Findings()
+
+    info = film_tv_check.check_local_covers(cover_dir, records, findings)
+
+    assert info["local"] == 2 and info["referenced"] == 1
+    assert info["orphans"] == ["covers/1/02.webp"]
+    assert any(item["check"] == "local-orphan" for item in findings.items)
+
+
+def test_check_records_splits_undated_by_detail_state(tmp_path, taxonomy):
+    pending = make_entry("1", marked_at=None, slug="one")
+    pending.meta["detail_synced_at"] = None
+    confirmed = make_entry("2", marked_at=None, slug="two")
+    _write_archive(tmp_path, [pending, confirmed], "movies-undated.yml")
+
+    _, stats, findings = run_checks(tmp_path, taxonomy)
+
+    assert stats["undated"] == 2
+    assert [entry_id for entry_id in stats["undated_pending"]] == ["1"]
+    assert [entry_id for entry_id in stats["undated_confirmed"]] == ["2"]
+    undated = [item for item in findings.items if item["check"] == "undated"]
+    assert len(undated) == 1 and undated[0]["severity"] == "warn"
+    assert "still waiting" in undated[0]["message"]
+
+
+def test_check_records_keeps_pending_undated_records_informational(tmp_path, taxonomy):
+    pending = make_entry("1", marked_at=None, slug="one")
+    pending.meta["detail_synced_at"] = None
+    _write_archive(tmp_path, [pending], "movies-undated.yml")
+
+    _, _, findings = run_checks(tmp_path, taxonomy)
+
+    undated = [item for item in findings.items if item["check"] == "undated"]
+    assert len(undated) == 1 and undated[0]["severity"] == "info"
+
+
+def test_request_raises_gone_error_on_404():
+    session = FakeSession(FakeResponse(404))
+    with pytest.raises(sync_film_tv.GoneError, match="404"):
+        sync_film_tv.request(session, "http://x", what="subject 1309046")
+    assert len(session.calls) == 1  # a permanent answer: never retried
+
+
+def test_sync_item_marks_a_404_subject_as_gone_and_skips_it(tmp_path):
+    """Douban took the subject down: no details and no 看过 date can be had."""
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False
+    ctx.index["1"] = make_entry("1", marked_at=None)
+    ctx.index["1"].meta["detail_synced_at"] = None
+    ctx.session = FakeSession(FakeResponse(404))
+
+    sync_film_tv._sync_item(ctx, sync_film_tv.Task(row(), "collect", "movie"), progress=(1, 1))
+
+    assert ctx.index["1"].meta["missing_since"] == ctx.today
+    assert ctx.index["1"].meta.get("detail_synced_at") is None
+    assert ctx.counts["missing"] == 1
+    assert ctx.state.failures == {}  # gone is not a transient failure
+    # …and the queue stops retrying it on every later run
+    assert [entry.id for entry in sync_film_tv.pending_details(ctx.index)] == []
+
+
+def test_pending_details_skips_gone_records():
+    index = {
+        "1": make_entry("1", marked_at="2021-10-01"),
+        "2": make_entry("2", marked_at=None),
+        "3": make_entry("3", marked_at=None),
+    }
+    for entry in index.values():
+        entry.meta["detail_synced_at"] = None
+    index["3"].meta["missing_since"] = "2026-09-28"  # gone on Douban
+
+    assert [entry.id for entry in sync_film_tv.pending_details(index)] == ["2", "1"]
+
+
+def test_subject_is_empty_detects_a_taken_down_shell():
+    """Douban answers 200 with an empty shell for some removed subjects."""
+    assert sync_film_tv.subject_is_empty(Subject(id="1", title=""))
+    assert sync_film_tv.subject_is_empty(Subject(id="1", title="  "))
+    # any single real signal means the page is a live subject
+    assert not sync_film_tv.subject_is_empty(Subject(id="1", title="Dune"))
+    assert not sync_film_tv.subject_is_empty(
+        Subject(id="1", title="", interest=Interest(marked_at="2021-10-01"))
+    )
+    assert not sync_film_tv.subject_is_empty(
+        Subject(id="1", title="", interest=Interest(status="collect"))
+    )
+    assert not sync_film_tv.subject_is_empty(Subject(id="1", title="", douban_score=7.1))
+
+
+def test_walk_marks_a_deleted_list_row_gone(tmp_path, monkeypatch):
+    """`item-show deleted` is Douban's own signal; probing it only answers 404."""
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False  # the merge only records what a real run would store
+    calls: list[tuple[str, str, int]] = []
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) != ("collect", "movie"):
+            return ListPage(total=0, items=[])
+        rows = [
+            row(id="1"),
+            row(id="2", title="未知电影", deleted=True),
+        ]
+        return ListPage(total=2, items=rows if start == 0 else [])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, calls))
+
+    sync_film_tv.walk_lists(ctx, user_id="u", baseline={}, max_pages=None, full=True)
+
+    assert ctx.index["2"].meta["missing_since"] == ctx.today
+    assert ctx.index["1"].meta["missing_since"] is None
+    assert [entry.id for entry in sync_film_tv.pending_details(ctx.index)] == ["1"]
+
+
+def test_backfill_progress_excludes_gone_records_from_pending():
+    """`pending 0` must stay reachable: nothing can be fetched for a gone record."""
+    index = {"1": make_entry("1"), "2": make_entry("2"), "3": make_entry("3")}
+    for entry in index.values():
+        entry.meta["detail_synced_at"] = None
+    index["1"].meta["detail_synced_at"] = "2026-09-28"  # done
+    index["3"].meta["missing_since"] = "2026-09-28"  # gone on Douban
+
+    line = sync_film_tv.backfill_progress(index)
+
+    assert "pending 1" in line  # record 2 only
+    assert "gone 1" in line
+    assert "details 1/3" in line
+
+
+def test_fetch_detail_confirms_an_empty_page_with_a_second_fetch(tmp_path, monkeypatch):
+    """A throttled session answers an empty page too, so ask once more."""
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False
+    calls: list[str] = []
+    real = Subject(id="1", title="Dune")
+
+    def fake_fetch(session, subject_id, *, person_style="hint"):
+        calls.append(subject_id)
+        return Subject(id=subject_id, title="") if len(calls) == 1 else real
+
+    monkeypatch.setattr(sync_film_tv, "fetch_subject", fake_fetch)
+
+    subject = sync_film_tv._fetch_detail(
+        ctx, row(), "[1/1]", kind="collect", type_filter="movie", dated=False
+    )
+
+    assert subject is real
+    assert len(calls) == 2
+    assert ctx.state.detail("1") is not None  # the good page is cached
+
+
+def test_fetch_detail_marks_a_double_empty_page_as_gone(tmp_path, monkeypatch):
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False
+    calls: list[str] = []
+
+    def fake_fetch(session, subject_id, *, person_style="hint"):
+        calls.append(subject_id)
+        return Subject(id=subject_id, title="")
+
+    monkeypatch.setattr(sync_film_tv, "fetch_subject", fake_fetch)
+
+    subject = sync_film_tv._fetch_detail(
+        ctx, row(), "[1/1]", kind="collect", type_filter="movie", dated=False
+    )
+
+    assert subject is None
+    assert len(calls) == sync_film_tv.EMPTY_SUBJECT_RETRIES + 1
+    assert ctx.index["1"].meta["missing_since"] == ctx.today
+    assert ctx.index["1"].meta["missing_reason"] == "gone"
+    assert ctx.counts["missing"] == 1
+
+
+def test_fetch_detail_never_marks_a_dated_record_gone(tmp_path, monkeypatch):
+    """For a record that has a date, an empty page is a throttle, not a removal."""
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False
+    monkeypatch.setattr(
+        sync_film_tv,
+        "fetch_subject",
+        lambda session, subject_id, *, person_style="hint": Subject(id=subject_id, title=""),
+    )
+
+    subject = sync_film_tv._fetch_detail(
+        ctx, row(), "[1/1]", kind="collect", type_filter="movie", dated=True
+    )
+
+    assert subject is None
+    assert ctx.counts["failed"] == 1
+    assert ctx.state.failures["1"] == "empty subject page"
+    assert ctx.index == {}  # nothing merged, nothing marked
+
+
+def test_walk_revives_a_pruned_record_but_not_a_gone_one(tmp_path, monkeypatch):
+    """Only "the row is back in my collection" undoes the mark."""
+    monkeypatch.setattr(sync_film_tv.time, "sleep", lambda _seconds: None)
+    ctx = _walk_ctx(tmp_path)
+    ctx.dry_run = False
+    ctx.index["1"] = make_entry("1")
+    ctx.index["1"].meta.update(missing_since="2026-01-01", missing_reason="pruned")
+    ctx.index["2"] = make_entry("2")
+    ctx.index["2"].meta.update(missing_since="2026-01-01", missing_reason="gone")
+
+    def script(kind, type_filter, start):
+        if (kind, type_filter) != ("collect", "movie"):
+            return ListPage(total=0, items=[])
+        return ListPage(total=2, items=[row(id="1"), row(id="2")] if start == 0 else [])
+
+    monkeypatch.setattr(sync_film_tv, "fetch_list_page", _fake_pages(script, []))
+
+    sync_film_tv.walk_lists(ctx, user_id="u", baseline={}, max_pages=None, full=True)
+
+    assert ctx.index["1"].meta["missing_since"] is None  # back in the collection
+    assert ctx.index["1"].meta["missing_reason"] is None
+    assert ctx.index["2"].meta["missing_since"] == "2026-01-01"  # still gone
+    assert ctx.index["2"].meta["missing_reason"] == "gone"
+
+
+def test_dedupe_covers_is_a_dry_run_unless_confirmed():
+    args = sync_film_tv.parse_args(["--dedupe-covers"])
+    assert args.dedupe_covers is True
+    assert args.confirm is False  # deleting files needs an explicit --confirm
+    assert sync_film_tv.parse_args(["--dedupe-covers", "--confirm"]).confirm is True
+    assert sync_film_tv.parse_args([]).dedupe_covers is False
+
+
+def test_check_records_does_not_count_gone_records_as_pending_details(tmp_path, taxonomy):
+    """A gone record never gets a slug or a detail page: it is finished, not pending."""
+    dated = make_entry("1", marked_at="2021-10-01")
+    gone = make_entry("2", marked_at=None, slug="", covers=[])
+    gone.meta["detail_synced_at"] = None
+    gone.meta["missing_since"] = "2026-09-28"
+    gone.meta["missing_reason"] = "gone"
+    _write_archive(tmp_path, [dated], "movies-2021.yml")
+    _write_archive(tmp_path, [gone], "movies-undated.yml")
+
+    _, stats, findings = run_checks(tmp_path, taxonomy)
+
+    assert stats["details_pending"] == 0
+    assert stats["deleted"] == 1
+    assert stats["undated_gone"] == ["2"]
+    # two slug-less records must not be reported as a duplicate slug
+    assert findings.errors == []

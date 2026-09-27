@@ -267,6 +267,33 @@ check("shardProblem catches count / date mismatches", () => {
   assert.match(core.shardProblem({ items: null }, 200), /no items array/);
 });
 
+check("isMonthKey only accepts real YYYY-MM keys", () => {
+  assert.equal(core.isMonthKey("2026-09"), true);
+  assert.equal(core.isMonthKey("2008-06"), true);
+  // "undated" sliced to four characters is "unda" — the calendar used to
+  // advertise that as a year on first render (and the chart in 「按年」 mode)
+  assert.equal(core.isMonthKey("undated"), false);
+  assert.equal(core.isMonthKey(""), false);
+  assert.equal(core.isMonthKey("2026-9"), false);
+});
+
+check("calendarYears ignores the undated pseudo-month and sorts oldest-first", () => {
+  const months = {
+    "2026-09": { count: 12 },
+    "2008-06": { count: 63 },
+    "2026-07": { count: 5 },
+    undated: { count: 19 },
+  };
+
+  const years = core.calendarYears(months);
+
+  assert.deepEqual(years, ["2008", "2026"]);
+  assert.equal(years[years.length - 1], "2026"); // the fallback year
+  assert.deepEqual(core.calendarYears(Object.keys(months)), ["2008", "2026"]);
+  assert.deepEqual(core.calendarYears({ undated: { count: 1 } }), []);
+  assert.deepEqual(core.calendarYears({}), []);
+});
+
 function finish() {
   if (failures) {
     console.error(`\n${failures} film-tv-core test(s) failed`);

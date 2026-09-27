@@ -121,7 +121,8 @@ id = 页面总数，0 重复；`type=movie` 3092 + `type=tv` 1200 = 4292）。�
   - [x] `scripts/film_tv_check.py` + `poe film-tv-check`：键格式与 slug 校验（不查本地文件存在）、
     `watched_at` 与年份一致、`slug` 全局唯一、`hidden` / `hidden_comment` 未泄漏到页面/JSON、
     `meta.machine_hash` 与机器字段一致（手改告警）、`meta.taxonomy_version` 过期清单、
-    `base_url` 与 `remote_prefix` 一致、无日期条目（`*-undated.yml`）待补清单、未抓详情计数；
+    `base_url` 与 `remote_prefix` 一致、无日期条目待补清单（分「待补详情 / 已下架被跳过 / 需手填
+    `user.watched_at`」三类）、未抓详情计数；
     支持 `--only <slug>` / `--since <date>` 只校验刚补的一批；`--check-remote` 才查 R2 上的文件存在 /
     孤儿封面（**缺 rclone/R2 凭据时跳过并提示，不报错、不误报孤儿**）；`--data-quality` 输出固定
     格式报告并落 `.cache/film-tv/reports/`
@@ -214,6 +215,13 @@ id = 页面总数，0 重复；`type=movie` 3092 + `type=tv` 1200 = 4292）。�
   - [ ] **（开发者手动）列表全量落盘 + 分批补详情**：`poe sync-film-tv --full --limit 0`
     → 反复 `poe sync-film-tv --limit 300` 直到 `progress: 待补 0`
     （条目数已回填：**4292**；步骤见 `internal/commands.md` 场景 1/3）
+  - [x] **首次全量走查的截断修复（2026-09-27 实测暴露）**：首刷只落了 movie 2190 + tv 1200
+    = **3390**，而页头是 3092 + 1200 = **4292** —— movie 第 73 页（`start=2190`）返回空页时
+    走查当成「列表到底」静默结束（漏掉最老的 ≈900 部）；事后手工请求该页正常返回 30 条，
+    确认是被限流的瞬时空页。已修：空页重试 + 按页头 `total` 校验，收不齐就中止（保留进度）；
+    `--full` 游标写入 `state/walk.json` 支持断点续走；`film-tv-check` 新增 `walk-total`
+    完整性自检与 `local-orphan`（`--dedupe-covers` 清理）。**仍需开发者跑一次
+    `poe sync-film-tv --full` 把缺少的骨架补回来**，否则按 3390 条的统计/影人榜/AI 总结都是偏的
   - [ ] **（开发者手动）封面分批上传 R2**：`poe film-tv-upload-covers [--limit N] [--confirm]`
     （上传目标 `<remote_prefix>/covers/`，与 key `covers/<douban_id>/NN.webp` 对齐）
     → `poe film-tv-check --check-remote` 校对；**上传后本地只保留近几年副本**（全量只存 R2）

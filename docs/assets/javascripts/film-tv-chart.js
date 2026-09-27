@@ -219,12 +219,14 @@
     try {
       const index = await core.fetchJsonOnce(base + "index.json");
       const counts = monthTypeCounts(index, kind);
-      const months = Object.keys(counts).sort();
+      // the "undated" pseudo-month is not a date: as a month it would stretch the
+      // range inputs, sliced it would offer "unda 年" in the year rotation
+      const months = Object.keys(counts).filter(core.isMonthKey).sort();
       if (!months.length) {
         summary.textContent = "暂无观影量数据（先跑一次同步与派生）。";
         return;
       }
-      const years = [...new Set(months.map((month) => month.slice(0, 4)))].reverse();
+      const years = core.calendarYears(counts).reverse(); // newest first
       const state = {
         counts,
         kind,

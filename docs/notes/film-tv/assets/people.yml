@@ -1,26 +1,3960 @@
 people:
-- avg_rating: 2.67
+- avg_rating: 2.33
   douban_id: '27491948'
   douban_url: https://www.douban.com/personage/27491948/
-  first_year: 2026
+  first_year: 2023
   last_year: 2026
   name: 雷佳音
   ratings:
   - 3
   - 1
   - 4
+  - 4
+  - 1
+  - 3
+  - 2
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 9
+- avg_rating: 3.0
+  douban_id: '27552155'
+  douban_url: https://www.douban.com/personage/27552155/
+  first_year: 2023
+  last_year: 2025
+  name: 刘思岑
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.29
+  douban_id: '27568875'
+  douban_url: https://www.douban.com/personage/27568875/
+  first_year: 2023
+  last_year: 2025
+  name: 刘校妤
+  ratings:
+  - 2
+  - 4
+  - 3
+  - 4
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.29
+  douban_id: '27554562'
+  douban_url: https://www.douban.com/personage/27554562/
+  first_year: 2023
+  last_year: 2025
+  name: 刘琮
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.43
+  douban_id: '27222691'
+  douban_url: https://www.douban.com/personage/27222691/
+  first_year: 2023
+  last_year: 2026
+  name: 松重丰
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.14
+  douban_id: '30362474'
+  douban_url: https://www.douban.com/personage/30362474/
+  first_year: 2023
+  last_year: 2026
+  name: 段艺璇
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.43
+  douban_id: '27494779'
+  douban_url: https://www.douban.com/personage/27494779/
+  first_year: 2023
+  last_year: 2026
+  name: 王传君
+  ratings:
+  - 4
+  - 3
+  - 5
+  - 1
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 7
+- avg_rating: 2.71
+  douban_id: '27575678'
+  douban_url: https://www.douban.com/personage/27575678/
+  first_year: 2023
+  last_year: 2026
+  name: 魏翔
+  ratings:
+  - 3
+  - 2
+  - 4
+  - 3
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 7
+- avg_rating: 3.5
+  douban_id: '27495810'
+  douban_url: https://www.douban.com/personage/27495810/
+  first_year: 2023
+  last_year: 2026
+  name: Pedro Pascal（佩德罗·帕斯卡）
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 6
+- avg_rating: 3.5
+  douban_id: '27551500'
+  douban_url: https://www.douban.com/personage/27551500/
+  first_year: 2023
+  last_year: 2024
+  name: 张杰
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 6
+- avg_rating: 2.5
+  douban_id: '27481704'
+  douban_url: https://www.douban.com/personage/27481704/
+  first_year: 2023
+  last_year: 2026
+  name: 马丽
+  ratings:
+  - 2
+  - 3
+  - 3
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 6
+- avg_rating: 3.71
+  douban_id: '27568829'
+  douban_url: https://www.douban.com/personage/27568829/
+  first_year: 2024
+  last_year: 2026
+  name: 马华
+  ratings:
+  - 5
+  - 5
+  - 3
+  - 3
+  - 4
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 6
+- avg_rating: 3.0
+  douban_id: '27253788'
+  douban_url: https://www.douban.com/personage/27253788/
+  first_year: 2024
+  last_year: 2026
+  name: Anne Hathaway（安妮·海瑟薇）
+  ratings:
+  - 1
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '27223691'
+  douban_url: https://www.douban.com/personage/27223691/
+  first_year: 2023
+  last_year: 2026
+  name: Chris Pratt（克里斯·帕拉特）
+  ratings:
+  - 3
+  - 3
+  - 2
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.4
+  douban_id: '27433564'
+  douban_url: https://www.douban.com/personage/27433564/
+  first_year: 2024
+  last_year: 2025
+  name: 佐藤健
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.0
+  douban_id: '35135344'
+  douban_url: https://www.douban.com/personage/35135344/
+  first_year: 2023
+  last_year: 2025
+  name: 卢力峰
+  ratings:
+  - 2
+  - 4
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.4
+  douban_id: '27480657'
+  douban_url: https://www.douban.com/personage/27480657/
+  first_year: 2024
+  last_year: 2026
+  name: 姜武
+  ratings:
+  - 3
+  - 4
+  - 2
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 2.6
+  douban_id: '27494783'
+  douban_url: https://www.douban.com/personage/27494783/
+  first_year: 2024
+  last_year: 2026
+  name: 孙艺洲
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.0
+  douban_id: '27367155'
+  douban_url: https://www.douban.com/personage/27367155/
+  first_year: 2023
+  last_year: 2025
+  name: 山本耕史
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 2.6
+  douban_id: '27480237'
+  douban_url: https://www.douban.com/personage/27480237/
+  first_year: 2024
+  last_year: 2026
+  name: 李晨
+  ratings:
+  - 3
+  - 3
+  - 1
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.4
+  douban_id: '27310920'
+  douban_url: https://www.douban.com/personage/27310920/
+  first_year: 2024
+  last_year: 2026
+  name: 李炳宪
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.0
+  douban_id: '30481908'
+  douban_url: https://www.douban.com/personage/30481908/
+  first_year: 2023
+  last_year: 2025
+  name: 李诗萌
+  ratings:
+  - 3
+  - 3
+  - 2
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '35114005'
+  douban_url: https://www.douban.com/personage/35114005/
+  first_year: 2023
+  last_year: 2025
+  name: 杨默
+  ratings:
+  - 5
+  - 3
+  - 3
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '27553317'
+  douban_url: https://www.douban.com/personage/27553317/
+  first_year: 2024
+  last_year: 2025
+  name: 林强
+  ratings:
+  - 4
+  - 2
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 2.4
+  douban_id: '27492012'
+  douban_url: https://www.douban.com/personage/27492012/
+  first_year: 2023
+  last_year: 2026
+  name: 潘斌龙
+  ratings:
+  - 1
+  - 3
+  - 4
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.6
+  douban_id: '33429444'
+  douban_url: https://www.douban.com/personage/33429444/
+  first_year: 2023
+  last_year: 2026
+  name: 田口佳宏
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 5
+- avg_rating: 3.0
+  douban_id: '27572788'
+  douban_url: https://www.douban.com/personage/27572788/
+  first_year: 2023
+  last_year: 2026
+  name: 白客
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 1
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '27584733'
+  douban_url: https://www.douban.com/personage/27584733/
+  first_year: 2023
+  last_year: 2024
+  name: 矶村勇斗
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '27241403'
+  douban_url: https://www.douban.com/personage/27241403/
+  first_year: 2024
+  last_year: 2026
+  name: 绫濑遥
+  ratings:
+  - 2
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.2
+  douban_id: '30359062'
+  douban_url: https://www.douban.com/personage/30359062/
+  first_year: 2023
+  last_year: 2026
+  name: 胡良伟
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.0
+  douban_id: '27568861'
+  douban_url: https://www.douban.com/personage/27568861/
+  first_year: 2023
+  last_year: 2026
+  name: 袁洁
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 5
+- avg_rating: 3.2
+  douban_id: '35762742'
+  douban_url: https://www.douban.com/personage/35762742/
+  first_year: 2023
+  last_year: 2024
+  name: 贺文潇
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 5
+- avg_rating: 4.0
+  douban_id: '27588597'
+  douban_url: https://www.douban.com/personage/27588597/
+  first_year: 2024
+  last_year: 2026
+  name: 陈张太康
+  ratings:
+  - 5
+  - 3
+  - 4
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.0
+  douban_id: '27576403'
+  douban_url: https://www.douban.com/personage/27576403/
+  first_year: 2023
+  last_year: 2025
+  name: 马正阳
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 5
+- avg_rating: 3.25
+  douban_id: '27575652'
+  douban_url: https://www.douban.com/personage/27575652/
+  first_year: 2023
+  last_year: 2026
+  name: Anya Taylor-Joy（安雅·泰勒-乔伊）
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '30159681'
+  douban_url: https://www.douban.com/personage/30159681/
+  first_year: 2023
+  last_year: 2026
+  name: Ariana Greenblatt（阿丽亚娜·格林布拉特）
+  ratings:
+  - 3
+  - 4
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27259348'
+  douban_url: https://www.douban.com/personage/27259348/
+  first_year: 2023
+  last_year: 2026
+  name: Brendan Fraser（布兰登·费舍）
+  ratings:
+  - 4
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27550245'
+  douban_url: https://www.douban.com/personage/27550245/
+  first_year: 2023
+  last_year: 2026
+  name: Cailee Spaeny（卡莉·史派妮）
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.75
+  douban_id: '27216272'
+  douban_url: https://www.douban.com/personage/27216272/
+  first_year: 2024
+  last_year: 2025
+  name: Chiwetel Ejiofor（切瓦特·埃加福）
+  ratings:
+  - 4
+  - 2
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27569183'
+  douban_url: https://www.douban.com/personage/27569183/
+  first_year: 2023
+  last_year: 2026
+  name: Florence Pugh（弗洛伦丝·皮尤）
+  ratings:
+  - 4
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27206120'
+  douban_url: https://www.douban.com/personage/27206120/
+  first_year: 2023
+  last_year: 2026
+  name: Keegan-Michael Key（科甘-迈克尔·凯）
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27294076'
+  douban_url: https://www.douban.com/personage/27294076/
+  first_year: 2023
+  last_year: 2026
+  name: Rebecca Ferguson（丽贝卡·弗格森）
+  ratings:
+  - 3
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27218223'
+  douban_url: https://www.douban.com/personage/27218223/
+  first_year: 2023
+  last_year: 2026
+  name: Ryan Gosling（瑞恩·高斯林）
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '36477577'
+  douban_url: https://www.douban.com/personage/36477577/
+  first_year: 2023
+  last_year: 2026
+  name: 三石
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27549588'
+  douban_url: https://www.douban.com/personage/27549588/
+  first_year: 2024
+  last_year: 2024
+  name: 上白石萌歌
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27546006'
+  douban_url: https://www.douban.com/personage/27546006/
+  first_year: 2023
+  last_year: 2025
+  name: 乔什·弗莱德曼
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 4
+- avg_rating: 2.5
+  douban_id: '34428999'
+  douban_url: https://www.douban.com/personage/34428999/
+  first_year: 2023
+  last_year: 2026
+  name: 于适
+  ratings:
+  - 3
+  - 2
+  - 4
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '27540436'
+  douban_url: https://www.douban.com/personage/27540436/
+  first_year: 2023
+  last_year: 2024
+  name: 井之胁海
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 4.0
+  douban_id: '27576552'
+  douban_url: https://www.douban.com/personage/27576552/
+  first_year: 2023
+  last_year: 2026
+  name: 伊萨·雷
+  ratings:
+  - 3
+  - 4
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 4
+- avg_rating: 1.5
+  douban_id: '27494225'
+  douban_url: https://www.douban.com/personage/27494225/
+  first_year: 2023
+  last_year: 2024
+  name: 余皑磊
+  ratings:
+  - 1
+  - 2
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27233313'
+  douban_url: https://www.douban.com/personage/27233313/
+  first_year: 2023
+  last_year: 2026
+  name: 古天乐
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '36014918'
+  douban_url: https://www.douban.com/personage/36014918/
+  first_year: 2024
+  last_year: 2025
+  name: 史泽鲲
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '27581637'
+  douban_url: https://www.douban.com/personage/27581637/
+  first_year: 2024
+  last_year: 2025
+  name: 叶知秋
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27206215'
+  douban_url: https://www.douban.com/personage/27206215/
+  first_year: 2023
+  last_year: 2026
+  name: 吴京
+  ratings:
+  - 3
+  - 2
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27241363'
+  douban_url: https://www.douban.com/personage/27241363/
+  first_year: 2023
+  last_year: 2026
+  name: 大塚明夫
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.17
+  douban_id: '27555863'
+  douban_url: https://www.douban.com/personage/27555863/
+  first_year: 2023
+  last_year: 2026
+  name: 大鹏
+  ratings:
+  - 3
+  - 4
+  - 4
+  - 4
+  - 1
+  - 3
+  roles:
+  - actor
+  - director
+  - writer
+  works: 4
+- avg_rating: 4.0
+  douban_id: '27491423'
+  douban_url: https://www.douban.com/personage/27491423/
+  first_year: 2023
+  last_year: 2024
+  name: 安藤樱
+  ratings:
+  - 3
+  - 5
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27484577'
+  douban_url: https://www.douban.com/personage/27484577/
+  first_year: 2023
+  last_year: 2024
+  name: 宝木中阳
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27494099'
+  douban_url: https://www.douban.com/personage/27494099/
+  first_year: 2024
+  last_year: 2024
+  name: 平川雄一朗
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - director
+  works: 4
+- avg_rating: 2.25
+  douban_id: '30380543'
+  douban_url: https://www.douban.com/personage/30380543/
+  first_year: 2024
+  last_year: 2026
+  name: 庄达菲
+  ratings:
+  - 3
+  - 4
+  - 1
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '36238029'
+  douban_url: https://www.douban.com/personage/36238029/
+  first_year: 2024
+  last_year: 2026
+  name: 张惠霖
+  ratings:
+  - 5
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.5
+  douban_id: '27485520'
+  douban_url: https://www.douban.com/personage/27485520/
+  first_year: 2023
+  last_year: 2026
+  name: 张若昀
+  ratings:
+  - 3
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 1.75
+  douban_id: '27493523'
+  douban_url: https://www.douban.com/personage/27493523/
+  first_year: 2023
+  last_year: 2026
+  name: 张译
+  ratings:
+  - 1
+  - 3
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27546840'
+  douban_url: https://www.douban.com/personage/27546840/
+  first_year: 2023
+  last_year: 2025
+  name: 彭昱畅
+  ratings:
+  - 4
+  - 2
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27226393'
+  douban_url: https://www.douban.com/personage/27226393/
+  first_year: 2024
+  last_year: 2026
+  name: 早见沙织
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 1.5
+  douban_id: '27489156'
+  douban_url: https://www.douban.com/personage/27489156/
+  first_year: 2023
+  last_year: 2026
+  name: 易烊千玺
+  ratings:
+  - 1
+  - 1
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27585979'
+  douban_url: https://www.douban.com/personage/27585979/
+  first_year: 2023
+  last_year: 2025
+  name: 曹云图
+  ratings:
+  - 4
+  - 5
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '37225403'
+  douban_url: https://www.douban.com/personage/37225403/
+  first_year: 2024
+  last_year: 2026
+  name: 曾元俊
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27496647'
+  douban_url: https://www.douban.com/personage/27496647/
+  first_year: 2023
+  last_year: 2025
+  name: 朴成焄
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.0
+  douban_id: '27495086'
+  douban_url: https://www.douban.com/personage/27495086/
+  first_year: 2024
+  last_year: 2026
+  name: 李乃文
+  ratings:
+  - 3
+  - 2
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 4
+- avg_rating: 4.0
+  douban_id: '30157412'
+  douban_url: https://www.douban.com/personage/30157412/
+  first_year: 2023
+  last_year: 2024
+  name: 李到晛
+  ratings:
+  - 3
+  - 5
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.5
+  douban_id: '34978388'
+  douban_url: https://www.douban.com/personage/34978388/
+  first_year: 2024
+  last_year: 2026
+  name: 李雪琴
+  ratings:
+  - 4
+  - 3
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27553618'
+  douban_url: https://www.douban.com/personage/27553618/
+  first_year: 2023
+  last_year: 2024
+  name: 杨天翔
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.0
+  douban_id: '27258124'
+  douban_url: https://www.douban.com/personage/27258124/
+  first_year: 2024
+  last_year: 2026
+  name: 杨幂
+  ratings:
+  - 1
+  - 1
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '35473423'
+  douban_url: https://www.douban.com/personage/35473423/
+  first_year: 2023
+  last_year: 2026
+  name: 杨恩又
+  ratings:
+  - 2
+  - 5
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27483317'
+  douban_url: https://www.douban.com/personage/27483317/
+  first_year: 2023
+  last_year: 2025
+  name: 杨皓宇
+  ratings:
+  - 5
+  - 4
+  - 1
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '35881696'
+  douban_url: https://www.douban.com/personage/35881696/
+  first_year: 2024
+  last_year: 2026
+  name: 柳真颜
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27493092'
+  douban_url: https://www.douban.com/personage/27493092/
+  first_year: 2024
+  last_year: 2024
+  name: 森下佳子
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - writer
+  works: 4
+- avg_rating: 3.0
+  douban_id: '30161516'
+  douban_url: https://www.douban.com/personage/30161516/
+  first_year: 2023
+  last_year: 2026
+  name: 毕雯珺
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27254333'
+  douban_url: https://www.douban.com/personage/27254333/
+  first_year: 2023
+  last_year: 2025
+  name: 江口德子
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.5
+  douban_id: '27576511'
+  douban_url: https://www.douban.com/personage/27576511/
+  first_year: 2023
+  last_year: 2025
+  name: 汤水雨
+  ratings:
+  - 3
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '27547775'
+  douban_url: https://www.douban.com/personage/27547775/
+  first_year: 2023
+  last_year: 2025
+  name: 王迅
+  ratings:
+  - 4
+  - 1
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27541412'
+  douban_url: https://www.douban.com/personage/27541412/
+  first_year: 2024
+  last_year: 2026
+  name: 王骁
+  ratings:
+  - 4
+  - 5
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27580928'
+  douban_url: https://www.douban.com/personage/27580928/
+  first_year: 2023
+  last_year: 2025
+  name: 瑞切尔·豪斯
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '36574929'
+  douban_url: https://www.douban.com/personage/36574929/
+  first_year: 2023
+  last_year: 2025
+  name: 石头熊
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27360118'
+  douban_url: https://www.douban.com/personage/27360118/
+  first_year: 2024
+  last_year: 2024
+  name: 竹野内丰
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '36044752'
+  douban_url: https://www.douban.com/personage/36044752/
+  first_year: 2023
+  last_year: 2025
+  name: 羊仔
+  ratings:
+  - 5
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '27503025'
+  douban_url: https://www.douban.com/personage/27503025/
+  first_year: 2023
+  last_year: 2025
+  name: 能年玲奈
+  ratings:
+  - 4
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '30182878'
+  douban_url: https://www.douban.com/personage/30182878/
+  first_year: 2023
+  last_year: 2025
+  name: 苗壮
+  ratings:
+  - 3
+  - 5
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.5
+  douban_id: '27257290'
+  douban_url: https://www.douban.com/personage/27257290/
+  first_year: 2023
+  last_year: 2024
+  name: 范伟
+  ratings:
+  - 3
+  - 1
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.5
+  douban_id: '35477349'
+  douban_url: https://www.douban.com/personage/35477349/
+  first_year: 2023
+  last_year: 2026
+  name: 蒋奇明
+  ratings:
+  - 4
+  - 2
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '27575321'
+  douban_url: https://www.douban.com/personage/27575321/
+  first_year: 2023
+  last_year: 2025
+  name: 藤新
+  ratings:
+  - 4
+  - 5
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.75
+  douban_id: '27560878'
+  douban_url: https://www.douban.com/personage/27560878/
+  first_year: 2024
+  last_year: 2026
+  name: 贾冰
+  ratings:
+  - 2
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 2.75
+  douban_id: '27481134'
+  douban_url: https://www.douban.com/personage/27481134/
+  first_year: 2024
+  last_year: 2026
+  name: 郑恺
+  ratings:
+  - 3
+  - 1
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27568877'
+  douban_url: https://www.douban.com/personage/27568877/
+  first_year: 2023
+  last_year: 2024
+  name: 郭政建
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 4.5
+  douban_id: '27497269'
+  douban_url: https://www.douban.com/personage/27497269/
+  first_year: 2024
+  last_year: 2026
+  name: 陈浩
+  ratings:
+  - 4
+  - 5
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.75
+  douban_id: '30500740'
+  douban_url: https://www.douban.com/personage/30500740/
+  first_year: 2023
+  last_year: 2026
+  name: 高允贞
+  ratings:
+  - 4
+  - 3
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.25
+  douban_id: '27481212'
+  douban_url: https://www.douban.com/personage/27481212/
+  first_year: 2023
+  last_year: 2026
+  name: 黄渤
+  ratings:
+  - 3
+  - 4
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 4
+- avg_rating: 3.0
+  douban_id: '35135069'
+  douban_url: https://www.douban.com/personage/35135069/
+  first_year: 2023
+  last_year: 2025
+  name: Ariana DeBose（阿丽亚娜·德博斯）
+  ratings:
+  - 2
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27236934'
+  douban_url: https://www.douban.com/personage/27236934/
+  first_year: 2023
+  last_year: 2024
+  name: Catherine O'Hara（凯瑟琳·奥哈拉）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27224715'
+  douban_url: https://www.douban.com/personage/27224715/
+  first_year: 2025
+  last_year: 2026
+  name: Charlize Theron（查理兹·塞隆）
+  ratings:
+  - 4
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.33
+  douban_id: '27260291'
+  douban_url: https://www.douban.com/personage/27260291/
+  first_year: 2023
+  last_year: 2026
+  name: Christopher Nolan（克里斯托弗·诺兰）
+  ratings:
+  - 4
+  - 4
+  - 5
+  - 5
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27516814'
+  douban_url: https://www.douban.com/personage/27516814/
+  first_year: 2023
+  last_year: 2024
+  name: Clare Kilner（克莱尔·基尔纳）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - director
+  works: 3
+- avg_rating: 3.75
+  douban_id: '27549320'
+  douban_url: https://www.douban.com/personage/27549320/
+  first_year: 2023
+  last_year: 2026
+  name: Dave Filoni（戴夫·菲洛尼）
+  ratings:
+  - 3
+  - 4
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27223715'
+  douban_url: https://www.douban.com/personage/27223715/
+  first_year: 2025
+  last_year: 2026
+  name: Dave Franco（戴夫·弗兰科）
+  ratings:
+  - 3
+  - 3
+  - 3
   roles:
   - actor
   works: 3
 - avg_rating: 4.0
-  douban_id: '27253788'
-  douban_url: https://www.douban.com/personage/27253788/
-  first_year: 2026
-  last_year: 2026
-  name: Anne Hathaway（安妮·海瑟薇）
+  douban_id: '27242286'
+  douban_url: https://www.douban.com/personage/27242286/
+  first_year: 2023
+  last_year: 2025
+  name: David S. Goyer（大卫·S·高耶）
   ratings:
   - 4
   - 4
+  - 3
+  - 5
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 2.33
+  douban_id: '27250463'
+  douban_url: https://www.douban.com/personage/27250463/
+  first_year: 2024
+  last_year: 2026
+  name: Dwayne Johnson（道恩·强森）
+  ratings:
+  - 2
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27246777'
+  douban_url: https://www.douban.com/personage/27246777/
+  first_year: 2023
+  last_year: 2026
+  name: Emily Blunt（艾米莉·布朗特）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '35419116'
+  douban_url: https://www.douban.com/personage/35419116/
+  first_year: 2025
+  last_year: 2025
+  name: Emma Myers（艾玛·迈尔斯）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: Harvey Guillen（哈维·吉兰）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27250469'
+  douban_url: https://www.douban.com/personage/27250469/
+  first_year: 2023
+  last_year: 2024
+  name: Henry Cavill（亨利·卡维尔）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27209183'
+  douban_url: https://www.douban.com/personage/27209183/
+  first_year: 2023
+  last_year: 2025
+  name: Hugh Grant（休·格兰特）
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27232878'
+  douban_url: https://www.douban.com/personage/27232878/
+  first_year: 2023
+  last_year: 2025
+  name: Ian McShane（伊恩·麦柯肖恩）
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27255255'
+  douban_url: https://www.douban.com/personage/27255255/
+  first_year: 2023
+  last_year: 2026
+  name: Jack Black（杰克·布莱克）
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.25
+  douban_id: '27532349'
+  douban_url: https://www.douban.com/personage/27532349/
+  first_year: 2024
+  last_year: 2026
+  name: Jared Bush（杰拉德·布什）
+  ratings:
+  - 2
+  - 4
+  - 4
+  - 3
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27228341'
+  douban_url: https://www.douban.com/personage/27228341/
+  first_year: 2023
+  last_year: 2026
+  name: Jason Momoa（杰森·莫玛）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27260182'
+  douban_url: https://www.douban.com/personage/27260182/
+  first_year: 2023
+  last_year: 2025
+  name: Javier Bardem（哈维尔·巴登）
+  ratings:
+  - 3
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: John Lithgow（约翰·利思戈）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.5
+  douban_id: '27232899'
+  douban_url: https://www.douban.com/personage/27232899/
+  first_year: 2023
+  last_year: 2026
+  name: Jon Favreau（乔恩·费儒）
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27266362'
+  douban_url: https://www.douban.com/personage/27266362/
+  first_year: 2024
+  last_year: 2025
+  name: Jonathan Bailey（乔纳森·贝利）
+  ratings:
+  - 4
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27210258'
+  douban_url: https://www.douban.com/personage/27210258/
+  first_year: 2024
+  last_year: 2026
+  name: Josh Brolin（乔什·布洛林）
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27575186'
+  douban_url: https://www.douban.com/personage/27575186/
+  first_year: 2023
+  last_year: 2026
+  name: Justice Smith（贾斯蒂斯·史密斯）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27213761'
+  douban_url: https://www.douban.com/personage/27213761/
+  first_year: 2023
+  last_year: 2025
+  name: Keanu Reeves（基努·里维斯）
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27228323'
+  douban_url: https://www.douban.com/personage/27228323/
+  first_year: 2023
+  last_year: 2024
+  name: Laurence Fishburne（劳伦斯·菲什伯恩）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27548853'
+  douban_url: https://www.douban.com/personage/27548853/
+  first_year: 2023
+  last_year: 2026
+  name: Lupita Nyong'o（露皮塔·尼永奥）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.33
+  douban_id: '27354498'
+  douban_url: https://www.douban.com/personage/27354498/
+  first_year: 2025
+  last_year: 2026
+  name: Matthias Schoenaerts（马提亚斯·修奈尔）
+  ratings:
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27260205'
+  douban_url: https://www.douban.com/personage/27260205/
+  first_year: 2026
+  last_year: 2026
+  name: Meryl Streep（梅丽尔·斯特里普）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27215056'
+  douban_url: https://www.douban.com/personage/27215056/
+  first_year: 2023
+  last_year: 2025
+  name: Nick Offerman（尼克·奥弗曼）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27224733'
+  douban_url: https://www.douban.com/personage/27224733/
+  first_year: 2023
+  last_year: 2024
+  name: Peter Dinklage（彼特·丁拉基）
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27541230'
+  douban_url: https://www.douban.com/personage/27541230/
+  first_year: 2023
+  last_year: 2025
+  name: Pom Klementieff（庞·克莱门捷夫）
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27259337'
+  douban_url: https://www.douban.com/personage/27259337/
+  first_year: 2025
+  last_year: 2026
+  name: Sigourney Weaver（西格妮·韦弗）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27246271'
+  douban_url: https://www.douban.com/personage/27246271/
+  first_year: 2025
+  last_year: 2026
+  name: Stanley Tucci（斯坦利·图齐）
+  ratings:
+  - 4
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27488642'
+  douban_url: https://www.douban.com/personage/27488642/
+  first_year: 2023
+  last_year: 2025
+  name: Vanessa Kirby（凡妮莎·柯比）
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27253890'
+  douban_url: https://www.douban.com/personage/27253890/
+  first_year: 2023
+  last_year: 2025
+  name: Ving Rhames（文·瑞姆斯）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27549497'
+  douban_url: https://www.douban.com/personage/27549497/
+  first_year: 2023
+  last_year: 2026
+  name: 丁勇岱
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '36055173'
+  douban_url: https://www.douban.com/personage/36055173/
+  first_year: 2023
+  last_year: 2024
+  name: 万佳龙
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27550637'
+  douban_url: https://www.douban.com/personage/27550637/
+  first_year: 2024
+  last_year: 2026
+  name: 上田丽奈
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27579908'
+  douban_url: https://www.douban.com/personage/27579908/
+  first_year: 2023
+  last_year: 2023
+  name: 中江和仁
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27480669'
+  douban_url: https://www.douban.com/personage/27480669/
+  first_year: 2023
+  last_year: 2025
+  name: 乌尔善
+  ratings:
+  - 2
+  - 2
+  - 2
+  - 2
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27548558'
+  douban_url: https://www.douban.com/personage/27548558/
+  first_year: 2024
+  last_year: 2026
+  name: 于洋
+  ratings:
+  - 3
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27211129'
+  douban_url: https://www.douban.com/personage/27211129/
+  first_year: 2024
+  last_year: 2026
+  name: 入野自由
+  ratings:
+  - 4
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27219608'
+  douban_url: https://www.douban.com/personage/27219608/
+  first_year: 2023
+  last_year: 2025
+  name: 兰斯·莱迪克
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27228292'
+  douban_url: https://www.douban.com/personage/27228292/
+  first_year: 2023
+  last_year: 2025
+  name: 关继威
+  ratings:
+  - 4
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27579062'
+  douban_url: https://www.douban.com/personage/27579062/
+  first_year: 2024
+  last_year: 2026
+  name: 具教焕
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27493874'
+  douban_url: https://www.douban.com/personage/27493874/
+  first_year: 2023
+  last_year: 2023
+  name: 内田理央
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27258217'
+  douban_url: https://www.douban.com/personage/27258217/
+  first_year: 2023
+  last_year: 2023
+  name: 内野圣阳
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.0
+  douban_id: '27481219'
+  douban_url: https://www.douban.com/personage/27481219/
+  first_year: 2023
+  last_year: 2026
+  name: 冯小刚
+  ratings:
+  - 3
+  - 1
+  - 1
+  - 3
+  roles:
+  - actor
+  - director
+  - writer
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27503858'
+  douban_url: https://www.douban.com/personage/27503858/
+  first_year: 2024
+  last_year: 2026
+  name: 冯绍峰
+  ratings:
+  - 3
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27667538'
+  douban_url: https://www.douban.com/personage/27667538/
+  first_year: 2023
+  last_year: 2024
+  name: 凌振赫
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '36929573'
+  douban_url: https://www.douban.com/personage/36929573/
+  first_year: 2025
+  last_year: 2026
+  name: 刘佳
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  - writer
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27570483'
+  douban_url: https://www.douban.com/personage/27570483/
+  first_year: 2023
+  last_year: 2025
+  name: 刘北辰
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27569775'
+  douban_url: https://www.douban.com/personage/27569775/
+  first_year: 2024
+  last_year: 2026
+  name: 刘明月
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '36521329'
+  douban_url: https://www.douban.com/personage/36521329/
+  first_year: 2024
+  last_year: 2024
+  name: 刘晴
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27242077'
+  douban_url: https://www.douban.com/personage/27242077/
+  first_year: 2023
+  last_year: 2026
+  name: 刘玉玲
+  ratings:
+  - 4
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '36654087'
+  douban_url: https://www.douban.com/personage/36654087/
+  first_year: 2024
+  last_year: 2026
+  name: 北畑龙一
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - director
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27553806'
+  douban_url: https://www.douban.com/personage/27553806/
+  first_year: 2023
+  last_year: 2024
+  name: 史彭元
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27253904'
+  douban_url: https://www.douban.com/personage/27253904/
+  first_year: 2023
+  last_year: 2025
+  name: 吉安卡罗·埃斯波西托
+  ratings:
+  - 2
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '34444040'
+  douban_url: https://www.douban.com/personage/34444040/
+  first_year: 2023
+  last_year: 2023
+  name: 后藤刚范
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '35283573'
+  douban_url: https://www.douban.com/personage/35283573/
+  first_year: 2023
+  last_year: 2025
+  name: 吕书君
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.33
+  douban_id: '27482649'
+  douban_url: https://www.douban.com/personage/27482649/
+  first_year: 2023
+  last_year: 2024
+  name: 吴刚
+  ratings:
+  - 3
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27553519'
+  douban_url: https://www.douban.com/personage/27553519/
+  first_year: 2023
+  last_year: 2024
+  name: 唐小喜
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27553885'
+  douban_url: https://www.douban.com/personage/27553885/
+  first_year: 2023
+  last_year: 2025
+  name: 图特哈蒙
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27349172'
+  douban_url: https://www.douban.com/personage/27349172/
+  first_year: 2023
+  last_year: 2025
+  name: 坂元裕二
+  ratings:
+  - 4
+  - 5
+  - 2
+  roles:
+  - writer
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27586728'
+  douban_url: https://www.douban.com/personage/27586728/
+  first_year: 2024
+  last_year: 2025
+  name: 埃里克·皮尔森
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27334909'
+  douban_url: https://www.douban.com/personage/27334909/
+  first_year: 2023
+  last_year: 2024
+  name: 大竹忍
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27220969'
+  douban_url: https://www.douban.com/personage/27220969/
+  first_year: 2023
+  last_year: 2023
+  name: 太田莉菜
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '36431858'
+  douban_url: https://www.douban.com/personage/36431858/
+  first_year: 2023
+  last_year: 2025
+  name: 娜然
+  ratings:
+  - 2
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27554849'
+  douban_url: https://www.douban.com/personage/27554849/
+  first_year: 2023
+  last_year: 2025
+  name: 孙晔
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '35413177'
+  douban_url: https://www.douban.com/personage/35413177/
+  first_year: 2023
+  last_year: 2025
+  name: 孙路路
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27551957'
+  douban_url: https://www.douban.com/personage/27551957/
+  first_year: 2023
+  last_year: 2023
+  name: 孟祥龙
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27502693'
+  douban_url: https://www.douban.com/personage/27502693/
+  first_year: 2024
+  last_year: 2024
+  name: 宇野祥平
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27566637'
+  douban_url: https://www.douban.com/personage/27566637/
+  first_year: 2023
+  last_year: 2023
+  name: 安达奈绪子
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 3
+- avg_rating: 3.5
+  douban_id: '27260207'
+  douban_url: https://www.douban.com/personage/27260207/
+  first_year: 2023
+  last_year: 2024
+  name: 宫崎骏
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27546224'
+  douban_url: https://www.douban.com/personage/27546224/
+  first_year: 2023
+  last_year: 2023
+  name: 小关裕太
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '37005974'
+  douban_url: https://www.douban.com/personage/37005974/
+  first_year: 2024
+  last_year: 2026
+  name: 屈亦张
+  ratings:
+  - 5
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 3
+- avg_rating: 1.67
+  douban_id: '27502346'
+  douban_url: https://www.douban.com/personage/27502346/
+  first_year: 2023
+  last_year: 2025
+  name: 岳云鹏
+  ratings:
+  - 3
+  - 1
+  - 1
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '30447343'
+  douban_url: https://www.douban.com/personage/30447343/
+  first_year: 2024
+  last_year: 2025
+  name: 常蓉珊
+  ratings:
+  - 4
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27570043'
+  douban_url: https://www.douban.com/personage/27570043/
+  first_year: 2024
+  last_year: 2026
+  name: 常远
+  ratings:
+  - 3
+  - 4
+  - 1
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27488656'
+  douban_url: https://www.douban.com/personage/27488656/
+  first_year: 2024
+  last_year: 2026
+  name: 平岳大
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.33
+  douban_id: '27496698'
+  douban_url: https://www.douban.com/personage/27496698/
+  first_year: 2023
+  last_year: 2025
+  name: 廉惠兰
+  ratings:
+  - 5
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27545159'
+  douban_url: https://www.douban.com/personage/27545159/
+  first_year: 2023
+  last_year: 2026
+  name: 廖子妤
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27481882'
+  douban_url: https://www.douban.com/personage/27481882/
+  first_year: 2023
+  last_year: 2026
+  name: 延尚昊
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27571473'
+  douban_url: https://www.douban.com/personage/27571473/
+  first_year: 2024
+  last_year: 2026
+  name: 张本煜
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27549441'
+  douban_url: https://www.douban.com/personage/27549441/
+  first_year: 2023
+  last_year: 2026
+  name: 张琪
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 1.8
+  douban_id: '27260166'
+  douban_url: https://www.douban.com/personage/27260166/
+  first_year: 2023
+  last_year: 2026
+  name: 张艺谋
+  ratings:
+  - 1
+  - 3
+  - 3
+  - 1
+  - 1
+  roles:
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27608416'
+  douban_url: https://www.douban.com/personage/27608416/
+  first_year: 2024
+  last_year: 2025
+  name: 张闻天
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27574519'
+  douban_url: https://www.douban.com/personage/27574519/
+  first_year: 2023
+  last_year: 2025
+  name: 德里克·科尔斯塔德
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 3
+- avg_rating: 2.33
+  douban_id: '27260298'
+  douban_url: https://www.douban.com/personage/27260298/
+  first_year: 2024
+  last_year: 2026
+  name: 成龙
+  ratings:
+  - 2
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27573135'
+  douban_url: https://www.douban.com/personage/27573135/
+  first_year: 2023
+  last_year: 2026
+  name: 新田真剑佑
+  ratings:
+  - 5
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.25
+  douban_id: '27481533'
+  douban_url: https://www.douban.com/personage/27481533/
+  first_year: 2024
+  last_year: 2026
+  name: 是枝裕和
+  ratings:
+  - 2
+  - 2
+  - 5
+  - 4
+  roles:
+  - actor
+  - director
+  - writer
+  works: 3
+- avg_rating: 3.67
+  douban_id: '34820302'
+  douban_url: https://www.douban.com/personage/34820302/
+  first_year: 2025
+  last_year: 2026
+  name: 李善亨
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27566717'
+  douban_url: https://www.douban.com/personage/27566717/
+  first_year: 2023
+  last_year: 2026
+  name: 李星民
+  ratings:
+  - 3
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.0
+  douban_id: '27547819'
+  douban_url: https://www.douban.com/personage/27547819/
+  first_year: 2023
+  last_year: 2026
+  name: 李梦
+  ratings:
+  - 3
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27228391'
+  douban_url: https://www.douban.com/personage/27228391/
+  first_year: 2023
+  last_year: 2025
+  name: 杨紫琼
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27493664'
+  douban_url: https://www.douban.com/personage/27493664/
+  first_year: 2023
+  last_year: 2026
+  name: 松冈祯丞
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27471724'
+  douban_url: https://www.douban.com/personage/27471724/
+  first_year: 2023
+  last_year: 2023
+  name: 松坂桃李
+  ratings:
+  - 4
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27493143'
+  douban_url: https://www.douban.com/personage/27493143/
+  first_year: 2023
+  last_year: 2025
+  name: 松村北斗
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '35663446'
+  douban_url: https://www.douban.com/personage/35663446/
+  first_year: 2024
+  last_year: 2026
+  name: 柊木阳太
+  ratings:
+  - 4
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27502182'
+  douban_url: https://www.douban.com/personage/27502182/
+  first_year: 2023
+  last_year: 2025
+  name: 染谷将太
+  ratings:
+  - 3
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27347728'
+  douban_url: https://www.douban.com/personage/27347728/
+  first_year: 2023
+  last_year: 2024
+  name: 柴崎幸
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27488600'
+  douban_url: https://www.douban.com/personage/27488600/
+  first_year: 2023
+  last_year: 2026
+  name: 桥本环奈
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27210338'
+  douban_url: https://www.douban.com/personage/27210338/
+  first_year: 2024
+  last_year: 2026
+  name: 梁振邦
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27206426'
+  douban_url: https://www.douban.com/personage/27206426/
+  first_year: 2023
+  last_year: 2023
+  name: 梶芽衣子
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27215468'
+  douban_url: https://www.douban.com/personage/27215468/
+  first_year: 2023
+  last_year: 2026
+  name: 椎名桔平
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27485763'
+  douban_url: https://www.douban.com/personage/27485763/
+  first_year: 2023
+  last_year: 2025
+  name: 槙田雄司
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '34922162'
+  douban_url: https://www.douban.com/personage/34922162/
+  first_year: 2023
+  last_year: 2026
+  name: 此沙
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27481445'
+  douban_url: https://www.douban.com/personage/27481445/
+  first_year: 2023
+  last_year: 2024
+  name: 水野索诺娅
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27550717'
+  douban_url: https://www.douban.com/personage/27550717/
+  first_year: 2023
+  last_year: 2024
+  name: 池田依来沙
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.33
+  douban_id: '27551706'
+  douban_url: https://www.douban.com/personage/27551706/
+  first_year: 2023
+  last_year: 2024
+  name: 沈腾
+  ratings:
+  - 3
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27495165'
+  douban_url: https://www.douban.com/personage/27495165/
+  first_year: 2023
+  last_year: 2024
+  name: 沙溢
+  ratings:
+  - 2
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '30322934'
+  douban_url: https://www.douban.com/personage/30322934/
+  first_year: 2023
+  last_year: 2026
+  name: 滨津隆之
+  ratings:
+  - 3
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27481168'
+  douban_url: https://www.douban.com/personage/27481168/
+  first_year: 2024
+  last_year: 2025
+  name: 滨边美波
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27219604'
+  douban_url: https://www.douban.com/personage/27219604/
+  first_year: 2023
+  last_year: 2024
+  name: 特穆拉·莫里森
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27551710'
+  douban_url: https://www.douban.com/personage/27551710/
+  first_year: 2023
+  last_year: 2025
+  name: 王凯
+  ratings:
+  - 5
+  - 1
+  - 3
+  roles:
+  - actor
+  - director
+  works: 3
+- avg_rating: 3.33
+  douban_id: '36245384'
+  douban_url: https://www.douban.com/personage/36245384/
+  first_year: 2023
+  last_year: 2024
+  name: 王婧儿
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '37026911'
+  douban_url: https://www.douban.com/personage/37026911/
+  first_year: 2024
+  last_year: 2025
+  name: 王子悦
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27553918'
+  douban_url: https://www.douban.com/personage/27553918/
+  first_year: 2023
+  last_year: 2026
+  name: 王宇航
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '35271147'
+  douban_url: https://www.douban.com/personage/35271147/
+  first_year: 2023
+  last_year: 2026
+  name: 王影璐
+  ratings:
+  - 2
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27494024'
+  douban_url: https://www.douban.com/personage/27494024/
+  first_year: 2023
+  last_year: 2023
+  name: 田中美佐子
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27487333'
+  douban_url: https://www.douban.com/personage/27487333/
+  first_year: 2024
+  last_year: 2026
+  name: 田雨
+  ratings:
+  - 3
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27391581'
+  douban_url: https://www.douban.com/personage/27391581/
+  first_year: 2023
+  last_year: 2024
+  name: 神木隆之介
+  ratings:
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27566973'
+  douban_url: https://www.douban.com/personage/27566973/
+  first_year: 2023
+  last_year: 2025
+  name: 章宇
+  ratings:
+  - 5
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27257509'
+  douban_url: https://www.douban.com/personage/27257509/
+  first_year: 2023
+  last_year: 2024
+  name: 竹下景子
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '27546796'
+  douban_url: https://www.douban.com/personage/27546796/
+  first_year: 2023
+  last_year: 2026
+  name: 约翰内斯·豪克尔·约翰内森
+  ratings:
+  - 3
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27505172'
+  douban_url: https://www.douban.com/personage/27505172/
+  first_year: 2023
+  last_year: 2024
+  name: 艾丽娅
+  ratings:
+  - 4
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27493839'
+  douban_url: https://www.douban.com/personage/27493839/
+  first_year: 2024
+  last_year: 2026
+  name: 花江夏树
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27493567'
+  douban_url: https://www.douban.com/personage/27493567/
+  first_year: 2024
+  last_year: 2024
+  name: 菅田将晖
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27206732'
+  douban_url: https://www.douban.com/personage/27206732/
+  first_year: 2023
+  last_year: 2023
+  name: 西岛秀俊
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27504275'
+  douban_url: https://www.douban.com/personage/27504275/
+  first_year: 2023
+  last_year: 2026
+  name: 许宏宇
+  ratings:
+  - 2
+  - 4
+  - 4
+  roles:
+  - director
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27483326'
+  douban_url: https://www.douban.com/personage/27483326/
+  first_year: 2023
+  last_year: 2025
+  name: 谢添天
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27496283'
+  douban_url: https://www.douban.com/personage/27496283/
+  first_year: 2024
+  last_year: 2026
+  name: 赞达亚
+  ratings:
+  - 4
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '35474945'
+  douban_url: https://www.douban.com/personage/35474945/
+  first_year: 2023
+  last_year: 2025
+  name: 赵双
+  ratings:
+  - 4
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '30395414'
+  douban_url: https://www.douban.com/personage/30395414/
+  first_year: 2023
+  last_year: 2024
+  name: 赵铭洲
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27503325'
+  douban_url: https://www.douban.com/personage/27503325/
+  first_year: 2024
+  last_year: 2024
+  name: 边江
+  ratings:
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '36265239'
+  douban_url: https://www.douban.com/personage/36265239/
+  first_year: 2023
+  last_year: 2024
+  name: 邓宥希
+  ratings:
+  - 3
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '36221371'
+  douban_url: https://www.douban.com/personage/36221371/
+  first_year: 2023
+  last_year: 2024
+  name: 郭浩然
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.67
+  douban_id: '27551172'
+  douban_url: https://www.douban.com/personage/27551172/
+  first_year: 2023
+  last_year: 2026
+  name: 金志勋
+  ratings:
+  - 5
+  - 5
+  - 4
+  roles:
+  - actor
+  - director
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27257776'
+  douban_url: https://www.douban.com/personage/27257776/
+  first_year: 2023
+  last_year: 2025
+  name: 铃木庆一
+  ratings:
+  - 4
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '33548684'
+  douban_url: https://www.douban.com/personage/33548684/
+  first_year: 2023
+  last_year: 2025
+  name: 锦鲤
+  ratings:
+  - 5
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '27559526'
+  douban_url: https://www.douban.com/personage/27559526/
+  first_year: 2023
+  last_year: 2024
+  name: 陈明昊
+  ratings:
+  - 3
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 2.67
+  douban_id: '34838614'
+  douban_url: https://www.douban.com/personage/34838614/
+  first_year: 2023
+  last_year: 2025
+  name: 陈牧驰
+  ratings:
+  - 2
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.33
+  douban_id: '27254344'
+  douban_url: https://www.douban.com/personage/27254344/
+  first_year: 2023
+  last_year: 2024
+  name: 风吹淳
+  ratings:
+  - 4
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.0
+  douban_id: '34970379'
+  douban_url: https://www.douban.com/personage/34970379/
+  first_year: 2023
+  last_year: 2023
+  name: 飞永翼
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.67
+  douban_id: '27483576'
+  douban_url: https://www.douban.com/personage/27483576/
+  first_year: 2024
+  last_year: 2026
+  name: 高叶
+  ratings:
+  - 3
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.33
+  douban_id: '27264359'
+  douban_url: https://www.douban.com/personage/27264359/
+  first_year: 2024
+  last_year: 2025
+  name: 麻生祐未
+  ratings:
+  - 5
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 3
+- avg_rating: 4.0
+  douban_id: '27257240'
+  douban_url: https://www.douban.com/personage/27257240/
+  first_year: 2023
+  last_year: 2026
+  name: 黄子华
+  ratings:
+  - 4
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 3
+- avg_rating: 3.5
+  douban_id: '30286031'
+  douban_url: https://www.douban.com/personage/30286031/
+  first_year: 2023
+  last_year: 2026
+  name: Aaron Horvath（亚伦·霍瓦斯）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27223611'
+  douban_url: https://www.douban.com/personage/27223611/
+  first_year: 2024
+  last_year: 2025
+  name: Aaron Taylor-Johnson（亚伦·泰勒-约翰逊）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27246460'
+  douban_url: https://www.douban.com/personage/27246460/
+  first_year: 2023
+  last_year: 2025
+  name: Alden Ehrenreich（阿尔登·埃伦瑞奇）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27512848'
+  douban_url: https://www.douban.com/personage/27512848/
+  first_year: 2023
+  last_year: 2024
+  name: Alex Garland（亚历克斯·加兰）
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27493147'
+  douban_url: https://www.douban.com/personage/27493147/
+  first_year: 2025
+  last_year: 2026
+  name: Alison Brie（爱丽森·布里）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '35000562'
+  douban_url: https://www.douban.com/personage/35000562/
+  first_year: 2023
+  last_year: 2025
+  name: Ally Pankiw（阿丽·潘基乌）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36119442'
+  douban_url: https://www.douban.com/personage/36119442/
+  first_year: 2023
+  last_year: 2023
+  name: Amie Donald（艾米·唐纳德）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27492128'
+  douban_url: https://www.douban.com/personage/27492128/
+  first_year: 2026
+  last_year: 2026
+  name: Andrew Scott（安德鲁·斯科特）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27242199'
+  douban_url: https://www.douban.com/personage/27242199/
+  first_year: 2023
+  last_year: 2024
+  name: Andrew Stanton（安德鲁·斯坦顿）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27216263'
+  douban_url: https://www.douban.com/personage/27216263/
+  first_year: 2023
+  last_year: 2025
+  name: Anjelica Huston（安杰丽卡·休斯顿）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Anthony Mackie（安东尼·麦凯）
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27228309'
+  douban_url: https://www.douban.com/personage/27228309/
+  first_year: 2023
+  last_year: 2025
+  name: Antonio Banderas（安东尼奥·班德拉斯）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30416567'
+  douban_url: https://www.douban.com/personage/30416567/
+  first_year: 2023
+  last_year: 2025
+  name: Anya Chalotra（安亚·查洛特拉）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27502677'
+  douban_url: https://www.douban.com/personage/27502677/
+  first_year: 2024
+  last_year: 2025
+  name: Ariana Grande（爱莉安娜·格兰德）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27224751'
+  douban_url: https://www.douban.com/personage/27224751/
+  first_year: 2024
+  last_year: 2025
+  name: Brian Cox（布莱恩·考克斯）
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '30180273'
+  douban_url: https://www.douban.com/personage/30180273/
+  first_year: 2024
+  last_year: 2024
+  name: Brian Tyree Henry（布莱恩·泰里·亨利）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27232930'
+  douban_url: https://www.douban.com/personage/27232930/
+  first_year: 2023
+  last_year: 2026
+  name: Brie Larson（布丽·拉尔森）
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27258501'
+  douban_url: https://www.douban.com/personage/27258501/
+  first_year: 2023
+  last_year: 2025
+  name: Bryan Woods（布莱恩·伍兹）
+  ratings:
+  - 4
+  - 4
+  - 2
+  - 2
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27233509'
+  douban_url: https://www.douban.com/personage/27233509/
+  first_year: 2023
+  last_year: 2024
+  name: Bryce Dallas Howard（布莱丝·达拉斯·霍华德）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  - director
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27261792'
+  douban_url: https://www.douban.com/personage/27261792/
+  first_year: 2025
+  last_year: 2025
+  name: Catherine Zeta-Jones（凯瑟琳·泽塔-琼斯）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27360369'
+  douban_url: https://www.douban.com/personage/27360369/
+  first_year: 2023
+  last_year: 2023
+  name: Chad Stahelski（查德·斯塔赫斯基）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27210311'
+  douban_url: https://www.douban.com/personage/27210311/
+  first_year: 2023
+  last_year: 2026
+  name: Charlie Day（查理·戴）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27581175'
+  douban_url: https://www.douban.com/personage/27581175/
+  first_year: 2023
+  last_year: 2023
+  name: Chloe Coleman（克洛伊·科尔曼）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27223609'
+  douban_url: https://www.douban.com/personage/27223609/
+  first_year: 2024
+  last_year: 2024
+  name: Chris Evans（克里斯·埃文斯）
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27227686'
+  douban_url: https://www.douban.com/personage/27227686/
+  first_year: 2024
+  last_year: 2024
+  name: Chris Hemsworth（克里斯·海姆斯沃斯）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27259389'
+  douban_url: https://www.douban.com/personage/27259389/
+  first_year: 2023
+  last_year: 2023
+  name: Chris Pine（克里斯·派恩）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27237981'
+  douban_url: https://www.douban.com/personage/27237981/
+  first_year: 2024
+  last_year: 2025
+  name: Chris Sanders（克里斯·桑德斯）
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '30258575'
+  douban_url: https://www.douban.com/personage/30258575/
+  first_year: 2023
+  last_year: 2026
+  name: Christian Convery（克里斯蒂安·康佛瑞）
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27504593'
+  douban_url: https://www.douban.com/personage/27504593/
+  first_year: 2023
+  last_year: 2025
+  name: Christopher McQuarrie（克里斯托弗·麦奎里）
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27325242'
+  douban_url: https://www.douban.com/personage/27325242/
+  first_year: 2023
+  last_year: 2026
+  name: Christopher Miller（克里斯托弗·米勒）
+  ratings:
+  - 4
+  - 5
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27253754'
+  douban_url: https://www.douban.com/personage/27253754/
+  first_year: 2023
+  last_year: 2023
+  name: Cillian Murphy（基里安·墨菲）
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27228305'
+  douban_url: https://www.douban.com/personage/27228305/
+  first_year: 2023
+  last_year: 2026
+  name: Cliff Curtis（克利夫·柯蒂斯）
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27577005'
+  douban_url: https://www.douban.com/personage/27577005/
+  first_year: 2024
+  last_year: 2025
+  name: Cynthia Erivo（辛西娅·埃里沃）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35572460'
+  douban_url: https://www.douban.com/personage/35572460/
+  first_year: 2025
+  last_year: 2026
+  name: Dallas Liu（达拉斯·刘）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27219711'
+  douban_url: https://www.douban.com/personage/27219711/
+  first_year: 2023
+  last_year: 2024
+  name: Dave Bautista（戴夫·巴蒂斯塔）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '34779555'
+  douban_url: https://www.douban.com/personage/34779555/
+  first_year: 2025
+  last_year: 2026
+  name: David Corenswet（大卫·科伦斯韦）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.67
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Dean DeBlois（迪恩·戴布洛伊）
+  ratings:
+  - 4
+  - 4
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.75
+  douban_id: '27495009'
+  douban_url: https://www.douban.com/personage/27495009/
+  first_year: 2024
+  last_year: 2026
+  name: Donald Glover（唐纳德·格洛弗）
+  ratings:
+  - 3
+  - 4
+  - 4
+  - 4
+  roles:
+  - actor
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27342944'
+  douban_url: https://www.douban.com/personage/27342944/
+  first_year: 2023
+  last_year: 2025
+  name: Ebon Moss-Bachrach（艾邦·摩斯-巴克拉赫）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Ed Skrein（艾德·斯克林）
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27485567'
+  douban_url: https://www.douban.com/personage/27485567/
+  first_year: 2023
+  last_year: 2026
+  name: Emily Rudd（埃米莉·拉德）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '33411269'
+  douban_url: https://www.douban.com/personage/33411269/
+  first_year: 2024
+  last_year: 2025
+  name: Emma Corrin（艾玛·科林）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30420214'
+  douban_url: https://www.douban.com/personage/30420214/
+  first_year: 2023
+  last_year: 2023
+  name: Emma Mackey（艾玛·麦基）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27544120'
+  douban_url: https://www.douban.com/personage/27544120/
+  first_year: 2023
+  last_year: 2026
+  name: Emma Sullivan（艾玛·沙利文）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27233626'
+  douban_url: https://www.douban.com/personage/27233626/
+  first_year: 2023
+  last_year: 2025
+  name: Esai Morales（埃塞·莫拉雷斯）
+  ratings:
+  - 4
+  - 3
   roles:
   - actor
   works: 2
@@ -36,6 +3970,311 @@ people:
   roles:
   - actor
   works: 2
+- avg_rating: 2.5
+  douban_id: null
+  douban_url: null
+  first_year: 2024
+  last_year: 2025
+  name: Fred Hechinger（弗雷德·赫辛格）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27234377'
+  douban_url: https://www.douban.com/personage/27234377/
+  first_year: 2024
+  last_year: 2024
+  name: Frederick E.O. Toye（弗雷德里克·E·O·托耶）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30352528'
+  douban_url: https://www.douban.com/personage/30352528/
+  first_year: 2023
+  last_year: 2024
+  name: Freya Allan（弗蕾娅·艾伦）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36639479'
+  douban_url: https://www.douban.com/personage/36639479/
+  first_year: 2025
+  last_year: 2026
+  name: Gordon Cormier（戈登·科米尔）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27480568'
+  douban_url: https://www.douban.com/personage/27480568/
+  first_year: 2025
+  last_year: 2025
+  name: Gwendoline Christie（格温多兰·克里斯蒂）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27498349'
+  douban_url: https://www.douban.com/personage/27498349/
+  first_year: 2024
+  last_year: 2025
+  name: Hannah Waddingham（汉娜·沃丁厄姆）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27214929'
+  douban_url: https://www.douban.com/personage/27214929/
+  first_year: 2023
+  last_year: 2025
+  name: Harrison Ford（哈里森·福特）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27205741'
+  douban_url: https://www.douban.com/personage/27205741/
+  first_year: 2023
+  last_year: 2025
+  name: Hayley Atwell（海莉·阿特维尔）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27260158'
+  douban_url: https://www.douban.com/personage/27260158/
+  first_year: 2023
+  last_year: 2023
+  name: Helen Mirren（海伦·米伦）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30206556'
+  douban_url: https://www.douban.com/personage/30206556/
+  first_year: 2024
+  last_year: 2025
+  name: Henry Golding（亨利·戈尔丁）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '34914391'
+  douban_url: https://www.douban.com/personage/34914391/
+  first_year: 2025
+  last_year: 2025
+  name: Hunter Doohan（亨特·杜汉）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36639481'
+  douban_url: https://www.douban.com/personage/36639481/
+  first_year: 2025
+  last_year: 2026
+  name: Ian Ousley（伊恩·欧斯利）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27255264'
+  douban_url: https://www.douban.com/personage/27255264/
+  first_year: 2025
+  last_year: 2026
+  name: Idris Elba（伊德瑞斯·艾尔巴）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27569210'
+  douban_url: https://www.douban.com/personage/27569210/
+  first_year: 2024
+  last_year: 2025
+  name: Isabela Merced（伊莎贝拉·莫塞德）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35656413'
+  douban_url: https://www.douban.com/personage/35656413/
+  first_year: 2023
+  last_year: 2026
+  name: Jacob Gibson（雅各布·吉布森）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27569940'
+  douban_url: https://www.douban.com/personage/27569940/
+  first_year: 2023
+  last_year: 2025
+  name: Jake Schreier（杰克·施莱尔）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27298093'
+  douban_url: https://www.douban.com/personage/27298093/
+  first_year: 2023
+  last_year: 2025
+  name: James Gunn（詹姆斯·古恩）
+  ratings:
+  - 4
+  - 4
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27255463'
+  douban_url: https://www.douban.com/personage/27255463/
+  first_year: 2023
+  last_year: 2025
+  name: Jared Harris（杰瑞德·哈里斯）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27255247'
+  douban_url: https://www.douban.com/personage/27255247/
+  first_year: 2023
+  last_year: 2024
+  name: Jason Statham（杰森·斯坦森）
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27230841'
+  douban_url: https://www.douban.com/personage/27230841/
+  first_year: 2024
+  last_year: 2025
+  name: Jeff Goldblum（杰夫·高布伦）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35068094'
+  douban_url: https://www.douban.com/personage/35068094/
+  first_year: 2025
+  last_year: 2025
+  name: Jenna Ortega（詹娜·奥尔特加）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27236957'
+  douban_url: https://www.douban.com/personage/27236957/
+  first_year: 2023
+  last_year: 2024
+  name: Jeremy Irons（杰瑞米·艾恩斯）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27335396'
+  douban_url: https://www.douban.com/personage/27335396/
+  first_year: 2023
+  last_year: 2024
+  name: Jesse Plemons（杰西·普莱蒙）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27253741'
+  douban_url: https://www.douban.com/personage/27253741/
+  first_year: 2023
+  last_year: 2024
+  name: Joaquin Phoenix（华金·菲尼克斯）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27214984'
+  douban_url: https://www.douban.com/personage/27214984/
+  first_year: 2023
+  last_year: 2023
+  name: John Francis Daley（约翰·弗朗西斯·戴利）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
 - avg_rating: 5.0
   douban_id: '27528968'
   douban_url: https://www.douban.com/personage/27528968/
@@ -48,6 +4287,116 @@ people:
   roles:
   - director
   works: 2
+- avg_rating: 3.5
+  douban_id: '27237558'
+  douban_url: https://www.douban.com/personage/27237558/
+  first_year: 2024
+  last_year: 2026
+  name: Jon Hamm（乔恩·哈姆）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27572224'
+  douban_url: https://www.douban.com/personage/27572224/
+  first_year: 2023
+  last_year: 2023
+  name: Jonathan M. Goldstein（乔纳森·戈尔茨坦）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27579933'
+  douban_url: https://www.douban.com/personage/27579933/
+  first_year: 2023
+  last_year: 2023
+  name: Jonathan Majors（乔纳森·梅杰斯）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27502592'
+  douban_url: https://www.douban.com/personage/27502592/
+  first_year: 2023
+  last_year: 2026
+  name: Josef Kubota Wladyka（约瑟夫·久保田·瓦迪卡）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27501985'
+  douban_url: https://www.douban.com/personage/27501985/
+  first_year: 2024
+  last_year: 2025
+  name: Joseph Quinn（约瑟夫·奎恩）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27497650'
+  douban_url: https://www.douban.com/personage/27497650/
+  first_year: 2025
+  last_year: 2025
+  name: Julia Garner（朱莉娅·加纳）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: Julia Louis-Dreyfus（茱莉亚·路易斯-德瑞弗斯）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27242093'
+  douban_url: https://www.douban.com/personage/27242093/
+  first_year: 2023
+  last_year: 2025
+  name: Karen Gillan（凯伦·吉兰）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27556380'
+  douban_url: https://www.douban.com/personage/27556380/
+  first_year: 2023
+  last_year: 2024
+  name: Karl Glusman（卡尔·格洛斯曼）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
 - avg_rating: 5.0
   douban_id: '27316459'
   douban_url: https://www.douban.com/personage/27316459/
@@ -57,6 +4406,237 @@ people:
   ratings:
   - 5
   - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27219579'
+  douban_url: https://www.douban.com/personage/27219579/
+  first_year: 2025
+  last_year: 2026
+  name: Kerry Condon（凯瑞·康顿）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: KiKi Layne（琪琪·莱恩）
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Kim Bodnia（金·波德尼亚）
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27413599'
+  douban_url: https://www.douban.com/personage/27413599/
+  first_year: 2023
+  last_year: 2025
+  name: Laura Birn（劳拉·比尔恩）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27224699'
+  douban_url: https://www.douban.com/personage/27224699/
+  first_year: 2023
+  last_year: 2025
+  name: Lee Pace（李·佩斯）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27246784'
+  douban_url: https://www.douban.com/personage/27246784/
+  first_year: 2023
+  last_year: 2025
+  name: Leonardo DiCaprio（莱昂纳多·迪卡普里奥）
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '34997213'
+  douban_url: https://www.douban.com/personage/34997213/
+  first_year: 2023
+  last_year: 2025
+  name: Lou Llobell（卢·洛贝尔）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Luca Marinelli（卢卡·马里内利）
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: Mahershala Ali（马赫沙拉·阿里）
+  ratings:
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27237709'
+  douban_url: https://www.douban.com/personage/27237709/
+  first_year: 2023
+  last_year: 2023
+  name: Mark Dacascos（马克·达卡斯考斯）
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27233546'
+  douban_url: https://www.douban.com/personage/27233546/
+  first_year: 2024
+  last_year: 2025
+  name: Mark Hamill（马克·哈米尔）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27246259'
+  douban_url: https://www.douban.com/personage/27246259/
+  first_year: 2025
+  last_year: 2026
+  name: Mark Ruffalo（马克·鲁法洛）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.67
+  douban_id: '27260193'
+  douban_url: https://www.douban.com/personage/27260193/
+  first_year: 2023
+  last_year: 2026
+  name: Martin Scorsese（马丁·斯科塞斯）
+  ratings:
+  - 3
+  - 4
+  - 4
+  roles:
+  - actor
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27479059'
+  douban_url: https://www.douban.com/personage/27479059/
+  first_year: 2025
+  last_year: 2025
+  name: Marwan Kenzari（马尔万·肯扎里）
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27260211'
+  douban_url: https://www.douban.com/personage/27260211/
+  first_year: 2023
+  last_year: 2026
+  name: Matt Damon（马特·达蒙）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27583657'
+  douban_url: https://www.douban.com/personage/27583657/
+  first_year: 2023
+  last_year: 2026
+  name: Michael Jelenic（迈克尔·杰勒尼克）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27255249'
+  douban_url: https://www.douban.com/personage/27255249/
+  first_year: 2023
+  last_year: 2023
+  name: Michael Keaton（迈克尔·基顿）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27583445'
+  douban_url: https://www.douban.com/personage/27583445/
+  first_year: 2024
+  last_year: 2026
+  name: Nicholas Galitzine（尼古拉斯·加利齐纳）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: Nico Parker（妮可·帕克）
+  ratings:
+  - 4
+  - 3
   roles:
   - actor
   works: 2
@@ -77,6 +4657,18 @@ people:
   - director
   - writer
   works: 2
+- avg_rating: 3.0
+  douban_id: '27210591'
+  douban_url: https://www.douban.com/personage/27210591/
+  first_year: 2023
+  last_year: 2025
+  name: Olivia Colman（奥利维娅·科尔曼）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
 - avg_rating: 5.0
   douban_id: '37200260'
   douban_url: https://www.douban.com/personage/37200260/
@@ -86,6 +4678,141 @@ people:
   ratings:
   - 5
   - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27500251'
+  douban_url: https://www.douban.com/personage/27500251/
+  first_year: 2023
+  last_year: 2025
+  name: Paul King（保罗·金）
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27518594'
+  douban_url: https://www.douban.com/personage/27518594/
+  first_year: 2023
+  last_year: 2026
+  name: Phil Lord（菲尔·罗德）
+  ratings:
+  - 4
+  - 5
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30434670'
+  douban_url: https://www.douban.com/personage/30434670/
+  first_year: 2023
+  last_year: 2023
+  name: Rachel Zegler（瑞秋·齐格勒）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27237556'
+  douban_url: https://www.douban.com/personage/27237556/
+  first_year: 2023
+  last_year: 2025
+  name: Rashida Jones（拉什达·琼斯）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27216240'
+  douban_url: https://www.douban.com/personage/27216240/
+  first_year: 2024
+  last_year: 2024
+  name: Rhys Ifans（瑞斯·伊凡斯）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27224217'
+  douban_url: https://www.douban.com/personage/27224217/
+  first_year: 2023
+  last_year: 2023
+  name: Rick Famuyiwa（瑞克·法穆易瓦）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27260184'
+  douban_url: https://www.douban.com/personage/27260184/
+  first_year: 2023
+  last_year: 2024
+  name: Ridley Scott（雷德利·斯科特）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27260213'
+  douban_url: https://www.douban.com/personage/27260213/
+  first_year: 2023
+  last_year: 2025
+  name: Robert De Niro（罗伯特·德尼罗）
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27241404'
+  douban_url: https://www.douban.com/personage/27241404/
+  first_year: 2025
+  last_year: 2026
+  name: Robert Pattinson（罗伯特·帕丁森）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27208378'
+  douban_url: https://www.douban.com/personage/27208378/
+  first_year: 2023
+  last_year: 2024
+  name: Ron Perlman（朗·普尔曼）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Rupert Friend（鲁伯特·弗兰德）
+  ratings:
+  - 2
+  - 4
   roles:
   - actor
   works: 2
@@ -101,6 +4828,177 @@ people:
   roles:
   - writer
   works: 2
+- avg_rating: 4.0
+  douban_id: '27549842'
+  douban_url: https://www.douban.com/personage/27549842/
+  first_year: 2023
+  last_year: 2026
+  name: Sadie Sink（萨迪·辛克）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27253734'
+  douban_url: https://www.douban.com/personage/27253734/
+  first_year: 2024
+  last_year: 2025
+  name: Sam Rockwell（山姆·洛克威尔）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27250638'
+  douban_url: https://www.douban.com/personage/27250638/
+  first_year: 2023
+  last_year: 2026
+  name: Samantha Morton（萨曼莎·莫顿）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27260176'
+  douban_url: https://www.douban.com/personage/27260176/
+  first_year: 2023
+  last_year: 2024
+  name: Samuel L. Jackson（塞缪尔·杰克逊）
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27260221'
+  douban_url: https://www.douban.com/personage/27260221/
+  first_year: 2024
+  last_year: 2025
+  name: Scarlett Johansson（斯嘉丽·约翰逊）
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27235097'
+  douban_url: https://www.douban.com/personage/27235097/
+  first_year: 2023
+  last_year: 2025
+  name: Scott Beck（斯科特·贝克）
+  ratings:
+  - 4
+  - 4
+  - 2
+  - 2
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27227712'
+  douban_url: https://www.douban.com/personage/27227712/
+  first_year: 2023
+  last_year: 2025
+  name: Sebastian Stan（塞巴斯蒂安·斯坦）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27241396'
+  douban_url: https://www.douban.com/personage/27241396/
+  first_year: 2023
+  last_year: 2025
+  name: Simon Pegg（西蒙·佩吉）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: Sophie Thatcher（索菲·撒切尔）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27230961'
+  douban_url: https://www.douban.com/personage/27230961/
+  first_year: 2024
+  last_year: 2025
+  name: Stephen Graham（斯蒂芬·格拉汉姆）
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27304284'
+  douban_url: https://www.douban.com/personage/27304284/
+  first_year: 2023
+  last_year: 2024
+  name: Stephen McKinley Henderson（斯蒂芬·麦金利·亨德森）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27260177'
+  douban_url: https://www.douban.com/personage/27260177/
+  first_year: 2024
+  last_year: 2025
+  name: Steve Buscemi（史蒂夫·布西密）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27495902'
+  douban_url: https://www.douban.com/personage/27495902/
+  first_year: 2023
+  last_year: 2025
+  name: Steven Yeun（史蒂文·元）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27216444'
+  douban_url: https://www.douban.com/personage/27216444/
+  first_year: 2023
+  last_year: 2026
+  name: Tantoo Cardinal（坦图·卡丁诺）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
 - avg_rating: 5.0
   douban_id: '27479323'
   douban_url: https://www.douban.com/personage/27479323/
@@ -109,6 +5007,66 @@ people:
   name: Taylor Dearden（泰勒·德尔登）
   ratings:
   - 5
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27224726'
+  douban_url: https://www.douban.com/personage/27224726/
+  first_year: 2025
+  last_year: 2025
+  name: Tim Burton（蒂姆·波顿）
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27234736'
+  douban_url: https://www.douban.com/personage/27234736/
+  first_year: 2023
+  last_year: 2025
+  name: Tim Southam（蒂姆·索瑟姆）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27536020'
+  douban_url: https://www.douban.com/personage/27536020/
+  first_year: 2023
+  last_year: 2025
+  name: Toby Haynes（托比·海恩斯）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27260203'
+  douban_url: https://www.douban.com/personage/27260203/
+  first_year: 2023
+  last_year: 2025
+  name: Tom Cruise（汤姆·克鲁斯）
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27210286'
+  douban_url: https://www.douban.com/personage/27210286/
+  first_year: 2023
+  last_year: 2025
+  name: Tom Hiddleston（汤姆·希德勒斯顿）
+  ratings:
+  - 4
   - 5
   roles:
   - actor
@@ -125,6 +5083,210 @@ people:
   roles:
   - actor
   works: 2
+- avg_rating: 3.5
+  douban_id: '27215399'
+  douban_url: https://www.douban.com/personage/27215399/
+  first_year: 2024
+  last_year: 2024
+  name: Wagner Moura（瓦格纳·马拉）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27550246'
+  douban_url: https://www.douban.com/personage/27550246/
+  first_year: 2023
+  last_year: 2024
+  name: Winston Duke（温斯顿·杜克）
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27259328'
+  douban_url: https://www.douban.com/personage/27259328/
+  first_year: 2025
+  last_year: 2026
+  name: Woody Harrelson（伍迪·哈里森）
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27253747'
+  douban_url: https://www.douban.com/personage/27253747/
+  first_year: 2023
+  last_year: 2026
+  name: Zoe Saldana（佐伊·索尔达娜）
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27355048'
+  douban_url: https://www.douban.com/personage/27355048/
+  first_year: 2023
+  last_year: 2025
+  name: 一龙斋贞友
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27244725'
+  douban_url: https://www.douban.com/personage/27244725/
+  first_year: 2023
+  last_year: 2024
+  name: 丁嘉丽
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36245382'
+  douban_url: https://www.douban.com/personage/36245382/
+  first_year: 2024
+  last_year: 2024
+  name: 万舒心
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27382908'
+  douban_url: https://www.douban.com/personage/27382908/
+  first_year: 2023
+  last_year: 2026
+  name: 三宅健太
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36506596'
+  douban_url: https://www.douban.com/personage/36506596/
+  first_year: 2023
+  last_year: 2023
+  name: 三嶋龙朗
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27480360'
+  douban_url: https://www.douban.com/personage/27480360/
+  first_year: 2025
+  last_year: 2026
+  name: 三木孝浩
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27481443'
+  douban_url: https://www.douban.com/personage/27481443/
+  first_year: 2023
+  last_year: 2023
+  name: 三木康一郎
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 4.0
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: 三浦友和
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27243334'
+  douban_url: https://www.douban.com/personage/27243334/
+  first_year: 2024
+  last_year: 2024
+  name: 三石琴乃
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27568154'
+  douban_url: https://www.douban.com/personage/27568154/
+  first_year: 2023
+  last_year: 2025
+  name: 中村百合香
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27208034'
+  douban_url: https://www.douban.com/personage/27208034/
+  first_year: 2024
+  last_year: 2025
+  name: 丸山智己
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27566069'
+  douban_url: https://www.douban.com/personage/27566069/
+  first_year: 2023
+  last_year: 2023
+  name: 丹羽圭子
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27436115'
+  douban_url: https://www.douban.com/personage/27436115/
+  first_year: 2023
+  last_year: 2023
+  name: 乌米·马萨库
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
 - avg_rating: 5.0
   douban_id: '37399643'
   douban_url: https://www.douban.com/personage/37399643/
@@ -138,14 +5300,158 @@ people:
   - writer
   works: 2
 - avg_rating: 2.5
-  douban_id: '27548558'
-  douban_url: https://www.douban.com/personage/27548558/
-  first_year: 2026
-  last_year: 2026
-  name: 于洋
+  douban_id: '27565467'
+  douban_url: https://www.douban.com/personage/27565467/
+  first_year: 2023
+  last_year: 2023
+  name: 乔·霍贝尔
+  ratings:
+  - 2
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '35995899'
+  douban_url: https://www.douban.com/personage/35995899/
+  first_year: 2023
+  last_year: 2025
+  name: 乔安娜·卡洛
   ratings:
   - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27492015'
+  douban_url: https://www.douban.com/personage/27492015/
+  first_year: 2024
+  last_year: 2026
+  name: 乔杉
+  ratings:
   - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27551497'
+  douban_url: https://www.douban.com/personage/27551497/
+  first_year: 2023
+  last_year: 2023
+  name: 乔诗语
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27497294'
+  douban_url: https://www.douban.com/personage/27497294/
+  first_year: 2024
+  last_year: 2026
+  name: 于毅
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '38190776'
+  douban_url: https://www.douban.com/personage/38190776/
+  first_year: 2023
+  last_year: 2026
+  name: 井川尊史
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27212704'
+  douban_url: https://www.douban.com/personage/27212704/
+  first_year: 2023
+  last_year: 2025
+  name: 亨利·科泽尼
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27554569'
+  douban_url: https://www.douban.com/personage/27554569/
+  first_year: 2024
+  last_year: 2025
+  name: 付博文
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27495482'
+  douban_url: https://www.douban.com/personage/27495482/
+  first_year: 2023
+  last_year: 2025
+  name: 仲里依纱
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27502717'
+  douban_url: https://www.douban.com/personage/27502717/
+  first_year: 2025
+  last_year: 2025
+  name: 任时完
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36544290'
+  douban_url: https://www.douban.com/personage/36544290/
+  first_year: 2023
+  last_year: 2026
+  name: 伊恩·斯托克斯
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35656907'
+  douban_url: https://www.douban.com/personage/35656907/
+  first_year: 2024
+  last_year: 2025
+  name: 伊桑·斯莱特
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35522093'
+  douban_url: https://www.douban.com/personage/35522093/
+  first_year: 2023
+  last_year: 2026
+  name: 伊纳基·戈多伊
+  ratings:
+  - 5
+  - 3
   roles:
   - actor
   works: 2
@@ -157,6 +5463,900 @@ people:
   name: 伊莎·布里昂斯
   ratings:
   - 5
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30437612'
+  douban_url: https://www.douban.com/personage/30437612/
+  first_year: 2023
+  last_year: 2023
+  name: 优太朗
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27565060'
+  douban_url: https://www.douban.com/personage/27565060/
+  first_year: 2023
+  last_year: 2024
+  name: 佟心竹
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27484302'
+  douban_url: https://www.douban.com/personage/27484302/
+  first_year: 2023
+  last_year: 2023
+  name: 侯岩松
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27580049'
+  douban_url: https://www.douban.com/personage/27580049/
+  first_year: 2023
+  last_year: 2025
+  name: 侯明昊
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27570209'
+  douban_url: https://www.douban.com/personage/27570209/
+  first_year: 2024
+  last_year: 2026
+  name: 保罗·韦尼克
+  ratings:
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27482899'
+  douban_url: https://www.douban.com/personage/27482899/
+  first_year: 2023
+  last_year: 2026
+  name: 俞白眉
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27220333'
+  douban_url: https://www.douban.com/personage/27220333/
+  first_year: 2023
+  last_year: 2024
+  name: 俞飞鸿
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27549597'
+  douban_url: https://www.douban.com/personage/27549597/
+  first_year: 2023
+  last_year: 2023
+  name: 倪妮
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30400597'
+  douban_url: https://www.douban.com/personage/30400597/
+  first_year: 2023
+  last_year: 2026
+  name: 傅首尔
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27234775'
+  douban_url: https://www.douban.com/personage/27234775/
+  first_year: 2024
+  last_year: 2025
+  name: 光石研
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27554474'
+  douban_url: https://www.douban.com/personage/27554474/
+  first_year: 2023
+  last_year: 2024
+  name: 克里斯·摩根
+  ratings:
+  - 2
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35594267'
+  douban_url: https://www.douban.com/personage/35594267/
+  first_year: 2023
+  last_year: 2024
+  name: 克里斯托·费尔南德斯
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36265147'
+  douban_url: https://www.douban.com/personage/36265147/
+  first_year: 2024
+  last_year: 2024
+  name: 关帅
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27256744'
+  douban_url: https://www.douban.com/personage/27256744/
+  first_year: 2023
+  last_year: 2023
+  name: 关智一
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27489097'
+  douban_url: https://www.douban.com/personage/27489097/
+  first_year: 2024
+  last_year: 2026
+  name: 冈山天音
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27551462'
+  douban_url: https://www.douban.com/personage/27551462/
+  first_year: 2023
+  last_year: 2025
+  name: 冉平
+  ratings:
+  - 2
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27551463'
+  douban_url: https://www.douban.com/personage/27551463/
+  first_year: 2023
+  last_year: 2025
+  name: 冉甲男
+  ratings:
+  - 2
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27545990'
+  douban_url: https://www.douban.com/personage/27545990/
+  first_year: 2024
+  last_year: 2025
+  name: 冢原亚由子
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27555331'
+  douban_url: https://www.douban.com/personage/27555331/
+  first_year: 2024
+  last_year: 2026
+  name: 冯兵
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27495483'
+  douban_url: https://www.douban.com/personage/27495483/
+  first_year: 2023
+  last_year: 2024
+  name: 冲田修一
+  ratings:
+  - 4
+  - 4
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36166783'
+  douban_url: https://www.douban.com/personage/36166783/
+  first_year: 2025
+  last_year: 2025
+  name: 凯拉·阿尔伯特
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27348581'
+  douban_url: https://www.douban.com/personage/27348581/
+  first_year: 2023
+  last_year: 2026
+  name: 凯文·迈克尔·理查德森
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30408244'
+  douban_url: https://www.douban.com/personage/30408244/
+  first_year: 2023
+  last_year: 2023
+  name: 凯蒂·M·奥布莱恩
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27452849'
+  douban_url: https://www.douban.com/personage/27452849/
+  first_year: 2025
+  last_year: 2026
+  name: 刘亚仁
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27496043'
+  douban_url: https://www.douban.com/personage/27496043/
+  first_year: 2024
+  last_year: 2025
+  name: 刘俊谦
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27260192'
+  douban_url: https://www.douban.com/personage/27260192/
+  first_year: 2023
+  last_year: 2025
+  name: 刘德华
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27552650'
+  douban_url: https://www.douban.com/personage/27552650/
+  first_year: 2025
+  last_year: 2025
+  name: 刘昊然
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27549474'
+  douban_url: https://www.douban.com/personage/27549474/
+  first_year: 2024
+  last_year: 2026
+  name: 刘智扬
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27663683'
+  douban_url: https://www.douban.com/personage/27663683/
+  first_year: 2024
+  last_year: 2026
+  name: 刘耀文
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.5
+  douban_id: '27498554'
+  douban_url: https://www.douban.com/personage/27498554/
+  first_year: 2023
+  last_year: 2026
+  name: 刘诗诗
+  ratings:
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27546523'
+  douban_url: https://www.douban.com/personage/27546523/
+  first_year: 2023
+  last_year: 2025
+  name: 加藤谅
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27218342'
+  douban_url: https://www.douban.com/personage/27218342/
+  first_year: 2023
+  last_year: 2023
+  name: 北村一辉
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2023
+  name: 北畑龍一
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27482317'
+  douban_url: https://www.douban.com/personage/27482317/
+  first_year: 2023
+  last_year: 2023
+  name: 卓比·哈罗德
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 1.5
+  douban_id: '27560880'
+  douban_url: https://www.douban.com/personage/27560880/
+  first_year: 2023
+  last_year: 2024
+  name: 卜钰
+  ratings:
+  - 2
+  - 1
+  roles:
+  - actor
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '34997207'
+  douban_url: https://www.douban.com/personage/34997207/
+  first_year: 2023
+  last_year: 2025
+  name: 卡西安·比尔顿
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30413622'
+  douban_url: https://www.douban.com/personage/30413622/
+  first_year: 2023
+  last_year: 2026
+  name: 古川琴音
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27574450'
+  douban_url: https://www.douban.com/personage/27574450/
+  first_year: 2024
+  last_year: 2025
+  name: 吉冈里帆
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27243897'
+  douban_url: https://www.douban.com/personage/27243897/
+  first_year: 2023
+  last_year: 2024
+  name: 吉塔·瓦桑特·帕特尔
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27549389'
+  douban_url: https://www.douban.com/personage/27549389/
+  first_year: 2023
+  last_year: 2026
+  name: 吉泽亮
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27482630'
+  douban_url: https://www.douban.com/personage/27482630/
+  first_year: 2023
+  last_year: 2023
+  name: 吉田羊
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27484296'
+  douban_url: https://www.douban.com/personage/27484296/
+  first_year: 2023
+  last_year: 2024
+  name: 吴俊全
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.5
+  douban_id: '27529603'
+  douban_url: https://www.douban.com/personage/27529603/
+  first_year: 2025
+  last_year: 2025
+  name: 吴兴国
+  ratings:
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27481923'
+  douban_url: https://www.douban.com/personage/27481923/
+  first_year: 2025
+  last_year: 2026
+  name: 吴正世
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27550811'
+  douban_url: https://www.douban.com/personage/27550811/
+  first_year: 2025
+  last_year: 2026
+  name: 吴磊
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27238548'
+  douban_url: https://www.douban.com/personage/27238548/
+  first_year: 2025
+  last_year: 2025
+  name: 吴青芸
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.5
+  douban_id: '27480648'
+  douban_url: https://www.douban.com/personage/27480648/
+  first_year: 2023
+  last_year: 2023
+  name: 周冬雨
+  ratings:
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27368762'
+  douban_url: https://www.douban.com/personage/27368762/
+  first_year: 2023
+  last_year: 2025
+  name: 哈丽特·瓦尔特
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '30313971'
+  douban_url: https://www.douban.com/personage/30313971/
+  first_year: 2025
+  last_year: 2026
+  name: 囧森瑟夫
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27352657'
+  douban_url: https://www.douban.com/personage/27352657/
+  first_year: 2023
+  last_year: 2024
+  name: 坂本真绫
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27571929'
+  douban_url: https://www.douban.com/personage/27571929/
+  first_year: 2023
+  last_year: 2025
+  name: 埃里克·延德雷森
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27565468'
+  douban_url: https://www.douban.com/personage/27565468/
+  first_year: 2023
+  last_year: 2023
+  name: 埃里希·霍贝尔
+  ratings:
+  - 2
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35656414'
+  douban_url: https://www.douban.com/personage/35656414/
+  first_year: 2023
+  last_year: 2026
+  name: 塔兹·斯凯拉
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27208358'
+  douban_url: https://www.douban.com/personage/27208358/
+  first_year: 2023
+  last_year: 2024
+  name: 塞斯·罗根
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27496385'
+  douban_url: https://www.douban.com/personage/27496385/
+  first_year: 2023
+  last_year: 2024
+  name: 夏帆
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '37005973'
+  douban_url: https://www.douban.com/personage/37005973/
+  first_year: 2024
+  last_year: 2026
+  name: 夏应哲
+  ratings:
+  - 5
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27484203'
+  douban_url: https://www.douban.com/personage/27484203/
+  first_year: 2023
+  last_year: 2023
+  name: 夏磊
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35814164'
+  douban_url: https://www.douban.com/personage/35814164/
+  first_year: 2024
+  last_year: 2024
+  name: 夏觅尘
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27250664'
+  douban_url: https://www.douban.com/personage/27250664/
+  first_year: 2023
+  last_year: 2026
+  name: 大卫·克朗姆霍茨
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27224795'
+  douban_url: https://www.douban.com/personage/27224795/
+  first_year: 2023
+  last_year: 2025
+  name: 大卫·凯普
+  ratings:
+  - 2
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27570553'
+  douban_url: https://www.douban.com/personage/27570553/
+  first_year: 2023
+  last_year: 2024
+  name: 大卫·斯卡尔帕
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27569644'
+  douban_url: https://www.douban.com/personage/27569644/
+  first_year: 2025
+  last_year: 2026
+  name: 大卫·达斯马齐连
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27547087'
+  douban_url: https://www.douban.com/personage/27547087/
+  first_year: 2023
+  last_year: 2023
+  name: 大岛优子
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: 太保
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27576601'
+  douban_url: https://www.douban.com/personage/27576601/
+  first_year: 2023
+  last_year: 2025
+  name: 奥卡菲娜
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27500539'
+  douban_url: https://www.douban.com/personage/27500539/
+  first_year: 2025
+  last_year: 2025
+  name: 姜河那
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35073207'
+  douban_url: https://www.douban.com/personage/35073207/
+  first_year: 2025
+  last_year: 2025
+  name: 姜爱心
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27555865'
+  douban_url: https://www.douban.com/personage/27555865/
+  first_year: 2024
+  last_year: 2025
+  name: 孔连顺
+  ratings:
+  - 5
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27555231'
+  douban_url: https://www.douban.com/personage/27555231/
+  first_year: 2025
+  last_year: 2025
+  name: 孙阳
+  ratings:
+  - 4
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27574446'
+  douban_url: https://www.douban.com/personage/27574446/
+  first_year: 2024
+  last_year: 2025
+  name: 孙雪宁
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30417204'
+  douban_url: https://www.douban.com/personage/30417204/
+  first_year: 2024
+  last_year: 2024
+  name: 季骜杰
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27570099'
+  douban_url: https://www.douban.com/personage/27570099/
+  first_year: 2023
+  last_year: 2023
+  name: 宁理
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27496586'
+  douban_url: https://www.douban.com/personage/27496586/
+  first_year: 2023
+  last_year: 2023
+  name: 安吉镐
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30271958'
+  douban_url: https://www.douban.com/personage/30271958/
+  first_year: 2023
+  last_year: 2026
+  name: 安地
+  ratings:
+  - 2
   - 5
   roles:
   - actor
@@ -173,6 +6373,176 @@ people:
   roles:
   - actor
   works: 2
+- avg_rating: 3.0
+  douban_id: '35271402'
+  douban_url: https://www.douban.com/personage/35271402/
+  first_year: 2023
+  last_year: 2025
+  name: 安杰伊·萨普科夫斯基
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27494115'
+  douban_url: https://www.douban.com/personage/27494115/
+  first_year: 2023
+  last_year: 2023
+  name: 安田显
+  ratings:
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27230919'
+  douban_url: https://www.douban.com/personage/27230919/
+  first_year: 2023
+  last_year: 2025
+  name: 安迪·萨姆伯格
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27248096'
+  douban_url: https://www.douban.com/personage/27248096/
+  first_year: 2025
+  last_year: 2026
+  name: 宋佳
+  ratings:
+  - 1
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27403492'
+  douban_url: https://www.douban.com/personage/27403492/
+  first_year: 2023
+  last_year: 2023
+  name: 宋慧乔
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.5
+  douban_id: '35094075'
+  douban_url: https://www.douban.com/personage/35094075/
+  first_year: 2025
+  last_year: 2026
+  name: 宋木子
+  ratings:
+  - 2
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27229250'
+  douban_url: https://www.douban.com/personage/27229250/
+  first_year: 2025
+  last_year: 2026
+  name: 宣萱
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.33
+  douban_id: '30463280'
+  douban_url: https://www.douban.com/personage/30463280/
+  first_year: 2023
+  last_year: 2026
+  name: 宫崎光代
+  ratings:
+  - 3
+  - 3
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36970508'
+  douban_url: https://www.douban.com/personage/36970508/
+  first_year: 2024
+  last_year: 2024
+  name: 家明
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27243838'
+  douban_url: https://www.douban.com/personage/27243838/
+  first_year: 2024
+  last_year: 2026
+  name: 小山力也
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27488771'
+  douban_url: https://www.douban.com/personage/27488771/
+  first_year: 2023
+  last_year: 2023
+  name: 小岛藤子
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30252687'
+  douban_url: https://www.douban.com/personage/30252687/
+  first_year: 2023
+  last_year: 2025
+  name: 小手伸也
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30381705'
+  douban_url: https://www.douban.com/personage/30381705/
+  first_year: 2023
+  last_year: 2023
+  name: 小林树奈子
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27554228'
+  douban_url: https://www.douban.com/personage/27554228/
+  first_year: 2023
+  last_year: 2024
+  name: 小连杀
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
 - avg_rating: 3.5
   douban_id: '27549190'
   douban_url: https://www.douban.com/personage/27549190/
@@ -184,6 +6554,247 @@ people:
   - 3
   roles:
   - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27553379'
+  douban_url: https://www.douban.com/personage/27553379/
+  first_year: 2023
+  last_year: 2025
+  name: 尹昉
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27555895'
+  douban_url: https://www.douban.com/personage/27555895/
+  first_year: 2024
+  last_year: 2025
+  name: 尹正
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27588526'
+  douban_url: https://www.douban.com/personage/27588526/
+  first_year: 2023
+  last_year: 2024
+  name: 尼尔·桑迪兰兹
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '35390733'
+  douban_url: https://www.douban.com/personage/35390733/
+  first_year: 2024
+  last_year: 2024
+  name: 山时聪真
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27493684'
+  douban_url: https://www.douban.com/personage/27493684/
+  first_year: 2023
+  last_year: 2024
+  name: 山田裕贵
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '35772257'
+  douban_url: https://www.douban.com/personage/35772257/
+  first_year: 2024
+  last_year: 2026
+  name: 岑君茜
+  ratings:
+  - 2
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27502750'
+  douban_url: https://www.douban.com/personage/27502750/
+  first_year: 2024
+  last_year: 2025
+  name: 岳丽娜
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27557076'
+  douban_url: https://www.douban.com/personage/27557076/
+  first_year: 2023
+  last_year: 2023
+  name: 工藤遥
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '36876022'
+  douban_url: https://www.douban.com/personage/36876022/
+  first_year: 2024
+  last_year: 2026
+  name: 左晓慧
+  ratings:
+  - 5
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27501844'
+  douban_url: https://www.douban.com/personage/27501844/
+  first_year: 2025
+  last_year: 2025
+  name: 布朗温·詹姆斯
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27219461'
+  douban_url: https://www.douban.com/personage/27219461/
+  first_year: 2023
+  last_year: 2023
+  name: 布莱德利·库珀
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35410479'
+  douban_url: https://www.douban.com/personage/35410479/
+  first_year: 2024
+  last_year: 2024
+  name: 常文涛
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27226273'
+  douban_url: https://www.douban.com/personage/27226273/
+  first_year: 2023
+  last_year: 2024
+  name: 平川大辅
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  - director
+  works: 2
+- avg_rating: 2.0
+  douban_id: '34451925'
+  douban_url: https://www.douban.com/personage/34451925/
+  first_year: 2024
+  last_year: 2026
+  name: 应萝佳
+  ratings:
+  - 3
+  - 1
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27242213'
+  douban_url: https://www.douban.com/personage/27242213/
+  first_year: 2023
+  last_year: 2025
+  name: 弗莱德·阿米森
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36856037'
+  douban_url: https://www.douban.com/personage/36856037/
+  first_year: 2024
+  last_year: 2026
+  name: 张如麟
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27492011'
+  douban_url: https://www.douban.com/personage/27492011/
+  first_year: 2024
+  last_year: 2026
+  name: 张子栋
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27576233'
+  douban_url: https://www.douban.com/personage/27576233/
+  first_year: 2023
+  last_year: 2023
+  name: 张宥浩
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27495468'
+  douban_url: https://www.douban.com/personage/27495468/
+  first_year: 2023
+  last_year: 2024
+  name: 张小斐
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '37153061'
+  douban_url: https://www.douban.com/personage/37153061/
+  first_year: 2023
+  last_year: 2024
+  name: 张毅立
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
   works: 2
 - avg_rating: 2.5
   douban_id: '27547921'
@@ -197,24 +6808,24 @@ people:
   roles:
   - actor
   works: 2
-- avg_rating: 2.0
-  douban_id: '27260298'
-  douban_url: https://www.douban.com/personage/27260298/
-  first_year: 2026
-  last_year: 2026
-  name: 成龙
+- avg_rating: 3.0
+  douban_id: '27610156'
+  douban_url: https://www.douban.com/personage/27610156/
+  first_year: 2023
+  last_year: 2023
+  name: 张碧玉
   ratings:
   - 2
-  - 2
+  - 4
   roles:
   - actor
   works: 2
 - avg_rating: 3.5
-  douban_id: '34820302'
-  douban_url: https://www.douban.com/personage/34820302/
-  first_year: 2026
-  last_year: 2026
-  name: 李善亨
+  douban_id: '36349558'
+  douban_url: https://www.douban.com/personage/36349558/
+  first_year: 2023
+  last_year: 2024
+  name: 张磊
   ratings:
   - 4
   - 3
@@ -222,14 +6833,544 @@ people:
   - actor
   works: 2
 - avg_rating: 3.0
-  douban_id: '27480237'
-  douban_url: https://www.douban.com/personage/27480237/
-  first_year: 2026
-  last_year: 2026
-  name: 李晨
+  douban_id: '34985861'
+  douban_url: https://www.douban.com/personage/34985861/
+  first_year: 2023
+  last_year: 2024
+  name: 张福正
   ratings:
   - 3
   - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27499536'
+  douban_url: https://www.douban.com/personage/27499536/
+  first_year: 2023
+  last_year: 2026
+  name: 张继聪
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30397078'
+  douban_url: https://www.douban.com/personage/30397078/
+  first_year: 2024
+  last_year: 2025
+  name: 张赫
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.5
+  douban_id: '27463876'
+  douban_url: https://www.douban.com/personage/27463876/
+  first_year: 2023
+  last_year: 2024
+  name: 张钧甯
+  ratings:
+  - 1
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27480789'
+  douban_url: https://www.douban.com/personage/27480789/
+  first_year: 2023
+  last_year: 2023
+  name: 彼得·拉姆齐
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: 德永友一
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27222570'
+  douban_url: https://www.douban.com/personage/27222570/
+  first_year: 2025
+  last_year: 2026
+  name: 惠英红
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27246593'
+  douban_url: https://www.douban.com/personage/27246593/
+  first_year: 2023
+  last_year: 2026
+  name: 戴夫·卡拉汉姆
+  ratings:
+  - 3
+  - 5
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27212398'
+  douban_url: https://www.douban.com/personage/27212398/
+  first_year: 2023
+  last_year: 2024
+  name: 户松遥
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27550728'
+  douban_url: https://www.douban.com/personage/27550728/
+  first_year: 2023
+  last_year: 2024
+  name: 提莫西·查拉梅
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27219593'
+  douban_url: https://www.douban.com/personage/27219593/
+  first_year: 2025
+  last_year: 2025
+  name: 斯坦·李
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27224286'
+  douban_url: https://www.douban.com/personage/27224286/
+  first_year: 2024
+  last_year: 2025
+  name: 新垣结衣
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27503501'
+  douban_url: https://www.douban.com/personage/27503501/
+  first_year: 2023
+  last_year: 2025
+  name: 新木优子
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27485583'
+  douban_url: https://www.douban.com/personage/27485583/
+  first_year: 2025
+  last_year: 2026
+  name: 日笠阳子
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30094565'
+  douban_url: https://www.douban.com/personage/30094565/
+  first_year: 2023
+  last_year: 2025
+  name: 曹昇
+  ratings:
+  - 2
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27547013'
+  douban_url: https://www.douban.com/personage/27547013/
+  first_year: 2023
+  last_year: 2026
+  name: 月川翔
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27483468'
+  douban_url: https://www.douban.com/personage/27483468/
+  first_year: 2023
+  last_year: 2026
+  name: 朱一龙
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27246604'
+  douban_url: https://www.douban.com/personage/27246604/
+  first_year: 2024
+  last_year: 2025
+  name: 朱浩伟
+  ratings:
+  - 4
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27227643'
+  douban_url: https://www.douban.com/personage/27227643/
+  first_year: 2023
+  last_year: 2024
+  name: 朴尚渊
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27587924'
+  douban_url: https://www.douban.com/personage/27587924/
+  first_year: 2025
+  last_year: 2026
+  name: 朴海秀
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 5.0
+  douban_id: '27550259'
+  douban_url: https://www.douban.com/personage/27550259/
+  first_year: 2024
+  last_year: 2025
+  name: 朴解浚
+  ratings:
+  - 5
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27575553'
+  douban_url: https://www.douban.com/personage/27575553/
+  first_year: 2023
+  last_year: 2023
+  name: 李一桐
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30425840'
+  douban_url: https://www.douban.com/personage/30425840/
+  first_year: 2023
+  last_year: 2024
+  name: 李亮文
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35513803'
+  douban_url: https://www.douban.com/personage/35513803/
+  first_year: 2024
+  last_year: 2026
+  name: 李伊潭
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '33400244'
+  douban_url: https://www.douban.com/personage/33400244/
+  first_year: 2024
+  last_year: 2026
+  name: 李南奎
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27581986'
+  douban_url: https://www.douban.com/personage/27581986/
+  first_year: 2024
+  last_year: 2026
+  name: 李嘉琦
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27580233'
+  douban_url: https://www.douban.com/personage/27580233/
+  first_year: 2023
+  last_year: 2024
+  name: 李姗姗
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27464887'
+  douban_url: https://www.douban.com/personage/27464887/
+  first_year: 2023
+  last_year: 2024
+  name: 李小冉
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27563243'
+  douban_url: https://www.douban.com/personage/27563243/
+  first_year: 2023
+  last_year: 2024
+  name: 李庚希
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27551170'
+  douban_url: https://www.douban.com/personage/27551170/
+  first_year: 2025
+  last_year: 2026
+  name: 李彧
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '37035949'
+  douban_url: https://www.douban.com/personage/37035949/
+  first_year: 2024
+  last_year: 2025
+  name: 李振锋
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27315729'
+  douban_url: https://www.douban.com/personage/27315729/
+  first_year: 2025
+  last_year: 2025
+  name: 李政宰
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30417203'
+  douban_url: https://www.douban.com/personage/30417203/
+  first_year: 2024
+  last_year: 2025
+  name: 李昊甲
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27518280'
+  douban_url: https://www.douban.com/personage/27518280/
+  first_year: 2024
+  last_year: 2025
+  name: 李易祥
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35283637'
+  douban_url: https://www.douban.com/personage/35283637/
+  first_year: 2024
+  last_year: 2024
+  name: 李昕
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27667540'
+  douban_url: https://www.douban.com/personage/27667540/
+  first_year: 2024
+  last_year: 2024
+  name: 李楠
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '30454922'
+  douban_url: https://www.douban.com/personage/30454922/
+  first_year: 2024
+  last_year: 2025
+  name: 李璐
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36856691'
+  douban_url: https://www.douban.com/personage/36856691/
+  first_year: 2024
+  last_year: 2024
+  name: 李萌
+  ratings:
+  - 3
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27480654'
+  douban_url: https://www.douban.com/personage/27480654/
+  first_year: 2023
+  last_year: 2023
+  name: 李雪健
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '34468512'
+  douban_url: https://www.douban.com/personage/34468512/
+  first_year: 2025
+  last_year: 2026
+  name: 杨卫
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27495299'
+  douban_url: https://www.douban.com/personage/27495299/
+  first_year: 2024
+  last_year: 2025
+  name: 杨志刚
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27555469'
+  douban_url: https://www.douban.com/personage/27555469/
+  first_year: 2024
+  last_year: 2025
+  name: 杨旭文
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36250062'
+  douban_url: https://www.douban.com/personage/36250062/
+  first_year: 2024
+  last_year: 2026
+  name: 杨昕燃
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27483524'
+  douban_url: https://www.douban.com/personage/27483524/
+  first_year: 2024
+  last_year: 2026
+  name: 杨玏
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27504017'
+  douban_url: https://www.douban.com/personage/27504017/
+  first_year: 2023
+  last_year: 2024
+  name: 杨紫
+  ratings:
+  - 2
+  - 2
   roles:
   - actor
   works: 2
@@ -245,29 +7386,401 @@ people:
   roles:
   - actor
   works: 2
-- avg_rating: 3.0
-  douban_id: '35663446'
-  douban_url: https://www.douban.com/personage/35663446/
-  first_year: 2026
-  last_year: 2026
-  name: 柊木阳太
+- avg_rating: 3.5
+  douban_id: '27255946'
+  douban_url: https://www.douban.com/personage/27255946/
+  first_year: 2025
+  last_year: 2025
+  name: 杰克·科比
   ratings:
   - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27521210'
+  douban_url: https://www.douban.com/personage/27521210/
+  first_year: 2024
+  last_year: 2025
+  name: 杰夫·内桑森
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27489103'
+  douban_url: https://www.douban.com/personage/27489103/
+  first_year: 2023
+  last_year: 2025
+  name: 板垣李光人
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27216461'
+  douban_url: https://www.douban.com/personage/27216461/
+  first_year: 2023
+  last_year: 2025
+  name: 板谷由夏
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27503752'
+  douban_url: https://www.douban.com/personage/27503752/
+  first_year: 2025
+  last_year: 2026
+  name: 林允儿
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '35494405'
+  douban_url: https://www.douban.com/personage/35494405/
+  first_year: 2023
+  last_year: 2026
+  name: 林博洋
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27243313'
+  douban_url: https://www.douban.com/personage/27243313/
+  first_year: 2024
+  last_year: 2026
+  name: 林峯
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35557294'
+  douban_url: https://www.douban.com/personage/35557294/
+  first_year: 2024
+  last_year: 2026
+  name: 林帽帽
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27561504'
+  douban_url: https://www.douban.com/personage/27561504/
+  first_year: 2023
+  last_year: 2025
+  name: 林晓杰
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27498081'
+  douban_url: https://www.douban.com/personage/27498081/
+  first_year: 2023
+  last_year: 2023
+  name: 林智妍
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36043322'
+  douban_url: https://www.douban.com/personage/36043322/
+  first_year: 2023
+  last_year: 2024
+  name: 林柏青
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27238088'
+  douban_url: https://www.douban.com/personage/27238088/
+  first_year: 2023
+  last_year: 2025
+  name: 查理·布鲁克
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35033066'
+  douban_url: https://www.douban.com/personage/35033066/
+  first_year: 2023
+  last_year: 2025
+  name: 柯暮卿
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27229160'
+  douban_url: https://www.douban.com/personage/27229160/
+  first_year: 2023
+  last_year: 2026
+  name: 柳承范
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27493256'
+  douban_url: https://www.douban.com/personage/27493256/
+  first_year: 2024
+  last_year: 2026
+  name: 柳海真
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27220568'
+  douban_url: https://www.douban.com/personage/27220568/
+  first_year: 2023
+  last_year: 2024
+  name: 树木希林
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '30473155'
+  douban_url: https://www.douban.com/personage/30473155/
+  first_year: 2025
+  last_year: 2025
+  name: 格雷格·鲁卡
+  ratings:
+  - 2
+  - 2
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27565732'
+  douban_url: https://www.douban.com/personage/27565732/
+  first_year: 2023
+  last_year: 2025
+  name: 桂楠
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27504179'
+  douban_url: https://www.douban.com/personage/27504179/
+  first_year: 2024
+  last_year: 2026
+  name: 桑德拉·惠勒
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36919737'
+  douban_url: https://www.douban.com/personage/36919737/
+  first_year: 2025
+  last_year: 2026
+  name: 桑毓泽
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27324010'
+  douban_url: https://www.douban.com/personage/27324010/
+  first_year: 2025
+  last_year: 2026
+  name: 梁家辉
+  ratings:
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27576615'
+  douban_url: https://www.douban.com/personage/27576615/
+  first_year: 2023
+  last_year: 2026
+  name: 梁达伟
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27224988'
+  douban_url: https://www.douban.com/personage/27224988/
+  first_year: 2024
+  last_year: 2025
+  name: 樱井孝宏
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27574328'
+  douban_url: https://www.douban.com/personage/27574328/
+  first_year: 2023
+  last_year: 2023
+  name: 樱井由纪
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27557471'
+  douban_url: https://www.douban.com/personage/27557471/
+  first_year: 2023
+  last_year: 2026
+  name: 檀健次
+  ratings:
+  - 3
   - 2
   roles:
   - actor
   works: 2
 - avg_rating: 3.0
-  douban_id: '30362474'
-  douban_url: https://www.douban.com/personage/30362474/
-  first_year: 2026
-  last_year: 2026
-  name: 段艺璇
+  douban_id: '34922166'
+  douban_url: https://www.douban.com/personage/34922166/
+  first_year: 2023
+  last_year: 2025
+  name: 武亚凡
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: 武内英树
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27365930'
+  douban_url: https://www.douban.com/personage/27365930/
+  first_year: 2024
+  last_year: 2024
+  name: 武田铁矢
   ratings:
   - 3
   - 3
   roles:
   - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30420217'
+  douban_url: https://www.douban.com/personage/30420217/
+  first_year: 2023
+  last_year: 2025
+  name: 毕莎·K·阿里
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27556503'
+  douban_url: https://www.douban.com/personage/27556503/
+  first_year: 2024
+  last_year: 2026
+  name: 江口拓也
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27552041'
+  douban_url: https://www.douban.com/personage/27552041/
+  first_year: 2023
+  last_year: 2024
+  name: 江月
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27483661'
+  douban_url: https://www.douban.com/personage/27483661/
+  first_year: 2023
+  last_year: 2026
+  name: 江疏影
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36544515'
+  douban_url: https://www.douban.com/personage/36544515/
+  first_year: 2023
+  last_year: 2026
+  name: 汤姆·海因德曼
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
   works: 2
 - avg_rating: 2.5
   douban_id: '27485064'
@@ -281,17 +7794,324 @@ people:
   roles:
   - actor
   works: 2
+- avg_rating: 2.5
+  douban_id: '27569776'
+  douban_url: https://www.douban.com/personage/27569776/
+  first_year: 2023
+  last_year: 2024
+  name: 沈念如
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27549951'
+  douban_url: https://www.douban.com/personage/27549951/
+  first_year: 2023
+  last_year: 2023
+  name: 沈磊
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27484092'
+  douban_url: https://www.douban.com/personage/27484092/
+  first_year: 2023
+  last_year: 2023
+  name: 沈达威
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27212562'
+  douban_url: https://www.douban.com/personage/27212562/
+  first_year: 2024
+  last_year: 2024
+  name: 浅野和之
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
 - avg_rating: 3.5
-  douban_id: '27553918'
-  douban_url: https://www.douban.com/personage/27553918/
-  first_year: 2025
-  last_year: 2026
-  name: 王宇航
+  douban_id: '27579013'
+  douban_url: https://www.douban.com/personage/27579013/
+  first_year: 2023
+  last_year: 2023
+  name: 涩谷谦人
   ratings:
   - 3
   - 4
   roles:
   - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27503040'
+  douban_url: https://www.douban.com/personage/27503040/
+  first_year: 2026
+  last_year: 2026
+  name: 清野菜名
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27515130'
+  douban_url: https://www.douban.com/personage/27515130/
+  first_year: 2024
+  last_year: 2025
+  name: 温妮·霍尔兹曼
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27237862'
+  douban_url: https://www.douban.com/personage/27237862/
+  first_year: 2023
+  last_year: 2023
+  name: 温子仁
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: null
+  douban_url: null
+  first_year: 2023
+  last_year: 2025
+  name: 游晓颖
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27488176'
+  douban_url: https://www.douban.com/personage/27488176/
+  first_year: 2024
+  last_year: 2026
+  name: 满岛真之介
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30387520'
+  douban_url: https://www.douban.com/personage/30387520/
+  first_year: 2023
+  last_year: 2025
+  name: 潘依然
+  ratings:
+  - 1
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27493729'
+  douban_url: https://www.douban.com/personage/27493729/
+  first_year: 2023
+  last_year: 2024
+  name: 濑户麻沙美
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '37153060'
+  douban_url: https://www.douban.com/personage/37153060/
+  first_year: 2023
+  last_year: 2024
+  name: 焦柄乾
+  ratings:
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27326870'
+  douban_url: https://www.douban.com/personage/27326870/
+  first_year: 2023
+  last_year: 2025
+  name: 特伦斯·曼
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27570905'
+  douban_url: https://www.douban.com/personage/27570905/
+  first_year: 2023
+  last_year: 2024
+  name: 狩山俊辅
+  ratings:
+  - 3
+  - 5
+  roles:
+  - director
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27575510'
+  douban_url: https://www.douban.com/personage/27575510/
+  first_year: 2023
+  last_year: 2023
+  name: 王一博
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35510807'
+  douban_url: https://www.douban.com/personage/35510807/
+  first_year: 2023
+  last_year: 2026
+  name: 王丹妮
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27548976'
+  douban_url: https://www.douban.com/personage/27548976/
+  first_year: 2024
+  last_year: 2024
+  name: 王大陆
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27499924'
+  douban_url: https://www.douban.com/personage/27499924/
+  first_year: 2023
+  last_year: 2025
+  name: 王宝强
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27554638'
+  douban_url: https://www.douban.com/personage/27554638/
+  first_year: 2023
+  last_year: 2024
+  name: 王微
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27481010'
+  douban_url: https://www.douban.com/personage/27481010/
+  first_year: 2023
+  last_year: 2026
+  name: 王智
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27529458'
+  douban_url: https://www.douban.com/personage/27529458/
+  first_year: 2024
+  last_year: 2025
+  name: 王汉斌
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27494973'
+  douban_url: https://www.douban.com/personage/27494973/
+  first_year: 2025
+  last_year: 2026
+  name: 王耀庆
+  ratings:
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '33439907'
+  douban_url: https://www.douban.com/personage/33439907/
+  first_year: 2023
+  last_year: 2025
+  name: 王裕仁
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36772505'
+  douban_url: https://www.douban.com/personage/36772505/
+  first_year: 2024
+  last_year: 2025
+  name: 玛丽莎·博德
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36547084'
+  douban_url: https://www.douban.com/personage/36547084/
+  first_year: 2023
+  last_year: 2026
+  name: 琳赛·盖尔芬德
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
   works: 2
 - avg_rating: 5.0
   douban_id: '37238465'
@@ -305,6 +8125,428 @@ people:
   roles:
   - writer
   works: 2
+- avg_rating: 3.5
+  douban_id: '27216842'
+  douban_url: https://www.douban.com/personage/27216842/
+  first_year: 2024
+  last_year: 2025
+  name: 田中圭
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '37005970'
+  douban_url: https://www.douban.com/personage/37005970/
+  first_year: 2024
+  last_year: 2026
+  name: 田刚
+  ratings:
+  - 5
+  - 4
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27235539'
+  douban_url: https://www.douban.com/personage/27235539/
+  first_year: 2023
+  last_year: 2023
+  name: 田口浩正
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27232166'
+  douban_url: https://www.douban.com/personage/27232166/
+  first_year: 2023
+  last_year: 2023
+  name: 田山凉成
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27398556'
+  douban_url: https://www.douban.com/personage/27398556/
+  first_year: 2024
+  last_year: 2025
+  name: 甲斐田裕子
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27550645'
+  douban_url: https://www.douban.com/personage/27550645/
+  first_year: 2024
+  last_year: 2026
+  name: 畠中祐
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27553419'
+  douban_url: https://www.douban.com/personage/27553419/
+  first_year: 2023
+  last_year: 2026
+  name: 白举纲
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36055172'
+  douban_url: https://www.douban.com/personage/36055172/
+  first_year: 2023
+  last_year: 2024
+  name: 白杨
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27576537'
+  douban_url: https://www.douban.com/personage/27576537/
+  first_year: 2024
+  last_year: 2024
+  name: 白雪岑
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27484578'
+  douban_url: https://www.douban.com/personage/27484578/
+  first_year: 2024
+  last_year: 2025
+  name: 皇贞季
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30352458'
+  douban_url: https://www.douban.com/personage/30352458/
+  first_year: 2023
+  last_year: 2023
+  name: 盐野瑛久
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27607147'
+  douban_url: https://www.douban.com/personage/27607147/
+  first_year: 2023
+  last_year: 2026
+  name: 瞳音
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27243341'
+  douban_url: https://www.douban.com/personage/27243341/
+  first_year: 2023
+  last_year: 2025
+  name: 福山润
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27294506'
+  douban_url: https://www.douban.com/personage/27294506/
+  first_year: 2023
+  last_year: 2025
+  name: 科尔曼·多明戈
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27237687'
+  douban_url: https://www.douban.com/personage/27237687/
+  first_year: 2023
+  last_year: 2023
+  name: 科曼
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27254237'
+  douban_url: https://www.douban.com/personage/27254237/
+  first_year: 2023
+  last_year: 2025
+  name: 秦沛
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27552045'
+  douban_url: https://www.douban.com/personage/27552045/
+  first_year: 2023
+  last_year: 2025
+  name: 程玉珠
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.0
+  douban_id: '36070573'
+  douban_url: https://www.douban.com/personage/36070573/
+  first_year: 2024
+  last_year: 2025
+  name: 童漠男
+  ratings:
+  - 1
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35619082'
+  douban_url: https://www.douban.com/personage/35619082/
+  first_year: 2023
+  last_year: 2024
+  name: 竹林闲者
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30400631'
+  douban_url: https://www.douban.com/personage/30400631/
+  first_year: 2023
+  last_year: 2026
+  name: 红炅
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27216252'
+  douban_url: https://www.douban.com/personage/27216252/
+  first_year: 2023
+  last_year: 2026
+  name: 约翰·雷吉扎莫
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27474156'
+  douban_url: https://www.douban.com/personage/27474156/
+  first_year: 2023
+  last_year: 2024
+  name: 罗伯·德兰尼
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27337822'
+  douban_url: https://www.douban.com/personage/27337822/
+  first_year: 2023
+  last_year: 2025
+  name: 罗文姬
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35413176'
+  douban_url: https://www.douban.com/personage/35413176/
+  first_year: 2023
+  last_year: 2025
+  name: 聂曦映
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '34966965'
+  douban_url: https://www.douban.com/personage/34966965/
+  first_year: 2023
+  last_year: 2024
+  name: 胡亚捷
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 1.0
+  douban_id: '27238280'
+  douban_url: https://www.douban.com/personage/27238280/
+  first_year: 2023
+  last_year: 2025
+  name: 胡军
+  ratings:
+  - 1
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27480371'
+  douban_url: https://www.douban.com/personage/27480371/
+  first_year: 2024
+  last_year: 2026
+  name: 胡歌
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '35912019'
+  douban_url: https://www.douban.com/personage/35912019/
+  first_year: 2023
+  last_year: 2026
+  name: 胡正健
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27228806'
+  douban_url: https://www.douban.com/personage/27228806/
+  first_year: 2025
+  last_year: 2025
+  name: 艾尔弗雷德·高福
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35992039'
+  douban_url: https://www.douban.com/personage/35992039/
+  first_year: 2023
+  last_year: 2026
+  name: 艾莉森·温特劳布
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27439255'
+  douban_url: https://www.douban.com/personage/27439255/
+  first_year: 2024
+  last_year: 2024
+  name: 艾莎·冈萨雷斯
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27239774'
+  douban_url: https://www.douban.com/personage/27239774/
+  first_year: 2023
+  last_year: 2025
+  name: 花泽香菜
+  ratings:
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27574915'
+  douban_url: https://www.douban.com/personage/27574915/
+  first_year: 2023
+  last_year: 2023
+  name: 苏尚卿
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.33
+  douban_id: '27480665'
+  douban_url: https://www.douban.com/personage/27480665/
+  first_year: 2023
+  last_year: 2026
+  name: 苏照彬
+  ratings:
+  - 3
+  - 2
+  - 2
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30161475'
+  douban_url: https://www.douban.com/personage/30161475/
+  first_year: 2024
+  last_year: 2026
+  name: 范丞丞
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
 - avg_rating: 5.0
   douban_id: '36991674'
   douban_url: https://www.douban.com/personage/36991674/
@@ -314,6 +8556,157 @@ people:
   ratings:
   - 5
   - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27223632'
+  douban_url: https://www.douban.com/personage/27223632/
+  first_year: 2024
+  last_year: 2026
+  name: 莫蕾娜·巴卡琳
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '30473154'
+  douban_url: https://www.douban.com/personage/30473154/
+  first_year: 2025
+  last_year: 2025
+  name: 莱昂德罗·费尔南德斯
+  ratings:
+  - 2
+  - 2
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30473160'
+  douban_url: https://www.douban.com/personage/30473160/
+  first_year: 2023
+  last_year: 2025
+  name: 萧清源
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '35047716'
+  douban_url: https://www.douban.com/personage/35047716/
+  first_year: 2025
+  last_year: 2025
+  name: 萨拉·奈尔斯
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27546244'
+  douban_url: https://www.douban.com/personage/27546244/
+  first_year: 2023
+  last_year: 2026
+  name: 萩原利久
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '34904991'
+  douban_url: https://www.douban.com/personage/34904991/
+  first_year: 2026
+  last_year: 2026
+  name: 董宝石
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.33
+  douban_id: '36219677'
+  douban_url: https://www.douban.com/personage/36219677/
+  first_year: 2024
+  last_year: 2025
+  name: 董易
+  ratings:
+  - 4
+  - 4
+  - 5
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27551758'
+  douban_url: https://www.douban.com/personage/27551758/
+  first_year: 2024
+  last_year: 2026
+  name: 董润年
+  ratings:
+  - 3
+  - 3
+  - 1
+  - 1
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27487215'
+  douban_url: https://www.douban.com/personage/27487215/
+  first_year: 2023
+  last_year: 2025
+  name: 蒋峰
+  ratings:
+  - 1
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27504123'
+  douban_url: https://www.douban.com/personage/27504123/
+  first_year: 2024
+  last_year: 2026
+  name: 袁和平
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27558914'
+  douban_url: https://www.douban.com/personage/27558914/
+  first_year: 2024
+  last_year: 2025
+  name: 袁富华
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27216195'
+  douban_url: https://www.douban.com/personage/27216195/
+  first_year: 2023
+  last_year: 2024
+  name: 袁泉
+  ratings:
+  - 3
+  - 4
   roles:
   - actor
   works: 2
@@ -329,14 +8722,314 @@ people:
   roles:
   - writer
   works: 2
-- avg_rating: 4.0
-  douban_id: '27496283'
-  douban_url: https://www.douban.com/personage/27496283/
-  first_year: 2026
+- avg_rating: 3.0
+  douban_id: '27571513'
+  douban_url: https://www.douban.com/personage/27571513/
+  first_year: 2023
+  last_year: 2025
+  name: 西蒙·法纳比
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27585644'
+  douban_url: https://www.douban.com/personage/27585644/
+  first_year: 2024
   last_year: 2026
-  name: 赞达亚
+  name: 角田晃广
+  ratings:
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27214960'
+  douban_url: https://www.douban.com/personage/27214960/
+  first_year: 2023
+  last_year: 2023
+  name: 詹森·舒瓦兹曼
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27569235'
+  douban_url: https://www.douban.com/personage/27569235/
+  first_year: 2024
+  last_year: 2024
+  name: 许玮伦
   ratings:
   - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36403266'
+  douban_url: https://www.douban.com/personage/36403266/
+  first_year: 2023
+  last_year: 2026
+  name: 诺亚·克鲁尔
+  ratings:
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '33406048'
+  douban_url: https://www.douban.com/personage/33406048/
+  first_year: 2023
+  last_year: 2025
+  name: 谢伊·哈顿
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30435079'
+  douban_url: https://www.douban.com/personage/30435079/
+  first_year: 2023
+  last_year: 2025
+  name: 谢君伟
+  ratings:
+  - 2
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27498560'
+  douban_url: https://www.douban.com/personage/27498560/
+  first_year: 2024
+  last_year: 2026
+  name: 谢苗
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '30481909'
+  douban_url: https://www.douban.com/personage/30481909/
+  first_year: 2023
+  last_year: 2025
+  name: 谷江山
+  ratings:
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '30275274'
+  douban_url: https://www.douban.com/personage/30275274/
+  first_year: 2023
+  last_year: 2025
+  name: 费启鸣
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27417415'
+  douban_url: https://www.douban.com/personage/27417415/
+  first_year: 2023
+  last_year: 2025
+  name: 费翔
+  ratings:
+  - 2
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30229380'
+  douban_url: https://www.douban.com/personage/30229380/
+  first_year: 2023
+  last_year: 2025
+  name: 赤楚卫二
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27503300'
+  douban_url: https://www.douban.com/personage/27503300/
+  first_year: 2024
+  last_year: 2025
+  name: 赵丽颖
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36856036'
+  douban_url: https://www.douban.com/personage/36856036/
+  first_year: 2024
+  last_year: 2025
+  name: 赵俊凌
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36970507'
+  douban_url: https://www.douban.com/personage/36970507/
+  first_year: 2024
+  last_year: 2024
+  name: 赵哲豪
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '34935128'
+  douban_url: https://www.douban.com/personage/34935128/
+  first_year: 2023
+  last_year: 2026
+  name: 赵成晨
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27582068'
+  douban_url: https://www.douban.com/personage/27582068/
+  first_year: 2023
+  last_year: 2024
+  name: 赵梦娇
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27488028'
+  douban_url: https://www.douban.com/personage/27488028/
+  first_year: 2024
+  last_year: 2026
+  name: 赵海燕
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30222290'
+  douban_url: https://www.douban.com/personage/30222290/
+  first_year: 2023
+  last_year: 2023
+  name: 赵爽
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27567294'
+  douban_url: https://www.douban.com/personage/27567294/
+  first_year: 2023
+  last_year: 2025
+  name: 赵达
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27553515'
+  douban_url: https://www.douban.com/personage/27553515/
+  first_year: 2023
+  last_year: 2023
+  name: 赵震
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36043323'
+  douban_url: https://www.douban.com/personage/36043323/
+  first_year: 2023
+  last_year: 2025
+  name: 路扬
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27255402'
+  douban_url: https://www.douban.com/personage/27255402/
+  first_year: 2025
+  last_year: 2025
+  name: 路易斯·古兹曼
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '30372577'
+  douban_url: https://www.douban.com/personage/30372577/
+  first_year: 2023
+  last_year: 2023
+  name: 车珠英
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30340283'
+  douban_url: https://www.douban.com/personage/30340283/
+  first_year: 2023
+  last_year: 2023
+  name: 辛睿恩
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27483415'
+  douban_url: https://www.douban.com/personage/27483415/
+  first_year: 2024
+  last_year: 2024
+  name: 辛芷蕾
+  ratings:
+  - 3
   - 4
   roles:
   - actor
@@ -353,36 +9046,852 @@ people:
   roles:
   - writer
   works: 2
-- avg_rating: 4.5
-  douban_id: '27497269'
-  douban_url: https://www.douban.com/personage/27497269/
-  first_year: 2026
+- avg_rating: 2.67
+  douban_id: '34929703'
+  douban_url: https://www.douban.com/personage/34929703/
+  first_year: 2024
   last_year: 2026
-  name: 陈浩
+  name: 达娜·莱杜克斯·米勒
+  ratings:
+  - 2
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27575639'
+  douban_url: https://www.douban.com/personage/27575639/
+  first_year: 2024
+  last_year: 2025
+  name: 达纳·福克斯
   ratings:
   - 4
-  - 5
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27577750'
+  douban_url: https://www.douban.com/personage/27577750/
+  first_year: 2023
+  last_year: 2026
+  name: 迈克尔·莱斯利
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27504337'
+  douban_url: https://www.douban.com/personage/27504337/
+  first_year: 2023
+  last_year: 2023
+  name: 迈克尔·阿恩特
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27587376'
+  douban_url: https://www.douban.com/personage/27587376/
+  first_year: 2025
+  last_year: 2025
+  name: 迈尔斯·米勒
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27576735'
+  douban_url: https://www.douban.com/personage/27576735/
+  first_year: 2023
+  last_year: 2026
+  name: 邢文雄
+  ratings:
+  - 3
+  - 3
+  - 2
+  - 2
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.0
+  douban_id: '30374282'
+  douban_url: https://www.douban.com/personage/30374282/
+  first_year: 2024
+  last_year: 2025
+  name: 那尔那茜
+  ratings:
+  - 2
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '35656349'
+  douban_url: https://www.douban.com/personage/35656349/
+  first_year: 2024
+  last_year: 2024
+  name: 邬家楷
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '36069427'
+  douban_url: https://www.douban.com/personage/36069427/
+  first_year: 2023
+  last_year: 2025
+  name: 邹靖
+  ratings:
+  - 2
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27496721'
+  douban_url: https://www.douban.com/personage/27496721/
+  first_year: 2023
+  last_year: 2023
+  name: 郑成日
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '37374511'
+  douban_url: https://www.douban.com/personage/37374511/
+  first_year: 2025
+  last_year: 2025
+  name: 郑瑛璐
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27564926'
+  douban_url: https://www.douban.com/personage/27564926/
+  first_year: 2023
+  last_year: 2023
+  name: 郑知晓
+  ratings:
+  - 4
+  - 4
   roles:
   - actor
   works: 2
 - avg_rating: 3.5
-  douban_id: '30500740'
-  douban_url: https://www.douban.com/personage/30500740/
-  first_year: 2026
+  douban_id: '27229013'
+  douban_url: https://www.douban.com/personage/27229013/
+  first_year: 2025
   last_year: 2026
-  name: 高允贞
+  name: 郑秀文
   ratings:
   - 4
   - 3
   roles:
   - actor
   works: 2
-- avg_rating: 2.5
-  douban_id: '27575678'
-  douban_url: https://www.douban.com/personage/27575678/
-  first_year: 2026
+- avg_rating: 3.0
+  douban_id: '35152273'
+  douban_url: https://www.douban.com/personage/35152273/
+  first_year: 2023
+  last_year: 2025
+  name: 郑钧
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30156606'
+  douban_url: https://www.douban.com/personage/30156606/
+  first_year: 2024
+  last_year: 2025
+  name: 郜思雯
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '34772235'
+  douban_url: https://www.douban.com/personage/34772235/
+  first_year: 2023
+  last_year: 2024
+  name: 郝超
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 4.67
+  douban_id: '27487299'
+  douban_url: https://www.douban.com/personage/27487299/
+  first_year: 2023
+  last_year: 2023
+  name: 郭帆
+  ratings:
+  - 4
+  - 5
+  - 5
+  roles:
+  - actor
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30471582'
+  douban_url: https://www.douban.com/personage/30471582/
+  first_year: 2023
+  last_year: 2025
+  name: 郭鸿博
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27546007'
+  douban_url: https://www.douban.com/personage/27546007/
+  first_year: 2024
   last_year: 2026
-  name: 魏翔
+  name: 里克·杰法
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27548483'
+  douban_url: https://www.douban.com/personage/27548483/
+  first_year: 2024
+  last_year: 2026
+  name: 野吕佳代
+  ratings:
+  - 2
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27571191'
+  douban_url: https://www.douban.com/personage/27571191/
+  first_year: 2023
+  last_year: 2024
+  name: 野木亚纪子
+  ratings:
+  - 4
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27498534'
+  douban_url: https://www.douban.com/personage/27498534/
+  first_year: 2024
+  last_year: 2026
+  name: 野间口彻
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27228345'
+  douban_url: https://www.douban.com/personage/27228345/
+  first_year: 2025
+  last_year: 2026
+  name: 金大贤
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27571532'
+  douban_url: https://www.douban.com/personage/27571532/
+  first_year: 2024
+  last_year: 2025
+  name: 金嫝勋
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27496607'
+  douban_url: https://www.douban.com/personage/27496607/
+  first_year: 2025
+  last_year: 2026
+  name: 金宣虎
+  ratings:
+  - 3
+  - 5
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27496633'
+  douban_url: https://www.douban.com/personage/27496633/
+  first_year: 2024
+  last_year: 2026
+  name: 金宰澈
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27499470'
+  douban_url: https://www.douban.com/personage/27499470/
+  first_year: 2023
+  last_year: 2024
+  name: 金成畇
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27499520'
+  douban_url: https://www.douban.com/personage/27499520/
+  first_year: 2025
+  last_year: 2025
+  name: 金晨
+  ratings:
+  - 3
+  - 1
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27566716'
+  douban_url: https://www.douban.com/personage/27566716/
+  first_year: 2023
+  last_year: 2026
+  name: 金熙元
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35704510'
+  douban_url: https://www.douban.com/personage/35704510/
+  first_year: 2023
+  last_year: 2023
+  name: 金赫拉
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27480516'
+  douban_url: https://www.douban.com/personage/27480516/
+  first_year: 2023
+  last_year: 2023
+  name: 金银淑
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27550237'
+  douban_url: https://www.douban.com/personage/27550237/
+  first_year: 2024
+  last_year: 2025
+  name: 钟楚曦
+  ratings:
+  - 5
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36203918'
+  douban_url: https://www.douban.com/personage/36203918/
+  first_year: 2023
+  last_year: 2023
+  name: 钟沐龙
+  ratings:
+  - 3
+  - 3
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36486518'
+  douban_url: https://www.douban.com/personage/36486518/
+  first_year: 2023
+  last_year: 2024
+  name: 锦蓉
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '35362667'
+  douban_url: https://www.douban.com/personage/35362667/
+  first_year: 2023
+  last_year: 2024
+  name: 长泽树
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '30243231'
+  douban_url: https://www.douban.com/personage/30243231/
+  first_year: 2023
+  last_year: 2025
+  name: 阎么么
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27553520'
+  douban_url: https://www.douban.com/personage/27553520/
+  first_year: 2023
+  last_year: 2025
+  name: 阎萌萌
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.0
+  douban_id: '27577530'
+  douban_url: https://www.douban.com/personage/27577530/
+  first_year: 2023
+  last_year: 2025
+  name: 阿如那
+  ratings:
+  - 1
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27546008'
+  douban_url: https://www.douban.com/personage/27546008/
+  first_year: 2024
+  last_year: 2026
+  name: 阿曼达·斯尔沃
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '36300274'
+  douban_url: https://www.douban.com/personage/36300274/
+  first_year: 2023
+  last_year: 2023
+  name: 阿维·纳什
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27251685'
+  douban_url: https://www.douban.com/personage/27251685/
+  first_year: 2024
+  last_year: 2025
+  name: 阿部贞夫
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27487454'
+  douban_url: https://www.douban.com/personage/27487454/
+  first_year: 2024
+  last_year: 2025
+  name: 陈创
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '35141823'
+  douban_url: https://www.douban.com/personage/35141823/
+  first_year: 2024
+  last_year: 2025
+  name: 陈升垚
+  ratings:
+  - 5
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27552834'
+  douban_url: https://www.douban.com/personage/27552834/
+  first_year: 2024
+  last_year: 2026
+  name: 陈大利
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30245392'
+  douban_url: https://www.douban.com/personage/30245392/
+  first_year: 2025
+  last_year: 2025
+  name: 陈子平
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27495258'
+  douban_url: https://www.douban.com/personage/27495258/
+  first_year: 2023
+  last_year: 2025
+  name: 陈思诚
+  ratings:
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35063802'
+  douban_url: https://www.douban.com/personage/35063802/
+  first_year: 2023
+  last_year: 2024
+  name: 陈烨
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '35674749'
+  douban_url: https://www.douban.com/personage/35674749/
+  first_year: 2023
+  last_year: 2024
+  name: 陈肯
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27552146'
+  douban_url: https://www.douban.com/personage/27552146/
+  first_year: 2023
+  last_year: 2025
+  name: 雅各布·特伦布莱
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27570210'
+  douban_url: https://www.douban.com/personage/27570210/
+  first_year: 2024
+  last_year: 2026
+  name: 雷特·瑞斯
+  ratings:
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.5
+  douban_id: '27323876'
+  douban_url: https://www.douban.com/personage/27323876/
+  first_year: 2023
+  last_year: 2025
+  name: 霍特·麦克卡兰尼
+  ratings:
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27576540'
+  douban_url: https://www.douban.com/personage/27576540/
+  first_year: 2023
+  last_year: 2024
+  name: 韩啸
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27504054'
+  douban_url: https://www.douban.com/personage/27504054/
+  first_year: 2024
+  last_year: 2026
+  name: 韩延
+  ratings:
+  - 2
+  - 2
+  - 4
+  - 4
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27610072'
+  douban_url: https://www.douban.com/personage/27610072/
+  first_year: 2023
+  last_year: 2026
+  name: 项河生
+  ratings:
+  - 3
+  - 2
+  roles:
+  - director
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27610070'
+  douban_url: https://www.douban.com/personage/27610070/
+  first_year: 2023
+  last_year: 2026
+  name: 项秋良
+  ratings:
+  - 3
+  - 2
+  roles:
+  - director
+  works: 2
+- avg_rating: 3.5
+  douban_id: '30457047'
+  douban_url: https://www.douban.com/personage/30457047/
+  first_year: 2023
+  last_year: 2026
+  name: 马修·福格尔
+  ratings:
+  - 3
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '36166784'
+  douban_url: https://www.douban.com/personage/36166784/
+  first_year: 2025
+  last_year: 2025
+  name: 马特·兰伯特
+  ratings:
+  - 4
+  - 4
+  roles:
+  - writer
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35656415'
+  douban_url: https://www.douban.com/personage/35656415/
+  first_year: 2023
+  last_year: 2026
+  name: 马特·欧文斯
+  ratings:
+  - 5
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30383558'
+  douban_url: https://www.douban.com/personage/30383558/
+  first_year: 2023
+  last_year: 2024
+  name: 马程
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27482754'
+  douban_url: https://www.douban.com/personage/27482754/
+  first_year: 2023
+  last_year: 2024
+  name: 高亚麟
+  ratings:
+  - 4
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30395980'
+  douban_url: https://www.douban.com/personage/30395980/
+  first_year: 2023
+  last_year: 2026
+  name: 高桥伸也
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.5
+  douban_id: null
+  douban_url: null
+  first_year: 2025
+  last_year: 2025
+  name: 高石明里
+  ratings:
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27588128'
+  douban_url: https://www.douban.com/personage/27588128/
+  first_year: 2023
+  last_year: 2025
+  name: 鬼头明里
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '36058307'
+  douban_url: https://www.douban.com/personage/36058307/
+  first_year: 2023
+  last_year: 2024
+  name: 魏一凡
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30140137'
+  douban_url: https://www.douban.com/personage/30140137/
+  first_year: 2025
+  last_year: 2025
+  name: 魏嘏隽
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30089926'
+  douban_url: https://www.douban.com/personage/30089926/
+  first_year: 2024
+  last_year: 2025
+  name: 魏风华
+  ratings:
+  - 3
+  - 3
+  roles:
+  - writer
+  works: 2
+- avg_rating: 3.0
+  douban_id: '27503072'
+  douban_url: https://www.douban.com/personage/27503072/
+  first_year: 2025
+  last_year: 2025
+  name: 黄东赫
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27548901'
+  douban_url: https://www.douban.com/personage/27548901/
+  first_year: 2024
+  last_year: 2026
+  name: 黄小蕾
+  ratings:
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 2
+- avg_rating: 2.5
+  douban_id: '27580819'
+  douban_url: https://www.douban.com/personage/27580819/
+  first_year: 2023
+  last_year: 2026
+  name: 黄才伦
   ratings:
   - 3
   - 2
@@ -400,4 +9909,65 @@ people:
   - 5
   roles:
   - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27570071'
+  douban_url: https://www.douban.com/personage/27570071/
+  first_year: 2023
+  last_year: 2023
+  name: 黑木华
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 3.0
+  douban_id: '30173810'
+  douban_url: https://www.douban.com/personage/30173810/
+  first_year: 2023
+  last_year: 2023
+  name: 黑石稔
+  ratings:
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '35656916'
+  douban_url: https://www.douban.com/personage/35656916/
+  first_year: 2025
+  last_year: 2026
+  name: 齐亚文提奥
+  ratings:
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.0
+  douban_id: '27610483'
+  douban_url: https://www.douban.com/personage/27610483/
+  first_year: 2023
+  last_year: 2025
+  name: 齐斯伽
+  ratings:
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 2
+- avg_rating: 4.5
+  douban_id: '27493412'
+  douban_url: https://www.douban.com/personage/27493412/
+  first_year: 2023
+  last_year: 2023
+  name: 龚格尔
+  ratings:
+  - 4
+  - 5
+  roles:
+  - actor
+  - writer
   works: 2

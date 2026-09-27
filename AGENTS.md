@@ -47,7 +47,7 @@ uv run poe update-health-summary   # regenerate health index summary (calls loca
 uv run poe sync-running            # sync running data from the Garmin CN API (incremental)
 uv run poe sync-running-splits     # upload running splits/polyline to R2 (dry-run; --confirm or SYNC_RUNNING_CONFIRM=true)
 uv run poe film-tv-login           # capture the Douban cookie (CDP; log in by hand; --check / --force)
-uv run poe sync-film-tv            # sync Douban film & TV records (lists anonymous; --full / --limit N / --only slug / --refresh-details N / --prune)
+uv run poe sync-film-tv            # sync Douban film & TV records (lists anonymous; --full / --limit N / --only slug / --refresh-details N / --prune / --dedupe-covers)
 uv run poe film-tv-derive          # regenerate page data (JSON shards + month index + stats/people)
 uv run poe film-tv-upload-covers   # upload locally cached covers to R2 (developer step; dry-run; --confirm)
 uv run poe film-tv-check           # validate the archive (--check-remote compares covers against R2; --data-quality writes a report)

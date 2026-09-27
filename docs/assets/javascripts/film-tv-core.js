@@ -11,6 +11,21 @@ function monthKey(date) {
   return /^\d{4}-\d{2}/.test(value) ? value.slice(0, 7) : "undated";
 }
 
+// A real `YYYY-MM` month key. The archive also carries an "undated" pseudo-month
+// (records with no watch date), and that string must never be read as a date:
+// `"undated".slice(0, 4)` is `"unda"`, which used to be offered as a year.
+function isMonthKey(value) {
+  return /^\d{4}-\d{2}$/.test(String(value || ""));
+}
+
+// Years covered by a month → count map (or a list of month keys), oldest first.
+// The calendar rotates years, so this is the only place that decides what counts
+// as one: real months only, deduplicated and numerically ordered.
+function calendarYears(months) {
+  const keys = Array.isArray(months) ? months : Object.keys(months || {});
+  return [...new Set(keys.filter(isMonthKey).map((month) => month.slice(0, 4)))].sort();
+}
+
 // Release-year bucket used by the 上映年代 filter: 1994 -> "1990s".
 function decadeOf(year) {
   const value = Number(year);
@@ -288,6 +303,8 @@ const FilmTvCoreApi = {
   el,
   fetchJsonOnce,
   monthKey,
+  isMonthKey,
+  calendarYears,
   monthAdd,
   monthSpan,
   lastMonths,

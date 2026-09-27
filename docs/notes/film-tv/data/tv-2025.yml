@@ -37,10 +37,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 06977e49
     machine_hash: ca437afb
     missing_since: null
+    missing_reason: null
 - id: "37434078"
   title: 将棋女王
   original_title: MISS KING
@@ -77,10 +78,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: c94e363f
     machine_hash: 583d621a
     missing_since: null
+    missing_reason: null
 - id: "36544257"
   title: 他为什么依然单身
   original_title: null
@@ -117,10 +119,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 12b6a821
     machine_hash: c178ad40
     missing_since: null
+    missing_reason: null
 - id: "36318037"
   title: 唐朝诡事录之长安
   original_title: null
@@ -157,10 +160,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: f8065cce
     machine_hash: ea4ff59f
     missing_since: null
+    missing_reason: null
 - id: "36576581"
   title: 牧神记 年番1
   original_title: null
@@ -197,10 +201,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 982dc60b
     machine_hash: 2105ff20
     missing_since: null
+    missing_reason: null
 - id: "36996293"
   title: 暴君的厨师
   original_title: 폭군의 셰프
@@ -237,10 +242,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 0b5b2bcf
     machine_hash: 98485dfe
     missing_since: null
+    missing_reason: null
 - id: "36160375"
   title: 基地 第三季
   original_title: null
@@ -277,10 +283,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: a69113cd
     machine_hash: 8a734dce
     missing_since: null
+    missing_reason: null
 - id: "36208369"
   title: 星期三 第二季
   original_title: null
@@ -317,10 +324,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: e8cf0ed5
     machine_hash: 680e1e49
     missing_since: null
+    missing_reason: null
 - id: "37167535"
   title: 百妖谱·洛阳篇
   original_title: null
@@ -357,10 +365,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: fea2a527
     machine_hash: 825ff90b
     missing_since: null
+    missing_reason: null
 - id: "35861087"
   title: 凡人修仙传
   original_title: null
@@ -397,10 +406,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: e5054284
     machine_hash: 6dbacfab
     missing_since: null
+    missing_reason: null
 - id: "36407380"
   title: 鱿鱼游戏 第三季
   original_title: 오징어 게임 시즌 3
@@ -437,10 +447,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: ff55ffaf
     machine_hash: d02c5f48
     missing_since: null
+    missing_reason: null
 - id: "36831851"
   title: 匹兹堡医护前线 第一季
   original_title: null
@@ -477,10 +488,11 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: 78e74b93
     machine_hash: c1c5cde6
     missing_since: null
+    missing_reason: null
 - id: "36056894"
   title: 爱，死亡和机器人 第四季
   original_title: null
@@ -517,7 +529,448 @@
     hidden: false
   meta:
     detail_synced_at: "2026-09-27"
-    taxonomy_version: 1
+    taxonomy_version: 2
     fingerprint: a4a31408
     machine_hash: 7275d9a7
+    missing_since: null
+    missing_reason: null
+- id: "2224160"
+  title: 宠物情缘
+  original_title: 寵物情緣
+  year: 1999
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 7.4
+  douban_score_count: 19235
+  marked_at: "2025-05-04"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 爱情]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 45
+  credits:
+    directors: [郑基成, 陈维冠, 文伟鸿, 钟澍佳, 朱礼和]
+    casts: [古天乐, 宣萱, 郑秀文, 李珊珊, 马德钟, 林晓峰, 杨千嬅, 陈奕迅]
+    writers: [曾保华, 张小方, 司徒锦源, 鲍伟聪, 彭慰, 黄晓庄]
+  episodes: 20
+  slug: chung-muk-ching-yuen
+  covers:
+  - covers/2224160/01.webp
+  douban_url: https://movie.douban.com/subject/2224160/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: b2b17fa8
+    machine_hash: 1dcbbc67
+    missing_since: null
+- id: "35364243"
+  title: 星期三 第一季
+  original_title: null
+  year: 2022
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 7.8
+  douban_score_count: 171401
+  marked_at: "2025-05-02"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 悬疑, 犯罪, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
+  credits:
+    directors: [Tim Burton（蒂姆·波顿）, Gandja Monteiro（甘加·蒙泰罗）, 詹姆斯·马歇尔]
+    casts: [Jenna Ortega（詹娜·奥尔特加）, Gwendoline Christie（格温多兰·克里斯蒂）, Christina Ricci（克里斯蒂娜·里奇）, Catherine Zeta-Jones（凯瑟琳·泽塔-琼斯）, 路易斯·古兹曼, 艾玛·迈尔斯, 弗莱德·阿米森, 瑞琪·琳德赫姆, 杰米·麦克沙恩, 亨特·杜汉]
+    writers: [艾尔弗雷德·高福, 迈尔斯·米勒, 凯拉·阿尔伯特, 阿普里尔·布莱尔, 马特·兰伯特, 查尔斯·亚当斯]
+  episodes: 8
+  slug: wednesday-season-1
+  covers:
+  - covers/35364243/01.webp
+  douban_url: https://movie.douban.com/subject/35364243/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 4773672e
+    machine_hash: 77e19259
+    missing_since: null
+- id: "36653963"
+  title: 黑镜 第七季
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.6
+  douban_score_count: 130115
+  marked_at: "2025-04-13"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 科幻, 悬疑, 惊悚, 犯罪]
+  regions: [美国]
+  languages: [英语, 汉语普通话]
+  runtime: 60
+  credits:
+    directors: [Ally Pankiw（阿丽·潘基乌）, Toby Haynes（托比·海恩斯）, 王昊鹭, 大卫·斯雷德, 克里斯托弗·巴雷特, 卢克·泰勒]
+    casts: [Rashida Jones（拉什达·琼斯）, Chris O'Dowd（克里斯·奥多德）, Tracee Ellis Ross（翠西·艾利斯·罗斯）, Siena Kelly（西耶娜·凯利）, 罗西·麦克尤恩, 伊萨·雷, 艾玛·科林, 奥卡菲娜, 哈丽特·瓦尔特, 彼得·卡帕尔迪]
+    writers: [查理·布鲁克, 艾拉·洛德, 毕莎·K·阿里, 威廉·布里奇斯, 贝卡·宝陵]
+  episodes: 6
+  slug: black-mirror-season-7
+  covers:
+  - covers/36653963/01.webp
+  douban_url: https://movie.douban.com/subject/36653963/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 1b10ba4c
+    machine_hash: 40f2c45f
+    missing_since: null
+- id: "36053256"
+  title: 苦尽柑来遇见你
+  original_title: 폭싹 속았수다
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 5
+  douban_score: 9.4
+  douban_score_count: 348181
+  marked_at: "2025-04-06"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 爱情, 历史]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 60
+  credits:
+    directors: [金湲锡]
+    casts: [李知恩, 朴宝剑, 文素利, 朴解浚, 廉惠兰, 吴正世, 罗文姬, 金容琳, 金宣虎, 吴敏爱]
+    writers: [林想賰]
+  episodes: 16
+  slug: when-life-gives-you-tangerines
+  covers:
+  - covers/36053256/01.webp
+  douban_url: https://movie.douban.com/subject/36053256/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 180b0b4e
+    machine_hash: d276d4ce
+    missing_since: null
+- id: "30329719"
+  title: 降世神通：最后的气宗 第一季
+  original_title: null
+  year: 2024
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 6.9
+  douban_score_count: 8654
+  marked_at: "2025-03-16"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 动作, 悬疑, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
+  credits:
+    directors: [Michael Goi（迈克尔·戈伊）, Roseanne Liang（罗丝安妮·梁）, 杰特·威尔金森]
+    casts: [Gordon Cormier（戈登·科米尔）, 齐亚文提奥, Ian Ousley（伊恩·欧斯利）, Dallas Liu（达拉斯·刘）, 伊丽莎白·于, 李善亨, 金大贤, 张至仪, 梁振邦, 林继修]
+    writers: [迈克尔·但丁·迪马蒂诺, 阿尔伯特·金]
+  episodes: 8
+  slug: avatar-the-last-airbender-season-1
+  covers:
+  - covers/30329719/01.webp
+  douban_url: https://movie.douban.com/subject/30329719/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 519432e1
+    machine_hash: 9e17f744
+    missing_since: null
+- id: "35814148"
+  title: 部长和社畜的结婚令人着急
+  original_title: 部長と社畜の結婚はもどかしい
+  year: 2022
+  type: tv
+  category: series
+  status: collect
+  user_rating: 2
+  douban_score: 5.7
+  douban_score_count: 234
+  marked_at: "2025-03-08"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 17
+  credits:
+    directors: [船谷純矢]
+    casts: [中村百合香, 竹财辉之助, 小野莉奈, 永田崇人, 佐野岳, 丸山智己]
+    writers: [今西祐子]
+  episodes: 2
+  slug: douban-35814148
+  covers:
+  - covers/35814148/01.webp
+  douban_url: https://movie.douban.com/subject/35814148/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: aa9113ef
+    machine_hash: 9626684c
+    missing_since: null
+- id: "35656342"
+  title: 鱿鱼游戏 第二季
+  original_title: 오징어 게임 시즌 2
+  year: 2024
+  type: tv
+  category: series
+  status: collect
+  user_rating: 3
+  douban_score: 6.4
+  douban_score_count: 200037
+  marked_at: "2025-02-16"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 悬疑, 惊悚]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 60
+  credits:
+    directors: [黄东赫]
+    casts: [李政宰, 李炳宪, 魏嘏隽, 孔刘, 任时完, 姜河那, 李书焕, 朴成焄, 曺柔理, 姜爱心]
+    writers: [黄东赫]
+  episodes: 7
+  slug: squid-game-2
+  covers:
+  - covers/35656342/01.webp
+  douban_url: https://movie.douban.com/subject/35656342/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d3bfe5a4
+    machine_hash: 97fcab55
+    missing_since: null
+- id: "36660865"
+  title: 武动乾坤 第五季
+  original_title: null
+  year: 2025
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 3
+  douban_score: 6.3
+  douban_score_count: 1840
+  marked_at: "2025-02-01"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
+  credits:
+    directors: [郑钧]
+    casts: [柯暮卿, 郭鸿博, 吕书君, 萧清源, 小忻, 谢添天, 不一, 鹏小胖, 孙晔, 李丹青]
+    writers: [郑钧, 袁洁]
+  episodes: 12
+  slug: martial-universe-v
+  covers:
+  - covers/36660865/01.webp
+  douban_url: https://movie.douban.com/subject/36660865/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: 2d7238b3
+    machine_hash: cc5f5ebc
+    missing_since: null
+- id: "36575783"
+  title: 异人之下之决战！碧游村
+  original_title: null
+  year: 2025
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.4
+  douban_score_count: 125996
+  marked_at: "2025-01-29"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话, 四川方言]
+  runtime: 45
+  credits:
+    directors: [许宏宇]
+    casts: [彭昱畅, 王影璐, 侯明昊, 文淇, 尹昉, 严屹宽, 潘斌龙, 邵兵, 赵达, 王传君]
+    writers: [陈仕澍]
+  episodes: 13
+  slug: i-am-nobody-the-showdown-between-yin-yang
+  covers:
+  - covers/36575783/01.webp
+  douban_url: https://movie.douban.com/subject/36575783/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: bcc5ed7b
+    machine_hash: f3fc965a
+    missing_since: null
+- id: "36141134"
+  title: 大道朝天
+  original_title: null
+  year: 2024
+  type: tv
+  category: anime
+  status: collect
+  user_rating: 5
+  douban_score: 8.1
+  douban_score_count: 5140
+  marked_at: "2025-01-09"
+  douban_comment: null
+  tags: []
+  genres: [动作, 动画, 奇幻, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
+  credits:
+    directors: [陈升垚]
+    casts: [羊仔, 阎么么, 李璐, 锦鲤, 王凯, 杨默, 王晨光, 阎萌萌, 齐斯伽, 苗壮]
+    writers: [王旭阳]
+  episodes: 16
+  slug: the-path-toward-heaven
+  covers:
+  - covers/36141134/01.webp
+  douban_url: https://movie.douban.com/subject/36141134/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d4865993
+    machine_hash: 4ddca59c
+    missing_since: null
+- id: "36961710"
+  title: 各自孤独的美食家
+  original_title: それぞれの孤独のグルメ
+  year: 2024
+  type: tv
+  category: series
+  status: collect
+  user_rating: 4
+  douban_score: 8.1
+  douban_score_count: 4152
+  marked_at: "2025-01-07"
+  douban_comment: null
+  tags: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
+  credits:
+    directors: [北畑龙一]
+    casts: [松重丰, 太田光, 槙田雄司, 板谷由夏, 中山裕介, 玉井诗织, 平田满, 斋藤汰鹰, 比嘉爱未, 福山翔大]
+    writers: [田口佳宏]
+  episodes: 12
+  slug: douban-36961710
+  covers:
+  - covers/36961710/01.webp
+  douban_url: https://movie.douban.com/subject/36961710/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-09-27"
+    taxonomy_version: 2
+    fingerprint: d0d1f9b0
+    machine_hash: bc5c7712
     missing_since: null
