@@ -3,28 +3,29 @@
 # generated_at: 2026-09-27T22:33+08:00
 - id: "25704580"
   title: X医生：外科医生大门未知子 第2季
-  original_title: null
-  year: null
+  original_title: ドクターX 外科医・大門未知子 第2期
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 22905
   marked_at: "2013-12-24"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [田村直己, 松田秀知]
+    casts: [米仓凉子, 藤木直人, 内田有纪, 远藤宪一, 满岛真之介, 笛木优子, 水泽绘玲奈, 六角慎司, 浅野和之, 笹野高史]
+    writers: [中園ミホ, 武井彩, 林誠人, 寺田敏雄]
+  episodes: 9
+  slug: x-2
+  covers:
+  - covers/25704580/01.webp
   douban_url: https://movie.douban.com/subject/25704580/
   user:
     cover: ""
@@ -35,35 +36,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ce71e4a6
-    machine_hash: 88b6e66d
+    machine_hash: "37995951"
     missing_since: null
+    missing_reason: null
 - id: "2148799"
   title: 一吻定情
-  original_title: null
-  year: null
+  original_title: イタズラなKiss
+  year: 1996
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 47518
   marked_at: "2013-12-22"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [森田光则]
+    casts: [柏原崇, 佐藤蓝子, 内藤刚志, 浅田美代子, 小泽真珠, 青木伸辅, 德井优]
+    writers: [楠本弘美, 森治美]
+  episodes: 9
+  slug: kiss
+  covers:
+  - covers/2148799/01.webp
   douban_url: https://movie.douban.com/subject/2148799/
   user:
     cover: ""
@@ -74,35 +77,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b8f6f94a
-    machine_hash: 1dd41110
+    machine_hash: 7c24f8fc
     missing_since: null
+    missing_reason: null
 - id: "1428242"
-  title: 侠胆雄狮 第一季
+  title: 侠胆雄狮 第一季 Beauty and the Beast Season 1
   original_title: null
-  year: null
+  year: 1987
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 5946
   marked_at: "2013-12-14"
-  douban_comment: null
+  douban_comment: 其实他是兔唇吧?
   tags: [Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 犯罪, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Victor Lobl, Gus Trikonis]
+    casts: [Linda Hamilton, Ron Perlman, Roy Dotrice, Richard Partlow]
+    writers: [Ron Koslow]
+  episodes: 22
+  slug: beauty-and-the-beast-season-1
+  covers:
+  - covers/1428242/01.webp
   douban_url: https://movie.douban.com/subject/1428242/
   user:
     cover: ""
@@ -113,35 +118,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: cf03be73
-    machine_hash: 01d9b177
+    fingerprint: dcca7cf0
+    machine_hash: "25054878"
     missing_since: null
+    missing_reason: null
 - id: "10581289"
   title: 海女
-  original_title: null
-  year: null
+  original_title: あまちゃん
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 42630
   marked_at: "2013-12-14"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 15
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井上刚, 吉田照幸, 梶原登城, 西村武五郎, 桑野智宏]
+    casts: [能年玲奈, 桥本爱, 小泉今日子, 宫本信子, 药师丸博子, 蟹江敬三, 尾美利德, 杉本哲太, 松田龙平, 有村架纯]
+    writers: [宫藤官九郎]
+  episodes: 156
+  slug: amachan
+  covers:
+  - covers/10581289/01.webp
   douban_url: https://movie.douban.com/subject/10581289/
   user:
     cover: ""
@@ -152,35 +159,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 5f8551bf
-    machine_hash: fa15f93a
+    machine_hash: cc0bd86f
     missing_since: null
+    missing_reason: null
 - id: "25703782"
   title: 数学女孩的恋爱事件簿
-  original_title: null
-  year: null
+  original_title: ハードナッツ！～数字girlの恋する事件簿～
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 3338
   marked_at: "2013-12-10"
   douban_comment: null
   tags: [JPN, Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 47
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [河合勇人, 桥本光二郎]
+    casts: [桥本爱, 高良健吾, 矢岛健一, 波冈一喜, 胜村政信]
+    writers: [莳田光治, 山浦雅大, 徳尾浩司]
+  episodes: 8
+  slug: girl-2013
+  covers:
+  - covers/25703782/01.webp
   douban_url: https://movie.douban.com/subject/25703782/
   user:
     cover: ""
@@ -191,35 +200,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f89cff38
-    machine_hash: 735e0817
+    machine_hash: 1346bbb9
     missing_since: null
+    missing_reason: null
 - id: "21348941"
   title: 界限
-  original_title: null
-  year: null
+  original_title: リミット
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.0
+  douban_score_count: 9914
   marked_at: "2013-12-01"
-  douban_comment: null
+  douban_comment: 比较混乱...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [塚原あゆ子, 高野英治, 加藤尚樹]
+    casts: [宫内瞳, 土屋太凤, 工藤绫乃, 山下莉绪]
+    writers: [清水友佳子, 山岡潤平, すえのぶ けいこ(原作)]
+  episodes: 12
+  slug: limit
+  covers:
+  - covers/21348941/01.webp
   douban_url: https://movie.douban.com/subject/21348941/
   user:
     cover: ""
@@ -230,35 +241,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: b6981638
-    machine_hash: 22a90420
+    fingerprint: 9ac14543
+    machine_hash: 5639fae2
     missing_since: null
+    missing_reason: null
 - id: "21339675"
   title: 一吻定情
-  original_title: null
-  year: null
+  original_title: イタズラなKiss～Love in TOKYO
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 170420
   marked_at: "2013-11-30"
-  douban_comment: null
+  douban_comment: 搞得想看一下 96年那个版本了...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [永田琴]
+    casts: [矢作穗香, 古川雄辉, 山田裕贵, 西村知美, 田中要次, 相泽侑我, 加治将树, 森宽和, 山谷花纯, 藤本七海]
+    writers: [三浦有为子]
+  episodes: 16
+  slug: kiss-love-in-tokyo
+  covers:
+  - covers/21339675/01.webp
   douban_url: https://movie.douban.com/subject/21339675/
   user:
     cover: ""
@@ -269,35 +282,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 390f4cda
-    machine_hash: e6fd3d72
+    fingerprint: 0fd7a2ef
+    machine_hash: f696353b
     missing_since: null
+    missing_reason: null
 - id: "25021649"
   title: 都市传说之女 第二季
-  original_title: null
-  year: null
+  original_title: 都市伝説の女 Part2
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 2584
   marked_at: "2013-11-25"
   douban_comment: null
   tags: [JPN, Teleplay]
   genres: []
-  regions: []
-  languages: []
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [塚本連平, 秋山純, 星野和成, 小松隆志]
+    casts: [长泽雅美, 沟端淳平, 竹中直人, 平山浩行, 伊武雅刀, 洼冢俊介, 须藤理彩, 高月彩良]
+    writers: [後藤法子, 倉持裕, 渡辺雄介, 福田雄一]
+  episodes: 7
+  slug: part2
+  covers:
+  - covers/25021649/01.webp
   douban_url: https://movie.douban.com/subject/25021649/
   user:
     cover: ""
@@ -308,35 +323,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 7ceecdff
-    machine_hash: 7e61c75b
+    machine_hash: c7adc08b
     missing_since: null
+    missing_reason: null
 - id: "6037429"
-  title: 纸牌屋 第一季
+  title: 纸牌屋 第一季 House of Cards Season 1
   original_title: null
-  year: null
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 243000
   marked_at: "2013-11-17"
   douban_comment: null
   tags: [Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 惊悚]
+  regions: [美国]
+  languages: [英语, 汉语普通话]
+  runtime: 58
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [David Fincher（大卫·芬奇）, James Foley（詹姆斯·弗雷）, 卡尔·弗兰克林, 乔·舒马赫, 艾伦·库尔特, 查尔斯·麦克道格]
+    casts: [Kevin Spacey（凯文·史派西）, Robin Wright（罗宾·怀特）, Kate Mara（凯特·玛拉）, Michael Kelly（迈克尔·凯利）, 克里斯汀·康奈利, 寇瑞·斯托尔, 沙基纳·贾弗里, 何家蓓, 康斯坦斯·齐默, 马赫沙拉·阿里]
+    writers: [博·威利蒙, 基斯·哈夫, 里克·克利夫兰, 莎拉·特丽姆, 萨姆·福尔曼, 凯特·巴尔瑙, 吉娜·琼弗里多, 安德鲁·戴维斯, 迈克尔·多布斯]
+  episodes: 13
+  slug: house-of-cards-season-1
+  covers:
+  - covers/6037429/01.webp
   douban_url: https://movie.douban.com/subject/6037429/
   user:
     cover: ""
@@ -347,35 +364,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ca9b8f06
-    machine_hash: 275cb79f
+    machine_hash: 26b49ca4
     missing_since: null
+    missing_reason: null
 - id: "24697949"
   title: 半泽直树
-  original_title: null
-  year: null
+  original_title: 半沢直樹
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 316148
   marked_at: "2013-11-02"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [福泽克雄, 棚泽孝义, 田中健太]
+    casts: [堺雅人, 上户彩, 香川照之, 及川光博, 片冈爱之助, 泷藤贤一, 中岛裕翔, 宫川一朗太, 森田顺平, 志垣太郎]
+    writers: [八津弘幸, 池井戸潤(原作), 坪田文(编剧协力)]
+  episodes: 10
+  slug: hanzawa-naoki
+  covers:
+  - covers/24697949/01.webp
   douban_url: https://movie.douban.com/subject/24697949/
   user:
     cover: ""
@@ -386,35 +405,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: fe0fba3f
-    machine_hash: acc14f67
+    machine_hash: a167b8ca
     missing_since: null
+    missing_reason: null
 - id: "3113597"
   title: 天蚕变之再与天比高
-  original_title: null
-  year: null
+  original_title: 天蠶變之再與天比高
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 2243
   marked_at: "2013-10-28"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 古装]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [萧笙]
+    casts: [徐少强, 惠天赐, 雪梨, 尹天照, 罗颂华, 蔡晓仪]
+    writers: [黄鹰]
+  episodes: 31
+  slug: reincarnated-ii
+  covers:
+  - covers/3113597/01.webp
   douban_url: https://movie.douban.com/subject/3113597/
   user:
     cover: ""
@@ -425,35 +446,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9957bc32
-    machine_hash: 5d63dfa6
+    machine_hash: ed51eb8c
     missing_since: null
+    missing_reason: null
 - id: "2371879"
   title: 鹤啸九天
   original_title: null
-  year: null
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 1815
   marked_at: "2013-10-28"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [武侠, 古装]
+  regions: [新加坡]
+  languages: [普通话, 国语]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
+    directors: [高建国]
+    casts: [陈天文, 曹国辉]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 30
+  slug: douban-2371879
+  covers:
+  - covers/2371879/01.webp
   douban_url: https://movie.douban.com/subject/2371879/
   user:
     cover: ""
@@ -464,35 +487,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f47793cb
-    machine_hash: 670effaf
+    machine_hash: e8dd89d5
     missing_since: null
+    missing_reason: null
 - id: "2229478"
   title: 莲花争霸
   original_title: null
-  year: null
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 10226
   marked_at: "2013-10-28"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [武侠]
+  regions: [新加坡]
+  languages: [汉语普通话]
+  runtime: 40
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [梁胜权, 杜南星, 陈丽霞, 杨锡彬]
+    casts: [李南星, 朱乐玲, 陈慧慧, 丁岚, 陈天文, 塔琳托娅, 刘秋莲, 李天赐, 谢韶光, 朱厚任]
+    writers: [李维健, 张亮星, 符丽媚]
+  episodes: 25
+  slug: the-great-conspiracy
+  covers:
+  - covers/2229478/01.webp
   douban_url: https://movie.douban.com/subject/2229478/
   user:
     cover: ""
@@ -503,35 +528,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d8bfb442
-    machine_hash: f3694c14
+    machine_hash: 49e50794
     missing_since: null
+    missing_reason: null
 - id: "2154868"
   title: 戏说乾隆
-  original_title: null
-  year: null
+  original_title: 戲說乾隆
+  year: 1991
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 42901
   marked_at: "2013-10-28"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 武侠, 古装]
+  regions: [台湾]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [范秀明]
+    casts: [郑少秋, 赵雅芝, 江淑娜, 黄文豪, 薛汉, 黄冠雄, 丁仰国, 李海兴]
+    writers: [宋项如]
+  episodes: 42
+  slug: make-bitter-qianlong
+  covers:
+  - covers/2154868/01.webp
   douban_url: https://movie.douban.com/subject/2154868/
   user:
     cover: ""
@@ -542,35 +569,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c2feff81
-    machine_hash: f70882d3
+    machine_hash: 4aa7744d
     missing_since: null
+    missing_reason: null
 - id: "20438714"
   title: 弹丸论破 希望的学园和绝望高中生
-  original_title: null
-  year: null
+  original_title: ダンガンロンパ 希望の学園と絶望の高校生
+  year: 2013
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 29703
   marked_at: "2013-10-12"
   douban_comment: null
   tags: [JPN, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 悬疑, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [岸诚二, 木村真一郎, 下司泰弘, 小林孝志, 野亦则行, 镰田祐辅, 岩田义彦]
+    casts: [绪方惠美, 大本真基子, 樱井孝宏, 日笠阳子, 石田彰, 山口胜平, 中井和哉, 泽城美雪, 椎名碧流, 斋藤千和]
+    writers: [上江洲诚, 待田堂子, 关根聪子, 朱白葵]
+  episodes: 13
+  slug: douban-20438714
+  covers:
+  - covers/20438714/01.webp
   douban_url: https://movie.douban.com/subject/20438714/
   user:
     cover: ""
@@ -581,35 +610,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b9ccf12f
-    machine_hash: d5630695
+    machine_hash: dce78627
     missing_since: null
+    missing_reason: null
 - id: "24700696"
   title: 孤独的美食家 第三季
-  original_title: null
-  year: null
+  original_title: 孤独のグルメ Season3
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 32236
   marked_at: "2013-10-01"
-  douban_comment: null
+  douban_comment: 每季都支持...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 35
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井川尊史, 宝来忠昭]
+    casts: [松重丰]
+    writers: [田口佳宏, 儿玉赖子]
+  episodes: 12
+  slug: season3
+  covers:
+  - covers/24700696/01.webp
   douban_url: https://movie.douban.com/subject/24700696/
   user:
     cover: ""
@@ -620,35 +651,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 32e361ce
-    machine_hash: 0feb42e9
+    fingerprint: 0565a5c6
+    machine_hash: ba8cac55
     missing_since: null
+    missing_reason: null
 - id: "24705268"
   title: 庶务二课2013
-  original_title: null
-  year: null
+  original_title: ショムニ2013
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 2550
   marked_at: "2013-09-27"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [铃木雅之, 小林义则]
+    casts: [江角真纪子, 贝基, 本田翼, 安藤樱, 森宽和, 堀内敬子, 三浦翔平, 片濑那奈, 铃木浩介, 安田显]
+    writers: [丑尾健太郎]
+  episodes: 10
+  slug: douban-24705268
+  covers:
+  - covers/24705268/01.webp
   douban_url: https://movie.douban.com/subject/24705268/
   user:
     cover: ""
@@ -659,35 +692,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: cdad2515
-    machine_hash: cc3abf43
+    machine_hash: 587785eb
     missing_since: null
+    missing_reason: null
 - id: "10827181"
   title: 银线草
-  original_title: null
-  year: null
+  original_title: ヒトリシズカ
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 3710
   marked_at: "2013-09-16"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平山秀幸]
+    casts: [夏帆, 高桥一生, 村上淳, 新井浩文, 松重丰, 温水洋一, 黑泽明日香, 二阶堂智, 绿魔子, 岸部一德]
+    writers: [青岛武]
+  episodes: 6
+  slug: douban-10827181
+  covers:
+  - covers/10827181/01.webp
   douban_url: https://movie.douban.com/subject/10827181/
   user:
     cover: ""
@@ -698,35 +733,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 380f8ab6
-    machine_hash: 92fc5f15
+    machine_hash: 8b60675f
     missing_since: null
+    missing_reason: null
 - id: "2972189"
   title: 东周列国·战国篇
   original_title: null
-  year: null
+  year: 1999
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 4579
   marked_at: "2013-09-14"
   douban_comment: null
   tags: [CHS, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 传记, 历史, 战争, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [阎建钢]
+    casts: [曹培昌, 樊志起, 杨童舒, 温海波, 温海涛, 高兰村, 李洪涛, 杜志国, 蒋恺, 李振平]
+    writers: [欧阳逸冰, 王培公]
+  episodes: 32
+  slug: douban-2972189
+  covers:
+  - covers/2972189/01.webp
   douban_url: https://movie.douban.com/subject/2972189/
   user:
     cover: ""
@@ -737,35 +774,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1c1d9ea2
-    machine_hash: e1046c15
+    machine_hash: 1236d184
     missing_since: null
+    missing_reason: null
 - id: "2341884"
   title: 东周列国·春秋篇
   original_title: null
-  year: null
+  year: 1996
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.4
+  douban_score_count: 20115
   marked_at: "2013-09-14"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 传记, 历史, 战争, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [沈好放]
+    casts: [王绘春, 林乃桢, 郑强, 何冰, 修宗迪, 张山, 周继伟, 杨静, 丛林, 蒋恺]
+    writers: [欧阳逸冰, 郭启宏, 王培公]
+  episodes: 30
+  slug: eastern-zhou-spring-and-autumn-period
+  covers:
+  - covers/2341884/01.webp
   douban_url: https://movie.douban.com/subject/2341884/
   user:
     cover: ""
@@ -776,35 +815,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 17a0ba39
-    machine_hash: 5a234b55
+    machine_hash: 2dfce7aa
     missing_since: null
+    missing_reason: null
 - id: "1855143"
   title: 庶务二课3
-  original_title: null
-  year: null
+  original_title: ショムニFINAL
+  year: 2002
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 1645
   marked_at: "2013-09-06"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
+    directors: [铃木雅之, 平野真, 土方政人]
+    casts: [江角真纪子, 高桥由美子, 宝生舞, 京野琴美, 樱井淳子, 户田惠子, 森本治行, 石黑贤, 户田菜穗, 相岛一之]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 12
+  slug: final
+  covers:
+  - covers/1855143/01.webp
   douban_url: https://movie.douban.com/subject/1855143/
   user:
     cover: ""
@@ -815,35 +856,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 5f01a01b
-    machine_hash: 09190eb3
+    machine_hash: c8bee611
     missing_since: null
+    missing_reason: null
 - id: "24709225"
   title: 警部补 矢部谦三2
-  original_title: null
-  year: null
+  original_title: 警部補 矢部謙三2
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 704
   marked_at: "2013-09-03"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 40
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [木村ひさし, 藤原知之]
+    casts: [生濑胜久, 池田铁洋, 相岛一之, 姜畅雄, 三船美佳, 畠山彩奈, 三宅康敏, 佐户井贤太, 大和田伸也, 大岛蓉子]
+    writers: [福田卓郎, 高山直也]
+  episodes: 8
+  slug: douban-24709225
+  covers:
+  - covers/24709225/01.webp
   douban_url: https://movie.douban.com/subject/24709225/
   user:
     cover: ""
@@ -854,35 +897,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b2c45b2e
-    machine_hash: 8500d7cd
+    machine_hash: 3dc6c454
     missing_since: null
+    missing_reason: null
 - id: "1479519"
   title: 庶务二课2
-  original_title: null
-  year: null
+  original_title: ショムニ 第2期
+  year: 2000
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 3129
   marked_at: "2013-08-29"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平野真, 铃木雅之, 土方政人]
+    casts: [江角真纪子, 宝生舞, 京野琴美, 樱井淳子, 户田惠子, 泽村一树, 石黑贤]
+    writers: [桥本裕志, 高桥留美]
+  episodes: 12
+  slug: shomuni-2
+  covers:
+  - covers/1479519/01.webp
   douban_url: https://movie.douban.com/subject/1479519/
   user:
     cover: ""
@@ -893,35 +938,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c4266bd2
-    machine_hash: 4792508d
+    machine_hash: f029c5c7
     missing_since: null
+    missing_reason: null
 - id: "2239292"
   title: 大宋提刑官
   original_title: null
-  year: null
+  year: 2005
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 137951
   marked_at: "2013-08-25"
   douban_comment: null
   tags: [CHS, History, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [阚卫平]
+    casts: [何冰, 罗海琼, 谢兰, 王海燕, 郭达, 沈傲君, 范伟, 苗圃, 杜志国, 何政军]
+    writers: [钱林森, 廉声]
+  episodes: 52
+  slug: judge-of-song-dynasty
+  covers:
+  - covers/2239292/01.webp
   douban_url: https://movie.douban.com/subject/2239292/
   user:
     cover: ""
@@ -932,35 +979,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f214e976
-    machine_hash: 8c0144c2
+    machine_hash: 456600c0
     missing_since: null
+    missing_reason: null
 - id: "1851769"
   title: 庶务二课
-  original_title: null
-  year: null
+  original_title: ショムニ
+  year: 1998
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 8413
   marked_at: "2013-08-24"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [铃木雅之, 平野真, 徳市敏之, 村上正典]
+    casts: [江角真纪子, 宝生舞, 京野琴美, 户田惠子, 樱井淳子, 高桥由美子, 森本治行, 石黑贤]
+    writers: [高桥留美, 桥本裕志]
+  episodes: 12
+  slug: power-office-girls
+  covers:
+  - covers/1851769/01.webp
   douban_url: https://movie.douban.com/subject/1851769/
   user:
     cover: ""
@@ -971,35 +1020,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1e14ed5c
-    machine_hash: 6ebb1dfd
+    machine_hash: dec33185
     missing_since: null
+    missing_reason: null
 - id: "24321344"
   title: 面包和汤和猫咪好天气
-  original_title: null
-  year: null
+  original_title: パンとスープとネコ日和
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 74660
   marked_at: "2013-08-23"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松本佳奈]
+    casts: [小林聪美, 伽奈, 罇真佐子, 光石研, 盐见三省, 美波, 市川实和子, 加濑亮, 岸惠子]
+    writers: [群阳子]
+  episodes: 4
+  slug: pan-to-soup-to-nekobiyori
+  covers:
+  - covers/24321344/01.webp
   douban_url: https://movie.douban.com/subject/24321344/
   user:
     cover: ""
@@ -1010,35 +1061,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: cd0759ea
-    machine_hash: 1631d0a8
+    machine_hash: 616bb521
     missing_since: null
+    missing_reason: null
 - id: "6738757"
   title: 妖狐×仆SS
-  original_title: null
-  year: null
+  original_title: 妖狐×僕SS
+  year: 2012
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 34070
   marked_at: "2013-07-18"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [津田尚克, 黑柳利充, 铃木健一, 大脊户聪, 大岛博之, 平井义通, 江副仁美, 羽原久美子, 吉田隆彦, 向井雅浩]
+    casts: [日高里菜, 中村悠一, 细谷佳正, 日笠阳子, 江口拓也, 宫野真守, 杉田智和, 花泽香菜, 泽城美雪, 村濑克辉]
+    writers: [根元岁三]
+  episodes: 12
+  slug: douban-6738757
+  covers:
+  - covers/6738757/01.webp
   douban_url: https://movie.douban.com/subject/6738757/
   user:
     cover: ""
@@ -1049,35 +1102,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 12c12b85
-    machine_hash: e65abded
+    machine_hash: d1f3cb45
     missing_since: null
+    missing_reason: null
 - id: "20426994"
   title: 我们都是超能者
-  original_title: null
-  year: null
+  original_title: みんな！エスパーだよ！
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 16436
   marked_at: "2013-07-08"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 科幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [园子温, 入江悠, 铃木太一, 月川翔]
+    casts: [染谷将太, 夏帆, 真野惠里菜, 槙田雄司, 深水元基, 神乐坂惠, 安田显, 筒井真理子, 冈田升, 柄本时生]
+    writers: [田中眞一, 若杉公徳(原作), 园子温]
+  episodes: 12
+  slug: minna-esper-dayo
+  covers:
+  - covers/20426994/01.webp
   douban_url: https://movie.douban.com/subject/20426994/
   user:
     cover: ""
@@ -1088,35 +1143,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9d450224
-    machine_hash: f0ec77da
+    machine_hash: 94d98850
     missing_since: null
+    missing_reason: null
 - id: "20268721"
   title: 神探伽利略 第二季
-  original_title: null
-  year: null
+  original_title: ガリレオ 第2シーズン
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 42077
   marked_at: "2013-06-25"
   douban_comment: null
   tags: [Movie, JPN, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [西坂瑞城, 泽田镰作]
+    casts: [福山雅治, 吉高由里子, 柴崎幸, 北村一辉, 渡边一计, 大泽隆夫, 川口春奈, 大岛优子, 田边诚一, 桐谷美玲]
+    writers: [福田靖]
+  episodes: 11
+  slug: garireo-season-2
+  covers:
+  - covers/20268721/01.webp
   douban_url: https://movie.douban.com/subject/20268721/
   user:
     cover: ""
@@ -1127,35 +1184,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f894d802
-    machine_hash: 0f91b00c
+    machine_hash: 2e3a4331
     missing_since: null
+    missing_reason: null
 - id: "21618341"
   title: 鸭去京都：老字号旅馆的女老板日记
-  original_title: null
-  year: null
+  original_title: 鴨、京都へ行く。～老舗旅館の女将日記～
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 4477
   marked_at: "2013-06-20"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [永山耕三]
+    casts: [松下奈绪, 椎名桔平, 若村麻由美, 堀内敬子, 大东骏介, 高杉亘, 小柳友, 丸山智己, 冈本梓, 佐野岳]
+    writers: [酒井雅秋]
+  episodes: 11
+  slug: douban-21618341
+  covers:
+  - covers/21618341/01.webp
   douban_url: https://movie.douban.com/subject/21618341/
   user:
     cover: ""
@@ -1166,35 +1225,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 26909d8e
-    machine_hash: eb632e18
+    machine_hash: 846938bf
     missing_since: null
+    missing_reason: null
 - id: "21309681"
   title: 幽灵女友
-  original_title: null
-  year: null
+  original_title: 幽かな彼女
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.2
+  douban_score_count: 3539
   marked_at: "2013-06-19"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [白木啟一郎, 星野和成, 田中耕司]
+    casts: [香取慎吾, 杏, 前田敦子, 北山宏光, 滨田麻里, 佐藤二朗, 高岛政宏, 真矢美纪, 矢作穗香, 神宫寺勇太]
+    writers: [古家和尚]
+  episodes: 11
+  slug: douban-21309681
+  covers:
+  - covers/21309681/01.webp
   douban_url: https://movie.douban.com/subject/21309681/
   user:
     cover: ""
@@ -1205,35 +1266,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: cb8bf9c7
-    machine_hash: 7c50eb2b
+    machine_hash: 10b6da1a
     missing_since: null
+    missing_reason: null
 - id: "19371041"
   title: 四月一日灵异事件簿真人版
-  original_title: null
-  year: null
+  original_title: CLAMPドラマ ホリック xxxHOLiC
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.3
+  douban_score_count: 2212
   marked_at: "2013-05-18"
   douban_comment: null
   tags: [JPN, Teleplay, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [丰岛圭介]
+    casts: [杏, 染谷将太, 东出昌大, 宫﨑香莲, 竹中直人, 安达祐实]
+    writers: [继田淳]
+  episodes: 8
+  slug: clamp-xxxholic
+  covers:
+  - covers/19371041/01.webp
   douban_url: https://movie.douban.com/subject/19371041/
   user:
     cover: ""
@@ -1244,35 +1307,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 009d42a4
-    machine_hash: ea941925
+    machine_hash: 7407971d
     missing_since: null
+    missing_reason: null
 - id: "3546595"
   title: 圆月弯刀
-  original_title: null
-  year: null
+  original_title: 圓月彎刀
+  year: 1997
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 26296
   marked_at: "2013-05-10"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 武侠, 古装]
+  regions: [香港]
+  languages: [普通话, 粤语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [萧显辉]
+    casts: [古天乐, 梁小冰, 温碧霞, 张兆辉, 张翼, 王伟]
+    writers: [刘彩云, 薛家华]
+  episodes: 20
+  slug: against-the-blade-of-honour
+  covers:
+  - covers/3546595/01.webp
   douban_url: https://movie.douban.com/subject/3546595/
   user:
     cover: ""
@@ -1283,35 +1348,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9c12e671
-    machine_hash: 8aee5fc9
+    machine_hash: e1a853fe
     missing_since: null
+    missing_reason: null
 - id: "10740921"
   title: 周一清晨
-  original_title: null
-  year: null
+  original_title: Monday Mornings
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 11294
   marked_at: "2013-05-04"
   douban_comment: null
   tags: [ENU, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Bill D'Elia]
+    casts: [Ving Rhames（文·瑞姆斯）, Alfred Molina（阿尔弗雷德·莫里纳）, Jamie Bamber（吉米·巴姆博）, Bill Irwin（比尔·欧文）, 詹妮弗·芬尼甘, 乔纳森·斯沃曼]
+    writers: [David E. Kelley, Sanjay Gupta]
+  episodes: 10
+  slug: monday-mornings
+  covers:
+  - covers/10740921/01.webp
   douban_url: https://movie.douban.com/subject/10740921/
   user:
     cover: ""
@@ -1322,35 +1389,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: fdeee37a
-    machine_hash: 6a7c9975
+    machine_hash: 6de8dea4
     missing_since: null
+    missing_reason: null
 - id: "20451283"
   title: 圣经故事
-  original_title: null
-  year: null
+  original_title: The Bible
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 8983
   marked_at: "2013-04-06"
   douban_comment: null
   tags: [Movie, History, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [历史]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
+    directors: [托尼·米歇尔 Tony Mitchell, Crispin Reece]
+    casts: [Diogo Morgado（迪奥戈·莫加多）, Amber Rose Revah（艾波·罗丝·雷瓦）, Langley Kirkwood（兰利·柯克伍德）]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 10
+  slug: the-bible
+  covers:
+  - covers/20451283/01.webp
   douban_url: https://movie.douban.com/subject/20451283/
   user:
     cover: ""
@@ -1361,35 +1430,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8f40604a
-    machine_hash: 96c6686f
+    machine_hash: f74e1c05
     missing_since: null
+    missing_reason: null
 - id: "10573566"
   title: 相棒 第11季
-  original_title: null
-  year: null
+  original_title: 相棒 season11
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 3564
   marked_at: "2013-04-03"
   douban_comment: null
   tags: [JPN, Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [和泉圣治]
+    casts: [水谷丰, 成宫宽贵, 真飞圣, 铃木杏树, 六角精儿, 神保悟志, 川原和久, 大谷亮介, 石坂浩二, 贺来千香子]
+    writers: [輿水泰弘, 戸田山雅司, 太田愛, ハセベバクシンオー, 徳永富彦, 金井寛, 酒井雅秋, 古泽良太]
+  episodes: 19
+  slug: season11
+  covers:
+  - covers/10573566/01.webp
   douban_url: https://movie.douban.com/subject/10573566/
   user:
     cover: ""
@@ -1400,35 +1471,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 7e5591c0
-    machine_hash: abfe22d7
+    machine_hash: "67715938"
     missing_since: null
+    missing_reason: null
 - id: "20399275"
   title: 晚餐
-  original_title: null
-  year: null
+  original_title: dinner
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 3835
   marked_at: "2013-03-29"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [星护, 土方政人, 城宝秀则]
+    casts: [江口洋介, 仓科加奈, 松重丰, 袴田吉彦, 关惠美, 志贺广太郎, 柴本幸, 池津祥子, 风间杜夫, 八岛智人]
+    writers: [黑岩勉]
+  episodes: 11
+  slug: dinner
+  covers:
+  - covers/20399275/01.webp
   douban_url: https://movie.douban.com/subject/20399275/
   user:
     cover: ""
@@ -1439,35 +1512,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1c087dba
-    machine_hash: a22c4729
+    machine_hash: 1c4c2f28
     missing_since: null
+    missing_reason: null
 - id: "10527209"
   title: 笑傲江湖
   original_title: null
-  year: null
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 1
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.8
+  douban_score_count: 59469
   marked_at: "2013-03-05"
-  douban_comment: null
+  douban_comment: 'RT: 不败教主操着小龙女的心，干着任盈盈的活儿，受着赵敏的累，最后却是李莫愁的命'
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [胡意涓]
+    casts: [霍建华, 陈乔恩, 袁姗姗, 陈晓, 杨蓉, 邓莎, 韩栋, 王琳, 寇振海, 吕佳容]
+    writers: [于正, 金庸]
+  episodes: 42
+  slug: swordsman
+  covers:
+  - covers/10527209/01.webp
   douban_url: https://movie.douban.com/subject/10527209/
   user:
     cover: ""
@@ -1478,35 +1553,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 7d5cd130
-    machine_hash: 82839cd2
+    fingerprint: 5902b15b
+    machine_hash: 58be8ba5
     missing_since: null
+    missing_reason: null
 - id: "10759909"
   title: 逝爱
-  original_title: null
-  year: null
+  original_title: シニカレ
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.3
+  douban_score_count: 849
   marked_at: "2013-03-02"
-  douban_comment: null
+  douban_comment: 看着看着就成科幻片了...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 15
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [中江功]
+    casts: [麻衣子]
+    writers: [野島伸司]
+  episodes: 50
+  slug: douban-10759909
+  covers:
+  - covers/10759909/01.webp
   douban_url: https://movie.douban.com/subject/10759909/
   user:
     cover: ""
@@ -1517,35 +1594,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 0e6fe9b5
-    machine_hash: 8e936491
+    fingerprint: 4b7f8d1b
+    machine_hash: 0b17e0f9
     missing_since: null
+    missing_reason: null
 - id: "10429716"
-  title: 国土安全 第二季
+  title: 国土安全 第二季 Homeland Season 2
   original_title: null
-  year: null
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 49483
   marked_at: "2013-03-01"
   douban_comment: null
   tags: [Movie, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 惊悚]
+  regions: [美国]
+  languages: [英语, 阿拉伯语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Guy Ferland（盖·费尔兰德）]
+    casts: [Claire Danes（克莱尔·丹尼斯）, Damian Lewis（戴米恩·路易斯）, Mandy Patinkin（曼迪·帕廷金）, Rupert Friend（鲁伯特·弗兰德）, 莫蕾娜·巴卡琳, 迪亚哥·克莱特霍夫, 大卫·哈雷伍德, 提莫西·查拉梅]
+    writers: [霍华德·戈登, 亚历克斯·甘萨]
+  episodes: 12
+  slug: homeland-season-2
+  covers:
+  - covers/10429716/01.webp
   douban_url: https://movie.douban.com/subject/10429716/
   user:
     cover: ""
@@ -1556,35 +1635,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 992cbf1c
-    machine_hash: 96b4e2c4
+    machine_hash: c427590f
     missing_since: null
+    missing_reason: null
 - id: "4921343"
   title: 神断狄仁杰
   original_title: null
-  year: null
+  year: 2010
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 25730
   marked_at: "2013-02-17"
   douban_comment: null
   tags: [CHS, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钱雁秋]
+    casts: [梁冠华, 张子健, 曲栅栅, 须乾, 严燕生, 吕中, 苑冉, 铃木美妃, 郑诚, 王心圣]
+    writers: [钱雁秋]
+  episodes: 44
+  slug: douban-4921343
+  covers:
+  - covers/4921343/01.webp
   douban_url: https://movie.douban.com/subject/4921343/
   user:
     cover: ""
@@ -1595,35 +1676,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 5ac1de08
-    machine_hash: fae6a4dc
+    machine_hash: 94d76288
     missing_since: null
+    missing_reason: null
 - id: "11636402"
   title: 孤独的美食家 第二季
-  original_title: null
-  year: null
+  original_title: 孤独のグルメ Season2
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 39064
   marked_at: "2013-02-13"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 34
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [宝来忠昭]
+    casts: [松重丰, 齐藤晓, 佐藤蓝子, 柳乐健一]
+    writers: [田口佳宏]
+  episodes: 12
+  slug: season2-2012
+  covers:
+  - covers/11636402/01.webp
   douban_url: https://movie.douban.com/subject/11636402/
   user:
     cover: ""
@@ -1634,35 +1717,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ef54377c
-    machine_hash: 14cacf7b
+    machine_hash: 821c8e19
     missing_since: null
+    missing_reason: null
 - id: "10833856"
   title: 最遥远的银河
-  original_title: null
-  year: null
+  original_title: 最も遠い銀河
+  year: 2013
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 926
   marked_at: "2013-02-09"
   douban_comment: null
   tags: [Movie, JPN]
   genres: []
-  regions: []
-  languages: []
-  runtime: null
+  regions: [日本]
+  languages: [日语]
+  runtime: 120
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [和泉圣治]
+    casts: [三浦友和, 伊藤英明, 苍井优, 小西真奈美, 平冈祐太, 池内博之, 永井大, 风吹淳, 津川雅彦, 佐野史郎]
+    writers: [龙居由佳里]
+  episodes: 2
+  slug: mottomo-tooi-ginga
+  covers:
+  - covers/10833856/01.webp
   douban_url: https://movie.douban.com/subject/10833856/
   user:
     cover: ""
@@ -1673,35 +1758,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2b004115
-    machine_hash: 09fe55f3
+    machine_hash: d532c7ca
     missing_since: null
+    missing_reason: null
 - id: "4323584"
   title: 相棒 第9季
-  original_title: null
-  year: null
+  original_title: 相棒 season9
+  year: 2010
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 3283
   marked_at: "2013-01-27"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [和泉圣治]
+    casts: [水谷丰, 及川光博, 益户育江, 川原和久, 山西惇, 六角精儿, 岸部一德]
+    writers: [舆水泰弘, 樱井武晴, 户田山雅司]
+  episodes: 18
+  slug: season9-2010
+  covers:
+  - covers/4323584/01.webp
   douban_url: https://movie.douban.com/subject/4323584/
   user:
     cover: ""
@@ -1712,35 +1799,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: dbf0dc4d
-    machine_hash: 8e112229
+    machine_hash: 0062aa64
     missing_since: null
+    missing_reason: null
 - id: "11589829"
   title: 好好！僵尸女孩 ～东京电视台战记～
-  original_title: null
-  year: null
+  original_title: 好好！キョンシーガール～東京電視台戦記～
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.1
+  douban_score_count: 298
   marked_at: "2013-01-18"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 恐怖]
+  regions: [日本]
+  languages: [日语]
+  runtime: 31
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [濱谷晃一, 西海謙一郎]
+    casts: [川岛海荷, 佐武宇绮, 西胁彩华, 镝木海智, 铃木身来]
+    writers: [濱谷晃一, 森ハヤシ, 福原充則, 小峯裕之]
+  episodes: 11
+  slug: douban-11589829
+  covers:
+  - covers/11589829/01.webp
   douban_url: https://movie.douban.com/subject/11589829/
   user:
     cover: ""
@@ -1751,35 +1840,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9e0949d8
-    machine_hash: 1cea7d11
+    machine_hash: ead3e0c4
     missing_since: null
+    missing_reason: null
 - id: "4712820"
-  title: 北朝鲜纪实
+  title: 北朝鲜纪实 NHK North Korea
   original_title: null
-  year: null
+  year: 2005
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 1966
   marked_at: "2013-01-13"
-  douban_comment: null
+  douban_comment: 看了几个 North Korean 的记录片... NHK 拍的比其他一些要好...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [日本]
+  languages: [日语]
+  runtime: 59
   credits:
-    directors: []
-    casts: []
+    directors: [NHK]
+    casts: [金日成]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 3
+  slug: nhk-north-korea
+  covers:
+  - covers/4712820/01.webp
   douban_url: https://movie.douban.com/subject/4712820/
   user:
     cover: ""
@@ -1790,35 +1881,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: d253407a
-    machine_hash: 85f677ea
+    fingerprint: 0ff8bfbc
+    machine_hash: 1a94e7b9
     missing_since: null
+    missing_reason: null
 - id: "6727359"
   title: 相棒 第10季
-  original_title: null
-  year: null
+  original_title: 相棒 season10
+  year: 2011
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 2803
   marked_at: "2013-01-12"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 犯罪]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
+    directors: [和泉聖治]
+    casts: [水谷丰, 及川光博, 铃木杏树, 大桥望美]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 19
+  slug: season10-2011
+  covers:
+  - covers/6727359/01.webp
   douban_url: https://movie.douban.com/subject/6727359/
   user:
     cover: ""
@@ -1829,35 +1922,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9191a852
-    machine_hash: 82ad7d9c
+    machine_hash: 87be1c51
     missing_since: null
+    missing_reason: null
 - id: "5279597"
   title: 平清盛
   original_title: null
-  year: null
+  year: 2012
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 4099
   marked_at: "2013-01-05"
   douban_comment: null
   tags: [Teleplay, History, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 古装]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [柴田岳志]
+    casts: [松山研一, 中井贵一, 小日向文世, 玉木宏, 松田翔太, 藤木直人, 三上博史, 井浦新, 国村隼, 山本耕史]
+    writers: [藤本有纪]
+  episodes: 50
+  slug: tairano-kiyomori
+  covers:
+  - covers/5279597/01.webp
   douban_url: https://movie.douban.com/subject/5279597/
   user:
     cover: ""
@@ -1868,8 +1963,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: "13532191"
-    machine_hash: 904e5ded
+    machine_hash: e262eb13
     missing_since: null
+    missing_reason: null

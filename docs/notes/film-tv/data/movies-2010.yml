@@ -3,27 +3,28 @@
 # generated_at: 2026-09-28T00:23+08:00
 - id: "4074292"
   title: 凉宫春日的消失
-  original_title: null
-  year: null
+  original_title: 涼宮ハルヒの消失
+  year: 2010
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 40824
   marked_at: "2010-12-25"
-  douban_comment: null
+  douban_comment: 跌宕起伏...长门大人的自我修复...
   tags: [Movie, Animation, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 科幻, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 162
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [石原立也, 武本康弘]
+    casts: [杉田智和, 平野绫, 茅原实里, 后藤邑子, 小野大辅, 桑谷夏子, 松冈由贵, 白石稔, 松元惠, 青木沙耶香]
+    writers: [谷川流, 志茂文彦]
+  slug: the-disappearance-of-haruhi-suzumiya
+  covers:
+  - covers/4074292/01.webp
   douban_url: https://movie.douban.com/subject/4074292/
   user:
     cover: ""
@@ -34,34 +35,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 44893bce
-    machine_hash: 0a000ac0
+    fingerprint: 49d8b242
+    machine_hash: e019b2b7
     missing_since: null
+    missing_reason: null
 - id: "4919019"
   title: 天际浩劫
-  original_title: null
-  year: null
+  original_title: Skyline
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 1
-  douban_score: null
-  douban_score_count: null
+  douban_score: 4.8
+  douban_score_count: 40330
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Movie, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 灾难]
+  regions: [美国]
+  languages: [英语]
+  runtime: 94
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Colin Strause（科林·施特劳斯）, Greg Strause（格雷格·施特劳斯）]
+    casts: [Eric Balfour（艾里克·巴弗尔）, Scottie Thompson（斯考蒂·汤姆森）, Brittany Daniel（布兰特妮·丹尼尔）, Crystal Reed（克里斯塔尔·里德）, 尼尔·霍普金斯, 大卫·札亚斯, 唐纳德·法森, 罗宾·甘梅尔, 坦尼娅·纽堡尔德, J·保罗·伯默尔]
+    writers: [乔舒亚·科迪斯, 连姆·O·达诺]
+  slug: skyline
+  covers:
+  - covers/4919019/01.webp
   douban_url: https://movie.douban.com/subject/4919019/
   user:
     cover: ""
@@ -72,34 +75,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b4f0ac40
-    machine_hash: 84028bfb
+    machine_hash: ec32e29e
     missing_since: null
+    missing_reason: null
 - id: "3321017"
   title: 天地无用！盛夏的夜晚
-  original_title: null
-  year: null
+  original_title: 天地無用! 真夏のイヴ
+  year: 1997
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 399
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Movie, Animation, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 科幻, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [梶岛正树, 木村哲]
+    casts: [菊池正美, 岩男润子, 折笠爱, 高田由美, 横山智佐, 小樱悦子, 水谷优子, 天野由梨, 小林优子, 青野武]
+    writers: [长谷川菜穗子]
+  slug: tenchi-muyo-midsummer-s-eve
+  covers:
+  - covers/3321017/01.webp
   douban_url: https://movie.douban.com/subject/3321017/
   user:
     cover: ""
@@ -110,34 +115,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 000f0c06
-    machine_hash: b537af78
+    machine_hash: 3e900429
     missing_since: null
+    missing_reason: null
 - id: "3011072"
   title: 珍爱
-  original_title: null
-  year: null
+  original_title: Precious
+  year: 2009
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 37051
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Movie, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 110
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Lee Daniels（李·丹尼尔斯）]
+    casts: [Gabourey Sidibe（加布蕾·丝迪贝）, 莫妮克, Paula Patton（宝拉·巴顿）, Mariah Carey（玛丽亚·凯莉）, Lenny Kravitz（蓝尼·克罗维兹）]
+    writers: [格弗瑞·弗莱彻, 萨菲尔]
+  slug: precious
+  covers:
+  - covers/3011072/01.webp
   douban_url: https://movie.douban.com/subject/3011072/
   user:
     cover: ""
@@ -148,34 +155,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9d4be06a
-    machine_hash: a1119c91
+    machine_hash: "41906260"
     missing_since: null
+    missing_reason: null
 - id: "2157504"
   title: 百万元与苦虫女
-  original_title: null
-  year: null
+  original_title: 百万円と苦虫女
+  year: 2008
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 55251
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 121
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [棚田由纪]
+    casts: [苍井优, 森山未来, 泷正则, 竹财辉之助, 斋藤隆成, 笹野高史, 佐佐木澄江]
+    writers: [棚田由纪]
+  slug: one-million-yen-and-the-nigamushi-woman
+  covers:
+  - covers/2157504/01.webp
   douban_url: https://movie.douban.com/subject/2157504/
   user:
     cover: ""
@@ -186,34 +195,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9ef125ce
-    machine_hash: 9df693c1
+    machine_hash: 836ef441
     missing_since: null
+    missing_reason: null
 - id: "2062677"
   title: 罗宾汉
-  original_title: null
-  year: null
+  original_title: Robin Hood
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.8
+  douban_score_count: 30718
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Movie, ENU, History, 大叔, War]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 冒险]
+  regions: [美国, 英国]
+  languages: [英语, 法语, 乌克兰语]
+  runtime: 140
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Ridley Scott（雷德利·斯科特）]
+    casts: [Russell Crowe（罗素·克劳）, Cate Blanchett（凯特·布兰切特）, Max von Sydow（马克斯·冯·叙多夫）, William Hurt（威廉·赫特）, Mark Strong（马克·斯特朗）, 奥斯卡·伊萨克, 丹尼·赫斯顿, 艾琳·阿特金斯, 马克·阿蒂, 马修·麦克费登]
+    writers: [布莱恩·海尔格兰德, 伊森·瑞弗, 塞卢斯·沃瑞斯]
+  slug: robin-hood
+  covers:
+  - covers/2062677/01.webp
   douban_url: https://movie.douban.com/subject/2062677/
   user:
     cover: ""
@@ -224,34 +235,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ff9e3dde
-    machine_hash: cae2541d
+    machine_hash: ef2f5543
     missing_since: null
+    missing_reason: null
 - id: "1970753"
   title: 森林大帝
-  original_title: null
-  year: null
+  original_title: ジャングル大帝
+  year: 1997
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 1182
   marked_at: "2010-12-19"
   douban_comment: null
   tags: [Animation, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 100
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [竹内启雄]
+    casts: [津嘉山正种, 倍赏千惠子, 石村知子, 椎名碧流, 肝付兼太, 龙田直树, 伊武雅刀, 铃木兰兰, 谷启, 茶风林]
+    writers: [手冢治虫]
+  slug: jungle-emperor-leo
+  covers:
+  - covers/1970753/01.webp
   douban_url: https://movie.douban.com/subject/1970753/
   user:
     cover: ""
@@ -262,34 +275,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f7d54d64
-    machine_hash: 23a00bde
+    machine_hash: 24adfd32
     missing_since: null
+    missing_reason: null
 - id: "4068816"
   title: 蛇舌
-  original_title: null
-  year: null
+  original_title: 蛇にピアス
+  year: 2008
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.1
+  douban_score_count: 38632
   marked_at: "2010-12-18"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [惊悚]
+  regions: [日本]
+  languages: [日语]
+  runtime: 125
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [蜷川幸雄]
+    casts: [吉高由里子, 高良健吾, 井浦新, 唐泽寿明, 小栗旬, 藤原龙也]
+    writers: [宮脇卓也, 蜷川幸雄, 金原瞳]
+  slug: hebi-ni-piasu
+  covers:
+  - covers/4068816/01.webp
   douban_url: https://movie.douban.com/subject/4068816/
   user:
     cover: ""
@@ -300,34 +315,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 50a531f6
-    machine_hash: 43b67db9
+    machine_hash: 430b9250
     missing_since: null
+    missing_reason: null
 - id: "1418200"
   title: 傲慢与偏见
-  original_title: null
-  year: null
+  original_title: Pride & Prejudice
+  year: 2005
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 959973
   marked_at: "2010-12-18"
-  douban_comment: null
+  douban_comment: 这部名著似乎带有很强的作者自序性???
   tags: [Movie, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [法国, 英国, 美国]
+  languages: [英语]
+  runtime: 129
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Joe Wright（乔·赖特）]
+    casts: [Keira Knightley（凯拉·奈特莉）, Matthew Macfadyen（马修·麦克费登）, Donald Sutherland（唐纳德·萨瑟兰）, Brenda Blethyn（布兰达·布莱斯）, Carey Mulligan（凯瑞·穆里根）, 裴淳华, 吉娜·马隆, 妲露拉·莱莉, 朱迪·丹奇, 西蒙·伍兹]
+    writers: [简·奥斯汀, 黛博拉·莫盖茨]
+  slug: pride-prejudice
+  covers:
+  - covers/1418200/01.webp
   douban_url: https://movie.douban.com/subject/1418200/
   user:
     cover: ""
@@ -338,34 +355,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 3b57488e
-    machine_hash: bdae687f
+    fingerprint: 2ef1d51b
+    machine_hash: a6196a54
     missing_since: null
+    missing_reason: null
 - id: "3448362"
   title: 鱼的故事
-  original_title: null
-  year: null
+  original_title: フィッシュストーリー
+  year: 2009
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 7393
   marked_at: "2010-12-12"
-  douban_comment: null
+  douban_comment: 时时可死,步步求生...
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 112
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [中村义洋]
+    casts: [伊藤淳史, 高良健吾, 多部未华子, 滨田岳, 森山未来, 大森南朋, 石丸谦二郎]
+    writers: [伊坂幸太郎, 林民夫]
+  slug: punk
+  covers:
+  - covers/3448362/01.webp
   douban_url: https://movie.douban.com/subject/3448362/
   user:
     cover: ""
@@ -376,34 +395,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 52739f3f
-    machine_hash: b16a5333
+    fingerprint: 8f96d768
+    machine_hash: 01062696
     missing_since: null
+    missing_reason: null
 - id: "3287562"
   title: 神偷奶爸
-  original_title: null
-  year: null
+  original_title: Despicable Me
+  year: 2010
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 1063798
   marked_at: "2010-12-12"
-  douban_comment: null
+  douban_comment: 这么容易就可以改邪归正?
   tags: [Movie, Animation, ENU, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 冒险]
+  regions: [美国, 法国]
+  languages: [英语]
+  runtime: 95
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Pierre Coffin（皮埃尔·柯芬）, Chris Renaud（克里斯·雷纳德）]
+    casts: [Steve Carell（史蒂夫·卡瑞尔）, Jason Segel（杰森·席格尔）, Russell Brand（拉塞尔·布兰德）, Julie Andrews（朱莉·安德鲁斯）, 威尔·阿奈特, 克里斯汀·韦格, 米兰达·卡斯格拉夫, 达纳·盖尔, 艾尔西·费舍尔, Pierre Coffin（皮埃尔·柯芬）]
+    writers: [肯·道里欧, 塞尔希奥·巴勃罗斯, 辛科·保罗]
+  slug: despicable-me
+  covers:
+  - covers/3287562/01.webp
   douban_url: https://movie.douban.com/subject/3287562/
   user:
     cover: ""
@@ -414,34 +435,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: f3c89b6e
-    machine_hash: 9019e0ef
+    fingerprint: edde1353
+    machine_hash: e4a40d42
     missing_since: null
+    missing_reason: null
 - id: "5383789"
   title: 蔬菜宝宝
-  original_title: null
-  year: null
+  original_title: 'Veggie Tales: It''s a Meaningful Life'
+  year: 2010
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.2
+  douban_score_count: 163
   marked_at: "2010-12-11"
   douban_comment: null
   tags: [Movie, Animation, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 家庭]
+  regions: [美国]
+  languages: [英语]
+  runtime: 48
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Brian Roberts（布莱恩·罗伯茨）]
+    casts: [Lilly Carter, Mike Nawrocki, Phil Vischer]
+    writers: [Mark Steele（马克·斯蒂尔）]
+  slug: veggie-tales-it-s-a-meaningful-life
+  covers:
+  - covers/5383789/01.webp
   douban_url: https://movie.douban.com/subject/5383789/
   user:
     cover: ""
@@ -452,34 +475,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ee0c8dc3
-    machine_hash: 79b53354
+    machine_hash: b4e07e31
     missing_since: null
+    missing_reason: null
 - id: "3073270"
   title: 特殊关系
-  original_title: null
-  year: null
+  original_title: The Special Relationship
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 978
   marked_at: "2010-12-05"
   douban_comment: null
   tags: [Movie, ENU, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [英国]
+  languages: [英语]
+  runtime: 93
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Richard Loncraine（理查德·隆克瑞恩）]
+    casts: [Hope Davis（霍普·戴维斯）, Mark Bazeley（马克·巴泽利）, Adam Godley（亚当·戈德利）, Matthew Marsh（马修·马什）]
+    writers: [皮特·摩根]
+  slug: the-special-relationship
+  covers:
+  - covers/3073270/01.webp
   douban_url: https://movie.douban.com/subject/3073270/
   user:
     cover: ""
@@ -490,34 +515,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: e611dcad
-    machine_hash: d4f2ba13
+    machine_hash: d9a86037
     missing_since: null
+    missing_reason: null
 - id: "3289086"
   title: 暮光之城3：月食
-  original_title: null
-  year: null
+  original_title: 'The Twilight Saga: Eclipse'
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 252707
   marked_at: "2010-11-28"
   douban_comment: null
   tags: [Movie, ENU, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 惊悚, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 124
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [David Slade（大卫·斯雷德）]
+    casts: [Kristen Stewart（克里斯汀·斯图尔特）, Robert Pattinson（罗伯特·帕丁森）, Taylor Lautner（泰勒·洛特纳）, Billy Burke（比利·伯克）, Ashley Greene（阿什丽·格林尼）, 杰克逊·拉斯波恩, 妮基·瑞德, 凯南·鲁兹, 伊莉莎白·里瑟, 彼得·费辛利]
+    writers: [梅莉莎·罗森伯格, 斯蒂芬妮·梅尔]
+  slug: the-twilight-saga-eclipse
+  covers:
+  - covers/3289086/01.webp
   douban_url: https://movie.douban.com/subject/3289086/
   user:
     cover: ""
@@ -528,34 +555,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d48db365
-    machine_hash: 148eab50
+    machine_hash: 0edc8596
     missing_since: null
+    missing_reason: null
 - id: "4845437"
   title: 大奖赛
-  original_title: null
-  year: null
+  original_title: 그랑프리
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.8
+  douban_score_count: 593
   marked_at: "2010-11-14"
   douban_comment: null
   tags: [Movie, KOR]
-  genres: []
-  regions: []
-  languages: []
+  genres: [爱情, 运动]
+  regions: [韩国]
+  languages: [韩语]
   runtime: null
   credits:
-    directors: []
-    casts: []
+    directors: [梁允豪]
+    casts: [金泰希, 杨东根]
     writers: []
-  slug: ""
-  covers: []
+  slug: grand-prix
+  covers:
+  - covers/4845437/01.webp
   douban_url: https://movie.douban.com/subject/4845437/
   user:
     cover: ""
@@ -566,34 +595,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 93104fa1
-    machine_hash: 80631cb5
+    machine_hash: 3539df08
     missing_since: null
+    missing_reason: null
 - id: "1306610"
   title: 蝎子王
-  original_title: null
-  year: null
+  original_title: The Scorpion King
+  year: 2002
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 40007
   marked_at: "2010-11-11"
   douban_comment: null
   tags: [Movie, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 惊悚, 奇幻, 冒险]
+  regions: [德国, 美国, 比利时]
+  languages: [英语]
+  runtime: 92
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Chuck Russell（查克·拉塞尔）]
+    casts: [Dwayne Johnson（道恩·强森）, 胡凯莉, Steven Brand（史蒂文·布兰德）, Michael Clarke Duncan（迈克·克拉克·邓肯）, Bernard Hill（伯纳德·希尔）]
+    writers: [大卫·海特, 乔纳森·黑尔斯]
+  slug: the-scorpion-king
+  covers:
+  - covers/1306610/01.webp
   douban_url: https://movie.douban.com/subject/1306610/
   user:
     cover: ""
@@ -604,34 +635,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 624df180
-    machine_hash: 429717e0
+    machine_hash: cb88b891
     missing_since: null
+    missing_reason: null
 - id: "1298586"
   title: 木乃伊归来
-  original_title: null
-  year: null
+  original_title: The Mummy Returns
+  year: 2001
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 157370
   marked_at: "2010-11-11"
   douban_comment: null
   tags: [Movie, Sci-Fi, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语, 阿拉伯语]
+  runtime: 130
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Stephen Sommers（斯蒂芬·索莫斯）]
+    casts: [Brendan Fraser（布兰登·费舍）, Rachel Weisz（蕾切尔·薇兹）, John Hannah（约翰·汉纳）, Arnold Vosloo（阿诺德·沃斯洛）, Oded Fehr（奥德·菲尔）, 帕翠西娅·维拉奎兹, 弗雷迪·博思, 艾伦·阿姆斯特朗, 道恩·强森, 阿德沃尔·阿吉纽依-艾格拜吉]
+    writers: [Stephen Sommers（斯蒂芬·索莫斯）]
+  slug: the-mummy-returns
+  covers:
+  - covers/1298586/01.webp
   douban_url: https://movie.douban.com/subject/1298586/
   user:
     cover: ""
@@ -642,34 +675,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 30f8118e
-    machine_hash: 258a30b9
+    machine_hash: 84c32db5
     missing_since: null
+    missing_reason: null
 - id: "1295229"
   title: 木乃伊
-  original_title: null
-  year: null
+  original_title: The Mummy
+  year: 1999
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 218698
   marked_at: "2010-11-11"
   douban_comment: null
   tags: [Adventure, ENU, Sci-Fi, Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语, 古埃及语, 阿拉伯语, 汉语普通话, 希伯来语, 匈牙利语]
+  runtime: 125
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Stephen Sommers（斯蒂芬·索莫斯）]
+    casts: [Brendan Fraser（布兰登·费舍）, Rachel Weisz（蕾切尔·薇兹）, John Hannah（约翰·汉纳）, Arnold Vosloo（阿诺德·沃斯洛）, Kevin J. O'Connor（凯文·J·奥康纳）, 乔纳森·海德, 奥德·菲尔, 艾瑞克·阿瓦利, 史蒂芬·邓纳姆, 克里·约翰逊]
+    writers: [Stephen Sommers（斯蒂芬·索莫斯）, 劳埃德·丰维耶勒, 凯文·贾尔, 约翰·L·鲍尔德斯顿, 尼纳·威尔科克斯·普特南, 理查德·沙耶尔]
+  slug: the-mummy-1999
+  covers:
+  - covers/1295229/01.webp
   douban_url: https://movie.douban.com/subject/1295229/
   user:
     cover: ""
@@ -680,34 +715,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 74559c63
-    machine_hash: db3a14d3
+    machine_hash: f546251f
     missing_since: null
+    missing_reason: null
 - id: "3335371"
   title: 小蝌蚪找妈妈
   original_title: null
-  year: null
+  year: 1960
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 108703
   marked_at: "2010-11-10"
   douban_comment: null
   tags: [Movie, CHS, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 短片]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 15
   credits:
-    directors: []
+    directors: [特伟, 钱家骏, 唐澄]
     casts: []
-    writers: []
-  slug: ""
-  covers: []
+    writers: [方慧珍, 盛璐德]
+  slug: baby-tadpoles-look-for-their-mother
+  covers:
+  - covers/3335371/01.webp
   douban_url: https://movie.douban.com/subject/3335371/
   user:
     cover: ""
@@ -718,34 +755,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: a561bfd6
-    machine_hash: 14d4b05d
+    machine_hash: b967b5b1
     missing_since: null
+    missing_reason: null
 - id: "1431685"
   title: 猴子捞月
   original_title: null
-  year: null
+  year: 1981
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 40616
   marked_at: "2010-11-10"
   douban_comment: null
   tags: [Movie, Animation, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 短片]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 11
   credits:
-    directors: []
+    directors: [周克勤]
     casts: []
-    writers: []
-  slug: ""
-  covers: []
+    writers: [凌纾]
+  slug: fishing-the-moon-from-the-pool
+  covers:
+  - covers/1431685/01.webp
   douban_url: https://movie.douban.com/subject/1431685/
   user:
     cover: ""
@@ -756,34 +795,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 80d063bd
-    machine_hash: c2993a6a
+    machine_hash: 4e67c636
     missing_since: null
+    missing_reason: null
 - id: "1298624"
   title: 闻香识女人
-  original_title: null
-  year: null
+  original_title: Scent of a Woman
+  year: 1992
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 1037564
   marked_at: "2010-11-10"
   douban_comment: null
   tags: [Movie, 大叔, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 157
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Martin Brest（马丁·布莱斯特）]
+    casts: [Al Pacino（阿尔·帕西诺）, Chris O'Donnell（克里斯·奥唐纳）, James Rebhorn（詹姆斯·瑞布霍恩）, Gabrielle Anwar（加布里埃尔·安瓦尔）, Philip Seymour Hoffman（菲利普·塞默·霍夫曼）, 理查德·文彻, 布莱德利·惠特福德, 罗谢尔·奥利弗, 玛格丽特·埃金顿, 汤姆·里斯·法雷尔]
+    writers: [博·古德曼, 乔瓦尼·阿尔皮诺]
+  slug: scent-of-a-woman
+  covers:
+  - covers/1298624/01.webp
   douban_url: https://movie.douban.com/subject/1298624/
   user:
     cover: ""
@@ -794,34 +835,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f3afd455
-    machine_hash: 602bb9a1
+    machine_hash: 1aa39119
     missing_since: null
+    missing_reason: null
 - id: "1291870"
   title: 雨人
-  original_title: null
-  year: null
+  original_title: Rain Man
+  year: 1988
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 449451
   marked_at: "2010-11-10"
   douban_comment: null
   tags: [Movie, ENU, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语, 意大利语]
+  runtime: 133
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Barry Levinson（巴瑞·莱文森）]
+    casts: [Dustin Hoffman（达斯汀·霍夫曼）, Tom Cruise（汤姆·克鲁斯）, Valeria Golino（瓦莱丽亚·戈利诺）, Bonnie Hunt（邦妮·亨特）, Beth Grant（贝丝·格兰特）, 杰克·霍夫曼, 克里斯·马尔基, 杰拉尔德·R·莫伦, 卢辛达·珍妮, 拉尔夫·塞莫]
+    writers: [罗纳德·巴斯, 巴里·莫罗]
+  slug: rain-man
+  covers:
+  - covers/1291870/01.webp
   douban_url: https://movie.douban.com/subject/1291870/
   user:
     cover: ""
@@ -832,34 +875,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4760ec72
-    machine_hash: d6528b41
+    machine_hash: a929f0a7
     missing_since: null
+    missing_reason: null
 - id: "3612475"
   title: 魔法使的条件
-  original_title: null
-  year: null
+  original_title: 魔法遣いに大切なこと
+  year: 2008
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.9
+  douban_score_count: 937
   marked_at: "2010-11-07"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 100
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [中原俊]
+    casts: [冈田将生, 木野花, 永作博美]
+    writers: [山田典枝]
+  slug: maho-tsukai-ni-taisetsu-na-koto
+  covers:
+  - covers/3612475/01.webp
   douban_url: https://movie.douban.com/subject/3612475/
   user:
     cover: ""
@@ -870,34 +915,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 3e1233c7
-    machine_hash: af7bff4e
+    machine_hash: aa8feeec
     missing_since: null
+    missing_reason: null
 - id: "4300609"
   title: 世界奇妙物语 04秋之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 '04秋の特別編
+  year: 2004
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 3028
   marked_at: "2010-10-24"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 惊悚, 恐怖]
+  regions: [日本]
+  languages: [日语]
+  runtime: 99
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [君塚良一, 岩井俊二]
+    casts: [筱原凉子, 濑户朝香]
+    writers: [冈本贵也, 大野敏哉, 君塚良一]
+  slug: yonimo-kimyona-monogatari-2004-fall-specail
+  covers:
+  - covers/4300609/01.webp
   douban_url: https://movie.douban.com/subject/4300609/
   user:
     cover: ""
@@ -908,34 +955,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: fbf18772
-    machine_hash: ea627356
+    machine_hash: 82ecddce
     missing_since: null
+    missing_reason: null
 - id: "2124449"
   title: 世界奇妙物语 05春之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 '05春の特別編
+  year: 2005
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 4674
   marked_at: "2010-10-24"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [笕昌也, 植田泰史]
+    casts: [中山裕介, 井上和香, 小西真奈美, 永岛敏行, 妻夫木聪, 臼田麻美, 山中聪, 铃木杏, 末永遥, 黑川芽以]
+    writers: [笕昌也]
+  slug: kimyona-monogatari-2005-spring-special
+  covers:
+  - covers/2124449/01.webp
   douban_url: https://movie.douban.com/subject/2124449/
   user:
     cover: ""
@@ -946,34 +995,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 176f52a2
-    machine_hash: 28e707c2
+    machine_hash: f84908dc
     missing_since: null
+    missing_reason: null
 - id: "1756584"
   title: 光杆乐队
-  original_title: null
-  year: null
+  original_title: One Man Band
+  year: 2005
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 48575
   marked_at: "2010-10-24"
   douban_comment: null
   tags: [Movie, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 短片]
+  regions: [美国]
+  languages: [无对白]
+  runtime: 5
   credits:
-    directors: []
+    directors: [马克∙安德鲁斯, Andrew Jimenez（安德鲁·吉梅内斯）]
     casts: []
-    writers: []
-  slug: ""
-  covers: []
+    writers: [Andrew Jimenez（安德鲁·吉梅内斯）, 马克∙安德鲁斯]
+  slug: one-man-band
+  covers:
+  - covers/1756584/01.webp
   douban_url: https://movie.douban.com/subject/1756584/
   user:
     cover: ""
@@ -984,34 +1035,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 727bc765
-    machine_hash: cb74dbae
+    machine_hash: a83cffba
     missing_since: null
+    missing_reason: null
 - id: "2272208"
   title: 世界奇妙物语 2007秋之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 2007秋の特別編
+  year: 2007
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 7479
   marked_at: "2010-10-22"
   douban_comment: null
   tags: [Movie, SP, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 120
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [松木创, 城宝秀则, 加藤公平, 岩田和行, 村谷嘉则]
+    casts: [石原里美, 阿部贞夫, 城岛茂, 白石美帆, 冈田义德, 松下由树]
+    writers: [森迅史, 植田泰史, 相泽友子, 加藤公平]
+  slug: douban-2272208
+  covers:
+  - covers/2272208/01.webp
   douban_url: https://movie.douban.com/subject/2272208/
   user:
     cover: ""
@@ -1022,34 +1075,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: a73ff35a
-    machine_hash: 82ca6751
+    machine_hash: 137b879e
     missing_since: null
+    missing_reason: null
 - id: "2277409"
   title: 世界奇妙物语 06秋之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 '06秋の特別編
+  year: 2006
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 6410
   marked_at: "2010-10-18"
   douban_comment: null
   tags: [SP, Movie, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 128
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [星田良子, 植田泰史, 佐藤源太]
+    casts: [广末凉子, 释由美子, 伊武雅刀, 堂本光一, 内山理名, 田中美佐子, 渡边一计]
+    writers: [中村树基, 小川みづき, 佐藤久美子, 高山直也, 保田良太]
+  slug: yonimo-kimyona-monogatari-2006-fall-specail
+  covers:
+  - covers/2277409/01.webp
   douban_url: https://movie.douban.com/subject/2277409/
   user:
     cover: ""
@@ -1060,34 +1115,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ad216ec6
-    machine_hash: ece361e3
+    machine_hash: 58991c24
     missing_since: null
+    missing_reason: null
 - id: "3041294"
   title: 生化危机4：战神再生
-  original_title: null
-  year: null
+  original_title: 'Resident Evil: Afterlife'
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 233197
   marked_at: "2010-10-12"
   douban_comment: null
   tags: [Movie, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 恐怖]
+  regions: [德国, 法国, 美国, 加拿大]
+  languages: [英语, 日语]
+  runtime: 97
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Paul W. S. Anderson（保罗·安德森）]
+    casts: [Milla Jovovich（米拉·乔沃维奇）, Ali Larter（艾丽·拉特）, Wentworth Miller（温特沃斯·米勒）, Sienna Guillory（西耶娜·盖尔利）, Boris Kodjoe（波瑞斯·科乔）, 肖恩·罗伯茨, 金·寇兹, 史宾塞·洛克, 凯茜·克拉克]
+    writers: [Paul W. S. Anderson（保罗·安德森）]
+  slug: resident-evil-afterlife
+  covers:
+  - covers/3041294/01.webp
   douban_url: https://movie.douban.com/subject/3041294/
   user:
     cover: ""
@@ -1098,34 +1155,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4026e431
-    machine_hash: 70ff5464
+    machine_hash: 0048f94b
     missing_since: null
+    missing_reason: null
 - id: "2272257"
   title: 世界奇妙物语 2007春之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 2007春の特別編
+  year: 2007
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 6489
   marked_at: "2010-10-12"
   douban_comment: null
   tags: [SP, Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 115
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [植田泰史, 土方政人, 佐藤源太, 星护]
+    casts: [樱井翔, 山口纱弥加, 小日向文世, 加藤爱, 永作博美, 平山绫, 椎名桔平]
+    writers: [大野敏哉, 长江俊和, 田村孝裕, 高山直也, 小川みづき, 森ハヤシ]
+  slug: 2007sp
+  covers:
+  - covers/2272257/01.webp
   douban_url: https://movie.douban.com/subject/2272257/
   user:
     cover: ""
@@ -1136,34 +1195,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 81dbfebe
-    machine_hash: 2b12bd3b
+    machine_hash: 22bfb19d
     missing_since: null
+    missing_reason: null
 - id: "5279575"
   title: 世界奇妙物语 2010秋之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 20周年スペシャル・秋 ～人気作家競演編～
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.3
+  douban_score_count: 12629
   marked_at: "2010-10-10"
   douban_comment: null
   tags: [Movie, SP, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [悬疑, 恐怖]
+  regions: [日本]
+  languages: [日语]
+  runtime: 138
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [佐藤祐市, 村上正典, 若松节朗, 植田泰史]
+    casts: [江口洋介, 大野智, 广末凉子, 玉木宏, 堀北真希, 笹野高史, 田中丽奈, 香川照之]
+    writers: [正冈谦一郎, 金子茂树, 桥本裕志, 坂元裕二]
+  slug: yonimo-kimyo-na-monogatari-20th-anniversary-special-fall-201
+  covers:
+  - covers/5279575/01.webp
   douban_url: https://movie.douban.com/subject/5279575/
   user:
     cover: ""
@@ -1174,34 +1235,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 5b0ef51f
-    machine_hash: "69780856"
+    machine_hash: a4647a9c
     missing_since: null
+    missing_reason: null
 - id: "3027015"
   title: 世界奇妙物语 2008春之特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 08春の特別編
+  year: 2008
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 8098
   marked_at: "2010-10-10"
   douban_comment: null
   tags: [Movie, Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [悬疑, 恐怖]
+  regions: [日本]
+  languages: [日语]
+  runtime: 120
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [植田泰史]
+    casts: [伊藤英明, 藤泽惠麻, 户田惠梨香, 向井理, 船越英一郎, 本田博太郎, 筒井康隆, 北乃绮, 於保佐代子, 堺雅人]
+    writers: [小川智子, 金杉弘子]
+  slug: douban-3027015
+  covers:
+  - covers/3027015/01.webp
   douban_url: https://movie.douban.com/subject/3027015/
   user:
     cover: ""
@@ -1212,34 +1275,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: e2c67072
-    machine_hash: a29c822f
+    machine_hash: 60cb96fb
     missing_since: null
+    missing_reason: null
 - id: "2279871"
   title: 世界奇妙物语 15周年特别篇
-  original_title: null
-  year: null
+  original_title: 世にも奇妙な物語 15周年の特別編
+  year: 2006
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 6192
   marked_at: "2010-10-10"
   douban_comment: null
   tags: [Movie, Animation, Sci-Fi, JPN]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 悬疑, 惊悚, 奇幻]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [船津浩一, 岩田祐二]
+    casts: [伊藤淳史, 池胁千鹤, 长谷川京子, 中村俊介, 友坂理惠, 冈田义德, 佐野史郎, 户田菜穗, 松本润]
+    writers: [佐藤久美子, 高桥彻郎, 大野敏哉, 羽场さゆり, 中岛直俊]
+  slug: yonimo-kimyouna-monogatari-15th-anniversary-special
+  covers:
+  - covers/2279871/01.webp
   douban_url: https://movie.douban.com/subject/2279871/
   user:
     cover: ""
@@ -1250,34 +1315,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4062481a
-    machine_hash: 5f068980
+    machine_hash: 1614d29f
     missing_since: null
+    missing_reason: null
 - id: "5153329"
   title: 名侦探柯南：天空的遇难船
-  original_title: null
-  year: null
+  original_title: 名探偵コナン 天空の難破船
+  year: 2010
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 114415
   marked_at: "2010-10-09"
   douban_comment: null
   tags: [Movie, Animation, JPN, Detective]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 102
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [山本泰一郎]
+    casts: [高山南, 山口胜平, 山崎和佳奈, 小山力也, 堀川亮, 松井菜樱子, 宫村优子, 林原惠美, 绪方贤一, 岩居由希子]
+    writers: [古内一成, 青山刚昌]
+  slug: detective-conan-the-lost-ship-in-the-sky
+  covers:
+  - covers/5153329/01.webp
   douban_url: https://movie.douban.com/subject/5153329/
   user:
     cover: ""
@@ -1288,34 +1355,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 17cd9534
-    machine_hash: 5667c16c
+    machine_hash: 055c949d
     missing_since: null
+    missing_reason: null
 - id: "3718665"
-  title: 诈欺游戏 电影版
+  title: 诈欺游戏 电影版 ライアーゲーム ザ・ファイナルステージ
   original_title: null
-  year: null
+  year: 2010
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 38833
   marked_at: "2010-10-04"
   douban_comment: null
   tags: [Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 惊悚]
+  regions: [日本]
+  languages: [日语]
+  runtime: 133
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [松山博昭]
+    casts: [户田惠梨香, 松田翔太, 铃木浩介, 铃木一真, 田边诚一, 关惠美, 永山绚斗, 吉濑美智子, 荒川良良, 和田聪宏]
+    writers: [黑岩勉, 冈田道尚, 甲斐谷忍]
+  slug: liar-game-the-final-stage
+  covers:
+  - covers/3718665/01.webp
   douban_url: https://movie.douban.com/subject/3718665/
   user:
     cover: ""
@@ -1326,34 +1395,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ab87071b
-    machine_hash: 0ae02453
+    machine_hash: 93cdbb47
     missing_since: null
+    missing_reason: null
 - id: "2353023"
   title: 驯龙高手
-  original_title: null
-  year: null
+  original_title: How to Train Your Dragon
+  year: 2010
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 882617
   marked_at: "2010-10-04"
   douban_comment: null
   tags: [Animation, Adventure, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 98
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Dean DeBlois（迪恩·戴布洛伊）, Chris Sanders（克里斯·桑德斯）]
+    casts: [Jay Baruchel（杰伊·巴鲁切尔）, Gerard Butler（杰拉德·巴特勒）, Craig Ferguson（克雷格·费格森）, America Ferrera（亚美莉卡·费雷拉）, 乔纳·希尔, 克里斯托夫·梅兹-普莱瑟, T·J·米勒, 克里斯汀·韦格, 罗宾·阿特金·唐斯, 菲利普·麦格雷德]
+    writers: [威廉姆·戴维斯, Dean DeBlois（迪恩·戴布洛伊）, Chris Sanders（克里斯·桑德斯）, 葛蕾熙达·柯维尔]
+  slug: how-to-train-your-dragon-2010
+  covers:
+  - covers/2353023/01.webp
   douban_url: https://movie.douban.com/subject/2353023/
   user:
     cover: ""
@@ -1364,11 +1435,12 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b9caa0d9
-    machine_hash: 9b9b47e5
+    machine_hash: d9612216
     missing_since: null
+    missing_reason: null
 - id: "3993632"
   title: 命运之夜 剧场版
   original_title: null

@@ -3,28 +3,29 @@
 # generated_at: 2026-09-27T22:32+08:00
 - id: "35158177"
   title: 猎魔人：血源
-  original_title: null
-  year: null
+  original_title: 'The Witcher: Blood Origin'
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.4
+  douban_score_count: 3520
   marked_at: "2022-12-27"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 悬疑, 奇幻, 冒险]
+  regions: [美国, 波兰]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Sarah O'Gorman（莎拉·奥格曼）, Vicky Jewson（维姬·朱森）]
+    casts: [杨紫琼, Sophia Brown（索菲亚·布朗）, Laurence O'Fuarain（劳伦斯·欧弗林）, Lenny Henry（伦尼·亨利）, 米伦·麦克, 迪兰·莫兰, 雅各布·柯林斯-莱维, 弗朗西斯卡·米尔斯, 纳撒尼尔·库蒂斯, 赫柏·贝尔德索尔]
+    writers: [德克兰·德·巴拉, 安杰伊·萨普科夫斯基]
+  episodes: 4
+  slug: the-witcher-blood-origin
+  covers:
+  - covers/35158177/01.webp
   douban_url: https://movie.douban.com/subject/35158177/
   user:
     cover: ""
@@ -35,35 +36,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2342df13
-    machine_hash: 237fc21b
+    machine_hash: 0cac441c
     missing_since: null
+    missing_reason: null
 - id: "35351365"
   title: 夏日重现
-  original_title: null
-  year: null
+  original_title: サマータイムレンダ
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 142293
   marked_at: "2022-12-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 悬疑, 惊悚]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡边步]
+    casts: [花江夏树, 永濑安奈, 白砂沙帆, 日笠阳子, 浦山迅, 小野贤章, 河濑茉希, 钉宫理惠, 久野美咲, 三瓶由布子]
+    writers: [濑古浩司]
+  episodes: 25
+  slug: summer-time-rendering
+  covers:
+  - covers/35351365/01.webp
   douban_url: https://movie.douban.com/subject/35351365/
   user:
     cover: ""
@@ -74,35 +77,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 5115a21e
-    machine_hash: 5e1693b6
+    machine_hash: 2bf6ccb5
     missing_since: null
+    missing_reason: null
 - id: "35300122"
   title: 弥留之国的爱丽丝 第二季
-  original_title: null
-  year: null
+  original_title: 今際の国のアリス シーズン2
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.4
+  douban_score_count: 117064
   marked_at: "2022-12-24"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 悬疑, 惊悚, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 80
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佐藤信介]
+    casts: [山崎贤人, 土屋太凤, 村上虹郎, 樱田通, 三吉彩花, 朝比奈彩, 山下智久, 恒松祐里, 渡边佑太朗, 青柳翔]
+    writers: [仓光泰子, 佐藤信介]
+  episodes: 8
+  slug: douban-35300122
+  covers:
+  - covers/35300122/01.webp
   douban_url: https://movie.douban.com/subject/35300122/
   user:
     cover: ""
@@ -113,35 +118,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 652081c4
-    machine_hash: 2b4b59e6
+    machine_hash: eb7c135f
     missing_since: null
+    missing_reason: null
 - id: "35604644"
   title: 她和她的她
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 182940
   marked_at: "2022-12-11"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑]
+  regions: [台湾]
+  languages: [汉语普通话, 闽南语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [卓立]
+    casts: [许玮甯, 李程彬, 贾静雯, 吴慷仁, 李霈瑜, 温贞菱, 于子育, 陈以文, 丁宁, 伊正]
+    writers: [温郁芳]
+  episodes: 9
+  slug: shards-of-her
+  covers:
+  - covers/35604644/01.webp
   douban_url: https://movie.douban.com/subject/35604644/
   user:
     cover: ""
@@ -152,35 +159,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8930fb03
-    machine_hash: bddee84c
+    machine_hash: 7b00aafd
     missing_since: null
+    missing_reason: null
 - id: "35284242"
   title: 疯狂动物城+
-  original_title: null
-  year: null
+  original_title: Zootopia+
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 83684
   marked_at: "2022-12-10"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 爱情, 动画, 短片, 歌舞, 犯罪, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 8
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Trent Correy（特伦特·科雷）, Josie Trinidad（乔西·特立尼达）]
+    casts: [Ginnifer Goodwin（金妮弗·古德温）, Jason Bateman（杰森·贝特曼）, Bonnie Hunt（邦妮·亨特）, Don Lake（唐·雷克）, 莫里斯·拉马奇, 莉亚·莱瑟姆, 艾伦·图代克, 伊马里·威廉斯, 内特·托伦斯, 伊德瑞斯·艾尔巴]
+    writers: [Josie Trinidad（乔西·特立尼达）, Trent Correy（特伦特·科雷）, 迈克尔·埃雷拉]
+  episodes: 6
+  slug: zootopia
+  covers:
+  - covers/35284242/01.webp
   douban_url: https://movie.douban.com/subject/35284242/
   user:
     cover: ""
@@ -191,35 +200,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ab1db5be
-    machine_hash: f56154ea
+    machine_hash: 06f7b216
     missing_since: null
+    missing_reason: null
 - id: "35724633"
   title: 麻烦一族
-  original_title: null
-  year: null
+  original_title: やんごとなき一族
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.7
+  douban_score_count: 3705
   marked_at: "2022-12-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [田中亮]
+    casts: [土屋太凤, 松下洸平, 尾上松也, 松本若菜, 渡边圭祐, 松本妃代, 马场富美加, 倍赏美津子, 木村多江, 石桥凌]
+    writers: [神森万里江]
+  episodes: 11
+  slug: douban-35724633
+  covers:
+  - covers/35724633/01.webp
   douban_url: https://movie.douban.com/subject/35724633/
   user:
     cover: ""
@@ -230,35 +241,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 7ff237ae
-    machine_hash: c4a2c36d
+    machine_hash: e9cd5b53
     missing_since: null
+    missing_reason: null
 - id: "35275350"
   title: 初恋
-  original_title: null
-  year: null
+  original_title: First Love 初恋
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 171794
   marked_at: "2022-12-04"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [日本]
+  languages: [日语, 日本手语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [寒竹百合]
+    casts: [满岛光, 佐藤健, 八木莉可子, 木户大圣, 夏帆, 小泉今日子, 荒木飞羽, 山田葵, 美波, 中尾明庆]
+    writers: [寒竹百合]
+  episodes: 9
+  slug: first-love
+  covers:
+  - covers/35275350/01.webp
   douban_url: https://movie.douban.com/subject/35275350/
   user:
     cover: ""
@@ -269,35 +282,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8e8a8510
-    machine_hash: 0509a021
+    machine_hash: a46d5241
     missing_since: null
+    missing_reason: null
 - id: "30378843"
   title: "1899"
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 33378
   marked_at: "2022-11-26"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 悬疑, 恐怖]
+  regions: [德国, 美国]
+  languages: [英语, 法语, 德语, 粤语, 西班牙语, 葡萄牙语, 丹麦语, 波兰语, 日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Baran bo Odar（巴伦·博·欧达尔）]
+    casts: [Emily Beecham（艾米丽·比查姆）, Aneurin Barnard（阿奈林·巴纳德）, Andreas Pietschmann（安德烈亚斯·皮特斯柯曼）, Miguel Bernardeau（米格尔·贝尔纳尔德阿尤）, 何塞·皮芒道, 安东·莱瑟, 弗莱恩·爱德华兹, 伊莎贝拉·魏, 王琦珮, 雅恩·盖尔]
+    writers: [扬特耶·弗里泽, 达瑞欧·马德罗纳, 艾玛·柯, 杰罗姆·布坎·尼尔森, 朱莉安娜·利马·德内, 埃米尔·尼加德·阿尔伯森, Baran bo Odar（巴伦·博·欧达尔）]
+  episodes: 8
+  slug: douban-30378843
+  covers:
+  - covers/30378843/01.webp
   douban_url: https://movie.douban.com/subject/30378843/
   user:
     cover: ""
@@ -308,35 +323,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f57b446b
-    machine_hash: 82e68360
+    machine_hash: b2932db3
     missing_since: null
+    missing_reason: null
 - id: "36112826"
   title: 王牌调酒师
-  original_title: null
-  year: null
+  original_title: Drink Masters
+  year: 2022
   type: tv
-  category: null
+  category: variety
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 1271
   marked_at: "2022-11-07"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [真人秀]
+  regions: [美国]
+  languages: [英语]
+  runtime: 40
   credits:
     directors: []
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 10
+  slug: drink-masters
+  covers:
+  - covers/36112826/01.webp
   douban_url: https://movie.douban.com/subject/36112826/
   user:
     cover: ""
@@ -347,35 +364,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1dfeca2d
-    machine_hash: 2d1e8e23
+    machine_hash: e7c4e9ef
     missing_since: null
+    missing_reason: null
 - id: "35819577"
   title: 摩登情爱·东京
-  original_title: null
-  year: null
+  original_title: モダンラブ・東京～さまざまな愛の形～
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 2805
   marked_at: "2022-10-29"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情]
+  regions: [日本]
+  languages: [日语, 英语]
+  runtime: 39
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平柳敦子, 广木隆一, 山下敦弘, 荻上直子, 黑泽清, 山田尚子]
+    casts: [水川麻美, 前田敦子, 荣仓奈奈, 柄本佑, 伊藤兰, 石桥凌, 成田凌, 夏帆, 永作博美, 中山裕介]
+    writers: [平柳敦子, 黑泽久子, 龙居由佳里, 荻上直子, 黑泽清]
+  episodes: 7
+  slug: modern-lovetokyo
+  covers:
+  - covers/35819577/01.webp
   douban_url: https://movie.douban.com/subject/35819577/
   user:
     cover: ""
@@ -386,35 +405,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 23223f5a
-    machine_hash: cf100007
+    machine_hash: 33537e56
     missing_since: null
+    missing_reason: null
 - id: "34825964"
-  title: 龙之家族 第一季
+  title: 龙之家族 第一季 House of the Dragon Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 117045
   marked_at: "2022-10-26"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 爱情, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Miguel Sapochnik（米格尔·萨普什尼克）, Greg Yaitanes（格雷格·艾坦尼斯）, 克莱尔·基尔纳, 吉塔·瓦桑特·帕特尔]
+    casts: [Paddy Considine（帕迪·康斯戴恩）, Matt Smith（马特·史密斯）, Emma D'Arcy（艾玛·达西）, Olivia Cooke（奥利维亚·库克）, 米莉·阿尔柯克, 艾米丽·凯里, 瑞斯·伊凡斯, 史蒂夫·图森特, 伊芙·贝斯特, 水野索诺娅]
+    writers: [莱恩·康道尔, 萨拉·海斯, 加布里埃尔·丰塞卡, 艾拉·帕克, 查梅因·德格拉泰, 凯文·刘, 艾琳·沈, 乔治·马丁]
+  episodes: 10
+  slug: house-of-the-dragon-season-1
+  covers:
+  - covers/34825964/01.webp
   douban_url: https://movie.douban.com/subject/34825964/
   user:
     cover: ""
@@ -425,35 +446,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 918e2cdc
-    machine_hash: abd087a0
+    machine_hash: 01c381bb
     missing_since: null
+    missing_reason: null
 - id: "36017435"
   title: 凡人修仙传：初入星海
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 39055
   marked_at: "2022-10-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王裕仁, 赵侠]
+    casts: [钱文青, 李诗萌, 郭浩然, 徐佳琦, 刘三木]
+    writers: [王裕仁]
+  episodes: 12
+  slug: a-mortal-s-journey-2022
+  covers:
+  - covers/36017435/01.webp
   douban_url: https://movie.douban.com/subject/36017435/
   user:
     cover: ""
@@ -464,35 +487,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: bdb5b00c
-    machine_hash: 9b1201e5
+    machine_hash: b127fba0
     missing_since: null
+    missing_reason: null
 - id: "35882624"
   title: 凡人修仙传：再别天南
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 34531
   marked_at: "2022-10-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王裕仁]
+    casts: [钱文青, 刘三木, 唐小喜, 徐佳琦, 聂曦映, 图特哈蒙, 李世荣, 高旭东, 胡亚捷, 林强]
+    writers: [王裕仁]
+  episodes: 14
+  slug: a-mortal-s-journey-2
+  covers:
+  - covers/35882624/01.webp
   douban_url: https://movie.douban.com/subject/35882624/
   user:
     cover: ""
@@ -503,35 +528,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: eef3ffc5
-    machine_hash: f1d93e27
+    machine_hash: 3110ad5e
     missing_since: null
+    missing_reason: null
 - id: "35640039"
   title: 凡人修仙传：魔道争锋
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 46132
   marked_at: "2022-10-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王裕仁, 赵侠]
+    casts: [钱文青, 李诗萌, 刘三木, 徐佳琦, 聂曦映, 图特哈蒙, 李世荣, 班闯, 李璐, 凌振赫]
+    writers: [王裕仁, 雷君]
+  episodes: 25
+  slug: a-record-of-a-mortal-s-journey-to-immortality
+  covers:
+  - covers/35640039/01.webp
   douban_url: https://movie.douban.com/subject/35640039/
   user:
     cover: ""
@@ -542,35 +569,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 7ebf1dd7
-    machine_hash: f6bd5015
+    machine_hash: 68a85165
     missing_since: null
+    missing_reason: null
 - id: "35118256"
   title: 赛博朋克：边缘行者 第一季
-  original_title: null
-  year: null
+  original_title: 'Cyberpunk: Edgerunners Season 1'
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 200518
   marked_at: "2022-10-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 惊悚, 犯罪, 冒险]
+  regions: [日本, 美国, 波兰]
+  languages: [英语, 日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [今石洋之]
+    casts: [大桥贤一郎, 悠木碧, 黑泽朋世, 东地宏树, 本田贵子, 鸡冠井美智子, 高木涉, 加濑康之, 井上和彦, 津田健次郎]
+    writers: [大冢雅彦]
+  episodes: 10
+  slug: cyberpunk-edgerunners-season-1
+  covers:
+  - covers/35118256/01.webp
   douban_url: https://movie.douban.com/subject/35118256/
   user:
     cover: ""
@@ -581,35 +610,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 76fb2432
-    machine_hash: f50823ac
+    machine_hash: 18277e12
     missing_since: null
+    missing_reason: null
 - id: "35095038"
   title: 昆仑神宫
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 144815
   marked_at: "2022-10-16"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 35
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [蔡岳勋]
+    casts: [潘粤明, 张雨绮, 姜超, 高伟光, 汤镇业, 沙宝亮, 佟磊, 舒耀瑄, 文晴, 王雨甜]
+    writers: [刘安琪, 沈娟]
+  episodes: 16
+  slug: kunlun-tomb
+  covers:
+  - covers/35095038/01.webp
   douban_url: https://movie.douban.com/subject/35095038/
   user:
     cover: ""
@@ -620,35 +651,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f06a6fec
-    machine_hash: 885487ba
+    machine_hash: e880c01e
     missing_since: null
+    missing_reason: null
 - id: "27190093"
-  title: 指环王：力量之戒 第一季
+  title: '指环王：力量之戒 第一季 The Lord of the Rings: The Rings of Power Season 1'
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 30131
   marked_at: "2022-10-15"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 66
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [J.A. Bayona（J·A·巴亚纳）, Wayne Yip（韦恩·叶）, 夏洛特·布伦德斯特伦]
+    casts: [Morfydd Clark（莫菲德·克拉克）, Robert Aramayo（罗伯特·阿拉马约）, Benjamin Walker（本杰明·沃克）, Daniel Weyman（丹尼尔·韦曼）, 马凯拉·卡维纳赫, 伊斯梅尔·克鲁斯·科尔多瓦, 纳赞宁·波妮阿蒂, 伦尼·亨利, 查尔斯·爱德华兹, 泰罗·穆哈菲丁]
+    writers: [帕特里克·麦凯, 约翰·D·佩恩, 贾斯汀·多布尔, 杰森·卡希尔, 珍妮弗·哈奇森, 尼古拉斯·亚当斯, 史黛芬妮·福尔松, J.R.R.托尔金]
+  episodes: 8
+  slug: the-lord-of-the-rings-the-rings-of-power-season-1
+  covers:
+  - covers/27190093/01.webp
   douban_url: https://movie.douban.com/subject/27190093/
   user:
     cover: ""
@@ -659,35 +692,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: abdc5f9e
-    machine_hash: 7c61ce7d
+    machine_hash: 7236cf68
     missing_since: null
+    missing_reason: null
 - id: "35705828"
   title: 石纪元 龙水
-  original_title: null
-  year: null
+  original_title: Dr.STONE 龍水
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 8178
   marked_at: "2022-10-05"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松下周平]
+    casts: [小林裕介, 铃木崚汰, 沼仓爱美, 佐藤元, 河西健吾, 高桥花林, 麦人, 前野智昭, 村濑步, 上田丽奈]
+    writers: [木户雄一郎]
+  episodes: 2
+  slug: dr-stone
+  covers:
+  - covers/35705828/01.webp
   douban_url: https://movie.douban.com/subject/35705828/
   user:
     cover: ""
@@ -698,35 +733,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 6794136b
-    machine_hash: c5972aa7
+    machine_hash: bfd21712
     missing_since: null
+    missing_reason: null
 - id: "35043393"
   title: 石纪元 第二季
-  original_title: null
-  year: null
+  original_title: Dr.STONE STONE WARS
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 20403
   marked_at: "2022-10-05"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [饭野慎也]
+    casts: [小林裕介, 古川慎, 市之濑加那, 沼仓爱美, 佐藤元, 前野智昭, 村濑步, 上田丽奈, 高桥花林, 河西健吾]
+    writers: [木户雄一郎]
+  episodes: 11
+  slug: dr-stone-stone-wars
+  covers:
+  - covers/35043393/01.webp
   douban_url: https://movie.douban.com/subject/35043393/
   user:
     cover: ""
@@ -737,35 +774,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 16be9dfe
-    machine_hash: 415cd697
+    machine_hash: 7940594f
     missing_since: null
+    missing_reason: null
 - id: "35679807"
   title: 百妖谱·京师篇
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 14511
   marked_at: "2022-10-03"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [董易]
+    casts: [赵双, 皇贞季, 曹云图, 常蓉珊, 藤新]
+    writers: [桃玖玖]
+  episodes: 12
+  slug: fairies-albums
+  covers:
+  - covers/35679807/01.webp
   douban_url: https://movie.douban.com/subject/35679807/
   user:
     cover: ""
@@ -776,35 +815,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ca0e6d95
-    machine_hash: 00f2c349
+    machine_hash: c453d553
     missing_since: null
+    missing_reason: null
 - id: "35948779"
   title: 散户大战华尔街：游戏驿站传奇
-  original_title: null
-  year: null
+  original_title: 'Eat the Rich: The GameStop Saga'
+  year: 2022
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 2224
   marked_at: "2022-10-02"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [美国]
+  languages: [英语]
+  runtime: 35
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Theo Love（西奥·洛夫）]
+    casts: [Daniel Wilson（丹尼尔·威尔逊）, Diana Wilson（戴安娜·威尔逊）, Peter Sasaki（彼得·佐佐木）, Bob Sloan（鲍勃·斯隆）, Vicki Bogan（维琪·博根）, 米基·古根海姆, 雷切尔·萨萨拉, 埃里克·赫斯, 贡扬·巴内吉, 马特·科尔斯]
+    writers: [阿维·泽夫·韦德]
+  episodes: 3
+  slug: eat-the-rich-the-gamestop-saga
+  covers:
+  - covers/35948779/01.webp
   douban_url: https://movie.douban.com/subject/35948779/
   user:
     cover: ""
@@ -815,35 +856,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 176d3db0
-    machine_hash: ffd446a9
+    machine_hash: becb3d98
     missing_since: null
+    missing_reason: null
 - id: "35755307"
   title: 神印王座
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 9576
   marked_at: "2022-09-30"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 战争, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [曾元俊, 李健宁]
+    casts: [常蓉珊, 瞳音, 叶知秋, 阎么么, 藤新, 刘明月]
+    writers: [曾元俊, 唐家三少]
+  episodes: 208
+  slug: throne-of-seal
+  covers:
+  - covers/35755307/01.webp
   douban_url: https://movie.douban.com/subject/35755307/
   user:
     cover: ""
@@ -854,35 +897,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 61110f3c
-    machine_hash: 3a9e1c05
+    machine_hash: 3593efd9
     missing_since: null
+    missing_reason: null
 - id: "35970278"
   title: 思无邪
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 843
   marked_at: "2022-09-28"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 6
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王自明]
+    casts: [叶唏羽, 安迪, 张唯申, 杨子江, 赵敏, 王宇清]
+    writers: [邢添翼]
+  episodes: 12
+  slug: douban-35970278
+  covers:
+  - covers/35970278/01.webp
   douban_url: https://movie.douban.com/subject/35970278/
   user:
     cover: ""
@@ -893,35 +938,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 38c7a488
-    machine_hash: c3c2aab7
+    machine_hash: a7b168d5
     missing_since: null
+    missing_reason: null
 - id: "35890382"
   title: 大汉帝国
   original_title: null
-  year: null
+  year: 2012
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 319
   marked_at: "2022-09-17"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [纪录片, 历史]
+  regions: [中国]
+  languages: [汉语普通话]
   runtime: null
   credits:
-    directors: []
+    directors: [段鸣镝]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 5
+  slug: douban-35890382
+  covers:
+  - covers/35890382/01.webp
   douban_url: https://movie.douban.com/subject/35890382/
   user:
     cover: ""
@@ -932,35 +979,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 25bccb19
-    machine_hash: dcb9ad7d
+    machine_hash: 91082cf7
     missing_since: null
+    missing_reason: null
 - id: "35911746"
   title: 晚酌的流派
-  original_title: null
-  year: null
+  original_title: 晩酌の流儀
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 16466
   marked_at: "2022-09-12"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [二宫崇]
+    casts: [栗山千明, 辻凪子]
+    writers: [政池洋佑]
+  episodes: 8
+  slug: douban-35911746
+  covers:
+  - covers/35911746/01.webp
   douban_url: https://movie.douban.com/subject/35911746/
   user:
     cover: ""
@@ -971,35 +1020,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ecc25937
-    machine_hash: 96f6476a
+    machine_hash: 4cf9a213
     missing_since: null
+    missing_reason: null
 - id: "25793471"
-  title: 睡魔 第一季
+  title: 睡魔 第一季 The Sandman Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 37509
   marked_at: "2022-08-13"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 恐怖, 奇幻]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 65
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Mike Barker（麦克·巴克）, Jamie Childs（杰米·奇尔兹）, 梅尔西·阿尔马斯, 安德烈斯·拜斯, 科拉莉·法尔雅, 路易丝·胡珀, 希斯科·胡辛]
+    casts: [Tom Sturridge（汤姆·斯图里奇）, Boyd Holbrook（波伊德·霍布鲁克）, Patton Oswalt（帕顿·奥斯瓦尔特）, Vivienne Acheampong（薇薇恩·阿昌庞）, 大卫·休里斯, 珍娜·科尔曼, 格温多兰·克里斯蒂, 梅森·亚历山大·帕克, 斯蒂芬·弗雷, 马克·哈米尔]
+    writers: [尼尔·盖曼, 大卫·S·高耶, 艾伦·海因伯格, 吉姆·坎波隆戈, 奥斯汀·古兹曼, 阿梅尼·罗萨, 劳伦·贝洛, 希瑟·贝尔森, 亚历山大·纽曼·怀斯, 凡妮莎·詹姆斯·本顿, 杰伊·富兰克林, 凯瑟琳·史密斯-麦克马伦]
+  episodes: 11
+  slug: the-sandman-season-1
+  covers:
+  - covers/25793471/01.webp
   douban_url: https://movie.douban.com/subject/25793471/
   user:
     cover: ""
@@ -1010,35 +1061,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b5307401
-    machine_hash: 812870b1
+    machine_hash: e580503d
     missing_since: null
+    missing_reason: null
 - id: "35881770"
   title: 西行纪之重生篇
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 3379
   marked_at: "2022-08-03"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [麦正乐]
+    casts: [刘北辰, 沈达威, 谢添天, 时音, 樊俊航, 孙晔, 孟祥龙, 冯骏骅, 夏磊, 吴磊]
+    writers: [郑健和, 邓志辉, 夏薇, 汪曼, 刘锦, 王昱]
+  episodes: 12
+  slug: douban-35881770
+  covers:
+  - covers/35881770/01.webp
   douban_url: https://movie.douban.com/subject/35881770/
   user:
     cover: ""
@@ -1049,35 +1102,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c30f8c86
-    machine_hash: eba689b1
+    machine_hash: 79f2faa7
     missing_since: null
+    missing_reason: null
 - id: "10756540"
   title: 问道楼观
   original_title: null
-  year: null
+  year: 2012
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 1319
   marked_at: "2022-08-03"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 40
   credits:
-    directors: []
+    directors: [金铁木]
     casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    writers: [邓斐]
+  episodes: 8
+  slug: douban-10756540
+  covers:
+  - covers/10756540/01.webp
   douban_url: https://movie.douban.com/subject/10756540/
   user:
     cover: ""
@@ -1088,35 +1143,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: cc673b8d
-    machine_hash: a44878e6
+    machine_hash: c41986ca
     missing_since: null
+    missing_reason: null
 - id: "35638264"
   title: 斗破苍穹 特别篇4
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 8626
   marked_at: "2022-07-31"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [陈百俊]
+    casts: [张沛, 黑石稔, 陈奕雯, 高其昌, 筱筝, 鬼月, 小巫, 许棕哲, 杜晴晴, 郭鸿博]
+    writers: [袁洁]
+  episodes: 3
+  slug: douban-35638264
+  covers:
+  - covers/35638264/01.webp
   douban_url: https://movie.douban.com/subject/35638264/
   user:
     cover: ""
@@ -1127,35 +1184,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4108782e
-    machine_hash: 0753825e
+    machine_hash: 32a99d0b
     missing_since: null
+    missing_reason: null
 - id: "34984509"
   title: 初创玩家
-  original_title: null
-  year: null
+  original_title: WeCrashed
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 7556
   marked_at: "2022-07-30"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [John Requa（约翰·里夸）, Glenn Ficarra（格伦·费卡拉）, 科瑞·芬莱, 汀治·克里希南, 莎里·斯宾厄·伯曼, 罗伯特·帕西尼]
+    casts: [Jared Leto（杰瑞德·莱托）, Anne Hathaway（安妮·海瑟薇）, Kyle Marvin（凯尔·马文）, America Ferrera（亚美莉卡·费雷拉）, O·T·法格本, 金义城, 坎贝尔·斯科特, 彼得·雅各布森, 安东尼·爱德华兹, 克里克特·布朗]
+    writers: [德鲁·克雷弗洛, 李·艾森伯格, 埃莉诺·伯吉斯, 伊娃·安德森, 曾泽尔·普莱斯, 艾丽莎·卡拉西克, 马克·斯塔森科]
+  episodes: 8
+  slug: wecrashed
+  covers:
+  - covers/34984509/01.webp
   douban_url: https://movie.douban.com/subject/34984509/
   user:
     cover: ""
@@ -1166,35 +1225,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 782c07c5
-    machine_hash: 87bd17b6
+    machine_hash: 7446578d
     missing_since: null
+    missing_reason: null
 - id: "35170370"
   title: 西行纪之宿命篇
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 3865
   marked_at: "2022-07-24"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [麦正乐]
+    casts: [刘北辰, 沈达威, 冯骏骅, 樊俊航, 孟祥龙, 孙晔, 谢添天, 翁媛, 王宇航, 夏磊]
+    writers: [郑健和]
+  episodes: 20
+  slug: the-westward-iii
+  covers:
+  - covers/35170370/01.webp
   douban_url: https://movie.douban.com/subject/35170370/
   user:
     cover: ""
@@ -1205,35 +1266,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ff86fb5c
-    machine_hash: "37707526"
+    machine_hash: 46698a17
     missing_since: null
+    missing_reason: null
 - id: "34637283"
-  title: 奥维尔号 第三季
+  title: 奥维尔号 第三季 The Orville Season 3
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 3901
   marked_at: "2022-07-17"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 科幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 70
   credits:
     directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    casts: [Seth MacFarlane（塞思·麦克法兰）, Adrianne Palicki（阿德琳妮·帕里奇）, Penny Johnson（佩妮·约翰逊）, Scott Grimes（斯科特·格瑞恩斯）, Peter Macon（彼德·梅肯）, Jessica Szohr（杰西卡·斯佐尔）, J·李, 马克·杰克逊, 吉姆·马奥尼, 安妮·文特斯]
+    writers: [Seth MacFarlane（塞思·麦克法兰）]
+  episodes: 10
+  slug: the-orville-season-3
+  covers:
+  - covers/34637283/01.webp
   douban_url: https://movie.douban.com/subject/34637283/
   user:
     cover: ""
@@ -1244,35 +1307,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 49e48f01
-    machine_hash: 14c629e1
+    machine_hash: 7a02b337
     missing_since: null
+    missing_reason: null
 - id: "35169997"
   title: 山河剑心
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 21110
   marked_at: "2022-07-16"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [黄剑]
+    casts: [夏磊, 吴磊, 柯暮卿, 谢添天, 杜晴晴, 冯骏骅, 不一, 赵洋]
+    writers: [尹衡, 蒋戈]
+  episodes: 16
+  slug: a-thousand-years
+  covers:
+  - covers/35169997/01.webp
   douban_url: https://movie.douban.com/subject/35169997/
   user:
     cover: ""
@@ -1283,35 +1348,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1d3574cc
-    machine_hash: c2660049
+    machine_hash: 44f424fe
     missing_since: null
+    missing_reason: null
 - id: "30443443"
   title: 生化危机
-  original_title: null
-  year: null
+  original_title: Resident Evil
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 4.3
+  douban_score_count: 17686
   marked_at: "2022-07-16"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 惊悚, 恐怖]
+  regions: [美国, 德国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Rachel Goldberg（蕾切尔·高德伯格）, Bronwen Hughes（布朗温·休斯）, 罗布·西登格兰茨, 巴坦·席尔瓦]
+    casts: [Ella Balinska（埃拉·巴林斯卡）, Lance Reddick（兰斯·莱迪克）, Turlough Convery（图尔洛夫·科维里）, Mpho Osei Tutu, 葆拉·努涅斯, 斯艾娜·阿古顿, 阿德莱恩·鲁道夫, 苏拉亚·桑托斯, 埃文·亨斯特, 阿哈德·拉扎·米尔]
+    writers: [安德鲁·达博, 杰夫·霍华德]
+  episodes: 8
+  slug: resident-evil
+  covers:
+  - covers/30443443/01.webp
   douban_url: https://movie.douban.com/subject/30443443/
   user:
     cover: ""
@@ -1322,35 +1389,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: e417dcff
-    machine_hash: 8fa1a876
+    machine_hash: 9513af8e
     missing_since: null
+    missing_reason: null
 - id: "35713094"
   title: 武动乾坤 第三季
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 3719
   marked_at: "2022-07-10"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [郑钧]
+    casts: [柯暮卿, 郭鸿博, 吕书君, 张沛, 鹏小胖, 修缘, 万苏婉, 孟祥龙, 十四, 李元韬]
+    writers: [袁洁]
+  episodes: 12
+  slug: martial-universe-3rd-season
+  covers:
+  - covers/35713094/01.webp
   douban_url: https://movie.douban.com/subject/35713094/
   user:
     cover: ""
@@ -1361,35 +1430,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 40fb55b8
-    machine_hash: 70a75e08
+    machine_hash: ad312ade
     missing_since: null
+    missing_reason: null
 - id: "27194292"
-  title: 怪奇物语 第四季
+  title: 怪奇物语 第四季 Stranger Things Season 4
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 323701
   marked_at: "2022-07-10"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 悬疑, 惊悚, 恐怖, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 80
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）, 肖恩·利维, 尼姆罗德·安陶尔]
+    casts: [Millie Bobby Brown（米莉·波比·布朗）, Winona Ryder（薇诺娜·瑞德）, David Harbour（大卫·哈伯）, Finn Wolfhard（菲恩·伍法德）, 伽塔·马塔拉佐, 凯莱布·麦克劳克林, 诺亚·施纳普, 萨迪·辛克, 娜塔莉·戴尔, 查理·希顿]
+    writers: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）, 凯特琳·施奈德汉, 保罗·迪赫特, 凯特·特雷弗里, 柯蒂斯·格温]
+  episodes: 9
+  slug: stranger-things-season-4
+  covers:
+  - covers/27194292/01.webp
   douban_url: https://movie.douban.com/subject/27194292/
   user:
     cover: ""
@@ -1400,35 +1471,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2844bb23
-    machine_hash: 772bde82
+    machine_hash: 244b6d9f
     missing_since: null
+    missing_reason: null
 - id: "27119156"
-  title: 怪奇物语 第三季
+  title: 怪奇物语 第三季 Stranger Things Season 3
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 336803
   marked_at: "2022-07-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 悬疑, 惊悚, 恐怖, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）, 肖恩·利维, 乌塔·布里泽维茨]
+    casts: [Millie Bobby Brown（米莉·波比·布朗）, Winona Ryder（薇诺娜·瑞德）, David Harbour（大卫·哈伯）, Finn Wolfhard（菲恩·伍法德）, 伽塔·马塔拉佐, 凯莱布·麦克劳克林, 诺亚·施纳普, 娜塔莉·戴尔, 查理·希顿, 乔·基瑞]
+    writers: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）, 凯特·特雷弗里, 威廉·布里奇斯, 保罗·迪赫特, 柯蒂斯·格温]
+  episodes: 8
+  slug: stranger-things-season-3
+  covers:
+  - covers/27119156/01.webp
   douban_url: https://movie.douban.com/subject/27119156/
   user:
     cover: ""
@@ -1439,35 +1512,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 17a1c9cf
-    machine_hash: 0a3e20bd
+    machine_hash: 20cefc33
     missing_since: null
+    missing_reason: null
 - id: "26844438"
-  title: 怪奇物语 第二季
+  title: 怪奇物语 第二季 Stranger Things Season 2
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 364250
   marked_at: "2022-07-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 悬疑, 惊悚, 恐怖, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 55
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）, 肖恩·利维, 安德鲁·斯坦顿, 丽贝卡·托马斯]
+    casts: [Millie Bobby Brown（米莉·波比·布朗）, Winona Ryder（薇诺娜·瑞德）, David Harbour（大卫·哈伯）, Finn Wolfhard（菲恩·伍法德）, 伽塔·马塔拉佐, 凯莱布·麦克劳克林, 诺亚·施纳普, 娜塔莉·戴尔, 查理·希顿, 乔·基瑞]
+    writers: [Matt Duffer（马特·达菲）, Ross Duffer（罗斯·达菲）]
+  episodes: 9
+  slug: stranger-things-season-2
+  covers:
+  - covers/26844438/01.webp
   douban_url: https://movie.douban.com/subject/26844438/
   user:
     cover: ""
@@ -1478,35 +1553,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 0aeda663
-    machine_hash: e8031d61
+    machine_hash: 6e02e6c8
     missing_since: null
+    missing_reason: null
 - id: "26359270"
-  title: 怪奇物语 第一季
+  title: 怪奇物语 第一季 Stranger Things Season 1
   original_title: null
-  year: null
+  year: 2016
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 529927
   marked_at: "2022-07-03"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 悬疑, 惊悚, 恐怖, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Shawn Levy（肖恩·利维）, Matt Duffer（马特·达菲）, 罗斯·达菲]
+    casts: [Winona Ryder（薇诺娜·瑞德）, David Harbour（大卫·哈伯）, Millie Bobby Brown（米莉·波比·布朗）, Finn Wolfhard（菲恩·伍法德）, 伽塔·马塔拉佐, 凯莱布·麦克劳克林, 诺亚·施纳普, 娜塔莉·戴尔, 查理·希顿, 乔·基瑞]
+    writers: [Matt Duffer（马特·达菲）, 罗斯·达菲]
+  episodes: 8
+  slug: stranger-things-season-1
+  covers:
+  - covers/26359270/01.webp
   douban_url: https://movie.douban.com/subject/26359270/
   user:
     cover: ""
@@ -1517,35 +1594,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 81dda34b
-    machine_hash: a5a4d2dc
+    machine_hash: 79dd8585
     missing_since: null
+    missing_reason: null
 - id: "35284240"
   title: 大白！
-  original_title: null
-  year: null
+  original_title: Baymax!
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 16763
   marked_at: "2022-07-02"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 科幻, 动画, 短片, 家庭, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Dean Wellins（迪恩·威林斯）, Lissa Treiman（丽萨·特雷曼）, 丹·亚伯拉罕, 马克·肯尼迪]
+    casts: [Scott Adsit（斯科特·安第斯）, Ryan Potter（瑞恩·波特）, Dichen Lachman（迪辰·拉克曼）, Sarah-Nicole Robles（莎拉·妮可·罗伯斯）, 亚历克斯·布卢·戴维斯, 卡洛斯·费罗, 安吉尔·帕克, 布兰登·斯考特, 玛娅·鲁道夫, 艾米丽·黑田]
+    writers: [西罗克·邓拉普, 盖比·卡皮利, 克莱奥·蒋, 朱莉娅·菲茨莫里斯, 肯德勒·霍耶, 凯莉·普渡, 杰夫·斯诺]
+  episodes: 6
+  slug: baymax
+  covers:
+  - covers/35284240/01.webp
   douban_url: https://movie.douban.com/subject/35284240/
   user:
     cover: ""
@@ -1556,35 +1635,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 725a8cc2
-    machine_hash: 16b9b2bd
+    machine_hash: 25263a61
     missing_since: null
+    missing_reason: null
 - id: "35900902"
   title: 英雄之路
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 1377
   marked_at: "2022-06-30"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [纪录片]
+  regions: [中国]
+  languages: [汉语普通话]
   runtime: null
   credits:
-    directors: []
+    directors: [段智溢]
     casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    writers: [段智溢]
+  episodes: 6
+  slug: douban-35900902
+  covers:
+  - covers/35900902/01.webp
   douban_url: https://movie.douban.com/subject/35900902/
   user:
     cover: ""
@@ -1595,35 +1676,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ecded171
-    machine_hash: b77eea25
+    machine_hash: 21394cba
     missing_since: null
+    missing_reason: null
 - id: "35691889"
   title: 岳飞
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 741
   marked_at: "2022-06-30"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片, 传记, 历史]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
   credits:
     directors: []
-    casts: []
+    casts: [秦隽哲]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 5
+  slug: douban-35691889
+  covers:
+  - covers/35691889/01.webp
   douban_url: https://movie.douban.com/subject/35691889/
   user:
     cover: ""
@@ -1634,35 +1717,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: fee340c8
-    machine_hash: 6d048c13
+    machine_hash: fabb7423
     missing_since: null
+    missing_reason: null
 - id: "35438178"
   title: 骸骨骑士大人异世界冒险中
-  original_title: null
-  year: null
+  original_title: 骸骨騎士様、只今異世界へお出掛け中
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.4
+  douban_score_count: 2957
   marked_at: "2022-06-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [小野胜巳]
+    casts: [前野智昭, Fairouz Ai（菲鲁兹·蓝）, 稗田宁宁, 富田美忧, 江口拓也, 鸟海浩辅, 皆口裕子, 大久保瑠美, 竹内良太]
+    writers: [秤猿鬼]
+  episodes: 12
+  slug: skeleton-knight-in-another-world
+  covers:
+  - covers/35438178/01.webp
   douban_url: https://movie.douban.com/subject/35438178/
   user:
     cover: ""
@@ -1673,35 +1758,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 3c2cc948
-    machine_hash: 429052c3
+    machine_hash: bb2cc9fe
     missing_since: null
+    missing_reason: null
 - id: "27668664"
   title: 欧比旺
-  original_title: null
-  year: null
+  original_title: Obi-Wan Kenobi
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 18479
   marked_at: "2022-06-23"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 55
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Deborah Chow（黛博拉·周）]
+    casts: [Ewan McGregor（伊万·麦克格雷格）, Hayden Christensen（海登·克里斯滕森）, James Earl Jones（詹姆斯·厄尔·琼斯）, Vivien Lyra Blair（维维恩·莱拉·布莱尔）, Moses Ingram（摩西·英格拉姆）, 库梅尔·南贾尼, 连姆·尼森, 伊恩·麦克迪阿梅德, 姜成镐, 因迪拉·瓦玛]
+    writers: [卓比·哈罗德, 汉娜·弗里德曼, 侯赛因·阿米尼, 斯图尔特·贝亚蒂耶, 安德鲁·斯坦顿, 乔治·卢卡斯]
+  episodes: 6
+  slug: obi-wan-kenobi
+  covers:
+  - covers/27668664/01.webp
   douban_url: https://movie.douban.com/subject/27668664/
   user:
     cover: ""
@@ -1712,35 +1799,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4c74f5a5
-    machine_hash: 824c4c4e
+    machine_hash: 060a12d8
     missing_since: null
+    missing_reason: null
 - id: "33384233"
-  title: 八十天环游地球 第一季
+  title: 八十天环游地球 第一季 Around the World in 80 Days Season 1
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 2799
   marked_at: "2022-06-11"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 冒险]
+  regions: [法国, 德国, 意大利]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Steve Barron（斯蒂夫·巴伦）, Brian Kelly（布莱恩·凯利）, 查尔斯·比森]
+    casts: [David Tennant（大卫·田纳特）, Ibrahim Koma（伊伯拉姆·科马）, Leonie Benesch（莉奥妮·贝尼希）, Jason Watkins（杰森·沃特金斯）, 彼得·苏利文, 安东尼·弗拉纳根, 莱昂·克林曼, 理查德·威尔逊, 杰夫·劳勒, 琳赛·邓肯]
+    writers: [阿什利·法罗, 凯莱布·兰森, 杰西卡·拉斯顿, 黛比·奥马利, 彼得·麦肯纳, 史堤芬·格林霍恩, 儒勒·凡尔纳]
+  episodes: 8
+  slug: around-the-world-in-80-days-season-1
+  covers:
+  - covers/33384233/01.webp
   douban_url: https://movie.douban.com/subject/33384233/
   user:
     cover: ""
@@ -1751,35 +1840,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: e5918073
-    machine_hash: f6b48e9c
+    machine_hash: 9b616f55
     missing_since: null
+    missing_reason: null
 - id: "30489824"
-  title: 弹子球游戏 第一季
+  title: 弹子球游戏 第一季 Pachinko Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 20765
   marked_at: "2022-06-05"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [美国, 加拿大]
+  languages: [英语, 韩语, 日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [郭共达, 全知泰]
+    casts: [尹汝贞, 金敏荷, 李敏镐, 河镇, 新井苍士, 鲁尚炫, 郑恩彩, 韩俊宇, 全俞娜, 朴载俊]
+    writers: [许秀珍, 马修·J·麦库, 郑韩帅, 高恩智, 卢振浩, 余秀菊, 伊森·库珀伯格, Mfoniso Udofia, 李敏金]
+  episodes: 8
+  slug: pachinko-season-1
+  covers:
+  - covers/30489824/01.webp
   douban_url: https://movie.douban.com/subject/30489824/
   user:
     cover: ""
@@ -1790,35 +1881,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 405e192f
-    machine_hash: e4dd948b
+    machine_hash: 1cd6a1cb
     missing_since: null
+    missing_reason: null
 - id: "34603375"
-  title: 史前星球 第一季
+  title: 史前星球 第一季 Prehistoric Planet Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 25605
   marked_at: "2022-05-28"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 纪录片, 历史]
+  regions: [美国, 英国]
+  languages: [英语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Adam Valdez（亚当·瓦德兹）, Andrew R. Jones（安德鲁·R·琼斯）]
+    casts: [David Attenborough（大卫·爱登堡）]
+    writers: [Dom Walter（多姆·瓦尔特）, Matthew Wright（马修·怀特）]
+  episodes: 5
+  slug: prehistoric-planet-season-1
+  covers:
+  - covers/34603375/01.webp
   douban_url: https://movie.douban.com/subject/34603375/
   user:
     cover: ""
@@ -1829,35 +1922,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b3b723e2
-    machine_hash: 17c415b4
+    machine_hash: b78672e2
     missing_since: null
+    missing_reason: null
 - id: "26889177"
   title: 异物志
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 89651
   marked_at: "2022-05-21"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 悬疑, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李洪绸, 车志刚, 邢冬冬]
+    casts: [邵庄, 杨羽, 唐小然, 田松, 王秀月, 包志强, 黎伟, 姚梦, 于哲, 汪小壹]
+    writers: [李洪绸, 车志刚, 刘爱银, 周扬帆, 王秀月]
+  episodes: 36
+  slug: the-record-of-strange-things
+  covers:
+  - covers/26889177/01.webp
   douban_url: https://movie.douban.com/subject/26889177/
   user:
     cover: ""
@@ -1868,35 +1963,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c0da5022
-    machine_hash: b6247e33
+    machine_hash: ae23d008
     missing_since: null
+    missing_reason: null
 - id: "35436582"
-  title: 爱，死亡和机器人 第三季
+  title: 爱，死亡和机器人 第三季 Love, Death & Robots Season 3
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 303442
   marked_at: "2022-05-20"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 动作, 科幻, 动画, 恐怖, 短片, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Patrick Osborne（帕特里克·奥斯本）, David Fincher（大卫·芬奇）, 埃米莉·迪恩, 罗伯特·比斯, 安迪·里昂, 吕寅荣, 蒂姆·米勒, 卡洛斯·史蒂文斯, 杰罗姆·陈, 阿尔贝托·米尔戈]
+    casts: [Josh Brener（乔什·布雷纳）, Gary Anthony Williams（加里·安东尼·威廉斯）, Katie Lowes（凯蒂·洛斯）, Chris Parnell（克里斯·帕内尔）, 特洛伊·贝克, 凯文·杰克逊, 弗雷德·塔特西奥, 安东尼·马克·巴罗, 查特尔·巴里, 派瑞·申]
+    writers: [约翰·斯卡尔齐, 安德鲁·凯文·沃克, 尼尔·艾舍尔, 菲利普·盖拉特, 迈克尔·斯万维克, 罗伯特·比斯, 安迪·里昂, 杰夫·福勒, 贾斯汀·科茨, 蒂姆·米勒, 布鲁斯·斯特林, 乔·阿克罗比, 艾伦·巴克斯特, 阿尔贝托·米尔戈]
+  episodes: 9
+  slug: love-death-robots-season-3
+  covers:
+  - covers/35436582/01.webp
   douban_url: https://movie.douban.com/subject/35436582/
   user:
     cover: ""
@@ -1907,35 +2004,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d6222291
-    machine_hash: 0d44f347
+    machine_hash: aeaf3b90
     missing_since: null
+    missing_reason: null
 - id: "30122636"
   title: 山河月明
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.7
+  douban_score_count: 36806
   marked_at: "2022-05-18"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 43
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [高希希, 赵立军]
+    casts: [冯绍峰, 陈宝国, 颖儿, 何晟铭, 陈奕丞, 张丰毅, 王姬, 成毅, 雨婷儿, 姚橹]
+    writers: [董哲, 徐辉]
+  episodes: 45
+  slug: the-imperial-age
+  covers:
+  - covers/30122636/01.webp
   douban_url: https://movie.douban.com/subject/30122636/
   user:
     cover: ""
@@ -1946,35 +2045,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 77331b41
-    machine_hash: 466f5469
+    machine_hash: 75a1a0b0
     missing_since: null
+    missing_reason: null
 - id: "35069688"
-  title: 星际迷航：奇异新世界 第一季
+  title: '星际迷航：奇异新世界 第一季 Star Trek: Strange New Worlds Season 1'
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 3159
   marked_at: "2022-05-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 62
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Akiva Goldsman（阿齐瓦·高斯曼）]
+    casts: [Anson Mount（安松·蒙特）, Rebecca Romijn（丽贝卡·罗梅恩）, Christina Chong（克里斯蒂娜·钟）, Ethan Peck（伊森·派克）, 巴布斯·奥卢桑莫昆, 安德烈·金, Rong Fu, Prosha Hussein, 奥斯卡·莫雷诺, 安吉拉·贝夏拉]
+    writers: [Akiva Goldsman（阿齐瓦·高斯曼）]
+  episodes: 10
+  slug: star-trek-strange-new-worlds-season-1
+  covers:
+  - covers/35069688/01.webp
   douban_url: https://movie.douban.com/subject/35069688/
   user:
     cover: ""
@@ -1985,35 +2086,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2aa771b8
-    machine_hash: 6e1efddf
+    machine_hash: 5b981e6e
     missing_since: null
+    missing_reason: null
 - id: "34925305"
   title: 少年歌行 风花雪月篇
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 20770
   marked_at: "2022-05-04"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 武侠]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [陈升垚]
+    casts: [张博恒, 张杰, 杨婧, 魏超]
+    writers: [陈升垚]
+  episodes: 32
+  slug: youths-and-golden-coffin
+  covers:
+  - covers/34925305/01.webp
   douban_url: https://movie.douban.com/subject/34925305/
   user:
     cover: ""
@@ -2024,35 +2127,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: fca7aa79
-    machine_hash: 66709fc1
+    machine_hash: 435fbd8c
     missing_since: null
+    missing_reason: null
 - id: "35390375"
   title: 珍馐记
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.8
+  douban_score_count: 29865
   marked_at: "2022-05-03"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 爱情, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 40
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [国浩]
+    casts: [何瑞贤, 王星越, 潘斌龙, 臧洪娜, 刘敏, 嵇嘉禾, 向夏, 管乐, 嗯呐朱莉, 冯满]
+    writers: [七月荔]
+  episodes: 16
+  slug: delicacies-destiny
+  covers:
+  - covers/35390375/01.webp
   douban_url: https://movie.douban.com/subject/35390375/
   user:
     cover: ""
@@ -2063,35 +2168,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b4def757
-    machine_hash: 0106294a
+    machine_hash: 7af5f3e9
     missing_since: null
+    missing_reason: null
 - id: "35713091"
   title: 星辰变 第四季
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.3
+  douban_score_count: 4810
   marked_at: "2022-04-24"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 26
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [汪成果]
+    casts: [沈达威, 黑石稔, 柯暮卿, 许棕哲, 谢添天, 沐霏, 张沛, 鹏小胖, 赵洋, 王玮]
+    writers: [陈肯]
+  episodes: 16
+  slug: stellar-transformation-iv
+  covers:
+  - covers/35713091/01.webp
   douban_url: https://movie.douban.com/subject/35713091/
   user:
     cover: ""
@@ -2102,35 +2209,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d5e68d9a
-    machine_hash: dcdaadc6
+    machine_hash: a21b6655
     missing_since: null
+    missing_reason: null
 - id: "35346290"
   title: 永生之无尽仙途
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.0
+  douban_score_count: 4730
   marked_at: "2022-04-23"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [曲艺, 刘猛]
+    casts: [刘思岑, 贺文潇, 刘晴]
+    writers: [白杨, 黄磊, 万佳龙]
+  episodes: 12
+  slug: immortality
+  covers:
+  - covers/35346290/01.webp
   douban_url: https://movie.douban.com/subject/35346290/
   user:
     cover: ""
@@ -2141,35 +2250,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 871948c7
-    machine_hash: 0ca0cab8
+    machine_hash: "07635236"
     missing_since: null
+    missing_reason: null
 - id: "35467021"
   title: 她很漂亮
-  original_title: null
-  year: null
+  original_title: 彼女はキレイだった
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.8
+  douban_score_count: 5297
   marked_at: "2022-04-19"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [喜剧, 爱情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [纸谷枫, 木下高男]
+    casts: [中岛健人, 小芝风花, 赤楚卫二, 佐久间由衣, 高桥优斗, 宇垣美里, LiLiCo, 木村佑一, 菅原大吉, 本多力]
+    writers: [清水友佳子, 三浦希纱]
+  episodes: 10
+  slug: she-was-pretty
+  covers:
+  - covers/35467021/01.webp
   douban_url: https://movie.douban.com/subject/35467021/
   user:
     cover: ""
@@ -2180,35 +2291,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1272d4cb
-    machine_hash: dd9b6e21
+    machine_hash: ef2acb91
     missing_since: null
+    missing_reason: null
 - id: "35460437"
-  title: 梦魇绝镇 第一季
+  title: 梦魇绝镇 第一季 From Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 30327
   marked_at: "2022-04-15"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 恐怖]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Jack Bender（杰克·本德）]
+    casts: [Harold Perrineau（哈罗德·佩里诺）, Catalina Sandino Moreno（卡塔琳娜·桑地诺·莫雷诺）, Eion Bailey（艾恩·贝利）, Hannah Cheramy（汉娜·切尔敏）, Ricky He（瑞奇·何）, 肖恩·摩忠德, 大卫·阿尔帕伊, 伊丽莎白·桑德斯, 斯科特·麦克科德]
+    writers: [John Griffin]
+  episodes: 10
+  slug: from-season-1
+  covers:
+  - covers/35460437/01.webp
   douban_url: https://movie.douban.com/subject/35460437/
   user:
     cover: ""
@@ -2219,35 +2332,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 4d0c3174
-    machine_hash: c1dfb8e9
+    machine_hash: 203bade0
     missing_since: null
+    missing_reason: null
 - id: "35658679"
   title: 来自星星的你(日版)
-  original_title: null
-  year: null
+  original_title: 星から来たあなた
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 4.8
+  douban_score_count: 632
   marked_at: "2022-04-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [爱情, 奇幻]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松木创, 菊川诚]
+    casts: [福士苍汰, 山本美月, 工藤阿须加, 福原遥, 木南晴夏, 今井翼, 光石研, 出口夏希]
+    writers: [关惠理香, 今西祐子]
+  episodes: 10
+  slug: my-love-from-the-stars
+  covers:
+  - covers/35658679/01.webp
   douban_url: https://movie.douban.com/subject/35658679/
   user:
     cover: ""
@@ -2258,35 +2373,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: cb50b3a2
-    machine_hash: "72490736"
+    machine_hash: 0b796ce2
     missing_since: null
+    missing_reason: null
 - id: "35524406"
   title: 画江湖之不良人5
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 48815
   marked_at: "2022-04-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 武侠]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李帅帅, 付亮]
+    casts: [褚珺, 边江, 彭尧, 申秋香, 苏尚卿, 赵述仁, 赵铭洲, 孟宇, 赵毅, 苗壮]
+    writers: [李皖青, 李佳炫]
+  episodes: 12
+  slug: douban-35524406
+  covers:
+  - covers/35524406/01.webp
   douban_url: https://movie.douban.com/subject/35524406/
   user:
     cover: ""
@@ -2297,35 +2414,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 75d4a92a
-    machine_hash: 998d8d59
+    machine_hash: 683b43f0
     missing_since: null
+    missing_reason: null
 - id: "35688466"
   title: 部长和社畜的恋情令人着急
-  original_title: null
-  year: null
+  original_title: 部長と社畜の恋はもどかしい
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.7
+  douban_score_count: 1582
   marked_at: "2022-03-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [村上牧人, 汤浅弘章, 堀江贵大]
+    casts: [中村百合香, 竹财辉之助, 佐野岳]
+    writers: [川崎いづみ]
+  episodes: 12
+  slug: douban-35688466
+  covers:
+  - covers/35688466/01.webp
   douban_url: https://movie.douban.com/subject/35688466/
   user:
     cover: ""
@@ -2336,35 +2455,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 3610b0fe
-    machine_hash: e6ffa4ca
+    machine_hash: 5364cf5e
     missing_since: null
+    missing_reason: null
 - id: "34927946"
   title: 国王排名
-  original_title: null
-  year: null
+  original_title: 王様ランキング
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 190176
   marked_at: "2022-03-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [八田洋介, 今井有文]
+    casts: [日向未南, 村濑步, 梶裕贵, 佐藤利奈, 江口拓也, 上田燿司, 安元洋贵, 田所阳向, 山下大辉, 三宅健太]
+    writers: [十日草辅, 岸本卓]
+  episodes: 23
+  slug: ranking-of-kings
+  covers:
+  - covers/34927946/01.webp
   douban_url: https://movie.douban.com/subject/34927946/
   user:
     cover: ""
@@ -2375,35 +2496,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c6b7b8b6
-    machine_hash: 38eccdae
+    machine_hash: 2be147e3
     missing_since: null
+    missing_reason: null
 - id: "35358449"
   title: "1883"
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 29292
   marked_at: "2022-02-20"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 西部]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Taylor Sheridan（泰勒·谢里丹）, Christina Alexandra Voros（克里斯蒂娜·亚历山德拉·沃罗斯）, 本·理查森]
+    casts: [Isabel May（伊莎贝尔·梅）, Tim McGraw（蒂姆·麦格罗）, Sam Elliott（山姆·埃利奥特）, Faith Hill（菲丝·希尔）, 道恩·奥利弗瑞, 埃里克·尼尔森, 拉莫尼卡·加勒特, 马克·里斯曼, 亚历克斯·芬恩, 格拉蒂埃拉·布朗库西]
+    writers: [Taylor Sheridan（泰勒·谢里丹）]
+  episodes: 10
+  slug: y-1883
+  covers:
+  - covers/35358449/01.webp
   douban_url: https://movie.douban.com/subject/35358449/
   user:
     cover: ""
@@ -2414,35 +2537,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 0e76f617
-    machine_hash: b20eee82
+    machine_hash: b1432808
     missing_since: null
+    missing_reason: null
 - id: "35291777"
   title: 波巴·费特之书
-  original_title: null
-  year: null
+  original_title: The Book of Boba Fett
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 35368
   marked_at: "2022-02-15"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 59
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Robert Rodriguez（罗伯特·罗德里格兹）, Steph Green（斯戴芙·格林）, 凯文·坦查隆, 布莱丝·达拉斯·霍华德, 戴夫·菲洛尼]
+    casts: [Temuera Morrison（特穆拉·莫里森）, 温明娜, Pedro Pascal（佩德罗·帕斯卡）, Rosario Dawson（罗莎里奥·道森）, 艾米莉·斯沃洛, 索菲·撒切尔, 乔丹·博尔格, 斯蒂芬·鲁特, 马克·哈米尔, 蒂莫西·奥利芬特]
+    writers: [乔恩·费儒, 戴夫·菲洛尼, 诺亚·克鲁尔, 乔治·卢卡斯]
+  episodes: 7
+  slug: the-book-of-boba-fett
+  covers:
+  - covers/35291777/01.webp
   douban_url: https://movie.douban.com/subject/35291777/
   user:
     cover: ""
@@ -2453,35 +2578,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8ecd276c
-    machine_hash: 1088c75a
+    machine_hash: e9ffb215
     missing_since: null
+    missing_reason: null
 - id: "26976418"
   title: 青春时代2
-  original_title: null
-  year: null
+  original_title: 청춘시대2
+  year: 2017
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 16031
   marked_at: "2022-02-15"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李太坤]
+    casts: [韩艺璃, 韩胜妍, 朴恩斌, 智友, 崔雅拉, 李有镇, 金玟锡, 安宇延, 申譞洙, 孙承源]
+    writers: [朴妍善]
+  episodes: 14
+  slug: age-of-youth-2
+  covers:
+  - covers/26976418/01.webp
   douban_url: https://movie.douban.com/subject/26976418/
   user:
     cover: ""
@@ -2492,35 +2619,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: a5ebf318
-    machine_hash: 0c139808
+    machine_hash: fbd2546c
     missing_since: null
+    missing_reason: null
 - id: "26815052"
   title: 青春时代
-  original_title: null
-  year: null
+  original_title: 청춘시대
+  year: 2016
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 38979
   marked_at: "2022-02-15"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李太坤]
+    casts: [韩艺璃, 朴恩斌, 柳和荣, 韩胜妍, 朴慧秀, 申譞洙, 尹博, 孙承源]
+    writers: [朴妍善]
+  episodes: 12
+  slug: age-of-youth
+  covers:
+  - covers/26815052/01.webp
   douban_url: https://movie.douban.com/subject/26815052/
   user:
     cover: ""
@@ -2531,35 +2660,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 32bcbc5d
-    machine_hash: 2385e578
+    machine_hash: 074349bc
     missing_since: null
+    missing_reason: null
 - id: "30227845"
   title: 地球外少年少女
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 1884
   marked_at: "2022-01-31"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [矶光雄]
+    casts: [藤原夏海, 和气杏未, 小野贤章, 赤崎千夏, 小林由美子, 伊濑茉莉也, 花轮英司, 竹内惠美子, 滨野大辉]
+    writers: [矶光雄]
+  episodes: 6
+  slug: the-orbital-children
+  covers:
+  - covers/30227845/01.webp
   douban_url: https://movie.douban.com/subject/30227845/
   user:
     cover: ""
@@ -2570,35 +2701,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 03e65c36
-    machine_hash: 420abd97
+    machine_hash: 9d4ce1cc
     missing_since: null
+    missing_reason: null
 - id: "35332289"
   title: 开端
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 986638
   marked_at: "2022-01-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [孙墨龙, 刘洪源, 算]
+    casts: [白敬亭, 赵今麦, 刘奕君, 刘涛, 黄觉, 刘丹, 宋家腾, 曾柯琅, 张喜前, 马兰]
+    writers: [祈祷君, 邱玉洁, 算, 黄凯文]
+  episodes: 15
+  slug: reset
+  covers:
+  - covers/35332289/01.webp
   douban_url: https://movie.douban.com/subject/35332289/
   user:
     cover: ""
@@ -2609,35 +2742,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2d2e6127
-    machine_hash: 040abf8f
+    machine_hash: b09b3ec5
     missing_since: null
+    missing_reason: null
 - id: "35265497"
-  title: 苍穹浩瀚 第六季
+  title: 苍穹浩瀚 第六季 The Expanse Season 6
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 8586
   marked_at: "2022-01-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 科幻, 悬疑]
+  regions: [美国]
+  languages: [英语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Breck Eisner（布瑞克·埃斯纳尔）, Jeff Woolnough（杰夫·伍尔诺）, 安雅·亚当斯, 马里索尔·阿德勒]
+    casts: [Shohreh Aghdashloo（索瑞·安达斯鲁）, 卡卡琪, John Wesley Chatham（约翰·威斯利·查特曼）, Steven Strait（史蒂文·斯崔特）, 弗兰基·亚当斯, 多米尼克·蒂珀, 纳丁·妮可, 基翁·亚历山大, 加布里埃尔·达尔库, 萨默·萨利姆]
+    writers: [丹尼尔·亚伯拉罕, 泰·弗兰克, 马克·弗格斯, 霍克·奥斯比, 纳伦·尚卡, 丹·诺瓦克]
+  episodes: 6
+  slug: the-expanse-season-6
+  covers:
+  - covers/35265497/01.webp
   douban_url: https://movie.douban.com/subject/35265497/
   user:
     cover: ""
@@ -2648,35 +2783,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 1c237379
-    machine_hash: 925ef8b3
+    machine_hash: e4f3db51
     missing_since: null
+    missing_reason: null
 - id: "1758810"
-  title: IT狂人 第一季
+  title: IT狂人 第一季 The IT Crowd Season 1
   original_title: null
-  year: null
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 112719
   marked_at: "2022-01-22"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [英国]
+  languages: [英语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Graham Linehan（格雷厄姆·莱恩汉）, Richard Boden, Ben Fuller, 巴巴拉·威尔希尔]
+    casts: [Chris O'Dowd（克里斯·奥多德）, Richard Ayoade（理查德·艾欧阿德）, Katherine Parkinson（凯瑟琳·帕金森）, Matt Berry（马特·贝里）, 克里斯多夫·莫利斯, 诺尔·费丁, Graham Linehan（格雷厄姆·莱恩汉）, Tom Binns, 路易斯·麦克劳德, 彼得·塞拉菲诺威茨]
+    writers: [Graham Linehan（格雷厄姆·莱恩汉）]
+  episodes: 6
+  slug: it-the-it-crowd-season-1
+  covers:
+  - covers/1758810/01.webp
   douban_url: https://movie.douban.com/subject/1758810/
   user:
     cover: ""
@@ -2687,35 +2824,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 05396619
-    machine_hash: 31deeb83
+    machine_hash: 6d34424e
     missing_since: null
+    missing_reason: null
 - id: "35558676"
   title: 斗破苍穹 特别篇3
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 26123
   marked_at: "2022-01-16"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [赵丙乐]
+    casts: [张沛, 黑石稔, 冯骏骅, 杨梦露, 谢添天, 鬼月]
+    writers: [赵丙乐, 袁洁]
+  episodes: 13
+  slug: douban-35558676
+  covers:
+  - covers/35558676/01.webp
   douban_url: https://movie.douban.com/subject/35558676/
   user:
     cover: ""
@@ -2726,35 +2865,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: ee363a46
-    machine_hash: a9635c10
+    machine_hash: 6b5666aa
     missing_since: null
+    missing_reason: null
 - id: "30345453"
-  title: 时光之轮 第一季
+  title: 时光之轮 第一季 The Wheel of Time Season 1
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.3
+  douban_score_count: 10636
   marked_at: "2022-01-11"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Uta Briesewitz（乌塔·布里泽维茨）, Wayne Yip（韦恩·叶）, 莎莉·理查德森-惠特菲尔德, 夏兰·唐纳利]
+    casts: [裴淳华, Daniel Henney（丹尼尔·海尼）, 佐伊·罗宾斯, Madeleine Madden（玛德琳·麦登）, 乔沙·斯特拉多夫斯基, 马库斯·拉瑟福德, 巴尼·哈里斯, 苏菲·奥康内多, 凯特·弗利特伍德, 普里扬卡·博斯]
+    writers: [罗伯特·乔丹, 雷夫·贾金斯, 阿曼达·凯特·舒曼]
+  episodes: 8
+  slug: the-wheel-of-time-season-1
+  covers:
+  - covers/30345453/01.webp
   douban_url: https://movie.douban.com/subject/30345453/
   user:
     cover: ""
@@ -2765,35 +2906,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f3b853d3
-    machine_hash: 506656b6
+    machine_hash: 3f3dbe10
     missing_since: null
+    missing_reason: null
 - id: "35263083"
   title: 仙王的日常生活第二季
   original_title: null
-  year: null
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 5.5
+  douban_score_count: 5549
   marked_at: "2022-01-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [欧阳时堃]
+    casts: [孙路路, 钱琛, 关帅, 星潮, 谷江山, 阎么么]
+    writers: [朱贝宁]
+  episodes: 12
+  slug: the-daily-life-of-the-immortal-king-ii
+  covers:
+  - covers/35263083/01.webp
   douban_url: https://movie.douban.com/subject/35263083/
   user:
     cover: ""
@@ -2804,35 +2947,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d72a112f
-    machine_hash: f6d089a8
+    machine_hash: 301f6d7e
     missing_since: null
+    missing_reason: null
 - id: "35620761"
   title: 鬼灭之刃：无限列车篇
-  original_title: null
-  year: null
+  original_title: 鬼滅の刃 無限列車編
+  year: 2021
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 156537
   marked_at: "2022-01-08"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 26
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [外崎春雄]
+    casts: [花江夏树, 鬼头明里, 下野纮, 松冈祯丞, 日野聪, 平川大辅, 石田彰, 千叶进步, 小山力也, 榎木淳弥]
+    writers: [ufotable]
+  episodes: 7
+  slug: demon-slayer-kimetsu-no-yaiba-mugen-train-arc
+  covers:
+  - covers/35620761/01.webp
   douban_url: https://movie.douban.com/subject/35620761/
   user:
     cover: ""
@@ -2843,8 +2988,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 162c77e2
-    machine_hash: 6f3d548f
+    machine_hash: 0ad735b8
     missing_since: null
+    missing_reason: null

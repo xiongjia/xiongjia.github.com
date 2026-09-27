@@ -3436,26 +3436,27 @@
 - id: "36200703"
   title: 纸人回魂
   original_title: null
-  year: null
+  year: 2023
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 1
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.4
+  douban_score_count: 24807
   marked_at: "2023-01-08"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [悬疑, 恐怖]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 96
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [成思毅]
+    casts: [韩栋, 陈紫函, 陈国坤, 钟雷, 张皓然, 魏璐]
+    writers: [何三七]
+  slug: get-in-the-dark
+  covers:
+  - covers/36200703/01.webp
   douban_url: https://movie.douban.com/subject/36200703/
   user:
     cover: ""
@@ -3466,34 +3467,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 6eca3321
-    machine_hash: cef1577a
+    machine_hash: 9627a5e9
     missing_since: null
+    missing_reason: null
 - id: "30455615"
   title: 菜单
-  original_title: null
-  year: null
+  original_title: The Menu
+  year: 2022
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.4
+  douban_score_count: 88488
   marked_at: "2023-01-07"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 惊悚, 恐怖]
+  regions: [美国]
+  languages: [英语, 西班牙语]
+  runtime: 107
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Mark Mylod（马克·梅罗德）]
+    casts: [Ralph Fiennes（拉尔夫·费因斯）, Anya Taylor-Joy（安雅·泰勒-乔伊）, Nicholas Hoult（尼古拉斯·霍尔特）, 周洪, Janet McTeer（珍妮特·麦克蒂尔）, 里德·伯尼, 朱迪斯·赖特, 约翰·雷吉扎莫, 保罗·安德斯坦, 艾米·卡里诺]
+    writers: [塞斯·雷斯, 威尔·崔西]
+  slug: the-menu
+  covers:
+  - covers/30455615/01.webp
   douban_url: https://movie.douban.com/subject/30455615/
   user:
     cover: ""
@@ -3504,34 +3507,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 483f7f55
-    machine_hash: 47a98c94
+    machine_hash: e9d530d2
     missing_since: null
+    missing_reason: null
 - id: "25868125"
   title: 穿靴子的猫2
-  original_title: null
-  year: null
+  original_title: 'Puss in Boots: The Last Wish'
+  year: 2022
   type: movie
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 127608
   marked_at: "2023-01-07"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 爱情, 动画, 悬疑, 歌舞, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语, 西班牙语]
+  runtime: 102
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [Joel Crawford（乔尔·克劳福德）, Januel Mercado（贾努埃尔·梅尔卡多）]
+    casts: [Antonio Banderas（安东尼奥·班德拉斯）, Salma Hayek（萨尔玛·海耶克）, Harvey Guillen（哈维·吉兰）, Florence Pugh（弗洛伦丝·皮尤）, 约翰·木兰尼, 瓦格纳·马拉, 雷·温斯顿, 萨姆森·卡约, 奥利维娅·科尔曼, 达明·乔伊·伦道夫]
+    writers: [汤米·斯威德洛, 汤姆·惠勒, 保罗·费舍尔]
+  slug: puss-in-boots-the-last-wish
+  covers:
+  - covers/25868125/01.webp
   douban_url: https://movie.douban.com/subject/25868125/
   user:
     cover: ""
@@ -3542,34 +3547,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 731050d9
-    machine_hash: 44d35745
+    machine_hash: fe84a919
     missing_since: null
+    missing_reason: null
 - id: "36118926"
   title: 第73届NHK红白歌会
-  original_title: null
-  year: null
+  original_title: 第73回NHK紅白歌合戦
+  year: 2022
   type: movie
-  category: null
+  category: variety
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 1312
   marked_at: "2023-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [音乐, 歌舞, 真人秀]
+  regions: [日本]
+  languages: [日语]
+  runtime: 260
   credits:
     directors: []
-    casts: []
+    casts: [大泉洋, 桥本环奈, 樱井翔, 桑子真帆, 林娜琏, 俞定延, 平井桃, 凑崎纱夏, 朴志效, 名井南]
     writers: []
-  slug: ""
-  covers: []
+  slug: 73nhk
+  covers:
+  - covers/36118926/01.webp
   douban_url: https://movie.douban.com/subject/36118926/
   user:
     cover: ""
@@ -3580,34 +3587,36 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c71fe4fb
-    machine_hash: 40df8a8a
+    machine_hash: 2f1b9790
     missing_since: null
+    missing_reason: null
 - id: "35936424"
   title: 鬼吹灯之南海归墟
   original_title: null
-  year: null
+  year: 2022
   type: movie
-  category: null
+  category: feature
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 4.6
+  douban_score_count: 6555
   marked_at: "2023-01-01"
   douban_comment: null
   tags: []
   genres: []
-  regions: []
-  languages: []
-  runtime: null
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 105
   credits:
-    directors: []
-    casts: []
-    writers: []
-  slug: ""
-  covers: []
+    directors: [项秋良, 项河生]
+    casts: [王杍逸, 夏若妍, 韩烨洲, 骆达华]
+    writers: [许少飞]
+  slug: mojin-return-to-the-south-china-sea
+  covers:
+  - covers/35936424/01.webp
   douban_url: https://movie.douban.com/subject/35936424/
   user:
     cover: ""
@@ -3618,8 +3627,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 058503e7
-    machine_hash: a89bc5e4
+    machine_hash: f24cbe7d
     missing_since: null
+    missing_reason: null

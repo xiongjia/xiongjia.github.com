@@ -54,11 +54,11 @@
     "Michelle Rodriguez（米歇尔·罗德里格兹）",
     "雷吉-让·佩吉",
     "Justice Smith（贾斯蒂斯·史密斯）",
-    "索菲娅·莉莉丝",
+    "Sophia Lillis（索菲娅·莉莉丝）",
     "Hugh Grant（休·格兰特）",
     "Chloe Coleman（克洛伊·科尔曼）",
     "黛茜·海德",
-    "布莱德利·库珀",
+    "Bradley Cooper（布莱德利·库珀）",
     "凯尔·希克森"
    ],
    "category": "feature",
@@ -95,7 +95,7 @@
     "Jonathan M. Goldstein（乔纳森·戈尔茨坦）",
     "John Francis Daley（约翰·弗朗西斯·戴利）",
     "迈克尔·吉里奥",
-    "克里斯·麦凯"
+    "Chris McKay（克里斯·麦凯）"
    ],
    "year": 2023
   },
@@ -415,10 +415,10 @@
     "Helen Mirren（海伦·米伦）",
     "刘玉玲",
     "Rachel Zegler（瑞秋·齐格勒）",
-    "杰曼·翰苏",
-    "盖尔·加朵",
-    "亚当·布罗迪",
-    "格雷斯·卡罗琳·柯里"
+    "Djimon Hounsou（杰曼·翰苏）",
+    "Gal Gadot（盖尔·加朵）",
+    "Adam Brody（亚当·布罗迪）",
+    "Grace Caroline Currey（格雷斯·卡罗琳·柯里）"
    ],
    "category": "feature",
    "cover": "covers/33402300/01.webp",
@@ -646,8 +646,8 @@
     "Michael Douglas（迈克尔·道格拉斯）",
     "Michelle Pfeiffer（米歇尔·菲佛）",
     "Jonathan Majors（乔纳森·梅杰斯）",
-    "凯瑟琳·纽顿",
-    "比尔·默瑞",
+    "Kathryn Newton（凯瑟琳·纽顿）",
+    "Bill Murray（比尔·默瑞）",
     "凯蒂·M·奥布莱恩",
     "威廉·杰克森·哈珀",
     "詹姆斯·卡特勒"
@@ -909,7 +909,7 @@
     "Winston Duke（温斯顿·杜克）",
     "Angela Bassett（安吉拉·贝塞特）",
     "泰诺克·乌尔塔",
-    "马丁·弗瑞曼",
+    "Martin Freeman（马丁·弗瑞曼）",
     "Julia Louis-Dreyfus（茱莉亚·路易斯-德瑞弗斯）",
     "多米妮克·索恩",
     "弗洛伦丝·卡松巴"
@@ -1583,7 +1583,7 @@
     "箭内梦菜",
     "小手伸也",
     "佐伯大地",
-    "特林德尔·玲奈",
+    "Reina Triendl（特林德尔·玲奈）",
     "水谷隼"
    ],
    "category": "series",
@@ -1656,411 +1656,816 @@
    "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Diego Luna（迭戈·卢纳）",
+    "斯特兰·斯卡斯加德",
+    "Genevieve O'Reilly（吉娜薇·欧瑞丽）",
+    "Denise Gough（丹妮斯·高夫）",
+    "凯尔·索列尔",
+    "Adria Arjona（阿德里娅·阿霍纳）",
+    "Fiona Shaw（费奥纳·肖）",
+    "Andy Serkis（安迪·瑟金斯）",
+    "Forest Whitaker（福里斯特·惠特克）",
+    "乔普林·西伯顿"
+   ],
+   "category": "series",
+   "cover": "covers/30376895/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30376895/01.webp",
    "date": "2023-01-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Toby Haynes（托比·海恩斯）",
+    "Susanna White（苏珊娜·怀特）",
+    "Ben Caron（本·卡隆）"
+   ],
+   "douban_score": 9.0,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "惊悚",
+    "冒险"
+   ],
    "id": "30376895",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 55,
+   "slug": "andor-season-1",
    "status": "collect",
    "tags": [],
-   "title": "安多 第一季",
+   "title": "安多 第一季 Andor Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/30376895/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Tony Gilroy（托尼·吉尔罗伊）",
+    "Dan Gilroy（丹·吉尔罗伊）",
+    "Stephen Schiff（史蒂芬·希夫）",
+    "博·威利蒙",
+    "George Lucas（乔治·卢卡斯）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "韩栋",
+    "陈紫函",
+    "陈国坤",
+    "钟雷",
+    "张皓然",
+    "魏璐"
+   ],
+   "category": "feature",
+   "cover": "covers/36200703/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36200703/01.webp",
    "date": "2023-01-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "成思毅"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "悬疑",
+    "恐怖"
+   ],
    "id": "36200703",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 96,
+   "slug": "get-in-the-dark",
    "status": "collect",
    "tags": [],
    "title": "纸人回魂",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36200703/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "何三七"
+   ],
+   "year": 2023
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ralph Fiennes（拉尔夫·费因斯）",
+    "Anya Taylor-Joy（安雅·泰勒-乔伊）",
+    "Nicholas Hoult（尼古拉斯·霍尔特）",
+    "周洪",
+    "Janet McTeer（珍妮特·麦克蒂尔）",
+    "里德·伯尼",
+    "朱迪斯·赖特",
+    "John Leguizamo（约翰·雷吉扎莫）",
+    "保罗·安德斯坦",
+    "艾米·卡里诺"
+   ],
+   "category": "feature",
+   "cover": "covers/30455615/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30455615/01.webp",
    "date": "2023-01-07",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Mark Mylod（马克·梅罗德）"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "喜剧",
+    "惊悚",
+    "恐怖"
+   ],
    "id": "30455615",
    "missing": false,
-   "pending": true,
+   "original_title": "The Menu",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 107,
+   "slug": "the-menu",
    "status": "collect",
    "tags": [],
    "title": "菜单",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30455615/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "塞斯·雷斯",
+    "威尔·崔西"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Antonio Banderas（安东尼奥·班德拉斯）",
+    "Salma Hayek（萨尔玛·海耶克）",
+    "Harvey Guillen（哈维·吉兰）",
+    "Florence Pugh（弗洛伦丝·皮尤）",
+    "John Mulaney（约翰·木兰尼）",
+    "Wagner Moura（瓦格纳·马拉）",
+    "Ray Winstone（雷·温斯顿）",
+    "萨姆森·卡约",
+    "Olivia Colman（奥利维娅·科尔曼）",
+    "Da'Vine Joy Randolph（达明·乔伊·伦道夫）"
+   ],
+   "category": "anime",
+   "cover": "covers/25868125/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25868125/01.webp",
    "date": "2023-01-07",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Joel Crawford（乔尔·克劳福德）",
+    "Januel Mercado（贾努埃尔·梅尔卡多）"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "喜剧",
+    "爱情",
+    "动画",
+    "悬疑",
+    "歌舞",
+    "奇幻",
+    "冒险"
+   ],
    "id": "25868125",
    "missing": false,
-   "pending": true,
+   "original_title": "Puss in Boots: The Last Wish",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "puss-in-boots-the-last-wish",
    "status": "collect",
    "tags": [],
    "title": "穿靴子的猫2",
    "type": "movie",
    "url": "https://movie.douban.com/subject/25868125/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "汤米·斯威德洛",
+    "Tom Wheeler（汤姆·惠勒）",
+    "保罗·费舍尔"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "大泉洋",
+    "桥本环奈",
+    "樱井翔",
+    "桑子真帆",
+    "林娜琏",
+    "俞定延",
+    "平井桃",
+    "凑崎纱夏",
+    "朴志效",
+    "名井南"
+   ],
+   "category": "variety",
+   "cover": "covers/36118926/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36118926/01.webp",
    "date": "2023-01-01",
    "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "douban_score": 7.8,
+   "genres": [
+    "音乐",
+    "歌舞",
+    "真人秀"
+   ],
    "id": "36118926",
    "missing": false,
-   "pending": true,
+   "original_title": "第73回NHK紅白歌合戦",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 260,
+   "slug": "73nhk",
    "status": "collect",
    "tags": [],
    "title": "第73届NHK红白歌会",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36118926/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "松重丰",
+    "石田光",
+    "胁知弘",
+    "相田翔子",
+    "江成一树",
+    "片桐入",
+    "宍户美和公",
+    "星野真里",
+    "真矢美纪",
+    "山崎将义"
+   ],
+   "category": "series",
+   "cover": "covers/35954709/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35954709/01.webp",
    "date": "2023-01-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "井川尊史",
+    "北畑龙一",
+    "中山大晖"
+   ],
+   "douban_score": 9.2,
+   "episodes": 12,
+   "genres": [
+    "剧情"
+   ],
    "id": "35954709",
    "missing": false,
-   "pending": true,
+   "original_title": "孤独のグルメ Season10",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "season10",
    "status": "collect",
    "tags": [],
    "title": "孤独的美食家 第十季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35954709/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "田口佳宏",
+    "儿玉赖子"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "王杍逸",
+    "夏若妍",
+    "韩烨洲",
+    "骆达华"
+   ],
+   "category": "feature",
+   "cover": "covers/35936424/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35936424/01.webp",
    "date": "2023-01-01",
-   "directors": [],
-   "douban_score": null,
+   "directors": [
+    "项秋良",
+    "项河生"
+   ],
+   "douban_score": 4.6,
    "genres": [],
    "id": "35936424",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 105,
+   "slug": "mojin-return-to-the-south-china-sea",
    "status": "collect",
    "tags": [],
    "title": "鬼吹灯之南海归墟",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35936424/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "许少飞"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "柳知萧"
+   ],
+   "category": "anime",
+   "cover": "covers/35679810/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35679810/01.webp",
    "date": "2023-01-01",
-   "directors": [],
+   "directors": [
+    "叶老酒",
+    "芹菜"
+   ],
    "douban_score": null,
-   "genres": [],
+   "episodes": 48,
+   "genres": [
+    "动画"
+   ],
    "id": "35679810",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 10,
+   "slug": "master-of-star-origin",
    "status": "collect",
    "tags": [],
    "title": "星源之主",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35679810/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "发飙的蜗牛"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "六小龄童",
+    "徐少华",
+    "迟重瑞",
+    "崔景富",
+    "刘大刚"
+   ],
+   "category": "series",
+   "cover": "covers/2156667/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2156667/01.webp",
    "date": "2023-01-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "杨洁"
+   ],
+   "douban_score": 9.2,
+   "episodes": 16,
+   "genres": [
+    "剧情",
+    "动作",
+    "奇幻",
+    "冒险",
+    "古装"
+   ],
    "id": "2156667",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "douban-2156667",
    "status": "collect",
    "tags": [],
    "title": "西游记续集",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2156667/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "戴英禄",
+    "邹忆青",
+    "杨洁",
+    "吴承恩"
+   ],
+   "year": 2000
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杨紫琼",
+    "Sophia Brown（索菲亚·布朗）",
+    "Laurence O'Fuarain（劳伦斯·欧弗林）",
+    "Lenny Henry（伦尼·亨利）",
+    "米伦·麦克",
+    "Dylan Moran（迪兰·莫兰）",
+    "雅各布·柯林斯-莱维",
+    "弗朗西斯卡·米尔斯",
+    "纳撒尼尔·库蒂斯",
+    "赫柏·贝尔德索尔"
+   ],
+   "category": "series",
+   "cover": "covers/35158177/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35158177/01.webp",
    "date": "2022-12-27",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Sarah O'Gorman（莎拉·奥格曼）",
+    "Vicky Jewson（维姬·朱森）"
+   ],
+   "douban_score": 5.4,
+   "episodes": 4,
+   "genres": [
+    "剧情",
+    "动作",
+    "悬疑",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35158177",
    "missing": false,
-   "pending": true,
+   "original_title": "The Witcher: Blood Origin",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "波兰"
+   ],
+   "runtime": 50,
+   "slug": "the-witcher-blood-origin",
    "status": "collect",
    "tags": [],
    "title": "猎魔人：血源",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35158177/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "德克兰·德·巴拉",
+    "安杰伊·萨普科夫斯基"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jake Gyllenhaal（杰克·吉伦哈尔）",
+    "Dennis Quaid（丹尼斯·奎德）",
+    "Jaboukie Young-White（雅布其·杨-怀特）",
+    "Gabrielle Union（加布里埃尔·尤尼恩）",
+    "刘玉玲",
+    "卡兰·索尼",
+    "Alan Tudyk（艾伦·图代克）",
+    "阿德琳娜·安东尼",
+    "亚布拉哈姆·本鲁比",
+    "Jonathan Melo"
+   ],
+   "category": "anime",
+   "cover": "covers/35018488/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35018488/01.webp",
    "date": "2022-12-27",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Don Hall（唐·霍尔）",
+    "阮基"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "喜剧",
+    "动画",
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35018488",
    "missing": false,
-   "pending": true,
+   "original_title": "Strange World",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "strange-world",
    "status": "collect",
    "tags": [],
    "title": "奇异世界",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35018488/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "阮基"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "花江夏树",
+    "永濑安奈",
+    "白砂沙帆",
+    "日笠阳子",
+    "浦山迅",
+    "小野贤章",
+    "河濑茉希",
+    "钉宫理惠",
+    "久野美咲",
+    "三瓶由布子"
+   ],
+   "category": "anime",
+   "cover": "covers/35351365/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35351365/01.webp",
    "date": "2022-12-25",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "渡边步"
+   ],
+   "douban_score": 9.0,
+   "episodes": 25,
+   "genres": [
+    "动画",
+    "悬疑",
+    "惊悚"
+   ],
    "id": "35351365",
    "missing": false,
-   "pending": true,
+   "original_title": "サマータイムレンダ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "summer-time-rendering",
    "status": "collect",
    "tags": [],
    "title": "夏日重现",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35351365/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "濑古浩司"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Daniel Craig（丹尼尔·克雷格）",
+    "Edward Norton（爱德华·诺顿）",
+    "加奈儿·梦奈",
+    "Kathryn Hahn（凯瑟琳·哈恩）",
+    "Leslie Odom Jr.（小莱斯利·奥多姆）",
+    "凯特·哈德森",
+    "Dave Bautista（戴夫·巴蒂斯塔）",
+    "Jessica Henwick（杰西卡·亨维克）",
+    "玛德琳·克莱因",
+    "诺阿·西甘"
+   ],
+   "category": "feature",
+   "cover": "covers/34939037/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34939037/01.webp",
    "date": "2022-12-25",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Rian Johnson（莱恩·约翰逊）"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "悬疑",
+    "惊悚",
+    "犯罪"
+   ],
    "id": "34939037",
    "missing": false,
-   "pending": true,
+   "original_title": "Glass Onion: A Knives Out Mystery",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 140,
+   "slug": "glass-onion-a-knives-out-mystery",
    "status": "collect",
    "tags": [],
    "title": "利刃出鞘2",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34939037/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Rian Johnson（莱恩·约翰逊）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山崎贤人",
+    "土屋太凤",
+    "村上虹郎",
+    "樱田通",
+    "三吉彩花",
+    "朝比奈彩",
+    "山下智久",
+    "恒松祐里",
+    "渡边佑太朗",
+    "青柳翔"
+   ],
+   "category": "series",
+   "cover": "covers/35300122/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35300122/01.webp",
    "date": "2022-12-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "佐藤信介"
+   ],
+   "douban_score": 6.4,
+   "episodes": 8,
+   "genres": [
+    "动作",
+    "科幻",
+    "悬疑",
+    "惊悚",
+    "奇幻"
+   ],
    "id": "35300122",
    "missing": false,
-   "pending": true,
+   "original_title": "今際の国のアリス シーズン2",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 80,
+   "slug": "douban-35300122",
    "status": "collect",
    "tags": [],
    "title": "弥留之国的爱丽丝 第二季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35300122/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "仓光泰子",
+    "佐藤信介"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "钱小豪",
+    "王蕴凡"
+   ],
+   "category": "feature",
+   "cover": "covers/36193708/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36193708/01.webp",
    "date": "2022-12-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄凯"
+   ],
+   "douban_score": 4.0,
+   "genres": [
+    "动作",
+    "惊悚",
+    "恐怖",
+    "奇幻",
+    "冒险"
+   ],
    "id": "36193708",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 85,
+   "slug": "douban-36193708",
    "status": "collect",
    "tags": [],
    "title": "僵尸山雀",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36193708/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "林建峰"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "吕星辰",
+    "董凡",
+    "高亮",
+    "吴京",
+    "照宇",
+    "沈朝杰",
+    "蒋林燕",
+    "王实",
+    "王婧",
+    "陶正东"
+   ],
+   "category": "feature",
+   "cover": "covers/30214261/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30214261/01.webp",
    "date": "2022-12-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "孔嘉欢"
+   ],
+   "douban_score": 5.1,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "30214261",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 108,
+   "slug": "wonder-in-the-temple",
    "status": "collect",
    "tags": [],
    "title": "一百零八",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30214261/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "孔嘉欢"
+   ],
+   "year": 2019
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "郑佩佩",
+    "岳华",
+    "杨志卿",
+    "陈鸿烈",
+    "韩英杰",
+    "谷峰",
+    "李允中"
+   ],
+   "category": "feature",
+   "cover": "covers/1301946/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1301946/01.webp",
    "date": "2022-12-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "胡金铨"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "动作",
+    "武侠",
+    "古装"
+   ],
    "id": "1301946",
    "missing": false,
-   "pending": true,
+   "original_title": "大醉俠",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "香港"
+   ],
+   "runtime": 95,
+   "slug": "come-drink-with-me",
    "status": "collect",
    "tags": [],
    "title": "大醉侠",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1301946/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "胡金铨",
+    "丁善玺"
+   ],
+   "year": 1966
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sam Worthington（萨姆·沃辛顿）",
+    "Zoe Saldana（佐伊·索尔达娜）",
+    "Sigourney Weaver（西格妮·韦弗）",
+    "Stephen Lang（史蒂芬·朗）",
+    "Cliff Curtis（克利夫·柯蒂斯）",
+    "乔·大卫·摩尔",
+    "希·庞德",
+    "埃迪·法可",
+    "杰米·福雷特斯",
+    "Giovanni Ribisi（吉奥瓦尼·瑞比西）"
+   ],
+   "category": "feature",
+   "cover": "covers/4811774/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4811774/01.webp",
    "date": "2022-12-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "James Cameron（詹姆斯·卡梅隆）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
    "id": "4811774",
    "missing": false,
-   "pending": true,
+   "original_title": "Avatar: The Way of Water",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 193,
+   "slug": "avatar-the-way-of-water",
    "status": "collect",
    "tags": [
     "Movie"
@@ -2068,1889 +2473,3837 @@
    "title": "阿凡达：水之道",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4811774/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "James Cameron（詹姆斯·卡梅隆）",
+    "里克·杰法",
+    "阿曼达·斯尔沃",
+    "乔什·弗莱德曼",
+    "肖恩·萨莱诺"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "徐枫",
+    "石隽",
+    "白鹰",
+    "田鹏",
+    "曹健",
+    "苗天",
+    "张冰玉",
+    "薛汉",
+    "乔宏"
+   ],
+   "category": "feature",
+   "cover": "covers/1306490/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1306490/01.webp",
    "date": "2022-12-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "胡金铨"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "武侠",
+    "古装"
+   ],
    "id": "1306490",
    "missing": false,
-   "pending": true,
+   "original_title": "俠女",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "台湾",
+    "香港"
+   ],
+   "runtime": 179,
+   "slug": "a-touch-of-zen",
    "status": "collect",
    "tags": [],
    "title": "侠女",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1306490/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "胡金铨",
+    "蒲松龄"
+   ],
+   "year": 1970
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "许玮甯",
+    "李程彬",
+    "贾静雯",
+    "吴慷仁",
+    "李霈瑜",
+    "温贞菱",
+    "于子育",
+    "陈以文",
+    "丁宁",
+    "伊正"
+   ],
+   "category": "series",
+   "cover": "covers/35604644/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35604644/01.webp",
    "date": "2022-12-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "卓立"
+   ],
+   "douban_score": 8.5,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "35604644",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "台湾"
+   ],
+   "runtime": 45,
+   "slug": "shards-of-her",
    "status": "collect",
    "tags": [],
    "title": "她和她的她",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35604644/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "温郁芳"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jason Momoa（杰森·莫玛）",
+    "Marlow Barkley（玛洛·巴克利）",
+    "Kyle Chandler（凯尔·钱德勒）",
+    "Chris O'Dowd（克里斯·奥多德）",
+    "India de Beaufort（茵地亚·德·比尤福特）",
+    "亨伯利·冈萨雷斯",
+    "托尼娅·科妮斯",
+    "韦鲁切·欧皮亚",
+    "凯特琳娜·塔克西亚",
+    "迈克尔·布莱克"
+   ],
+   "category": "feature",
+   "cover": "covers/35422787/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35422787/01.webp",
    "date": "2022-12-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Francis Lawrence（弗朗西斯·劳伦斯）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "喜剧",
+    "歌舞",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35422787",
    "missing": false,
-   "pending": true,
+   "original_title": "Slumberland",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 117,
+   "slug": "slumberland",
    "status": "collect",
    "tags": [],
    "title": "梦乡",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35422787/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "迈克尔·汉德尔曼",
+    "温瑟·麦凯",
+    "大卫·盖恩"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ginnifer Goodwin（金妮弗·古德温）",
+    "Jason Bateman（杰森·贝特曼）",
+    "Bonnie Hunt（邦妮·亨特）",
+    "Don Lake（唐·雷克）",
+    "莫里斯·拉马奇",
+    "莉亚·莱瑟姆",
+    "Alan Tudyk（艾伦·图代克）",
+    "伊马里·威廉斯",
+    "内特·托伦斯",
+    "Idris Elba（伊德瑞斯·艾尔巴）"
+   ],
+   "category": "anime",
+   "cover": "covers/35284242/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35284242/01.webp",
    "date": "2022-12-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Trent Correy（特伦特·科雷）",
+    "Josie Trinidad（乔西·特立尼达）"
+   ],
+   "douban_score": 8.6,
+   "episodes": 6,
+   "genres": [
+    "喜剧",
+    "爱情",
+    "动画",
+    "短片",
+    "歌舞",
+    "犯罪",
+    "冒险"
+   ],
    "id": "35284242",
    "missing": false,
-   "pending": true,
+   "original_title": "Zootopia+",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 8,
+   "slug": "zootopia",
    "status": "collect",
    "tags": [],
    "title": "疯狂动物城+",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35284242/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Josie Trinidad（乔西·特立尼达）",
+    "Trent Correy（特伦特·科雷）",
+    "迈克尔·埃雷拉"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "土屋太凤",
+    "松下洸平",
+    "尾上松也",
+    "松本若菜",
+    "渡边圭祐",
+    "松本妃代",
+    "马场富美加",
+    "倍赏美津子",
+    "木村多江",
+    "石桥凌"
+   ],
+   "category": "series",
+   "cover": "covers/35724633/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35724633/01.webp",
    "date": "2022-12-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "田中亮"
+   ],
+   "douban_score": 5.7,
+   "episodes": 11,
+   "genres": [
+    "剧情"
+   ],
    "id": "35724633",
    "missing": false,
-   "pending": true,
+   "original_title": "やんごとなき一族",
+   "pending": false,
    "rating": 2,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-35724633",
    "status": "collect",
    "tags": [],
    "title": "麻烦一族",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35724633/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "神森万里江"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "古天乐",
+    "刘青云",
+    "刘嘉玲",
+    "姜皓文",
+    "谢君豪",
+    "吴倩",
+    "万国鹏",
+    "张家辉",
+    "刘浩良",
+    "赫子铭"
+   ],
+   "category": "feature",
+   "cover": "covers/26353671/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26353671/01.webp",
    "date": "2022-12-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "吴炫辉"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "动作",
+    "科幻"
+   ],
    "id": "26353671",
    "missing": false,
-   "pending": true,
+   "original_title": "明日戰記",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "香港",
+    "中国"
+   ],
+   "runtime": 99,
+   "slug": "warriors-of-future",
    "status": "collect",
    "tags": [],
    "title": "明日战记",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26353671/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "刘浩良",
+    "麦天枢"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "满岛光",
+    "佐藤健",
+    "八木莉可子",
+    "木户大圣",
+    "夏帆",
+    "小泉今日子",
+    "荒木飞羽",
+    "山田葵",
+    "美波",
+    "中尾明庆"
+   ],
+   "category": "series",
+   "cover": "covers/35275350/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35275350/01.webp",
    "date": "2022-12-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "寒竹百合"
+   ],
+   "douban_score": 8.5,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "35275350",
    "missing": false,
-   "pending": true,
+   "original_title": "First Love 初恋",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 50,
+   "slug": "first-love",
    "status": "collect",
    "tags": [],
    "title": "初恋",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35275350/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "寒竹百合"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "田中真弓",
+    "中井和哉",
+    "冈村明美",
+    "山口胜平",
+    "平田广明",
+    "大谷育江",
+    "山口由里子",
+    "矢尾一树",
+    "长岛雄一",
+    "宝龟克寿"
+   ],
+   "category": "anime",
+   "cover": "covers/35675082/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35675082/01.webp",
    "date": "2022-12-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "谷口悟朗"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35675082",
    "missing": false,
-   "pending": true,
+   "original_title": "ONE PIECE FILM RED",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 115,
+   "slug": "one-piece-film-red",
    "status": "collect",
    "tags": [],
    "title": "航海王：红发歌姬",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35675082/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "黑岩勉",
+    "尾田荣一郎"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Will Ferrell（威尔·法瑞尔）",
+    "Ryan Reynolds（瑞安·雷诺兹）",
+    "Octavia Spencer（奥克塔维亚·斯宾瑟）",
+    "Patrick Page（帕特里克·佩奇）",
+    "苏妮特·玛尼",
+    "崔西·摩根",
+    "乔·蒂皮特",
+    "艾米·卡里诺",
+    "安德利娅·安德斯",
+    "詹·塔洛克"
+   ],
+   "category": "feature",
+   "cover": "covers/34994725/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34994725/01.webp",
    "date": "2022-12-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Sean Anders（西恩·安德斯）"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "喜剧",
+    "歌舞"
+   ],
    "id": "34994725",
    "missing": false,
-   "pending": true,
+   "original_title": "Spirited",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 127,
+   "slug": "spirited",
    "status": "collect",
    "tags": [],
    "title": "热情洋溢",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34994725/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Sean Anders（西恩·安德斯）",
+    "John Morris（约翰·莫里斯）",
+    "查尔斯·狄更斯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Dwayne Johnson（道恩·强森）",
+    "Aldis Hodge（阿尔迪斯·霍吉）",
+    "Pierce Brosnan（皮尔斯·布鲁斯南）",
+    "Sarah Shahi（莎拉·夏希）",
+    "Noah Centineo（诺亚·琴蒂内奥）",
+    "昆泰莎·斯文戴尔",
+    "Marwan Kenzari（马尔万·肯扎里）",
+    "博德希·萨邦圭",
+    "穆罕默德·阿米尔",
+    "詹姆斯·库萨蒂-莫耶尔"
+   ],
+   "category": "feature",
+   "cover": "covers/26959697/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26959697/01.webp",
    "date": "2022-12-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Jaume Collet-Serra（佐米·希尔拉）"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "动作",
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
    "id": "26959697",
    "missing": false,
-   "pending": true,
+   "original_title": "Black Adam",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "加拿大",
+    "新西兰",
+    "匈牙利"
+   ],
+   "runtime": 125,
+   "slug": "black-adam",
    "status": "collect",
    "tags": [],
    "title": "黑亚当",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26959697/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "亚当·希泰凯尔",
+    "罗里·海恩斯",
+    "苏哈·诺什瓦尼",
+    "比尔·帕克",
+    "C·C·贝克"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Chris Pratt（克里斯·帕拉特）",
+    "Pom Klementieff（庞·克莱门捷夫）",
+    "Dave Bautista（戴夫·巴蒂斯塔）",
+    "Karen Gillan（凯伦·吉兰）",
+    "Bradley Cooper（布莱德利·库珀）",
+    "Vin Diesel（范·迪塞尔）",
+    "Kevin Bacon（凯文·贝肯）",
+    "肖恩·古恩",
+    "玛丽亚·巴卡洛娃",
+    "Michael Rooker（迈克尔·鲁克）"
+   ],
+   "category": "feature",
+   "cover": "covers/35284237/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35284237/01.webp",
    "date": "2022-11-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "James Gunn（詹姆斯·古恩）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "喜剧",
+    "动作",
+    "科幻",
+    "冒险"
+   ],
    "id": "35284237",
    "missing": false,
-   "pending": true,
+   "original_title": "The Guardians of the Galaxy Holiday Special",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 42,
+   "slug": "the-guardians-of-the-galaxy-holiday-special",
    "status": "collect",
    "tags": [],
    "title": "银河护卫队：假日特辑",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35284237/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "James Gunn（詹姆斯·古恩）",
+    "吉姆·斯特林",
+    "斯坦·李",
+    "拉里·利伯",
+    "杰克·科比",
+    "史蒂夫·恩格尔哈特",
+    "唐·赫克",
+    "罗杰·斯特恩",
+    "约翰·布西马",
+    "沙尔·比施马",
+    "比尔·曼特罗",
+    "基思·吉芬",
+    "史蒂夫·甘"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Christian Bale（克里斯蒂安·贝尔）",
+    "Margot Robbie（玛格特·罗比）",
+    "John David Washington（约翰·大卫·华盛顿）",
+    "Alessandro Nivola（亚历桑德罗·尼沃拉）",
+    "Andrea Riseborough（安德丽娅·赖斯伯勒）",
+    "Anya Taylor-Joy（安雅·泰勒-乔伊）",
+    "Chris Rock（克里斯·洛克）",
+    "Matthias Schoenaerts（马提亚斯·修奈尔）",
+    "Michael Shannon（迈克尔·珊农）",
+    "麦克·梅尔斯"
+   ],
+   "category": "feature",
+   "cover": "covers/33434802/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33434802/01.webp",
    "date": "2022-11-26",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David O. Russell（大卫·O·拉塞尔）"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "喜剧",
+    "悬疑",
+    "历史"
+   ],
    "id": "33434802",
    "missing": false,
-   "pending": true,
+   "original_title": "Amsterdam",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 134,
+   "slug": "amsterdam",
    "status": "collect",
    "tags": [],
    "title": "阿姆斯特丹",
    "type": "movie",
    "url": "https://movie.douban.com/subject/33434802/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "David O. Russell（大卫·O·拉塞尔）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Emily Beecham（艾米丽·比查姆）",
+    "Aneurin Barnard（阿奈林·巴纳德）",
+    "Andreas Pietschmann（安德烈亚斯·皮特斯柯曼）",
+    "Miguel Bernardeau（米格尔·贝尔纳尔德阿尤）",
+    "何塞·皮芒道",
+    "Anton Lesser（安东·莱瑟）",
+    "弗莱恩·爱德华兹",
+    "伊莎贝拉·魏",
+    "王琦珮",
+    "雅恩·盖尔"
+   ],
+   "category": "series",
+   "cover": "covers/30378843/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30378843/01.webp",
    "date": "2022-11-26",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Baran bo Odar（巴伦·博·欧达尔）"
+   ],
+   "douban_score": 6.6,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "科幻",
+    "悬疑",
+    "恐怖"
+   ],
    "id": "30378843",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国",
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "douban-30378843",
    "status": "collect",
    "tags": [],
    "title": "1899",
    "type": "tv",
    "url": "https://movie.douban.com/subject/30378843/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "扬特耶·弗里泽",
+    "达瑞欧·马德罗纳",
+    "艾玛·柯",
+    "杰罗姆·布坎·尼尔森",
+    "朱莉安娜·利马·德内",
+    "埃米尔·尼加德·阿尔伯森",
+    "Baran bo Odar（巴伦·博·欧达尔）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杜雨宸",
+    "梁志港",
+    "李牧芸",
+    "孙蛟龙",
+    "杜帅",
+    "克拉拉",
+    "吴毅将"
+   ],
+   "category": "feature",
+   "cover": "covers/35498642/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35498642/01.webp",
    "date": "2022-11-23",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "郝昭赫"
+   ],
+   "douban_score": 5.3,
+   "genres": [
+    "奇幻",
+    "古装"
+   ],
    "id": "35498642",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 76,
+   "slug": "douban-35498642",
    "status": "collect",
    "tags": [],
    "title": "阴阳画皮",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35498642/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "江生",
+    "郭追",
+    "傅声",
+    "龙天翔",
+    "黄淑仪"
+   ],
+   "category": "feature",
+   "cover": "covers/2084622/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2084622/01.webp",
    "date": "2022-11-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "张彻"
+   ],
+   "douban_score": 5.3,
+   "genres": [
+    "动作",
+    "爱情",
+    "武侠",
+    "古装"
+   ],
    "id": "2084622",
    "missing": false,
-   "pending": true,
+   "original_title": "神鵰俠侶",
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "香港"
+   ],
+   "runtime": 100,
+   "slug": "brave-archer-4",
    "status": "collect",
    "tags": [],
    "title": "神雕侠侣",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2084622/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "张彻",
+    "倪匡"
+   ],
+   "year": 1982
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sosie Bacon（索茜·贝肯）",
+    "Kyle Gallner（凯尔·加尔纳）",
+    "Jessie Usher（杰西·厄舍）",
+    "Robin Weigert（罗宾·薇格特）",
+    "Caitlin Stasey（凯特琳·斯塔西）",
+    "杰克·索切特",
+    "卡尔·潘",
+    "吉莲·珍塞尔",
+    "马修·兰姆",
+    "朱迪·雷耶斯"
+   ],
+   "category": "feature",
+   "cover": "covers/35779959/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35779959/01.webp",
    "date": "2022-11-20",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Parker Finn（帕克·芬恩）"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "恐怖"
+   ],
    "id": "35779959",
    "missing": false,
-   "pending": true,
+   "original_title": "Smile",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 115,
+   "slug": "smile",
    "status": "collect",
    "tags": [],
    "title": "危笑",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35779959/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Parker Finn（帕克·芬恩）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "桥本环奈",
+    "杉野遥亮",
+    "铃鹿央士",
+    "马场富美加",
+    "森崎温",
+    "大东骏介",
+    "太田梦莉",
+    "佐藤二朗",
+    "城田优",
+    "高桥克典"
+   ],
+   "category": "feature",
+   "cover": "covers/35758810/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35758810/01.webp",
    "date": "2022-11-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "瑠东东一郎"
+   ],
+   "douban_score": 4.4,
+   "genres": [
+    "动作"
+   ],
    "id": "35758810",
    "missing": false,
-   "pending": true,
+   "original_title": "バイオレンスアクション",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "the-violence-action",
    "status": "collect",
    "tags": [],
    "title": "少女杀手特急便",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35758810/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "瑠东东一郎",
+    "江良至"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jeffrey Donovan（杰弗里·多诺万）",
+    "Penelope Mitchell（佩内洛普·米契尔）",
+    "Richard Brake（理查德·布雷克）",
+    "Kerry Knuppe（凯丽·科纳佩）",
+    "Jake Choi（杰克·崔）",
+    "理查德·弗利施曼",
+    "克雷格·埃尔斯",
+    "蒂莉·吉佩尔",
+    "诺拉·特罗坎",
+    "斯蒂芬妮·利瓦伊-约翰"
+   ],
+   "category": "feature",
+   "cover": "covers/36091044/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36091044/01.webp",
    "date": "2022-11-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Paul Leyden（保罗·莱顿）"
+   ],
+   "douban_score": 4.1,
+   "genres": [
+    "喜剧",
+    "动作"
+   ],
    "id": "36091044",
    "missing": false,
-   "pending": true,
+   "original_title": "R.I.P.D. 2: Rise of the Damned",
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "r-i-p-d-2-rise-of-the-damned",
    "status": "collect",
    "tags": [],
    "title": "冥界警局2：咒灵崛起",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36091044/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Paul Leyden（保罗·莱顿）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "有田哲平",
+    "东根作寿英",
+    "绀野真昼",
+    "生田绘梨花",
+    "北山宏光",
+    "小岛藤子",
+    "樋口日奈",
+    "绫田俊树",
+    "山本美月",
+    "森口瑶子"
+   ],
+   "category": "feature",
+   "cover": "covers/35914301/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35914301/01.webp",
    "date": "2022-11-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "植田泰史",
+    "城宝秀则"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "科幻",
+    "恐怖"
+   ],
    "id": "35914301",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語'22夏の特別編",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 106,
+   "slug": "douban-35914301",
    "status": "collect",
    "tags": [],
    "title": "世界奇妙物语 2022夏季特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35914301/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "相馬光",
+    "天本絵美",
+    "荒木哉仁",
+    "バイク川崎バイク"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "元彪",
+    "吴豪",
+    "王韵涵"
+   ],
+   "category": "feature",
+   "cover": "covers/36152788/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36152788/01.webp",
    "date": "2022-11-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄河"
+   ],
+   "douban_score": 4.9,
+   "genres": [
+    "奇幻",
+    "冒险"
+   ],
    "id": "36152788",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 80,
+   "slug": "coffin-mountain-ancient-tomb",
    "status": "collect",
    "tags": [],
    "title": "棺山古墓",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36152788/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "文靖"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "variety",
+   "cover": "covers/36112826/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36112826/01.webp",
    "date": "2022-11-07",
    "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "douban_score": 8.3,
+   "episodes": 10,
+   "genres": [
+    "真人秀"
+   ],
    "id": "36112826",
    "missing": false,
-   "pending": true,
+   "original_title": "Drink Masters",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 40,
+   "slug": "drink-masters",
    "status": "collect",
    "tags": [],
    "title": "王牌调酒师",
    "type": "tv",
    "url": "https://movie.douban.com/subject/36112826/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ranbir Kapoor（兰比尔·卡普尔）",
+    "Alia Bhatt（阿莉雅·布哈特）",
+    "Amitabh Bachchan（阿米达普·巴强）",
+    "Nagarjuna Akkineni（纳嘎朱纳·阿克肯尼）",
+    "Mouni Roy（穆尼·罗伊）",
+    "沙鲁克·汗",
+    "迪皮卡·帕度柯妮",
+    "迪宝·卡帕蒂娅",
+    "拉希·马尔",
+    "莫希尼·凯瓦拉曼"
+   ],
+   "category": "feature",
+   "cover": "covers/27201437/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27201437/01.webp",
    "date": "2022-11-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ayan Mukherjee（阿扬·慕克吉）"
+   ],
+   "douban_score": 5.5,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
    "id": "27201437",
    "missing": false,
-   "pending": true,
+   "original_title": "Brahmastra Part One: Shiva",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "印度"
+   ],
+   "runtime": 167,
+   "slug": "brahmastra-part-one-shiva",
    "status": "collect",
    "tags": [],
    "title": "梵天神器",
    "type": "movie",
    "url": "https://movie.douban.com/subject/27201437/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "侯赛因·达拉尔",
+    "Ayan Mukherjee（阿扬·慕克吉）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Millie Bobby Brown（米莉·波比·布朗）",
+    "Henry Cavill（亨利·卡维尔）",
+    "David Thewlis（大卫·休里斯）",
+    "Louis Partridge（路易斯·帕特里奇）",
+    "Susan Wokoma（苏珊·沃卡曼）",
+    "阿迪勒·阿赫塔尔",
+    "莎伦·邓肯-布鲁斯特",
+    "Helena Bonham Carter（海伦娜·伯翰·卡特）",
+    "Himesh Patel（希米什·帕特尔）",
+    "汉娜·多德"
+   ],
+   "category": "feature",
+   "cover": "covers/35461749/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35461749/01.webp",
    "date": "2022-11-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Harry Bradbeer（哈利·布拉德比尔）"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "剧情",
+    "动作",
+    "悬疑",
+    "犯罪",
+    "冒险"
+   ],
    "id": "35461749",
    "missing": false,
-   "pending": true,
+   "original_title": "Enola Holmes 2",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "美国"
+   ],
+   "runtime": 129,
+   "slug": "enola-holmes-2",
    "status": "collect",
    "tags": [],
    "title": "福尔摩斯小姐：伦敦厄运",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35461749/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "杰克·索恩",
+    "Harry Bradbeer（哈利·布拉德比尔）",
+    "南希·斯普林格"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "朴海日",
+    "卞约汉",
+    "安圣基",
+    "孙贤周",
+    "金成圭",
+    "金成畇",
+    "金香起",
+    "玉泽演",
+    "孔明",
+    "朴智焕"
+   ],
+   "category": "feature",
+   "cover": "covers/26279170/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26279170/01.webp",
    "date": "2022-11-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "金汉珉"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "剧情",
+    "动作",
+    "历史",
+    "战争"
+   ],
    "id": "26279170",
    "missing": false,
-   "pending": true,
+   "original_title": "한산: 용의 출현",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 130,
+   "slug": "hansan-rising-dragon",
    "status": "collect",
    "tags": [],
    "title": "闲山：龙的出现",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26279170/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "金汉珉",
+    "尹洪基"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jessica Chastain（杰西卡·查斯坦）",
+    "Eddie Redmayne（埃迪·雷德梅恩）",
+    "Nnamdi Asomugha（纳马迪·阿斯穆格哈）",
+    "Kim Dickens（金·迪肯斯）",
+    "Malik Yoba（马利克·约巴）",
+    "阿利克斯·韦斯特·莱弗勒",
+    "Noah Emmerich（诺亚·艾默里奇）",
+    "阿杰·奈杜",
+    "玛西娅·让·库尔茨",
+    "加布·法齐奥"
+   ],
+   "category": "feature",
+   "cover": "covers/26641055/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26641055/01.webp",
    "date": "2022-10-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Tobias Lindholm（托比亚斯·林道赫姆）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "传记",
+    "犯罪"
+   ],
    "id": "26641055",
    "missing": false,
-   "pending": true,
+   "original_title": "The Good Nurse",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 121,
+   "slug": "the-good-nurse",
    "status": "collect",
    "tags": [],
    "title": "良心护士",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26641055/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "克里斯蒂·威尔逊-凯恩斯",
+    "查尔斯·格雷伯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "水川麻美",
+    "前田敦子",
+    "荣仓奈奈",
+    "柄本佑",
+    "伊藤兰",
+    "石桥凌",
+    "成田凌",
+    "夏帆",
+    "永作博美",
+    "中山裕介"
+   ],
+   "category": "series",
+   "cover": "covers/35819577/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35819577/01.webp",
    "date": "2022-10-29",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "平柳敦子",
+    "广木隆一",
+    "山下敦弘",
+    "荻上直子",
+    "黑泽清",
+    "山田尚子"
+   ],
+   "douban_score": 6.7,
+   "episodes": 7,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
    "id": "35819577",
    "missing": false,
-   "pending": true,
+   "original_title": "モダンラブ・東京～さまざまな愛の形～",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 39,
+   "slug": "modern-lovetokyo",
    "status": "collect",
    "tags": [],
    "title": "摩登情爱·东京",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35819577/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "平柳敦子",
+    "黑泽久子",
+    "龙居由佳里",
+    "荻上直子",
+    "黑泽清"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "沈腾",
+    "马丽",
+    "常远",
+    "李诚儒",
+    "黄才伦",
+    "李嘉琦",
+    "郝瀚",
+    "黄子韬",
+    "王成思",
+    "高海宝"
+   ],
+   "category": "feature",
+   "cover": "covers/35183042/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35183042/01.webp",
    "date": "2022-10-29",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "张吃鱼"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "喜剧",
+    "科幻"
+   ],
    "id": "35183042",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 122,
+   "slug": "moon-man",
    "status": "collect",
    "tags": [],
    "title": "独行月球",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35183042/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "张吃鱼",
+    "钱晨光",
+    "戴思奥",
+    "沈雨悦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Felix Kammerer（费利克斯·卡默雷尔）",
+    "Albrecht Schuch（阿尔布雷希特·舒赫）",
+    "Aaron Hilmer（亚伦·希尔默）",
+    "丹尼尔·布鲁赫",
+    "塞巴斯蒂安·胡克",
+    "莫里茨·克劳斯",
+    "阿德里安·格鲁内瓦尔德",
+    "埃丁·哈萨诺维奇",
+    "蒂博·德·蒙塔朗贝尔",
+    "大卫·史崔梭德"
+   ],
+   "category": "feature",
+   "cover": "covers/3042261/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3042261/01.webp",
    "date": "2022-10-29",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Edward Berger（爱德华·贝尔格）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "剧情",
+    "动作",
+    "战争"
+   ],
    "id": "3042261",
    "missing": false,
-   "pending": true,
+   "original_title": "Im Westen nichts Neues",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国",
+    "美国",
+    "英国"
+   ],
+   "runtime": 148,
+   "slug": "im-westen-nichts-neues",
    "status": "collect",
    "tags": [],
    "title": "西线无战事",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3042261/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Edward Berger（爱德华·贝尔格）",
+    "莱斯莉·帕特森",
+    "伊恩·斯托克尔",
+    "埃里希·玛利亚·雷马克"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Paddy Considine（帕迪·康斯戴恩）",
+    "Matt Smith（马特·史密斯）",
+    "Emma D'Arcy（艾玛·达西）",
+    "Olivia Cooke（奥利维亚·库克）",
+    "Milly Alcock（米莉·阿尔柯克）",
+    "艾米丽·凯里",
+    "Rhys Ifans（瑞斯·伊凡斯）",
+    "Steve Toussaint（史蒂夫·图森特）",
+    "伊芙·贝斯特",
+    "水野索诺娅"
+   ],
+   "category": "series",
+   "cover": "covers/34825964/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34825964/01.webp",
    "date": "2022-10-26",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Miguel Sapochnik（米格尔·萨普什尼克）",
+    "Greg Yaitanes（格雷格·艾坦尼斯）",
+    "Clare Kilner（克莱尔·基尔纳）",
+    "吉塔·瓦桑特·帕特尔"
+   ],
+   "douban_score": 8.7,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "奇幻",
+    "冒险"
+   ],
    "id": "34825964",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "house-of-the-dragon-season-1",
    "status": "collect",
    "tags": [],
-   "title": "龙之家族 第一季",
+   "title": "龙之家族 第一季 House of the Dragon Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/34825964/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "莱恩·康道尔",
+    "萨拉·海斯",
+    "加布里埃尔·丰塞卡",
+    "艾拉·帕克",
+    "查梅因·德格拉泰",
+    "凯文·刘",
+    "艾琳·沈",
+    "乔治·马丁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "许凯",
+    "赵露思",
+    "焦睿",
+    "梁婧娴",
+    "孟美岐",
+    "张檬",
+    "何明翰",
+    "张秋歌",
+    "杨大鹏"
+   ],
+   "category": "feature",
+   "cover": "covers/26971645/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26971645/01.webp",
    "date": "2022-10-23",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王才涛"
+   ],
+   "douban_score": 2.8,
+   "genres": [
+    "爱情"
+   ],
    "id": "26971645",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 104,
+   "slug": "autumn-fairy-tale",
    "status": "collect",
    "tags": [],
    "title": "蓝色生死恋",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26971645/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王才涛",
+    "包尔沁",
+    "宋洪熙",
+    "苏小懒",
+    "张璐"
+   ],
+   "year": 2019
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "钱文青",
+    "李诗萌",
+    "郭浩然",
+    "徐佳琦",
+    "刘三木"
+   ],
+   "category": "anime",
+   "cover": "covers/36017435/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36017435/01.webp",
    "date": "2022-10-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王裕仁",
+    "赵侠"
+   ],
+   "douban_score": 9.1,
+   "episodes": 12,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险",
+    "古装"
+   ],
    "id": "36017435",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "a-mortal-s-journey-2022",
    "status": "collect",
    "tags": [],
    "title": "凡人修仙传：初入星海",
    "type": "tv",
    "url": "https://movie.douban.com/subject/36017435/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王裕仁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "钱文青",
+    "刘三木",
+    "唐小喜",
+    "徐佳琦",
+    "聂曦映",
+    "图特哈蒙",
+    "李世荣",
+    "高旭东",
+    "胡亚捷",
+    "林强"
+   ],
+   "category": "anime",
+   "cover": "covers/35882624/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35882624/01.webp",
    "date": "2022-10-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王裕仁"
+   ],
+   "douban_score": 8.9,
+   "episodes": 14,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险",
+    "武侠",
+    "古装"
+   ],
    "id": "35882624",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "a-mortal-s-journey-2",
    "status": "collect",
    "tags": [],
    "title": "凡人修仙传：再别天南",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35882624/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王裕仁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "钱文青",
+    "李诗萌",
+    "刘三木",
+    "徐佳琦",
+    "聂曦映",
+    "图特哈蒙",
+    "李世荣",
+    "班闯",
+    "李璐",
+    "凌振赫"
+   ],
+   "category": "anime",
+   "cover": "covers/35640039/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35640039/01.webp",
    "date": "2022-10-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王裕仁",
+    "赵侠"
+   ],
+   "douban_score": 8.6,
+   "episodes": 25,
+   "genres": [
+    "动画",
+    "奇幻"
+   ],
    "id": "35640039",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "a-record-of-a-mortal-s-journey-to-immortality",
    "status": "collect",
    "tags": [],
    "title": "凡人修仙传：魔道争锋",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35640039/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王裕仁",
+    "雷君"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "大桥贤一郎",
+    "悠木碧",
+    "黑泽朋世",
+    "东地宏树",
+    "本田贵子",
+    "鸡冠井美智子",
+    "高木涉",
+    "加濑康之",
+    "井上和彦",
+    "津田健次郎"
+   ],
+   "category": "anime",
+   "cover": "covers/35118256/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35118256/01.webp",
    "date": "2022-10-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "今石洋之"
+   ],
+   "douban_score": 9.0,
+   "episodes": 10,
+   "genres": [
+    "动作",
+    "科幻",
+    "动画",
+    "惊悚",
+    "犯罪",
+    "冒险"
+   ],
    "id": "35118256",
    "missing": false,
-   "pending": true,
+   "original_title": "Cyberpunk: Edgerunners Season 1",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本",
+    "美国",
+    "波兰"
+   ],
+   "runtime": 24,
+   "slug": "cyberpunk-edgerunners-season-1",
    "status": "collect",
    "tags": [],
    "title": "赛博朋克：边缘行者 第一季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35118256/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大冢雅彦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Anamaria Vartolomei（安娜玛丽亚·沃特鲁梅）",
+    "Kacey Mottet Klein（卡西·莫泰·克莱恩）",
+    "卢安娜·巴杰拉米",
+    "露易丝·奥利-狄奎罗",
+    "Louise Chevillotte（路易丝·舍维约特）",
+    "皮奥·马麦",
+    "桑德里娜·博内尔",
+    "安娜·穆格拉利斯",
+    "阿丽斯·德·朗克桑",
+    "法布里齐奥·隆吉奥内"
+   ],
+   "category": "feature",
+   "cover": "covers/35318021/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35318021/01.webp",
    "date": "2022-10-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Audrey Diwan（奥黛丽·迪万）"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "剧情"
+   ],
    "id": "35318021",
    "missing": false,
-   "pending": true,
+   "original_title": "L'Événement",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "法国"
+   ],
+   "runtime": 100,
+   "slug": "l-evenement",
    "status": "collect",
    "tags": [],
    "title": "正发生",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35318021/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Audrey Diwan（奥黛丽·迪万）",
+    "玛西娅·罗马诺",
+    "安妮·埃尔诺"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "潘粤明",
+    "张雨绮",
+    "姜超",
+    "高伟光",
+    "汤镇业",
+    "沙宝亮",
+    "佟磊",
+    "舒耀瑄",
+    "文晴",
+    "王雨甜"
+   ],
+   "category": "series",
+   "cover": "covers/35095038/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35095038/01.webp",
    "date": "2022-10-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "蔡岳勋"
+   ],
+   "douban_score": 6.9,
+   "episodes": 16,
+   "genres": [
+    "剧情",
+    "动作",
+    "冒险"
+   ],
    "id": "35095038",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 35,
+   "slug": "kunlun-tomb",
    "status": "collect",
    "tags": [],
    "title": "昆仑神宫",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35095038/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "刘安琪",
+    "沈娟"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "朱一龙",
+    "杨恩又",
+    "王戈",
+    "刘陆",
+    "罗京民",
+    "吴倩",
+    "郑卫莉",
+    "陈创",
+    "李春嫒",
+    "钟宇升"
+   ],
+   "category": "feature",
+   "cover": "covers/35460157/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35460157/01.webp",
    "date": "2022-10-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "刘江江"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "剧情",
+    "家庭"
+   ],
    "id": "35460157",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 112,
+   "slug": "lighting-up-the-stars",
    "status": "collect",
    "tags": [],
    "title": "人生大事",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35460157/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "刘江江"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Morfydd Clark（莫菲德·克拉克）",
+    "Robert Aramayo（罗伯特·阿拉马约）",
+    "Benjamin Walker（本杰明·沃克）",
+    "Daniel Weyman（丹尼尔·韦曼）",
+    "马凯拉·卡维纳赫",
+    "伊斯梅尔·克鲁斯·科尔多瓦",
+    "Nazanin Boniadi（纳赞宁·波妮阿蒂）",
+    "Lenny Henry（伦尼·亨利）",
+    "查尔斯·爱德华兹",
+    "泰罗·穆哈菲丁"
+   ],
+   "category": "series",
+   "cover": "covers/27190093/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27190093/01.webp",
    "date": "2022-10-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "J.A. Bayona（J·A·巴亚纳）",
+    "Wayne Yip（韦恩·叶）",
+    "夏洛特·布伦德斯特伦"
+   ],
+   "douban_score": 6.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
    "id": "27190093",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 66,
+   "slug": "the-lord-of-the-rings-the-rings-of-power-season-1",
    "status": "collect",
    "tags": [
     "Movie"
    ],
-   "title": "指环王：力量之戒 第一季",
+   "title": "指环王：力量之戒 第一季 The Lord of the Rings: The Rings of Power Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/27190093/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "帕特里克·麦凯",
+    "约翰·D·佩恩",
+    "贾斯汀·多布尔",
+    "杰森·卡希尔",
+    "珍妮弗·哈奇森",
+    "尼古拉斯·亚当斯",
+    "史黛芬妮·福尔松",
+    "J.R.R.托尔金"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "绪方惠美",
+    "花泽香菜",
+    "小松未可子",
+    "内山昂辉",
+    "关智一",
+    "中村悠一",
+    "樱井孝宏",
+    "山寺宏一",
+    "松田利冴",
+    "松田飒水"
+   ],
+   "category": "anime",
+   "cover": "covers/35414623/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35414623/01.webp",
    "date": "2022-10-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "朴性厚"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
    "id": "35414623",
    "missing": false,
-   "pending": true,
+   "original_title": "劇場版 呪術廻戦 0",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 105,
+   "slug": "jujutsu-kaisen-0-the-movie",
    "status": "collect",
    "tags": [],
    "title": "咒术回战0",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35414623/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "濑古浩司"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "堤真一",
+    "竹内凉真",
+    "杏",
+    "阿部敦",
+    "安原义人",
+    "樱井透",
+    "藤真秀",
+    "中博史",
+    "玄田哲章",
+    "西村知道"
+   ],
+   "category": "anime",
+   "cover": "covers/30253158/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30253158/01.webp",
    "date": "2022-10-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "安藤雅司",
+    "宫地昌幸"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "动画",
+    "奇幻"
+   ],
    "id": "30253158",
    "missing": false,
-   "pending": true,
+   "original_title": "鹿の王 ユナと約束の旅",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "the-deer-king",
    "status": "collect",
    "tags": [],
    "title": "鹿王",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30253158/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "岸本卓",
+    "上桥菜穗子"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "小林裕介",
+    "铃木崚汰",
+    "沼仓爱美",
+    "佐藤元",
+    "河西健吾",
+    "高桥花林",
+    "麦人",
+    "前野智昭",
+    "村濑步",
+    "上田丽奈"
+   ],
+   "category": "anime",
+   "cover": "covers/35705828/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35705828/01.webp",
    "date": "2022-10-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "松下周平"
+   ],
+   "douban_score": 8.8,
+   "episodes": 2,
+   "genres": [
+    "动画"
+   ],
    "id": "35705828",
    "missing": false,
-   "pending": true,
+   "original_title": "Dr.STONE 龍水",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "dr-stone",
    "status": "collect",
    "tags": [],
    "title": "石纪元 龙水",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35705828/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "木户雄一郎"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "小林裕介",
+    "古川慎",
+    "市之濑加那",
+    "沼仓爱美",
+    "佐藤元",
+    "前野智昭",
+    "村濑步",
+    "上田丽奈",
+    "高桥花林",
+    "河西健吾"
+   ],
+   "category": "anime",
+   "cover": "covers/35043393/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35043393/01.webp",
    "date": "2022-10-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "饭野慎也"
+   ],
+   "douban_score": 8.7,
+   "episodes": 11,
+   "genres": [
+    "科幻",
+    "动画"
+   ],
    "id": "35043393",
    "missing": false,
-   "pending": true,
+   "original_title": "Dr.STONE STONE WARS",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "dr-stone-stone-wars",
    "status": "collect",
    "tags": [],
    "title": "石纪元 第二季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35043393/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "木户雄一郎"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Thomasin McKenzie（托马辛·麦肯齐）",
+    "Anya Taylor-Joy（安雅·泰勒-乔伊）",
+    "Matt Smith（马特·史密斯）",
+    "Diana Rigg（黛安娜·里格）",
+    "Rita Tushingham（丽塔·塔欣厄姆）",
+    "迈克尔·阿乔",
+    "Terence Stamp（特伦斯·斯坦普）",
+    "Sam Claflin（山姆·克拉弗林）",
+    "科林·梅斯",
+    "西诺薇·卡尔森"
+   ],
+   "category": "feature",
+   "cover": "covers/30447440/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30447440/01.webp",
    "date": "2022-10-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Edgar Wright（埃德加·赖特）"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "悬疑",
+    "恐怖"
+   ],
    "id": "30447440",
    "missing": false,
-   "pending": true,
+   "original_title": "Last Night in Soho",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国"
+   ],
+   "runtime": 116,
+   "slug": "last-night-in-soho",
    "status": "collect",
    "tags": [],
    "title": "Soho区惊魂夜",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30447440/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Edgar Wright（埃德加·赖特）",
+    "克里斯蒂·威尔逊-凯恩斯"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘青云",
+    "蔡卓妍",
+    "林峯",
+    "李若彤",
+    "谭凯",
+    "陈家乐",
+    "汤怡",
+    "何珮瑜",
+    "吴浩康",
+    "洪天明"
+   ],
+   "category": "feature",
+   "cover": "covers/26995893/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26995893/01.webp",
    "date": "2022-10-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "韦家辉"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "动作",
+    "悬疑",
+    "犯罪"
+   ],
    "id": "26995893",
    "missing": false,
-   "pending": true,
+   "original_title": "神探大戰",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "香港",
+    "中国"
+   ],
+   "runtime": 101,
+   "slug": "detective-vs-sleuths",
    "status": "collect",
    "tags": [],
    "title": "神探大战",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26995893/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "韦家辉"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "汤唯",
+    "朴海日",
+    "李贞贤",
+    "朴勇宇",
+    "高庚杓",
+    "金信英",
+    "郑永琡",
+    "柳承穆",
+    "朴正民",
+    "徐现宇"
+   ],
+   "category": "feature",
+   "cover": "covers/35073886/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35073886/01.webp",
    "date": "2022-10-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "朴赞郁"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "犯罪"
+   ],
    "id": "35073886",
    "missing": false,
-   "pending": true,
+   "original_title": "헤어질 결심",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 138,
+   "slug": "decision-to-leave",
    "status": "collect",
    "tags": [],
    "title": "分手的决心",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35073886/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "郑瑞景",
+    "朴赞郁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "赵双",
+    "皇贞季",
+    "曹云图",
+    "常蓉珊",
+    "藤新"
+   ],
+   "category": "anime",
+   "cover": "covers/35679807/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35679807/01.webp",
    "date": "2022-10-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "董易"
+   ],
+   "douban_score": 8.7,
+   "episodes": 12,
+   "genres": [
+    "动画"
+   ],
    "id": "35679807",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "中国"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "fairies-albums",
    "status": "collect",
    "tags": [],
    "title": "百妖谱·京师篇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35679807/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "桃玖玖"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山下大辉",
+    "水树奈奈",
+    "花泽香菜",
+    "水濑祈",
+    "村濑步",
+    "濑户麻沙美",
+    "岛田敏",
+    "田村睦心",
+    "小林由美子"
+   ],
+   "category": "anime",
+   "cover": "covers/35608829/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35608829/01.webp",
    "date": "2022-10-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "石田祐康"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "剧情",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35608829",
    "missing": false,
-   "pending": true,
+   "original_title": "雨を告げる漂流団地",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "drifting-home",
    "status": "collect",
    "tags": [],
    "title": "漂流家园",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35608829/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "石田祐康",
+    "森迅史"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Daniel Wilson（丹尼尔·威尔逊）",
+    "Diana Wilson（戴安娜·威尔逊）",
+    "Peter Sasaki（彼得·佐佐木）",
+    "Bob Sloan（鲍勃·斯隆）",
+    "Vicki Bogan（维琪·博根）",
+    "米基·古根海姆",
+    "雷切尔·萨萨拉",
+    "埃里克·赫斯",
+    "贡扬·巴内吉",
+    "马特·科尔斯"
+   ],
+   "category": "documentary",
+   "cover": "covers/35948779/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35948779/01.webp",
    "date": "2022-10-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Theo Love（西奥·洛夫）"
+   ],
+   "douban_score": 8.3,
+   "episodes": 3,
+   "genres": [
+    "纪录片"
+   ],
    "id": "35948779",
    "missing": false,
-   "pending": true,
+   "original_title": "Eat the Rich: The GameStop Saga",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 35,
+   "slug": "eat-the-rich-the-gamestop-saga",
    "status": "collect",
    "tags": [],
    "title": "散户大战华尔街：游戏驿站传奇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35948779/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "阿维·泽夫·韦德"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Brad Pitt（布拉德·皮特）",
+    "Joey King（乔伊·金）",
+    "Aaron Taylor-Johnson（亚伦·泰勒-约翰逊）",
+    "Brian Tyree Henry（布莱恩·泰里·亨利）",
+    "Andrew Koji（安德鲁·浩二）",
+    "真田广之",
+    "Michael Shannon（迈克尔·珊农）",
+    "Sandra Bullock（桑德拉·布洛克）",
+    "坏痞兔",
+    "Logan Lerman（罗根·勒曼）"
+   ],
+   "category": "feature",
+   "cover": "covers/35118954/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35118954/01.webp",
    "date": "2022-10-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David Leitch（大卫·雷奇）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "喜剧",
+    "动作",
+    "惊悚"
+   ],
    "id": "35118954",
    "missing": false,
-   "pending": true,
+   "original_title": "Bullet Train",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "日本"
+   ],
+   "runtime": 126,
+   "slug": "bullet-train",
    "status": "collect",
    "tags": [],
    "title": "子弹列车",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35118954/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "扎克·奥尔维奇",
+    "伊坂幸太郎"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ana de Armas（安娜·德·阿玛斯）",
+    "Adrien Brody（阿德里安·布罗迪）",
+    "Bobby Cannavale（鲍比·坎纳瓦尔）",
+    "Julianne Nicholson（朱丽安妮·尼科尔森）",
+    "Lily Fisher（莉莉·费舍尔）",
+    "泽维尔·塞缪尔",
+    "埃文·威廉斯",
+    "托比·哈斯",
+    "大卫·沃肖夫斯基",
+    "卡斯珀·菲利普森"
+   ],
+   "category": "feature",
+   "cover": "covers/4840389/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4840389/01.webp",
    "date": "2022-09-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Andrew Dominik（安德鲁·多米尼克）"
+   ],
+   "douban_score": 5.7,
+   "genres": [
+    "剧情",
+    "传记"
+   ],
    "id": "4840389",
    "missing": false,
-   "pending": true,
+   "original_title": "Blonde",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 166,
+   "slug": "blonde",
    "status": "collect",
    "tags": [],
    "title": "金发梦露",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4840389/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Andrew Dominik（安德鲁·多米尼克）",
+    "乔伊斯·卡罗尔·欧茨"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "常蓉珊",
+    "瞳音",
+    "叶知秋",
+    "阎么么",
+    "藤新",
+    "刘明月"
+   ],
+   "category": "anime",
+   "cover": "covers/35755307/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35755307/01.webp",
    "date": "2022-09-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "曾元俊",
+    "李健宁"
+   ],
+   "douban_score": 6.6,
+   "episodes": 208,
+   "genres": [
+    "动作",
+    "动画",
+    "战争",
+    "奇幻"
+   ],
    "id": "35755307",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "throne-of-seal",
    "status": "collect",
    "tags": [],
    "title": "神印王座",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35755307/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "曾元俊",
+    "唐家三少"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "叶唏羽",
+    "安迪",
+    "张唯申",
+    "杨子江",
+    "赵敏",
+    "王宇清"
+   ],
+   "category": "anime",
+   "cover": "covers/35970278/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35970278/01.webp",
    "date": "2022-09-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王自明"
+   ],
+   "douban_score": 8.2,
+   "episodes": 12,
+   "genres": [
+    "喜剧",
+    "动画"
+   ],
    "id": "35970278",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 6,
+   "slug": "douban-35970278",
    "status": "collect",
    "tags": [],
    "title": "思无邪",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35970278/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "邢添翼"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tilda Swinton（蒂尔达·斯文顿）",
+    "Idris Elba（伊德瑞斯·艾尔巴）",
+    "Pia Thunderbolt（皮娅·桑德波特）",
+    "Berk Ozturk（伯克·奥兹图克）",
+    "Alyla Browne（艾莉拉·布朗）",
+    "阿米托·拉古姆",
+    "尼古拉斯·穆瓦德",
+    "彼得·贝托尼",
+    "莉安·马凯西",
+    "马特奥·波切利"
+   ],
+   "category": "feature",
+   "cover": "covers/30362175/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30362175/01.webp",
    "date": "2022-09-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "George Miller（乔治·米勒）"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "剧情",
+    "爱情",
+    "奇幻"
+   ],
    "id": "30362175",
    "missing": false,
-   "pending": true,
+   "original_title": "Three Thousand Years of Longing",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "澳大利亚",
+    "美国"
+   ],
+   "runtime": 108,
+   "slug": "three-thousand-years-of-longing",
    "status": "collect",
    "tags": [],
    "title": "三千年的思念",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30362175/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "George Miller（乔治·米勒）",
+    "奥古斯塔·戈尔",
+    "安东尼娅·苏珊·拜厄特"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福山雅治",
+    "北村一辉",
+    "新木优子",
+    "村上虹郎",
+    "森七菜",
+    "渡边一计",
+    "泽部佑",
+    "朝仓亚纪",
+    "中村雅俊",
+    "铃木浩介"
+   ],
+   "category": "feature",
+   "cover": "covers/36002890/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36002890/01.webp",
    "date": "2022-09-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "三桥利行"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "悬疑"
+   ],
    "id": "36002890",
    "missing": false,
-   "pending": true,
+   "original_title": "ガリレオ 禁断の魔術",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 102,
+   "slug": "2022sp-2022",
    "status": "collect",
    "tags": [],
    "title": "神探伽利略 禁断的魔术",
    "type": "movie",
    "url": "https://movie.douban.com/subject/36002890/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "冈田道尚"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "documentary",
+   "cover": "covers/35890382/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35890382/01.webp",
    "date": "2022-09-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "段鸣镝"
+   ],
+   "douban_score": 7.8,
+   "episodes": 5,
+   "genres": [
+    "纪录片",
+    "历史"
+   ],
    "id": "35890382",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "中国"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-35890382",
    "status": "collect",
    "tags": [],
    "title": "大汉帝国",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35890382/",
    "writers": [],
-   "year": null
+   "year": 2012
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "栗山千明",
+    "辻凪子"
+   ],
+   "category": "series",
+   "cover": "covers/35911746/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35911746/01.webp",
    "date": "2022-09-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "二宫崇"
+   ],
+   "douban_score": 7.8,
+   "episodes": 8,
+   "genres": [
+    "剧情"
+   ],
    "id": "35911746",
    "missing": false,
-   "pending": true,
+   "original_title": "晩酌の流儀",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "douban-35911746",
    "status": "collect",
    "tags": [],
    "title": "晚酌的流派",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35911746/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "政池洋佑"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "于毅",
+    "付美",
+    "孔连顺"
+   ],
+   "category": "feature",
+   "cover": "covers/35936420/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35936420/01.webp",
    "date": "2022-09-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "林珍钊"
+   ],
+   "douban_score": 5.1,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "惊悚",
+    "冒险"
+   ],
    "id": "35936420",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 118,
+   "slug": "douban-35936420",
    "status": "collect",
    "tags": [],
    "title": "鬼吹灯之精绝古城",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35936420/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "张圣帆",
+    "黄梦梦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "北川景子",
+    "中村伦也",
+    "芳根京子",
+    "洼冢洋介",
+    "木村佳乃",
+    "板尾创路",
+    "高冈早纪",
+    "石田法嗣",
+    "清原翔"
+   ],
+   "category": "feature",
+   "cover": "covers/34905613/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34905613/01.webp",
    "date": "2022-09-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "堤幸彦"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "34905613",
    "missing": false,
-   "pending": true,
+   "original_title": "ファーストラヴ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 119,
+   "slug": "douban-34905613",
    "status": "collect",
    "tags": [],
    "title": "初恋",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34905613/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "浅野妙子",
+    "岛本理生"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "武仁林",
+    "海清",
+    "杨光锐",
+    "赵登平",
+    "王彩兰",
+    "曾建贵",
+    "武赟志",
+    "马占红",
+    "王翠兰",
+    "续彩霞"
+   ],
+   "category": "feature",
+   "cover": "covers/35131346/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35131346/01.webp",
    "date": "2022-09-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李睿珺"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "剧情"
+   ],
    "id": "35131346",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 133,
+   "slug": "return-to-dust",
    "status": "collect",
    "tags": [],
    "title": "隐入尘烟",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35131346/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "李睿珺"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Joseph Gordon-Levitt（约瑟夫·高登-莱维特）",
+    "Tom Hanks（汤姆·汉克斯）",
+    "Benjamin Evan Ainsworth（本杰明·埃文·安斯沃思）",
+    "Angus Wright（安格斯·瑞特）",
+    "Cynthia Erivo（辛西娅·埃里沃）",
+    "希拉·阿蒂姆",
+    "洛兰·布拉科",
+    "Keegan-Michael Key（科甘-迈克尔·凯）",
+    "詹米·德米特鲁",
+    "朱塞佩·巴蒂斯通"
+   ],
+   "category": "feature",
+   "cover": "covers/26363200/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26363200/01.webp",
    "date": "2022-09-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Robert Zemeckis（罗伯特·泽米吉斯）"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "歌舞",
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
    "id": "26363200",
    "missing": false,
-   "pending": true,
+   "original_title": "Pinocchio",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "pinocchio",
    "status": "collect",
    "tags": [],
    "title": "木偶奇遇记",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26363200/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Robert Zemeckis（罗伯特·泽米吉斯）",
+    "克里斯·韦兹",
+    "卡洛·科洛迪"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Chris Hemsworth（克里斯·海姆斯沃斯）",
+    "Natalie Portman（娜塔莉·波特曼）",
+    "Christian Bale（克里斯蒂安·贝尔）",
+    "Tessa Thompson（泰莎·汤普森）",
+    "Taika Waititi（塔伊加·维迪提）",
+    "Russell Crowe（罗素·克劳）",
+    "杰米·亚历山大",
+    "Idris Elba（伊德瑞斯·艾尔巴）",
+    "Chris Pratt（克里斯·帕拉特）",
+    "Dave Bautista（戴夫·巴蒂斯塔）"
+   ],
+   "category": "feature",
+   "cover": "covers/34477861/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34477861/01.webp",
    "date": "2022-09-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Taika Waititi（塔伊加·维迪提）"
+   ],
+   "douban_score": 5.4,
+   "genres": [
+    "喜剧",
+    "动作",
+    "爱情",
+    "科幻",
+    "奇幻",
+    "冒险"
+   ],
    "id": "34477861",
    "missing": false,
-   "pending": true,
+   "original_title": "Thor: Love and Thunder",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "澳大利亚",
+    "美国"
+   ],
+   "runtime": 119,
+   "slug": "thor-love-and-thunder",
    "status": "collect",
    "tags": [],
    "title": "雷神4：爱与雷霆",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34477861/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Taika Waititi（塔伊加·维迪提）",
+    "詹尼弗·凯廷·罗宾逊",
+    "斯坦·李",
+    "杰森·亚伦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Grace Caroline Currey（格雷斯·卡罗琳·柯里）",
+    "Virginia Gardner（维吉尼亚·加德纳）",
+    "Mason Gooding（梅森·古丁）",
+    "Jeffrey Dean Morgan（杰弗里·迪恩·摩根）",
+    "Jasper Cole（贾斯珀·科尔）",
+    "达雷尔·丹尼斯",
+    "巴姆·埃里克森",
+    "朱莉娅·佩斯·米契尔"
+   ],
+   "category": "feature",
+   "cover": "covers/35700395/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35700395/01.webp",
    "date": "2022-09-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Scott Mann（斯科特·曼）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "动作",
+    "惊悚",
+    "冒险",
+    "运动"
+   ],
    "id": "35700395",
    "missing": false,
-   "pending": true,
+   "original_title": "Fall",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "美国"
+   ],
+   "runtime": 107,
+   "slug": "fall",
    "status": "collect",
    "tags": [],
    "title": "坠落",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35700395/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "乔纳森·弗兰克",
+    "Scott Mann（斯科特·曼）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "柳俊烈",
+    "金宇彬",
+    "金泰梨",
+    "苏志燮",
+    "廉晶雅",
+    "赵祐镇",
+    "金义城",
+    "李荷妮",
+    "申正根",
+    "李时勋"
+   ],
+   "category": "feature",
+   "cover": "covers/34456011/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34456011/01.webp",
    "date": "2022-09-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "崔东勋"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "科幻",
+    "古装"
+   ],
    "id": "34456011",
    "missing": false,
-   "pending": true,
+   "original_title": "외계+인 1부",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 142,
+   "slug": "alien-part-1",
    "status": "collect",
    "tags": [],
    "title": "外星+人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34456011/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "崔东勋",
+    "李基哲"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "祖晴",
+    "张琳",
+    "邓玉婷",
+    "梁颖",
+    "刘红韵",
+    "高全胜",
+    "赵娜"
+   ],
+   "category": "anime",
+   "cover": "covers/35608160/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35608160/01.webp",
    "date": "2022-08-27",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄伟明"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "喜剧",
+    "动画",
+    "运动"
+   ],
    "id": "35608160",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 94,
+   "slug": "dunk-for-future",
    "status": "collect",
    "tags": [],
    "title": "喜羊羊与灰太狼之筐出未来",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35608160/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吴潮威"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "林峯",
+    "文咏珊",
+    "云千千",
+    "邱意浓",
+    "徐锦江",
+    "方中信",
+    "黄浩然",
+    "梁琤",
+    "林子聪",
+    "骆应钧"
+   ],
+   "category": "feature",
+   "cover": "covers/35725825/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35725825/01.webp",
    "date": "2022-08-26",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王晶",
+    "姜国民"
+   ],
+   "douban_score": 3.8,
+   "genres": [
+    "动作",
+    "武侠",
+    "古装"
+   ],
    "id": "35725825",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 113,
+   "slug": "new-kung-fu-cult-master-2",
    "status": "collect",
    "tags": [],
    "title": "倚天屠龙记之圣火雄风",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35725825/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王晶"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Lili Reinhart（莉莉·莱因哈特）",
+    "Danny Ramirez（丹尼·拉米雷斯）",
+    "Aisha Dee（艾莎·迪伊）",
+    "Jaden Tolliver",
+    "Justin Donte",
+    "Amanda Grace Jenkins",
+    "安德丽·萨维奇",
+    "卢克·威尔逊",
+    "Lauren Garrott",
+    "Solar"
+   ],
+   "category": "feature",
+   "cover": "covers/35489692/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35489692/01.webp",
    "date": "2022-08-20",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Wanuri Kahiu（瓦努莉·卡修）"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
    "id": "35489692",
    "missing": false,
-   "pending": true,
+   "original_title": "Look Both Ways",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 110,
+   "slug": "look-both-ways",
    "status": "collect",
    "tags": [],
    "title": "双轨人生",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35489692/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "埃普尔·普罗瑟"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘北辰",
+    "樊俊航",
+    "孙晔",
+    "孟祥龙",
+    "小忻",
+    "翁媛",
+    "醋醋"
+   ],
+   "category": "anime",
+   "cover": "covers/35489156/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35489156/01.webp",
    "date": "2022-08-20",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "麦正乐"
+   ],
+   "douban_score": 5.4,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
    "id": "35489156",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 78,
+   "slug": "the-westward",
    "status": "collect",
    "tags": [],
    "title": "西行纪之穷奇地洞",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35489156/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jamie Foxx（杰米·福克斯）",
+    "Dave Franco（戴夫·弗兰科）",
+    "刘承羽",
+    "Meagan Good（梅根·古德）",
+    "Karla Souza（卡拉·索萨）",
+    "Steve Howey（史蒂夫·豪威）",
+    "Scott Adkins（斯科特·阿金斯）",
+    "Oliver Masucci（奥利弗·马苏奇）",
+    "史努比狗狗",
+    "埃里克·兰格"
+   ],
+   "category": "feature",
+   "cover": "covers/35229644/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35229644/01.webp",
    "date": "2022-08-20",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "J.J. Perry（J·J·佩里）"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "喜剧",
+    "动作",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "35229644",
    "missing": false,
-   "pending": true,
+   "original_title": "Day Shift",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 113,
+   "slug": "day-shift",
    "status": "collect",
    "tags": [],
    "title": "日班猎人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35229644/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Tyler Tice",
+    "谢伊·哈顿"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "王凯",
+    "季冠霖",
+    "李立宏",
+    "李兰陵",
+    "赵毅",
+    "刘校妤",
+    "文靖渊",
+    "汤水雨",
+    "星潮",
+    "邱秋"
+   ],
+   "category": "anime",
+   "cover": "covers/35360684/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35360684/01.webp",
    "date": "2022-08-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "赵霁"
+   ],
+   "douban_score": 7.0,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35360684",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 127,
+   "slug": "new-gods-yang-jian",
    "status": "collect",
    "tags": [],
    "title": "新神榜：杨戬",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35360684/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王微"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tom Cruise（汤姆·克鲁斯）",
+    "Jennifer Connelly（詹妮弗·康纳利）",
+    "Miles Teller（迈尔斯·特勒）",
+    "Jon Hamm（乔恩·哈姆）",
+    "Val Kilmer（方·基默）",
+    "莫妮卡·巴巴罗",
+    "珍·路易莎·凯利",
+    "曼尼·贾希尼托",
+    "罗伯塔·斯巴达",
+    "Ed Harris（艾德·哈里斯）"
+   ],
+   "category": "feature",
+   "cover": "covers/6893932/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6893932/01.webp",
    "date": "2022-08-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Joseph Kosinski（约瑟夫·科辛斯基）"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "动作"
+   ],
    "id": "6893932",
    "missing": false,
-   "pending": true,
+   "original_title": "Top Gun: Maverick",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "中国"
+   ],
+   "runtime": 130,
+   "slug": "top-gun-maverick",
    "status": "collect",
    "tags": [],
    "title": "壮志凌云2：独行侠",
    "type": "movie",
    "url": "https://movie.douban.com/subject/6893932/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "伊伦·克鲁格",
+    "埃里克·辛格尔",
+    "Christopher McQuarrie（克里斯托弗·麦奎里）",
+    "贾斯丁·马科斯",
+    "吉姆·卡什",
+    "小杰克·埃普斯",
+    "彼得·克莱格"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "anime",
+   "cover": "covers/2135544/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2135544/01.webp",
    "date": "2022-08-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "凌纾"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "动画",
+    "短片"
+   ],
    "id": "2135544",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 26,
+   "slug": "douban-2135544",
    "status": "collect",
    "tags": [],
    "title": "眉间尺",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2135544/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "凌纾"
+   ],
+   "year": 1991
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "夏秉钧",
+    "川本喜八郎"
+   ],
+   "category": "anime",
+   "cover": "covers/1887000/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1887000/01.webp",
    "date": "2022-08-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "川本喜八郎"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "剧情",
+    "动画",
+    "短片"
+   ],
    "id": "1887000",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本",
+    "中国"
+   ],
+   "runtime": 25,
+   "slug": "to-shoot-without-shooting",
    "status": "collect",
    "tags": [],
    "title": "不射之射",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1887000/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "川本喜八郎"
+   ],
+   "year": 1988
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Amber Midthunder（安柏·米德桑德）",
+    "Dakota Beavers（达寇塔·比弗）",
+    "Dane DiLiegro（戴恩·迪利格罗）",
+    "Stormee Kipp（斯托米·基普）",
+    "Michelle Thrush（米歇尔·史拉斯）",
+    "朱利安·布莱克·安蒂洛普",
+    "斯蒂芬·马蒂亚斯",
+    "贝内特·泰勒",
+    "Mike Paterson",
+    "尼尔森·雷斯"
+   ],
+   "category": "feature",
+   "cover": "covers/35262994/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35262994/01.webp",
    "date": "2022-08-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Dan Trachtenberg（丹·特拉亨伯格）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "动作",
+    "科幻",
+    "恐怖"
+   ],
    "id": "35262994",
    "missing": false,
-   "pending": true,
+   "original_title": "Prey",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 99,
+   "slug": "prey",
    "status": "collect",
    "tags": [],
    "title": "铁血战士：狩猎",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35262994/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "帕特里克·艾森",
+    "Dan Trachtenberg（丹·特拉亨伯格）",
+    "吉姆·托马斯",
+    "约翰·托马斯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Viggo Mortensen（维果·莫腾森）",
+    "Colin Farrell（科林·法瑞尔）",
+    "Joel Edgerton（乔尔·埃哲顿）",
+    "Tom Bateman（汤姆·巴特曼）",
+    "Josh Helman（乔什·赫尔曼）",
+    "简·拉金",
+    "扎赫拉·纽曼",
+    "保拉·加西亚",
+    "刘易斯·菲茨-杰拉德",
+    "维他亚·潘斯林加姆"
+   ],
+   "category": "feature",
+   "cover": "covers/35056243/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35056243/01.webp",
    "date": "2022-08-13",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ron Howard（朗·霍华德）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "传记"
+   ],
    "id": "35056243",
    "missing": false,
-   "pending": true,
+   "original_title": "Thirteen Lives",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "加拿大",
+    "英国"
+   ],
+   "runtime": 149,
+   "slug": "thirteen-lives",
    "status": "collect",
    "tags": [],
    "title": "十三条命",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35056243/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "威廉姆·尼克尔森",
+    "丹·麦克弗森"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘琮",
+    "王凯",
+    "张喆",
+    "张磊",
+    "王冠男",
+    "林兰",
+    "张遥函",
+    "程寅",
+    "刘若班",
+    "陈子平"
+   ],
+   "category": "anime",
+   "cover": "covers/27031463/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27031463/01.webp",
    "date": "2022-08-13",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄健明"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "喜剧",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "27031463",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 99,
+   "slug": "goodbye-monster",
    "status": "collect",
    "tags": [],
    "title": "山海经之再见怪兽",
    "type": "movie",
    "url": "https://movie.douban.com/subject/27031463/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吴晓宇",
+    "黄健明"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Steve Carell（史蒂夫·卡瑞尔）",
+    "Pierre Coffin（皮埃尔·柯芬）",
+    "Alan Arkin（艾伦·阿金）",
+    "Taraji P. Henson（塔拉吉·P·汉森）",
+    "杨紫琼",
+    "Julie Andrews（朱莉·安德鲁斯）",
+    "Russell Brand（拉塞尔·布兰德）",
+    "尚格·云顿",
+    "Dolph Lundgren（杜夫·龙格尔）",
+    "丹尼·特雷霍"
+   ],
+   "category": "anime",
+   "cover": "covers/26642033/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26642033/01.webp",
    "date": "2022-08-13",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Kyle Balda（凯尔·巴尔达）",
+    "Brad Ableson（布拉德·埃布尔森）",
+    "乔纳森·德尔瓦尔"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画",
+    "犯罪",
+    "冒险"
+   ],
    "id": "26642033",
    "missing": false,
-   "pending": true,
+   "original_title": "Minions: The Rise of Gru",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 87,
+   "slug": "minions-the-rise-of-gru",
    "status": "collect",
    "tags": [],
    "title": "小黄人大眼萌：神偷奶爸前传",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26642033/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马修·福格尔",
+    "布莱恩·林奇"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tom Sturridge（汤姆·斯图里奇）",
+    "Boyd Holbrook（波伊德·霍布鲁克）",
+    "Patton Oswalt（帕顿·奥斯瓦尔特）",
+    "Vivienne Acheampong（薇薇恩·阿昌庞）",
+    "David Thewlis（大卫·休里斯）",
+    "珍娜·科尔曼",
+    "Gwendoline Christie（格温多兰·克里斯蒂）",
+    "梅森·亚历山大·帕克",
+    "Stephen Fry（斯蒂芬·弗雷）",
+    "Mark Hamill（马克·哈米尔）"
+   ],
+   "category": "series",
+   "cover": "covers/25793471/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25793471/01.webp",
    "date": "2022-08-13",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Mike Barker（麦克·巴克）",
+    "Jamie Childs（杰米·奇尔兹）",
+    "梅尔西·阿尔马斯",
+    "安德烈斯·拜斯",
+    "Coralie Fargeat（科拉莉·法尔雅）",
+    "路易丝·胡珀",
+    "希斯科·胡辛"
+   ],
+   "douban_score": 7.6,
+   "episodes": 11,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "25793471",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 65,
+   "slug": "the-sandman-season-1",
    "status": "collect",
    "tags": [],
-   "title": "睡魔 第一季",
+   "title": "睡魔 第一季 The Sandman Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/25793471/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "尼尔·盖曼",
+    "David S. Goyer（大卫·S·高耶）",
+    "艾伦·海因伯格",
+    "吉姆·坎波隆戈",
+    "奥斯汀·古兹曼",
+    "阿梅尼·罗萨",
+    "劳伦·贝洛",
+    "希瑟·贝尔森",
+    "亚历山大·纽曼·怀斯",
+    "凡妮莎·詹姆斯·本顿",
+    "杰伊·富兰克林",
+    "凯瑟琳·史密斯-麦克马伦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ben Schwartz（本·施瓦茨）",
+    "Omar Benson Miller（奥玛·本森·米勒）",
+    "Brandon Smith（布兰登·史密斯）",
+    "Josh Brener（乔什·布雷纳）",
+    "Eric Bauza（艾瑞克·鲍扎）",
+    "尤金·伯德",
+    "瑞斯·达比",
+    "梅根·法尔科内",
+    "妮卡·福特曼",
+    "卡特琳娜·格兰厄姆"
+   ],
+   "category": "anime",
+   "cover": "covers/35125466/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35125466/01.webp",
    "date": "2022-08-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Andy Suriano（安迪·苏里亚诺）",
+    "Ant Ward（安特·沃德）"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35125466",
    "missing": false,
-   "pending": true,
+   "original_title": "Rise of the Teenage Mutant Ninja Turtles: The Movie",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "比利时"
+   ],
+   "runtime": 86,
+   "slug": "rise-of-the-teenage-mutant-ninja-turtles-the-movie",
    "status": "collect",
    "tags": [],
    "title": "忍者神龟：崛起",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35125466/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "托尼·加玛-罗伯",
+    "丽贝卡·梅",
+    "凯文·伊斯特曼",
+    "彼得·拉尔德",
+    "Andy Suriano（安迪·苏里亚诺）",
+    "Ant Ward（安特·沃德）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Eva Noblezada（伊娃·诺布勒札达）",
+    "Simon Pegg（西蒙·佩吉）",
+    "Jane Fonda（简·方达）",
+    "Whoopi Goldberg（乌比·戈德堡）",
+    "科林·奥多霍诺",
+    "Lil Rel Howery（里尔·莱尔·哈瓦瑞）",
+    "弗卢拉·博格",
+    "约翰·拉森贝格",
+    "阿德琳·斯布恩",
+    "格蕾·德丽斯勒"
+   ],
+   "category": "anime",
+   "cover": "covers/30471496/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30471496/01.webp",
    "date": "2022-08-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Peggy Holmes（佩吉·霍姆斯）",
+    "Javier Abad"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "喜剧",
+    "动画",
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
    "id": "30471496",
    "missing": false,
-   "pending": true,
+   "original_title": "Luck",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "西班牙",
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "luck",
    "status": "collect",
    "tags": [],
    "title": "祝你好运",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30471496/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "基尔·默里",
+    "乔纳森·阿贝尔",
+    "格伦·伯杰",
+    "Rebeca Carrasco",
+    "Juan De Dios",
+    "Julian Muñoz Romero",
+    "朱莉亚·米兰达"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tom Cruise（汤姆·克鲁斯）",
+    "Kelly McGillis（凯莉·麦吉利斯）",
+    "Val Kilmer（方·基默）",
+    "Anthony Edwards（安东尼·爱德华兹）",
+    "Tom Skerritt（汤姆·斯凯里特）",
+    "Michael Ironside（迈克尔·艾恩塞德）",
+    "John Stockwell（约翰·斯托克韦尔）",
+    "里克·罗索维奇",
+    "Tim Robbins（蒂姆·罗宾斯）",
+    "小克拉伦斯·吉尔亚德"
+   ],
+   "category": "feature",
+   "cover": "covers/1293799/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1293799/01.webp",
    "date": "2022-08-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Tony Scott（托尼·斯科特）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "动作"
+   ],
    "id": "1293799",
    "missing": false,
-   "pending": true,
+   "original_title": "Top Gun",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 109,
+   "slug": "top-gun",
    "status": "collect",
    "tags": [],
    "title": "壮志凌云",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1293799/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吉姆·卡什",
+    "小杰克·埃普斯",
+    "埃胡德·约纳"
+   ],
+   "year": 1986
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘北辰",
+    "沈达威",
+    "谢添天",
+    "时音",
+    "樊俊航",
+    "孙晔",
+    "孟祥龙",
+    "冯骏骅",
+    "夏磊",
+    "吴磊"
+   ],
+   "category": "anime",
+   "cover": "covers/35881770/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35881770/01.webp",
    "date": "2022-08-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "麦正乐"
+   ],
+   "douban_score": 7.7,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35881770",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 22,
+   "slug": "douban-35881770",
    "status": "collect",
    "tags": [],
    "title": "西行纪之重生篇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35881770/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "郑健和",
+    "邓志辉",
+    "夏薇",
+    "汪曼",
+    "刘锦",
+    "王昱"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "documentary",
+   "cover": "covers/10756540/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10756540/01.webp",
    "date": "2022-08-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "金铁木"
+   ],
+   "douban_score": 8.0,
+   "episodes": 8,
+   "genres": [
+    "纪录片"
+   ],
    "id": "10756540",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 40,
+   "slug": "douban-10756540",
    "status": "collect",
    "tags": [
     "Movie"
@@ -3958,739 +6311,1529 @@
    "title": "问道楼观",
    "type": "tv",
    "url": "https://movie.douban.com/subject/10756540/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "邓斐"
+   ],
+   "year": 2012
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "张沛",
+    "黑石稔",
+    "陈奕雯",
+    "高其昌",
+    "筱筝",
+    "鬼月",
+    "小巫",
+    "许棕哲",
+    "杜晴晴",
+    "郭鸿博"
+   ],
+   "category": "anime",
+   "cover": "covers/35638264/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35638264/01.webp",
    "date": "2022-07-31",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "陈百俊"
+   ],
+   "douban_score": 7.4,
+   "episodes": 3,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险",
+    "古装"
+   ],
    "id": "35638264",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 24,
+   "slug": "douban-35638264",
    "status": "collect",
    "tags": [],
    "title": "斗破苍穹 特别篇4",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35638264/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "袁洁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Emma Thompson（艾玛·汤普森）",
+    "Daryl McCormack（达利尔·麦克科马克）",
+    "Les Mabaleka（莱斯·马巴莱卡）",
+    "Lennie Beare（莱尼·贝阿雷）",
+    "Carina Lopes（卡琳娜·洛佩斯）",
+    "夏洛特·威尔",
+    "伊莎贝拉·劳赫兰"
+   ],
+   "category": "feature",
+   "cover": "covers/35235813/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35235813/01.webp",
    "date": "2022-07-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Sophie Hyde（苏菲·海德）"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
    "id": "35235813",
    "missing": false,
-   "pending": true,
+   "original_title": "Good Luck to You, Leo Grande",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国"
+   ],
+   "runtime": 97,
+   "slug": "good-luck-to-you-leo-grande",
    "status": "collect",
    "tags": [],
    "title": "祝你好运，里奥·格兰德",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35235813/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "凯蒂·布兰德"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jared Leto（杰瑞德·莱托）",
+    "Anne Hathaway（安妮·海瑟薇）",
+    "Kyle Marvin（凯尔·马文）",
+    "America Ferrera（亚美莉卡·费雷拉）",
+    "O·T·法格本",
+    "金义城",
+    "坎贝尔·斯科特",
+    "Peter Jacobson（彼得·雅各布森）",
+    "Anthony Edwards（安东尼·爱德华兹）",
+    "克里克特·布朗"
+   ],
+   "category": "series",
+   "cover": "covers/34984509/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34984509/01.webp",
    "date": "2022-07-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "John Requa（约翰·里夸）",
+    "Glenn Ficarra（格伦·费卡拉）",
+    "Cory Finley（科瑞·芬莱）",
+    "汀治·克里希南",
+    "莎里·斯宾厄·伯曼",
+    "罗伯特·帕西尼"
+   ],
+   "douban_score": 7.5,
+   "episodes": 8,
+   "genres": [
+    "剧情"
+   ],
    "id": "34984509",
    "missing": false,
-   "pending": true,
+   "original_title": "WeCrashed",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "wecrashed",
    "status": "collect",
    "tags": [],
    "title": "初创玩家",
    "type": "tv",
    "url": "https://movie.douban.com/subject/34984509/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "德鲁·克雷弗洛",
+    "李·艾森伯格",
+    "埃莉诺·伯吉斯",
+    "伊娃·安德森",
+    "曾泽尔·普莱斯",
+    "艾丽莎·卡拉西克",
+    "马克·斯塔森科"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ryan Gosling（瑞恩·高斯林）",
+    "Chris Evans（克里斯·埃文斯）",
+    "Ana de Armas（安娜·德·阿玛斯）",
+    "Jessica Henwick（杰西卡·亨维克）",
+    "茱莉亚·巴特斯",
+    "雷吉-让·佩吉",
+    "Billy Bob Thornton（比利·鲍伯·松顿）",
+    "Wagner Moura（瓦格纳·马拉）",
+    "丹努什",
+    "Alfre Woodard（阿尔法·伍达德）"
+   ],
+   "category": "feature",
+   "cover": "covers/7051806/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/7051806/01.webp",
    "date": "2022-07-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Anthony Russo（安东尼·罗素）",
+    "Joe Russo（乔·罗素）"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "动作",
+    "惊悚"
+   ],
    "id": "7051806",
    "missing": false,
-   "pending": true,
+   "original_title": "The Gray Man",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "捷克"
+   ],
+   "runtime": 129,
+   "slug": "the-gray-man",
    "status": "collect",
    "tags": [],
    "title": "灰影人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/7051806/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Joe Russo（乔·罗素）",
+    "克里斯托弗·马库斯",
+    "斯蒂芬·麦克菲利",
+    "马克·格里尼"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘北辰",
+    "沈达威",
+    "冯骏骅",
+    "樊俊航",
+    "孟祥龙",
+    "孙晔",
+    "谢添天",
+    "翁媛",
+    "王宇航",
+    "夏磊"
+   ],
+   "category": "anime",
+   "cover": "covers/35170370/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35170370/01.webp",
    "date": "2022-07-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "麦正乐"
+   ],
+   "douban_score": 6.9,
+   "episodes": 20,
+   "genres": [
+    "动画",
+    "冒险"
+   ],
    "id": "35170370",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "the-westward-iii",
    "status": "collect",
    "tags": [],
    "title": "西行纪之宿命篇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35170370/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "郑健和"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Seth MacFarlane（塞思·麦克法兰）",
+    "Adrianne Palicki（阿德琳妮·帕里奇）",
+    "Penny Johnson（佩妮·约翰逊）",
+    "Scott Grimes（斯科特·格瑞恩斯）",
+    "Peter Macon（彼德·梅肯）",
+    "Jessica Szohr（杰西卡·斯佐尔）",
+    "J·李",
+    "马克·杰克逊",
+    "吉姆·马奥尼",
+    "安妮·文特斯"
+   ],
+   "category": "series",
+   "cover": "covers/34637283/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34637283/01.webp",
    "date": "2022-07-17",
    "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "douban_score": 8.6,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "科幻",
+    "冒险"
+   ],
    "id": "34637283",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 70,
+   "slug": "the-orville-season-3",
    "status": "collect",
    "tags": [],
-   "title": "奥维尔号 第三季",
+   "title": "奥维尔号 第三季 The Orville Season 3",
    "type": "tv",
    "url": "https://movie.douban.com/subject/34637283/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Seth MacFarlane（塞思·麦克法兰）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "石之予",
+    "Lindsey Collins（林赛·柯林斯）",
+    "刘碧青",
+    "Danielle Feinberg（丹妮尔·范伯格）"
+   ],
+   "category": "documentary",
+   "cover": "covers/35800483/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35800483/01.webp",
    "date": "2022-07-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Erica Milsom（埃里卡·米尔森）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "纪录片"
+   ],
    "id": "35800483",
    "missing": false,
-   "pending": true,
+   "original_title": "Embrace the Panda: Making Turning Red",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 46,
+   "slug": "embrace-the-panda-making-turning-red",
    "status": "collect",
    "tags": [],
    "title": "拥抱小熊猫：青春变形记背后的故事",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35800483/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Chris Evans（克里斯·埃文斯）",
+    "Keke Palmer（柯柯·帕尔莫）",
+    "Peter Sohn（彼得·孙）",
+    "Taika Waititi（塔伊加·维迪提）",
+    "Dale Soules（戴尔·索尔斯）",
+    "James Brolin（詹姆斯·布洛林）",
+    "乌佐·阿杜巴",
+    "玛丽·麦克唐纳-刘易斯",
+    "小伊塞亚·维特洛克",
+    "Angus MacLane（安格斯·麦克莱恩）"
+   ],
+   "category": "anime",
+   "cover": "covers/35284168/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35284168/01.webp",
    "date": "2022-07-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Angus MacLane（安格斯·麦克莱恩）"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "动画",
+    "冒险"
+   ],
    "id": "35284168",
    "missing": false,
-   "pending": true,
+   "original_title": "Lightyear",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "lightyear",
    "status": "collect",
    "tags": [],
    "title": "光年正传",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35284168/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Angus MacLane（安格斯·麦克莱恩）",
+    "杰森·赫德利",
+    "马修·奥尔德里奇",
+    "Andrew Stanton（安德鲁·斯坦顿）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "夏磊",
+    "吴磊",
+    "柯暮卿",
+    "谢添天",
+    "杜晴晴",
+    "冯骏骅",
+    "不一",
+    "赵洋"
+   ],
+   "category": "anime",
+   "cover": "covers/35169997/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35169997/01.webp",
    "date": "2022-07-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄剑"
+   ],
+   "douban_score": 8.1,
+   "episodes": 16,
+   "genres": [
+    "剧情",
+    "动画",
+    "古装"
+   ],
    "id": "35169997",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 30,
+   "slug": "a-thousand-years",
    "status": "collect",
    "tags": [],
    "title": "山河剑心",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35169997/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "尹衡",
+    "蒋戈"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Karl Urban（卡尔·厄本）",
+    "Zaris-Angel Hator（萨里斯-安奇·哈托）",
+    "Jared Harris（杰瑞德·哈里斯）",
+    "Marianne Jean-Baptiste（玛丽安娜·琼-巴普蒂斯特）",
+    "Benjamin Plessala（本杰明·普莱萨拉）",
+    "索马里·罗斯",
+    "Kaya McLean",
+    "Davis Pak",
+    "海伦·萨德勒",
+    "曾晓童"
+   ],
+   "category": "anime",
+   "cover": "covers/33418682/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33418682/01.webp",
    "date": "2022-07-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Chris Williams（克里斯·威廉姆斯）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "喜剧",
+    "动画",
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
    "id": "33418682",
    "missing": false,
-   "pending": true,
+   "original_title": "The Sea Beast",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 115,
+   "slug": "the-sea-beast",
    "status": "collect",
    "tags": [],
    "title": "海兽猎人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/33418682/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Chris Williams（克里斯·威廉姆斯）",
+    "内尔·本杰明",
+    "塞缪尔·斯特拉顿",
+    "马特森·汤姆林"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ella Balinska（埃拉·巴林斯卡）",
+    "Lance Reddick（兰斯·莱迪克）",
+    "Turlough Convery（图尔洛夫·科维里）",
+    "Mpho Osei Tutu",
+    "葆拉·努涅斯",
+    "斯艾娜·阿古顿",
+    "阿德莱恩·鲁道夫",
+    "苏拉亚·桑托斯",
+    "埃文·亨斯特",
+    "阿哈德·拉扎·米尔"
+   ],
+   "category": "series",
+   "cover": "covers/30443443/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30443443/01.webp",
    "date": "2022-07-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Rachel Goldberg（蕾切尔·高德伯格）",
+    "Bronwen Hughes（布朗温·休斯）",
+    "罗布·西登格兰茨",
+    "巴坦·席尔瓦"
+   ],
+   "douban_score": 4.3,
+   "episodes": 8,
+   "genres": [
+    "动作",
+    "科幻",
+    "惊悚",
+    "恐怖"
+   ],
    "id": "30443443",
    "missing": false,
-   "pending": true,
+   "original_title": "Resident Evil",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "德国"
+   ],
+   "runtime": 60,
+   "slug": "resident-evil",
    "status": "collect",
    "tags": [],
    "title": "生化危机",
    "type": "tv",
    "url": "https://movie.douban.com/subject/30443443/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "安德鲁·达博",
+    "杰夫·霍华德"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "柯暮卿",
+    "郭鸿博",
+    "吕书君",
+    "张沛",
+    "鹏小胖",
+    "修缘",
+    "万苏婉",
+    "孟祥龙",
+    "十四",
+    "李元韬"
+   ],
+   "category": "anime",
+   "cover": "covers/35713094/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35713094/01.webp",
    "date": "2022-07-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "郑钧"
+   ],
+   "douban_score": 6.9,
+   "episodes": 12,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险",
+    "武侠",
+    "古装"
+   ],
    "id": "35713094",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 25,
+   "slug": "martial-universe-3rd-season",
    "status": "collect",
    "tags": [],
    "title": "武动乾坤 第三季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35713094/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "袁洁"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "蔡亘晏",
+    "黄歆庭",
+    "高英轩",
+    "林敬伦",
+    "温庆禹"
+   ],
+   "category": "feature",
+   "cover": "covers/34850561/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34850561/01.webp",
    "date": "2022-07-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "柯孟融"
+   ],
+   "douban_score": 7.0,
+   "genres": [
+    "恐怖"
+   ],
    "id": "34850561",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "台湾"
+   ],
+   "runtime": 110,
+   "slug": "incantation",
    "status": "collect",
    "tags": [],
    "title": "咒",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34850561/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "柯孟融",
+    "张喆崴"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Millie Bobby Brown（米莉·波比·布朗）",
+    "Winona Ryder（薇诺娜·瑞德）",
+    "David Harbour（大卫·哈伯）",
+    "Finn Wolfhard（菲恩·伍法德）",
+    "伽塔·马塔拉佐",
+    "凯莱布·麦克劳克林",
+    "诺亚·施纳普",
+    "Sadie Sink（萨迪·辛克）",
+    "娜塔莉·戴尔",
+    "Charlie Heaton（查理·希顿）"
+   ],
+   "category": "series",
+   "cover": "covers/27194292/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27194292/01.webp",
    "date": "2022-07-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）",
+    "Shawn Levy（肖恩·利维）",
+    "尼姆罗德·安陶尔"
+   ],
+   "douban_score": 9.2,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "科幻",
+    "悬疑",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "27194292",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 80,
+   "slug": "stranger-things-season-4",
    "status": "collect",
    "tags": [],
-   "title": "怪奇物语 第四季",
+   "title": "怪奇物语 第四季 Stranger Things Season 4",
    "type": "tv",
    "url": "https://movie.douban.com/subject/27194292/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）",
+    "凯特琳·施奈德汉",
+    "保罗·迪赫特",
+    "凯特·特雷弗里",
+    "柯蒂斯·格温"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "谢苗",
+    "高维蔓",
+    "向皓",
+    "刘奔",
+    "张荻",
+    "张皓森",
+    "高毅",
+    "康轩",
+    "侯骏桀",
+    "尹箭"
+   ],
+   "category": "feature",
+   "cover": "covers/35295405/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35295405/01.webp",
    "date": "2022-07-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "杨秉佳"
+   ],
+   "douban_score": 7.1,
+   "genres": [
+    "动作",
+    "武侠"
+   ],
    "id": "35295405",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 74,
+   "slug": "eye-for-an-eye-the-blind-swordsman",
    "status": "collect",
    "tags": [],
    "title": "目中无人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35295405/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "杨秉佳"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "松冈祯丞",
+    "户松遥",
+    "水濑祈",
+    "平田广明",
+    "安元洋贵",
+    "日高里菜",
+    "桧山修之",
+    "关智一"
+   ],
+   "category": "anime",
+   "cover": "covers/30359166/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30359166/01.webp",
    "date": "2022-07-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "河野亚矢子",
+    "小原正和"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "30359166",
    "missing": false,
-   "pending": true,
+   "original_title": "劇場版 ソードアート・オンライン プログレッシブ 星なき夜のアリア",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 97,
+   "slug": "progressive-2021",
    "status": "collect",
    "tags": [],
    "title": "刀剑神域进击篇：无星之夜",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30359166/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "川原砾"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Millie Bobby Brown（米莉·波比·布朗）",
+    "Winona Ryder（薇诺娜·瑞德）",
+    "David Harbour（大卫·哈伯）",
+    "Finn Wolfhard（菲恩·伍法德）",
+    "伽塔·马塔拉佐",
+    "凯莱布·麦克劳克林",
+    "诺亚·施纳普",
+    "娜塔莉·戴尔",
+    "Charlie Heaton（查理·希顿）",
+    "Joe Keery（乔·基瑞）"
+   ],
+   "category": "series",
+   "cover": "covers/27119156/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27119156/01.webp",
    "date": "2022-07-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）",
+    "Shawn Levy（肖恩·利维）",
+    "Uta Briesewitz（乌塔·布里泽维茨）"
+   ],
+   "douban_score": 8.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "科幻",
+    "悬疑",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "27119156",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "stranger-things-season-3",
    "status": "collect",
    "tags": [],
-   "title": "怪奇物语 第三季",
+   "title": "怪奇物语 第三季 Stranger Things Season 3",
    "type": "tv",
    "url": "https://movie.douban.com/subject/27119156/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）",
+    "凯特·特雷弗里",
+    "威廉·布里奇斯",
+    "保罗·迪赫特",
+    "柯蒂斯·格温"
+   ],
+   "year": 2019
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Millie Bobby Brown（米莉·波比·布朗）",
+    "Winona Ryder（薇诺娜·瑞德）",
+    "David Harbour（大卫·哈伯）",
+    "Finn Wolfhard（菲恩·伍法德）",
+    "伽塔·马塔拉佐",
+    "凯莱布·麦克劳克林",
+    "诺亚·施纳普",
+    "娜塔莉·戴尔",
+    "Charlie Heaton（查理·希顿）",
+    "Joe Keery（乔·基瑞）"
+   ],
+   "category": "series",
+   "cover": "covers/26844438/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26844438/01.webp",
    "date": "2022-07-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）",
+    "Shawn Levy（肖恩·利维）",
+    "Andrew Stanton（安德鲁·斯坦顿）",
+    "丽贝卡·托马斯"
+   ],
+   "douban_score": 8.9,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "科幻",
+    "悬疑",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "26844438",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 55,
+   "slug": "stranger-things-season-2",
    "status": "collect",
    "tags": [],
-   "title": "怪奇物语 第二季",
+   "title": "怪奇物语 第二季 Stranger Things Season 2",
    "type": "tv",
    "url": "https://movie.douban.com/subject/26844438/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）"
+   ],
+   "year": 2017
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Chris Pratt（克里斯·帕拉特）",
+    "Bryce Dallas Howard（布莱丝·达拉斯·霍华德）",
+    "Laura Dern（劳拉·邓恩）",
+    "Sam Neill（山姆·尼尔）",
+    "Jeff Goldblum（杰夫·高布伦）",
+    "德汪达·怀斯",
+    "Mamoudou Athie（马莫多·阿西）",
+    "Isabella Sermon（伊莎贝拉·瑟蒙）",
+    "坎贝尔·斯科特",
+    "黄荣亮"
+   ],
+   "category": "feature",
+   "cover": "covers/26873582/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26873582/01.webp",
    "date": "2022-07-07",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Colin Trevorrow（科林·特莱沃若）"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
    "id": "26873582",
    "missing": false,
-   "pending": true,
+   "original_title": "Jurassic World: Dominion",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "马耳他"
+   ],
+   "runtime": 147,
+   "slug": "jurassic-world-dominion",
    "status": "collect",
    "tags": [],
    "title": "侏罗纪世界3",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26873582/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "艾米丽·卡迈克尔",
+    "Colin Trevorrow（科林·特莱沃若）",
+    "德里克·康纳利",
+    "Michael Crichton（迈克尔·克莱顿）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Winona Ryder（薇诺娜·瑞德）",
+    "David Harbour（大卫·哈伯）",
+    "Millie Bobby Brown（米莉·波比·布朗）",
+    "Finn Wolfhard（菲恩·伍法德）",
+    "伽塔·马塔拉佐",
+    "凯莱布·麦克劳克林",
+    "诺亚·施纳普",
+    "娜塔莉·戴尔",
+    "Charlie Heaton（查理·希顿）",
+    "Joe Keery（乔·基瑞）"
+   ],
+   "category": "series",
+   "cover": "covers/26359270/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26359270/01.webp",
    "date": "2022-07-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Shawn Levy（肖恩·利维）",
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）"
+   ],
+   "douban_score": 9.1,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "科幻",
+    "悬疑",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "26359270",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "stranger-things-season-1",
    "status": "collect",
    "tags": [
     "Movie"
    ],
-   "title": "怪奇物语 第一季",
+   "title": "怪奇物语 第一季 Stranger Things Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/26359270/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Matt Duffer（马特·达菲）",
+    "Ross Duffer（罗斯·达菲）"
+   ],
+   "year": 2016
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Scott Adsit（斯科特·安第斯）",
+    "Ryan Potter（瑞恩·波特）",
+    "Dichen Lachman（迪辰·拉克曼）",
+    "Sarah-Nicole Robles（莎拉·妮可·罗伯斯）",
+    "亚历克斯·布卢·戴维斯",
+    "卡洛斯·费罗",
+    "安吉尔·帕克",
+    "布兰登·斯考特",
+    "Maya Rudolph（玛娅·鲁道夫）",
+    "艾米丽·黑田"
+   ],
+   "category": "anime",
+   "cover": "covers/35284240/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35284240/01.webp",
    "date": "2022-07-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Dean Wellins（迪恩·威林斯）",
+    "Lissa Treiman（丽萨·特雷曼）",
+    "丹·亚伯拉罕",
+    "马克·肯尼迪"
+   ],
+   "douban_score": 8.4,
+   "episodes": 6,
+   "genres": [
+    "喜剧",
+    "动作",
+    "科幻",
+    "动画",
+    "短片",
+    "家庭",
+    "冒险"
+   ],
    "id": "35284240",
    "missing": false,
-   "pending": true,
+   "original_title": "Baymax!",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 10,
+   "slug": "baymax",
    "status": "collect",
    "tags": [],
    "title": "大白！",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35284240/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "西罗克·邓拉普",
+    "盖比·卡皮利",
+    "克莱奥·蒋",
+    "朱莉娅·菲茨莫里斯",
+    "肯德勒·霍耶",
+    "凯莉·普渡",
+    "杰夫·斯诺"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "documentary",
+   "cover": "covers/35900902/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35900902/01.webp",
    "date": "2022-06-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "段智溢"
+   ],
+   "douban_score": 7.6,
+   "episodes": 6,
+   "genres": [
+    "纪录片"
+   ],
    "id": "35900902",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "中国"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-35900902",
    "status": "collect",
    "tags": [],
    "title": "英雄之路",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35900902/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "段智溢"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "秦隽哲"
+   ],
+   "category": "documentary",
+   "cover": "covers/35691889/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35691889/01.webp",
    "date": "2022-06-30",
    "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "douban_score": 7.7,
+   "episodes": 5,
+   "genres": [
+    "纪录片",
+    "传记",
+    "历史"
+   ],
    "id": "35691889",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 25,
+   "slug": "douban-35691889",
    "status": "collect",
    "tags": [],
    "title": "岳飞",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35691889/",
    "writers": [],
-   "year": null
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "前野智昭",
+    "Fairouz Ai（菲鲁兹·蓝）",
+    "稗田宁宁",
+    "富田美忧",
+    "江口拓也",
+    "鸟海浩辅",
+    "皆口裕子",
+    "大久保瑠美",
+    "竹内良太"
+   ],
+   "category": "anime",
+   "cover": "covers/35438178/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35438178/01.webp",
    "date": "2022-06-25",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "小野胜巳"
+   ],
+   "douban_score": 6.4,
+   "episodes": 12,
+   "genres": [
+    "动画"
+   ],
    "id": "35438178",
    "missing": false,
-   "pending": true,
+   "original_title": "骸骨騎士様、只今異世界へお出掛け中",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "skeleton-knight-in-another-world",
    "status": "collect",
    "tags": [],
    "title": "骸骨骑士大人异世界冒险中",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35438178/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "秤猿鬼"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ewan McGregor（伊万·麦克格雷格）",
+    "Hayden Christensen（海登·克里斯滕森）",
+    "James Earl Jones（詹姆斯·厄尔·琼斯）",
+    "Vivien Lyra Blair（维维恩·莱拉·布莱尔）",
+    "Moses Ingram（摩西·英格拉姆）",
+    "Kumail Nanjiani（库梅尔·南贾尼）",
+    "Liam Neeson（连姆·尼森）",
+    "Ian McDiarmid（伊恩·麦克迪阿梅德）",
+    "姜成镐",
+    "因迪拉·瓦玛"
+   ],
+   "category": "series",
+   "cover": "covers/27668664/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27668664/01.webp",
    "date": "2022-06-23",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Deborah Chow（黛博拉·周）"
+   ],
+   "douban_score": 6.7,
+   "episodes": 6,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
    "id": "27668664",
    "missing": false,
-   "pending": true,
+   "original_title": "Obi-Wan Kenobi",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 55,
+   "slug": "obi-wan-kenobi",
    "status": "collect",
    "tags": [],
    "title": "欧比旺",
    "type": "tv",
    "url": "https://movie.douban.com/subject/27668664/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "卓比·哈罗德",
+    "汉娜·弗里德曼",
+    "侯赛因·阿米尼",
+    "Stuart Beattie（斯图尔特·贝亚蒂耶）",
+    "Andrew Stanton（安德鲁·斯坦顿）",
+    "George Lucas（乔治·卢卡斯）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Benedict Cumberbatch（本尼迪克特·康伯巴奇）",
+    "Elizabeth Olsen（伊丽莎白·奥尔森）",
+    "Chiwetel Ejiofor（切瓦特·埃加福）",
+    "王汉斌",
+    "Xochitl Gomez（克索斯利尔·戈麦斯）",
+    "Rachel McAdams（瑞秋·麦克亚当斯）",
+    "Michael Stuhlbarg（迈克尔·斯图巴）",
+    "Patrick Stewart（帕特里克·斯图尔特）",
+    "Hayley Atwell（海莉·阿特维尔）",
+    "John Krasinski（约翰·卡拉辛斯基）"
+   ],
+   "category": "feature",
+   "cover": "covers/30304994/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30304994/01.webp",
    "date": "2022-06-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Sam Raimi（山姆·雷米）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "动作",
+    "科幻",
+    "恐怖",
+    "奇幻",
+    "冒险"
+   ],
    "id": "30304994",
    "missing": false,
-   "pending": true,
+   "original_title": "Doctor Strange in the Multiverse of Madness",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 126,
+   "slug": "doctor-strange-in-the-multiverse-of-madness",
    "status": "collect",
    "tags": [],
    "title": "奇异博士2：疯狂多元宇宙",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30304994/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "迈克尔·沃尔德伦"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "长泽雅美",
+    "东出昌大",
+    "小日向文世",
+    "江口洋介",
+    "松重丰",
+    "角野卓造",
+    "生濑胜久",
+    "石黑贤",
+    "梶原善",
+    "高岛政宏"
+   ],
+   "category": "feature",
+   "cover": "covers/35142915/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35142915/01.webp",
    "date": "2022-06-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "田中亮"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "喜剧"
+   ],
    "id": "35142915",
    "missing": false,
-   "pending": true,
+   "original_title": "映画コンフィデンスマンJP 英雄編",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 127,
+   "slug": "douban-35142915",
    "status": "collect",
    "tags": [],
    "title": "行骗天下JP：英雄篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35142915/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "古泽良太"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "David Tennant（大卫·田纳特）",
+    "Ibrahim Koma（伊伯拉姆·科马）",
+    "Leonie Benesch（莉奥妮·贝尼希）",
+    "Jason Watkins（杰森·沃特金斯）",
+    "彼得·苏利文",
+    "安东尼·弗拉纳根",
+    "莱昂·克林曼",
+    "理查德·威尔逊",
+    "杰夫·劳勒",
+    "琳赛·邓肯"
+   ],
+   "category": "series",
+   "cover": "covers/33384233/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33384233/01.webp",
    "date": "2022-06-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Steve Barron（斯蒂夫·巴伦）",
+    "Brian Kelly（布莱恩·凯利）",
+    "查尔斯·比森"
+   ],
+   "douban_score": 7.9,
+   "episodes": 8,
+   "genres": [
+    "喜剧",
+    "冒险"
+   ],
    "id": "33384233",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "法国",
+    "德国",
+    "意大利"
+   ],
+   "runtime": 50,
+   "slug": "around-the-world-in-80-days-season-1",
    "status": "collect",
    "tags": [],
-   "title": "八十天环游地球 第一季",
+   "title": "八十天环游地球 第一季 Around the World in 80 Days Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/33384233/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "阿什利·法罗",
+    "凯莱布·兰森",
+    "杰西卡·拉斯顿",
+    "黛比·奥马利",
+    "彼得·麦肯纳",
+    "史堤芬·格林霍恩",
+    "儒勒·凡尔纳"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "尹汝贞",
+    "金敏荷",
+    "李敏镐",
+    "河镇",
+    "新井苍士",
+    "鲁尚炫",
+    "郑恩彩",
+    "韩俊宇",
+    "全俞娜",
+    "朴载俊"
+   ],
+   "category": "series",
+   "cover": "covers/30489824/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30489824/01.webp",
    "date": "2022-06-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "郭共达",
+    "全知泰"
+   ],
+   "douban_score": 8.4,
+   "episodes": 8,
+   "genres": [
+    "剧情"
+   ],
    "id": "30489824",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "加拿大"
+   ],
+   "runtime": 60,
+   "slug": "pachinko-season-1",
    "status": "collect",
    "tags": [],
-   "title": "弹子球游戏 第一季",
+   "title": "弹子球游戏 第一季 Pachinko Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/30489824/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "许秀珍",
+    "马修·J·麦库",
+    "郑韩帅",
+    "高恩智",
+    "卢振浩",
+    "余秀菊",
+    "伊森·库珀伯格",
+    "Mfoniso Udofia",
+    "李敏金"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Philipp Hochmair（菲利普·霍奇迈尔）",
+    "Johannes Allmayer（约翰尼斯·艾麦亚）",
+    "马克西米连·布鲁克纳",
+    "马提亚斯‧邦德舒",
+    "Fabian Busch（法比安·布施）",
+    "雅各布·迪尔",
+    "莉莉·菲希特纳",
+    "戈德哈尔德·吉瑟",
+    "彼得·乔丹",
+    "阿诺德·克拉威特"
+   ],
+   "category": "feature",
+   "cover": "covers/35769174/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35769174/01.webp",
    "date": "2022-06-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Matti Geschonneck（马蒂·格肖内克）"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情",
+    "历史",
+    "战争"
+   ],
    "id": "35769174",
    "missing": false,
-   "pending": true,
+   "original_title": "Die Wannseekonferenz",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国"
+   ],
+   "runtime": 108,
+   "slug": "die-wannseekonferenz",
    "status": "collect",
    "tags": [],
    "title": "万湖会议",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35769174/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马格努斯·瓦特罗特",
+    "保罗·莫默兹"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "David Attenborough（大卫·爱登堡）"
+   ],
+   "category": "documentary",
+   "cover": "covers/34603375/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34603375/01.webp",
    "date": "2022-05-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Adam Valdez（亚当·瓦德兹）",
+    "Andrew R. Jones（安德鲁·R·琼斯）"
+   ],
+   "douban_score": 9.3,
+   "episodes": 5,
+   "genres": [
+    "动画",
+    "纪录片",
+    "历史"
+   ],
    "id": "34603375",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 45,
+   "slug": "prehistoric-planet-season-1",
    "status": "collect",
    "tags": [],
-   "title": "史前星球 第一季",
+   "title": "史前星球 第一季 Prehistoric Planet Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/34603375/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Dom Walter（多姆·瓦尔特）",
+    "Matthew Wright（马修·怀特）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tommy Lee Jones（汤米·李·琼斯）",
+    "Javier Bardem（哈维尔·巴登）",
+    "Josh Brolin（乔什·布洛林）",
+    "Woody Harrelson（伍迪·哈里森）",
+    "Kelly Macdonald（凯莉·麦克唐纳）",
+    "Garret Dillahunt（加瑞特·迪拉胡特）",
+    "泰丝·哈珀",
+    "巴里·柯宾",
+    "斯蒂芬·鲁特",
+    "Beth Grant（贝丝·格兰特）"
+   ],
+   "category": "feature",
+   "cover": "covers/1857099/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1857099/01.webp",
    "date": "2022-05-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ethan Coen（伊桑·科恩）",
+    "Joel Coen（乔尔·科恩）"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "犯罪"
+   ],
    "id": "1857099",
    "missing": false,
-   "pending": true,
+   "original_title": "No Country for Old Men",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 122,
+   "slug": "no-country-for-old-men",
    "status": "collect",
    "tags": [
     "Movie"
@@ -4698,721 +7841,1481 @@
    "title": "老无所依",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1857099/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Joel Coen（乔尔·科恩）",
+    "Ethan Coen（伊桑·科恩）"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Andy Samberg（安迪·萨姆伯格）",
+    "John Mulaney（约翰·木兰尼）",
+    "KiKi Layne（琪琪·莱恩）",
+    "Will Arnett（威尔·阿奈特）",
+    "Eric Bana（艾瑞克·巴纳）",
+    "弗卢拉·博格",
+    "Dennis Haysbert（丹尼斯·海斯伯特）",
+    "Keegan-Michael Key（科甘-迈克尔·凯）",
+    "Tress MacNeille（特蕾丝·麦克尼尔）",
+    "蒂姆·罗宾逊"
+   ],
+   "category": "anime",
+   "cover": "covers/33957717/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33957717/01.webp",
    "date": "2022-05-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Akiva Schaffer（阿吉瓦·沙弗尔）"
+   ],
+   "douban_score": 7.1,
+   "genres": [
+    "喜剧",
+    "动画",
+    "悬疑",
+    "冒险"
+   ],
    "id": "33957717",
    "missing": false,
-   "pending": true,
+   "original_title": "Chip 'n' Dale: Rescue Rangers",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 97,
+   "slug": "chip-n-dale-rescue-rangers",
    "status": "collect",
    "tags": [],
    "title": "奇奇与蒂蒂：救援突击队",
    "type": "movie",
    "url": "https://movie.douban.com/subject/33957717/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "丹·格雷戈尔",
+    "道格·曼德"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "田中敦子",
+    "阪脩",
+    "大塚明夫",
+    "山寺宏一",
+    "仲野裕",
+    "大川透",
+    "小野冢贵志",
+    "山口太郎",
+    "玉川纱己子",
+    "潘惠美"
+   ],
+   "category": "anime",
+   "cover": "covers/35528906/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35528906/01.webp",
    "date": "2022-05-21",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "神山健治",
+    "荒牧伸志"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "动作",
+    "科幻",
+    "动画"
+   ],
    "id": "35528906",
    "missing": false,
-   "pending": true,
+   "original_title": "攻殻機動隊 SAC_2045 持続可能戦争",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 119,
+   "slug": "sac-2045",
    "status": "collect",
    "tags": [],
    "title": "攻壳机动队 SAC_2045 持续可能战争",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35528906/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "神山健治",
+    "桧垣亮",
+    "砂山藏澄",
+    "土城温美",
+    "佐藤大"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jake Gyllenhaal（杰克·吉伦哈尔）",
+    "Yahya Abdul-Mateen II（叶海亚·阿卜杜勒-迈丁）",
+    "艾莎·冈萨雷斯",
+    "Garret Dillahunt（加瑞特·迪拉胡特）",
+    "Keir O'Donnell（基尔·奥唐纳）",
+    "杰克逊·怀特",
+    "奥利维亚·斯坦布利亚",
+    "Moses Ingram（摩西·英格拉姆）",
+    "Colin Woodell（科林·伍德尔）",
+    "塞德里克·桑德斯"
+   ],
+   "category": "feature",
+   "cover": "covers/35250237/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35250237/01.webp",
    "date": "2022-05-21",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Michael Bay（迈克尔·贝）"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "动作",
+    "犯罪"
+   ],
    "id": "35250237",
    "missing": false,
-   "pending": true,
+   "original_title": "Ambulance",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 136,
+   "slug": "ambulance",
    "status": "collect",
    "tags": [],
    "title": "亡命救护车",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35250237/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "克里斯·费达克",
+    "劳里茨·茫奇-彼得森",
+    "拉斯·安德烈亚斯·佩德森"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Colin Farrell（科林·法瑞尔）",
+    "Jodie Turner-Smith（朱迪·特纳-史密斯）",
+    "曾晶莹",
+    "Justin H. Min（贾斯汀·闵）",
+    "Orlagh Cassidy（奥拉·卡西迪）",
+    "里特奇·科斯特",
+    "Sarita Choudhury（萨莉塔·乔德霍里）",
+    "小克利夫顿·克林斯",
+    "Haley Lu Richardson（海莉·露·理查森）",
+    "王李"
+   ],
+   "category": "feature",
+   "cover": "covers/30475837/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30475837/01.webp",
    "date": "2022-05-21",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "郭共达"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "剧情",
+    "科幻"
+   ],
    "id": "30475837",
    "missing": false,
-   "pending": true,
+   "original_title": "After Yang",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 95,
+   "slug": "after-yang",
    "status": "collect",
    "tags": [],
    "title": "杨之后",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30475837/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "郭共达",
+    "亚历山大·温斯坦"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "邵庄",
+    "杨羽",
+    "唐小然",
+    "田松",
+    "王秀月",
+    "包志强",
+    "黎伟",
+    "姚梦",
+    "于哲",
+    "汪小壹"
+   ],
+   "category": "series",
+   "cover": "covers/26889177/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26889177/01.webp",
    "date": "2022-05-21",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李洪绸",
+    "车志刚",
+    "邢冬冬"
+   ],
+   "douban_score": 8.5,
+   "episodes": 36,
+   "genres": [
+    "动作",
+    "悬疑",
+    "奇幻"
+   ],
    "id": "26889177",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 30,
+   "slug": "the-record-of-strange-things",
    "status": "collect",
    "tags": [],
    "title": "异物志",
    "type": "tv",
    "url": "https://movie.douban.com/subject/26889177/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "李洪绸",
+    "车志刚",
+    "刘爱银",
+    "周扬帆",
+    "王秀月"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Josh Brener（乔什·布雷纳）",
+    "Gary Anthony Williams（加里·安东尼·威廉斯）",
+    "Katie Lowes（凯蒂·洛斯）",
+    "Chris Parnell（克里斯·帕内尔）",
+    "特洛伊·贝克",
+    "凯文·杰克逊",
+    "弗雷德·塔特西奥",
+    "安东尼·马克·巴罗",
+    "查特尔·巴里",
+    "派瑞·申"
+   ],
+   "category": "anime",
+   "cover": "covers/35436582/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35436582/01.webp",
    "date": "2022-05-20",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Patrick Osborne（帕特里克·奥斯本）",
+    "David Fincher（大卫·芬奇）",
+    "埃米莉·迪恩",
+    "Robert Bisi（罗伯特·比斯）",
+    "安迪·里昂",
+    "吕寅荣",
+    "Tim Miller（蒂姆·米勒）",
+    "卡洛斯·史蒂文斯",
+    "杰罗姆·陈",
+    "阿尔贝托·米尔戈"
+   ],
+   "douban_score": 8.5,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "科幻",
+    "动画",
+    "恐怖",
+    "短片",
+    "奇幻"
+   ],
    "id": "35436582",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 20,
+   "slug": "love-death-robots-season-3",
    "status": "collect",
    "tags": [],
-   "title": "爱，死亡和机器人 第三季",
+   "title": "爱，死亡和机器人 第三季 Love, Death & Robots Season 3",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35436582/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "约翰·斯卡尔齐",
+    "安德鲁·凯文·沃克",
+    "尼尔·艾舍尔",
+    "菲利普·盖拉特",
+    "迈克尔·斯万维克",
+    "Robert Bisi（罗伯特·比斯）",
+    "安迪·里昂",
+    "杰夫·福勒",
+    "贾斯汀·科茨",
+    "Tim Miller（蒂姆·米勒）",
+    "布鲁斯·斯特林",
+    "乔·阿克罗比",
+    "艾伦·巴克斯特",
+    "阿尔贝托·米尔戈"
+   ],
+   "year": 2022
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "documentary",
+   "cover": "covers/35874097/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35874097/01.webp",
    "date": "2022-05-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "崔镇成"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "纪录片"
+   ],
    "id": "35874097",
    "missing": false,
-   "pending": true,
+   "original_title": "사이버 지옥: n번방을 무너뜨려라",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 105,
+   "slug": "cyber-hell-exposing-an-internet-horror",
    "status": "collect",
    "tags": [],
    "title": "网络炼狱：揭发N号房",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35874097/",
    "writers": [],
-   "year": null
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杨紫琼",
+    "许玮伦",
+    "关继威",
+    "吴汉章",
+    "Jamie Lee Curtis（杰米·李·柯蒂斯）",
+    "塔丽·梅德尔",
+    "Jenny Slate（珍妮·斯蕾特）",
+    "岑勇康",
+    "比夫·威夫",
+    "黎唯"
+   ],
+   "category": "feature",
+   "cover": "covers/30314848/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30314848/01.webp",
    "date": "2022-05-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "关家永",
+    "Daniel Scheinert（丹尼尔·施纳特）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "喜剧",
+    "奇幻",
+    "冒险"
+   ],
    "id": "30314848",
    "missing": false,
-   "pending": true,
+   "original_title": "Everything Everywhere All at Once",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 139,
+   "slug": "everything-everywhere-all-at-once",
    "status": "collect",
    "tags": [],
    "title": "瞬息全宇宙",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30314848/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "关家永",
+    "Daniel Scheinert（丹尼尔·施纳特）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "冯绍峰",
+    "陈宝国",
+    "颖儿",
+    "何晟铭",
+    "陈奕丞",
+    "张丰毅",
+    "王姬",
+    "成毅",
+    "雨婷儿",
+    "姚橹"
+   ],
+   "category": "series",
+   "cover": "covers/30122636/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30122636/01.webp",
    "date": "2022-05-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "高希希",
+    "赵立军"
+   ],
+   "douban_score": 5.7,
+   "episodes": 45,
+   "genres": [
+    "剧情",
+    "历史",
+    "古装"
+   ],
    "id": "30122636",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 43,
+   "slug": "the-imperial-age",
    "status": "collect",
    "tags": [],
    "title": "山河月明",
    "type": "tv",
    "url": "https://movie.douban.com/subject/30122636/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "董哲",
+    "徐辉"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "亚历山大·斯卡斯加德",
+    "Nicole Kidman（妮可·基德曼）",
+    "Claes Bang（克拉斯·邦）",
+    "Ethan Hawke（伊桑·霍克）",
+    "Anya Taylor-Joy（安雅·泰勒-乔伊）",
+    "古斯塔夫·林德",
+    "Willem Dafoe（威廉·达福）",
+    "艾略特·罗斯",
+    "菲尔·马丁",
+    "埃尔达·斯卡"
+   ],
+   "category": "feature",
+   "cover": "covers/34861178/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34861178/01.webp",
    "date": "2022-05-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Robert Eggers（罗伯特·艾格斯）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "剧情"
+   ],
    "id": "34861178",
    "missing": false,
-   "pending": true,
+   "original_title": "The Northman",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 137,
+   "slug": "the-northman",
    "status": "collect",
    "tags": [],
    "title": "北欧人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34861178/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "松",
+    "Robert Eggers（罗伯特·艾格斯）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jared Leto（杰瑞德·莱托）",
+    "Matt Smith（马特·史密斯）",
+    "Adria Arjona（阿德里娅·阿霍纳）",
+    "Jared Harris（杰瑞德·哈里斯）",
+    "Tyrese Gibson（泰瑞斯·吉布森）",
+    "艾尔·马德里加尔",
+    "Michael Keaton（迈克尔·基顿）",
+    "Zaris-Angel Hator（萨里斯-安奇·哈托）",
+    "乔·费雷拉",
+    "查理·肖特韦尔"
+   ],
+   "category": "feature",
+   "cover": "covers/27199850/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27199850/01.webp",
    "date": "2022-05-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Daniel Espinosa（丹尼尔·伊斯皮诺萨）"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "动作",
+    "科幻",
+    "惊悚",
+    "恐怖",
+    "冒险"
+   ],
    "id": "27199850",
    "missing": false,
-   "pending": true,
+   "original_title": "Morbius",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 104,
+   "slug": "morbius",
    "status": "collect",
    "tags": [],
    "title": "暗夜博士：莫比亚斯",
    "type": "movie",
    "url": "https://movie.douban.com/subject/27199850/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马特·萨兹马",
+    "伯克·沙普利斯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Colin Firth（科林·费尔斯）",
+    "Matthew Macfadyen（马修·麦克费登）",
+    "Kelly Macdonald（凯莉·麦克唐纳）",
+    "Penelope Wilton（佩内洛普·威尔顿）",
+    "Johnny Flynn（强尼·弗林）",
+    "Jason Isaacs（詹森·艾萨克）",
+    "Mark Gatiss（马克·加蒂斯）",
+    "Hattie Morahan（哈蒂·莫拉汉）",
+    "Mark Bonnar（马克·博纳尔）",
+    "保罗·里特"
+   ],
+   "category": "feature",
+   "cover": "covers/34816897/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34816897/01.webp",
    "date": "2022-05-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "John Madden（约翰·马登）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "剧情",
+    "战争"
+   ],
    "id": "34816897",
    "missing": false,
-   "pending": true,
+   "original_title": "Operation Mincemeat",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "美国"
+   ],
+   "runtime": 128,
+   "slug": "operation-mincemeat",
    "status": "collect",
    "tags": [],
    "title": "绞肉行动",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34816897/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "米歇尔·阿什福德"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Eddie Redmayne（埃迪·雷德梅恩）",
+    "Jude Law（裘德·洛）",
+    "Mads Mikkelsen（麦斯·米科尔森）",
+    "Dan Fogler（丹·福勒）",
+    "Alison Sudol（艾莉森·萨多尔）",
+    "Katherine Waterston（凯瑟琳·沃特斯顿）",
+    "Ezra Miller（埃兹拉·米勒）",
+    "卡勒姆·特纳",
+    "杰西卡·威廉姆斯",
+    "理查德·柯伊尔"
+   ],
+   "category": "feature",
+   "cover": "covers/26147418/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26147418/01.webp",
    "date": "2022-05-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David Yates（大卫·叶茨）"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "奇幻",
+    "冒险"
+   ],
    "id": "26147418",
    "missing": false,
-   "pending": true,
+   "original_title": "Fantastic Beasts: The Secrets of Dumbledore",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "美国"
+   ],
+   "runtime": 142,
+   "slug": "fantastic-beasts-the-secrets-of-dumbledore",
    "status": "collect",
    "tags": [],
    "title": "神奇动物：邓布利多之谜",
    "type": "movie",
    "url": "https://movie.douban.com/subject/26147418/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "J·K·罗琳",
+    "史蒂夫·克洛夫斯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sandra Bullock（桑德拉·布洛克）",
+    "Channing Tatum（查宁·塔图姆）",
+    "Daniel Radcliffe（丹尼尔·雷德克里夫）",
+    "Da'Vine Joy Randolph（达明·乔伊·伦道夫）",
+    "Brad Pitt（布拉德·皮特）",
+    "奥斯卡·努内斯",
+    "帕蒂·哈里森",
+    "杨伯文",
+    "乔安·普林格尔",
+    "赫克托·阿尼巴尔"
+   ],
+   "category": "feature",
+   "cover": "covers/35303842/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35303842/01.webp",
    "date": "2022-05-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Aaron Nee（艾伦·尼）",
+    "Adam Nee（亚当·尼）"
+   ],
+   "douban_score": 5.3,
+   "genres": [
+    "喜剧",
+    "动作",
+    "冒险"
+   ],
    "id": "35303842",
    "missing": false,
-   "pending": true,
+   "original_title": "The Lost City",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 112,
+   "slug": "the-lost-city",
    "status": "collect",
    "tags": [],
    "title": "迷失之城",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35303842/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "奥伦·尤济尔",
+    "达纳·福克斯",
+    "Adam Nee（亚当·尼）",
+    "Aaron Nee（艾伦·尼）",
+    "Seth Gordon（赛斯·戈登）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Anson Mount（安松·蒙特）",
+    "Rebecca Romijn（丽贝卡·罗梅恩）",
+    "Christina Chong（克里斯蒂娜·钟）",
+    "Ethan Peck（伊森·派克）",
+    "巴布斯·奥卢桑莫昆",
+    "安德烈·金",
+    "Rong Fu",
+    "Prosha Hussein",
+    "奥斯卡·莫雷诺",
+    "安吉拉·贝夏拉"
+   ],
+   "category": "series",
+   "cover": "covers/35069688/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35069688/01.webp",
    "date": "2022-05-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Akiva Goldsman（阿齐瓦·高斯曼）"
+   ],
+   "douban_score": 8.2,
+   "episodes": 10,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
    "id": "35069688",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 62,
+   "slug": "star-trek-strange-new-worlds-season-1",
    "status": "collect",
    "tags": [],
-   "title": "星际迷航：奇异新世界 第一季",
+   "title": "星际迷航：奇异新世界 第一季 Star Trek: Strange New Worlds Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35069688/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Akiva Goldsman（阿齐瓦·高斯曼）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "张博恒",
+    "张杰",
+    "杨婧",
+    "魏超"
+   ],
+   "category": "anime",
+   "cover": "covers/34925305/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34925305/01.webp",
    "date": "2022-05-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "陈升垚"
+   ],
+   "douban_score": 7.9,
+   "episodes": 32,
+   "genres": [
+    "剧情",
+    "动画",
+    "武侠"
+   ],
    "id": "34925305",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 20,
+   "slug": "youths-and-golden-coffin",
    "status": "collect",
    "tags": [],
    "title": "少年歌行 风花雪月篇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/34925305/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "陈升垚"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sam Rockwell（山姆·洛克威尔）",
+    "Marc Maron（马克·马龙）",
+    "奥卡菲娜",
+    "Craig Robinson（克雷格·罗宾森）",
+    "Anthony Ramos（安东尼·拉莫斯）",
+    "Richard Ayoade（理查德·艾欧阿德）",
+    "Zazie Beetz（莎姬·贝兹）",
+    "艾利克斯·布斯汀",
+    "莉莉·辛格",
+    "芭芭拉·古德森"
+   ],
+   "category": "anime",
+   "cover": "covers/30165311/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30165311/01.webp",
    "date": "2022-05-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Pierre Perifel（皮埃尔·佩里费尔）"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "喜剧",
+    "动画",
+    "冒险"
+   ],
    "id": "30165311",
    "missing": false,
-   "pending": true,
+   "original_title": "The Bad Guys",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 100,
+   "slug": "the-bad-guys",
    "status": "collect",
    "tags": [],
    "title": "坏蛋联盟",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30165311/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "伊坦·柯亨",
+    "尤尼·布伦纳",
+    "希拉里·温斯顿",
+    "艾伦·布拉培"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "何瑞贤",
+    "王星越",
+    "潘斌龙",
+    "臧洪娜",
+    "刘敏",
+    "嵇嘉禾",
+    "向夏",
+    "管乐",
+    "嗯呐朱莉",
+    "冯满"
+   ],
+   "category": "series",
+   "cover": "covers/35390375/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35390375/01.webp",
    "date": "2022-05-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "国浩"
+   ],
+   "douban_score": 6.8,
+   "episodes": 16,
+   "genres": [
+    "喜剧",
+    "爱情",
+    "古装"
+   ],
    "id": "35390375",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 40,
+   "slug": "delicacies-destiny",
    "status": "collect",
    "tags": [],
    "title": "珍馐记",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35390375/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "七月荔"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "志尊淳",
+    "广濑爱丽丝",
+    "宫野真守",
+    "梶裕贵",
+    "畠中祐",
+    "千本木彩花",
+    "逢坂良太",
+    "羽多野涉",
+    "井上麻里奈",
+    "三木真一郎"
+   ],
+   "category": "anime",
+   "cover": "covers/35688370/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35688370/01.webp",
    "date": "2022-04-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "荒木哲郎"
+   ],
+   "douban_score": 5.7,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "动画",
+    "惊悚",
+    "奇幻",
+    "冒险",
+    "运动"
+   ],
    "id": "35688370",
    "missing": false,
-   "pending": true,
+   "original_title": "バブル",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 101,
+   "slug": "bubble",
    "status": "collect",
    "tags": [],
    "title": "泡泡",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35688370/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "虚渊玄",
+    "佐藤直子"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "莳田彩珠",
+    "坂本真绫",
+    "入野自由",
+    "柴崎幸",
+    "井浦新",
+    "新津知世",
+    "高木涉",
+    "茶风林",
+    "永濑莉子",
+    "神谷明"
+   ],
+   "category": "anime",
+   "cover": "covers/35062244/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35062244/01.webp",
    "date": "2022-04-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "白井孝奈"
+   ],
+   "douban_score": 5.7,
+   "genres": [
+    "动画"
+   ],
    "id": "35062244",
    "missing": false,
-   "pending": true,
+   "original_title": "神在月のこども",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 99,
+   "slug": "child-of-kamiari-month",
    "status": "collect",
    "tags": [],
    "title": "神在月的孩子",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35062244/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "三宅隆太"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "沈达威",
+    "黑石稔",
+    "柯暮卿",
+    "许棕哲",
+    "谢添天",
+    "沐霏",
+    "张沛",
+    "鹏小胖",
+    "赵洋",
+    "王玮"
+   ],
+   "category": "anime",
+   "cover": "covers/35713091/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35713091/01.webp",
    "date": "2022-04-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "汪成果"
+   ],
+   "douban_score": 7.3,
+   "episodes": 16,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险",
+    "武侠",
+    "古装"
+   ],
    "id": "35713091",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 26,
+   "slug": "stellar-transformation-iv",
    "status": "collect",
    "tags": [],
    "title": "星辰变 第四季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35713091/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "陈肯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tom Holland（汤姆·霍兰德）",
+    "Mark Wahlberg（马克·沃尔伯格）",
+    "Sophia Ali（索菲娅·阿里）",
+    "Tati Gabrielle（塔蒂·加布里埃）",
+    "Antonio Banderas（安东尼奥·班德拉斯）",
+    "Steven Waddington（史蒂芬·威丁顿）",
+    "乔治娅·古德曼",
+    "迪尔梅德·默塔",
+    "约瑟夫·巴德拉玛",
+    "阿拉娜·博登"
+   ],
+   "category": "feature",
+   "cover": "covers/3822687/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3822687/01.webp",
    "date": "2022-04-23",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ruben Fleischer（鲁本·弗雷斯彻）"
+   ],
+   "douban_score": 6.0,
+   "genres": [
+    "动作",
+    "冒险"
+   ],
    "id": "3822687",
    "missing": false,
-   "pending": true,
+   "original_title": "Uncharted",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 116,
+   "slug": "uncharted",
    "status": "collect",
    "tags": [],
    "title": "神秘海域",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3822687/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "雷夫·贾金斯",
+    "阿特·马库姆",
+    "马特·霍洛维"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘思岑",
+    "贺文潇",
+    "刘晴"
+   ],
+   "category": "anime",
+   "cover": "covers/35346290/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35346290/01.webp",
    "date": "2022-04-23",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "曲艺",
+    "刘猛"
+   ],
+   "douban_score": 6.0,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "35346290",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 24,
+   "slug": "immortality",
    "status": "collect",
    "tags": [],
    "title": "永生之无尽仙途",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35346290/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "白杨",
+    "黄磊",
+    "万佳龙"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "中岛健人",
+    "小芝风花",
+    "赤楚卫二",
+    "佐久间由衣",
+    "高桥优斗",
+    "宇垣美里",
+    "LiLiCo",
+    "木村佑一",
+    "菅原大吉",
+    "本多力"
+   ],
+   "category": "series",
+   "cover": "covers/35467021/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35467021/01.webp",
    "date": "2022-04-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "纸谷枫",
+    "木下高男"
+   ],
+   "douban_score": 6.8,
+   "episodes": 10,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "35467021",
    "missing": false,
-   "pending": true,
+   "original_title": "彼女はキレイだった",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "she-was-pretty",
    "status": "collect",
    "tags": [],
    "title": "她很漂亮",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35467021/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "清水友佳子",
+    "三浦希纱"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Robert Pattinson（罗伯特·帕丁森）",
+    "佐伊·克罗维兹",
+    "Paul Dano（保罗·达诺）",
+    "Colin Farrell（科林·法瑞尔）",
+    "Jeffrey Wright（杰弗里·怀特）",
+    "Andy Serkis（安迪·瑟金斯）",
+    "John Turturro（约翰·特托罗）",
+    "Peter Sarsgaard（彼得·萨斯加德）",
+    "巴里·基奥恩",
+    "杰米·劳森"
+   ],
+   "category": "feature",
+   "cover": "covers/6424756/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6424756/01.webp",
    "date": "2022-04-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Matt Reeves（马特·里夫斯）"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "动作",
+    "悬疑",
+    "犯罪"
+   ],
    "id": "6424756",
    "missing": false,
-   "pending": true,
+   "original_title": "The Batman",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 176,
+   "slug": "the-batman",
    "status": "collect",
    "tags": [],
    "title": "新蝙蝠侠",
    "type": "movie",
    "url": "https://movie.douban.com/subject/6424756/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Matt Reeves（马特·里夫斯）",
+    "彼得·克莱格",
+    "比尔·芬格",
+    "鲍勃·凯恩"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Naomi Watts（娜奥米·沃茨）",
+    "Denis O'Hare（丹尼斯·欧哈拉）",
+    "Billy Howle（比利·豪尔）",
+    "Eliot Sumner（艾略特·萨姆纳）",
+    "帕克·索耶",
+    "约书亚·罗林斯"
+   ],
+   "category": "feature",
+   "cover": "covers/35351430/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35351430/01.webp",
    "date": "2022-04-16",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "玛乌戈扎塔·舒莫夫斯卡",
+    "米歇尔·恩格勒"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
    "id": "35351430",
    "missing": false,
-   "pending": true,
+   "original_title": "Infinite Storm",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "波兰",
+    "澳大利亚"
+   ],
+   "runtime": 97,
+   "slug": "infinite-storm",
    "status": "collect",
    "tags": [],
    "title": "无限风暴",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35351430/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "约书亚·罗林斯",
+    "帕姆·巴勒斯"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Harold Perrineau（哈罗德·佩里诺）",
+    "Catalina Sandino Moreno（卡塔琳娜·桑地诺·莫雷诺）",
+    "Eion Bailey（艾恩·贝利）",
+    "Hannah Cheramy（汉娜·切尔敏）",
+    "Ricky He（瑞奇·何）",
+    "肖恩·摩忠德",
+    "大卫·阿尔帕伊",
+    "伊丽莎白·桑德斯",
+    "斯科特·麦克科德"
+   ],
+   "category": "series",
+   "cover": "covers/35460437/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35460437/01.webp",
    "date": "2022-04-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Jack Bender（杰克·本德）"
+   ],
+   "douban_score": 6.6,
+   "episodes": 10,
+   "genres": [
+    "科幻",
+    "恐怖"
+   ],
    "id": "35460437",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "from-season-1",
    "status": "collect",
    "tags": [],
-   "title": "梦魇绝镇 第一季",
+   "title": "梦魇绝镇 第一季 From Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35460437/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "John Griffin"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Will Smith（威尔·史密斯）",
+    "Demi Singleton（黛米·辛格顿）",
+    "Saniyya Sidney（萨尼雅·西德尼）",
+    "Aunjanue Ellis-Taylor（安洁纽·艾莉丝-泰勒）",
+    "Jon Bernthal（乔·博恩瑟）",
+    "Tony Goldwyn（托尼·戈德温）",
+    "米凯拉·拉沙·巴塞洛缪",
+    "达尼埃莱·劳森",
+    "莱拉·克劳福德",
+    "埃里卡·林格"
+   ],
+   "category": "feature",
+   "cover": "covers/30481476/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30481476/01.webp",
    "date": "2022-04-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Reinaldo Marcus Green（雷纳尔多·马库斯·格林）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "剧情",
+    "传记",
+    "运动"
+   ],
    "id": "30481476",
    "missing": false,
-   "pending": true,
+   "original_title": "King Richard",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 144,
+   "slug": "king-richard",
    "status": "collect",
    "tags": [],
    "title": "国王理查德",
    "type": "movie",
    "url": "https://movie.douban.com/subject/30481476/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "扎克·贝林"
+   ],
+   "year": 2021
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Mark Rylance（马克·里朗斯）",
+    "Simon Russell Beale（西蒙·拉塞尔·比尔）",
+    "Johnny Flynn（强尼·弗林）",
+    "Nikki Amuka-Bird（妮基·阿姆卡-伯德）",
+    "Zoey Deutch（佐伊·达奇）",
+    "艾伦·迈赫迪扎德",
+    "Dylan O'Brien（迪伦·奥布莱恩）",
+    "乔纳森·麦克莱恩",
+    "John Gumley-Mason",
+    "Stephen Knox"
+   ],
+   "category": "feature",
+   "cover": "covers/35372415/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35372415/01.webp",
    "date": "2022-04-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Graham Moore（格拉汉姆·摩尔）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "犯罪"
+   ],
    "id": "35372415",
    "missing": false,
-   "pending": true,
+   "original_title": "The Outfit",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 106,
+   "slug": "the-outfit",
    "status": "collect",
    "tags": [],
    "title": "套装",
    "type": "movie",
    "url": "https://movie.douban.com/subject/35372415/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "乔纳森·麦克莱恩",
+    "Graham Moore（格拉汉姆·摩尔）"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福士苍汰",
+    "山本美月",
+    "工藤阿须加",
+    "福原遥",
+    "木南晴夏",
+    "今井翼",
+    "光石研",
+    "出口夏希"
+   ],
+   "category": "series",
+   "cover": "covers/35658679/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35658679/01.webp",
    "date": "2022-04-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "松木创",
+    "菊川诚"
+   ],
+   "douban_score": 4.8,
+   "episodes": 10,
+   "genres": [
+    "爱情",
+    "奇幻"
+   ],
    "id": "35658679",
    "missing": false,
-   "pending": true,
+   "original_title": "星から来たあなた",
+   "pending": false,
    "rating": 2,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "my-love-from-the-stars",
    "status": "collect",
    "tags": [],
    "title": "来自星星的你(日版)",
    "type": "tv",
    "url": "https://movie.douban.com/subject/35658679/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "关惠理香",
+    "今西祐子"
+   ],
+   "year": 2022
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "木村拓哉",
+    "长泽雅美",
+    "小日向文世",
+    "梶原善",
+    "泉泽祐希",
+    "东根作寿英",
+    "石川恋",
+    "鹤见辰吾",
+    "筱井英介",
+    "石桥凌"
+   ],
+   "category": "feature",
+   "cover": "covers/34950972/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34950972/01.webp",
    "date": "2022-04-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "铃木雅之"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "犯罪"
+   ],
    "id": "34950972",
    "missing": false,
-   "pending": true,
+   "original_title": "マスカレード・ナイト",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 129,
+   "slug": "masquerade-night",
    "status": "collect",
    "tags": [],
    "title": "假面之夜",
    "type": "movie",
    "url": "https://movie.douban.com/subject/34950972/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "东野圭吾",
+    "冈田道尚"
+   ],
+   "year": 2021
   }
  ],
  "last_date": "2022-04-04"

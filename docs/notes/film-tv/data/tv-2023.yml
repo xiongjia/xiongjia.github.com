@@ -2603,29 +2603,30 @@
     missing_since: null
     missing_reason: null
 - id: "30376895"
-  title: 安多 第一季
+  title: 安多 第一季 Andor Season 1
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 34360
   marked_at: "2023-01-14"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 科幻, 惊悚, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 55
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Toby Haynes（托比·海恩斯）, Susanna White（苏珊娜·怀特）, 本·卡隆]
+    casts: [Diego Luna（迭戈·卢纳）, 斯特兰·斯卡斯加德, Genevieve O'Reilly（吉娜薇·欧瑞丽）, Denise Gough（丹妮斯·高夫）, 凯尔·索列尔, 阿德里娅·阿霍纳, 费奥纳·肖, 安迪·瑟金斯, 福里斯特·惠特克, 乔普林·西伯顿]
+    writers: [托尼·吉尔罗伊, 丹·吉尔罗伊, 史蒂芬·希夫, 博·威利蒙, 乔治·卢卡斯]
+  episodes: 12
+  slug: andor-season-1
+  covers:
+  - covers/30376895/01.webp
   douban_url: https://movie.douban.com/subject/30376895/
   user:
     cover: ""
@@ -2636,35 +2637,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 12300b10
-    machine_hash: 53380c27
+    machine_hash: fc32ef0a
     missing_since: null
+    missing_reason: null
 - id: "35954709"
   title: 孤独的美食家 第十季
-  original_title: null
-  year: null
+  original_title: 孤独のグルメ Season10
+  year: 2022
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 11220
   marked_at: "2023-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井川尊史, 北畑龙一, 中山大晖]
+    casts: [松重丰, 石田光, 胁知弘, 相田翔子, 江成一树, 片桐入, 宍户美和公, 星野真里, 真矢美纪, 山崎将义]
+    writers: [田口佳宏, 儿玉赖子]
+  episodes: 12
+  slug: season10
+  covers:
+  - covers/35954709/01.webp
   douban_url: https://movie.douban.com/subject/35954709/
   user:
     cover: ""
@@ -2675,17 +2678,18 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 69114eb8
-    machine_hash: 529f5248
+    machine_hash: 5cbcede1
     missing_since: null
+    missing_reason: null
 - id: "35679810"
   title: 星源之主
   original_title: null
-  year: null
+  year: 2022
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
   douban_score: null
@@ -2693,17 +2697,18 @@
   marked_at: "2023-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [叶老酒, 芹菜]
+    casts: [柳知萧]
+    writers: [发飙的蜗牛]
+  episodes: 48
+  slug: master-of-star-origin
+  covers:
+  - covers/35679810/01.webp
   douban_url: https://movie.douban.com/subject/35679810/
   user:
     cover: ""
@@ -2714,35 +2719,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9c538d24
-    machine_hash: 9ff61607
+    machine_hash: e5182ec6
     missing_since: null
+    missing_reason: null
 - id: "2156667"
   title: 西游记续集
   original_title: null
-  year: null
+  year: 2000
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 75162
   marked_at: "2023-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 奇幻, 冒险, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [杨洁]
+    casts: [六小龄童, 徐少华, 迟重瑞, 崔景富, 刘大刚]
+    writers: [戴英禄, 邹忆青, 杨洁, 吴承恩]
+  episodes: 16
+  slug: douban-2156667
+  covers:
+  - covers/2156667/01.webp
   douban_url: https://movie.douban.com/subject/2156667/
   user:
     cover: ""
@@ -2753,8 +2760,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 430e3f81
-    machine_hash: 9e7f3afc
+    machine_hash: 41c54676
     missing_since: null
+    missing_reason: null
