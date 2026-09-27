@@ -95,7 +95,14 @@ class Harness:
         return run
 
     def dispatch(self, *msg_dicts: dict) -> None:
-        """process_update each message inside ONE event loop (album timers)."""
+        """process_update each message inside ONE event loop (album timers).
+
+        The album window is only awaited when a dispatched update actually
+        carries ``media_group_id`` — waiting 1.3s for every call would cost
+        ~30s of pure sleep across this module. Non-album calls still get one
+        loop yield so stray scheduled work drains before assertions run.
+        """
+        needs_album_wait = any(m.get("media_group_id") for m in msg_dicts)
 
         async def go():
             app = tg_module.get_app()
@@ -106,7 +113,10 @@ class Harness:
                     update = Update.de_json({"update_id": m["message_id"], "message": m}, app.bot)
                     await app.process_update(update)
                     await asyncio.sleep(0.05)  # async handlers are fire-and-forget
-                await asyncio.sleep(tg_module.ALBUM_WAIT_S + 0.3)
+                if needs_album_wait:
+                    await asyncio.sleep(tg_module.ALBUM_WAIT_S + 0.3)
+                else:
+                    await asyncio.sleep(0)  # drain: let stray scheduled work settle first
             finally:
                 await app.shutdown()
 

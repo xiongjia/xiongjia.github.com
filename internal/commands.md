@@ -33,11 +33,12 @@ Details:
 
 ## Quality
 
-| Command       | Summary                                                         |
-| ------------- | --------------------------------------------------------------- |
-| `poe fmt`     | Format Python (ruff) + Markdown (mdformat, incl. `.pi/skills/`) |
-| `poe lint-py` | Python lint check (ruff)                                        |
-| `poe test`    | Run unit tests (pytest, `tests/`)                               |
+| Command           | Summary                                                              |
+| ----------------- | -------------------------------------------------------------------- |
+| `poe fmt`         | Format Python (ruff) + Markdown (mdformat, incl. `.pi/skills/`)      |
+| `poe lint-py`     | Python lint check (ruff)                                             |
+| `poe test`        | Run unit tests in parallel (pytest-xdist, `tests/`)                  |
+| `poe test-serial` | Run unit tests serially (debugging: `poe test-serial -x -k pattern`) |
 
 ## Content
 
