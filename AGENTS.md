@@ -38,7 +38,7 @@ uv run poe create-post "Title"     # new blog post (default: draft)
 uv run poe create-moment "Text"    # new Moment micro-post (--draft hides in prod; --image auto-WebP+bucket)
 uv run poe fmt                     # format Python + Markdown
 uv run poe lint-py                 # Python lint check (ruff)
-uv run poe test                    # run unit tests (pytest, tests/)
+uv run poe test                    # unit tests in parallel (pytest-xdist); serial: poe test-serial
 uv run poe optimize-images <path>  # convert PNG/JPG/JPEG to WebP
 uv run poe add-weight-week [n]     # add empty week(s) to weight data
 uv run poe update-weight 82 [date] # record daily weight (default: today)

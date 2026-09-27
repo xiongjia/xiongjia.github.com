@@ -368,12 +368,20 @@ Manual alternatives (without hooks):
 
 `.github/workflows/ci.yml`:
 
-- **`lint`** — runs on push to any branch and pull requests: pytest, ruff
-  format/lint check, mdformat check, MkDocs build check
+- **`lint`** — runs on push to any branch and pull requests: pytest (parallel,
+  `poe test` → pytest-xdist `-n auto --dist worksteal`), ruff format/lint check,
+  mdformat check, MkDocs build check
 - **`deploy`** — on push to `master` only: builds the site and publishes it
   to GitHub Pages as a **workflow artifact** (`actions/deploy-pages`). The
   Pages source is "GitHub Actions" (`build_type: workflow`), so the live
   site is NOT served from the `gh-pages` branch.
+
+`pytest` runs under xdist with `--dist worksteal`: the default `load`
+distribution groups the first collected tests (whole `tests/api/` module) onto
+one worker, which cancels the speedup for sleep-heavy modules. New tests must
+stay xdist-safe — no fixed ports, no writes outside `tmp_path`, no reliance on
+cross-test ordering — and their timing slacks (e.g. `ALBUM_WAIT_S` windows)
+should live in the test, since 4 workers share one runner's CPUs.
 
 ### No PR previews (why)
 
