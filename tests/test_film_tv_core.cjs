@@ -108,6 +108,66 @@ check("peopleOf collects directors, casts and writers", () => {
   assert.deepStrictEqual(core.peopleOf({}), []);
 });
 
+check("dialogFacts: rows, order and person rows", () => {
+  const rows = core.dialogFacts(RECORDS[0]);
+  assert.deepStrictEqual(
+    rows.map((row) => row.label),
+    ["状态", "我的评分", "观看日期", "上映年", "类型", "地区", "类型标签", "导演", "主演", "我的标签"]
+  );
+  const byLabel = Object.fromEntries(rows.map((row) => [row.label, row]));
+  // every row carries the same three keys — the renderer destructures them
+  for (const row of rows) {
+    assert.deepStrictEqual(Object.keys(row).sort(), ["label", "people", "value"]);
+  }
+  // the three credit rows carry `people` — the renderer clicks these, and it
+  // must not have to match the label text to find them
+  assert.deepStrictEqual(byLabel["导演"].people, ["Denis Villeneuve"]);
+  assert.deepStrictEqual(byLabel["主演"].people, ["Timothée Chalamet"]);
+  assert.strictEqual(byLabel["导演"].value, "Denis Villeneuve");
+  // non-credit rows must never turn into clickable names
+  for (const row of rows.filter((r) => !["导演", "主演", "编剧"].includes(r.label))) {
+    assert.deepStrictEqual(row.people, []);
+  }
+  assert.strictEqual(byLabel["状态"].value, "看过");
+  assert.strictEqual(byLabel["类型"].value, "电影");
+  assert.strictEqual(byLabel["上映年"].value, "2021");
+  assert.strictEqual(byLabel["我的评分"].value, `${core.starsOf(5)} 5/5`);
+});
+
+check("dialogFacts: drops empty rows, keeps every value a string", () => {
+  // year-only / no date / no score: those rows disappear instead of rendering a
+  // bare dash (the dialog's 我的评分 row is the one that always has a value)
+  const sparse = core.dialogFacts(RECORDS[3]);
+  assert.deepStrictEqual(sparse.map((row) => row.label), ["状态", "我的评分", "类型"]);
+  assert.strictEqual(sparse.find((row) => row.label === "类型").value, "其他");
+  assert.deepStrictEqual(core.dialogFacts({}).map((row) => row.label), ["我的评分"]);
+  assert.strictEqual(core.dialogFacts({}).find((row) => row.label === "我的评分").value, "未评分");
+  for (const row of core.dialogFacts(RECORDS[0])) {
+    assert.strictEqual(typeof row.value, "string");
+  }
+  // a pending record says so, rather than looking undated
+  assert.strictEqual(
+    core.dialogFacts({ status: "do", pending: true }).find((row) => row.label === "观看日期").value,
+    "待补详情"
+  );
+  // runtime + episodes share one row
+  assert.strictEqual(
+    core.dialogFacts({ runtime: 100, episodes: 12 }).find((row) => row.label === "片长/集数").value,
+    "100 分钟 / 12 集"
+  );
+  assert.deepStrictEqual(core.dialogFacts({ runtime: 100 }).map((row) => row.label), [
+    "我的评分", "片长/集数",
+  ]);
+});
+
+check("dialogFacts: empty names never become buttons", () => {
+  const row = core.dialogFacts({ casts: ["A", "", null, "B"] }).find((r) => r.label === "主演");
+  assert.deepStrictEqual(row.people, ["A", "B"]);
+  assert.strictEqual(row.value, "A / B");
+  // only empty names: the whole row is dropped
+  assert.deepStrictEqual(core.dialogFacts({ casts: ["", null] }).map((r) => r.label), ["我的评分"]);
+});
+
 check("filterRecords rating is a minimum", () => {
   assert.deepStrictEqual(core.filterRecords(RECORDS, { rating: "4" }).map((r) => r.id), ["1", "2"]);
   assert.deepStrictEqual(core.filterRecords(RECORDS, { rating: "5" }).map((r) => r.id), ["1"]);

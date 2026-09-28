@@ -422,7 +422,10 @@
   position: fixed;
   inset: 0;
   margin: auto;
-  max-width: min(46rem, 92vw);
+  /* an explicit width, not just a max-width: the dialog is shrink-to-fit, so
+     without it the width followed its widest content and the two-column fact
+     grid collapsed to one column whenever a long value got shorter */
+  width: min(46rem, 92vw);
   max-height: 88vh;
   padding: 1rem;
   border: none;
@@ -457,7 +460,6 @@
 }
 
 .film-tv-dialog__title {
-  margin: 0 0 0.15rem;
   font-size: 1.1rem;
 }
 
@@ -467,11 +469,12 @@
   color: var(--md-default-fg-color--light);
 }
 
+/* two columns of label/value pairs on wide screens; the pairs stay aligned
+   because every label sits in a shared-width column (see dt below) */
 .film-tv-dialog__facts {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr));
   gap: 0.35rem 1rem;
-  margin: 0 0 0.8rem;
 }
 
 .film-tv-dialog__fact {
@@ -481,21 +484,73 @@
 }
 
 .film-tv-dialog__fact dt {
+  /* one shared label column: 4.5em holds the widest label (片长/集数 ≈ 4.25em),
+     so every value starts at the same x; a longer label grows instead of
+     overrunning its value */
+  flex: 0 0 auto;
+  min-width: 4.5em;
   color: var(--md-default-fg-color--light);
   white-space: nowrap;
 }
 
 .film-tv-dialog__fact dd {
+  /* long values wrap inside the row instead of widening it */
+  min-width: 0;
+}
+
+/* The dialog's own margins have to out-specify Material's prose typography, which
+   styles these same elements and beats a plain class:
+     .md-typeset h3 { margin: 1.6em 0 .8em }   (0,1,1) vs .film-tv-dialog__title (0,1,0)
+     .md-typeset dl { margin: 1em 0 }          (0,1,1) vs .film-tv-dialog__facts (0,1,0)
+     [dir=ltr] .md-typeset dd { margin-left: 1.875em } (0,2,1) vs ...__fact dd (0,1,1)
+   All three were dead in the browser: measured +32px above the title (the title
+   stopped lining up with the cover), +16px above the fact list, +29.25px left of
+   every value. The `[dir] .md-typeset` prefix (0,3,0/1) wins regardless of
+   stylesheet order, and `dir` is always present (the theme puts it on <body>). */
+[dir] .md-typeset .film-tv-dialog__title {
+  margin: 0 0 0.15rem;
+}
+
+[dir] .md-typeset .film-tv-dialog__facts {
+  margin: 0 0 0.8rem;
+}
+
+[dir] .md-typeset .film-tv-dialog__fact dd {
   margin: 0;
 }
 
-/* people inside the dialog: the entry point into 影人 */
+/* very narrow dialogs: the fixed label column would eat the value's line width,
+   so the pair stacks instead of side-by-side */
+@media (max-width: 30rem) {
+  .film-tv-dialog__fact {
+    display: block;
+  }
+
+  .film-tv-dialog__fact dt {
+    min-width: 0;
+  }
+}
+
+/* people inside the dialog: the entry point into 影人. One person per line as a
+   block button — long foreign names (English + translated) were split mid-name
+   and dragged their " / " separators to the line starts as a single inline run.
+   Deliberately buttons and not a <ul>: Material's prose typography outranks a
+   plain class on those elements ([dir=ltr] .md-typeset ul li { margin-left:
+   1.25em } (0,2,2), [dir=ltr] .md-typeset ul { margin-left: .625em }, ul {
+   list-style-type: disc }), which measured the names +29px off the value column
+   with disc markers — the very misalignment this rule exists to fix. As
+   separate elements the names are still announced and copied individually
+   (block boundaries become line breaks). */
 .film-tv-dialog__person {
+  display: block;
+  /* hug the name: a full-width button gives the focus ring a whole row */
+  width: fit-content;
   padding: 0;
   border: none;
   background: none;
   color: var(--md-typeset-a-color);
   font: inherit;
+  text-align: left;
   text-decoration: underline dotted;
   cursor: pointer;
 }
@@ -565,8 +620,32 @@
 }
 
 .film-tv-stat__number {
+  /* the base rule every browser gets: a too-long value wraps instead of
+     spilling over the next card */
   font-size: 1.3rem;
   font-weight: 600;
+}
+
+/* Values like "3083 / 1191" or "13835 小时" are wider than the card, and wrapping
+   them to a second line left the four cards ragged. Where container queries
+   exist the number stays on one line and is sized off the card's content box:
+   the widest current value (3083 / 1191) needs 5.385em, so the fit boundary is
+   1/5.385 ≈ 18.6% of the content box — 17.5% keeps a ~6% margin, and the 1.3rem
+   cap restores the full size once the cards have room.
+   Guarded instead of unconditional: an unsupported cqw drops the whole
+   font-size declaration, which would leave the number at the inherited 0.8rem
+   *and* nowrap on, i.e. a small number spilling out of its card.
+   container-type implies `contain: layout style`; cards hold no absolutely
+   positioned descendant, so there is nothing to re-anchor. */
+@supports (container-type: inline-size) and (font-size: 1cqw) {
+  .film-tv-stat__card {
+    container-type: inline-size;
+  }
+
+  .film-tv-stat__number {
+    font-size: min(1.3rem, 17.5cqw);
+    white-space: nowrap;
+  }
 }
 
 .film-tv-stat__grid {
