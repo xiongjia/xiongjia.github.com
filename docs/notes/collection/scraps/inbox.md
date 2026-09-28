@@ -10,3 +10,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 -->
 
 2026-09-28 https://cdyforever.github.io/how-to-live-better/
+2026-09-28 https://github.com/SunnyMaria/csapp-zh-markdown
