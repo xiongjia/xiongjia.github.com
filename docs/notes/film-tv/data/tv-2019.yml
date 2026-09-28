@@ -2,29 +2,30 @@
 # Douban on every sync; edit the `user:` block freely, it is never touched.
 # generated_at: 2026-09-27T22:32+08:00
 - id: "26637615"
-  title: 猎魔人 第一季
+  title: 猎魔人 第一季 The Witcher Season 1
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 60541
   marked_at: "2019-12-29"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 奇幻, 冒险]
+  regions: [美国, 波兰]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Alik Sakharov（阿利克·萨哈罗夫）, 夏洛特·布伦德斯特伦, 亚历克斯·加西亚·洛佩斯, 马克·约布斯特]
+    casts: [Henry Cavill（亨利·卡维尔）, Freya Allan（弗蕾娅·艾伦）, Emma Appleton（艾玛·阿普尔顿）, Anya Chalotra（安亚·查洛特拉）, 米米·迪韦尼, 埃蒙·法伦, 玛安娜·本灵, 威尔逊·拉德茹-普杰尔特, 亚当·利维, 乔伊·巴泰]
+    writers: [劳伦·施密特, 安杰伊·萨普科夫斯基]
+  episodes: 8
+  slug: the-witcher-season-1
+  covers:
+  - covers/26637615/01.webp
   douban_url: https://movie.douban.com/subject/26637615/
   user:
     cover: ""
@@ -35,35 +36,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: "20603519"
-    machine_hash: cb2efaf7
+    machine_hash: 613d04cd
     missing_since: null
+    missing_reason: null
 - id: "34801559"
   title: 孤独的美食家 第八季
-  original_title: null
-  year: null
+  original_title: 孤独のグルメ Season8
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 20960
   marked_at: "2019-12-28"
-  douban_comment: null
+  douban_comment: (*_*)
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 34
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井川尊史]
+    casts: [松重丰, 曾少宗, 八岛智人, 上白石萌音, 中尾美枝, 岸谷五朗, 室井滋, 池谷伸枝, 奥山佳惠]
+    writers: [田口佳宏, 儿玉赖子, 久住昌之]
+  episodes: 12
+  slug: season8
+  covers:
+  - covers/34801559/01.webp
   douban_url: https://movie.douban.com/subject/34801559/
   user:
     cover: ""
@@ -74,35 +77,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: d1aa5856
-    machine_hash: ec54c03c
+    fingerprint: 13a3492b
+    machine_hash: 3ab7b524
     missing_since: null
+    missing_reason: null
 - id: "30344167"
-  title: 曼达洛人 第一季
+  title: 曼达洛人 第一季 The Mandalorian Season 1
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 128101
   marked_at: "2019-12-28"
-  douban_comment: null
+  douban_comment: This is the way.
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 40
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Deborah Chow（黛博拉·周）, Rick Famuyiwa（瑞克·法穆易瓦）, 戴夫·菲洛尼, 布莱丝·达拉斯·霍华德, Taika Waititi（塔伊加·维迪提）]
+    casts: [Pedro Pascal（佩德罗·帕斯卡）, Carl Weathers（卡尔·韦瑟斯）, Gina Carano（吉娜·卡拉诺）, Taika Waititi（塔伊加·维迪提）, 吉安卡罗·埃斯波西托, 艾米莉·斯沃洛, 温明娜, 杰克·坎纳瓦尔, 奥米德·阿布塔西, 茱莉亚·琼斯]
+    writers: [乔恩·费儒, 乔治·卢卡斯, Rick Famuyiwa（瑞克·法穆易瓦）, 克里斯托弗·约斯特]
+  episodes: 8
+  slug: the-mandalorian-season-1
+  covers:
+  - covers/30344167/01.webp
   douban_url: https://movie.douban.com/subject/30344167/
   user:
     cover: ""
@@ -113,35 +118,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 992b8199
-    machine_hash: 98d65188
+    fingerprint: 5993fef2
+    machine_hash: 4e8b526e
     missing_since: null
+    missing_reason: null
 - id: "34659505"
   title: 不思异：录像
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.1
+  douban_score_count: 11052
   marked_at: "2019-12-22"
-  douban_comment: null
+  douban_comment: 还可以。
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [悬疑, 惊悚, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 8
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [欧丁丁]
+    casts: [邢昀, 孙一明, 孙嘉浚, 李槿, 吴泓甫, 王辰昊, 刘巴特尔, 季丹妮, 张帆, 李博洋]
+    writers: [杨笑一, 欧丁丁]
+  episodes: 11
+  slug: douban-34659505
+  covers:
+  - covers/34659505/01.webp
   douban_url: https://movie.douban.com/subject/34659505/
   user:
     cover: ""
@@ -152,35 +159,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: dda5540c
-    machine_hash: cb810533
+    fingerprint: 2e0e2071
+    machine_hash: 4de84abc
     missing_since: null
+    missing_reason: null
 - id: "30234319"
-  title: 苍穹浩瀚 第四季
+  title: 苍穹浩瀚 第四季 The Expanse Season 4
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 13467
   marked_at: "2019-12-15"
-  douban_comment: null
+  douban_comment: 又挖了一季坑，怕是填不上了
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 科幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Breck Eisner（布瑞克·埃斯纳尔）, Sarah Harding（莎拉·哈丁）, 杰夫·伍尔诺, 大卫·彼特拉克]
+    casts: [Steven Strait（史蒂文·斯崔特）, Cas Anvar（卡斯·安瓦尔）, Dominique Tipper（多米尼克·蒂珀）, John Wesley Chatham（约翰·威斯利·查特曼）, 弗兰基·亚当斯, 卡卡琪, 索瑞·安达斯鲁, 托马斯·简, 洁斯·萨尔圭罗, 琳迪·格林伍德]
+    writers: [丹尼尔·亚伯拉罕, 马克·弗格斯, 泰·弗兰克, 霍克·奥斯比, 海利·兰伯特, 劳拉·马克斯, 丹·诺瓦克, Matthew Rasmussen, 纳伦·尚卡]
+  episodes: 10
+  slug: the-expanse-season-4
+  covers:
+  - covers/30234319/01.webp
   douban_url: https://movie.douban.com/subject/30234319/
   user:
     cover: ""
@@ -191,35 +200,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 51e87945
-    machine_hash: b404358e
+    fingerprint: 2235b421
+    machine_hash: 7312bf2e
     missing_since: null
+    missing_reason: null
 - id: "26947951"
   title: 王国 第一季
-  original_title: null
-  year: null
+  original_title: 킹덤 시즌1
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 268928
   marked_at: "2019-12-15"
-  douban_comment: null
+  douban_comment: 不错的僵尸片
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 恐怖, 古装]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 55
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [金成勋]
+    casts: [朱智勋, 裴斗娜, 柳承龙, 金相镐, 周锡泰, 许峻豪, 金成圭, 全锡浩, 金慧埈, 郑锡元]
+    writers: [金银姬]
+  episodes: 6
+  slug: kingdom-2019
+  covers:
+  - covers/26947951/01.webp
   douban_url: https://movie.douban.com/subject/26947951/
   user:
     cover: ""
@@ -230,35 +241,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: ac9ee5e0
-    machine_hash: 8c899aae
+    fingerprint: 3666e5c0
+    machine_hash: 04ea9522
     missing_since: null
+    missing_reason: null
 - id: "30377498"
   title: 石纪元
-  original_title: null
-  year: null
+  original_title: Dr.STONE
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 38095
   marked_at: "2019-12-14"
-  douban_comment: null
+  douban_comment: 真到石器时代，理科学霸第一个挂
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [饭野慎也, 川尻健太郎, 大庭秀昭, 锅岛修, 原田奈奈, 大雄男, 小野田雄亮]
+    casts: [小林裕介, 古川慎, 市之濑加那, 中村悠一, 佐藤元, 沼仓爱美, 前野智昭, 村濑步, 高桥花林, 上田丽奈]
+    writers: [木户雄一郎]
+  episodes: 24
+  slug: dr-stone-2019
+  covers:
+  - covers/30377498/01.webp
   douban_url: https://movie.douban.com/subject/30377498/
   user:
     cover: ""
@@ -269,35 +282,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 4da68a1f
-    machine_hash: f654ad06
+    fingerprint: 093349ee
+    machine_hash: 4613239d
     missing_since: null
+    missing_reason: null
 - id: "26877434"
   title: 从前有座灵剑山
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.0
+  douban_score_count: 96790
   marked_at: "2019-12-14"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 47
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [于中中]
+    casts: [许凯, 张榕容, 朱元冰, 高雨儿, 郭晓婷, 合文俊, 郑雅文, 李小胖, 郭晋安, 温升豪]
+    writers: [范侃, 李菲菲, 许芃芃, 方羌羌]
+  episodes: 37
+  slug: once-upon-a-time-in-lingjian-mountain
+  covers:
+  - covers/26877434/01.webp
   douban_url: https://movie.douban.com/subject/26877434/
   user:
     cover: ""
@@ -308,35 +323,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 81fb3465
-    machine_hash: 77ac8ccc
+    machine_hash: 58f8fb76
     missing_since: null
+    missing_reason: null
 - id: "33425323"
   title: 还是不能结婚的男人
-  original_title: null
-  year: null
+  original_title: まだ結婚できない男
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 12393
   marked_at: "2019-12-11"
-  douban_comment: null
+  douban_comment: 自是比不上 13 年前的第一季。我不结婚的思想，就是从这部剧开始形成的。
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 58
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [三宅喜重]
+    casts: [阿部宽, 吉田羊, 深川麻衣, 塚本高史, 咲妃美悠, 平祐奈, 阿南敦子, 奈绪, 荒井敦史, 小野寺鹤]
+    writers: [尾崎将也]
+  episodes: 10
+  slug: douban-33425323
+  covers:
+  - covers/33425323/01.webp
   douban_url: https://movie.douban.com/subject/33425323/
   user:
     cover: ""
@@ -347,35 +364,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 6160a4a5
-    machine_hash: 39d964ac
+    fingerprint: b432eec1
+    machine_hash: 3c82dc11
     missing_since: null
+    missing_reason: null
 - id: "27006086"
   title: 大唐荣耀2
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.3
+  douban_score_count: 35368
   marked_at: "2019-12-08"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 32
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [刘国楠, 尹涛]
+    casts: [景甜, 任嘉伦, 万茜, 舒畅, 秦俊杰, 茅子俊, 于谨维, 刘威葳]
+    writers: [刘芳, 李惠敏]
+  episodes: 32
+  slug: the-glory-of-tang-dynasty
+  covers:
+  - covers/27006086/01.webp
   douban_url: https://movie.douban.com/subject/27006086/
   user:
     cover: ""
@@ -386,35 +405,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: a3210892
-    machine_hash: 3c8ac34c
+    machine_hash: 880d4d4a
     missing_since: null
+    missing_reason: null
 - id: "24827545"
   title: 大唐荣耀
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.9
+  douban_score_count: 125742
   marked_at: "2019-12-08"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [刘国楠, 尹涛]
+    casts: [景甜, 任嘉伦, 万茜, 舒畅, 秦俊杰, 茅子俊, 于谨维, 王劲松, 卢星宇, 秦汉]
+    writers: [刘芳, 李惠敏]
+  episodes: 60
+  slug: the-glory-of-tang-dynasty-2017
+  covers:
+  - covers/24827545/01.webp
   douban_url: https://movie.douban.com/subject/24827545/
   user:
     cover: ""
@@ -425,35 +446,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 3eea64a4
-    machine_hash: 021b28e7
+    machine_hash: 14b851a1
     missing_since: null
+    missing_reason: null
 - id: "34781247"
   title: 城中三餐
-  original_title: null
-  year: null
+  original_title: Breakfast, Lunch & Dinner
+  year: 2019
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.0
+  douban_score_count: 762
   marked_at: "2019-11-17"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
+  genres: [纪录片]
+  regions: [美国]
+  languages: [英语]
   runtime: null
   credits:
     directors: []
-    casts: []
+    casts: [张锡镐]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 4
+  slug: breakfast-lunch-dinner
+  covers:
+  - covers/34781247/01.webp
   douban_url: https://movie.douban.com/subject/34781247/
   user:
     cover: ""
@@ -464,35 +487,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f4d0604f
-    machine_hash: f1a026bc
+    machine_hash: 1da853e5
     missing_since: null
+    missing_reason: null
 - id: "34807113"
   title: 走进比尔：解码比尔·盖茨
-  original_title: null
-  year: null
+  original_title: 'Inside Bill''s Brain: Decoding Bill Gates'
+  year: 2019
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 16929
   marked_at: "2019-11-10"
-  douban_comment: null
+  douban_comment: 大部分在说后期慈善事业，少数说了一下创业时。
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
+    directors: [Davis Guggenheim（戴维斯·古根海姆）]
+    casts: [Bill Gates（比尔·盖茨）]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 3
+  slug: inside-bill-s-brain-decoding-bill-gates
+  covers:
+  - covers/34807113/01.webp
   douban_url: https://movie.douban.com/subject/34807113/
   user:
     cover: ""
@@ -503,35 +528,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: f092554e
-    machine_hash: e0252263
+    fingerprint: 4d8eae04
+    machine_hash: 1d2855b0
     missing_since: null
+    missing_reason: null
 - id: "33418410"
   title: 深夜食堂：东京故事2
-  original_title: null
-  year: null
+  original_title: 深夜食堂 ‐Tokyo Stories Season2‐
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 16951
   marked_at: "2019-11-02"
-  douban_comment: null
+  douban_comment: 支付宝实力出镜
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松冈锭司, 山下敦弘, 小林圣太郎]
+    casts: [小林薰, 不破万作, 绫田俊树, 松重丰, 安藤玉惠, 余贵美子, 小田切让, 仲村亨, 柄本明, 柄本佑]
+    writers: [真边克彦, 向井康介, 小嶋健作]
+  episodes: 10
+  slug: tokyo-stories-season2
+  covers:
+  - covers/33418410/01.webp
   douban_url: https://movie.douban.com/subject/33418410/
   user:
     cover: ""
@@ -542,35 +569,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 6f859d71
-    machine_hash: 3745a9bf
+    fingerprint: 514e9eb0
+    machine_hash: 44b90374
     missing_since: null
+    missing_reason: null
 - id: "34807388"
   title: 他乡的童年
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 33325
   marked_at: "2019-10-27"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [中国]
+  languages: [汉语普通话, 英语, 日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
+    directors: [周轶君]
+    casts: [周轶君]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 6
+  slug: childhood-elsewhere
+  covers:
+  - covers/34807388/01.webp
   douban_url: https://movie.douban.com/subject/34807388/
   user:
     cover: ""
@@ -581,35 +610,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 677f0245
-    machine_hash: f6dd19ce
+    machine_hash: e319dd21
     missing_since: null
+    missing_reason: null
 - id: "27148208"
   title: 西行纪
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 15912
   marked_at: "2019-10-21"
-  douban_comment: null
+  douban_comment: 杀心观音千手浮屠不及如来的睡意禅。杀心太重，不如一心一意。
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 15
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钟智行, 麦正乐]
+    casts: [夏磊, 吴磊, 张杰, 沈达威, 谢添天, 冯骏骅, 刘北辰, 醋醋]
+    writers: [郑健和]
+  episodes: 16
+  slug: douban-27148208
+  covers:
+  - covers/27148208/01.webp
   douban_url: https://movie.douban.com/subject/27148208/
   user:
     cover: ""
@@ -620,35 +651,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 0554f4b3
-    machine_hash: cdd75687
+    fingerprint: e7ea1443
+    machine_hash: "88540926"
     missing_since: null
+    missing_reason: null
 - id: "30127581"
   title: 叶卡捷琳娜大帝
-  original_title: null
-  year: null
+  original_title: Catherine the Great
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 3232
   marked_at: "2019-10-19"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史]
+  regions: [英国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Philip Martin（菲利普·马丁）]
+    casts: [Helen Mirren（海伦·米伦）, Jason Clarke（杰森·克拉克）, Rory Kinnear（罗里·金尼尔）, Gina McKee（吉娜·麦基）, Richard Roxburgh（理查德·劳斯伯格）, 约瑟夫·奎恩, 克里夫·罗素, 凯文·麦克纳利, 乔治娜·比德尔, 卡米拉·伯尔格萨尼]
+    writers: [奈杰尔·威廉]
+  episodes: 4
+  slug: catherine-the-great
+  covers:
+  - covers/30127581/01.webp
   douban_url: https://movie.douban.com/subject/30127581/
   user:
     cover: ""
@@ -659,35 +692,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c5df46b7
-    machine_hash: 485a0a43
+    machine_hash: 09a883a6
     missing_since: null
+    missing_reason: null
 - id: "27191348"
   title: 画江湖之不良人3
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 39860
   marked_at: "2019-10-19"
-  douban_comment: null
+  douban_comment: 恭送不良帅
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 武侠]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [周飞龙]
+    casts: [边江, 申秋香, 阎萌萌, 赵毅, 褚珺, 白雪岑, 山新, 孟宇, 赵梦娇, 关心]
+    writers: [关心]
+  episodes: 40
+  slug: iii
+  covers:
+  - covers/27191348/01.webp
   douban_url: https://movie.douban.com/subject/27191348/
   user:
     cover: ""
@@ -698,35 +733,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: b781ff0e
-    machine_hash: 75c249a2
+    fingerprint: 9aab9b18
+    machine_hash: 6295bb59
     missing_since: null
+    missing_reason: null
 - id: "26811779"
   title: 青云志2
   original_title: null
-  year: null
+  year: 2016
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 1
-  douban_score: null
-  douban_score_count: null
+  douban_score: 4.6
+  douban_score_count: 40658
   marked_at: "2019-10-03"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [奇幻, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [朱锐斌, 周靖韬, 刘国辉, 朱少杰]
+    casts: [李易峰, 赵丽颖, 杨紫, 成毅, 秦俊杰, 茅子俊, 陈创, 焦俊艳, 唐艺昕, 白雪]
+    writers: [邵潇逸, 张少微, 萧鼎]
+  episodes: 18
+  slug: douban-26811779
+  covers:
+  - covers/26811779/01.webp
   douban_url: https://movie.douban.com/subject/26811779/
   user:
     cover: ""
@@ -737,35 +774,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 571aea43
-    machine_hash: b19cc46f
+    machine_hash: 7530fe1d
     missing_since: null
+    missing_reason: null
 - id: "33413766"
   title: 斗破苍穹 第三季
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 20518
   marked_at: "2019-09-29"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [赵丙乐]
+    casts: [张沛, 冯骏骅, 杨梦露, 黑石稔, 袁国庆, 高其昌]
+    writers: [袁洁]
+  episodes: 12
+  slug: douban-33413766
+  covers:
+  - covers/33413766/01.webp
   douban_url: https://movie.douban.com/subject/33413766/
   user:
     cover: ""
@@ -776,35 +815,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8cb9f751
-    machine_hash: 360f5119
+    machine_hash: 574a04dd
     missing_since: null
+    missing_reason: null
 - id: "33395140"
   title: 一千零一夜 第四季
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: variety
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 8322
   marked_at: "2019-09-28"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [脱口秀]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 35
   credits:
-    directors: []
-    casts: []
+    directors: [谢徽]
+    casts: [梁文道]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 12
+  slug: douban-33395140
+  covers:
+  - covers/33395140/01.webp
   douban_url: https://movie.douban.com/subject/33395140/
   user:
     cover: ""
@@ -815,35 +856,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f1a81e3a
-    machine_hash: b4ae9501
+    machine_hash: 44aaa788
     missing_since: null
+    missing_reason: null
 - id: "30345939"
   title: 魔道祖师 第二季
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 98858
   marked_at: "2019-09-02"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 同性, 奇幻, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [熊可]
+    casts: [张杰, 边江, 郭浩然, 苏尚卿, 金弦, 刘三木, 陈张太康, 王晨光, 李诗萌, 刘琮]
+    writers: [梁莎, 朱珂, 墨香铜臭]
+  episodes: 8
+  slug: douban-30345939
+  covers:
+  - covers/30345939/01.webp
   douban_url: https://movie.douban.com/subject/30345939/
   user:
     cover: ""
@@ -854,35 +897,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 02ff0db5
-    machine_hash: b164ef65
+    machine_hash: 4e49a433
     missing_since: null
+    missing_reason: null
 - id: "26592971"
-  title: 瑞克和莫蒂 第三季
+  title: 瑞克和莫蒂 第三季 Rick and Morty Season 3
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.8
+  douban_score_count: 165077
   marked_at: "2019-08-25"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Justin Roiland（贾斯汀·罗兰）, Juan Jose Meza-Leon（胡安·何塞·梅扎-莱昂）]
+    casts: [Justin Roiland（贾斯汀·罗兰）, Chris Parnell（克里斯·帕内尔）, Spencer Grammer（斯宾瑟·格拉默）, Sarah Chalke（萨拉·乔克）, 内森·菲利安, 丹·哈萌, 布兰登·约翰逊, 汤姆·肯尼, 莫里斯·拉马奇, 诺兰·诺斯]
+    writers: [丹·哈萌, Justin Roiland（贾斯汀·罗兰）]
+  episodes: 10
+  slug: rick-and-morty-season-3
+  covers:
+  - covers/26592971/01.webp
   douban_url: https://movie.douban.com/subject/26592971/
   user:
     cover: ""
@@ -893,35 +938,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f105488c
-    machine_hash: b8b48837
+    machine_hash: ec4cf8f9
     missing_since: null
+    missing_reason: null
 - id: "33437160"
   title: 人生一串 第二季
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 51827
   marked_at: "2019-08-18"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [陈英杰, 张岳明, 金颖, 赵怀燕, 郭瀚洋, 谷壮, 刘执戈]
+    casts: [陈英杰]
+    writers: [陈英杰, 张岳明]
+  episodes: 6
+  slug: douban-33437160
+  covers:
+  - covers/33437160/01.webp
   douban_url: https://movie.douban.com/subject/33437160/
   user:
     cover: ""
@@ -932,35 +979,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 0e356079
-    machine_hash: 23c0ff9c
+    machine_hash: e42b57ef
     missing_since: null
+    missing_reason: null
 - id: "33444742"
   title: 今生，请多指教
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 1618
   marked_at: "2019-08-07"
-  douban_comment: null
+  douban_comment: 还是不养了
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 36
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [冒冒, 刘鹏]
+    casts: [张旭]
+    writers: [冒冒]
+  episodes: 4
+  slug: douban-33444742
+  covers:
+  - covers/33444742/01.webp
   douban_url: https://movie.douban.com/subject/33444742/
   user:
     cover: ""
@@ -971,35 +1020,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 3716643d
-    machine_hash: 1b3544ad
+    fingerprint: a009a277
+    machine_hash: 9f3ba66e
     missing_since: null
+    missing_reason: null
 - id: "33408040"
   title: 宠物医院
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: variety
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 15948
   marked_at: "2019-08-06"
-  douban_comment: null
+  douban_comment: 被拍成了大型广告
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [真人秀]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 35
   credits:
-    directors: []
+    directors: [李菁]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 8
+  slug: douban-33408040
+  covers:
+  - covers/33408040/01.webp
   douban_url: https://movie.douban.com/subject/33408040/
   user:
     cover: ""
@@ -1010,35 +1061,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 9af10126
-    machine_hash: c0607db4
+    fingerprint: 0de3bf5c
+    machine_hash: a0af0f73
     missing_since: null
+    missing_reason: null
 - id: "26882339"
   title: 一拳超人 第二季
-  original_title: null
-  year: null
+  original_title: ワンパンマン 第2期
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 72983
   marked_at: "2019-07-20"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [樱井亲良, 樱美胜志, 则座诚, 冈本英树, 福岛利规, 铃木吉男, 宫崎修治, 奥野浩行, 神谷智大, 海宝兴藏, 安藤良]
+    casts: [古川慎, 石川界人, 梶裕贵, 悠木碧, 山路和弘, 津田健次郎, 高山南, 玄田哲章, 安元洋贵, 樱井孝宏]
+    writers: [ONE, 铃木智寻, 稻本达郎]
+  episodes: 12
+  slug: one-punch-man-2
+  covers:
+  - covers/26882339/01.webp
   douban_url: https://movie.douban.com/subject/26882339/
   user:
     cover: ""
@@ -1049,35 +1102,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: e51f5245
-    machine_hash: d1508a83
+    machine_hash: 2627e018
     missing_since: null
+    missing_reason: null
 - id: "3206620"
   title: 剑豪生死斗
-  original_title: null
-  year: null
+  original_title: シグルイ
+  year: 2007
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 22896
   marked_at: "2019-06-16"
   douban_comment: null
   tags: [Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [滨崎博嗣, 增原光幸, 细田雅弘, 真野玲, 驹井一也, 立川让]
+    casts: [浪川大辅, 佐佐木望, 桑岛法子, 筱原惠美, 加藤精三, 堀江美都子, 屋良有作, 稻叶实, 岛田敏, 小山力也]
+    writers: [水上清资, 恒松圭]
+  episodes: 12
+  slug: death-frenzy
+  covers:
+  - covers/3206620/01.webp
   douban_url: https://movie.douban.com/subject/3206620/
   user:
     cover: ""
@@ -1088,35 +1143,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 357814bf
-    machine_hash: 5db27120
+    machine_hash: 7eafa3fd
     missing_since: null
+    missing_reason: null
 - id: "30313859"
   title: 相棒 第17季
-  original_title: null
-  year: null
+  original_title: 相棒 season17
+  year: 2018
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 2155
   marked_at: "2019-06-09"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [桥本一, 权野元]
+    casts: [水谷丰, 反町隆史, 浅利阳介, 杉本哲太, 神保悟志, 石坂浩二, 片桐龙次, 铃木杏树, 川原和久, 山中崇史]
+    writers: [舆水泰弘, 真野勝成]
+  episodes: 20
+  slug: season17
+  covers:
+  - covers/30313859/01.webp
   douban_url: https://movie.douban.com/subject/30313859/
   user:
     cover: ""
@@ -1127,35 +1184,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 35202c2e
-    machine_hash: 06219a39
+    machine_hash: 384abb89
     missing_since: null
+    missing_reason: null
 - id: "30161936"
-  title: 黑镜 第五季
+  title: 黑镜 第五季 Black Mirror Season 5
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.0
+  douban_score_count: 103115
   marked_at: "2019-06-07"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 惊悚]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [James Hawes（詹姆斯·霍斯）]
+    casts: [Andrew Scott（安德鲁·斯科特）, Miley Cyrus（麦莉·赛勒斯）, Anthony Mackie（安东尼·麦凯）, Yahya Abdul-Mateen II（叶海亚·阿卜杜勒-迈丁）, 托弗·格雷斯, 戴姆森·伊德瑞斯, 妮可·贝哈瑞, 庞·克莱门捷夫, 安格瑞·赖斯, 麦蒂森·达文波特]
+    writers: [查理·布鲁克]
+  episodes: 3
+  slug: black-mirror-season-5
+  covers:
+  - covers/30161936/01.webp
   douban_url: https://movie.douban.com/subject/30161936/
   user:
     cover: ""
@@ -1166,35 +1225,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 06312afe
-    machine_hash: 1c35d1f7
+    machine_hash: 3305a7c2
     missing_since: null
+    missing_reason: null
 - id: "27098632"
   title: 切尔诺贝利
-  original_title: null
-  year: null
+  original_title: Chernobyl
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.6
+  douban_score_count: 364671
   marked_at: "2019-06-05"
-  douban_comment: null
+  douban_comment: What's the cost of lies?
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史]
+  regions: [英国, 美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Johan Renck（约翰·伦克）]
+    casts: [Jared Harris（杰瑞德·哈里斯）, 斯特兰·斯卡斯加德, Emily Watson（艾米丽·沃森）, Jessie Buckley（杰西·巴克利）, Adam Nagaitis（亚当·那加提斯）, 山姆·特劳顿, 罗伯特·埃姆斯, 詹姆斯·科兹莫, 卡尔·戴维斯, 大卫·丹席克]
+    writers: [克雷格·麦辛]
+  episodes: 5
+  slug: chernobyl-2019
+  covers:
+  - covers/27098632/01.webp
   douban_url: https://movie.douban.com/subject/27098632/
   user:
     cover: ""
@@ -1205,35 +1266,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 8a16416d
-    machine_hash: acf86bae
+    fingerprint: f75e70ed
+    machine_hash: 64d12da7
     missing_since: null
+    missing_reason: null
 - id: "26584183"
-  title: 权力的游戏 第八季
+  title: 权力的游戏 第八季 Game of Thrones Season 8
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.0
+  douban_score_count: 310777
   marked_at: "2019-05-20"
-  douban_comment: null
+  douban_comment: 小说是一样的结局吗？
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Miguel Sapochnik（米格尔·萨普什尼克）, David Nutter（大卫·努特尔）, 戴维·贝尼奥夫, D·B·威斯]
+    casts: [Emilia Clarke（艾米莉亚·克拉克）, Kit Harington（基特·哈灵顿）, Peter Dinklage（彼特·丁拉基）, Sophie Turner（苏菲·特纳）, 麦茜·威廉姆斯, 琳娜·海蒂, 伊萨克·亨普斯特德-怀特, 尼古拉·科斯特-瓦尔道, 约翰·布莱德利, 阿尔菲·艾伦]
+    writers: [戴维·贝尼奥夫, D·B·威斯, 乔治·马丁, 戴夫·希尔, 布莱恩·考格曼]
+  episodes: 6
+  slug: game-of-thrones-season-8
+  covers:
+  - covers/26584183/01.webp
   douban_url: https://movie.douban.com/subject/26584183/
   user:
     cover: ""
@@ -1244,17 +1307,18 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 85340e61
-    machine_hash: 30d97b72
+    fingerprint: 5e988ca1
+    machine_hash: bd3a6362
     missing_since: null
+    missing_reason: null
 - id: "30176274"
   title: 万古仙穹 第二季
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
   douban_score: null
@@ -1262,17 +1326,18 @@
   marked_at: "2019-05-19"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 12
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [杨晓轩]
+    casts: [山新, 郭盛, 图特哈蒙, 李兰陵]
+    writers: [李科峰]
+  episodes: 12
+  slug: douban-30176274
+  covers:
+  - covers/30176274/01.webp
   douban_url: https://movie.douban.com/subject/30176274/
   user:
     cover: ""
@@ -1283,35 +1348,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 013bf88c
-    machine_hash: 2dc24386
+    machine_hash: 044b3fe3
     missing_since: null
+    missing_reason: null
 - id: "27028874"
   title: 万古仙穹 第一季
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.3
+  douban_score_count: 1199
   marked_at: "2019-05-19"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 12
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王昕]
+    casts: [山新, 郭盛, 图特哈蒙, 佟心竹]
+    writers: [观棋]
+  episodes: 12
+  slug: douban-27028874
+  covers:
+  - covers/27028874/01.webp
   douban_url: https://movie.douban.com/subject/27028874/
   user:
     cover: ""
@@ -1322,35 +1389,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b88bd391
-    machine_hash: 64db2766
+    machine_hash: cfe066e7
     missing_since: null
+    missing_reason: null
 - id: "30223578"
   title: 武动乾坤 第一季
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.5
+  douban_score_count: 6469
   marked_at: "2019-05-04"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [沈亦默, 马建平, 黄剑]
+    casts: [柯暮卿, 杜晴晴, 苏鑫, 袁国庆, 赵洋, 翁媛, 谢添天]
+    writers: [天蚕土豆]
+  episodes: 12
+  slug: douban-30223578
+  covers:
+  - covers/30223578/01.webp
   douban_url: https://movie.douban.com/subject/30223578/
   user:
     cover: ""
@@ -1361,35 +1430,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: f6522f87
-    machine_hash: 20f69e8d
+    machine_hash: 3a12f505
     missing_since: null
+    missing_reason: null
 - id: "30181230"
   title: 我们与恶的距离
-  original_title: null
-  year: null
+  original_title: 我們與惡的距離
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.4
+  douban_score_count: 528969
   marked_at: "2019-05-04"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [台湾]
+  languages: [汉语普通话]
+  runtime: 55
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [林君阳]
+    casts: [贾静雯, 温升豪, 吴慷仁, 周采诗, 陈妤, 洪都拉斯, 曾沛慈, 林哲熹, 施名帅, 林予晞]
+    writers: [吕莳媛]
+  episodes: 10
+  slug: the-world-between-us
+  covers:
+  - covers/30181230/01.webp
   douban_url: https://movie.douban.com/subject/30181230/
   user:
     cover: ""
@@ -1400,35 +1471,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: a95fdac8
-    machine_hash: fef4bde1
+    machine_hash: e8743292
     missing_since: null
+    missing_reason: null
 - id: "30395527"
   title: 萌妻食神 第一季
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.0
+  douban_score_count: 6798
   marked_at: "2019-05-02"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佳菲]
+    casts: [十四, 孙晔, 沈达威, 黑石稔, 杨鸥, 苏鑫, 卞云鹏]
+    writers: [佳菲]
+  episodes: 12
+  slug: adorable-food-goddess
+  covers:
+  - covers/30395527/01.webp
   douban_url: https://movie.douban.com/subject/30395527/
   user:
     cover: ""
@@ -1439,35 +1512,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8ae69cb6
-    machine_hash: 0e113b75
+    machine_hash: 2b0b9dda
     missing_since: null
+    missing_reason: null
 - id: "30222889"
   title: 斗破苍穹 特别篇2
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 17796
   marked_at: "2019-05-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 27
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [赵丙乐]
+    casts: [谢添天, 冯骏骅, 袁国庆, 王宇航, 刘北辰]
+    writers: [赵丙乐]
+  episodes: 3
+  slug: douban-30222889
+  covers:
+  - covers/30222889/01.webp
   douban_url: https://movie.douban.com/subject/30222889/
   user:
     cover: ""
@@ -1478,35 +1553,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 9e9ec64f
-    machine_hash: 42b2f28a
+    machine_hash: fb9e2050
     missing_since: null
+    missing_reason: null
 - id: "27034748"
   title: 一人之下 第二季
   original_title: null
-  year: null
+  year: 2017
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 111541
   marked_at: "2019-04-21"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 26
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王昕]
+    casts: [曹云图, 小连杀, 彭尧, 宝木中阳, 张杰, 山新, 藤新, 图特哈蒙, 张遥函, 张云明]
+    writers: [米二]
+  episodes: 24
+  slug: the-outcast-2
+  covers:
+  - covers/27034748/01.webp
   douban_url: https://movie.douban.com/subject/27034748/
   user:
     cover: ""
@@ -1517,35 +1594,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d253d077
-    machine_hash: 24026c83
+    machine_hash: 95e63724
     missing_since: null
+    missing_reason: null
 - id: "26815153"
   title: 一人之下 第一季
   original_title: null
-  year: null
+  year: 2016
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 131487
   marked_at: "2019-04-21"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 奇幻]
+  regions: [中国, 日本]
+  languages: [日语, 汉语普通话]
+  runtime: 21
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李豪凌, 王昕]
+    casts: [田丸笃志, 饭田友子, 早见沙织, 野岛健儿, 立花慎之介, 山口胜平, 日笠阳子, 三宅麻理惠, 原由实, 鸟海浩辅]
+    writers: [米二]
+  episodes: 12
+  slug: the-outcast-2016
+  covers:
+  - covers/26815153/01.webp
   douban_url: https://movie.douban.com/subject/26815153/
   user:
     cover: ""
@@ -1556,35 +1635,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 2e72d2ef
-    machine_hash: 4ce2137c
+    machine_hash: 2c99afb7
     missing_since: null
+    missing_reason: null
 - id: "30446720"
   title: 后街女孩 电视剧版
-  original_title: null
-  year: null
+  original_title: BACK STREET GIRLS -ゴクドルズ-
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 6641
   marked_at: "2019-04-20"
   douban_comment: null
   tags: [Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [原桂之介]
+    casts: [白洲迅, 柾木玲弥, 花泽将人, 冈本夏美, 松田流花, 坂之上茜, 小宫有纱, 小泽仁志, 中野英雄, 大杉涟]
+    writers: [伊藤秀裕, 增本庄一郎]
+  episodes: 6
+  slug: back-street-girls-2019
+  covers:
+  - covers/30446720/01.webp
   douban_url: https://movie.douban.com/subject/30446720/
   user:
     cover: ""
@@ -1595,35 +1676,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: eade74b5
-    machine_hash: 2cd56485
+    machine_hash: ba1014ab
     missing_since: null
+    missing_reason: null
 - id: "30163731"
   title: 关于我转生变成史莱姆这档事
-  original_title: null
-  year: null
+  original_title: 転生したらスライムだった件
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 39515
   marked_at: "2019-04-20"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [菊地康仁, 中山敦史, 森义博, 登坂晋, 笹原嘉文, 伊藤康裕, 井之川慎太郎]
+    casts: [冈咲美保, 寺岛拓笃, 丰口惠美, 前野智昭, 花守由美里, 古川慎, 千本木彩花, 市道真央, 江口拓也, 大塚芳忠]
+    writers: [笔安一幸]
+  episodes: 24
+  slug: douban-30163731
+  covers:
+  - covers/30163731/01.webp
   douban_url: https://movie.douban.com/subject/30163731/
   user:
     cover: ""
@@ -1634,35 +1717,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 0fc64fe3
-    machine_hash: dbcb215f
+    machine_hash: 4d792a2c
     missing_since: null
+    missing_reason: null
 - id: "27088993"
   title: 都挺好
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 403139
   marked_at: "2019-04-14"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 家庭]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [简川訸]
+    casts: [姚晨, 倪大红, 郭京飞, 杨祐宁, 李念, 高鑫, 高露, 陈瑾, 张晨光, 王东]
+    writers: [王三毛, 王磊, 阿耐]
+  episodes: 46
+  slug: all-is-well
+  covers:
+  - covers/27088993/01.webp
   douban_url: https://movie.douban.com/subject/27088993/
   user:
     cover: ""
@@ -1673,35 +1758,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 17c5de83
-    machine_hash: 53eae0e0
+    machine_hash: 6c17e7e1
     missing_since: null
+    missing_reason: null
 - id: "30424374"
-  title: 爱，死亡和机器人 第一季
+  title: 爱，死亡和机器人 第一季 Love, Death & Robots Season 1
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 520427
   marked_at: "2019-04-07"
-  douban_comment: null
+  douban_comment: 最喜欢第十三集，那个 lucky 13
   tags: [Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 科幻, 动画, 恐怖, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 15
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [维克多·马尔多纳多, Gabriele Pennacchioli（加布里埃尔·彭纳基奥利）, 阿尔弗雷多·托雷斯, 弗兰克·巴尔森, 阿尔贝托·米尔戈, 蒂姆·米勒, 达米安·纽诺, 杰罗姆·陈, 维塔利·舒舒科, 欧文·沙利文, 罗伯特·瓦利, 戴夫·威尔逊, 乔恩·叶, 哈维尔·雷西奥·格雷西亚]
+    casts: [Scott Whyte（斯科特·怀特）, Nolan North（诺兰·诺斯）, Matthew Yang King（马修·杨·金）, Michael Benyaer（迈克尔·本耶尔）, 乔什·布雷纳, 艾莉·康德伦, 亨利·杜思韦特, 亚伦·希梅尔斯坦, 斯蒂芬·卡皮契奇, 莫里斯·拉马奇]
+    writers: [蒂姆·米勒, 约翰·斯卡尔齐, 阿拉斯泰尔·雷诺兹, 彼得·F·汉密尔顿, 马尔科·克鲁斯, 乔·R·兰斯代尔, 贾尼斯·罗伯逊]
+  episodes: 18
+  slug: love-death-robots-season-1
+  covers:
+  - covers/30424374/01.webp
   douban_url: https://movie.douban.com/subject/30424374/
   user:
     cover: ""
@@ -1712,35 +1799,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 895adb83
-    machine_hash: fbe0215e
+    fingerprint: 2f41a809
+    machine_hash: f9d3545e
     missing_since: null
+    missing_reason: null
 - id: "27011763"
   title: 灵能百分百 II
-  original_title: null
-  year: null
+  original_title: モブサイコ100 II
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 121448
   marked_at: "2019-04-06"
-  douban_comment: null
+  douban_comment: 「人需要他人吗？」
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [立川让, 大矢雄嗣, 藤泽研一, 重原克也, 三宅将平, 莲井隆弘, 飞田刚, 曾根利幸, 竹内浩志, 伍柏谕, 土上树]
+    casts: [伊藤节生, 樱井孝宏, 大塚明夫, 入野自由, 松冈祯丞, 种崎敦美, 藤村步]
+    writers: [濑古浩司, ONE]
+  episodes: 13
+  slug: 100-ii
+  covers:
+  - covers/27011763/01.webp
   douban_url: https://movie.douban.com/subject/27011763/
   user:
     cover: ""
@@ -1751,35 +1840,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: ba77ff2f
-    machine_hash: b3a2698d
+    fingerprint: e276eb31
+    machine_hash: dfa1d4f6
     missing_since: null
+    missing_reason: null
 - id: "30328983"
   title: pop子和pipi美的日常 TV特番
-  original_title: null
-  year: null
+  original_title: ポプテピピック TVスペシャル
+  year: 2019
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 2422
   marked_at: "2019-04-05"
-  douban_comment: null
+  douban_comment: 这阵容，TV SP 经费充足的一塌糊涂
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 奇幻, 灾难]
+  regions: [日本]
+  languages: [日语]
+  runtime: 48
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [青木纯]
+    casts: [田村由香里, 堀江由衣, 保志总一朗, 石田彰, 国府田麻理子, 井上喜久子, 飞田展男, 岛田敏, 花泽香菜, 户松遥]
+    writers: [青木纯]
+  episodes: 4
+  slug: poppipi-tv
+  covers:
+  - covers/30328983/01.webp
   douban_url: https://movie.douban.com/subject/30328983/
   user:
     cover: ""
@@ -1790,35 +1881,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 9c05dfdc
-    machine_hash: 9aa82f15
+    fingerprint: db8010ac
+    machine_hash: 933a728e
     missing_since: null
+    missing_reason: null
 - id: "30290862"
   title: 神助参拜～三女伊势参拜
-  original_title: null
-  year: null
+  original_title: ぬけまいる～女三人伊勢参り
+  year: 2018
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 239
   marked_at: "2019-03-31"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 38
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [黛りんたろう, 福井充広, 田中諭]
+    casts: [田中丽奈, 友坂理惠, 佐藤江梨子]
+    writers: [小松江里子]
+  episodes: 8
+  slug: nukemairi
+  covers:
+  - covers/30290862/01.webp
   douban_url: https://movie.douban.com/subject/30290862/
   user:
     cover: ""
@@ -1829,35 +1922,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 658a1169
-    machine_hash: afa88b47
+    machine_hash: bda73447
     missing_since: null
+    missing_reason: null
 - id: "30459044"
-  title: 主厨的餐桌 第六季
+  title: 主厨的餐桌 第六季 Chef's Table Season 6
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: documentary
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 1974
   marked_at: "2019-03-03"
-  douban_comment: null
+  douban_comment: 一个 Chef 就是一个架构，一桌菜多少磨练。
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [纪录片]
+  regions: [美国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
+    directors: [Abigail Fuller（阿比盖尔·福勒）, Clay Jeter（克雷·杰特）]
+    casts: [Mashama Bailey（马什马·贝利）, Asma Khan（阿斯玛·坎）]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 4
+  slug: chef-s-table-season-6
+  covers:
+  - covers/30459044/01.webp
   douban_url: https://movie.douban.com/subject/30459044/
   user:
     cover: ""
@@ -1868,35 +1963,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: 52c7dfb5
-    machine_hash: 70cd9c08
+    fingerprint: 4c73286b
+    machine_hash: fbd82e94
     missing_since: null
+    missing_reason: null
 - id: "27202985"
   title: 怒晴湘西
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.1
+  douban_score_count: 207739
   marked_at: "2019-03-02"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 35
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [费振翔]
+    casts: [潘粤明, 高伟光, 辛芷蕾, 曹卫宇, 盛少, 阿丽亚, 张承, 姜宝成, 桑茗胜, 莫涂弘哲]
+    writers: [刘安琪, 沈娟, 葛瑞, 天下霸唱]
+  episodes: 21
+  slug: candle-in-the-tomb-the-wrath-of-time
+  covers:
+  - covers/27202985/01.webp
   douban_url: https://movie.douban.com/subject/27202985/
   user:
     cover: ""
@@ -1907,35 +2004,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: c7d71fa0
-    machine_hash: 8f028375
+    machine_hash: cbb2d077
     missing_since: null
+    missing_reason: null
 - id: "26675617"
   title: 古董局中局
   original_title: null
-  year: null
+  year: 2018
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.6
+  douban_score_count: 68801
   marked_at: "2019-02-24"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [五百, 余庆]
+    casts: [夏雨, 乔振宇, 蔡文静, 田中千绘, 王刚, 曾江, 吕中, 潘粤明, 黄海冰, 汤镇宗]
+    writers: [刘殷实, 卢源, 马伯庸]
+  episodes: 36
+  slug: mystery-of-antiques
+  covers:
+  - covers/26675617/01.webp
   douban_url: https://movie.douban.com/subject/26675617/
   user:
     cover: ""
@@ -1946,35 +2045,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: 8caf8934
-    machine_hash: ca84160d
+    machine_hash: 14eced6d
     missing_since: null
+    missing_reason: null
 - id: "27594217"
-  title: 性爱自修室 第一季
+  title: 性爱自修室 第一季 Sex Education Season 1
   original_title: null
-  year: null
+  year: 2019
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 333518
   marked_at: "2019-01-19"
-  douban_comment: null
+  douban_comment: 学到了好多奇怪的 「生僻」 单词
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [英国]
+  languages: [英语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Ben Taylor（本·泰勒）, Kate Herron（凯特·赫伦）]
+    casts: [Asa Butterfield（阿萨·巴特菲尔德）, Emma Mackey（艾玛·麦基）, Ncuti Gatwa（舒提·盖特瓦）, Gillian Anderson（吉莲·安德森）, 康纳·斯温德尔, 凯达·威廉姆斯特灵, 阿利斯泰尔·皮特里, 艾米·卢·伍德, 米卡埃尔·佩斯布兰特, 米米·基恩]
+    writers: [劳瑞·纳恩, 索菲·古德哈特, 劳拉·亨特, 劳拉·尼尔, 弗雷迪·赛伯]
+  episodes: 8
+  slug: sex-education-season-1
+  covers:
+  - covers/27594217/01.webp
   douban_url: https://movie.douban.com/subject/27594217/
   user:
     cover: ""
@@ -1985,35 +2086,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
-    fingerprint: fd5c409e
-    machine_hash: e5058b92
+    fingerprint: fa801d46
+    machine_hash: "95920409"
     missing_since: null
+    missing_reason: null
 - id: "30258226"
   title: 齐木楠雄的灾难 完结篇
-  original_title: null
-  year: null
+  original_title: 斉木楠雄のΨ難 完結編
+  year: 2018
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.4
+  douban_score_count: 44549
   marked_at: "2019-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [樱井弘明, 则座诚]
+    casts: [神谷浩史, 小野大辅, 岛崎信长, 茅野爱衣, 日野聪, 田村由香里, 内田真礼, 花江夏树, 细谷佳正, 喜多村英梨]
+    writers: [横手美智子, 麻生周一]
+  episodes: 2
+  slug: douban-30258226
+  covers:
+  - covers/30258226/01.webp
   douban_url: https://movie.douban.com/subject/30258226/
   user:
     cover: ""
@@ -2024,35 +2127,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: b876f4cd
-    machine_hash: f8c1feb0
+    machine_hash: 8f284ac8
     missing_since: null
+    missing_reason: null
 - id: "1919302"
   title: 原振侠
-  original_title: null
-  year: null
+  original_title: 原振俠
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 5968
   marked_at: "2019-01-01"
   douban_comment: null
   tags: []
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 科幻]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [梅小青]
+    casts: [黎明, 李嘉欣, 朱茵, 王菲, 洪欣, 吴岱融, 钱嘉乐, 杨得时, 魏骏杰, 李丽丽]
+    writers: [倪匡, 贾伟南, 何群娥]
+  episodes: 20
+  slug: the-legendary-ranger
+  covers:
+  - covers/1919302/01.webp
   douban_url: https://movie.douban.com/subject/1919302/
   user:
     cover: ""
@@ -2063,8 +2168,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-28"
     taxonomy_version: 2
     fingerprint: d3af5ba4
-    machine_hash: 3bbcfafd
+    machine_hash: 85f63b92
     missing_since: null
+    missing_reason: null

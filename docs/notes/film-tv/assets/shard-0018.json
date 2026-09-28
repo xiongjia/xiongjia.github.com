@@ -3,20 +3,41 @@
  "first_date": "2011-04-03",
  "items": [
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "妻夫木聪",
+    "深津绘里",
+    "满岛光",
+    "冈田将生",
+    "柄本明",
+    "树木希林",
+    "盐见三省",
+    "池内万作",
+    "光石研",
+    "余贵美子"
+   ],
+   "category": "feature",
+   "cover": "covers/4135443/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4135443/01.webp",
    "date": "2011-04-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李相日"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "爱情",
+    "犯罪"
+   ],
    "id": "4135443",
    "missing": false,
-   "pending": true,
+   "original_title": "悪人",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 139,
+   "slug": "akunin",
    "status": "collect",
    "tags": [
     "Movie",
@@ -25,24 +46,47 @@
    "title": "恶人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4135443/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吉田修一",
+    "李相日"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘德华",
+    "谢霆锋",
+    "范冰冰",
+    "成龙",
+    "吴京",
+    "余少群",
+    "熊欣欣",
+    "于海",
+    "释彦能",
+    "白冰"
+   ],
+   "category": "feature",
+   "cover": "covers/4097023/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4097023/01.webp",
    "date": "2011-04-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "陈木胜"
+   ],
+   "douban_score": 6.2,
+   "genres": [
+    "剧情",
+    "动作"
+   ],
    "id": "4097023",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 132,
+   "slug": "shaolin",
    "status": "collect",
    "tags": [
     "Movie",
@@ -53,24 +97,45 @@
    "title": "新少林寺",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4097023/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "袁锦麟",
+    "张志光",
+    "王秋雨",
+    "陈锦昌",
+    "张炭"
+   ],
+   "year": 2011
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "新垣结衣",
+    "生田斗真",
+    "向井理",
+    "药师丸博子",
+    "莲佛美沙子"
+   ],
+   "category": "feature",
+   "cover": "covers/4074009/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4074009/01.webp",
    "date": "2011-04-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "土井裕泰"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "4074009",
    "missing": false,
-   "pending": true,
+   "original_title": "ハナミズキ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 128,
+   "slug": "hanamizuki",
    "status": "collect",
    "tags": [
     "Movie",
@@ -79,24 +144,45 @@
    "title": "花水木",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4074009/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吉田纪子"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘冬",
+    "黄宥明",
+    "伊娜",
+    "陶灏景",
+    "铁政",
+    "武文佳",
+    "史可",
+    "赵越",
+    "张立",
+    "周韦彤"
+   ],
+   "category": "feature",
+   "comment": "我怎么会去看这个来着?",
+   "cover": "covers/4036000/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4036000/01.webp",
    "date": "2011-04-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李芳芳"
+   ],
+   "douban_score": 7.0,
+   "genres": [
+    "剧情"
+   ],
    "id": "4036000",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 105,
+   "slug": "heaven-eternal-earth-everlasting",
    "status": "collect",
    "tags": [
     "Movie",
@@ -105,24 +191,48 @@
    "title": "80'后",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4036000/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "李芳芳"
+   ],
+   "year": 2009
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "温兹瑛士",
+    "北乃绮",
+    "田中丽奈",
+    "大泉洋",
+    "间宽平",
+    "汤姆大哥",
+    "星野亚希",
+    "上地雄辅",
+    "中川翔子",
+    "寺岛忍"
+   ],
+   "category": "feature",
+   "cover": "covers/3002806/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3002806/01.webp",
    "date": "2011-04-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "本木克英"
+   ],
+   "douban_score": 6.2,
+   "genres": [
+    "恐怖",
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
    "id": "3002806",
    "missing": false,
-   "pending": true,
+   "original_title": "ゲゲゲの鬼太郎 千年呪い歌",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 119,
+   "slug": "kitaro-and-the-millennium-curse",
    "status": "collect",
    "tags": [
     "JPN",
@@ -132,24 +242,41 @@
    "title": "咯咯咯的鬼太郎：千年咒歌",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3002806/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "泽村光彦"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "阿部寛",
+    "吉瀬美智子",
+    "玉山铁二"
+   ],
+   "category": "feature",
+   "comment": "他不乘电梯下楼...走下来不就什么事都没有了?",
+   "cover": "covers/4073939/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4073939/01.webp",
    "date": "2011-04-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "緒方明"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "犯罪"
+   ],
    "id": "4073939",
    "missing": false,
-   "pending": true,
+   "original_title": "死刑台のエレベーター",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 111,
+   "slug": "elevator-to-the-gallows",
    "status": "collect",
    "tags": [
     "Movie",
@@ -161,23 +288,44 @@
    "type": "movie",
    "url": "https://movie.douban.com/subject/4073939/",
    "writers": [],
-   "year": null
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "钟欣潼",
+    "蒲巴甲",
+    "蒋毅",
+    "刘庭羽",
+    "郭珍霓",
+    "孙兴",
+    "谭耀文",
+    "刘娜萍",
+    "唐宸禹",
+    "舒耀瑄"
+   ],
+   "category": "series",
+   "comment": "山寨版犬夜叉",
+   "cover": "covers/4728542/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4728542/01.webp",
    "date": "2011-03-26",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "蔡晶盛"
+   ],
+   "douban_score": 6.4,
+   "episodes": 36,
+   "genres": [
+    "剧情",
+    "奇幻"
+   ],
    "id": "4728542",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 40,
+   "slug": "the-myth-of-nuwa-and-sacred-deads",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -186,24 +334,37 @@
    "title": "女娲传说之灵珠",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4728542/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马广源"
+   ],
+   "year": 2011
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Hans Blix（汉斯·布利克斯）",
+    "Mikhail Sergeyevich Gorbachev（米哈伊尔·谢尔盖耶维奇·戈尔巴乔夫）"
+   ],
+   "category": "documentary",
+   "cover": "covers/3057368/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3057368/01.webp",
    "date": "2011-03-21",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Thomas Johnson（托马斯·约翰逊）"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "纪录片"
+   ],
    "id": "3057368",
    "missing": false,
-   "pending": true,
+   "original_title": "The Battle of Chernobyl",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 93,
+   "slug": "the-battle-of-chernobyl",
    "status": "collect",
    "tags": [
     "Movie",
@@ -214,23 +375,41 @@
    "type": "movie",
    "url": "https://movie.douban.com/subject/3057368/",
    "writers": [],
-   "year": null
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "深田恭子",
+    "塚本高史",
+    "柴田恭兵",
+    "市川由衣",
+    "岩松了",
+    "佐藤仁美",
+    "黄川田将也"
+   ],
+   "category": "series",
+   "comment": "腹黑完胜...被操纵的男人们...",
+   "cover": "covers/4822846/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4822846/01.webp",
    "date": "2011-03-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "猪崎宣昭"
+   ],
+   "douban_score": 6.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "4822846",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "genya",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -239,24 +418,44 @@
    "title": "幻夜",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4822846/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "东野圭吾",
+    "渡边睦月"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "松山研一",
+    "菊地凛子",
+    "水原希子",
+    "高良健吾",
+    "玉山铁二",
+    "雾岛丽香",
+    "初音映莉子"
+   ],
+   "category": "feature",
+   "cover": "covers/3168086/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3168086/01.webp",
    "date": "2011-03-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "陈英雄"
+   ],
+   "douban_score": 6.0,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "3168086",
    "missing": false,
-   "pending": true,
+   "original_title": "ノルウェイの森",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 133,
+   "slug": "noruwei-no-mori",
    "status": "collect",
    "tags": [
     "Movie",
@@ -265,24 +464,52 @@
    "title": "挪威的森林",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3168086/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "陈英雄",
+    "村上春树"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "霍建华",
+    "刘诗诗",
+    "马天宇",
+    "释彦能",
+    "萧正楠",
+    "佟丽娅",
+    "郑皓原",
+    "姚奕辰",
+    "袁姗姗",
+    "戴春荣"
+   ],
+   "category": "series",
+   "cover": "covers/4861422/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4861422/01.webp",
    "date": "2011-02-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李国立",
+    "吴锦源",
+    "游达志",
+    "梁胜权"
+   ],
+   "douban_score": 8.5,
+   "episodes": 30,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "武侠",
+    "古装"
+   ],
    "id": "4861422",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "the-vigilantes-in-masks",
    "status": "collect",
    "tags": [
     "CHS",
@@ -294,24 +521,48 @@
    "title": "怪侠一枝梅",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4861422/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "邓力奇"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "姜文",
+    "葛优",
+    "周润发",
+    "刘嘉玲",
+    "陈坤",
+    "张默",
+    "姜武",
+    "周韵",
+    "廖凡",
+    "姚橹"
+   ],
+   "category": "feature",
+   "cover": "covers/3742360/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3742360/01.webp",
    "date": "2011-02-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "姜文"
+   ],
+   "douban_score": 9.0,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "西部"
+   ],
    "id": "3742360",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 132,
+   "slug": "let-the-bullets-fly",
    "status": "collect",
    "tags": [
     "Movie",
@@ -323,24 +574,51 @@
    "title": "让子弹飞",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3742360/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "朱苏进",
+    "述平",
+    "姜文",
+    "郭俊立",
+    "危笑",
+    "李不空",
+    "马识途"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "葛优",
+    "舒淇",
+    "孙红雷",
+    "姚晨",
+    "安以轩",
+    "邵兵",
+    "廖凡",
+    "邬逸聪",
+    "关晓彤",
+    "窦文涛"
+   ],
+   "category": "feature",
+   "cover": "covers/4271894/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4271894/01.webp",
    "date": "2011-02-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "冯小刚"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "4271894",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 122,
+   "slug": "if-you-are-the-one-2",
    "status": "collect",
    "tags": [
     "Movie",
@@ -350,24 +628,47 @@
    "title": "非诚勿扰2",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4271894/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "王朔",
+    "冯小刚"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "周冬雨",
+    "窦骁",
+    "奚美娟",
+    "李雪健",
+    "姜瑞佳",
+    "于新博",
+    "萨日娜",
+    "成泰燊",
+    "王劲松",
+    "贺小语"
+   ],
+   "category": "feature",
+   "comment": "伟大领袖 XXX 教育我说...",
+   "cover": "covers/4151110/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4151110/01.webp",
    "date": "2011-02-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "张艺谋"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "4151110",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 114,
+   "slug": "under-the-hawthorn-tree",
    "status": "collect",
    "tags": [
     "Movie",
@@ -377,24 +678,53 @@
    "title": "山楂树之恋",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4151110/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "尹丽川",
+    "顾小白",
+    "阿美",
+    "艾米"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杨紫琼",
+    "郑雨盛",
+    "王学圻",
+    "徐熙媛",
+    "余文乐",
+    "戴立忍",
+    "鲍起静",
+    "林熙蕾",
+    "郭晓东",
+    "江一燕"
+   ],
+   "category": "feature",
+   "comment": "造石桥要保证质量,否则撑不过 500年的...",
+   "cover": "covers/3813779/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3813779/01.webp",
    "date": "2011-02-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "苏照彬"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "动作",
+    "爱情",
+    "武侠",
+    "古装"
+   ],
    "id": "3813779",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港",
+    "台湾"
+   ],
+   "runtime": 120,
+   "slug": "reign-of-assassins",
    "status": "collect",
    "tags": [
     "Movie",
@@ -404,24 +734,48 @@
    "title": "剑雨",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3813779/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "苏照彬"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Louise Bourgoin（露易丝·布尔昆）",
+    "Mathieu Amalric（马修·阿马立克）",
+    "Gilles Lellouche（吉尔·勒卢什）",
+    "Jean-Paul Rouve（让-保罗·卢弗）",
+    "Jacky Nercessian（杰克·纳瑟斯安）",
+    "菲利普·纳翁",
+    "尼古拉斯·吉劳德",
+    "劳瑞·德·克莱蒙特-托奈尔",
+    "弗朗索瓦·夏托特",
+    "塞夫·哈杰迪"
+   ],
+   "category": "feature",
+   "cover": "covers/3628370/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3628370/01.webp",
    "date": "2011-02-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Luc Besson（吕克·贝松）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "喜剧",
+    "奇幻",
+    "冒险"
+   ],
    "id": "3628370",
    "missing": false,
-   "pending": true,
+   "original_title": "Les aventures extraordinaires d'Adèle Blanc-Sec",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "法国",
+    "美国"
+   ],
+   "runtime": 107,
+   "slug": "les-aventures-extraordinaires-d-adele-blanc-sec",
    "status": "collect",
    "tags": [
     "Movie",
@@ -430,24 +784,45 @@
    "title": "阿黛拉的非凡冒险",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3628370/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Luc Besson（吕克·贝松）",
+    "雅克·塔尔迪"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "娄艺潇",
+    "王传君",
+    "赵文琪",
+    "孙艺洲",
+    "邓家佳",
+    "李佳航",
+    "陈赫",
+    "榕榕"
+   ],
+   "category": "series",
+   "cover": "covers/4707205/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4707205/01.webp",
    "date": "2011-02-07",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "韦正"
+   ],
+   "douban_score": 8.3,
+   "episodes": 20,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "4707205",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 50,
+   "slug": "ipartment-season-2",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -457,24 +832,44 @@
    "title": "爱情公寓2",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4707205/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "汪远"
+   ],
+   "year": 2011
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "赵霁",
+    "金世佳",
+    "娄艺潇",
+    "陈赫",
+    "孙艺洲",
+    "王传君",
+    "李金铭",
+    "榕榕"
+   ],
+   "category": "series",
+   "cover": "covers/3926132/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3926132/01.webp",
    "date": "2011-02-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "韦正"
+   ],
+   "douban_score": 8.3,
+   "episodes": 20,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "3926132",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "ipartment-season-1",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -483,24 +878,41 @@
    "title": "爱情公寓",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3926132/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "汪远"
+   ],
+   "year": 2009
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "北乃绮",
+    "岩下志麻",
+    "芦田爱菜",
+    "夏川结衣",
+    "小林稔侍",
+    "三浦翔平"
+   ],
+   "category": "feature",
+   "cover": "covers/5387025/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5387025/01.webp",
    "date": "2011-02-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "竹园元"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情"
+   ],
    "id": "5387025",
    "missing": false,
-   "pending": true,
+   "original_title": "トイレの神様",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 101,
+   "slug": "toire-no-kamisama",
    "status": "collect",
    "tags": [
     "Movie",
@@ -509,50 +921,100 @@
    "title": "厕所女神",
    "type": "movie",
    "url": "https://movie.douban.com/subject/5387025/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "旺季静",
+    "植村花菜"
+   ],
+   "year": 2011
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sarah Jessica Parker（莎拉·杰茜卡·帕克）",
+    "Kim Cattrall（金·凯特罗尔）",
+    "Kristin Davis（克里斯汀·戴维斯）",
+    "Cynthia Nixon（辛西娅·尼克松）",
+    "大卫·艾根伯格",
+    "克里斯·诺斯",
+    "威利·加森",
+    "Kyle MacLachlan（凯尔·麦克拉克伦）",
+    "约翰·考伯特",
+    "伊万·汉德勒"
+   ],
+   "category": "series",
+   "cover": "covers/1304397/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1304397/01.webp",
    "date": "2011-02-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David Frankel"
+   ],
+   "douban_score": 8.9,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
    "id": "1304397",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 30,
+   "slug": "sex-and-the-city-season-1",
    "status": "collect",
    "tags": [
     "Teleplay",
     "ENU"
    ],
-   "title": "欲望都市 第一季",
+   "title": "欲望都市 第一季 Sex and the City Season 1",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1304397/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "坎迪斯·布什奈尔",
+    "达伦·思达"
+   ],
+   "year": 1998
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "葛优",
+    "王学圻",
+    "黄晓明",
+    "范冰冰",
+    "海清",
+    "赵文浩",
+    "王翰",
+    "赵文卓",
+    "鲍国安",
+    "张丰毅"
+   ],
+   "category": "feature",
+   "comment": "怎么把一个中国人都知道的故事改编成这样了？",
+   "cover": "covers/3546019/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3546019/01.webp",
    "date": "2011-02-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "陈凯歌"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "剧情",
+    "动作",
+    "历史",
+    "武侠",
+    "古装"
+   ],
    "id": "3546019",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 128,
+   "slug": "sacrifice",
    "status": "collect",
    "tags": [
     "History",
@@ -563,24 +1025,51 @@
    "title": "赵氏孤儿",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3546019/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "陈凯歌",
+    "高璇",
+    "任宝茹",
+    "赵宁宇"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘德华",
+    "刘嘉玲",
+    "李冰冰",
+    "梁家辉",
+    "邓超",
+    "Teddy Robin（泰迪·罗宾）",
+    "吴耀汉",
+    "姚橹",
+    "刘金山",
+    "马今"
+   ],
+   "category": "feature",
+   "comment": "RT: 在中南海附近建世界第一摩天大厦是傻X行为",
+   "cover": "covers/3412830/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3412830/01.webp",
    "date": "2011-02-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "徐克"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "动作",
+    "悬疑",
+    "古装"
+   ],
    "id": "3412830",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 123,
+   "slug": "detective-dee-and-the-mystery-of-the-phantom-flame",
    "status": "collect",
    "tags": [
     "Movie",
@@ -592,24 +1081,42 @@
    "title": "狄仁杰之通天帝国",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3412830/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "张家鲁"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杜淳",
+    "薛佳凝",
+    "原梓霏",
+    "冷中易",
+    "袁文康"
+   ],
+   "category": "series",
+   "comment": "我有多久没有看完国产连续剧来着...",
+   "cover": "covers/4291269/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4291269/01.webp",
    "date": "2011-02-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "王中伟"
+   ],
+   "douban_score": 7.6,
+   "episodes": 24,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "4291269",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "douban-4291269",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -618,24 +1125,48 @@
    "title": "租个女友回家过年",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4291269/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "方真"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Colin Firth（科林·费尔斯）",
+    "Geoffrey Rush（杰弗里·拉什）",
+    "Helena Bonham Carter（海伦娜·伯翰·卡特）",
+    "Guy Pearce（盖·皮尔斯）",
+    "Michael Gambon（迈克尔·刚本）",
+    "Timothy Spall（蒂莫西·斯波）",
+    "Jennifer Ehle（詹妮弗·艾莉）",
+    "德里克·雅各比",
+    "安东尼·安德鲁斯",
+    "克莱尔·布鲁姆"
+   ],
+   "category": "feature",
+   "cover": "covers/4023638/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4023638/01.webp",
    "date": "2011-02-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Tom Hooper（汤姆·霍伯）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "剧情",
+    "传记",
+    "历史"
+   ],
    "id": "4023638",
    "missing": false,
-   "pending": true,
+   "original_title": "The King's Speech",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 118,
+   "slug": "the-king-s-speech",
    "status": "collect",
    "tags": [
     "Movie",
@@ -646,24 +1177,46 @@
    "title": "国王的演讲",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4023638/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大卫·塞德勒"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "松隆子",
+    "冈田将生",
+    "木村佳乃",
+    "西井幸人",
+    "桥本爱",
+    "芦田爱菜",
+    "三吉彩花",
+    "藤原薰",
+    "井之胁海",
+    "清水尚弥"
+   ],
+   "category": "feature",
+   "comment": "可怕的 <青少年保护法> 啊...",
+   "cover": "covers/4268598/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4268598/01.webp",
    "date": "2011-01-31",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "中岛哲也"
+   ],
+   "douban_score": 8.8,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "4268598",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 106,
+   "slug": "kokuhaku",
    "status": "collect",
    "tags": [
     "Movie",
@@ -672,24 +1225,39 @@
    "title": "告白",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4268598/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "中岛哲也",
+    "凑佳苗"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "木之内绿",
+    "神山繁"
+   ],
+   "category": "series",
+   "cover": "covers/2217295/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2217295/01.webp",
    "date": "2011-01-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "日高武治"
+   ],
+   "douban_score": 8.5,
+   "episodes": 39,
+   "genres": [
+    "剧情"
+   ],
    "id": "2217295",
    "missing": false,
-   "pending": true,
+   "original_title": "刑事犬カール",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "douban-2217295",
    "status": "collect",
    "tags": [
     "JPN",
@@ -698,24 +1266,38 @@
    "title": "警犬卡尔",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2217295/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "佐佐木守"
+   ],
+   "year": 1977
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "谷原章介",
+    "松下奈绪"
+   ],
+   "category": "series",
+   "cover": "covers/5318667/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5318667/01.webp",
    "date": "2011-01-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水谷俊之"
+   ],
+   "douban_score": 6.3,
+   "episodes": 1,
+   "genres": [
+    "悬疑"
+   ],
    "id": "5318667",
    "missing": false,
-   "pending": true,
+   "original_title": "東野圭吾ドラマスペシャル 探偵倶楽部",
+   "pending": false,
    "rating": 2,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-5318667",
    "status": "collect",
    "tags": [
     "Movie",
@@ -726,24 +1308,46 @@
    "title": "东野圭吾SP 侦探俱乐部",
    "type": "tv",
    "url": "https://movie.douban.com/subject/5318667/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "东野圭吾（原作）"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Parminder Nagra（帕敏德·纳格拉）",
+    "Keira Knightley（凯拉·奈特莉）",
+    "Jonathan Rhys Meyers（乔纳森·莱斯·梅耶斯）",
+    "Juliet Stevenson（茱丽叶特·斯蒂文森）",
+    "Archie Panjabi（雅奇·潘嘉比）"
+   ],
+   "category": "feature",
+   "comment": "是部好片子...被这傻电影名骗了...",
+   "cover": "covers/1302776/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1302776/01.webp",
    "date": "2011-01-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Gurinder Chadha（顾伦德·查达哈）"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情",
+    "运动"
+   ],
    "id": "1302776",
    "missing": false,
-   "pending": true,
+   "original_title": "Bend It Like Beckham",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国",
+    "英国",
+    "美国"
+   ],
+   "runtime": 112,
+   "slug": "bend-it-like-beckham",
    "status": "collect",
    "tags": [
     "Movie",
@@ -752,24 +1356,38 @@
    "title": "我爱贝克汉姆",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1302776/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Gurinder Chadha（顾伦德·查达哈）"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "沟端淳平",
+    "黑木美沙"
+   ],
+   "category": "feature",
+   "cover": "covers/5386987/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5386987/01.webp",
    "date": "2011-01-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "土井裕泰"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "悬疑",
+    "犯罪"
+   ],
    "id": "5386987",
    "missing": false,
-   "pending": true,
+   "original_title": "新春ドラマSP 赤い指～「新参者」加賀恭一郎再び！",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 124,
+   "slug": "akai-yubi",
    "status": "collect",
    "tags": [
     "Movie",
@@ -780,24 +1398,47 @@
    "title": "红手指",
    "type": "movie",
    "url": "https://movie.douban.com/subject/5386987/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "东野圭吾",
+    "樱井武晴",
+    "牧野圭祐"
+   ],
+   "year": 2011
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "藤原龙也",
+    "大东骏介",
+    "仓科加奈",
+    "高桥克实",
+    "温水洋一",
+    "石桥莲司",
+    "堀内敬子",
+    "菊池桃子"
+   ],
+   "category": "series",
+   "comment": "烂尾...",
+   "cover": "covers/5308231/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5308231/01.webp",
    "date": "2011-01-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "田中诚"
+   ],
+   "douban_score": 8.0,
+   "episodes": 8,
+   "genres": [
+    "家庭"
+   ],
    "id": "5308231",
    "missing": false,
-   "pending": true,
+   "original_title": "おじいちゃんは25歳",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "douban-5308231",
    "status": "collect",
    "tags": [
     "JPN",
@@ -807,24 +1448,57 @@
    "title": "爷爷25岁",
    "type": "tv",
    "url": "https://movie.douban.com/subject/5308231/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "酒井雅秋"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福山润",
+    "堀江由衣",
+    "谷山纪章",
+    "前田爱",
+    "平野绫",
+    "大塚周夫",
+    "安元洋贵",
+    "鸟海浩辅",
+    "间岛淳司",
+    "樱井孝宏"
+   ],
+   "category": "anime",
+   "cover": "covers/4176576/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4176576/01.webp",
    "date": "2011-01-08",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "西村纯二",
+    "龟井干太",
+    "神保昌登",
+    "吉田俊司",
+    "上田茂",
+    "高桥幸雄",
+    "雄谷将仁",
+    "西村博昭",
+    "大关雅幸",
+    "木村崇裕",
+    "宇井良和"
+   ],
+   "douban_score": 7.9,
+   "episodes": 26,
+   "genres": [
+    "动画",
+    "奇幻"
+   ],
    "id": "4176576",
    "missing": false,
-   "pending": true,
+   "original_title": "ぬらりひょんの孫",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "nurarihyon-no-mago",
    "status": "collect",
    "tags": [
     "Animation",
@@ -835,24 +1509,52 @@
    "title": "滑头鬼之孙",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4176576/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "高桥奈津子",
+    "笔安一幸",
+    "森田真由美",
+    "渡边大辅",
+    "西村纯二"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Angelina Jolie（安吉丽娜·朱莉）",
+    "Liev Schreiber（列维·施瑞博尔）",
+    "Chiwetel Ejiofor（切瓦特·埃加福）",
+    "Daniel Olbrychski（达尼尔·奥勒布里斯基）",
+    "August Diehl（奥古斯特·迪赫）",
+    "丹尼尔·皮尔斯",
+    "亨特·布洛克",
+    "Andre Braugher（安德鲁·布劳尔）",
+    "Olek Krupa（奥莱克·克鲁帕）",
+    "佐伊·利斯特·琼斯"
+   ],
+   "category": "feature",
+   "comment": "意识形态的对立...",
+   "cover": "covers/2153526/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2153526/01.webp",
    "date": "2011-01-03",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Phillip Noyce（菲利普·诺伊斯）"
+   ],
+   "douban_score": 7.3,
+   "genres": [
+    "动作",
+    "悬疑",
+    "惊悚"
+   ],
    "id": "2153526",
    "missing": false,
-   "pending": true,
+   "original_title": "Salt",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 100,
+   "slug": "salt",
    "status": "collect",
    "tags": [
     "Movie",
@@ -861,24 +1563,42 @@
    "title": "特工绍特",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2153526/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "科特·维莫"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Edward Norton（爱德华·诺顿）",
+    "Robert De Niro（罗伯特·德尼罗）",
+    "Milla Jovovich（米拉·乔沃维奇）",
+    "Frances Conroy（弗兰西丝·康罗伊）",
+    "Enver Gjokaj（安维尔·乔卡亚）",
+    "利亚姆·费格森"
+   ],
+   "category": "feature",
+   "cover": "covers/3706862/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3706862/01.webp",
    "date": "2011-01-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "John Curran（约翰·卡兰）"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
    "id": "3706862",
    "missing": false,
-   "pending": true,
+   "original_title": "Stone",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "stone",
    "status": "collect",
    "tags": [
     "Movie",
@@ -887,24 +1607,47 @@
    "title": "危狱惊情",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3706862/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Angus MacLachlan"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jesse Eisenberg（杰西·艾森伯格）",
+    "Andrew Garfield（安德鲁·加菲尔德）",
+    "Justin Timberlake（贾斯汀·汀布莱克）",
+    "Rooney Mara（鲁妮·玛拉）",
+    "Joseph Mazzello（约瑟夫·梅泽罗）",
+    "Armie Hammer（艾米·汉莫）",
+    "乔什·平茨",
+    "艾比·森哈",
+    "布兰达·宋",
+    "Dakota Johnson（达科塔·约翰逊）"
+   ],
+   "category": "feature",
+   "comment": "最后只能一遍一遍刷新页面",
+   "cover": "covers/3205624/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3205624/01.webp",
    "date": "2011-01-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David Fincher（大卫·芬奇）"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "剧情",
+    "传记"
+   ],
    "id": "3205624",
    "missing": false,
-   "pending": true,
+   "original_title": "The Social Network",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 120,
+   "slug": "the-social-network",
    "status": "collect",
    "tags": [
     "Movie",
@@ -914,24 +1657,48 @@
    "title": "社交网络",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3205624/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Aaron Sorkin（艾伦·索金）",
+    "本·麦兹里奇"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Natalie Portman（娜塔莉·波特曼）",
+    "Mila Kunis（米拉·库尼斯）",
+    "Vincent Cassel（文森特·卡索）",
+    "Barbara Hershey（芭芭拉·赫希）",
+    "Winona Ryder（薇诺娜·瑞德）",
+    "本杰明·米派德",
+    "克塞尼亚·索罗",
+    "克里斯汀娜·安娜波",
+    "詹妮特·蒙哥马利",
+    "Sebastian Stan（塞巴斯蒂安·斯坦）"
+   ],
+   "category": "feature",
+   "comment": "不够惊悚...",
+   "cover": "covers/1978709/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1978709/01.webp",
    "date": "2011-01-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Darren Aronofsky（达伦·阿伦诺夫斯基）"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
    "id": "1978709",
    "missing": false,
-   "pending": true,
+   "original_title": "Black Swan",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 108,
+   "slug": "black-swan",
    "status": "collect",
    "tags": [
     "Movie",
@@ -940,24 +1707,48 @@
    "title": "黑天鹅",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1978709/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "安德雷斯·海因斯",
+    "马克·海曼",
+    "约翰·J·麦克劳克林"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jennifer Love Hewitt（詹妮弗·洛芙·休伊特）",
+    "Paul Nicholls（保罗·尼科尔斯）",
+    "Tom Wilkinson（汤姆·威尔金森）",
+    "Diana Hardcastle（黛安娜·哈卡索）",
+    "Lucy Davenport（露茜·达文波特）",
+    "内维尔·菲利普斯"
+   ],
+   "category": "feature",
+   "comment": "原来是科幻片...",
+   "cover": "covers/1440703/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1440703/01.webp",
    "date": "2011-01-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Gil Junger（吉尔·约格尔）"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情",
+    "奇幻"
+   ],
    "id": "1440703",
    "missing": false,
-   "pending": true,
+   "original_title": "If Only",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 95,
+   "slug": "if-only",
    "status": "collect",
    "tags": [
     "Movie",
@@ -967,24 +1758,49 @@
    "title": "爱再来一次",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1440703/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "克里斯蒂娜·威尔士"
+   ],
+   "year": 2004
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Harrison Ford（哈里森·福特）",
+    "Rutger Hauer（鲁格·豪尔）",
+    "Sean Young（肖恩·杨）",
+    "Edward James Olmos（爱德华·詹姆斯·奥莫斯）",
+    "M. Emmet Walsh（M·埃梅特·沃尔什）",
+    "Daryl Hannah（达丽尔·汉纳）",
+    "威廉·桑德森",
+    "布里翁·詹姆斯",
+    "乔·托克尔",
+    "Joanna Cassidy（乔安娜·卡西迪）"
+   ],
+   "category": "feature",
+   "comment": "没有特别的感觉...可能是隔开太久才看的原因?",
+   "cover": "covers/1291839/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291839/01.webp",
    "date": "2011-01-02",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ridley Scott（雷德利·斯科特）"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "科幻",
+    "惊悚"
+   ],
    "id": "1291839",
    "missing": false,
-   "pending": true,
+   "original_title": "Blade Runner",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国",
+    "香港"
+   ],
+   "runtime": 117,
+   "slug": "blade-runner",
    "status": "collect",
    "tags": [
     "Movie",
@@ -995,24 +1811,51 @@
    "title": "银翼杀手",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1291839/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "汉普顿·范彻",
+    "大卫·韦伯·皮普尔斯",
+    "菲利普·迪克"
+   ],
+   "year": 1982
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杉田智和",
+    "平野绫",
+    "茅原实里",
+    "后藤邑子",
+    "小野大辅",
+    "桑谷夏子",
+    "松冈由贵",
+    "白石稔",
+    "松元惠",
+    "青木沙耶香"
+   ],
+   "category": "anime",
+   "comment": "跌宕起伏...长门大人的自我修复...",
+   "cover": "covers/4074292/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4074292/01.webp",
    "date": "2010-12-25",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "石原立也",
+    "武本康弘"
+   ],
+   "douban_score": 9.1,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画"
+   ],
    "id": "4074292",
    "missing": false,
-   "pending": true,
+   "original_title": "涼宮ハルヒの消失",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 162,
+   "slug": "the-disappearance-of-haruhi-suzumiya",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1023,24 +1866,49 @@
    "title": "凉宫春日的消失",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4074292/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "谷川流",
+    "志茂文彦"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Eric Balfour（艾里克·巴弗尔）",
+    "Scottie Thompson（斯考蒂·汤姆森）",
+    "Brittany Daniel（布兰特妮·丹尼尔）",
+    "Crystal Reed（克里斯塔尔·里德）",
+    "尼尔·霍普金斯",
+    "大卫·札亚斯",
+    "Donald Faison（唐纳德·法森）",
+    "罗宾·甘梅尔",
+    "坦尼娅·纽堡尔德",
+    "J·保罗·伯默尔"
+   ],
+   "category": "feature",
+   "cover": "covers/4919019/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4919019/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Colin Strause（科林·施特劳斯）",
+    "Greg Strause（格雷格·施特劳斯）"
+   ],
+   "douban_score": 4.8,
+   "genres": [
+    "动作",
+    "科幻",
+    "灾难"
+   ],
    "id": "4919019",
    "missing": false,
-   "pending": true,
+   "original_title": "Skyline",
+   "pending": false,
    "rating": 1,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 94,
+   "slug": "skyline",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1050,24 +1918,52 @@
    "title": "天际浩劫",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4919019/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "乔舒亚·科迪斯",
+    "连姆·O·达诺"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "户田惠梨香",
+    "加濑亮",
+    "福田沙纪",
+    "城田优",
+    "龙雷太",
+    "神木隆之介",
+    "安田显",
+    "田中哲司",
+    "德井优",
+    "椎名桔平"
+   ],
+   "category": "series",
+   "comment": "没有创意...情节太接近美剧 <Hero>了...",
+   "cover": "covers/4917705/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4917705/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "堤幸彦",
+    "加藤新",
+    "今井夏木",
+    "金子文纪"
+   ],
+   "douban_score": 8.7,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "4917705",
    "missing": false,
-   "pending": true,
+   "original_title": "SPEC〜警視庁公安部公安第五課 未詳事件特別対策係事件簿〜",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 47,
+   "slug": "spec-2010",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1077,24 +1973,45 @@
    "title": "SPEC～警视厅公安部公安第五课 未详事件特别对策系事件簿～",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4917705/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "西荻弓绘"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山田孝之",
+    "片濑那奈",
+    "矢部享佑",
+    "崎本大海",
+    "横山美雪",
+    "希崎·杰西卡",
+    "天海翼"
+   ],
+   "category": "series",
+   "cover": "covers/4851891/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4851891/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "山口雅俊",
+    "川村泰祐"
+   ],
+   "douban_score": 8.6,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
    "id": "4851891",
    "missing": false,
-   "pending": true,
+   "original_title": "闇金ウシジマくん",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "douban-4851891",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -1104,24 +2021,50 @@
    "title": "暗金丑岛君 第一季",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4851891/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "福间正浩"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "菊池正美",
+    "折笠愛",
+    "高田由美",
+    "横山智佐",
+    "小桜エツ子",
+    "水谷優子",
+    "小林優子",
+    "青野武"
+   ],
+   "category": "anime",
+   "cover": "covers/3780358/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3780358/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "梶島正樹",
+    "林宏樹",
+    "八谷賢一",
+    "小沢一浩"
+   ],
+   "douban_score": 8.5,
+   "episodes": 7,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画",
+    "奇幻"
+   ],
    "id": "3780358",
    "missing": false,
-   "pending": true,
+   "original_title": "天地無用! 魎皇鬼",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "tenchi-muyo-ryo-oki",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1131,24 +2074,49 @@
    "title": "天地无用！魉皇鬼 一期",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3780358/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "黑田洋介"
+   ],
+   "year": 1992
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "菊池正美",
+    "岩男润子",
+    "折笠爱",
+    "高田由美",
+    "横山智佐",
+    "小樱悦子",
+    "水谷优子",
+    "天野由梨",
+    "小林优子",
+    "青野武"
+   ],
+   "category": "anime",
+   "cover": "covers/3321017/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3321017/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "梶岛正树",
+    "木村哲"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画",
+    "奇幻"
+   ],
    "id": "3321017",
    "missing": false,
-   "pending": true,
+   "original_title": "天地無用! 真夏のイヴ",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 60,
+   "slug": "tenchi-muyo-midsummer-s-eve",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1158,24 +2126,40 @@
    "title": "天地无用！盛夏的夜晚",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3321017/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "长谷川菜穗子"
+   ],
+   "year": 1997
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Gabourey Sidibe（加布蕾·丝迪贝）",
+    "莫妮克",
+    "Paula Patton（宝拉·巴顿）",
+    "Mariah Carey（玛丽亚·凯莉）",
+    "Lenny Kravitz（蓝尼·克罗维兹）"
+   ],
+   "category": "feature",
+   "cover": "covers/3011072/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3011072/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Lee Daniels（李·丹尼尔斯）"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情"
+   ],
    "id": "3011072",
    "missing": false,
-   "pending": true,
+   "original_title": "Precious",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 110,
+   "slug": "precious",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1184,24 +2168,49 @@
    "title": "珍爱",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3011072/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "格弗瑞·弗莱彻",
+    "萨菲尔"
+   ],
+   "year": 2009
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Lisa Loeb ... Mary Jane Watson",
+    "Neil Patrick Harris ... Peter Parker",
+    "Ian Ziering ... Harry Osborn",
+    "Michael Dorn ... Kraven the Hunter"
+   ],
+   "category": "anime",
+   "cover": "covers/2567466/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2567466/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Steve Ditko",
+    "Stan Lee"
+   ],
+   "douban_score": 8.1,
+   "episodes": 13,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "动画",
+    "惊悚",
+    "犯罪",
+    "冒险"
+   ],
    "id": "2567466",
    "missing": false,
-   "pending": true,
+   "original_title": "Spider-Man: The New Animated Series",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "加拿大"
+   ],
+   "runtime": 21,
+   "slug": "spider-man-the-new-animated-series",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1212,23 +2221,38 @@
    "type": "tv",
    "url": "https://movie.douban.com/subject/2567466/",
    "writers": [],
-   "year": null
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "神谷明",
+    "难波圭一",
+    "富永美伊奈"
+   ],
+   "category": "anime",
+   "cover": "covers/2297477/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2297477/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "芦田豊雄",
+    "原作：武論尊、原哲夫"
+   ],
+   "douban_score": 8.6,
+   "episodes": 43,
+   "genres": [
+    "动作",
+    "动画"
+   ],
    "id": "2297477",
    "missing": false,
-   "pending": true,
+   "original_title": "世紀末救世主伝説 北斗の拳2",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "hokuto-no-ken-2",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1238,24 +2262,43 @@
    "title": "世纪末救世主传说 北斗神拳2",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2297477/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "武论尊",
+    "原哲夫"
+   ],
+   "year": 1987
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "苍井优",
+    "森山未来",
+    "泷正则",
+    "竹财辉之助",
+    "斋藤隆成",
+    "笹野高史",
+    "佐佐木澄江"
+   ],
+   "category": "feature",
+   "cover": "covers/2157504/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2157504/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "棚田由纪"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情"
+   ],
    "id": "2157504",
    "missing": false,
-   "pending": true,
+   "original_title": "百万円と苦虫女",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 121,
+   "slug": "one-million-yen-and-the-nigamushi-woman",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1264,24 +2307,48 @@
    "title": "百万元与苦虫女",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2157504/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "棚田由纪"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Russell Crowe（罗素·克劳）",
+    "Cate Blanchett（凯特·布兰切特）",
+    "Max von Sydow（马克斯·冯·叙多夫）",
+    "William Hurt（威廉·赫特）",
+    "Mark Strong（马克·斯特朗）",
+    "Oscar Isaac（奥斯卡·伊萨克）",
+    "Danny Huston（丹尼·赫斯顿）",
+    "艾琳·阿特金斯",
+    "马克·阿蒂",
+    "Matthew Macfadyen（马修·麦克费登）"
+   ],
+   "category": "feature",
+   "cover": "covers/2062677/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2062677/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ridley Scott（雷德利·斯科特）"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "剧情",
+    "动作",
+    "冒险"
+   ],
    "id": "2062677",
    "missing": false,
-   "pending": true,
+   "original_title": "Robin Hood",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 140,
+   "slug": "robin-hood",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1293,24 +2360,47 @@
    "title": "罗宾汉",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2062677/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "布莱恩·海尔格兰德",
+    "伊森·瑞弗",
+    "塞卢斯·沃瑞斯"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "津嘉山正种",
+    "倍赏千惠子",
+    "石村知子",
+    "椎名碧流",
+    "肝付兼太",
+    "龙田直树",
+    "伊武雅刀",
+    "铃木兰兰",
+    "谷启",
+    "茶风林"
+   ],
+   "category": "anime",
+   "cover": "covers/1970753/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1970753/01.webp",
    "date": "2010-12-19",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "竹内启雄"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "动画"
+   ],
    "id": "1970753",
    "missing": false,
-   "pending": true,
+   "original_title": "ジャングル大帝",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 100,
+   "slug": "jungle-emperor-leo",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1319,24 +2409,41 @@
    "title": "森林大帝",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1970753/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "手冢治虫"
+   ],
+   "year": 1997
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "吉高由里子",
+    "高良健吾",
+    "井浦新",
+    "唐泽寿明",
+    "小栗旬",
+    "藤原龙也"
+   ],
+   "category": "feature",
+   "cover": "covers/4068816/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4068816/01.webp",
    "date": "2010-12-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "蜷川幸雄"
+   ],
+   "douban_score": 7.1,
+   "genres": [
+    "惊悚"
+   ],
    "id": "4068816",
    "missing": false,
-   "pending": true,
+   "original_title": "蛇にピアス",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 125,
+   "slug": "hebi-ni-piasu",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1345,24 +2452,51 @@
    "title": "蛇舌",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4068816/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "宮脇卓也",
+    "蜷川幸雄",
+    "金原瞳"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Keira Knightley（凯拉·奈特莉）",
+    "Matthew Macfadyen（马修·麦克费登）",
+    "Donald Sutherland（唐纳德·萨瑟兰）",
+    "Brenda Blethyn（布兰达·布莱斯）",
+    "Carey Mulligan（凯瑞·穆里根）",
+    "裴淳华",
+    "Jena Malone（吉娜·马隆）",
+    "妲露拉·莱莉",
+    "Judi Dench（朱迪·丹奇）",
+    "西蒙·伍兹"
+   ],
+   "category": "feature",
+   "comment": "这部名著似乎带有很强的作者自序性???",
+   "cover": "covers/1418200/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1418200/01.webp",
    "date": "2010-12-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Joe Wright（乔·赖特）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "1418200",
    "missing": false,
-   "pending": true,
+   "original_title": "Pride & Prejudice",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "法国",
+    "英国",
+    "美国"
+   ],
+   "runtime": 129,
+   "slug": "pride-prejudice",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1371,24 +2505,52 @@
    "title": "傲慢与偏见",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1418200/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "简·奥斯汀",
+    "黛博拉·莫盖茨"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "细谷佳正",
+    "田村由香里",
+    "中原麻衣",
+    "户松遥",
+    "小山力也",
+    "铃木千寻",
+    "宫本充",
+    "池田昌子",
+    "大川透",
+    "筱原惠美"
+   ],
+   "category": "anime",
+   "comment": "一月一集,足足看了一年 (绝刀·铇,斩刀·钝,斩刀·铩,薄刀·针,贼刀·铠,双刀·鎚,恶刀·鐚,微刀·钗,王刀·锯,诚刀·铨,毒刀·镀,炎刀·銃)...有意思的是,看第一集时,我正在准备跳槽,第八集是跳到现在单位,第十一集是新单位转正...",
+   "cover": "covers/4043764/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4043764/01.webp",
    "date": "2010-12-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "元永庆太郎",
+    "则座诚",
+    "小林智树",
+    "天冲",
+    "佐藤真二"
+   ],
+   "douban_score": 8.4,
+   "episodes": 12,
+   "genres": [
+    "动画"
+   ],
    "id": "4043764",
    "missing": false,
-   "pending": true,
+   "original_title": "刀語",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 50,
+   "slug": "katanagatari",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1398,24 +2560,46 @@
    "title": "刀语",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4043764/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "上江洲诚",
+    "待田堂子",
+    "长津晴子",
+    "西尾维新"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "伊藤淳史",
+    "高良健吾",
+    "多部未华子",
+    "滨田岳",
+    "森山未来",
+    "大森南朋",
+    "石丸谦二郎"
+   ],
+   "category": "feature",
+   "comment": "时时可死,步步求生...",
+   "cover": "covers/3448362/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3448362/01.webp",
    "date": "2010-12-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "中村义洋"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "喜剧"
+   ],
    "id": "3448362",
    "missing": false,
-   "pending": true,
+   "original_title": "フィッシュストーリー",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 112,
+   "slug": "punk",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1424,24 +2608,51 @@
    "title": "鱼的故事",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3448362/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "伊坂幸太郎",
+    "林民夫"
+   ],
+   "year": 2009
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Steve Carell（史蒂夫·卡瑞尔）",
+    "Jason Segel（杰森·席格尔）",
+    "Russell Brand（拉塞尔·布兰德）",
+    "Julie Andrews（朱莉·安德鲁斯）",
+    "Will Arnett（威尔·阿奈特）",
+    "Kristen Wiig（克里斯汀·韦格）",
+    "Miranda Cosgrove（米兰达·卡斯格拉夫）",
+    "达纳·盖尔",
+    "艾尔西·费舍尔",
+    "Pierre Coffin（皮埃尔·柯芬）"
+   ],
+   "category": "anime",
+   "comment": "这么容易就可以改邪归正?",
+   "cover": "covers/3287562/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3287562/01.webp",
    "date": "2010-12-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Pierre Coffin（皮埃尔·柯芬）",
+    "Chris Renaud（克里斯·雷纳德）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "喜剧",
+    "动画",
+    "冒险"
+   ],
    "id": "3287562",
    "missing": false,
-   "pending": true,
+   "original_title": "Despicable Me",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "法国"
+   ],
+   "runtime": 95,
+   "slug": "despicable-me",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1452,24 +2663,42 @@
    "title": "神偷奶爸",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3287562/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "肯·道里欧",
+    "塞尔希奥·巴勃罗斯",
+    "辛科·保罗"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Lilly Carter",
+    "Mike Nawrocki",
+    "Phil Vischer"
+   ],
+   "category": "anime",
+   "cover": "covers/5383789/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5383789/01.webp",
    "date": "2010-12-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Brian Roberts（布莱恩·罗伯茨）"
+   ],
+   "douban_score": 6.2,
+   "genres": [
+    "喜剧",
+    "动画",
+    "家庭"
+   ],
    "id": "5383789",
    "missing": false,
-   "pending": true,
+   "original_title": "Veggie Tales: It's a Meaningful Life",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 48,
+   "slug": "veggie-tales-it-s-a-meaningful-life",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1479,24 +2708,43 @@
    "title": "蔬菜宝宝",
    "type": "movie",
    "url": "https://movie.douban.com/subject/5383789/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Mark Steele（马克·斯蒂尔）"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "石原里美",
+    "谷原章介",
+    "大岛优子",
+    "三浦理惠子",
+    "竹内寿"
+   ],
+   "category": "series",
+   "cover": "covers/5250582/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5250582/01.webp",
    "date": "2010-12-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "常廣丈太"
+   ],
+   "douban_score": 6.9,
+   "episodes": 9,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "悬疑"
+   ],
    "id": "5250582",
    "missing": false,
-   "pending": true,
+   "original_title": "霊能力者 小田霧響子の嘘",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 55,
+   "slug": "douban-5250582",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1505,24 +2753,39 @@
    "title": "灵能力者小田雾响子的谎言",
    "type": "tv",
    "url": "https://movie.douban.com/subject/5250582/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "渡边雄介"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "吉高由里子",
+    "塚地武雅",
+    "田中要次"
+   ],
+   "category": "series",
+   "cover": "covers/4838534/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4838534/01.webp",
    "date": "2010-12-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "笕昌也"
+   ],
+   "douban_score": 6.5,
+   "episodes": 5,
+   "genres": [
+    "喜剧"
+   ],
    "id": "4838534",
    "missing": false,
-   "pending": true,
+   "original_title": "豆腐姉妹",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-4838534",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1533,23 +2796,46 @@
    "type": "tv",
    "url": "https://movie.douban.com/subject/4838534/",
    "writers": [],
-   "year": null
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福山雅治",
+    "香川照之",
+    "大森南朋",
+    "广末凉子",
+    "佐藤健",
+    "真木阳子",
+    "贯地谷栞",
+    "儿玉清",
+    "苍井优",
+    "杉本哲太"
+   ],
+   "category": "series",
+   "comment": "坂本龍馬、高杉晋作...成为神化的人,大多都是英年早逝的人...",
+   "cover": "covers/3868147/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3868147/01.webp",
    "date": "2010-12-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "大友启史"
+   ],
+   "douban_score": 8.7,
+   "episodes": 48,
+   "genres": [
+    "剧情",
+    "传记",
+    "历史"
+   ],
    "id": "3868147",
    "missing": false,
-   "pending": true,
+   "original_title": "龍馬伝",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 45,
+   "slug": "ryomaden",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1561,24 +2847,39 @@
    "title": "龙马传",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3868147/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "福田靖"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Hope Davis（霍普·戴维斯）",
+    "Mark Bazeley（马克·巴泽利）",
+    "Adam Godley（亚当·戈德利）",
+    "Matthew Marsh（马修·马什）"
+   ],
+   "category": "feature",
+   "cover": "covers/3073270/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3073270/01.webp",
    "date": "2010-12-05",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Richard Loncraine（理查德·隆克瑞恩）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "剧情"
+   ],
    "id": "3073270",
    "missing": false,
-   "pending": true,
+   "original_title": "The Special Relationship",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国"
+   ],
+   "runtime": 93,
+   "slug": "the-special-relationship",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1588,24 +2889,48 @@
    "title": "特殊关系",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3073270/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "皮特·摩根"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Kristen Stewart（克里斯汀·斯图尔特）",
+    "Robert Pattinson（罗伯特·帕丁森）",
+    "Taylor Lautner（泰勒·洛特纳）",
+    "Billy Burke（比利·伯克）",
+    "Ashley Greene（阿什丽·格林尼）",
+    "Jackson Rathbone（杰克逊·拉斯波恩）",
+    "Nikki Reed（妮基·瑞德）",
+    "凯南·鲁兹",
+    "Elizabeth Reaser（伊莉莎白·里瑟）",
+    "Peter Facinelli（彼得·费辛利）"
+   ],
+   "category": "feature",
+   "cover": "covers/3289086/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3289086/01.webp",
    "date": "2010-11-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "David Slade（大卫·斯雷德）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "剧情",
+    "爱情",
+    "惊悚",
+    "奇幻"
+   ],
    "id": "3289086",
    "missing": false,
-   "pending": true,
+   "original_title": "The Twilight Saga: Eclipse",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 124,
+   "slug": "the-twilight-saga-eclipse",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1615,24 +2940,39 @@
    "title": "暮光之城3：月食",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3289086/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "梅莉莎·罗森伯格",
+    "斯蒂芬妮·梅尔"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "金泰希",
+    "杨东根"
+   ],
+   "category": "feature",
+   "cover": "covers/4845437/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4845437/01.webp",
    "date": "2010-11-14",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "梁允豪"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "爱情",
+    "运动"
+   ],
    "id": "4845437",
    "missing": false,
-   "pending": true,
+   "original_title": "그랑프리",
+   "pending": false,
    "rating": 2,
-   "regions": [],
+   "regions": [
+    "韩国"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "grand-prix",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1642,23 +2982,46 @@
    "type": "movie",
    "url": "https://movie.douban.com/subject/4845437/",
    "writers": [],
-   "year": null
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "松下奈绪",
+    "向井理",
+    "野际阳子",
+    "大杉涟",
+    "古手川祐子",
+    "风间杜夫",
+    "竹下景子",
+    "有森也实",
+    "松坂庆子",
+    "村上弘明"
+   ],
+   "category": "series",
+   "cover": "covers/4764312/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4764312/01.webp",
    "date": "2010-11-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "渡边良雄",
+    "胜田夏子",
+    "一木正惠"
+   ],
+   "douban_score": 8.5,
+   "episodes": 156,
+   "genres": [
+    "剧情",
+    "家庭"
+   ],
    "id": "4764312",
    "missing": false,
-   "pending": true,
+   "original_title": "ゲゲゲの女房",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 15,
+   "slug": "douban-4764312",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -1667,24 +3030,46 @@
    "title": "怪怪怪的妻子",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4764312/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "山本睦美",
+    "武良布枝"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Dwayne Johnson（道恩·强森）",
+    "胡凯莉",
+    "Steven Brand（史蒂文·布兰德）",
+    "Michael Clarke Duncan（迈克·克拉克·邓肯）",
+    "Bernard Hill（伯纳德·希尔）"
+   ],
+   "category": "feature",
+   "cover": "covers/1306610/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1306610/01.webp",
    "date": "2010-11-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Chuck Russell（查克·拉塞尔）"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "动作",
+    "惊悚",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1306610",
    "missing": false,
-   "pending": true,
+   "original_title": "The Scorpion King",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国",
+    "美国",
+    "比利时"
+   ],
+   "runtime": 92,
+   "slug": "the-scorpion-king",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1694,24 +3079,48 @@
    "title": "蝎子王",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1306610/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大卫·海特",
+    "乔纳森·黑尔斯"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Brendan Fraser（布兰登·费舍）",
+    "Rachel Weisz（蕾切尔·薇兹）",
+    "John Hannah（约翰·汉纳）",
+    "Arnold Vosloo（阿诺德·沃斯洛）",
+    "Oded Fehr（奥德·菲尔）",
+    "帕翠西娅·维拉奎兹",
+    "弗雷迪·博思",
+    "艾伦·阿姆斯特朗",
+    "Dwayne Johnson（道恩·强森）",
+    "Adewale Akinnuoye-Agbaje（阿德沃尔·阿吉纽依-艾格拜吉）"
+   ],
+   "category": "feature",
+   "cover": "covers/1298586/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1298586/01.webp",
    "date": "2010-11-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Stephen Sommers（斯蒂芬·索莫斯）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1298586",
    "missing": false,
-   "pending": true,
+   "original_title": "The Mummy Returns",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 130,
+   "slug": "the-mummy-returns",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1721,24 +3130,48 @@
    "title": "木乃伊归来",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1298586/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Stephen Sommers（斯蒂芬·索莫斯）"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Brendan Fraser（布兰登·费舍）",
+    "Rachel Weisz（蕾切尔·薇兹）",
+    "John Hannah（约翰·汉纳）",
+    "Arnold Vosloo（阿诺德·沃斯洛）",
+    "Kevin J. O'Connor（凯文·J·奥康纳）",
+    "乔纳森·海德",
+    "Oded Fehr（奥德·菲尔）",
+    "艾瑞克·阿瓦利",
+    "史蒂芬·邓纳姆",
+    "Corey Johnson（克里·约翰逊）"
+   ],
+   "category": "feature",
+   "cover": "covers/1295229/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1295229/01.webp",
    "date": "2010-11-11",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Stephen Sommers（斯蒂芬·索莫斯）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1295229",
    "missing": false,
-   "pending": true,
+   "original_title": "The Mummy",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 125,
+   "slug": "the-mummy-1999",
    "status": "collect",
    "tags": [
     "Adventure",
@@ -1749,24 +3182,41 @@
    "title": "木乃伊",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1295229/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Stephen Sommers（斯蒂芬·索莫斯）",
+    "劳埃德·丰维耶勒",
+    "凯文·贾尔",
+    "约翰·L·鲍尔德斯顿",
+    "尼纳·威尔科克斯·普特南",
+    "理查德·沙耶尔"
+   ],
+   "year": 1999
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "anime",
+   "cover": "covers/3335371/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3335371/01.webp",
    "date": "2010-11-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "特伟",
+    "钱家骏",
+    "唐澄"
+   ],
+   "douban_score": 8.9,
+   "genres": [
+    "动画",
+    "短片"
+   ],
    "id": "3335371",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 15,
+   "slug": "baby-tadpoles-look-for-their-mother",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1776,24 +3226,35 @@
    "title": "小蝌蚪找妈妈",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3335371/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "方慧珍",
+    "盛璐德"
+   ],
+   "year": 1960
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "anime",
+   "cover": "covers/1431685/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1431685/01.webp",
    "date": "2010-11-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "周克勤"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "动画",
+    "短片"
+   ],
    "id": "1431685",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国"
+   ],
+   "runtime": 11,
+   "slug": "fishing-the-moon-from-the-pool",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1803,24 +3264,45 @@
    "title": "猴子捞月",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1431685/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "凌纾"
+   ],
+   "year": 1981
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Al Pacino（阿尔·帕西诺）",
+    "Chris O'Donnell（克里斯·奥唐纳）",
+    "James Rebhorn（詹姆斯·瑞布霍恩）",
+    "Gabrielle Anwar（加布里埃尔·安瓦尔）",
+    "Philip Seymour Hoffman（菲利普·塞默·霍夫曼）",
+    "理查德·文彻",
+    "Bradley Whitford（布莱德利·惠特福德）",
+    "罗谢尔·奥利弗",
+    "玛格丽特·埃金顿",
+    "汤姆·里斯·法雷尔"
+   ],
+   "category": "feature",
+   "cover": "covers/1298624/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1298624/01.webp",
    "date": "2010-11-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Martin Brest（马丁·布莱斯特）"
+   ],
+   "douban_score": 9.1,
+   "genres": [
+    "剧情"
+   ],
    "id": "1298624",
    "missing": false,
-   "pending": true,
+   "original_title": "Scent of a Woman",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 157,
+   "slug": "scent-of-a-woman",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1830,24 +3312,46 @@
    "title": "闻香识女人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1298624/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "博·古德曼",
+    "乔瓦尼·阿尔皮诺"
+   ],
+   "year": 1992
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Dustin Hoffman（达斯汀·霍夫曼）",
+    "Tom Cruise（汤姆·克鲁斯）",
+    "Valeria Golino（瓦莱丽亚·戈利诺）",
+    "Bonnie Hunt（邦妮·亨特）",
+    "Beth Grant（贝丝·格兰特）",
+    "杰克·霍夫曼",
+    "克里斯·马尔基",
+    "杰拉尔德·R·莫伦",
+    "卢辛达·珍妮",
+    "拉尔夫·塞莫"
+   ],
+   "category": "feature",
+   "cover": "covers/1291870/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291870/01.webp",
    "date": "2010-11-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Barry Levinson（巴瑞·莱文森）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "剧情"
+   ],
    "id": "1291870",
    "missing": false,
-   "pending": true,
+   "original_title": "Rain Man",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 133,
+   "slug": "rain-man",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1857,24 +3361,40 @@
    "title": "雨人",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1291870/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "罗纳德·巴斯",
+    "巴里·莫罗"
+   ],
+   "year": 1988
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "冈田将生",
+    "木野花",
+    "永作博美"
+   ],
+   "category": "feature",
+   "cover": "covers/3612475/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3612475/01.webp",
    "date": "2010-11-07",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "中原俊"
+   ],
+   "douban_score": 5.9,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "3612475",
    "missing": false,
-   "pending": true,
+   "original_title": "魔法遣いに大切なこと",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 100,
+   "slug": "maho-tsukai-ni-taisetsu-na-koto",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1883,24 +3403,39 @@
    "title": "魔法使的条件",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3612475/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "山田典枝"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "陈可辛",
+    "尔冬升"
+   ],
+   "category": "documentary",
+   "comment": "这是日本人专门为中国人拍的吧?",
+   "cover": "covers/4711220/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4711220/01.webp",
    "date": "2010-11-06",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "NHK"
+   ],
+   "douban_score": 7.4,
+   "episodes": 3,
+   "genres": [
+    "纪录片"
+   ],
    "id": "4711220",
    "missing": false,
-   "pending": true,
+   "original_title": "チャイナパワー",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "china-power",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1910,23 +3445,37 @@
    "type": "tv",
    "url": "https://movie.douban.com/subject/4711220/",
    "writers": [],
-   "year": null
+   "year": 2009
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "筱原凉子",
+    "濑户朝香"
+   ],
+   "category": "feature",
+   "cover": "covers/4300609/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4300609/01.webp",
    "date": "2010-10-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "君塚良一",
+    "岩井俊二"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "爱情",
+    "惊悚",
+    "恐怖"
+   ],
    "id": "4300609",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 '04秋の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 99,
+   "slug": "yonimo-kimyona-monogatari-2004-fall-specail",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1935,24 +3484,48 @@
    "title": "世界奇妙物语 04秋之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/4300609/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "冈本贵也",
+    "大野敏哉",
+    "君塚良一"
+   ],
+   "year": 2004
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "中山裕介",
+    "井上和香",
+    "小西真奈美",
+    "永岛敏行",
+    "妻夫木聪",
+    "臼田麻美",
+    "山中聪",
+    "铃木杏",
+    "末永遥",
+    "黑川芽以"
+   ],
+   "category": "feature",
+   "cover": "covers/2124449/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2124449/01.webp",
    "date": "2010-10-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "笕昌也",
+    "植田泰史"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "剧情"
+   ],
    "id": "2124449",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 '05春の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "kimyona-monogatari-2005-spring-special",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1961,24 +3534,37 @@
    "title": "世界奇妙物语 05春之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2124449/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "笕昌也"
+   ],
+   "year": 2005
   },
   {
    "casts": [],
-   "category": null,
-   "cover": "",
+   "category": "anime",
+   "cover": "covers/1756584/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1756584/01.webp",
    "date": "2010-10-24",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "马克∙安德鲁斯",
+    "Andrew Jimenez（安德鲁·吉梅内斯）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "喜剧",
+    "动画",
+    "短片"
+   ],
    "id": "1756584",
    "missing": false,
-   "pending": true,
+   "original_title": "One Man Band",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 5,
+   "slug": "one-man-band",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1987,24 +3573,46 @@
    "title": "光杆乐队",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1756584/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Andrew Jimenez（安德鲁·吉梅内斯）",
+    "马克∙安德鲁斯"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "石原里美",
+    "阿部贞夫",
+    "城岛茂",
+    "白石美帆",
+    "冈田义德",
+    "松下由树"
+   ],
+   "category": "feature",
+   "cover": "covers/2272208/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2272208/01.webp",
    "date": "2010-10-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "松木创",
+    "城宝秀则",
+    "加藤公平",
+    "岩田和行",
+    "村谷嘉则"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情"
+   ],
    "id": "2272208",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 2007秋の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "douban-2272208",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2014,24 +3622,49 @@
    "title": "世界奇妙物语 2007秋之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2272208/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "森迅史",
+    "植田泰史",
+    "相泽友子",
+    "加藤公平"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "广末凉子",
+    "释由美子",
+    "伊武雅刀",
+    "堂本光一",
+    "内山理名",
+    "田中美佐子",
+    "渡边一计"
+   ],
+   "category": "feature",
+   "cover": "covers/2277409/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2277409/01.webp",
    "date": "2010-10-18",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "星田良子",
+    "植田泰史",
+    "佐藤源太"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "奇幻"
+   ],
    "id": "2277409",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 '06秋の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 128,
+   "slug": "yonimo-kimyona-monogatari-2006-fall-specail",
    "status": "collect",
    "tags": [
     "SP",
@@ -2042,24 +3675,53 @@
    "title": "世界奇妙物语 06秋之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2277409/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "中村树基",
+    "小川みづき",
+    "佐藤久美子",
+    "高山直也",
+    "保田良太"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Milla Jovovich（米拉·乔沃维奇）",
+    "Ali Larter（艾丽·拉特）",
+    "Wentworth Miller（温特沃斯·米勒）",
+    "Sienna Guillory（西耶娜·盖尔利）",
+    "Boris Kodjoe（波瑞斯·科乔）",
+    "肖恩·罗伯茨",
+    "Kim Coates（金·寇兹）",
+    "史宾塞·洛克",
+    "凯茜·克拉克"
+   ],
+   "category": "feature",
+   "cover": "covers/3041294/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3041294/01.webp",
    "date": "2010-10-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Paul W. S. Anderson（保罗·安德森）"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "动作",
+    "科幻",
+    "恐怖"
+   ],
    "id": "3041294",
    "missing": false,
-   "pending": true,
+   "original_title": "Resident Evil: Afterlife",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "德国",
+    "法国",
+    "美国",
+    "加拿大"
+   ],
+   "runtime": 97,
+   "slug": "resident-evil-afterlife",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2069,24 +3731,47 @@
    "title": "生化危机4：战神再生",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3041294/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Paul W. S. Anderson（保罗·安德森）"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "樱井翔",
+    "山口纱弥加",
+    "小日向文世",
+    "加藤爱",
+    "永作博美",
+    "平山绫",
+    "椎名桔平"
+   ],
+   "category": "feature",
+   "cover": "covers/2272257/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2272257/01.webp",
    "date": "2010-10-12",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "植田泰史",
+    "土方政人",
+    "佐藤源太",
+    "星护"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "奇幻"
+   ],
    "id": "2272257",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 2007春の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 115,
+   "slug": "2007sp",
    "status": "collect",
    "tags": [
     "SP",
@@ -2096,24 +3781,52 @@
    "title": "世界奇妙物语 2007春之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2272257/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大野敏哉",
+    "长江俊和",
+    "田村孝裕",
+    "高山直也",
+    "小川みづき",
+    "森ハヤシ"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "江口洋介",
+    "大野智",
+    "广末凉子",
+    "玉木宏",
+    "堀北真希",
+    "笹野高史",
+    "田中丽奈",
+    "香川照之"
+   ],
+   "category": "feature",
+   "cover": "covers/5279575/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5279575/01.webp",
    "date": "2010-10-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "佐藤祐市",
+    "村上正典",
+    "若松节朗",
+    "植田泰史"
+   ],
+   "douban_score": 7.3,
+   "genres": [
+    "悬疑",
+    "恐怖"
+   ],
    "id": "5279575",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 20周年スペシャル・秋 ～人気作家競演編～",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 138,
+   "slug": "yonimo-kimyo-na-monogatari-20th-anniversary-special-fall-201",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2123,24 +3836,49 @@
    "title": "世界奇妙物语 2010秋之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/5279575/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "正冈谦一郎",
+    "金子茂树",
+    "桥本裕志",
+    "坂元裕二"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "吉冈秀隆",
+    "石原里美",
+    "高桥克典",
+    "国村隼",
+    "山中聪",
+    "草刈正雄",
+    "波冈一喜",
+    "中山麻圣",
+    "宫下顺子",
+    "内山理名"
+   ],
+   "category": "series",
+   "cover": "covers/4919732/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4919732/01.webp",
    "date": "2010-10-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "田中健二"
+   ],
+   "douban_score": 7.6,
+   "episodes": 2,
+   "genres": [
+    "剧情"
+   ],
    "id": "4919732",
    "missing": false,
-   "pending": true,
+   "original_title": "大仏開眼",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 89,
+   "slug": "douban-4919732",
    "status": "collect",
    "tags": [
     "SP",
@@ -2152,24 +3890,40 @@
    "title": "大佛开眼",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4919732/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "池端俊策 Shunsaku Ikehata"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "广末凉子",
+    "长濑智也",
+    "福田麻由子",
+    "木村真那月"
+   ],
+   "category": "series",
+   "cover": "covers/4881663/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4881663/01.webp",
    "date": "2010-10-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "佐藤东弥"
+   ],
+   "douban_score": 6.9,
+   "episodes": 1,
+   "genres": [
+    "剧情"
+   ],
    "id": "4881663",
    "missing": false,
-   "pending": true,
+   "original_title": "みぽりんのえくぼ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "miporin-no-ekubo",
    "status": "collect",
    "tags": [
     "SP",
@@ -2179,24 +3933,46 @@
    "title": "美穗的小酒窝",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4881663/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吉本昌弘"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "伊藤英明",
+    "藤泽惠麻",
+    "户田惠梨香",
+    "向井理",
+    "船越英一郎",
+    "本田博太郎",
+    "筒井康隆",
+    "北乃绮",
+    "於保佐代子",
+    "堺雅人"
+   ],
+   "category": "feature",
+   "cover": "covers/3027015/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3027015/01.webp",
    "date": "2010-10-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "植田泰史"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "悬疑",
+    "恐怖"
+   ],
    "id": "3027015",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 08春の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "douban-3027015",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2207,24 +3983,49 @@
    "title": "世界奇妙物语 2008春之特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3027015/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "小川智子",
+    "金杉弘子"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "伊藤淳史",
+    "池胁千鹤",
+    "长谷川京子",
+    "中村俊介",
+    "友坂理惠",
+    "冈田义德",
+    "佐野史郎",
+    "户田菜穗",
+    "松本润"
+   ],
+   "category": "feature",
+   "cover": "covers/2279871/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2279871/01.webp",
    "date": "2010-10-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "船津浩一",
+    "岩田祐二"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "惊悚",
+    "奇幻"
+   ],
    "id": "2279871",
    "missing": false,
-   "pending": true,
+   "original_title": "世にも奇妙な物語 15周年の特別編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "yonimo-kimyouna-monogatari-15th-anniversary-special",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2235,24 +4036,51 @@
    "title": "世界奇妙物语 15周年特别篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2279871/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "佐藤久美子",
+    "高桥彻郎",
+    "大野敏哉",
+    "羽场さゆり",
+    "中岛直俊"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "高山南",
+    "山口胜平",
+    "山崎和佳奈",
+    "小山力也",
+    "堀川亮",
+    "松井菜樱子",
+    "宫村优子",
+    "林原惠美",
+    "绪方贤一",
+    "岩居由希子"
+   ],
+   "category": "anime",
+   "cover": "covers/5153329/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5153329/01.webp",
    "date": "2010-10-09",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "山本泰一郎"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "动作",
+    "动画",
+    "悬疑"
+   ],
    "id": "5153329",
    "missing": false,
-   "pending": true,
+   "original_title": "名探偵コナン 天空の難破船",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 102,
+   "slug": "detective-conan-the-lost-ship-in-the-sky",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2263,24 +4091,47 @@
    "title": "名侦探柯南：天空的遇难船",
    "type": "movie",
    "url": "https://movie.douban.com/subject/5153329/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "古内一成",
+    "青山刚昌"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "吉高由里子",
+    "林遣都",
+    "真矢美纪",
+    "胜地凉",
+    "水泽绘玲奈",
+    "夕辉寿太",
+    "中村静香",
+    "寺胁康文",
+    "谷原章介"
+   ],
+   "category": "series",
+   "cover": "covers/4862215/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4862215/01.webp",
    "date": "2010-10-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "猪股隆一",
+    "佐久间纪佳"
+   ],
+   "douban_score": 6.6,
+   "episodes": 10,
+   "genres": [
+    "剧情"
+   ],
    "id": "4862215",
    "missing": false,
-   "pending": true,
+   "original_title": "美丘-君がいた日々-",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "mioka",
    "status": "collect",
    "tags": [
     "JPN",
@@ -2289,50 +4140,98 @@
    "title": "美丘：你在此的每天",
    "type": "tv",
    "url": "https://movie.douban.com/subject/4862215/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "梅田美香",
+    "石田衣良"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "户田惠梨香",
+    "松田翔太",
+    "铃木浩介",
+    "铃木一真",
+    "田边诚一",
+    "关惠美",
+    "永山绚斗",
+    "吉濑美智子",
+    "荒川良良",
+    "和田聪宏"
+   ],
+   "category": "feature",
+   "cover": "covers/3718665/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3718665/01.webp",
    "date": "2010-10-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "松山博昭"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
    "id": "3718665",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 133,
+   "slug": "liar-game-the-final-stage",
    "status": "collect",
    "tags": [
     "Movie",
     "JPN"
    ],
-   "title": "诈欺游戏 电影版",
+   "title": "诈欺游戏 电影版 ライアーゲーム ザ・ファイナルステージ",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3718665/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "黑岩勉",
+    "冈田道尚",
+    "甲斐谷忍"
+   ],
+   "year": 2010
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Jay Baruchel（杰伊·巴鲁切尔）",
+    "Gerard Butler（杰拉德·巴特勒）",
+    "Craig Ferguson（克雷格·费格森）",
+    "America Ferrera（亚美莉卡·费雷拉）",
+    "Jonah Hill（乔纳·希尔）",
+    "Christopher Mintz-Plasse（克里斯托夫·梅兹-普莱瑟）",
+    "T.J. Miller（T·J·米勒）",
+    "Kristen Wiig（克里斯汀·韦格）",
+    "罗宾·阿特金·唐斯",
+    "菲利普·麦格雷德"
+   ],
+   "category": "anime",
+   "cover": "covers/2353023/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2353023/01.webp",
    "date": "2010-10-04",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Dean DeBlois（迪恩·戴布洛伊）",
+    "Chris Sanders（克里斯·桑德斯）"
+   ],
+   "douban_score": 8.8,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "2353023",
    "missing": false,
-   "pending": true,
+   "original_title": "How to Train Your Dragon",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 98,
+   "slug": "how-to-train-your-dragon-2010",
    "status": "collect",
    "tags": [
     "Animation",
@@ -2342,8 +4241,13 @@
    "title": "驯龙高手",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2353023/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "威廉姆·戴维斯",
+    "Dean DeBlois（迪恩·戴布洛伊）",
+    "Chris Sanders（克里斯·桑德斯）",
+    "葛蕾熙达·柯维尔"
+   ],
+   "year": 2010
   },
   {
    "casts": [],

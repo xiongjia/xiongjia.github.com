@@ -156,7 +156,7 @@
     "Liza Lapira（莉萨·拉皮拉）",
     "Tony Hale（托尼·海尔）",
     "刘易斯·布莱克",
-    "菲利丝·史密斯",
+    "Phyllis Smith（菲利丝·史密斯）",
     "阿尤·艾德维利",
     "莉莉玛",
     "格蕾丝·陆"
@@ -286,7 +286,7 @@
    "url": "https://movie.douban.com/subject/35792500/",
    "writers": [
     "Fede Alvarez（费德·阿尔瓦雷兹）",
-    "罗多·赛亚格斯",
+    "Rodo Sayagues（罗多·赛亚格斯）",
     "丹·欧班农",
     "罗纳德·舒塞特"
    ],
@@ -441,11 +441,11 @@
     "Olivia Cooke（奥利维亚·库克）",
     "Rhys Ifans（瑞斯·伊凡斯）",
     "伊芙·贝斯特",
-    "史蒂夫·图森特",
+    "Steve Toussaint（史蒂夫·图森特）",
     "法比安·弗兰克尔",
     "马修·尼达姆",
     "水野索诺娅",
-    "汤姆·格林-卡尼"
+    "Tom Glynn-Carney（汤姆·格林-卡尼）"
    ],
    "category": "series",
    "cover": "covers/36073279/01.webp",
@@ -629,7 +629,7 @@
     "Emma Corrin（艾玛·科林）",
     "Matthew Macfadyen（马修·麦克费登）",
     "Dafne Keen（达芙妮·基恩）",
-    "莫蕾娜·巴卡琳",
+    "Morena Baccarin（莫蕾娜·巴卡琳）",
     "Jon Favreau（乔恩·费儒）",
     "罗伯·德兰尼",
     "莱斯利·格塞斯",
@@ -1255,7 +1255,7 @@
     "Alex Pettyfer（亚历克斯·帕蒂弗）",
     "Hero Fiennes Tiffin（赫洛·费因斯-提芬）",
     "巴布斯·奥卢桑莫昆",
-    "亨利·扎格",
+    "Henry Zaga（亨利·扎格）",
     "蒂尔·施威格",
     "Henry Golding（亨利·戈尔丁）",
     "加利·艾尔维斯"
@@ -1353,7 +1353,7 @@
     "Aaron Taylor-Johnson（亚伦·泰勒-约翰逊）",
     "Hannah Waddingham（汉娜·沃丁厄姆）",
     "Winston Duke（温斯顿·杜克）",
-    "泰莉莎·帕尔墨",
+    "Teresa Palmer（泰莉莎·帕尔墨）",
     "许玮伦",
     "本·奈特",
     "马图斯",
@@ -1446,7 +1446,7 @@
     "特拉维斯·杰弗里",
     "莉迪亚·佩克汉",
     "尼尔·桑迪兰兹",
-    "迪辰·拉克曼"
+    "Dichen Lachman（迪辰·拉克曼）"
    ],
    "category": "feature",
    "cover": "covers/36069854/01.webp",
@@ -1995,7 +1995,7 @@
     "Aaron Moten（阿伦·莫滕）",
     "Walton Goggins（沃尔顿·戈金斯）",
     "Kyle MacLachlan（凯尔·麦克拉克伦）",
-    "萨莉塔·乔德霍里",
+    "Sarita Choudhury（萨莉塔·乔德霍里）",
     "莫伊塞斯·阿里亚斯",
     "戴夫·雷斯特",
     "约翰尼·彭伯顿",
@@ -2011,7 +2011,7 @@
     "Daniel Gray Longino（丹尼尔·格雷·朗诺）",
     "Clare Kilner（克莱尔·基尔纳）",
     "Frederick E.O. Toye（弗雷德里克·E·O·托耶）",
-    "韦恩·叶"
+    "Wayne Yip（韦恩·叶）"
    ],
    "douban_score": 8.6,
    "episodes": 8,
@@ -2280,7 +2280,7 @@
     "Kaylee Hottle（凯莉·霍特尔）",
     "Alex Ferns（亚历克斯·费恩斯）",
     "陈法拉",
-    "瑞切尔·豪斯",
+    "Rachel House（瑞切尔·豪斯）",
     "朗·斯迈克",
     "尚特尔·贾米森",
     "格雷格·哈顿"
@@ -2331,9 +2331,9 @@
     "艾利克斯·夏普",
     "曾靖",
     "赵家玲",
-    "利亚姆·坎宁安",
-    "约翰·布莱德利",
-    "乔纳森·普雷斯"
+    "Liam Cunningham（利亚姆·坎宁安）",
+    "John Bradley（约翰·布莱德利）",
+    "Jonathan Pryce（乔纳森·普雷斯）"
    ],
    "category": "series",
    "cover": "covers/35196946/01.webp",
@@ -2343,7 +2343,7 @@
     "曾国祥",
     "Andrew Stanton（安德鲁·斯坦顿）",
     "明基·斯皮罗",
-    "杰雷米·波德斯瓦"
+    "Jeremy Podeswa（杰雷米·波德斯瓦）"
    ],
    "douban_score": null,
    "episodes": 8,
@@ -2373,8 +2373,8 @@
    "writers": [
     "罗斯·卡特赖特",
     "亚历山大·伍",
-    "戴维·贝尼奥夫",
-    "D·B·威斯",
+    "David Benioff（戴维·贝尼奥夫）",
+    "D.B. Weiss（D·B·威斯）",
     "马杜里·谢卡"
    ],
    "year": 2024
@@ -2433,7 +2433,7 @@
     "简·泰勒",
     "莎巴娜·阿兹米",
     "奥利维亚·格兰特",
-    "夏莉·墨菲",
+    "Charlie Murphy（夏莉·墨菲）",
     "凯特·肯尼迪",
     "宾利·卡鲁"
    ],
@@ -2483,7 +2483,7 @@
     "奇普",
     "Ariana DeBose（阿丽亚娜·德博斯）",
     "杜阿·利帕",
-    "约翰·塞纳"
+    "John Cena（约翰·塞纳）"
    ],
    "category": "feature",
    "cover": "covers/35520056/01.webp",
@@ -2528,7 +2528,7 @@
     "奥斯汀·巴特勒",
     "Florence Pugh（弗洛伦丝·皮尤）",
     "Dave Bautista（戴夫·巴蒂斯塔）",
-    "克里斯托弗·沃肯",
+    "Christopher Walken（克里斯托弗·沃肯）",
     "蕾雅·赛杜"
    ],
    "category": "feature",
@@ -2620,11 +2620,11 @@
     "Maya Erskine（玛雅·厄斯金）",
     "Sarah Paulson（莎拉·保罗森）",
     "Paul Dano（保罗·达诺）",
-    "约翰·特托罗",
+    "John Turturro（约翰·特托罗）",
     "Ron Perlman（朗·普尔曼）",
     "米凯拉·科尔",
     "Wagner Moura（瓦格纳·马拉）",
-    "帕克·波西",
+    "Parker Posey（帕克·波西）",
     "亚历山大·斯卡斯加德"
    ],
    "category": "series",
@@ -3224,7 +3224,7 @@
     "大卫·威茨",
     "米迦勒·埃普",
     "泰勒·詹姆斯",
-    "菲利西亚·拉斯海德",
+    "Phylicia Rashad（菲利西亚·拉斯海德）",
     "吉玛·雷德格里夫"
    ],
    "category": "feature",
@@ -3929,9 +3929,9 @@
     "Amber Heard（安珀·赫德）",
     "Nicole Kidman（妮可·基德曼）",
     "兰道尔·朴",
-    "特穆拉·莫里森",
-    "杜夫·龙格尔",
-    "马丁·肖特",
+    "Temuera Morrison（特穆拉·莫里森）",
+    "Dolph Lundgren（杜夫·龙格尔）",
+    "Martin Short（马丁·肖特）",
     "赵嘉妮"
    ],
    "category": "feature",
@@ -4164,8 +4164,8 @@
     "佩特逊·约瑟夫",
     "马特·卢卡斯",
     "马修·贝恩顿",
-    "莎莉·霍金斯",
-    "罗温·艾金森"
+    "Sally Hawkins（莎莉·霍金斯）",
+    "Rowan Atkinson（罗温·艾金森）"
    ],
    "category": "feature",
    "cover": "covers/26897888/01.webp",
@@ -4353,8 +4353,8 @@
     "凯文·康诺利",
     "希瑟·沃奎斯特",
     "杰弗里·奈特",
-    "琼·艾伦",
-    "詹姆斯·麦斯登"
+    "Joan Allen（琼·艾伦）",
+    "James Marsden（詹姆斯·麦斯登）"
    ],
    "category": "feature",
    "cover": "covers/1309163/01.webp",
@@ -4396,12 +4396,12 @@
     "Chris Pine（克里斯·派恩）",
     "Alan Tudyk（艾伦·图代克）",
     "Angelique Cabral（安吉丽卡·布拉尔）",
-    "维克多·加博",
-    "娜塔莎·罗斯韦尔",
+    "Victor Garber（维克多·加博）",
+    "Natasha Rothwell（娜塔莎·罗斯韦尔）",
     "詹妮弗·久美山",
     "Harvey Guillen（哈维·吉兰）",
     "尼科·巴尔加斯",
-    "埃文·彼得斯"
+    "Evan Peters（埃文·彼得斯）"
    ],
    "category": "anime",
    "cover": "covers/36090455/01.webp",
@@ -4435,7 +4435,7 @@
    "type": "movie",
    "url": "https://movie.douban.com/subject/36090455/",
    "writers": [
-    "珍妮弗·李",
+    "Jennifer Lee（珍妮弗·李）",
     "艾莉森·摩尔",
     "Chris Buck（克里斯·巴克）",
     "Fawn Veerasunthorn（弗恩·维拉桑托恩）",
@@ -4685,9 +4685,9 @@
     "Peter Dinklage（彼特·丁拉基）",
     "Josh Andrés Rivera",
     "Hunter Schafer（亨特·莎弗）",
-    "维奥拉·戴维斯",
-    "詹森·舒瓦兹曼",
-    "伯恩·戈曼",
+    "Viola Davis（维奥拉·戴维斯）",
+    "Jason Schwartzman（詹森·舒瓦兹曼）",
+    "Burn Gorman（伯恩·戈曼）",
     "菲奥纽拉·弗拉纳根",
     "达科·夏皮罗"
    ],
@@ -4854,7 +4854,7 @@
     "Sophia Di Martino（索菲娅·迪·马蒂诺）",
     "Gugu Mbatha-Raw（古古·姆巴塔-劳）",
     "Owen Wilson（欧文·威尔逊）",
-    "乌米·马萨库",
+    "Wunmi Mosaku（乌米·马萨库）",
     "尤金·科戴洛",
     "关继威",
     "Jonathan Majors（乔纳森·梅杰斯）",
@@ -4968,7 +4968,7 @@
    "directors": [
     "Nelson Cragg（尼尔森·克拉格）",
     "Steve Boyum（史蒂夫·博伊姆）",
-    "蕾切尔·高德伯格",
+    "Rachel Goldberg（蕾切尔·高德伯格）",
     "萨娜·哈姆里",
     "Clare Kilner（克莱尔·基尔纳）",
     "菲利浦·斯格里西亚",
@@ -5336,8 +5336,8 @@
     "刘承羽",
     "Mary Elizabeth Winstead（玛丽·伊丽莎白·温斯特德）",
     "David Tennant（大卫·田纳特）",
-    "雷·史蒂文森",
-    "海登·克里斯滕森",
+    "Ray Stevenson（雷·史蒂文森）",
+    "Hayden Christensen（海登·克里斯滕森）",
     "Ariana Greenblatt（阿丽亚娜·格林布拉特）",
     "伊万娜·萨赫诺",
     "戴安娜·李·伊诺桑托",
@@ -5353,7 +5353,7 @@
     "詹妮弗·盖辛格",
     "吉塔·瓦桑特·帕特尔",
     "Rick Famuyiwa（瑞克·法穆易瓦）",
-    "彼得·拉姆齐"
+    "Peter Ramsey（彼得·拉姆齐）"
    ],
    "douban_score": 7.3,
    "episodes": 8,
@@ -5380,7 +5380,7 @@
    "url": "https://movie.douban.com/subject/35284486/",
    "writers": [
     "Dave Filoni（戴夫·菲洛尼）",
-    "乔治·卢卡斯"
+    "George Lucas（乔治·卢卡斯）"
    ],
    "year": 2023
   },
@@ -5618,7 +5618,7 @@
     "拉马尔·约翰逊",
     "凯文·伍达德",
     "杰弗里·皮尔斯",
-    "约翰·盖兹"
+    "John Getz（约翰·盖兹）"
    ],
    "category": "series",
    "cover": "covers/25848328/01.webp",
@@ -5675,7 +5675,7 @@
     "Esai Morales（埃塞·莫拉雷斯）",
     "Pom Klementieff（庞·克莱门捷夫）",
     "亨利·科泽尼",
-    "谢伊·惠格姆"
+    "Shea Whigham（谢伊·惠格姆）"
    ],
    "category": "feature",
    "cover": "covers/30433455/01.webp",
@@ -5904,9 +5904,9 @@
     "艾米·卢·伍德",
     "康纳·斯温德尔",
     "凯达·威廉姆斯特灵",
-    "米米·基恩",
+    "Mimi Keene（米米·基恩）",
     "丹·列维",
-    "阿利斯泰尔·皮特里"
+    "Alistair Petrie（阿利斯泰尔·皮特里）"
    ],
    "category": "series",
    "cover": "covers/35608317/01.webp",
@@ -5959,7 +5959,7 @@
     "阿德里安娜·巴拉萨",
     "贝莉莎·埃斯科贝多",
     "艾尔皮迪娅·卡里洛",
-    "苏珊·萨兰登",
+    "Susan Sarandon（苏珊·萨兰登）",
     "Harvey Guillen（哈维·吉兰）"
    ],
    "category": "feature",
@@ -6136,7 +6136,7 @@
     "卡西安·比尔顿",
     "特伦斯·曼",
     "霍特·麦克卡兰尼",
-    "瑞切尔·豪斯",
+    "Rachel House（瑞切尔·豪斯）",
     "伊莎贝拉·劳赫兰"
    ],
    "category": "series",
@@ -6273,10 +6273,10 @@
     "Katie Holmes（凯蒂·霍尔姆斯）",
     "Gary Oldman（加里·奥德曼）",
     "Cillian Murphy（基里安·墨菲）",
-    "汤姆·威尔金森",
-    "鲁格·豪尔",
+    "Tom Wilkinson（汤姆·威尔金森）",
+    "Rutger Hauer（鲁格·豪尔）",
     "渡边谦",
-    "小马克·布恩"
+    "Mark Boone Junior（小马克·布恩）"
    ],
    "category": "feature",
    "cover": "covers/1309069/01.webp",
@@ -6478,7 +6478,7 @@
     "Page Kennedy（佩吉·肯尼迪）",
     "塞尔吉奥·佩里斯-门切塔",
     "斯凯勒·塞缪尔斯",
-    "西耶娜·盖尔利",
+    "Sienna Guillory（西耶娜·盖尔利）",
     "梅丽桑蒂·马休特",
     "沃皮·范·拉姆"
    ],
@@ -6589,9 +6589,9 @@
     "Florence Pugh（弗洛伦丝·皮尤）",
     "Alden Ehrenreich（阿尔登·埃伦瑞奇）",
     "大卫·克朗姆霍茨",
-    "乔什·哈奈特",
-    "杰森·克拉克",
-    "卡西·阿弗莱克"
+    "Josh Hartnett（乔什·哈奈特）",
+    "Jason Clarke（杰森·克拉克）",
+    "Casey Affleck（卡西·阿弗莱克）"
    ],
    "category": "feature",
    "cover": "covers/35593344/01.webp",
@@ -7038,9 +7038,9 @@
     "Melissa McCarthy（梅丽莎·麦卡西）",
     "Javier Bardem（哈维尔·巴登）",
     "Daveed Diggs（戴维德·迪格斯）",
-    "雅各布·特伦布莱",
+    "Jacob Tremblay（雅各布·特伦布莱）",
     "奥卡菲娜",
-    "诺玛·杜梅温尼",
+    "Noma Dumezweni（诺玛·杜梅温尼）",
     "阿特·马里克",
     "杰西·亚历山大"
    ],
@@ -7181,7 +7181,7 @@
     "Ariana Greenblatt（阿丽亚娜·格林布拉特）",
     "Kate McKinnon（凯特·麦克金农）",
     "Helen Mirren（海伦·米伦）",
-    "威尔·法瑞尔",
+    "Will Ferrell（威尔·法瑞尔）",
     "伊萨·雷",
     "哈莉·尼夫",
     "Emma Mackey（艾玛·麦基）"
@@ -7217,7 +7217,7 @@
    "url": "https://movie.douban.com/subject/4058939/",
    "writers": [
     "Greta Gerwig（格蕾塔·葛韦格）",
-    "诺亚·鲍姆巴赫"
+    "Noah Baumbach（诺亚·鲍姆巴赫）"
    ],
    "year": 2023
   },
@@ -7228,7 +7228,7 @@
     "Tim Robbins（蒂姆·罗宾斯）",
     "科曼",
     "Rashida Jones（拉什达·琼斯）",
-    "哈丽特·瓦尔特",
+    "Harriet Walter（哈丽特·瓦尔特）",
     "阿维·纳什",
     "才那扎·乌奇",
     "马诺伊·阿南德",
@@ -7550,7 +7550,7 @@
     "Diego Tinoco（迭戈·蒂诺科）",
     "Mark Dacascos（马克·达卡斯考斯）",
     "尼克·斯塔尔",
-    "肖恩·宾",
+    "Sean Bean（肖恩·宾）",
     "凯特琳·赫特森",
     "凯兰·蒂格",
     "岩田琉聖"
@@ -7603,9 +7603,9 @@
     "Karen Allen（凯伦·阿兰）",
     "John Rhys-Davies（约翰·瑞斯-戴维斯）",
     "香奈特·芮妮·威尔逊",
-    "托马斯·克莱舒曼",
-    "托比·琼斯",
-    "波伊德·霍布鲁克",
+    "Thomas Kretschmann（托马斯·克莱舒曼）",
+    "Toby Jones（托比·琼斯）",
+    "Boyd Holbrook（波伊德·霍布鲁克）",
     "奥利维尔·里希特斯"
    ],
    "category": "feature",
@@ -7638,7 +7638,7 @@
    "writers": [
     "杰斯·巴特沃斯",
     "约翰-亨利·巴特沃斯",
-    "大卫·凯普",
+    "David Koepp（大卫·凯普）",
     "James Mangold（詹姆斯·曼高德）"
    ],
    "year": 2023
@@ -7652,9 +7652,9 @@
     "Ian McShane（伊恩·麦柯肖恩）",
     "Mark Dacascos（马克·达卡斯考斯）",
     "艾莎·凯特·狄龙",
-    "兰斯·莱迪克",
+    "Lance Reddick（兰斯·莱迪克）",
     "萨伊德·塔格马奥",
-    "杰罗姆·弗林"
+    "Jerome Flynn（杰罗姆·弗林）"
    ],
    "category": "feature",
    "cover": "covers/26909790/01.webp",
@@ -7744,10 +7744,10 @@
     "Michael Cera（迈克尔·塞拉）",
     "Himesh Patel（希米什·帕特尔）",
     "阿维·纳什",
-    "乌米·马萨库",
+    "Wunmi Mosaku（乌米·马萨库）",
     "洛利·阿德福普",
     "罗伯·德兰尼",
-    "本·巴恩斯",
+    "Ben Barnes（本·巴恩斯）",
     "杰瑞德·戈尔茨坦"
    ],
    "category": "series",
@@ -7757,8 +7757,8 @@
    "directors": [
     "Ally Pankiw（阿丽·潘基乌）",
     "Sam Miller（萨姆·米勒）",
-    "约翰·克劳利",
-    "乌塔·布里泽维茨",
+    "John Crowley（约翰·克劳利）",
+    "Uta Briesewitz（乌塔·布里泽维茨）",
     "Toby Haynes（托比·海恩斯）"
    ],
    "douban_score": 7.2,
@@ -7892,7 +7892,7 @@
     "Catherine O'Hara（凯瑟琳·奥哈拉）",
     "梅森·韦特海默",
     "乔·佩拉",
-    "马修·杨·金",
+    "Matthew Yang King（马修·杨·金）",
     "罗诺比尔·拉希瑞"
    ],
    "category": "anime",
@@ -7942,7 +7942,7 @@
     "Sasha Calle（萨莎·卡莱）",
     "Michael Shannon（迈克尔·珊农）",
     "玛丽维尔·贝尔杜",
-    "朗·里维斯顿",
+    "Ron Livingston（朗·里维斯顿）",
     "科雷西·克莱门斯",
     "Jeremy Irons（杰瑞米·艾恩斯）",
     "安婕·特拉乌"
@@ -8079,10 +8079,10 @@
     "Ruby Rose（鲁比·罗丝）",
     "科曼",
     "克劳迪亚·杰里尼",
-    "兰斯·莱迪克",
+    "Lance Reddick（兰斯·莱迪克）",
     "Laurence Fishburne（劳伦斯·菲什伯恩）",
     "托拜厄斯·西格尔",
-    "约翰·雷吉扎莫"
+    "John Leguizamo（约翰·雷吉扎莫）"
    ],
    "category": "feature",
    "cover": "covers/26333560/01.webp",
@@ -8176,10 +8176,10 @@
     "Jake Johnson（杰克·约翰逊）",
     "伊萨·雷",
     "Mahershala Ali（马赫沙拉·阿里）",
-    "詹森·舒瓦兹曼",
+    "Jason Schwartzman（詹森·舒瓦兹曼）",
     "卡兰·索尼",
-    "丹尼尔·卡卢亚",
-    "安迪·萨姆伯格"
+    "Daniel Kaluuya（丹尼尔·卡卢亚）",
+    "Andy Samberg（安迪·萨姆伯格）"
    ],
    "category": "anime",
    "cover": "covers/30391186/01.webp",
@@ -8453,10 +8453,10 @@
     "Dave Bautista（戴夫·巴蒂斯塔）",
     "Karen Gillan（凯伦·吉兰）",
     "Pom Klementieff（庞·克莱门捷夫）",
-    "布莱德利·库珀",
-    "范·迪塞尔",
+    "Bradley Cooper（布莱德利·库珀）",
+    "Vin Diesel（范·迪塞尔）",
     "楚克武迪·武吉",
-    "威尔·保尔特",
+    "Will Poulter（威尔·保尔特）",
     "肖恩·古恩"
    ],
    "category": "feature",
@@ -8550,12 +8550,12 @@
     "Katee Sackhoff（凯缇·萨克霍夫）",
     "Emily Swallow（艾米莉·斯沃洛）",
     "Carl Weathers（卡尔·韦瑟斯）",
-    "吉安卡罗·埃斯波西托",
-    "塔伊加·维迪提",
-    "艾米·塞德丽丝",
+    "Giancarlo Esposito（吉安卡罗·埃斯波西托）",
+    "Taika Waititi（塔伊加·维迪提）",
+    "Amy Sedaris（艾米·塞德丽丝）",
     "凯蒂·M·奥布莱恩",
     "奥米德·阿布塔西",
-    "特穆拉·莫里森"
+    "Temuera Morrison（特穆拉·莫里森）"
    ],
    "category": "series",
    "cover": "covers/35048728/01.webp",
@@ -8566,7 +8566,7 @@
     "Rachel Morrison（瑞秋·莫里森）",
     "李·以萨克·郑",
     "Carl Weathers（卡尔·韦瑟斯）",
-    "彼得·拉姆齐",
+    "Peter Ramsey（彼得·拉姆齐）",
     "Bryce Dallas Howard（布莱丝·达拉斯·霍华德）"
    ],
    "douban_score": 9.0,
@@ -8697,9 +8697,9 @@
     "Will Forte（威尔·福特）",
     "Nonso Anozie（侬索·阿诺斯）",
     "Dania Ramirez（丹妮亚·拉米雷兹）",
-    "詹姆斯·布洛林",
+    "James Brolin（詹姆斯·布洛林）",
     "阿迪勒·阿赫塔尔",
-    "斯蒂芬妮娅·欧文",
+    "Stefania Owen（斯蒂芬妮娅·欧文）",
     "尼尔·桑迪兰兹",
     "约纳斯·基布雷亚布"
    ],
@@ -8885,7 +8885,7 @@
     "Stephen McKinley Henderson（斯蒂芬·麦金利·亨德森）",
     "Karl Glusman（卡尔·格洛斯曼）",
     "河镇",
-    "扎克·格雷尼尔",
+    "Zach Grenier（扎克·格雷尼尔）",
     "Cailee Spaeny（卡莉·史派妮）",
     "杰佛逊·豪尔",
     "The Insects"
@@ -8934,8 +8934,8 @@
     "崔大卫",
     "佩蒂·安武",
     "阿什利·朴",
-    "玛丽亚·贝罗",
-    "贾斯汀·闵"
+    "Maria Bello（玛丽亚·贝罗）",
+    "Justin H. Min（贾斯汀·闵）"
    ],
    "category": "series",
    "cover": "covers/35413042/01.webp",
@@ -8986,11 +8986,11 @@
     "Charlie Day（查理·戴）",
     "Jack Black（杰克·布莱克）",
     "Keegan-Michael Key（科甘-迈克尔·凯）",
-    "塞斯·罗根",
+    "Seth Rogen（塞斯·罗根）",
     "弗莱德·阿米森",
     "凯文·迈克尔·理查德森",
     "朱丽叶·杰勒尼克",
-    "塞巴斯蒂安·马尼斯科"
+    "Sebastian Maniscalco（塞巴斯蒂安·马尼斯科）"
    ],
    "category": "anime",
    "cover": "covers/27199894/01.webp",
