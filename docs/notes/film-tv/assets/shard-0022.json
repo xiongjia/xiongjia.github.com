@@ -3,20 +3,38 @@
  "first_date": "2008-10-01",
  "items": [
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Johnny Depp（约翰尼·德普）",
+    "Geoffrey Rush（杰弗里·拉什）",
+    "Orlando Bloom（奥兰多·布鲁姆）",
+    "Keira Knightley（凯拉·奈特莉）",
+    "Jack Davenport（杰克·达文波特）",
+    "Jonathan Pryce（乔纳森·普雷斯）"
+   ],
+   "category": "feature",
+   "comment": "一般...",
+   "cover": "covers/1298070/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1298070/01.webp",
    "date": "2008-10-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Gore Verbinski（戈尔·维宾斯基）"
+   ],
+   "douban_score": 8.9,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1298070",
    "missing": false,
-   "pending": true,
+   "original_title": "Pirates of the Caribbean: The Curse of the Black Pearl",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 143,
+   "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl",
    "status": "collect",
    "tags": [
     "Movie",
@@ -27,24 +45,50 @@
    "title": "加勒比海盗",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1298070/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "泰德·艾略特",
+    "特里·鲁西奥",
+    "Stuart Beattie（斯图尔特·贝亚蒂耶）",
+    "杰·沃尔伯特"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Stephen Boyd（史蒂芬·博伊德）",
+    "Raquel Welch（拉蔻儿·薇芝）",
+    "Edmond O'Brien（艾德蒙·奥布莱恩）",
+    "Donald Pleasence（唐纳德·普利森斯）",
+    "Arthur O'Connell（阿瑟·奥康纳）",
+    "William Redfield（威廉·雷德菲尔德）",
+    "阿瑟·肯尼迪",
+    "让·德尔瓦尔",
+    "巴里·科",
+    "肯·斯科特"
+   ],
+   "category": "feature",
+   "comment": "很小时候看的...",
+   "cover": "covers/1295915/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1295915/01.webp",
    "date": "2008-10-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Richard Fleischer（理查德·弗莱彻）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "科幻",
+    "冒险"
+   ],
    "id": "1295915",
    "missing": false,
-   "pending": true,
+   "original_title": "Fantastic Voyage",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 100,
+   "slug": "fantastic-voyage",
    "status": "collect",
    "tags": [
     "Movie",
@@ -55,24 +99,47 @@
    "title": "神奇旅程",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1295915/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "哈里·克莱纳",
+    "大卫·邓肯",
+    "奥托·克莱门特",
+    "杰罗姆·比克斯比"
+   ],
+   "year": 1966
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Sean Biggerstaff（肖恩·比格斯代夫）",
+    "Emilia Fox（艾米莉娅·福克斯）",
+    "Michael Dixon（迈克尔·迪克森）",
+    "Shaun Evans（肖恩·埃文斯）",
+    "Michelle Ryan（米歇尔·雷恩）"
+   ],
+   "category": "feature",
+   "comment": "世事如棋局...",
+   "cover": "covers/1945549/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1945549/01.webp",
    "date": "2008-09-30",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Sean Ellis（西恩·埃利斯）"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
    "id": "1945549",
    "missing": false,
-   "pending": true,
+   "original_title": "Cashback",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "比利时"
+   ],
+   "runtime": 102,
+   "slug": "cashback",
    "status": "collect",
    "tags": [
     "Movie",
@@ -83,24 +150,47 @@
    "title": "超市夜未眠",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1945549/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Sean Ellis（西恩·埃利斯）"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "David Lee Smith（大卫·李·史密斯）",
+    "Tony Todd（托尼·托德）",
+    "John Billingsley（约翰·比灵斯列）",
+    "Annika Peterson（安妮卡·彼得森）",
+    "Alexis Thorpe（阿丽西丝·索普）",
+    "William Katt（威廉·卡特）",
+    "理查德·雷西尔",
+    "艾伦·克劳福德",
+    "史蒂文·利特尔",
+    "罗比·布赖恩"
+   ],
+   "category": "feature",
+   "comment": "即使一个人不老不死...他的智慧也不会是最高的...",
+   "cover": "covers/2300586/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2300586/01.webp",
    "date": "2008-09-28",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Richard Schenkman（理查德·沙因克曼）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "剧情",
+    "科幻"
+   ],
    "id": "2300586",
    "missing": false,
-   "pending": true,
+   "original_title": "The Man from Earth",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 87,
+   "slug": "the-man-from-earth",
    "status": "collect",
    "tags": [
     "Movie",
@@ -114,24 +204,41 @@
    "title": "这个男人来自地球",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2300586/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "杰罗姆·比克斯比"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "堀北真希",
+    "石田卓也",
+    "平田满",
+    "草村礼子"
+   ],
+   "category": "feature",
+   "comment": "人格分裂...",
+   "cover": "covers/2976072/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2976072/01.webp",
    "date": "2008-09-25",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "平野俊一"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "爱情",
+    "悬疑"
+   ],
    "id": "2976072",
    "missing": false,
-   "pending": true,
+   "original_title": "東京少年",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 95,
+   "slug": "tokyo-boy",
    "status": "collect",
    "tags": [
     "JPN",
@@ -141,24 +248,43 @@
    "title": "东京少年",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2976072/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "渡边睦月"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "上户彩",
+    "中村狮童",
+    "桥爪功",
+    "名取裕子",
+    "菊川怜"
+   ],
+   "category": "series",
+   "comment": "上戸彩 的中文够差...估计也不完全符合历史...",
+   "cover": "covers/3057310/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3057310/01.webp",
    "date": "2008-09-15",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "堀川とんこう"
+   ],
+   "douban_score": 7.2,
+   "episodes": 2,
+   "genres": [
+    "剧情",
+    "历史"
+   ],
    "id": "3057310",
    "missing": false,
-   "pending": true,
+   "original_title": "李香蘭",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 121,
+   "slug": "douban-3057310",
    "status": "collect",
    "tags": [
     "Movie",
@@ -170,24 +296,48 @@
    "title": "李香兰",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3057310/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "竹山洋"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山下智久",
+    "长泽雅美",
+    "藤木直人",
+    "荣仓奈奈",
+    "平冈祐太",
+    "滨田岳",
+    "松重丰",
+    "三上博史"
+   ],
+   "category": "series",
+   "comment": "回到过去...好辛苦...",
+   "cover": "covers/2018131/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2018131/01.webp",
    "date": "2008-08-31",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "成田岳",
+    "加藤裕将"
+   ],
+   "douban_score": 8.9,
+   "episodes": 11,
+   "genres": [
+    "剧情",
+    "爱情",
+    "奇幻"
+   ],
    "id": "2018131",
    "missing": false,
-   "pending": true,
+   "original_title": "プロポーズ大作戦",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 50,
+   "slug": "puropozu-dai-sakusen",
    "status": "collect",
    "tags": [
     "JPN",
@@ -197,24 +347,50 @@
    "title": "求婚大作战",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2018131/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "金子茂树"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Johnny Depp（约翰尼·德普）",
+    "Freddie Highmore（弗莱迪·海默）",
+    "Helena Bonham Carter（海伦娜·伯翰·卡特）",
+    "Christopher Lee（克里斯托弗·李）",
+    "Noah Taylor（诺亚·泰勒）",
+    "大卫·凯利",
+    "米西·派勒",
+    "James Fox（詹姆斯·福克斯）",
+    "AnnaSophia Robb（安娜索菲亚·罗伯）",
+    "迪普·罗伊"
+   ],
+   "category": "feature",
+   "comment": "还好...想象力丰富...",
+   "cover": "covers/1309101/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1309101/01.webp",
    "date": "2008-08-17",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Tim Burton（蒂姆·波顿）"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "喜剧",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1309101",
    "missing": false,
-   "pending": true,
+   "original_title": "Charlie and the Chocolate Factory",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国",
+    "澳大利亚"
+   ],
+   "runtime": 115,
+   "slug": "charlie-and-the-chocolate-factory",
    "status": "collect",
    "tags": [
     "Movie",
@@ -224,24 +400,41 @@
    "title": "查理和巧克力工厂",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1309101/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "约翰·奥古斯特"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "新垣结衣",
+    "三浦春马",
+    "小出惠介",
+    "香里奈",
+    "麻生祐未"
+   ],
+   "category": "feature",
+   "comment": "有点看不懂,跟不上年青人的思想了...",
+   "cover": "covers/3003830/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3003830/01.webp",
    "date": "2008-08-10",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "今井夏木"
+   ],
+   "douban_score": 7.0,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "3003830",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 129,
+   "slug": "sky-of-love",
    "status": "collect",
    "tags": [
     "JPN",
@@ -251,24 +444,47 @@
    "title": "恋空",
    "type": "movie",
    "url": "https://movie.douban.com/subject/3003830/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "渡边睦月"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Ben Burtt（本·贝尔特）",
+    "Elissa Knight（艾丽莎·奈特）",
+    "Jeff Garlin（杰夫·格尔林）",
+    "Fred Willard（佛莱德·威拉特）",
+    "Sigourney Weaver（西格妮·韦弗）",
+    "MacInTalk",
+    "约翰·拉森贝格",
+    "Kathy Najimy（凯茜·纳基麦）",
+    "泰迪·牛顿",
+    "鲍伯·伯根"
+   ],
+   "category": "anime",
+   "cover": "covers/2131459/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2131459/01.webp",
    "date": "2008-07-22",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Andrew Stanton（安德鲁·斯坦顿）"
+   ],
+   "douban_score": 9.3,
+   "genres": [
+    "科幻",
+    "动画",
+    "冒险"
+   ],
    "id": "2131459",
    "missing": false,
-   "pending": true,
+   "original_title": "WALL·E",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 98,
+   "slug": "walle",
    "status": "collect",
    "tags": [
     "Movie",
@@ -278,24 +494,48 @@
    "title": "机器人总动员",
    "type": "movie",
    "url": "https://movie.douban.com/subject/2131459/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Andrew Stanton（安德鲁·斯坦顿）",
+    "吉姆·里尔顿",
+    "Pete Docter（彼特·道格特）"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Robin Williams（罗宾·威廉姆斯）",
+    "Robert Sean Leonard（罗伯特·肖恩·莱纳德）",
+    "Ethan Hawke（伊桑·霍克）",
+    "Josh Charles（乔西·查尔斯）",
+    "Gale Hansen（盖尔·汉森）",
+    "迪伦·库斯曼",
+    "阿勒隆·鲁杰罗",
+    "詹姆斯·沃特斯顿",
+    "诺曼·劳埃德",
+    "柯特伍德·史密斯"
+   ],
+   "category": "feature",
+   "comment": "成长中并不缺乏对于习题、作业或者就业的教导...缺乏的教导是如何获得自由和快乐...",
+   "cover": "covers/1291548/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291548/01.webp",
    "date": "2008-07-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Peter Weir（彼得·威尔）"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "剧情"
+   ],
    "id": "1291548",
    "missing": false,
-   "pending": true,
+   "original_title": "Dead Poets Society",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 128,
+   "slug": "dead-poets-society",
    "status": "collect",
    "tags": [
     "Movie",
@@ -305,24 +545,41 @@
    "title": "死亡诗社",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1291548/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "汤姆·舒尔曼"
+   ],
+   "year": 1989
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "石原里美",
+    "山本裕典",
+    "木村了",
+    "永山绚斗"
+   ],
+   "category": "series",
+   "comment": "两面派老师 石原さとみ , 作风值得学习",
+   "cover": "covers/3054413/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3054413/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "片山修"
+   ],
+   "douban_score": 7.0,
+   "episodes": 10,
+   "genres": [
+    "剧情"
+   ],
    "id": "3054413",
    "missing": false,
-   "pending": true,
+   "original_title": "パズル",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "puzzle",
    "status": "collect",
    "tags": [
     "Teleplay",
@@ -333,24 +590,53 @@
    "title": "谜局",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3054413/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "莳田光治"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "大原沙耶香",
+    "福山润",
+    "中井和哉",
+    "伊藤静",
+    "菊地美香",
+    "望月久代",
+    "矢岛晶子",
+    "武藤寿美",
+    "小林由美子",
+    "古川登志夫"
+   ],
+   "category": "anime",
+   "comment": "续当然也要看...",
+   "cover": "covers/3034986/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3034986/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水岛努",
+    "山本靖贵",
+    "筑紫大介",
+    "日色如夏",
+    "寺泽伸介",
+    "渡边正彦",
+    "远藤晋"
+   ],
+   "douban_score": 9.3,
+   "episodes": 13,
+   "genres": [
+    "动画"
+   ],
    "id": "3034986",
    "missing": false,
-   "pending": true,
+   "original_title": "xxxHOLiC◆継",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "xxxholic-2008",
    "status": "collect",
    "tags": [
     "JPN",
@@ -361,24 +647,60 @@
    "title": "四月一日灵异事件簿·继",
    "type": "tv",
    "url": "https://movie.douban.com/subject/3034986/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "横手美智子",
+    "大川七濑",
+    "谷村大四郎",
+    "平见瞠",
+    "樱井圭记",
+    "五十岚皋"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "樱井孝宏",
+    "田中理惠",
+    "关智一",
+    "浪川大辅",
+    "阪口大助",
+    "高户靖广",
+    "桑岛法子",
+    "绿川光",
+    "广濑正志",
+    "山崎和佳奈"
+   ],
+   "category": "anime",
+   "comment": "怪异风格我喜欢",
+   "cover": "covers/2340927/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2340927/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "中村健治",
+    "植田秀仁",
+    "羽多野浩平",
+    "渡边纯央",
+    "松本佳久",
+    "中尾幸彦"
+   ],
+   "douban_score": 9.4,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "悬疑",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "2340927",
    "missing": false,
-   "pending": true,
+   "original_title": "モノノ怪",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "mononoke",
    "status": "collect",
    "tags": [
     "JPN",
@@ -389,24 +711,49 @@
    "title": "怪化猫",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2340927/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "横手美智子",
+    "小中千昭",
+    "高桥郁子",
+    "石川学"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "岩田小百合",
+    "加藤和树",
+    "杉本彩",
+    "小仓久宽",
+    "西村和彦",
+    "入江纱绫",
+    "金山一彦",
+    "田中要次"
+   ],
+   "category": "series",
+   "comment": "演员选的不错",
+   "cover": "covers/2279618/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2279618/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "长沼诚"
+   ],
+   "douban_score": 6.4,
+   "episodes": 12,
+   "genres": [
+    "悬疑",
+    "恐怖"
+   ],
    "id": "2279618",
    "missing": false,
-   "pending": true,
+   "original_title": "地獄少女",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "douban-2279618",
    "status": "collect",
    "tags": [
     "JPN",
@@ -417,24 +764,53 @@
    "title": "地狱少女",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2279618/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "森山あけみ",
+    "山川智子",
+    "最合のぼる"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福山雅治",
+    "柴崎幸",
+    "北村一辉",
+    "深田恭子",
+    "渡边一计",
+    "品川祐",
+    "真矢美纪",
+    "唐泽寿明",
+    "广末凉子",
+    "香取慎吾"
+   ],
+   "category": "series",
+   "comment": "柴崎幸 ...",
+   "cover": "covers/2270390/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2270390/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "西谷弘",
+    "成田岳",
+    "西坂瑞城",
+    "泽田镰作"
+   ],
+   "douban_score": 8.3,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
    "id": "2270390",
    "missing": false,
-   "pending": true,
+   "original_title": "ガリレオ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 54,
+   "slug": "galileo",
    "status": "collect",
    "tags": [
     "JPN",
@@ -446,24 +822,51 @@
    "title": "神探伽利略",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2270390/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "福田靖",
+    "古家和尚",
+    "东野圭吾"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "阿部宽",
+    "夏川结衣",
+    "国仲凉子",
+    "塚本高史",
+    "尾美利德",
+    "三浦理惠子",
+    "高岛礼子",
+    "樱",
+    "高知东生",
+    "草笛光子"
+   ],
+   "category": "series",
+   "comment": "阿部宽 好像蛮帅的样子才去看的.还有也看过 夏川结衣 演的 鬼邻人.",
+   "cover": "covers/2160933/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2160933/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "三宅喜重",
+    "小松隆志",
+    "植田尚"
+   ],
+   "douban_score": 9.0,
+   "episodes": 12,
+   "genres": [
+    "喜剧"
+   ],
    "id": "2160933",
    "missing": false,
-   "pending": true,
+   "original_title": "結婚できない男",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 57,
+   "slug": "kekkon-dekinai-otoko",
    "status": "collect",
    "tags": [
     "JPN",
@@ -474,24 +877,42 @@
    "title": "不能结婚的男人",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2160933/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "尾崎将也"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "石原里美",
+    "户田惠梨香",
+    "加藤罗莎",
+    "香里奈"
+   ],
+   "category": "series",
+   "comment": "和第一季差不多",
+   "cover": "covers/2153602/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2153602/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "木下高男",
+    "岩田和行"
+   ],
+   "douban_score": 7.7,
+   "episodes": 4,
+   "genres": [
+    "剧情"
+   ],
    "id": "2153602",
    "missing": false,
-   "pending": true,
+   "original_title": "翼の折れた天使たちII",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "tsubasa-no-oreta-tenshitachi-2",
    "status": "collect",
    "tags": [
     "JPN",
@@ -501,24 +922,44 @@
    "title": "折翼的天使们2",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2153602/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "半泽律子",
+    "川嶋澄乃",
+    "高山直也",
+    "金杉弘子"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "细田善彦",
+    "酒井彩名",
+    "渡边一计"
+   ],
+   "category": "series",
+   "comment": "电视剧版一般",
+   "cover": "covers/2147619/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2147619/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "石川淳一",
+    "植田泰史",
+    "星田良子"
+   ],
+   "douban_score": 8.3,
+   "episodes": 12,
+   "genres": [
+    "悬疑"
+   ],
    "id": "2147619",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "douban-2147619",
    "status": "collect",
    "tags": [
     "JPN",
@@ -531,24 +972,58 @@
    "title": "百鬼夜行抄",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2147619/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "金子二郎",
+    "福田卓郎",
+    "今市子"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "福山润",
+    "樱井孝宏",
+    "野上尤加奈",
+    "小清水亚美",
+    "南央美",
+    "名冢佳织",
+    "井上喜久子",
+    "真殿光昭",
+    "加濑康之",
+    "大原沙耶香"
+   ],
+   "category": "anime",
+   "comment": "要不要继续追第二部?考虑一下...",
+   "cover": "covers/2043155/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2043155/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "谷口悟朗",
+    "村田和也",
+    "秋田谷典昭",
+    "政木伸一",
+    "三宅和男",
+    "三好正人",
+    "鸟羽聪",
+    "山田彻",
+    "工藤宽显"
+   ],
+   "douban_score": 9.1,
+   "episodes": 25,
+   "genres": [
+    "科幻",
+    "动画"
+   ],
    "id": "2043155",
    "missing": false,
-   "pending": true,
+   "original_title": "コードギアス 反逆のルルーシュ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "code-geass",
    "status": "collect",
    "tags": [
     "Animation",
@@ -560,24 +1035,52 @@
    "title": "反叛的鲁路修",
    "type": "tv",
    "url": "https://movie.douban.com/subject/2043155/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大河内一楼",
+    "吉野弘幸",
+    "野村祐人"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "刘德华",
+    "洪金宝",
+    "李美琪",
+    "吴建豪",
+    "濮存昕",
+    "安志杰",
+    "于荣光",
+    "岳华",
+    "狄龙",
+    "刘松仁"
+   ],
+   "category": "feature",
+   "comment": "严重不符合史实...",
+   "cover": "covers/1947091/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1947091/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "李仁港"
+   ],
+   "douban_score": 5.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "历史",
+    "战争"
+   ],
    "id": "1947091",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "韩国",
+    "香港"
+   ],
+   "runtime": 102,
+   "slug": "three-kingdoms-resurrection-of-the-dragon",
    "status": "collect",
    "tags": [
     "Movie",
@@ -588,24 +1091,56 @@
    "title": "三国之见龙卸甲",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1947091/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "李仁港",
+    "刘浩良",
+    "冯志强"
+   ],
+   "year": 2008
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "小西克幸",
+    "堀江由衣",
+    "绪方惠美",
+    "石田彰",
+    "嘉数由美",
+    "绿川光",
+    "关俊彦",
+    "野上尤加奈",
+    "子安武人",
+    "松山鹰志"
+   ],
+   "category": "anime",
+   "comment": "一般,不差吧",
+   "cover": "covers/1923304/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1923304/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "西村纯二",
+    "筱原俊哉",
+    "小坂春女",
+    "桥本昌和",
+    "古川政美",
+    "高木茂树",
+    "西本由纪夫"
+   ],
+   "douban_score": 7.4,
+   "episodes": 26,
+   "genres": [
+    "动作",
+    "动画"
+   ],
    "id": "1923304",
    "missing": false,
-   "pending": true,
+   "original_title": "サムライ ディーパー キョウ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "samurai-deeper-kyo",
    "status": "collect",
    "tags": [
     "Animation",
@@ -618,24 +1153,60 @@
    "title": "鬼眼狂刀",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1923304/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "会川升",
+    "荒川稔久",
+    "十川诚志",
+    "中濑理香",
+    "川崎裕之"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "甲斐田幸",
+    "野田顺子",
+    "小西克幸",
+    "麦人",
+    "小林沙苗",
+    "新垣樽助",
+    "高桥广树"
+   ],
+   "category": "anime",
+   "comment": "又是 安倍 不过这次是说他孙子和老年的他...",
+   "cover": "covers/1919886/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1919886/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "森邦宏",
+    "小仓宏文",
+    "山口祐司",
+    "冈岛国敏",
+    "土屋浩幸",
+    "吉田俊司",
+    "饭村正之",
+    "山田弘和",
+    "上田茂",
+    "五十岚达矢",
+    "高田昌宏"
+   ],
+   "douban_score": 7.7,
+   "episodes": 26,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1919886",
    "missing": false,
-   "pending": true,
+   "original_title": "少年陰陽師",
+   "pending": false,
    "rating": 3,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "shonen-onmyoji",
    "status": "collect",
    "tags": [
     "Animation",
@@ -647,24 +1218,51 @@
    "title": "少年阴阳师",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1919886/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "待田堂子",
+    "吉村清子",
+    "西园悟"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "阿部宽",
+    "长谷川京子",
+    "斋藤洋介",
+    "山下智久",
+    "长泽雅美",
+    "中尾明庆",
+    "小池彻平",
+    "新垣结衣",
+    "纱荣子",
+    "野际阳子"
+   ],
+   "category": "series",
+   "comment": "属于励志的, 适合在校学生看",
+   "cover": "covers/1915312/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1915312/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "塚本连平",
+    "唐木希浩",
+    "小松隆志"
+   ],
+   "douban_score": 8.9,
+   "episodes": 11,
+   "genres": [
+    "剧情"
+   ],
    "id": "1915312",
    "missing": false,
-   "pending": true,
+   "original_title": "ドラゴン桜",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 47,
+   "slug": "dragon-zakura",
    "status": "collect",
    "tags": [
     "JPN",
@@ -674,24 +1272,46 @@
    "title": "龙樱",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1915312/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "秦建日子"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "关俊彦",
+    "保志总一朗",
+    "石田彰",
+    "平田广明",
+    "草尾毅",
+    "皆口裕子",
+    "茂吕田和江",
+    "置鲇龙太郎",
+    "矢岛晶子",
+    "根谷美智子"
+   ],
+   "category": "anime",
+   "comment": "唐僧竟然这样",
+   "cover": "covers/1906391/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1906391/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "伊达勇登"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "动画"
+   ],
    "id": "1906391",
    "missing": false,
-   "pending": true,
+   "original_title": "幻想魔伝最遊記Requiem選ばれざるものへの鎮魂歌",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "requiem",
    "status": "collect",
    "tags": [
     "Animation",
@@ -702,24 +1322,55 @@
    "title": "最游记：给落选者的镇魂歌",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1906391/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "峰仓和也",
+    "隅泽克之"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "神谷浩史",
+    "工藤晴香",
+    "前田忧佳",
+    "高桥美佳子",
+    "杉田智和",
+    "大原沙耶香",
+    "堀内贤雄",
+    "藤原启治",
+    "竹若拓磨"
+   ],
+   "category": "anime",
+   "comment": "很不错 列入经典",
+   "cover": "covers/1892335/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1892335/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "长井龙雪",
+    "笠井贤一",
+    "铃木洋平",
+    "秋田谷典昭",
+    "高岛大辅",
+    "上田繁",
+    "池端隆史",
+    "浅野胜也",
+    "福田道生"
+   ],
+   "douban_score": 9.4,
+   "episodes": 12,
+   "genres": [
+    "动画"
+   ],
    "id": "1892335",
    "missing": false,
-   "pending": true,
+   "original_title": "ハチミツとクローバーⅡ",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "honey-clover-ii",
    "status": "collect",
    "tags": [
     "JPN",
@@ -730,24 +1381,46 @@
    "title": "蜂蜜与四叶草2",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1892335/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "黑田洋介"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "小田切让",
+    "大森南朋",
+    "苍井优",
+    "镰田小惠子",
+    "久野真季子",
+    "亚伦·迪斯穆克",
+    "江角真纪子",
+    "托德·哈伯空",
+    "沼田爆",
+    "李礼仙"
+   ],
+   "category": "feature",
+   "comment": "真人版也不错",
+   "cover": "covers/1887829/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1887829/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "大友克洋"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "奇幻"
+   ],
    "id": "1887829",
    "missing": false,
-   "pending": true,
+   "original_title": "蟲師",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 131,
+   "slug": "mushishi",
    "status": "collect",
    "tags": [
     "Movie",
@@ -758,24 +1431,47 @@
    "title": "虫师",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1887829/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "漆原友纪",
+    "村井贞之",
+    "大友克洋"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "郭涛",
+    "刘桦",
+    "连晋",
+    "黄渤",
+    "徐峥",
+    "岳小军",
+    "罗兰",
+    "王迅"
+   ],
+   "category": "feature",
+   "comment": "小成本大制作",
+   "cover": "covers/1862151/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1862151/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "宁浩"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "喜剧",
+    "犯罪"
+   ],
    "id": "1862151",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 106,
+   "slug": "crazy-stone",
    "status": "collect",
    "tags": [
     "Movie",
@@ -787,24 +1483,59 @@
    "title": "疯狂的石头",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1862151/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "张承",
+    "宁浩",
+    "岳小军"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "樱井孝宏",
+    "森川智之",
+    "斋贺光希",
+    "大塚明夫",
+    "井上和彦",
+    "胜生真沙子",
+    "宫田幸季",
+    "高山南"
+   ],
+   "category": "anime",
+   "comment": "我也是 双黑 啊...",
+   "cover": "covers/1858192/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1858192/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "西村纯二",
+    "山本秀世",
+    "小坂春女",
+    "小仓宏文",
+    "则座诚",
+    "下司泰弘",
+    "柳濑雄之",
+    "冈岛国敏",
+    "桥本敏一",
+    "吉田俊司",
+    "室谷靖"
+   ],
+   "douban_score": 7.4,
+   "episodes": 39,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1858192",
    "missing": false,
-   "pending": true,
+   "original_title": "今日から㋮王!",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "kyo-kara-mao",
    "status": "collect",
    "tags": [
     "Animation",
@@ -816,24 +1547,51 @@
    "title": "今天开始做魔王",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1858192/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "面出明美",
+    "西村纯二",
+    "根元岁三",
+    "冈田麿里"
+   ],
+   "year": 2004
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "朱智勋",
+    "尹恩惠",
+    "金桢勋",
+    "宋智孝",
+    "崔福岩",
+    "金惠子",
+    "金相中",
+    "李允芝",
+    "朴赞焕",
+    "沈惠珍"
+   ],
+   "category": "series",
+   "comment": "尹恩惠 ...",
+   "cover": "covers/1856299/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1856299/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "黄仁雷"
+   ],
+   "douban_score": 7.9,
+   "episodes": 24,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "1856299",
    "missing": false,
-   "pending": true,
+   "original_title": "궁",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 65,
+   "slug": "princess-hours",
    "status": "collect",
    "tags": [
     "KOR",
@@ -843,24 +1601,48 @@
    "title": "宫",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1856299/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "寅恩雅"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Gerard Butler（杰拉德·巴特勒）",
+    "Lena Headey（琳娜·海蒂）",
+    "Dominic West（多米尼克·韦斯特）",
+    "David Wenham（大卫·文翰）",
+    "Vincent Regan（文森特·里根）",
+    "Michael Fassbender（迈克尔·法斯宾德）",
+    "汤姆·威斯多姆",
+    "安德鲁·普利文",
+    "Andrew Tiernan（安德鲁·蒂曼）",
+    "Rodrigo Santoro（罗德里戈·桑托罗）"
+   ],
+   "category": "feature",
+   "comment": "古代真是肌肉男的天下,还好没有生在古代",
+   "cover": "covers/1853176/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1853176/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Zack Snyder（扎克·施奈德）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "动作",
+    "历史",
+    "战争"
+   ],
    "id": "1853176",
    "missing": false,
-   "pending": true,
+   "original_title": "300",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 117,
+   "slug": "douban-1853176",
    "status": "collect",
    "tags": [
     "Movie",
@@ -872,24 +1654,58 @@
    "title": "斯巴达300勇士",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1853176/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Zack Snyder（扎克·施奈德）",
+    "库尔特·约恩斯塔德",
+    "迈克尔·高顿",
+    "Frank Miller（弗兰克·米勒）"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "生天目仁美",
+    "千叶纱子",
+    "折笠富美子",
+    "川澄绫子",
+    "能登麻美子",
+    "皆川纯子",
+    "福圆美里",
+    "长岛雄一",
+    "近藤孝行"
+   ],
+   "category": "anime",
+   "comment": "萌系列的",
+   "cover": "covers/1850084/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1850084/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "佐藤卓哉",
+    "太田雅彦",
+    "神户守",
+    "米田光宏",
+    "小泽一浩",
+    "石堂宏之",
+    "楠本巨树"
+   ],
+   "douban_score": 8.7,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动画",
+    "家庭"
+   ],
    "id": "1850084",
    "missing": false,
-   "pending": true,
+   "original_title": "苺ましまろ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "ichigo-mashimaro",
    "status": "collect",
    "tags": [
     "Animation",
@@ -900,24 +1716,52 @@
    "title": "草莓棉花糖",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1850084/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "佐藤卓哉",
+    "横手美智子",
+    "花田十辉",
+    "平见瞠"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山下智久",
+    "堀北真希",
+    "山崎努",
+    "加藤浩次",
+    "市川由衣",
+    "田山凉成",
+    "奥贯薰",
+    "杉本哲太",
+    "哀川翔"
+   ],
+   "category": "series",
+   "comment": "大家其实都只是 棋子...",
+   "cover": "covers/1825679/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1825679/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "平野俊一"
+   ],
+   "douban_score": 7.5,
+   "episodes": 11,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "犯罪"
+   ],
    "id": "1825679",
    "missing": false,
-   "pending": true,
+   "original_title": "クロサギ",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "kurosagi",
    "status": "collect",
    "tags": [
     "JPN",
@@ -928,24 +1772,55 @@
    "title": "欺诈师猎人",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1825679/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "篠崎絵里子"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杉田智和",
+    "平野绫",
+    "茅原实里",
+    "后藤邑子",
+    "小野大辅",
+    "松冈由贵",
+    "桑谷夏子",
+    "白石稔",
+    "松元惠",
+    "青木沙耶香"
+   ],
+   "category": "anime",
+   "comment": "凉宫春日...SOS团...",
+   "cover": "covers/1810517/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1810517/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "石原立也",
+    "山本宽",
+    "武本康弘",
+    "石立太一",
+    "坂本一也",
+    "吉冈忍",
+    "北之原孝将"
+   ],
+   "douban_score": 8.7,
+   "episodes": 14,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画"
+   ],
    "id": "1810517",
    "missing": false,
-   "pending": true,
+   "original_title": "涼宮ハルヒの憂鬱",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "suzumiya-haruhi-no-yuutsu",
    "status": "collect",
    "tags": [
     "Animation",
@@ -958,24 +1833,62 @@
    "title": "凉宫春日的忧郁",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1810517/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "石原立也",
+    "志茂文彦",
+    "山本宽",
+    "贺东招二"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "中野裕斗",
+    "土井美加",
+    "泽城美雪",
+    "上田祐司",
+    "名冢佳织",
+    "小林爱"
+   ],
+   "category": "anime",
+   "comment": "很不错,属于上品",
+   "cover": "covers/1800597/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1800597/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "长滨博史",
+    "今泉贤一",
+    "长井龙雪",
+    "长峰达也",
+    "山崎理",
+    "五十岚卓哉",
+    "宫下新平",
+    "成田岁法",
+    "五月女浩一朗",
+    "真野玲",
+    "井之川慎太郎",
+    "宫田亮"
+   ],
+   "douban_score": 9.4,
+   "episodes": 26,
+   "genres": [
+    "剧情",
+    "动画",
+    "悬疑",
+    "惊悚",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "1800597",
    "missing": false,
-   "pending": true,
+   "original_title": "蟲師",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "mushishi-2005",
    "status": "collect",
    "tags": [
     "JPN",
@@ -986,24 +1899,51 @@
    "title": "虫师",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1800597/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "伊丹秋",
+    "桑畑絹子",
+    "山田由香",
+    "漆原友纪"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "李多海",
+    "李栋旭",
+    "李准基",
+    "朴诗妍",
+    "黄宝罗",
+    "崔兰",
+    "韩彩英",
+    "边希峰",
+    "在熙",
+    "李言廷"
+   ],
+   "category": "series",
+   "comment": "巨搞笑...",
+   "cover": "covers/1790373/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1790373/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "全基尚"
+   ],
+   "douban_score": 8.3,
+   "episodes": 16,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
    "id": "1790373",
    "missing": false,
-   "pending": true,
+   "original_title": "마이걸",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 60,
+   "slug": "my-girl",
    "status": "collect",
    "tags": [
     "KOR",
@@ -1014,24 +1954,49 @@
    "title": "我的女孩",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1790373/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "洪静恩",
+    "洪美兰"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "妻夫木聪",
+    "柴崎幸",
+    "中井贵一",
+    "原田芳雄",
+    "永山瑛太",
+    "原田美枝子",
+    "中村嘉葎雄",
+    "麻生久美子",
+    "白善哲",
+    "剧团一人"
+   ],
+   "category": "feature",
+   "comment": "柴崎幸...",
+   "cover": "covers/1773614/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1773614/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "盐田明彦"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "动作",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "1773614",
    "missing": false,
-   "pending": true,
+   "original_title": "どろろ",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 139,
+   "slug": "dororo",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1043,24 +2008,60 @@
    "title": "多罗罗",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1773614/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "盐田明彦",
+    "手冢治虫"
+   ],
+   "year": 2007
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "神谷浩史",
+    "工藤晴香",
+    "野岛健儿",
+    "高桥美佳子",
+    "杉田智和",
+    "上田祐司",
+    "藤原启治",
+    "大原沙耶香",
+    "竹若拓磨"
+   ],
+   "category": "anime",
+   "comment": "很不错 列入经典",
+   "cover": "covers/1770547/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1770547/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "笠井贤一",
+    "长井龙雪",
+    "舛成孝二",
+    "湖山祯崇",
+    "吉本毅",
+    "安藤健",
+    "清水一伸",
+    "高岛大辅",
+    "橘秀树",
+    "中山胜一",
+    "松本佳久"
+   ],
+   "douban_score": 9.3,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情",
+    "动画"
+   ],
    "id": "1770547",
    "missing": false,
-   "pending": true,
+   "original_title": "ハチミツとクローバー",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "honey-and-clover",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1071,24 +2072,60 @@
    "title": "蜂蜜与四叶草",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1770547/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "黑田洋介"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "东地宏树",
+    "能登麻美子",
+    "中井和哉",
+    "本田贵子",
+    "生天目仁美",
+    "大川透",
+    "立木文彦",
+    "大原沙耶香",
+    "小山刚志",
+    "诹访部顺一"
+   ],
+   "category": "anime",
+   "comment": "画面不错...总体般般",
+   "cover": "covers/1769531/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1769531/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "平田智浩",
+    "原田孝宏",
+    "土屋浩幸",
+    "千叶大辅",
+    "加藤茂",
+    "宫田亮",
+    "远藤广隆",
+    "关野昌弘",
+    "佐土原武之",
+    "水本叶月"
+   ],
+   "douban_score": 8.0,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "动画",
+    "恐怖"
+   ],
    "id": "1769531",
    "missing": false,
-   "pending": true,
+   "original_title": "トリニティ・ブラッド",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "trinity-blood",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1099,24 +2136,47 @@
    "title": "圣魔之血",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1769531/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "富冈淳广",
+    "吉田直"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "大原沙耶香",
+    "福山润",
+    "中井和哉",
+    "伊藤静",
+    "望月久代",
+    "菊地美香",
+    "松尾佳子",
+    "柚木凉香",
+    "松野太纪",
+    "楠见尚己"
+   ],
+   "category": "anime",
+   "comment": "结局和 翼 有呼应",
+   "cover": "covers/1764361/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1764361/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水岛努"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "动画"
+   ],
    "id": "1764361",
    "missing": false,
-   "pending": true,
+   "original_title": "劇場版xxxHOLiC 真夏ノ夜ノ夢",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 60,
+   "slug": "xxxholic-2005",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1128,24 +2188,50 @@
    "title": "四月一日灵异事件簿剧场版：仲夏夜之梦",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1764361/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "樱井圭记",
+    "藤咲淳一"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "上户彩",
+    "堀北真希",
+    "山田优",
+    "上野树里",
+    "佐田真由美",
+    "松山研一",
+    "田中圭",
+    "増田佳彬",
+    "须贺贵匡",
+    "坂野真弥"
+   ],
+   "category": "series",
+   "comment": "4 集, 每集一个小故事",
+   "cover": "covers/1763994/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1763994/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "木下高男",
+    "岩田和行",
+    "平井秀树"
+   ],
+   "douban_score": 7.9,
+   "episodes": 4,
+   "genres": [
+    "剧情"
+   ],
    "id": "1763994",
    "missing": false,
-   "pending": true,
+   "original_title": "翼の折れた天使たち",
+   "pending": false,
    "rating": 4,
-   "regions": [],
+   "regions": [
+    "日本"
+   ],
    "runtime": null,
-   "slug": "",
+   "slug": "tsubasa-no-oreta-tenshitachi",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1155,24 +2241,47 @@
    "title": "折翼的天使们",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1763994/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Yoshi"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "凉风真世",
+    "藤谷美纪",
+    "富永美伊奈",
+    "上田祐司",
+    "土井美加",
+    "白鸟由里",
+    "池田秀一",
+    "大塚明夫"
+   ],
+   "category": "anime",
+   "comment": "这个应该算结局了",
+   "cover": "covers/1763916/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1763916/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "古桥一浩"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "动画"
+   ],
    "id": "1763916",
    "missing": false,
-   "pending": true,
+   "original_title": "るろうに剣心 -明治剣客浪漫譚- 星霜編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 90,
+   "slug": "samurai-x-reflection",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1186,24 +2295,51 @@
    "title": "浪客剑心：星霜篇",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1763916/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "吉田玲子"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "凉风真世",
+    "藤谷美纪",
+    "上田祐司",
+    "富永美伊奈",
+    "铃置洋孝",
+    "井上和彦",
+    "宫村优子",
+    "小杉十郎太",
+    "子安武人",
+    "山口胜平"
+   ],
+   "category": "anime",
+   "comment": "一般,但是 是 剑心所以列为经典",
+   "cover": "covers/1763899/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1763899/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "辻初樹"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "动画",
+    "历史",
+    "奇幻"
+   ],
    "id": "1763899",
    "missing": false,
-   "pending": true,
+   "original_title": "るろうに剣心 -明治剣客浪漫譚- 維新志士への鎮魂歌",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 90,
+   "slug": "ruroni-kenshin-ishin-shishi-e-no-requiem",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1216,24 +2352,70 @@
    "title": "浪客剑心：给维新志士的镇魂歌",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1763899/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大桥志吉"
+   ],
+   "year": 1997
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "凉风真世",
+    "藤谷美纪",
+    "上田祐司",
+    "岩男润子",
+    "富永美伊奈",
+    "池田政典",
+    "日高范子",
+    "安原义人",
+    "土井美加",
+    "铃置洋孝"
+   ],
+   "category": "anime",
+   "comment": "经典",
+   "cover": "covers/1763896/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1763896/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "古桥一浩",
+    "谷田部胜义",
+    "千明孝一",
+    "青木康直",
+    "则座诚",
+    "上田茂",
+    "下司泰弘",
+    "菱川直树",
+    "松见真一",
+    "小林孝志",
+    "高本宣弘",
+    "吉田俊司",
+    "村山靖",
+    "腰繁男",
+    "福多润",
+    "守冈博",
+    "横山广行",
+    "清水明"
+   ],
+   "douban_score": 8.9,
+   "episodes": 95,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "动画",
+    "惊悚",
+    "历史",
+    "奇幻"
+   ],
    "id": "1763896",
    "missing": false,
-   "pending": true,
+   "original_title": "るろうに剣心 -明治剣客浪漫譚-",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "ruroni-kenshin-meiji-kenkaku-roman-tan-1996",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1247,24 +2429,61 @@
    "title": "浪客剑心",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1763896/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "和月伸宏",
+    "岛田满",
+    "菅良幸",
+    "岸间信明",
+    "横手美智子",
+    "面出明美",
+    "十川诚志"
+   ],
+   "year": 1996
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "大原沙耶香",
+    "福山润",
+    "中井和哉",
+    "伊藤静",
+    "菊地美香",
+    "望月久代",
+    "矢岛晶子",
+    "武藤寿美",
+    "长岛雄一",
+    "藤田圭宣"
+   ],
+   "category": "anime",
+   "comment": "和 羽翼编年史 配合看 很不错...",
+   "cover": "covers/1760828/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1760828/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水岛努",
+    "湖山祯崇",
+    "岩崎太郎",
+    "筑紫大介",
+    "寺泽伸介",
+    "渡边正彦"
+   ],
+   "douban_score": 9.0,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "动画",
+    "惊悚",
+    "恐怖"
+   ],
    "id": "1760828",
    "missing": false,
-   "pending": true,
+   "original_title": "xxxHOLiC",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "xxxholic-2006",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1275,24 +2494,56 @@
    "title": "四月一日灵异事件簿",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1760828/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "横手美智子",
+    "大川七濑",
+    "平见瞠",
+    "樱井圭记",
+    "水岛努",
+    "五十岚皋"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "杉山纪彰",
+    "川澄绫子",
+    "植田佳奈",
+    "下屋则子",
+    "伊藤美纪",
+    "诹访部顺一",
+    "浅川悠"
+   ],
+   "category": "anime",
+   "comment": "七个使魔和七个魔法使...",
+   "cover": "covers/1727200/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1727200/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "山口祐司",
+    "上田茂",
+    "小林浩辅",
+    "冈岛国敏",
+    "秋田谷典昭",
+    "吉田俊司"
+   ],
+   "douban_score": 7.9,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "动画",
+    "冒险"
+   ],
    "id": "1727200",
    "missing": false,
-   "pending": true,
+   "original_title": "Fate/stay night",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "fate-stay-night",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1306,24 +2557,52 @@
    "title": "命运之夜",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1727200/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "佐藤卓哉",
+    "志茂文彦",
+    "冈田麿里",
+    "花田十辉",
+    "奈须蘑菇"
+   ],
+   "year": 2006
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "前田爱",
+    "入江崇史",
+    "大塚芳忠",
+    "能登麻美子",
+    "渡边明乃",
+    "井上和彦"
+   ],
+   "category": "anime",
+   "comment": "部分故事有一点哲理...不错的...",
+   "cover": "covers/1512037/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1512037/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "中村隆太郎",
+    "远藤彻哉",
+    "江岛泰男",
+    "小林孝嗣",
+    "平田丰"
+   ],
+   "douban_score": 9.1,
+   "episodes": 13,
+   "genres": [
+    "动画",
+    "冒险"
+   ],
    "id": "1512037",
    "missing": false,
-   "pending": true,
+   "original_title": "キノの旅 -the Beautiful World-",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "the-beautiful-world",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1335,24 +2614,50 @@
    "title": "奇诺之旅",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1512037/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "村井贞之"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "皆川纯子",
+    "置鲇龙太郎",
+    "近藤孝行",
+    "甲斐田幸",
+    "川本成",
+    "高桥广树",
+    "津田健次郎",
+    "小野坂昌也",
+    "喜安浩平",
+    "尾小平志津香"
+   ],
+   "category": "anime",
+   "comment": "中国那个体育不行也要搞个动画,从娃娃抓起",
+   "cover": "covers/1477963/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1477963/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "滨名孝行"
+   ],
+   "douban_score": 8.7,
+   "episodes": 178,
+   "genres": [
+    "喜剧",
+    "动作",
+    "动画",
+    "运动"
+   ],
    "id": "1477963",
    "missing": false,
-   "pending": true,
+   "original_title": "テニスの王子様",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 22,
+   "slug": "tenisu-no-ojisama",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1363,24 +2668,63 @@
    "title": "网球王子",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1477963/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "许斐刚"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "川上伦子",
+    "千叶进步",
+    "小林沙苗",
+    "嘉数由美",
+    "津村真琴",
+    "伊藤健太郎",
+    "津田英三",
+    "藤原启治",
+    "浅川悠",
+    "樱井孝宏"
+   ],
+   "category": "anime",
+   "comment": "佐为...唉...",
+   "cover": "covers/1474243/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1474243/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "西泽晋",
+    "神谷纯",
+    "远藤彻哉",
+    "谷田部胜义",
+    "殿胜秀树",
+    "大隈孝晴",
+    "小坂春女",
+    "政木伸一",
+    "冈岛国敏",
+    "新留俊哉",
+    "所智一",
+    "野中卓也",
+    "高濑节夫",
+    "饭岛正胜",
+    "成田岁法",
+    "三宅雄一郎"
+   ],
+   "douban_score": 9.3,
+   "episodes": 75,
+   "genres": [
+    "动画",
+    "奇幻"
+   ],
    "id": "1474243",
    "missing": false,
-   "pending": true,
+   "original_title": "ヒカルの碁",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "hikaru-no-go",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1391,24 +2735,65 @@
    "title": "棋魂",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1474243/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "堀田由美",
+    "小畑健",
+    "大桥志吉",
+    "横手美智子",
+    "富冈淳广",
+    "远藤彻哉"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "佐佐木望",
+    "千叶繁",
+    "桧山修之",
+    "绪方惠美",
+    "田中真弓",
+    "森川智之",
+    "天野由梨",
+    "子安武人",
+    "林原惠美",
+    "折笠爱"
+   ],
+   "category": "anime",
+   "comment": "结局不好",
+   "cover": "covers/1465792/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1465792/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "阿部记之",
+    "新房昭之",
+    "下田正美",
+    "山口赖房",
+    "上田茂",
+    "小泽一浩",
+    "松井仁之",
+    "水野和则",
+    "小柴纯弥"
+   ],
+   "douban_score": 8.9,
+   "episodes": 112,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作",
+    "动画",
+    "惊悚",
+    "冒险"
+   ],
    "id": "1465792",
    "missing": false,
-   "pending": true,
+   "original_title": "幽☆遊☆白書",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "douban-1465792",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1420,24 +2805,60 @@
    "title": "幽游白书",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1465792/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "富坚义博",
+    "大桥志吉",
+    "隅泽克之",
+    "桥本裕志",
+    "富田祐弘"
+   ],
+   "year": 1992
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "神奈延年",
+    "森久保祥太郎",
+    "飞田展男",
+    "桑谷夏子",
+    "星野贵纪",
+    "保志总一朗",
+    "斋贺光希",
+    "堀秀行",
+    "子安武人",
+    "岩居由希子"
+   ],
+   "category": "anime",
+   "comment": "赤尸藏人...到底是好人还是坏人...到最后都没搞明白...",
+   "cover": "covers/1465429/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1465429/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "古桥一浩",
+    "元永庆太郎",
+    "则座诚",
+    "吉田俊司",
+    "平向智子",
+    "关田修"
+   ],
+   "douban_score": 8.0,
+   "episodes": 49,
+   "genres": [
+    "喜剧",
+    "动作",
+    "科幻",
+    "动画",
+    "冒险"
+   ],
    "id": "1465429",
    "missing": false,
-   "pending": true,
+   "original_title": "ゲットバッカーズ -奪還屋-",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "getbackers",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1450,24 +2871,47 @@
    "title": "闪灵二人组",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1465429/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "面出明美",
+    "吉田玲子",
+    "前川淳",
+    "根元岁三"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山口胜平",
+    "雪野五月",
+    "辻谷耕史",
+    "桑岛法子",
+    "渡边久美子"
+   ],
+   "category": "anime",
+   "comment": "剧场版也坚持看一下",
+   "cover": "covers/1464452/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1464452/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "筱原俊哉"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "喜剧",
+    "动作",
+    "动画",
+    "冒险"
+   ],
    "id": "1464452",
    "missing": false,
-   "pending": true,
+   "original_title": "映画犬夜叉 紅蓮の蓬莱島",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 86,
+   "slug": "inuyasha-the-movie-fire-on-the-mystic-island",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1479,24 +2923,44 @@
    "title": "犬夜叉：红莲之蓬莱岛",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1464452/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "隅泽克之",
+    "高桥留美子"
+   ],
+   "year": 2004
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山口勝平 Kappei Yamaguchi",
+    "雪野五月 Satsuki Yukino",
+    "辻谷耕史 Koji Tsujitani",
+    "桑島法子 Hoko Kuwashima",
+    "渡辺久美子 Kumiko Watanabe",
+    "肝付兼太 Kaneta Kimotsuki"
+   ],
+   "category": "anime",
+   "comment": "剧场版也坚持看一下",
+   "cover": "covers/1464451/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1464451/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "筱原俊哉"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "动画",
+    "奇幻"
+   ],
    "id": "1464451",
    "missing": false,
-   "pending": true,
+   "original_title": "犬夜叉 天下覇道の剣",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 99,
+   "slug": "douban-1464451",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1510,24 +2974,42 @@
    "title": "犬夜叉：天下霸道之剑",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1464451/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "高桥留美子"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山口胜平",
+    "雪野五月",
+    "日高范子"
+   ],
+   "category": "anime",
+   "comment": "剧场版也坚持看一下",
+   "cover": "covers/1464450/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1464450/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Toshiya Shinohara"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "喜剧",
+    "动作",
+    "爱情",
+    "动画"
+   ],
    "id": "1464450",
    "missing": false,
-   "pending": true,
+   "original_title": "犬夜叉 鏡の中の夢幻城",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 99,
+   "slug": "douban-1464450",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1539,24 +3021,49 @@
    "title": "犬夜叉：镜中的梦幻城",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1464450/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "高桥留美子"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山口胜平",
+    "雪野五月",
+    "辻谷耕史",
+    "桑岛法子",
+    "渡边久美子",
+    "绪方贤一",
+    "日高范子",
+    "京田尚子",
+    "中岛聪彦",
+    "铃木胜美"
+   ],
+   "category": "anime",
+   "comment": "剧场版也坚持看一下",
+   "cover": "covers/1464449/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1464449/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "筱原俊哉"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "动作",
+    "爱情",
+    "动画",
+    "冒险"
+   ],
    "id": "1464449",
    "missing": false,
-   "pending": true,
+   "original_title": "犬夜叉 時代を越える想い",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 100,
+   "slug": "douban-1464449",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1568,24 +3075,66 @@
    "title": "犬夜叉：穿越时空的思念",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1464449/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "高桥留美子",
+    "隅泽克之"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "山口胜平",
+    "雪野五月",
+    "辻谷耕史",
+    "桑岛法子",
+    "渡边久美子",
+    "日高范子",
+    "成田剑",
+    "能登麻美子",
+    "长岛雄一",
+    "森川智之"
+   ],
+   "category": "anime",
+   "comment": "奈落 真是怎么都打不死的小强",
+   "cover": "covers/1464448/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1464448/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "青木康直",
+    "池田成",
+    "石原立也",
+    "武本康弘",
+    "菱田正和",
+    "小仓宏文",
+    "森邦宏",
+    "铃木薰",
+    "鸟羽聪",
+    "福本洁",
+    "菱川直树",
+    "池端隆史",
+    "松井仁之",
+    "佐藤照雄",
+    "西森章"
+   ],
+   "douban_score": 9.2,
+   "episodes": 167,
+   "genres": [
+    "剧情",
+    "爱情",
+    "动画",
+    "惊悚",
+    "奇幻",
+    "冒险"
+   ],
    "id": "1464448",
    "missing": false,
-   "pending": true,
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "inuyasha",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1599,24 +3148,51 @@
    "title": "犬夜叉",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1464448/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "武上纯希",
+    "千叶克彦",
+    "大和屋晓",
+    "山田隆司",
+    "远藤明范"
+   ],
+   "year": 2000
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "竹内顺子",
+    "三桥加奈子",
+    "樋口智惠子",
+    "高桥广树",
+    "甲斐田幸",
+    "乡田穗积"
+   ],
+   "category": "anime",
+   "comment": "越后面越瞎吹了...",
+   "cover": "covers/1460923/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1460923/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "福岛宏之",
+    "清水一伸"
+   ],
+   "douban_score": 9.4,
+   "episodes": 8,
+   "genres": [
+    "动作",
+    "科幻",
+    "动画",
+    "冒险"
+   ],
    "id": "1460923",
    "missing": false,
-   "pending": true,
+   "original_title": "Hunter x Hunter GREED ISLAND",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "hunter-x-hunter-greed-island",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1628,24 +3204,54 @@
    "title": "全职猎人 Greed Island",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1460923/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "岸间信明"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "竹内顺子",
+    "甲斐田幸",
+    "三桥加奈子",
+    "乡田穗积",
+    "高桥广树"
+   ],
+   "category": "anime",
+   "comment": "起初不错,越到后来越差...",
+   "cover": "covers/1460919/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1460919/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "古桥一浩",
+    "加藤敏幸",
+    "细田雅弘",
+    "元永庆太郎",
+    "宫下新平",
+    "铃木芳成",
+    "吉田俊司",
+    "福岛宏之",
+    "津田义三",
+    "嵯峨敏",
+    "铃木孝义"
+   ],
+   "douban_score": 9.5,
+   "episodes": 62,
+   "genres": [
+    "喜剧",
+    "动画",
+    "冒险"
+   ],
    "id": "1460919",
    "missing": false,
-   "pending": true,
+   "original_title": "Hunter x Hunter",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 23,
+   "slug": "hunter-x-hunter",
    "status": "collect",
    "tags": [
     "Animation",
@@ -1658,24 +3264,51 @@
    "title": "全职猎人",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1460919/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "富坚义博",
+    "岸间信明",
+    "十川诚志",
+    "菅良幸",
+    "山口亮太"
+   ],
+   "year": 1999
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "龟梨和也",
+    "山下智久",
+    "堀北真希",
+    "户田惠梨香",
+    "森迫永依",
+    "深浦加奈子",
+    "中岛裕翔",
+    "宇梶刚士"
+   ],
+   "category": "series",
+   "comment": "堀北真希 野猪力量...",
+   "cover": "covers/1451430/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1451430/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "岩本仁志",
+    "Norika Sakuma"
+   ],
+   "douban_score": 8.4,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
    "id": "1451430",
    "missing": false,
-   "pending": true,
+   "original_title": "野ブタ。をプロデュース",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 45,
+   "slug": "nobuta-wo-produce",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1685,24 +3318,49 @@
    "title": "野猪大改造",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1451430/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "木皿泉"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "朴璐美",
+    "钉宫理惠",
+    "丰口惠美",
+    "津嘉山正种",
+    "柴田秀胜",
+    "麻生美代子",
+    "大川透",
+    "内海贤二",
+    "小山力也",
+    "古川登志夫"
+   ],
+   "category": "anime",
+   "comment": "剧场版 组为 TV 部分的结局 虽和原著不符, 但还不错",
+   "cover": "covers/1448755/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1448755/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水岛精二"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "剧情",
+    "动作",
+    "动画",
+    "冒险"
+   ],
    "id": "1448755",
    "missing": false,
-   "pending": true,
+   "original_title": "鋼の錬金術師 シャンバラを征く者",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 105,
+   "slug": "fullmetal-alchemist-conqueror-of-shamballa",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1715,24 +3373,46 @@
    "title": "钢之炼金术师：香巴拉的征服者",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1448755/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "会川升",
+    "荒川弘"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "泽尻英龙华",
+    "锦户亮",
+    "药师丸博子",
+    "藤木直人",
+    "阵内孝则",
+    "成海璃子",
+    "松山研一"
+   ],
+   "category": "series",
+   "comment": "看到接近哭...不过最后没有哭...",
+   "cover": "covers/1436900/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1436900/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "村上正典"
+   ],
+   "douban_score": 9.0,
+   "episodes": 11,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
    "id": "1436900",
    "missing": false,
-   "pending": true,
+   "original_title": "1リットルの涙",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 47,
+   "slug": "ichi-rittoru-no-namida",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1742,24 +3422,66 @@
    "title": "1公升的泪",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1436900/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "江头美智留",
+    "大岛里美"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "朴璐美",
+    "钉宫理惠",
+    "丰口惠美",
+    "江原正士",
+    "津田匠子",
+    "置鲇龙太郎",
+    "大川透",
+    "根谷美智子",
+    "藤原启治",
+    "内海贤二"
+   ],
+   "category": "anime",
+   "comment": "不错 结局也不错 等价交换...公平的世界",
+   "cover": "covers/1433342/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1433342/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "水岛精二",
+    "安藤真裕",
+    "京田知己",
+    "大槻敦史",
+    "桥本昌和",
+    "安田贤司",
+    "岩崎太郎",
+    "小高义规",
+    "金子伸吾",
+    "上田茂",
+    "秦义人",
+    "中津环",
+    "松浦锭平",
+    "阿宫正和",
+    "角田一树"
+   ],
+   "douban_score": 9.2,
+   "episodes": 51,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "动画",
+    "悬疑",
+    "恐怖"
+   ],
    "id": "1433342",
    "missing": false,
-   "pending": true,
+   "original_title": "鋼の錬金術師",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "douban-1433342",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1772,24 +3494,56 @@
    "title": "钢之炼金术师",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1433342/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "会川升",
+    "井上敏树",
+    "大和屋晓",
+    "高山克彦",
+    "吉永亚矢",
+    "高桥奈津子",
+    "石川学",
+    "荒川弘"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "仲间由纪惠",
+    "小田切让",
+    "黑谷友香",
+    "木下凤华",
+    "泽尻英龙华",
+    "升毅",
+    "坂口拓",
+    "镰田小惠子",
+    "寺田稔",
+    "渡边修三"
+   ],
+   "category": "feature",
+   "comment": "算不算悲剧? 还是蛮悲的...",
+   "cover": "covers/1427947/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1427947/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "下山天"
+   ],
+   "douban_score": 6.7,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "奇幻"
+   ],
    "id": "1427947",
    "missing": false,
-   "pending": true,
+   "original_title": "SHINOBI",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 107,
+   "slug": "shinobi",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1803,24 +3557,76 @@
    "title": "甲贺忍法帖",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1427947/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "山田风太郎"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "竹内顺子",
+    "杉山纪彰",
+    "中村千绘",
+    "井上和彦",
+    "关俊彦",
+    "鲸",
+    "大塚芳忠",
+    "胜生真沙子",
+    "柴田秀胜",
+    "森久保祥太郎"
+   ],
+   "category": "anime",
+   "comment": "第一部看完, 第二部正在追...除开原创外都不错",
+   "cover": "covers/1427318/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1427318/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "伊达勇登",
+    "村田雅彦",
+    "都留稔幸",
+    "若林厚史",
+    "小坂春女",
+    "川口敬一郎",
+    "松本佳久",
+    "佐藤真二",
+    "影山楙伦",
+    "御厨恭辅",
+    "横田和善",
+    "新留俊哉",
+    "久城理音",
+    "浦田保则",
+    "浅见松雄",
+    "宫原秀二",
+    "饭村正之",
+    "西村大树",
+    "小高义规",
+    "冈崎幸男",
+    "木下勇喜",
+    "菅井嘉浩",
+    "浊川敦",
+    "福田皖",
+    "木村宽",
+    "榎本守",
+    "佐土原武之",
+    "熨斗谷充孝",
+    "清水明"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "喜剧",
+    "动画",
+    "冒险"
+   ],
    "id": "1427318",
    "missing": false,
-   "pending": true,
+   "original_title": "NARUTO -ナルト-",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "naruto-2002",
    "status": "collect",
    "tags": [
     "JPN",
@@ -1833,24 +3639,55 @@
    "title": "火影忍者",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1427318/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "岸本齐史",
+    "隅泽克之",
+    "武上纯希",
+    "大和屋晓",
+    "横手美智子",
+    "宫田由佳",
+    "西园悟",
+    "吉田伸",
+    "铃木康之"
+   ],
+   "year": 2002
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "凉风真世",
+    "岩男润子",
+    "佐佐木望",
+    "关智一",
+    "池田秀一"
+   ],
+   "category": "anime",
+   "comment": "雪代巴...唉...",
+   "cover": "covers/1421721/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1421721/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "古桥一浩",
+    "清水明"
+   ],
+   "douban_score": 9.4,
+   "episodes": 4,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "动画",
+    "战争"
+   ],
    "id": "1421721",
    "missing": false,
-   "pending": true,
+   "original_title": "るろうに剣心 -明治剣客浪漫譚- 追憶編",
+   "pending": false,
    "rating": 4,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 28,
+   "slug": "samurai-x-trust-and-betrayal",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1864,24 +3701,55 @@
    "title": "浪客剑心 追忆篇",
    "type": "tv",
    "url": "https://movie.douban.com/subject/1421721/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "十川诚志",
+    "和月伸宏"
+   ],
+   "year": 1999
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Orlando Bloom（奥兰多·布鲁姆）",
+    "Eva Green（伊娃·格林）",
+    "Edward Norton（爱德华·诺顿）",
+    "Liam Neeson（连姆·尼森）",
+    "Michael Sheen（麦克·辛）",
+    "艾瑞克·艾伯纳尼",
+    "David Thewlis（大卫·休里斯）",
+    "Jeremy Irons（杰瑞米·艾恩斯）",
+    "马尔顿·索克斯",
+    "加桑·马苏德"
+   ],
+   "category": "feature",
+   "comment": "部分和史实不合, 不过还是可以看看的...",
+   "cover": "covers/1309071/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1309071/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ridley Scott（雷德利·斯科特）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "剧情",
+    "历史",
+    "战争"
+   ],
    "id": "1309071",
    "missing": false,
-   "pending": true,
+   "original_title": "Kingdom of Heaven",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "英国",
+    "德国",
+    "西班牙",
+    "摩洛哥",
+    "美国",
+    "意大利",
+    "法国"
+   ],
+   "runtime": 144,
+   "slug": "kingdom-of-heaven",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1892,24 +3760,51 @@
    "title": "天国王朝",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1309071/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "威廉·莫纳汉"
+   ],
+   "year": 2005
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Colin Farrell（科林·法瑞尔）",
+    "Angelina Jolie（安吉丽娜·朱莉）",
+    "Val Kilmer（方·基默）",
+    "Anthony Hopkins（安东尼·霍普金斯）",
+    "Jared Leto（杰瑞德·莱托）",
+    "Rosario Dawson（罗莎里奥·道森）",
+    "Jonathan Rhys Meyers（乔纳森·莱斯·梅耶斯）",
+    "Christopher Plummer（克里斯托弗·普卢默）"
+   ],
+   "category": "feature",
+   "comment": "蛮好的题材,不过拍得一塌糊涂...",
+   "cover": "covers/1308950/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1308950/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Oliver Stone（奥利佛·斯通）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "传记",
+    "历史",
+    "战争"
+   ],
    "id": "1308950",
    "missing": false,
-   "pending": true,
+   "original_title": "Alexander",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "法国",
+    "英国",
+    "德国"
+   ],
+   "runtime": 175,
+   "slug": "alexander",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1921,24 +3816,43 @@
    "title": "亚历山大大帝",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1308950/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Oliver Stone（奥利佛·斯通）",
+    "克里斯托弗·凯尔"
+   ],
+   "year": 2004
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "野村万斋",
+    "深田恭子",
+    "中井贵一",
+    "伊藤英明",
+    "市原隼人"
+   ],
+   "category": "feature",
+   "comment": "整个演员的确有点像 狐狸",
+   "cover": "covers/1308379/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1308379/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "泷田洋二郎"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "动作",
+    "奇幻"
+   ],
    "id": "1308379",
    "missing": false,
-   "pending": true,
+   "original_title": "陰陽師Ⅱ",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 112,
+   "slug": "douban-1308379",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1950,24 +3864,51 @@
    "title": "阴阳师2",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1308379/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "泷田洋二郎",
+    "梦枕貘",
+    "江良至"
+   ],
+   "year": 2003
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "野村万斋",
+    "伊藤英明",
+    "今井绘理子",
+    "小泉今日子",
+    "真田广之",
+    "夏川结衣",
+    "宝生舞",
+    "矢岛健一",
+    "石丸谦二郎",
+    "柄本明"
+   ],
+   "category": "feature",
+   "comment": "这个演员 的确有点像狐狸",
+   "cover": "covers/1303917/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1303917/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "泷田洋二郎"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "动作",
+    "恐怖",
+    "奇幻"
+   ],
    "id": "1303917",
    "missing": false,
-   "pending": true,
+   "original_title": "陰陽師",
+   "pending": false,
    "rating": 2,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "日本"
+   ],
+   "runtime": 112,
+   "slug": "onmyoji",
    "status": "collect",
    "tags": [
     "Movie",
@@ -1979,24 +3920,49 @@
    "title": "阴阳师",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1303917/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "福田靖",
+    "梦枕貘",
+    "江良至"
+   ],
+   "year": 2001
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Al Pacino（阿尔·帕西诺）",
+    "Robert Duvall（罗伯特·杜瓦尔）",
+    "Diane Keaton（黛安·基顿）",
+    "Robert De Niro（罗伯特·德尼罗）",
+    "John Cazale（约翰·凯泽尔）",
+    "Talia Shire（塔莉娅·夏尔）",
+    "李·斯特拉斯伯格",
+    "迈克尔·V·格佐",
+    "G•D•斯普拉德林",
+    "理查德·布赖特"
+   ],
+   "category": "feature",
+   "comment": "经典都应该看看",
+   "cover": "covers/1299131/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1299131/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）"
+   ],
+   "douban_score": 9.3,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
    "id": "1299131",
    "missing": false,
-   "pending": true,
+   "original_title": "The Godfather: Part II",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 202,
+   "slug": "the-godfather-part-ii",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2006,24 +3972,48 @@
    "title": "教父2",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1299131/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）",
+    "马里奥·普佐"
+   ],
+   "year": 1974
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Al Pacino（阿尔·帕西诺）",
+    "Diane Keaton（黛安·基顿）",
+    "Talia Shire（塔莉娅·夏尔）",
+    "Andy Garcia（安迪·加西亚）",
+    "Eli Wallach（伊莱·瓦拉赫）",
+    "乔·曼特纳",
+    "乔治·汉密尔顿",
+    "布里吉特·方达",
+    "Sofia Coppola（索菲亚·科波拉）",
+    "雷夫·瓦朗"
+   ],
+   "category": "feature",
+   "comment": "经典都应该看看",
+   "cover": "covers/1294240/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1294240/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）"
+   ],
+   "douban_score": 9.0,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
    "id": "1294240",
    "missing": false,
-   "pending": true,
+   "original_title": "The Godfather: Part III",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 162,
+   "slug": "the-godfather-part-iii",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2033,24 +4023,52 @@
    "title": "教父3",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1294240/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马里奥·普佐",
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）"
+   ],
+   "year": 1990
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Russell Crowe（罗素·克劳）",
+    "Joaquin Phoenix（华金·菲尼克斯）",
+    "Connie Nielsen（康妮·尼尔森）",
+    "Oliver Reed（奥列佛·里德）",
+    "Richard Harris（理查德·哈里斯）",
+    "Derek Jacobi（德里克·雅各比）",
+    "Djimon Hounsou（杰曼·翰苏）",
+    "大卫·斯科菲尔德",
+    "John Shrapnel（约翰·斯拉普内尔）",
+    "托马斯·阿拉纳"
+   ],
+   "category": "feature",
+   "comment": "用华丽的手法描述一个很平常甚至有点烂的故事",
+   "cover": "covers/1293530/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1293530/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Ridley Scott（雷德利·斯科特）"
+   ],
+   "douban_score": 8.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "冒险"
+   ],
    "id": "1293530",
    "missing": false,
-   "pending": true,
+   "original_title": "Gladiator",
+   "pending": false,
    "rating": 3,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国",
+    "英国",
+    "马耳他",
+    "摩洛哥"
+   ],
+   "runtime": 155,
+   "slug": "gladiator",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2063,24 +4081,49 @@
    "title": "角斗士",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1293530/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "大卫·弗兰佐尼",
+    "约翰·洛根",
+    "威廉姆·尼克尔森"
+   ],
+   "year": 2000
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Tim Robbins（蒂姆·罗宾斯）",
+    "Morgan Freeman（摩根·弗里曼）",
+    "Bob Gunton（鲍勃·冈顿）",
+    "William Sadler（威廉·赛德勒）",
+    "Clancy Brown（克兰西·布朗）",
+    "吉尔·贝罗斯",
+    "马克·罗斯顿",
+    "詹姆斯·惠特摩",
+    "杰弗里·德曼",
+    "拉里·布兰登伯格"
+   ],
+   "category": "feature",
+   "comment": "有些鸟是关不住地,他们的羽翼太过辉煌...",
+   "cover": "covers/1292052/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1292052/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Frank Darabont（弗兰克·德拉邦特）"
+   ],
+   "douban_score": 9.7,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
    "id": "1292052",
    "missing": false,
-   "pending": true,
+   "original_title": "The Shawshank Redemption",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 142,
+   "slug": "the-shawshank-redemption",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2090,24 +4133,47 @@
    "title": "肖申克的救赎",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1292052/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "Frank Darabont（弗兰克·德拉邦特）"
+   ],
+   "year": 1994
   },
   {
-   "casts": [],
-   "category": null,
-   "cover": "",
+   "casts": [
+    "Marlon Brando（马龙·白兰度）",
+    "Al Pacino（阿尔·帕西诺）",
+    "James Caan（詹姆斯·肯恩）",
+    "Richard S. Castellano（理查德·S·卡斯特尔诺）",
+    "Robert Duvall（罗伯特·杜瓦尔）",
+    "斯特林·海登",
+    "约翰·马利",
+    "理查德·康特",
+    "艾尔·勒提埃里",
+    "Diane Keaton（黛安·基顿）"
+   ],
+   "category": "feature",
+   "comment": "经典都应该看看",
+   "cover": "covers/1291841/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291841/01.webp",
    "date": "2008-06-01",
-   "directors": [],
-   "douban_score": null,
-   "genres": [],
+   "directors": [
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）"
+   ],
+   "douban_score": 9.3,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
    "id": "1291841",
    "missing": false,
-   "pending": true,
+   "original_title": "The Godfather",
+   "pending": false,
    "rating": 5,
-   "regions": [],
-   "runtime": null,
-   "slug": "",
+   "regions": [
+    "美国"
+   ],
+   "runtime": 175,
+   "slug": "the-godfather",
    "status": "collect",
    "tags": [
     "Movie",
@@ -2117,8 +4183,11 @@
    "title": "教父",
    "type": "movie",
    "url": "https://movie.douban.com/subject/1291841/",
-   "writers": [],
-   "year": null
+   "writers": [
+    "马里奥·普佐",
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）"
+   ],
+   "year": 1972
   }
  ],
  "last_date": "2008-06-01"
