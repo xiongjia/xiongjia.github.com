@@ -426,7 +426,10 @@ Douban metadata = `id`, `title`, `year`, `type`, `category`, `status`, `user_rat
   the board lives in the nav under `Film & TV → People`.
 - **Detail dialog** (no separate pages): cover, metadata, my Douban short comment and
   `user.review` — they are **not alternatives**, both are shown under different headings. A
-  `?id=<slug>` deep link opens the dialog directly.
+  `?id=<slug>` deep link opens the dialog directly. Its label/value rows — including which of them
+  are clickable 影人 entries — come from `core.dialogFacts(record)` in `film-tv-core.js`, a pure
+  helper with node tests: the renderer keys off `row.people` instead of matching label text, and the
+  row set/order is testable without a DOM.
 - **Two list views:**
   - **Month paging (default)** — one month of records per screen, with the month navigation in
     the toolbar **above** the list: `‹ 2026-08 | 2026 年 09 月 · 第 1 / 15 个月 | 2026-10 ›`
@@ -482,6 +485,20 @@ Douban metadata = `id`, `title`, `year`, `type`, `category`, `status`, `user_rat
 - **Statistics distributions are collapsible** (the `running.md` pattern): the four
   distributions (category / year / region / type) live in **one** `<details>` (collapsed by
   default, summary `📊 统计分布` with a count hint), while the four overview cards stay visible.
+  A long card value (`3083 / 1191`, `13835 小时`) is wider than the card's content box at the narrow
+  grid tracks: where container queries exist the number is sized off the card (`min(1.3rem, 17.5cqw)`,
+  fit boundary ≈ 18.6%) and never wraps, while the plain `font-size: 1.3rem` rule stays **outside**
+  `@supports` so a `cqw`-less browser wraps it instead of spilling over the next card.
+- **The dialog's own spacing must out-specify Material's prose typography** — the theme styles the
+  same elements and beats a plain class: `.md-typeset h3 { margin: 1.6em 0 .8em }` and
+  `.md-typeset dl { margin: 1em 0 }` (0,1,1) beat our class rules (0,1,0), and
+  `[dir=ltr] .md-typeset dd { margin-left: 1.875em }` (0,2,1) beats `.film-tv-dialog__fact dd`
+  (0,1,1). Measured while they were dead: **+32px above the title** (it stopped lining up with the
+  cover), **+16px above the fact list**, **+29.25px left of every value**. The margins therefore live
+  in one commented `[dir] .md-typeset .film-tv-dialog__*` block (0,3,x, order-independent; the theme
+  puts `dir` on `<body>`, so `[dir]` always matches), pinned by `tests/test_film_tv_css.py`, which
+  also holds the credit rows to one block button per name — a `<ul>` inside `.md-typeset` is
+  re-indented and bulleted by the same typography (measured +29px on the names).
 - **AI viewing summary:** `poe update-film-tv-summary` digests `stats.yml` / `people.yml` /
   shards, builds a Chinese prompt, calls the local `pi` CLI and rewrites **only** the
   `<!-- ai-summary:begin --> … <!-- ai-summary:end -->` block of `index.md`, appending

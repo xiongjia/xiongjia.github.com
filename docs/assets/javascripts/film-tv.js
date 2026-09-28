@@ -18,15 +18,7 @@
   // page, never a page boundary (so an 8-item month flows into the next page).
   const PAGE_SIZE = core.PAGE_SIZE || 12;
 
-  const CATEGORY_LABELS = {
-    feature: "电影",
-    series: "剧集",
-    variety: "综艺",
-    anime: "动漫",
-    documentary: "纪录片",
-    other: "其他",
-  };
-  const STATUS_LABELS = { collect: "看过", do: "在看", wish: "想看" };
+  const CATEGORY_LABELS = core.CATEGORY_LABELS || {};
   const SORT_OPTIONS = [
     ["date", "观看时间（新→旧）"],
     ["year", "上映年份（新→旧）"],
@@ -796,33 +788,15 @@
 
     const list = dialog.querySelector(".film-tv-dialog__facts");
     list.textContent = "";
-    const facts = [
-      ["状态", STATUS_LABELS[record.status] || record.status],
-      ["我的评分", record.rating ? `${core.starsOf(record.rating)} ${record.rating}/5` : "未评分"],
-      ["豆瓣", record.douban_score ? `${record.douban_score}` : "—"],
-      ["观看日期", record.date || (record.pending ? "待补详情" : "—")],
-      ["上映年", record.year || "—"],
-      ["类型", CATEGORY_LABELS[record.category] || record.category || "—"],
-      ["片长/集数", [record.runtime ? `${record.runtime} 分钟` : "", record.episodes ? `${record.episodes} 集` : ""].filter(Boolean).join(" / ") || "—"],
-      ["地区", (record.regions || []).join(" / ") || "—"],
-      ["类型标签", (record.genres || []).join(" / ") || "—"],
-      ["导演", (record.directors || []).join(" / ") || "—"],
-      ["主演", (record.casts || []).join(" / ") || "—"],
-      ["编剧", (record.writers || []).join(" / ") || "—"],
-      ["我的标签", (record.tags || []).join(" / ") || "—"],
-    ];
-    // director/cast/writer names are the entry point into the people view:
-    // clicking one filters the archive down to that person's works
-    const personRoles = new Set(["导演", "主演", "编剧"]);
-    for (const [label, value] of facts) {
-      if (!value || value === "—") continue;
+    // the rows (and which of them are people) come from the node-tested core
+    for (const fact of core.dialogFacts(record)) {
       const item = el("div", "film-tv-dialog__fact");
-      item.appendChild(el("dt", null, label));
+      item.appendChild(el("dt", null, fact.label));
       const dd = el("dd");
-      if (personRoles.has(label)) {
-        const names = String(value).split(" / ");
-        names.forEach((name, position) => {
-          if (position) dd.appendChild(document.createTextNode(" / "));
+      if (fact.people.length) {
+        // one person per line; see .film-tv-dialog__person for why this is a
+        // stack of block buttons and not a <ul>
+        for (const name of fact.people) {
           const button = el("button", "film-tv-dialog__person", name);
           button.type = "button";
           button.addEventListener("click", () => {
@@ -830,9 +804,9 @@
             filterByPerson(name);
           });
           dd.appendChild(button);
-        });
+        }
       } else {
-        dd.textContent = value;
+        dd.textContent = fact.value;
       }
       item.appendChild(dd);
       list.appendChild(item);

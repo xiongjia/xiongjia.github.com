@@ -95,6 +95,53 @@ function peopleOf(record) {
   return [...(record.directors || []), ...(record.casts || []), ...(record.writers || [])];
 }
 
+// Archive taxonomy → display label. Shared by the dialog, the facet filter and
+// the record-type line, so renamed once here.
+const CATEGORY_LABELS = {
+  feature: "电影",
+  series: "剧集",
+  variety: "综艺",
+  anime: "动漫",
+  documentary: "纪录片",
+  other: "其他",
+};
+const STATUS_LABELS = { collect: "看过", do: "在看", wish: "想看" };
+
+// The detail dialog's label/value rows, in display order. Pure, so Node can test
+// the shape; film-tv.js only turns rows into DOM. `plain` / `credits` keep every
+// row self-describing instead of positional, and a row whose value ends up empty
+// is dropped rather than rendered as a bare dash. `people` marks the three credit
+// rows — the renderer keys off that array, not off the label text, so a label
+// rename cannot silently turn a person row back into plain text.
+function dialogFacts(record) {
+  const item = record || {};
+  const namesOf = (key) => (item[key] || []).filter(Boolean);
+  const join = (key) => namesOf(key).join(" / ");
+  const plain = (label, value) => ({ label, value: value || "—", people: [] });
+  // director/cast/writer names are the entry point into the people view: clicking
+  // one filters the archive down to that person's works
+  const credits = (label, key) => ({ label, value: join(key) || "—", people: namesOf(key) });
+  const length = [
+    item.runtime ? `${item.runtime} 分钟` : "",
+    item.episodes ? `${item.episodes} 集` : "",
+  ].filter(Boolean).join(" / ");
+  return [
+    plain("状态", STATUS_LABELS[item.status] || item.status),
+    plain("我的评分", item.rating ? `${starsOf(item.rating)} ${item.rating}/5` : "未评分"),
+    plain("豆瓣", item.douban_score ? `${item.douban_score}` : ""),
+    plain("观看日期", item.date || (item.pending ? "待补详情" : "")),
+    plain("上映年", item.year ? `${item.year}` : ""),
+    plain("类型", CATEGORY_LABELS[item.category] || item.category),
+    plain("片长/集数", length),
+    plain("地区", (item.regions || []).join(" / ")),
+    plain("类型标签", (item.genres || []).join(" / ")),
+    credits("导演", "directors"),
+    credits("主演", "casts"),
+    credits("编剧", "writers"),
+    plain("我的标签", (item.tags || []).join(" / ")),
+  ].filter((row) => row.value !== "—");
+}
+
 // Apply every active filter. `filters` keys (all optional):
 //   q, type, category, region, decade, rating (minimum), from, to (YYYY-MM),
 //   person (a director/cast/writer name), status
@@ -315,6 +362,8 @@ const FilmTvCoreApi = {
   starsOf,
   matchesQuery,
   peopleOf,
+  dialogFacts,
+  CATEGORY_LABELS,
   filterRecords,
   sortRecords,
   groupByMonth,
