@@ -3,28 +3,29 @@
 # generated_at: 2026-09-27T22:33+08:00
 - id: "3807893"
   title: 黑之契约者2：流星的双子
-  original_title: null
-  year: null
+  original_title: DARKER THAN BLACK -流星の双子-
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 14669
   marked_at: "2009-12-30"
-  douban_comment: null
+  douban_comment: 还会出 三 的...
   tags: [Animation, JPN, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [冈村天斋]
+    casts: [木内秀信, 花泽香菜, 桑岛法子, 泽木郁也, 浅井清己, 堀胜之祐, 福圆美里, 水树奈奈, 大友龙三郎, 三宅健太]
+    writers: [冈村天斋, 菅正太郎, 大西信介, 吉野弘幸, 冈田麿里]
+  episodes: 12
+  slug: darker-than-black
+  covers:
+  - covers/3807893/01.webp
   douban_url: https://movie.douban.com/subject/3807893/
   user:
     cover: ""
@@ -35,35 +36,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 4da69e40
-    machine_hash: 424c96dc
+    fingerprint: 82e2a81e
+    machine_hash: ff824c65
     missing_since: null
+    missing_reason: null
 - id: "1849652"
   title: 新撰组异闻录 铁
-  original_title: null
-  year: null
+  original_title: PEACE MAKER 鐵
+  year: 2003
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 8629
   marked_at: "2009-12-30"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, History, War, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平田智浩, 上坪亮树, 稻垣隆行, 静野孔文, 土屋浩幸, 三好正人, 牧野吉高, 远藤广隆, 友田政晴, 加藤显, 西山明树彦]
+    casts: [小林由美子, 山口胜平, 上田祐司, 今井由香, 根谷美智子, 斋贺光希, 乃村健次, 中田让治, 樱井孝宏]
+    writers: [山口宏]
+  episodes: 24
+  slug: peace-maker
+  covers:
+  - covers/1849652/01.webp
   douban_url: https://movie.douban.com/subject/1849652/
   user:
     cover: ""
@@ -74,35 +77,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 96b4e7b4
-    machine_hash: 454f68f5
+    machine_hash: 3c9d59d2
     missing_since: null
+    missing_reason: null
 - id: "3991933"
   title: 深夜食堂
   original_title: null
-  year: null
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 195351
   marked_at: "2009-12-29"
-  douban_comment: null
+  douban_comment: 每一集大概 25 分钟...每一集一个独立的故事...偶尔有几个穿梭于各集的常客...每一集都会描述某个顾客的遭遇,有些最后是 Happy ending,有一些不是...总之算不错的了...食堂大叔的手艺未必好不过脸上的刀疤很到位...扣一颗星,因为把人们互相帮助说的太简单了..
   tags: [Teleplay, JPN, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松冈锭司, 山下敦弘, 及川拓郎]
+    casts: [小林薰, 须藤理彩, 田畑智子, 松重丰, 绫田俊树, 安藤玉惠, 小田切让, 岩松了, 江原由希子]
+    writers: [真边克彦, 向井康介, 及川拓郎]
+  episodes: 10
+  slug: midnight-diner-tokyo-stories
+  covers:
+  - covers/3991933/01.webp
   douban_url: https://movie.douban.com/subject/3991933/
   user:
     cover: ""
@@ -113,35 +118,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: b3383303
-    machine_hash: 044e8404
+    fingerprint: 12bdf13f
+    machine_hash: 2d960562
     missing_since: null
+    missing_reason: null
 - id: "2246738"
   title: 很久很久以前
-  original_title: null
-  year: null
+  original_title: 옛날 옛적에
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 5456
   marked_at: "2009-12-26"
-  douban_comment: null
+  douban_comment: '"很久很久以前，有个白菜道士和萝卜道士。白头山的白菜道士，汉拿山的萝卜道士……"...这句歌词影响很深...'
   tags: [Animation, KOR, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 20
   credits:
-    directors: []
+    directors: [송정율, 김주인, 이건설, 김동호, 배영랑]
     casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    writers: [김진구, 이용배]
+  episodes: 13
+  slug: douban-2246738
+  covers:
+  - covers/2246738/01.webp
   douban_url: https://movie.douban.com/subject/2246738/
   user:
     cover: ""
@@ -152,35 +159,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: b12d492c
-    machine_hash: 7d986865
+    fingerprint: 0a8b4e93
+    machine_hash: d91e40f8
     missing_since: null
+    missing_reason: null
 - id: "2148394"
   title: 大头儿子和小头爸爸
   original_title: null
-  year: null
+  year: 1995
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 79302
   marked_at: "2009-12-26"
   douban_comment: null
   tags: [Teleplay, Animation, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [崔世昱]
+    casts: [姚培华, 符冲, 范楚绒]
+    writers: [郑春华]
+  episodes: 156
+  slug: douban-2148394
+  covers:
+  - covers/2148394/01.webp
   douban_url: https://movie.douban.com/subject/2148394/
   user:
     cover: ""
@@ -191,35 +200,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 40d4abba
-    machine_hash: 46dcde0d
+    machine_hash: 4061945c
     missing_since: null
+    missing_reason: null
 - id: "1424406"
   title: 星际牛仔
-  original_title: null
-  year: null
+  original_title: カウボーイビバップ
+  year: 1998
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.6
+  douban_score_count: 118784
   marked_at: "2009-12-26"
   douban_comment: null
   tags: [Animation, Sci-Fi, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 科幻, 动画, 犯罪, 西部]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡边信一郎, 佐藤顺一, 森邦宏, 渡边哲哉, 佐藤育郎, 山田弘和, 武井良幸]
+    casts: [山寺宏一, 石冢运升, 林原惠美, 多田葵, 若本规夫, 高岛雅罗, 伊藤和晃, 一城美由希, 绿川光, 桧山修之]
+    writers: [信本敬子, 渡边信一郎, 佐藤大, 横手美智子, 山口亮太, 村井贞之, 稻荷昭彦, 吉永亚矢, 河森正治, 矢立肇]
+  episodes: 26
+  slug: kauboi-bibappu-cowboy-bebop
+  covers:
+  - covers/1424406/01.webp
   douban_url: https://movie.douban.com/subject/1424406/
   user:
     cover: ""
@@ -230,35 +241,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 1744cce4
-    machine_hash: 2b8b6566
+    machine_hash: 4c4b3dc2
     missing_since: null
+    missing_reason: null
 - id: "3904343"
   title: 真我霓裳
-  original_title: null
-  year: null
+  original_title: リアル・クローズ
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.1
+  douban_score_count: 5230
   marked_at: "2009-12-25"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [白木啓一郎, 本橋圭太]
+    casts: [香里奈, 黑木瞳, 西岛秀俊, 高冈奏辅, 南明奈, 小泉孝太郎, 加藤夏希]
+    writers: [大岛里美]
+  episodes: 11
+  slug: real-clothes
+  covers:
+  - covers/3904343/01.webp
   douban_url: https://movie.douban.com/subject/3904343/
   user:
     cover: ""
@@ -269,35 +282,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: efdb09b2
-    machine_hash: 2ef0867f
+    machine_hash: 67db4857
     missing_since: null
+    missing_reason: null
 - id: "3012331"
   title: 神探狄仁杰3
   original_title: null
-  year: null
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 41698
   marked_at: "2009-12-25"
   douban_comment: null
   tags: [Teleplay, CHS, Detective, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 悬疑, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钱雁秋]
+    casts: [梁冠华, 张子健, 董璇, 吕中, 须乾, 苑冉, 关悦, 曲栅栅, 张树平, 钱雁秋]
+    writers: [钱雁秋]
+  episodes: 48
+  slug: douban-3012331
+  covers:
+  - covers/3012331/01.webp
   douban_url: https://movie.douban.com/subject/3012331/
   user:
     cover: ""
@@ -308,35 +323,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 286017bf
-    machine_hash: e7842971
+    machine_hash: f54a8063
     missing_since: null
+    missing_reason: null
 - id: "2995948"
   title: 神探狄仁杰
   original_title: null
-  year: null
+  year: 2004
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 110804
   marked_at: "2009-12-25"
   douban_comment: null
   tags: [Teleplay, CHS, History, Detective]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钱雁秋]
+    casts: [梁冠华, 吕中, 张子健, 须乾, 祝延平, 钱雁秋, 蒋欣, 彭丹, 刘爽, 姜晓贝]
+    writers: [钱雁秋]
+  episodes: 30
+  slug: douban-2995948
+  covers:
+  - covers/2995948/01.webp
   douban_url: https://movie.douban.com/subject/2995948/
   user:
     cover: ""
@@ -347,35 +364,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 3e570dd1
-    machine_hash: 9ea716f4
+    machine_hash: a74bc991
     missing_since: null
+    missing_reason: null
 - id: "2377277"
   title: 神探狄仁杰2
   original_title: null
-  year: null
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 70670
   marked_at: "2009-12-25"
   douban_comment: null
   tags: [Teleplay, CHS, Detective, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 悬疑, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钱雁秋]
+    casts: [梁冠华, 张子健, 吕中, 姜昕言, 须乾, 姜晓贝, 乔于庭, 赵志刚, 严燕生, 淳于珊珊]
+    writers: [钱雁秋]
+  episodes: 40
+  slug: douban-2377277
+  covers:
+  - covers/2377277/01.webp
   douban_url: https://movie.douban.com/subject/2377277/
   user:
     cover: ""
@@ -386,35 +405,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: dc4dc862
-    machine_hash: c9cf36f6
+    machine_hash: 3a91d3c3
     missing_since: null
+    missing_reason: null
 - id: "3892394"
   title: 仁医
-  original_title: null
-  year: null
+  original_title: JIN-仁-
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 63634
   marked_at: "2009-12-24"
-  douban_comment: null
+  douban_comment: 穿越...
   tags: [Teleplay, JPN, Sci-Fi, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平川雄一朗]
+    casts: [大泽隆夫, 中谷美纪, 绫濑遥, 小出惠介, 桐谷健太, 田口浩正, 户田菜穗, 武田铁矢, 高冈早纪, 六平直政]
+    writers: [森下佳子]
+  episodes: 11
+  slug: jin
+  covers:
+  - covers/3892394/01.webp
   douban_url: https://movie.douban.com/subject/3892394/
   user:
     cover: ""
@@ -425,35 +446,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 7f95f19c
-    machine_hash: e9d1f619
+    fingerprint: 640508f0
+    machine_hash: a132b9f9
     missing_since: null
+    missing_reason: null
 - id: "3904341"
   title: 谈判专家2
-  original_title: null
-  year: null
+  original_title: 交渉人THE NEGOTIATOR（第2期）
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 1440
   marked_at: "2009-12-23"
   douban_comment: null
   tags: [Teleplay, JPN, Sci-Fi, Detective]
   genres: []
-  regions: []
-  languages: []
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松田秀知, 佐藤源太, 田村直己]
+    casts: [米仓凉子, 阵内孝则, 笕利夫]
+    writers: [寺田敏雄]
+  episodes: 9
+  slug: the-negotiator
+  covers:
+  - covers/3904341/01.webp
   douban_url: https://movie.douban.com/subject/3904341/
   user:
     cover: ""
@@ -464,35 +487,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 73c308e9
-    machine_hash: c4069263
+    machine_hash: c7dbee12
     missing_since: null
+    missing_reason: null
 - id: "3919992"
   title: 谜不可触
-  original_title: null
-  year: null
+  original_title: アンタッチャブル〜事件記者・鳴海遼子〜
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.1
+  douban_score_count: 2565
   marked_at: "2009-12-20"
-  douban_comment: null
+  douban_comment: 情节很混乱...
   tags: [Teleplay, JPN, Detective]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 悬疑]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [下山天, 唐木希浩]
+    casts: [仲间由纪惠, 要润, 芦名星, 田中哲司, 寺岛进, 田中要次, 小泽征悦]
+    writers: [桥本裕志]
+  episodes: 9
+  slug: untouchable
+  covers:
+  - covers/3919992/01.webp
   douban_url: https://movie.douban.com/subject/3919992/
   user:
     cover: ""
@@ -503,35 +528,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: a3cc7f14
-    machine_hash: 273f1161
+    fingerprint: 7954e9d7
+    machine_hash: 12ded5c0
     missing_since: null
+    missing_reason: null
 - id: "3731694"
   title: 夜光的阶梯
-  original_title: null
-  year: null
+  original_title: 夜光の階段
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.8
+  douban_score_count: 3039
   marked_at: "2009-12-20"
-  douban_comment: null
+  douban_comment: 这些人真疯狂...这个男的真坏...
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [今井和久]
+    casts: [藤木直人, 木村佳乃, 夏川结衣, 荻野目庆子, 余贵美子, 室井滋, 小林稔侍]
+    writers: [竹山洋]
+  episodes: 9
+  slug: yako-no-kaidan
+  covers:
+  - covers/3731694/01.webp
   douban_url: https://movie.douban.com/subject/3731694/
   user:
     cover: ""
@@ -542,35 +569,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 5881e14a
-    machine_hash: 2d3e0c82
+    fingerprint: b64f988f
+    machine_hash: 9499b56c
     missing_since: null
+    missing_reason: null
 - id: "2143850"
   title: 蔬果村的故事
-  original_title: null
-  year: null
+  original_title: チロリン村物语
+  year: 1992
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 5344
   marked_at: "2009-12-20"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 儿童]
+  regions: [日本]
+  languages: [日语, 普通话]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [山吉康夫, 岩根雅明, 神户守, 佐山圣子, 古川政美, 井硲清高, 铃木卓夫, 井上修]
+    casts: [日高范子, 高山南, 樱井敏治, 铃木晶子, 高田由美, 江原正士, 山田俊司, 辻村真人, 三木真一郎, 安达忍]
+    writers: [池田真美子, 金卷兼一]
+  episodes: 57
+  slug: douban-2143850
+  covers:
+  - covers/2143850/01.webp
   douban_url: https://movie.douban.com/subject/2143850/
   user:
     cover: ""
@@ -581,35 +610,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 4f0dff37
-    machine_hash: 827b1458
+    machine_hash: 578b3476
     missing_since: null
+    missing_reason: null
 - id: "2131160"
   title: 天地人
   original_title: null
-  year: null
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 3417
   marked_at: "2009-12-19"
-  douban_comment: null
+  douban_comment: 总算把它看完了...
   tags: [JPN, Teleplay, History, War]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 传记, 历史]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [片冈敬司]
+    casts: [妻夫木聪, 北村一辉, 城田优, 常盘贵子, 长泽雅美, 高岛政伸, 田中美佐子, 小泉孝太郎, 东干久, 小栗旬]
+    writers: [小松江里子]
+  episodes: 47
+  slug: tenchijin
+  covers:
+  - covers/2131160/01.webp
   douban_url: https://movie.douban.com/subject/2131160/
   user:
     cover: ""
@@ -620,35 +651,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: e3f1bf5b
-    machine_hash: 3373fcfe
+    fingerprint: 35ff6bad
+    machine_hash: 2abf67eb
     missing_since: null
+    missing_reason: null
 - id: "2040834"
   title: 派遣员的品格
-  original_title: null
-  year: null
+  original_title: ハケンの品格
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 14675
   marked_at: "2009-12-18"
-  douban_comment: null
+  douban_comment: 几年前我做 派遣 的时候,怎么没这么牛?
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [南云圣一]
+    casts: [筱原凉子, 加藤爱, 小泉孝太郎, 大泉洋, 城田优, 板谷由夏, 胜地凉]
+    writers: [中园美保]
+  episodes: 10
+  slug: haken-no-hinkaku
+  covers:
+  - covers/2040834/01.webp
   douban_url: https://movie.douban.com/subject/2040834/
   user:
     cover: ""
@@ -659,35 +692,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 457b859d
-    machine_hash: b063c2b7
+    fingerprint: 9946acac
+    machine_hash: ad03e6db
     missing_since: null
+    missing_reason: null
 - id: "3543940"
   title: 甜甜私房猫2
-  original_title: null
-  year: null
+  original_title: チーズスイートホーム あたらしいおうち
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 8783
   marked_at: "2009-12-04"
-  douban_comment: null
+  douban_comment: 大团圆结局...
   tags: [Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 3
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [增原光幸, 原田奈奈, 青木弘安, 长冈义孝, 小野田雄亮, 有原诚治, 立川让]
+    casts: [兴梠里美, 小樱悦子, 日高范子, 木内秀信, 梁田清之]
+    writers: [金春智子, 武上纯希, 笹野惠, 山田由香, 中村能子, 青木弘安, 笔安一幸]
+  episodes: 104
+  slug: chi-s-new-address
+  covers:
+  - covers/3543940/01.webp
   douban_url: https://movie.douban.com/subject/3543940/
   user:
     cover: ""
@@ -698,35 +733,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 88e19a6f
-    machine_hash: a75214da
+    fingerprint: 3bb49881
+    machine_hash: a8c8b557
     missing_since: null
+    missing_reason: null
 - id: "3250484"
   title: 真我霓裳 SP
-  original_title: null
-  year: null
+  original_title: リアル・クローズ SP
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 2964
   marked_at: "2009-12-04"
   douban_comment: null
   tags: [SP, Teleplay, Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 84
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [白木啓一郎, 本橋圭太]
+    casts: [香里奈, 黑木瞳, 高冈奏辅, 加藤夏希, 能世安奈, 英令奈, 芦名星]
+    writers: [大岛里美]
+  episodes: 1
+  slug: real-clothes-2008
+  covers:
+  - covers/3250484/01.webp
   douban_url: https://movie.douban.com/subject/3250484/
   user:
     cover: ""
@@ -737,35 +774,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: cc9eb6bf
-    machine_hash: f117dea2
+    machine_hash: 2973bdd2
     missing_since: null
+    missing_reason: null
 - id: "3193101"
   title: 甜甜私房猫
-  original_title: null
-  year: null
+  original_title: チーズスイートホーム
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 32013
   marked_at: "2009-12-04"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 家庭]
+  regions: [日本]
+  languages: [日语]
+  runtime: 3
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [增原光幸, 原田奈奈, 川村贤一, 野上和男, 立仙裕俊, 有原诚治, 立川让]
+    casts: [兴梠里美, 小樱悦子, 日高范子, 木内秀信, 梁田清之]
+    writers: [金春智子, 武上纯希, 增原光幸, 浅香守生, 小岛正幸, 滨崎博嗣, 笔安一幸]
+  episodes: 104
+  slug: douban-3193101
+  covers:
+  - covers/3193101/01.webp
   douban_url: https://movie.douban.com/subject/3193101/
   user:
     cover: ""
@@ -776,35 +815,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: e5966f4a
-    machine_hash: 9a2eb297
+    machine_hash: 2c6fb080
     missing_since: null
+    missing_reason: null
 - id: "3002885"
-  title: 豪斯医生 第二季
+  title: 豪斯医生 第二季 House M.D. Season 2
   original_title: null
-  year: null
+  year: 2005
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 22036
   marked_at: "2009-11-24"
   douban_comment: null
   tags: [Teleplay, ENU, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑]
+  regions: [美国]
+  languages: [英语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Daniel Attias（丹尼尔·艾提奥斯）]
+    casts: [Hugh Laurie, Lisa Edelstein, Robert Sean Leonard, Jennifer Morrison]
+    writers: [大卫·肖]
+  episodes: 24
+  slug: house-m-d-season-2
+  covers:
+  - covers/3002885/01.webp
   douban_url: https://movie.douban.com/subject/3002885/
   user:
     cover: ""
@@ -815,35 +856,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 07e0e957
-    machine_hash: 481fb6b2
+    machine_hash: "55931120"
     missing_since: null
+    missing_reason: null
 - id: "1860377"
   title: 黑猫警长
   original_title: null
-  year: null
+  year: 1984
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 118602
   marked_at: "2009-11-24"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Detective]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 悬疑]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [戴铁郎, 范马迪, 熊南清]
+    casts: [史东敏, 王卫, 张泉灵, 杨文元, 杨玉天, 范楚绒, 战车, 黄翔, 吴尔朴]
+    writers: [戴铁郎, 诸志祥]
+  episodes: 5
+  slug: inspector-black-cat
+  covers:
+  - covers/1860377/01.webp
   douban_url: https://movie.douban.com/subject/1860377/
   user:
     cover: ""
@@ -854,35 +897,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: ae93fa45
-    machine_hash: a9e743d1
+    machine_hash: 60bd7f2a
     missing_since: null
+    missing_reason: null
 - id: "1470189"
   title: 蓝宝石之谜
-  original_title: null
-  year: null
+  original_title: ふしぎの海のナディア
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 9440
   marked_at: "2009-11-24"
   douban_comment: null
   tags: [Animation, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [庵野秀明, 樋口真嗣, 摩砂雪, 前田真宏, 米谷良知, 高山文彦, 舛成孝二, 红优, 森健, 神谷纯, 萨川昭夫, 粟井重纪, 增尾昭一, 洼冈俊之]
+    casts: [鹰森淑乃, 日高范子, 水谷优子, 大塚明夫, 井上喜久子, 泷泽久美子, 堀内贤雄, 樱井敏治, 清川元梦]
+    writers: [大川久男, 田波靖男, 儒勒·凡尔纳]
+  episodes: 39
+  slug: fushigi-no-umi-no-nadia
+  covers:
+  - covers/1470189/01.webp
   douban_url: https://movie.douban.com/subject/1470189/
   user:
     cover: ""
@@ -893,35 +938,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 63d671e9
-    machine_hash: 45672e81
+    machine_hash: 13b0e6ad
     missing_since: null
+    missing_reason: null
 - id: "3609075"
   title: 蜗居
   original_title: null
-  year: null
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 125445
   marked_at: "2009-11-23"
-  douban_comment: null
+  douban_comment: 小三 是突破口...
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 家庭]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [滕华涛]
+    casts: [海清, 李念, 郝平, 文章, 张嘉益, 邬君梅, 冯嘉怡, 吴玉芳, 宗晓军, 铃木美妃]
+    writers: [六六, 滕华涛, 曹盾]
+  episodes: 33
+  slug: dwelling-narrowness
+  covers:
+  - covers/3609075/01.webp
   douban_url: https://movie.douban.com/subject/3609075/
   user:
     cover: ""
@@ -932,35 +979,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 36c7e3f3
-    machine_hash: 3da3bf47
+    fingerprint: 7246ef8e
+    machine_hash: dddf1fdc
     missing_since: null
+    missing_reason: null
 - id: "2364190"
   title: 谈判专家
-  original_title: null
-  year: null
+  original_title: 交渉人～THE NEGOTIATIOR～
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 3623
   marked_at: "2009-11-22"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松田秀知, 佐藤源太]
+    casts: [米仓凉子, 伊武雅刀, 大杉涟, 高冈奏辅, 城田优, 笹野高史, 高桥克实, 铃木浩介, 阵内孝则, 安惠美]
+    writers: [寺田敏雄, 稲葉一広]
+  episodes: 8
+  slug: the-negotiatior
+  covers:
+  - covers/2364190/01.webp
   douban_url: https://movie.douban.com/subject/2364190/
   user:
     cover: ""
@@ -971,35 +1020,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 6682b4d3
-    machine_hash: 87cf7f98
+    machine_hash: 8ff84cc2
     missing_since: null
+    missing_reason: null
 - id: "2018076"
   title: 诈欺游戏
-  original_title: null
-  year: null
+  original_title: ライアーゲーム
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 78616
   marked_at: "2009-11-22"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 36
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [松山博昭, 大木绫子, 植田泰史]
+    casts: [户田惠梨香, 松田翔太, 吉濑美智子, 渡边一计, 北村总一朗]
+    writers: [古家和尚]
+  episodes: 11
+  slug: liar-game
+  covers:
+  - covers/2018076/01.webp
   douban_url: https://movie.douban.com/subject/2018076/
   user:
     cover: ""
@@ -1010,35 +1061,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 95d5d62d
-    machine_hash: afb3231f
+    machine_hash: f0e1b896
     missing_since: null
+    missing_reason: null
 - id: "1781636"
-  title: 大力水手 第一季
+  title: 大力水手 第一季 Popeye the Sailor Season 1
   original_title: null
-  year: null
+  year: 1960
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 84006
   marked_at: "2009-11-22"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [美国]
+  languages: [英语]
+  runtime: 6
   credits:
-    directors: []
+    directors: [E.C. Segar]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 169
+  slug: popeye-the-sailor-season-1
+  covers:
+  - covers/1781636/01.webp
   douban_url: https://movie.douban.com/subject/1781636/
   user:
     cover: ""
@@ -1049,35 +1102,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: ae6fced4
-    machine_hash: ebe7820e
+    machine_hash: 7e06e1c7
     missing_since: null
+    missing_reason: null
 - id: "1460911"
   title: 七武士
-  original_title: null
-  year: null
+  original_title: Samurai 7
+  year: 2004
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 3724
   marked_at: "2009-11-22"
-  douban_comment: null
+  douban_comment: 为什么 "机器人" 科技如此发达...大家还要去抢一点米呢? 难道基础生产力就没有得到发展吗?
   tags: [Animation, JPN, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [泷泽敏文, 多田俊介, 小仓宏文, 则座诚, 奥野浩行, 藤本次朗, 黑田康弘, 冈崎幸男, 新田义方, 吉田彻, 嵯峨敏, 东出太]
+    casts: [寺杣昌纪, 朴璐美, 稻田彻, 三木真一郎, 折笠富美子, 斋藤千和, 西前忠久, 西川几雄, 佐佐木诚二, 子安武人]
+    writers: [富冈淳广, 高林久弥, 高桥奈津子, 神山修一, 黑泽明]
+  episodes: 26
+  slug: samurai-7
+  covers:
+  - covers/1460911/01.webp
   douban_url: https://movie.douban.com/subject/1460911/
   user:
     cover: ""
@@ -1088,35 +1143,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: f54efd2e
-    machine_hash: f915495d
+    fingerprint: 0832e61f
+    machine_hash: 2e1332ca
     missing_since: null
+    missing_reason: null
 - id: "3904336"
   title: 浅见光彦 最终章
-  original_title: null
-  year: null
+  original_title: 浅見光彦〜最終章〜
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.4
+  douban_score_count: 384
   marked_at: "2009-11-20"
-  douban_comment: null
+  douban_comment: 完全没有看懂...
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佐々木章光, 村上牧人]
+    casts: [泽村一树, 风间杜夫, 原沙知绘, 佐久间良子, 小林星兰]
+    writers: [石原武龍, 川嶋澄乃, 友澤晃一, 大和田伸也]
+  episodes: 9
+  slug: asami-mitsuhiko-saishusho
+  covers:
+  - covers/3904336/01.webp
   douban_url: https://movie.douban.com/subject/3904336/
   user:
     cover: ""
@@ -1127,35 +1184,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 17baf405
-    machine_hash: 24ab8eef
+    fingerprint: 01c72af2
+    machine_hash: d138ecf5
     missing_since: null
+    missing_reason: null
 - id: "3602965"
   title: 爱情洗牌
-  original_title: null
-  year: null
+  original_title: Love Shuffle
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 59196
   marked_at: "2009-11-12"
-  douban_comment: null
+  douban_comment: 里面的人不太用上班,就可以赚很多钱的样子...
   tags: [Teleplay, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [土井裕泰, 山室大辅]
+    casts: [玉木宏, 香里奈, 松田翔太, 内藤大湖, 吉高由里子, 小岛圣, 贯地谷栞, 谷原章介]
+    writers: [野岛伸司]
+  episodes: 10
+  slug: love-shuffle
+  covers:
+  - covers/3602965/01.webp
   douban_url: https://movie.douban.com/subject/3602965/
   user:
     cover: ""
@@ -1166,35 +1225,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: d962e87e
-    machine_hash: 08fea156
+    fingerprint: 38fd04ad
+    machine_hash: 4224b3ec
     missing_since: null
+    missing_reason: null
 - id: "3190880"
-  title: 生活大爆炸 第二季
+  title: 生活大爆炸 第二季 The Big Bang Theory Season 2
   original_title: null
-  year: null
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 213589
   marked_at: "2009-11-01"
-  douban_comment: null
+  douban_comment: 估计还会接着看 Season 3rd
   tags: [Comedy, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [美国]
+  languages: [英语, 北印度语]
+  runtime: 21
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Chuck Lorre（查克·罗瑞）, Bill Prady（比尔·布拉迪）]
+    casts: [Jim Parsons（吉姆·帕森斯）, Johnny Galecki（约翰尼·盖尔克奇）, Kaley Cuoco（凯莉·库柯）, Simon Helberg（西蒙·赫尔伯格）, 昆瑙·内亚, 莎拉·吉尔伯特, 克里斯汀·芭伦斯基, 凯文·苏斯曼, 乔迪·琳·欧基菲, 凯缇·萨克霍夫]
+    writers: [Chuck Lorre（查克·罗瑞）, Bill Prady（比尔·布拉迪）]
+  episodes: 23
+  slug: the-big-bang-theory-season-2
+  covers:
+  - covers/3190880/01.webp
   douban_url: https://movie.douban.com/subject/3190880/
   user:
     cover: ""
@@ -1205,35 +1266,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: cce94b2b
-    machine_hash: a8268a1f
+    fingerprint: 32edeaa8
+    machine_hash: c60bd451
     missing_since: null
+    missing_reason: null
 - id: "2156528"
-  title: 生活大爆炸 第一季
+  title: 生活大爆炸 第一季 The Big Bang Theory Season 1
   original_title: null
-  year: null
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 385462
   marked_at: "2009-10-30"
-  douban_comment: null
+  douban_comment: 宅男生活...
   tags: [Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [美国]
+  languages: [英语, 意大利语]
+  runtime: 21
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [James Burrows（詹姆斯·伯罗斯）]
+    casts: [Jim Parsons（吉姆·帕森斯）, Johnny Galecki（约翰尼·盖尔克奇）, Kaley Cuoco（凯莉·库柯）, Simon Helberg（西蒙·赫尔伯格）, 昆瑙·内亚, 莎拉·吉尔伯特, DJ·考尔斯, 考特尼·海根勒, 莎拉尤·拉奧, 布鲁克·朵赛]
+    writers: [查克·罗瑞, 比尔·布拉迪]
+  episodes: 17
+  slug: the-big-bang-theory-season-1
+  covers:
+  - covers/2156528/01.webp
   douban_url: https://movie.douban.com/subject/2156528/
   user:
     cover: ""
@@ -1244,35 +1307,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: b5f07b8a
-    machine_hash: 43d346de
+    fingerprint: d75b8ddf
+    machine_hash: 1559427f
     missing_since: null
+    missing_reason: null
 - id: "3684022"
   title: 战国BASARA
-  original_title: null
-  year: null
+  original_title: 戦国BASARA
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 5296
   marked_at: "2009-10-19"
-  douban_comment: null
+  douban_comment: 武术效果不错...不过 严重的、严重的、严重的 篡改 了 历史史实...
   tags: [Animation, Teleplay, JPN, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 动画, 战争]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [川崎逸朗, 盐谷直义, 板垣伸, 野村和也, 长沼范裕, 新留俊哉, 安藤健, 铃木健太郎, 江崎慎平]
+    casts: [中井和哉, 保志总一朗, 森川智之, 玄田哲章, 朴璐美, 子安武人, 桑谷夏子, 辻谷耕史, 能登麻美子, 速水奖]
+    writers: [武藤康之]
+  episodes: 13
+  slug: basara-2009
+  covers:
+  - covers/3684022/01.webp
   douban_url: https://movie.douban.com/subject/3684022/
   user:
     cover: ""
@@ -1283,35 +1348,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 14facb14
-    machine_hash: 1586ce6d
+    fingerprint: 5da814d7
+    machine_hash: 137c2119
     missing_since: null
+    missing_reason: null
 - id: "2142535"
   title: 父女七日变
-  original_title: null
-  year: null
+  original_title: パパとムスメの7日間
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 42258
   marked_at: "2009-10-17"
-  douban_comment: null
+  douban_comment: 不算太差...
   tags: [Teleplay, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 家庭]
+  regions: [日本]
+  languages: [日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [吉田健]
+    casts: [馆博, 新垣结衣, 加藤成亮, 佐田真由美, 森田彩华, 佐佐木澄江, 麻生祐未, 八岛智人, 江守彻]
+    writers: [荒井修子, 渡边千穗, 德永友一]
+  episodes: 7
+  slug: papa-to-musume-no-nanakakan
+  covers:
+  - covers/2142535/01.webp
   douban_url: https://movie.douban.com/subject/2142535/
   user:
     cover: ""
@@ -1322,35 +1389,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 77a14efc
-    machine_hash: e0a440a2
+    fingerprint: 096b0371
+    machine_hash: 63d780c8
     missing_since: null
+    missing_reason: null
 - id: "2051770"
   title: 俏皮小花仙
-  original_title: null
-  year: null
+  original_title: 花の魔法使いマリーベル
+  year: 1992
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 6459
   marked_at: "2009-10-17"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [远藤彻哉, 高桥直人, 日下直义]
+    casts: [本多知惠子, 坂本千夏, 伊仓一惠, 折笠爱, 兴梠里美, 小樱悦子, 京田尚子, 松本保典, 三石琴乃]
+    writers: [小山高生, 三井秀树, 山田靖智, 高桥义昌, 远藤彻哉]
+  episodes: 50
+  slug: floral-elf-mary-bell
+  covers:
+  - covers/2051770/01.webp
   douban_url: https://movie.douban.com/subject/2051770/
   user:
     cover: ""
@@ -1361,35 +1430,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 5b963392
-    machine_hash: 6322304c
+    machine_hash: 7be580e5
     missing_since: null
+    missing_reason: null
 - id: "2051725"
   title: 我是小甜甜
-  original_title: null
-  year: null
+  original_title: 魔法の天使クリィミーマミ
+  year: 1983
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 15527
   marked_at: "2009-10-17"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情, 动画, 音乐, 家庭, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [立场良, 望月智充, 安浓高志, 小林治]
+    casts: [水岛裕, 肝付兼太, 三田友子, 井上和彦, 土井美加, 岛津冴子, 村山明]
+    writers: [伊藤和典, 岛田满]
+  episodes: 52
+  slug: maho-no-tenshi-creamy-mami
+  covers:
+  - covers/2051725/01.webp
   douban_url: https://movie.douban.com/subject/2051725/
   user:
     cover: ""
@@ -1400,35 +1471,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 20fb2b36
-    machine_hash: b5ec92fb
+    machine_hash: a114db1c
     missing_since: null
+    missing_reason: null
 - id: "2015069"
   title: 精灵宝可梦
-  original_title: null
-  year: null
+  original_title: ポケットモンスター
+  year: 1997
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 66177
   marked_at: "2009-10-17"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
+    directors: [汤山邦彦, 日高政光, 小野胜巳, 石原立也, 江上洁, 原口浩, 大原实, 福本洁, 秦义人, 浅田裕二, 藤本义孝, 岩崎太郎, 小川浩司, 广岛秀树, 松本正幸, 冈崎幸男, 石仓贤一, 岩本保雄, 井硲清高, 深泽幸司, 元永庆太郎, 志村宏明]
+    casts: [松本梨香, 大谷育江, 饭冢雅弓, 兴梠里美, 上田祐司, 关智一, 林原惠美, 三木真一郎, 犬山犬子, 石冢运升]
+    writers: [首藤刚志, 武上纯希, 富冈淳广, 园田英树, 大桥志吉, 藤田伸三, 米村正二, 田尻智]
   episodes: null
-  slug: ""
-  covers: []
+  slug: pokemon
+  covers:
+  - covers/2015069/01.webp
   douban_url: https://movie.douban.com/subject/2015069/
   user:
     cover: ""
@@ -1439,35 +1512,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 81cff100
-    machine_hash: a4b73a87
+    machine_hash: e4079a58
     missing_since: null
+    missing_reason: null
 - id: "1970134"
   title: 数码宝贝
-  original_title: null
-  year: null
+  original_title: デジモンアドベンチャー
+  year: 1999
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 148950
   marked_at: "2009-10-17"
   douban_comment: null
   tags: [Movie, Animation, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 惊悚, 家庭, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [角铜博之, 芝田浩树, 川田武范, 今泽哲男, 早川启二, 志水淳儿, 小坂春女, 中村哲治, 细田守]
+    casts: [藤田淑子, 风间勇刀, 水谷优子, 天神有海, 前田爱, 菊池正美, 小西宽子, 荒木香惠, 坂本千夏, 山口真弓]
+    writers: [本乡昭由, 西园悟, 雅木宏, 前川淳, 吉村元希, 浦泽义雄, 大和屋晓, 吉田玲子]
+  episodes: 54
+  slug: digimon-digital-monsters
+  covers:
+  - covers/1970134/01.webp
   douban_url: https://movie.douban.com/subject/1970134/
   user:
     cover: ""
@@ -1478,35 +1553,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b6617b6c
-    machine_hash: efb0c2d4
+    machine_hash: 3dfb4302
     missing_since: null
+    missing_reason: null
 - id: "1465036"
   title: 猫眼三姐妹
-  original_title: null
-  year: null
+  original_title: CAT'S EYE キャッツ・アイ
+  year: 1983
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 36142
   marked_at: "2009-10-17"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 悬疑, 犯罪]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [竹内启雄]
+    casts: [户田惠子, 安原义人, 藤田淑子, 坂本千夏]
+    writers: [北条司, 藤川桂介, 寺田宪史]
+  episodes: 36
+  slug: cat-s-eye
+  covers:
+  - covers/1465036/01.webp
   douban_url: https://movie.douban.com/subject/1465036/
   user:
     cover: ""
@@ -1517,35 +1594,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: df461e72
-    machine_hash: 263c8389
+    machine_hash: 1180cb76
     missing_since: null
+    missing_reason: null
 - id: "1442129"
-  title: 豪斯医生 第一季
+  title: 豪斯医生 第一季 House M.D. Season 1
   original_title: null
-  year: null
+  year: 2004
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 54440
   marked_at: "2009-10-15"
-  douban_comment: null
+  douban_comment: 诊断的过程有点像 定位 Bug ...
   tags: [Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑]
+  regions: [美国]
+  languages: [英语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Ann Donahue]
+    casts: [Hugh Laurie（休·劳瑞）, Lisa Edelstein（丽莎·艾德尔斯汀）, Omar Epps（欧玛·艾普斯）, Robert Sean Leonard（罗伯特·肖恩·莱纳德）, 詹妮弗·莫里森, 杰西·斯宾塞]
+    writers: [大卫·肖]
+  episodes: 22
+  slug: house-m-d-season-1
+  covers:
+  - covers/1442129/01.webp
   douban_url: https://movie.douban.com/subject/1442129/
   user:
     cover: ""
@@ -1556,35 +1635,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 2e7476a0
-    machine_hash: 7def5279
+    fingerprint: f49aa8df
+    machine_hash: 816efaa2
     missing_since: null
+    missing_reason: null
 - id: "3732837"
   title: 怨屋本铺2
-  original_title: null
-  year: null
+  original_title: 怨み屋本舗REBOOT
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 5332
   marked_at: "2009-10-12"
-  douban_comment: null
+  douban_comment: 总共十二集...单数集结怨...双数集报仇...只要保持看,双数集的前情介绍和双数集的末尾 就可以了...
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [仁木启介, 本田隆一, 石井永二, 佐野达也, 黒田由布子, 森田升]
+    casts: [木下亚由美, 加藤雅也, 前田健, 葵, 小野健斗, 寺岛进]
+    writers: [栗原正尚, 川嶋澄乃]
+  episodes: 12
+  slug: reboot
+  covers:
+  - covers/3732837/01.webp
   douban_url: https://movie.douban.com/subject/3732837/
   user:
     cover: ""
@@ -1595,35 +1676,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: a50c1a58
-    machine_hash: ce8f5227
+    fingerprint: 59735d4f
+    machine_hash: f16c6fa1
     missing_since: null
+    missing_reason: null
 - id: "1905577"
   title: 我的老大、我的英雄
-  original_title: null
-  year: null
+  original_title: マイ★ボス マイ★ヒーロー
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 34237
   marked_at: "2009-10-11"
-  douban_comment: null
+  douban_comment: 非常之脑残...
   tags: [Teleplay, JPN, Comedy]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 47
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佐藤东弥, 佐久间纪佳, 石尾纯]
+    casts: [长濑智也, 手越祐也, 田中圣, 新垣结衣, 香椎由宇, 市村正亲, 黄川田将也, 大杉涟, 岩城滉一, 罇真佐子]
+    writers: [大森美香]
+  episodes: 10
+  slug: mai-bosu-mai-hiro
+  covers:
+  - covers/1905577/01.webp
   douban_url: https://movie.douban.com/subject/1905577/
   user:
     cover: ""
@@ -1634,35 +1717,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 8a4e499f
-    machine_hash: 5f8986ac
+    fingerprint: f1787a77
+    machine_hash: e0a40b10
     missing_since: null
+    missing_reason: null
 - id: "1886965"
-  title: 海底小精灵 第一季
+  title: 海底小精灵 第一季 Snorks Season 1
   original_title: null
-  year: null
+  year: 1984
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 15977
   marked_at: "2009-10-07"
   douban_comment: null
   tags: [Animation, Movie, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 家庭]
+  regions: [美国, 比利时]
+  languages: [英语]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Arthur Davis（阿瑟·戴维斯）, Oscar Dufau（奥斯卡·杜佛）]
+    casts: [Michael Bell（迈克尔·贝尔）, Rene Auberjonois（勒内·奥贝尔若努瓦）, Nancy Cartwright（南茜·卡特莱特）, Peter Cullen（彼得·库伦）]
+    writers: [Jack Hanrahan, 汤姆·鲁格尔]
+  episodes: 13
+  slug: snorks-season-1
+  covers:
+  - covers/1886965/01.webp
   douban_url: https://movie.douban.com/subject/1886965/
   user:
     cover: ""
@@ -1673,35 +1758,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 4ceb7c99
-    machine_hash: 23b5a784
+    machine_hash: ebc31e3b
     missing_since: null
+    missing_reason: null
 - id: "1766534"
   title: 秀逗魔导士TRY
-  original_title: null
-  year: null
+  original_title: スレイヤーズTRY
+  year: 1997
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 3190
   marked_at: "2009-10-07"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Movie]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [日本]
+  languages: [英语, 日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡部高志, 水岛精二, 则座诚, 岩崎良明, 佐藤英一, 渡边纯央]
+    casts: [林原惠美, 松本保典, 绿川光, 铃木真仁, 石田彰, 安西正弘, 高木涉, 桑岛法子]
+    writers: [神坂一, 高山治郎, 隅泽克之, 山田靖智, 长谷川胜己]
+  episodes: 26
+  slug: try
+  covers:
+  - covers/1766534/01.webp
   douban_url: https://movie.douban.com/subject/1766534/
   user:
     cover: ""
@@ -1712,35 +1799,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 57b1007d
-    machine_hash: 533b8856
+    machine_hash: 81a138cc
     missing_since: null
+    missing_reason: null
 - id: "1766532"
   title: 秀逗魔导士NEXT
-  original_title: null
-  year: null
+  original_title: スレイヤーズNEXT
+  year: 1996
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 4988
   marked_at: "2009-10-07"
   douban_comment: null
   tags: [Animation, Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画]
+  regions: [美国, 日本]
+  languages: [英语, 日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡部高志, 水岛精二, 则座诚, 岩崎良明, 吉田俊司, 小林孝志, 佐藤英一]
+    casts: [林原惠美, 松本保典, 绿川光, 铃木真仁, 冬马由美, 石田彰]
+    writers: [神坂一, 高山治郎, 千叶克彦, 山田靖智, 长谷川胜己, 花田十辉]
+  episodes: 26
+  slug: next
+  covers:
+  - covers/1766532/01.webp
   douban_url: https://movie.douban.com/subject/1766532/
   user:
     cover: ""
@@ -1751,35 +1840,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 2a79082a
-    machine_hash: 1229cd73
+    machine_hash: 9633f069
     missing_since: null
+    missing_reason: null
 - id: "1481825"
   title: 世纪末救世主传说 北斗神拳
-  original_title: null
-  year: null
+  original_title: 世紀末救世主伝説 北斗の拳
+  year: 1984
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 12614
   marked_at: "2009-10-07"
   douban_comment: null
   tags: [Animation, Movie, Teleplay, Sci-Fi, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [芦田丰雄, 板野一郎]
+    casts: [神谷明, 难波圭一, 千叶繁, 一龙斋贞友]
+    writers: [武論尊（原作）, 原哲夫（原作）, 上原正三, 井上敏樹, 戸田博史, 花園由宇保, 土屋斗紀雄, 大橋志吉]
+  episodes: 109
+  slug: douban-1481825
+  covers:
+  - covers/1481825/01.webp
   douban_url: https://movie.douban.com/subject/1481825/
   user:
     cover: ""
@@ -1790,35 +1881,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 2da13713
-    machine_hash: 5858ab5c
+    machine_hash: 47f5eaad
     missing_since: null
+    missing_reason: null
 - id: "1440937"
-  title: 变形金刚 第一季
+  title: 变形金刚 第一季 Transformers Season 1
   original_title: null
-  year: null
+  year: 1984
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 21487
   marked_at: "2009-10-07"
   douban_comment: null
   tags: [Animation, Sci-Fi, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 惊悚, 家庭, 奇幻, 冒险]
+  regions: [美国, 日本]
+  languages: [英语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [John Gibbs（约翰·吉布斯）]
+    casts: [Dan Gilvezan（丹·吉尔维赞）]
+    writers: [George Arthur Bloom]
+  episodes: 16
+  slug: transformers-season-1
+  covers:
+  - covers/1440937/01.webp
   douban_url: https://movie.douban.com/subject/1440937/
   user:
     cover: ""
@@ -1829,35 +1922,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 53839cd6
-    machine_hash: a1ae666c
+    machine_hash: 1783e87d
     missing_since: null
+    missing_reason: null
 - id: "1998799"
   title: 灌篮高手
-  original_title: null
-  year: null
+  original_title: スラムダンク
+  year: 1993
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.7
+  douban_score_count: 250600
   marked_at: "2009-10-06"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 运动]
+  regions: [日本]
+  languages: [日语]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [西泽信孝, 角铜博之, 志水淳儿, 明比正行, 又野弘道, 中村哲治, 竹之内和久]
+    casts: [草尾毅, 绿川光, 梁田清之, 置鲇龙太郎, 盐屋翼, 原惠理子, 平松晶子, 田中秀幸, 小野坂昌也, 神奈延年]
+    writers: [井上雄彦, 岸间信明, 菅良幸]
+  episodes: 101
+  slug: slam-dunk
+  covers:
+  - covers/1998799/01.webp
   douban_url: https://movie.douban.com/subject/1998799/
   user:
     cover: ""
@@ -1868,35 +1963,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 49bc2f5a
-    machine_hash: 9777c227
+    machine_hash: 1c4f6291
     missing_since: null
+    missing_reason: null
 - id: "1449381"
-  title: 巴巴爸爸 第一季
+  title: 巴巴爸爸 第一季 Les Barbapapa Season 1
   original_title: null
-  year: null
+  year: 1974
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 32914
   marked_at: "2009-10-06"
   douban_comment: null
   tags: [Teleplay, Animation, FRA]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [荷兰, 日本, 美国, 法国]
+  languages: [法语]
+  runtime: 26
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Talus Taylor, Annette Tison]
+    casts: [Allen Swift, Leen Jongewaard]
+    writers: [Talus Taylor, Annette Tison]
+  episodes: 45
+  slug: les-barbapapa-season-1
+  covers:
+  - covers/1449381/01.webp
   douban_url: https://movie.douban.com/subject/1449381/
   user:
     cover: ""
@@ -1907,35 +2004,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c5c9cd8f
-    machine_hash: 338daebb
+    machine_hash: 611467f1
     missing_since: null
+    missing_reason: null
 - id: "3780341"
   title: 天地无用
-  original_title: null
-  year: null
+  original_title: 天地無用!
+  year: 1995
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 8323
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Teleplay, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [根岸弘, 石原立也, 黑田康弘, 木村真一郎, 福本洁, 小村敏明, 广岛秀树, 岩崎良明]
+    casts: [菊池正美, 折笠爱, 高田由美, 横山智佐, 小樱悦子, 水谷优子, 天野由梨, 小林优子, 青野武, 绪方贤一]
+    writers: [月村了卫, 黑田洋介, 关岛真赖, 西园悟]
+  episodes: 26
+  slug: tenchi-universe
+  covers:
+  - covers/3780341/01.webp
   douban_url: https://movie.douban.com/subject/3780341/
   user:
     cover: ""
@@ -1946,35 +2045,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 3e95f236
-    machine_hash: abe782de
+    machine_hash: 7ef68ccb
     missing_since: null
+    missing_reason: null
 - id: "3722625"
   title: 魔神英雄传2
-  original_title: null
-  year: null
+  original_title: 魔神英雄伝ワタル2
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 10517
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Teleplay, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井内秀治, 渡边信一郎, 日高政光, 西村聪, 近藤信宏, 佐藤育郎, 藤本义孝, 河本升悟]
+    casts: [田中真弓, 林原惠美, 伊仓一惠, 高乃丽, 西村知道, 山寺宏一, 玄田哲章, 龙田直树, 冬马由美, 佐藤智惠]
+    writers: [小山高生, 高桥良辅, 川崎裕之, 高桥义昌, 井内秀治, 矢立肇, 广井王子]
+  episodes: 46
+  slug: mashin-hero-wataru-2
+  covers:
+  - covers/3722625/01.webp
   douban_url: https://movie.douban.com/subject/3722625/
   user:
     cover: ""
@@ -1985,35 +2086,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: cc6efd45
-    machine_hash: 2caea183
+    machine_hash: 16df8b40
     missing_since: null
+    missing_reason: null
 - id: "2990287"
   title: 四驱兄弟
-  original_title: null
-  year: null
+  original_title: 爆走兄弟レッツ&ゴー!!
+  year: 1996
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 60764
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Teleplay, JPN, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [网野哲朗]
+    casts: [安藤亚里沙, 池泽春菜, 高乃丽, 神代知衣, 渡边久美子, 今井由香, 西村千奈美]
+    writers: [隅泽克之, 星山博之]
+  episodes: 51
+  slug: bakusou-kyoudai-let-s-go
+  covers:
+  - covers/2990287/01.webp
   douban_url: https://movie.douban.com/subject/2990287/
   user:
     cover: ""
@@ -2024,35 +2127,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: d680e865
-    machine_hash: 398f8c4c
+    machine_hash: a06153a4
     missing_since: null
+    missing_reason: null
 - id: "2275094"
   title: 剑勇传说
-  original_title: null
-  year: null
+  original_title: 剣勇伝説YAIBA
+  year: 1993
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 6234
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Movie, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [汤山邦彦, 大地丙太郎, 高桥直人, 加户誉夫, 武藤裕治, 关田修, 山口美浩, 阿部雅司, 远藤彻哉, 松村康弘, 久米一成, 日下直义, 佐藤英一, 铃木卓夫, 松浦锭平, 吉田俊司, 新田义方, 山本裕介, 村田和也, 松园公, 须藤典彦]
+    casts: [高山南, 三石琴乃, 佐藤正治, 小杉十郎太, 岛田敏, 石冢运升, 寺濑今日子, 铃木玲子, 堀川亮, 土师孝也]
+    writers: [青山刚昌, 寺田宪史, 大桥志吉, 静谷伊佐夫]
+  episodes: 51
+  slug: yaiba
+  covers:
+  - covers/2275094/01.webp
   douban_url: https://movie.douban.com/subject/2275094/
   user:
     cover: ""
@@ -2063,35 +2168,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: ee93dd04
-    machine_hash: 19e6b1e2
+    machine_hash: 33edc2cb
     missing_since: null
+    missing_reason: null
 - id: "1901660"
   title: 逮捕令
-  original_title: null
-  year: null
+  original_title: 逮捕しちゃうぞ
+  year: 1996
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 11817
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [英语, 日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡边浩, 西村纯二, 杉岛邦久, 日色如夏, 则座诚, 菱川直树, 上田茂, 竹下健一, 守冈博, 横山广行, 江上洁, 清水明]
+    casts: [平松晶子, 玉川纱己子, 小樱悦子, 松本梨香, 岛田敏, 政宗一成]
+    writers: [藤岛康介, 渡边浩, 横手美智子, 面出明美, 隅泽克之, 山口亮太, 十川诚志]
+  episodes: 51
+  slug: taiho-shichauzo
+  covers:
+  - covers/1901660/01.webp
   douban_url: https://movie.douban.com/subject/1901660/
   user:
     cover: ""
@@ -2102,35 +2209,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 05ad1c32
-    machine_hash: fc001fe5
+    machine_hash: 4371d2aa
     missing_since: null
+    missing_reason: null
 - id: "1897847"
   title: 变形金刚：头领战士
-  original_title: null
-  year: null
+  original_title: トランスフォーマー ザ★ヘッドマースターズ
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 2424
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 冒险]
+  regions: [日本]
+  languages: [英语, 日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佐佐木胜利, 白旗伸朗]
+    casts: [堀秀行, 泽木郁也, 田中亮一, 平野正人, 小林通孝, 干本雄之, 大塚芳忠, 佐藤正治, 野田圭一, 冈和男]
+    writers: [藤川桂介, 安藤丰弘, 荒木芳久]
+  episodes: 38
+  slug: transformers-the-headmasters
+  covers:
+  - covers/1897847/01.webp
   douban_url: https://movie.douban.com/subject/1897847/
   user:
     cover: ""
@@ -2141,35 +2250,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 041a020e
-    machine_hash: 37b6a7f8
+    machine_hash: 675c7292
     missing_since: null
+    missing_reason: null
 - id: "1897777"
   title: 百变雄师
-  original_title: null
-  year: null
+  original_title: Challenge of the GoBots
+  year: 1984
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 3161
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, ENU, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
+    directors: [Arthur Davis, Oscar Dufau]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 65
+  slug: challenge-of-the-gobots
+  covers:
+  - covers/1897777/01.webp
   douban_url: https://movie.douban.com/subject/1897777/
   user:
     cover: ""
@@ -2180,35 +2291,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 035563a3
-    machine_hash: 16ff52d0
+    machine_hash: ab119f9c
     missing_since: null
+    missing_reason: null
 - id: "1807994"
   title: 太空堡垒
-  original_title: null
-  year: null
+  original_title: Robotech
+  year: 1985
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 10986
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Movie, JPN, Adventure, Sci-Fi, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画]
+  regions: [美国, 日本]
+  languages: [英语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Robert V. Barron（罗伯特·V·巴伦）]
+    casts: [Cam Clarke（凯姆·克拉克）, Rebecca Forstadt, Tony Oliver（托尼·奥立佛）]
+    writers: [格莱格·斯奈哥夫, Robert V. Barron（罗伯特·V·巴伦）]
+  episodes: 85
+  slug: robotech
+  covers:
+  - covers/1807994/01.webp
   douban_url: https://movie.douban.com/subject/1807994/
   user:
     cover: ""
@@ -2219,35 +2332,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c2052ffa
-    machine_hash: 4aa63401
+    machine_hash: a82ffe36
     missing_since: null
+    missing_reason: null
 - id: "1766522"
   title: 秀逗魔导士
-  original_title: null
-  year: null
+  original_title: スレイヤーズ
+  year: 1995
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 13334
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Movie, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [英语, 日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡部高志, 则座诚, 岩崎良明, 佐藤英一, 小林孝志, 佐藤真人, 松浦锭平]
+    casts: [林原惠美, 松本保典, 绿川光, 铃木真仁, 冬马由美, 石田彰, 安西正弘, 子安武人]
+    writers: [神坂一, 小山高生, 山田靖智, 高山治郎, 长谷川胜己, 千叶克彦, 花田十辉]
+  episodes: 26
+  slug: slayers
+  covers:
+  - covers/1766522/01.webp
   douban_url: https://movie.douban.com/subject/1766522/
   user:
     cover: ""
@@ -2258,35 +2373,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c6b9032d
-    machine_hash: 5c762338
+    machine_hash: f66ac66c
     missing_since: null
+    missing_reason: null
 - id: "1484420"
-  title: 夜行神龙 第一季
+  title: 夜行神龙 第一季 Gargoyles Season 1
   original_title: null
-  year: null
+  year: 1994
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 7169
   marked_at: "2009-10-05"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 惊悚, 家庭, 犯罪, 奇幻]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Saburo Hashimoto, Yeun Young Sang]
+    casts: [Keith David（凯斯·大卫）, Salli Richardson-Whitfield（莎莉·理查德森-惠特菲尔德）, Jonathan Frakes（乔纳森·弗雷克斯）, Edward Asner（爱德华·阿斯纳）, Marina Sirtis（玛丽娜·赛提斯）, Frank Welker（弗兰克·维尔克）]
+    writers: [Cary Bates, 丽迪雅·马兰洛]
+  episodes: 13
+  slug: gargoyles-season-1
+  covers:
+  - covers/1484420/01.webp
   douban_url: https://movie.douban.com/subject/1484420/
   user:
     cover: ""
@@ -2297,35 +2414,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: "63117930"
-    machine_hash: 02dbd7ed
+    machine_hash: f99c4c76
     missing_since: null
+    missing_reason: null
 - id: "3130233"
   title: 变革
-  original_title: null
-  year: null
+  original_title: CHANGE
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 15062
   marked_at: "2009-10-02"
-  douban_comment: null
+  douban_comment: 总理随便换..这就是 三权分立 的优势...
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [泽田镰作, 平野真]
+    casts: [木村拓哉, 深津绘里, 寺尾聪, 加藤罗莎, 堀内敬子, 风间杜夫, 阿部宽, 西村雅彦, 平泉成, 富司纯子]
+    writers: [福田靖]
+  episodes: 10
+  slug: change
+  covers:
+  - covers/3130233/01.webp
   douban_url: https://movie.douban.com/subject/3130233/
   user:
     cover: ""
@@ -2336,35 +2455,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 3e8b934a
-    machine_hash: "88447734"
+    fingerprint: c37cad64
+    machine_hash: 97a07ccf
     missing_since: null
+    missing_reason: null
 - id: "3427209"
   title: 战国魔神豪将军
-  original_title: null
-  year: null
+  original_title: 戦国魔神ゴーショーグン
+  year: 1981
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 2037
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [汤山邦彦, 西村纯二, 大庭寿太郎]
+    casts: [铃置洋孝, 田中秀幸, 小山茉美, 松冈洋子, 盐泽兼人, 木原正二郎, 乡里大辅, 小林修, 藤本让, 寺岛干夫]
+    writers: [首藤刚志, 渡边由自, 富田祐弘, 武上纯希, 汤山邦彦]
+  episodes: 26
+  slug: douban-3427209
+  covers:
+  - covers/3427209/01.webp
   douban_url: https://movie.douban.com/subject/3427209/
   user:
     cover: ""
@@ -2375,35 +2496,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 569234f7
-    machine_hash: 8718d8c0
+    machine_hash: 99a66ccb
     missing_since: null
+    missing_reason: null
 - id: "3062549"
   title: 雪人波利
-  original_title: null
-  year: null
+  original_title: Bouli
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 6671
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [法国]
+  languages: [法语]
+  runtime: 28
   credits:
-    directors: []
-    casts: []
+    directors: [Denis Olivieri]
+    casts: [Brigitte Lecordier, Ophélie Brissot, Jackie Berger, Sophie Arthuys, Marine Boiron, Annabelle Roux, Michel Elias]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 114
+  slug: bouli
+  covers:
+  - covers/3062549/01.webp
   douban_url: https://movie.douban.com/subject/3062549/
   user:
     cover: ""
@@ -2414,35 +2537,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: ea4cf808
-    machine_hash: f963202a
+    machine_hash: 5b43b83e
     missing_since: null
+    missing_reason: null
 - id: "2326678"
   title: 婴儿城
-  original_title: null
-  year: null
+  original_title: Baby folies
+  year: 1993
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 10703
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [法国]
+  languages: [汉语普通话, 法语, 英语]
+  runtime: 14
   credits:
-    directors: []
+    directors: [denis olivieri]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 20
+  slug: baby-folies
+  covers:
+  - covers/2326678/01.webp
   douban_url: https://movie.douban.com/subject/2326678/
   user:
     cover: ""
@@ -2453,35 +2578,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 94b69f75
-    machine_hash: 185307a0
+    machine_hash: 5f634e8d
     missing_since: null
+    missing_reason: null
 - id: "2154743"
   title: 封神榜
   original_title: null
-  year: null
+  year: 1990
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 56253
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Teleplay, CHS, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 奇幻, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [郭信玲]
+    casts: [傅艺伟, 达奇, 蓝天野, 何威, 雷长憙, 张晓林, 汤镇宗, 魏启明, 卢玲, 计镇华]
+    writers: [许仲琳, 冰夫, 顾汉昌, 欧阳宇平, 余又晨]
+  episodes: 36
+  slug: douban-2154743
+  covers:
+  - covers/2154743/01.webp
   douban_url: https://movie.douban.com/subject/2154743/
   user:
     cover: ""
@@ -2492,35 +2619,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b85834a7
-    machine_hash: 8ba5e449
+    machine_hash: 2aedbcee
     missing_since: null
+    missing_reason: null
 - id: "2085721"
   title: 小龙人
   original_title: null
-  year: null
+  year: 1992
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 1
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 47539
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Teleplay, Animation, CHS, Sci-Fi, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [儿童, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 28
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [龚艺群]
+    casts: [陈嘉男, 陈晨, 柳田, 江以桢, 任冶湘, 常蓝天]
+    writers: [诸葛怡]
+  episodes: 52
+  slug: little-dragon-man
+  covers:
+  - covers/2085721/01.webp
   douban_url: https://movie.douban.com/subject/2085721/
   user:
     cover: ""
@@ -2531,35 +2660,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 7e321f1e
-    machine_hash: c109b4aa
+    machine_hash: aa96563d
     missing_since: null
+    missing_reason: null
 - id: "2059477"
   title: 罗宾汉大冒险
-  original_title: null
-  year: null
+  original_title: ロビンフッドの大冒険
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 2353
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, JPN, History, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [Japan]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [真下耕一, 红优, 高木真司, 殿胜秀树, 津田义三, 高村彰, 小林哲也, 高濑节夫, 千叶大辅]
+    casts: [伊仓一惠, 松井菜樱子, 三田友子, 川村万梨阿, 池本小百合, 岛田敏, 田中真弓, 关俊彦, 绪方贤一, 江原正士]
+    writers: [大仲马, 川崎裕之, 伊东恒久, 千叶克彦]
+  episodes: 52
+  slug: robin-hood-s-big-adventrue
+  covers:
+  - covers/2059477/01.webp
   douban_url: https://movie.douban.com/subject/2059477/
   user:
     cover: ""
@@ -2570,35 +2701,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 3123e1a2
-    machine_hash: 358bbc40
+    machine_hash: a8c0486f
     missing_since: null
+    missing_reason: null
 - id: "1950570"
   title: 若草四姐妹
-  original_title: null
-  year: null
+  original_title: 『若草物語』より 若草の四姉妹
+  year: 1981
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 2688
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Teleplay, JPN, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 家庭, 历史]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
+    directors: [黑川文男]
+    casts: [小山茉美, 潘惠子, 川岛千代子, 银河万丈, 坪井章子, 北川米彦, 山口奈奈, 盐屋翼]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 26
+  slug: wakakusa-monogatari-yori-wakakusa-no-yonshimai
+  covers:
+  - covers/1950570/01.webp
   douban_url: https://movie.douban.com/subject/1950570/
   user:
     cover: ""
@@ -2609,35 +2742,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 4f2c0bec
-    machine_hash: 8ebe367f
+    machine_hash: 8c8af436
     missing_since: null
+    missing_reason: null
 - id: "1897794"
-  title: 特种部队 第一季
+  title: 特种部队 第一季 G.I. Joe Season 1
   original_title: null
-  year: null
+  year: 1985
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 2033
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [美国, 日本]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
+    directors: [Jay Bacal, Ray Lee]
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 55
+  slug: g-i-joe-season-1
+  covers:
+  - covers/1897794/01.webp
   douban_url: https://movie.douban.com/subject/1897794/
   user:
     cover: ""
@@ -2648,35 +2783,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b9ec59fb
-    machine_hash: 75bc4e90
+    machine_hash: 665a89ae
     missing_since: null
+    missing_reason: null
 - id: "1897342"
   title: 我的小怪物
-  original_title: null
-  year: null
+  original_title: My Pet Monster
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 2438
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [加拿大]
+  languages: [英语]
+  runtime: 30
   credits:
     directors: []
     casts: []
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 13
+  slug: my-pet-monster
+  covers:
+  - covers/1897342/01.webp
   douban_url: https://movie.douban.com/subject/1897342/
   user:
     cover: ""
@@ -2687,35 +2824,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 1fccc030
-    machine_hash: 02cde899
+    machine_hash: ae40b977
     missing_since: null
+    missing_reason: null
 - id: "1897327"
   title: 猫人沃尔特
-  original_title: null
-  year: null
+  original_title: The Secret Lives of Waldo Kitty
+  year: 1975
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 2141
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 家庭, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
+    directors: [Hal Sutherland]
+    casts: [Howard Morris, Jane Webb, Allan Melvin]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 13
+  slug: the-secret-lives-of-waldo-kitty
+  covers:
+  - covers/1897327/01.webp
   douban_url: https://movie.douban.com/subject/1897327/
   user:
     cover: ""
@@ -2726,35 +2865,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: ccdb7cdf
-    machine_hash: c9680120
+    machine_hash: 3079013d
     missing_since: null
+    missing_reason: null
 - id: "1883755"
   title: 聪明的一休
-  original_title: null
-  year: null
+  original_title: 一休さん
+  year: 1975
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 105412
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
+    directors: [矢吹公郎, 古泽日出夫, 今泽哲男]
+    casts: [藤田淑子, 桂玲子, 宫内幸平, 增山江威子, 野田圭一, 山田俊司, 吉田理保子]
+    writers: [大川久男, 山浦弘靖, 辻真先, 田代淳二, 藤川桂介, 金春智子]
   episodes: null
-  slug: ""
-  covers: []
+  slug: ikkyu-san-1975
+  covers:
+  - covers/1883755/01.webp
   douban_url: https://movie.douban.com/subject/1883755/
   user:
     cover: ""
@@ -2765,35 +2906,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 014a1abc
-    machine_hash: 221af613
+    machine_hash: ad0f38ea
     missing_since: null
+    missing_reason: null
 - id: "1872374"
   title: 恐龙特急克塞号
-  original_title: null
-  year: null
+  original_title: 恐竜戦隊コセイドン
+  year: 1978
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 12406
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Sci-Fi, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 科幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [东条昭平]
+    casts: [佐藤蛾次郎, 草野大悟]
+    writers: [阿部桂一, 安藤豊弘, 沖守彦, 外山徹, 山浦弘靖, 若槻文三, 西沢七瀬, 中島敏, 長坂秀佳, 辻真先, 田口成光, 吐月峰, 平山公夫, 平野靖司]
+  episodes: 52
+  slug: dinosaur-taskforce-koseidon
+  covers:
+  - covers/1872374/01.webp
   douban_url: https://movie.douban.com/subject/1872374/
   user:
     cover: ""
@@ -2804,35 +2947,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 3b1271b2
-    machine_hash: aefb768c
+    machine_hash: 74eb17cf
     missing_since: null
+    missing_reason: null
 - id: "1870436"
   title: 舒克和贝塔
   original_title: null
-  year: null
+  year: 1989
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 94584
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, Sci-Fi, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [严定宪, 林文肖, 胡依红, 阎善春, 姚光华, 薛梅君]
+    casts: [翟巍, 洪海天]
+    writers: [郑渊洁, 姚忠礼]
+  episodes: 13
+  slug: shuke-and-beita
+  covers:
+  - covers/1870436/01.webp
   douban_url: https://movie.douban.com/subject/1870436/
   user:
     cover: ""
@@ -2843,35 +2988,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 4c25f566
-    machine_hash: 4f3f0ea7
+    machine_hash: 02790999
     missing_since: null
+    missing_reason: null
 - id: "1864810"
   title: 红楼梦
   original_title: null
-  year: null
+  year: 1987
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.7
+  douban_score_count: 331682
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Teleplay, CHS, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王扶林]
+    casts: [欧阳奋强, 陈晓旭, 邓婕, 张莉, 李婷, 袁玫, 张蕾, 郭霄珍, 周贤珍, 郑铮]
+    writers: [曹雪芹, 周雷, 刘耕路, 周岭]
+  episodes: 36
+  slug: a-dream-in-red-mansions
+  covers:
+  - covers/1864810/01.webp
   douban_url: https://movie.douban.com/subject/1864810/
   user:
     cover: ""
@@ -2882,35 +3029,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: f191fdd4
-    machine_hash: cc7d58ba
+    machine_hash: 55c9d88a
     missing_since: null
+    missing_reason: null
 - id: "1845625"
   title: 忍者神龟
-  original_title: null
-  year: null
+  original_title: Teenage Mutant Ninja Turtles
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 49714
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 科幻, 动画, 犯罪, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
     directors: []
-    casts: []
+    casts: [Townsend Coleman, Jack Angel, James Avery]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 193
+  slug: teenage-mutant-ninja-turtles-1987
+  covers:
+  - covers/1845625/01.webp
   douban_url: https://movie.douban.com/subject/1845625/
   user:
     cover: ""
@@ -2921,35 +3070,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: fbad8470
-    machine_hash: 81c32b06
+    machine_hash: e1ba5ac0
     missing_since: null
+    missing_reason: null
 - id: "1845617"
   title: 华斯比历险记
-  original_title: null
-  year: null
+  original_title: The Adventures of Teddy Ruxpin
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 6583
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画, 歌舞, 家庭, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Chris Schouten]
+    casts: [John Stocker, Will Ryan（威尔·瑞恩）, Arthur Boni, Jan Anne Drenth]
+    writers: [Mary Crawford, Derek Diorio]
+  episodes: 65
+  slug: the-adventures-of-teddy-ruxpin
+  covers:
+  - covers/1845617/01.webp
   douban_url: https://movie.douban.com/subject/1845617/
   user:
     cover: ""
@@ -2960,35 +3111,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: cb3fbba5
-    machine_hash: f2f6edb4
+    machine_hash: d246efc8
     missing_since: null
+    missing_reason: null
 - id: "1845562"
-  title: 宇宙的巨人希曼 第一季
+  title: 宇宙的巨人希曼 第一季 He-Man and the Masters of the Universe Season 1
   original_title: null
-  year: null
+  year: 1983
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 11804
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, ENU, Sci-Fi, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 家庭, 奇幻, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Ed Friedman（埃德·弗赖德曼）, Lou Kachivas（卢·卡希瓦斯）, Marsh Lamore, 比尔•里德, Guerdon Trueblood, Gwen Wetzler, Lou Zukor]
+    casts: [Tristan Erwin, Alan Oppenheimer（艾伦·欧朋海默）, Linda Gary, Lou Scheimer（娄·谢默）, 埃里卡·谢默, Michael Bell]
+    writers: [Donald F. Glut]
+  episodes: 65
+  slug: he-man-and-the-masters-of-the-universe-season-1
+  covers:
+  - covers/1845562/01.webp
   douban_url: https://movie.douban.com/subject/1845562/
   user:
     cover: ""
@@ -2999,35 +3152,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 93005c60
-    machine_hash: e2d7fa96
+    machine_hash: 5d6992d2
     missing_since: null
+    missing_reason: null
 - id: "1845560"
-  title: 非凡的公主希瑞 第一季
+  title: '非凡的公主希瑞 第一季 She-Ra: Princess of Power Season 1'
   original_title: null
-  year: null
+  year: 1985
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 15734
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 家庭, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Ed Friedman（埃德·弗赖德曼）, Mark Glamack, 卢·卡希瓦斯, Marsh Lamore, 比尔•里德, 汤姆·塔布瑙奇斯, Gwen Wetzler]
+    casts: [Melendy Britt, George DiCenzo（乔治·第桑佐）, Tristan Erwin, Linda Gary, 艾伦·欧朋海默, Diane Pershing, 埃里卡·谢默, 娄·谢默]
+    writers: [Lawrence G. DiTillio, Bob Forward]
+  episodes: 65
+  slug: she-ra-princess-of-power-season-1
+  covers:
+  - covers/1845560/01.webp
   douban_url: https://movie.douban.com/subject/1845560/
   user:
     cover: ""
@@ -3038,35 +3193,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c8eb440a
-    machine_hash: eabae20e
+    machine_hash: 8a3db292
     missing_since: null
+    missing_reason: null
 - id: "1817169"
   title: 邋遢大王奇遇记
   original_title: null
-  year: null
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 78449
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, Sci-Fi, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [钱运达, 阎善春]
+    casts: [丁建华]
+    writers: [凌纾]
+  episodes: 13
+  slug: dirty-king-adventure
+  covers:
+  - covers/1817169/01.webp
   douban_url: https://movie.douban.com/subject/1817169/
   user:
     cover: ""
@@ -3077,35 +3234,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: "70827470"
-    machine_hash: 5edc94ac
+    machine_hash: e2ec327d
     missing_since: null
+    missing_reason: null
 - id: "1812212"
   title: 兔子，等着瞧！
-  original_title: null
-  year: null
+  original_title: Ну, погоди!
+  year: 1969
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 5154
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 家庭]
+  regions: [俄罗斯]
+  languages: [俄语]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Vladimir Tarasov（弗拉基米尔·塔拉索夫）]
+    casts: [Anatoli Papanov（阿纳托利·帕帕诺夫）, Klara Rumyanova（克拉拉·鲁米扬诺娃）]
+    writers: [Arkadi Khajt, Feliks Kamov]
+  episodes: 22
+  slug: nu-pogodi
+  covers:
+  - covers/1812212/01.webp
   douban_url: https://movie.douban.com/subject/1812212/
   user:
     cover: ""
@@ -3116,35 +3275,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 246cae75
-    machine_hash: f6e12bed
+    machine_hash: 21b0ce03
     missing_since: null
+    missing_reason: null
 - id: "1807959"
-  title: 蓝精灵 第一季
+  title: 蓝精灵 第一季 Smurfs Season 1
   original_title: null
-  year: null
+  year: 1981
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 49699
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 家庭, 奇幻]
+  regions: [美国, 比利时]
+  languages: [英语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [George Gordon（乔治·戈登）]
+    casts: [Don Messick（唐·梅西克）, Frank Welker（弗兰克·维尔克）, Lucille Bliss（露西尔·布利斯）, Michael Bell（迈克尔·贝尔）, 哈弥尔顿·坎普, 保罗·温切尔, 琼·弗雷, 艾伦·欧朋海默]
+    writers: [佩约]
+  episodes: 26
+  slug: smurfs-season-1
+  covers:
+  - covers/1807959/01.webp
   douban_url: https://movie.douban.com/subject/1807959/
   user:
     cover: ""
@@ -3155,35 +3316,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a990c3fb
-    machine_hash: 3bab46a1
+    machine_hash: 53aeca31
     missing_since: null
+    missing_reason: null
 - id: "1797744"
   title: 特种部队：美国英雄
-  original_title: null
-  year: null
+  original_title: 'G.I. Joe: A Real American Hero'
+  year: 1983
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 3629
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, Sci-Fi, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [USA]
+  languages: [english]
+  runtime: 23
   credits:
     directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    casts: [Libby Aubrey(voice), Pat Fraley(voice)]
+    writers: [Ron Friedman]
+  episodes: 5
+  slug: g-i-joe-a-real-american-hero
+  covers:
+  - covers/1797744/01.webp
   douban_url: https://movie.douban.com/subject/1797744/
   user:
     cover: ""
@@ -3194,35 +3357,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 9810f7d1
-    machine_hash: d65e0927
+    machine_hash: 246d1786
     missing_since: null
+    missing_reason: null
 - id: "1781597"
-  title: 神探加杰特 第一季
+  title: 神探加杰特 第一季 Inspector Gadget Season 1
   original_title: null
-  year: null
+  year: 1983
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 24015
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Detective]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 悬疑, 家庭, 犯罪, 冒险]
+  regions: [美国, 法国, 加拿大, 日本, 台湾]
+  languages: [英语, 法语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Dave Cox（达沃·考克斯）, Raymond Jafelice（雷蒙德·贾费利切）]
+    casts: [Don Adams（唐·亚当斯）, Frank Welker（弗兰克·维尔克）]
+    writers: [Andy Heyward]
+  episodes: 65
+  slug: inspector-gadget-season-1
+  covers:
+  - covers/1781597/01.webp
   douban_url: https://movie.douban.com/subject/1781597/
   user:
     cover: ""
@@ -3233,35 +3398,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: bae998cb
-    machine_hash: 4fb41250
+    machine_hash: d359709a
     missing_since: null
+    missing_reason: null
 - id: "1766542"
   title: 高智能方程式赛车
-  original_title: null
-  year: null
+  original_title: 新世紀GPXサイバーフォーミュラ
+  year: 1991
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 7410
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, Sci-Fi, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 运动]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [福田己津央, 赤根和树, 山口美浩, 西村聪, 三家本泰美, 藤本义孝, 松浦锭平]
+    casts: [金丸淳一, 三石琴乃, 冬马由美, 关俊彦, 绿川光, 天野由梨]
+    writers: [矢立肇, 星山博之, 岛田满, 伊东恒久, 高桥义昌, 福田己津央]
+  episodes: 37
+  slug: gpx
+  covers:
+  - covers/1766542/01.webp
   douban_url: https://movie.douban.com/subject/1766542/
   user:
     cover: ""
@@ -3272,35 +3439,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 60423f3a
-    machine_hash: 4e218f34
+    machine_hash: d988f75a
     missing_since: null
+    missing_reason: null
 - id: "1456202"
   title: 魔神坛斗士
-  original_title: null
-  year: null
+  original_title: 鎧伝サムライトルーパー
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 21573
   marked_at: "2009-10-01"
   douban_comment: null
   tags: [Animation, Teleplay, JPN, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [池田成, 滨津守, 谷田部胜义, 赤根和树, 杉岛邦久, 米谷良知, 川濑敏文, 高松信司, 关田修]
+    casts: [草尾毅, 竹村拓, 中村大树, 佐佐木望, 西村朋纮, 若本规夫]
+    writers: [矢立肇, 高桥良辅, 鸟海尽三, 海老沼三郎, 渡边由自, 园田英树]
+  episodes: 39
+  slug: legendary-armor-samurai-troopers
+  covers:
+  - covers/1456202/01.webp
   douban_url: https://movie.douban.com/subject/1456202/
   user:
     cover: ""
@@ -3311,35 +3480,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 896f49c8
-    machine_hash: d1d58b10
+    machine_hash: 8adabd95
     missing_since: null
+    missing_reason: null
 - id: "2376483"
   title: 少年金米
-  original_title: null
-  year: null
+  original_title: 鉄拳チンミ
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 6089
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [大庭寿太郎]
+    casts: [坂本千夏, 中原茂, 野野村俊惠, 佐佐木优子, 水岛裕, 向殿麻美, 增冈弘, 中村正]
+    writers: [武上纯希, 大桥志吉, 岸间信明]
+  episodes: 20
+  slug: douban-2376483
+  covers:
+  - covers/2376483/01.webp
   douban_url: https://movie.douban.com/subject/2376483/
   user:
     cover: ""
@@ -3350,35 +3521,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 5ccfe8fd
-    machine_hash: 5c1960a8
+    machine_hash: 04cc4ead
     missing_since: null
+    missing_reason: null
 - id: "2059529"
   title: 忍者乱太郎
-  original_title: null
-  year: null
+  original_title: 忍たま乱太郎
+  year: 1993
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 24199
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [JPN, Teleplay, Animation, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 26
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [芝山努]
+    casts: [高山南, 田中真弓, 一龙斋贞友, 松井摩味, 佐藤智惠, 江森浩子, 小林优子]
+    writers: [浦泽义雄, 下山健人]
+  episodes: 47
+  slug: nintama-rantaro
+  covers:
+  - covers/2059529/01.webp
   douban_url: https://movie.douban.com/subject/2059529/
   user:
     cover: ""
@@ -3389,35 +3562,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: f8734fe8
-    machine_hash: 4093e41b
+    machine_hash: 298dbf62
     missing_since: null
+    missing_reason: null
 - id: "1897802"
   title: 神勇小白鼠
-  original_title: null
-  year: null
+  original_title: Danger Mouse
+  year: 1981
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 3713
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [Animation, Teleplay, ENU, Sci-Fi]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 科幻, 动画, 家庭]
+  regions: [英国]
+  languages: [英语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
+    directors: [Brian Cosgrove]
+    casts: [David Jason, Terry Scott]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 6
+  slug: danger-mouse
+  covers:
+  - covers/1897802/01.webp
   douban_url: https://movie.douban.com/subject/1897802/
   user:
     cover: ""
@@ -3428,35 +3603,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 98c94780
-    machine_hash: bd47483b
+    machine_hash: 4552f2a0
     missing_since: null
+    missing_reason: null
 - id: "1860528"
   title: 魔神英雄传
-  original_title: null
-  year: null
+  original_title: 魔神英雄伝ワタル
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 46016
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [Animation, Teleplay, JPN, Adventure]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [井内秀治, 谷田部胜义, 日高政光, 香川丰, 河本升悟, 近藤信宏]
+    casts: [田中真弓, 林原惠美, 伊仓一惠, 玄田哲章, 山寺宏一, 西村知道, 绪方贤一, 泽律雄, 丸山裕子, 饭塚昭三]
+    writers: [小山高生, 井上敏树, 川崎裕之, 高桥义昌, 平野靖士, 矢立肇, 广井王子]
+  episodes: 45
+  slug: mashin-eiyuuden-wataru
+  covers:
+  - covers/1860528/01.webp
   douban_url: https://movie.douban.com/subject/1860528/
   user:
     cover: ""
@@ -3467,35 +3644,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 729f32d5
-    machine_hash: c93594f1
+    machine_hash: 05c41b3e
     missing_since: null
+    missing_reason: null
 - id: "1845571"
   title: 布雷斯塔警长
-  original_title: null
-  year: null
+  original_title: BraveStarr
+  year: 1987
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 10552
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 科幻, 动画, 家庭, 西部]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Ed Friedman（埃德·弗赖德曼）, Lou Kachivas（卢·卡希瓦斯）, 汤姆·塔布瑙奇斯]
+    casts: [Pat Fraley（帕特·弗雷利）, Ed Gilbert（埃德·吉尔伯特）, Susan Blu（苏珊·布卢）, Charles Adler（查尔斯·阿德勒）, 艾伦·欧朋海默]
+    writers: [汤姆·塔布瑙奇斯]
+  episodes: 65
+  slug: bravestarr
+  covers:
+  - covers/1845571/01.webp
   douban_url: https://movie.douban.com/subject/1845571/
   user:
     cover: ""
@@ -3506,35 +3685,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 09d7e7fb
-    machine_hash: 7ab592c2
+    machine_hash: 6fe8c56c
     missing_since: null
+    missing_reason: null
 - id: "1779379"
   title: 宇宙骑士
-  original_title: null
-  year: null
+  original_title: 宇宙の騎士テッカマンブレード
+  year: 1992
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 15672
   marked_at: "2009-09-29"
   douban_comment: null
   tags: [Animation, Sci-Fi, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画]
+  regions: [法国, 美国, 日本]
+  languages: [英语, 日语]
+  runtime: 19
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [根岸弘, 板野一郎, 殿胜秀树, 松园公, 千叶大辅, 铃木吉男, 友田政晴, 津田义三, 高濑节夫, 西山明树彦]
+    casts: [森川智之, 林原惠美, 松本保典, 横山智佐, 铃置洋孝, 饭塚昭三, 中原茂, 大泷进矢, 堀内贤雄, 辻谷耕史]
+    writers: [赤堀悟, 关岛真赖, 岸间信明, 网谷正治, 川崎裕之, 千叶克彦]
+  episodes: 49
+  slug: starknight-tekkaman-blade
+  covers:
+  - covers/1779379/01.webp
   douban_url: https://movie.douban.com/subject/1779379/
   user:
     cover: ""
@@ -3545,35 +3726,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 845c17bf
-    machine_hash: 98a3a192
+    machine_hash: a4249565
     missing_since: null
+    missing_reason: null
 - id: "2059443"
   title: 飞天少女猪
-  original_title: null
-  year: null
+  original_title: とんでぶーりん
+  year: 1994
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 13822
   marked_at: "2009-09-28"
-  douban_comment: null
+  douban_comment: 我竟然看过...好像还是电视台放的...
   tags: [JPN, Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [本橋浩一, 鈴木孝義]
+    casts: [白鸟由里, 渊崎由里子, 石田彰, 松本梨香, 柏仓敦, 佐藤智惠, 麻见顺子, 园部启一, 川村万梨阿, 荒川太郎]
+    writers: [池田多恵子, 森真理, 池田眞美子, 池野みのり, 秘田涼, 石塚智子, 祖父江誠司]
+  episodes: 51
+  slug: tonde-buurin
+  covers:
+  - covers/2059443/01.webp
   douban_url: https://movie.douban.com/subject/2059443/
   user:
     cover: ""
@@ -3584,35 +3767,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 54f0f797
-    machine_hash: 881386af
+    fingerprint: b96ddad7
+    machine_hash: 4e551cea
     missing_since: null
+    missing_reason: null
 - id: "3761003"
   title: 官僚们的夏天
-  original_title: null
-  year: null
+  original_title: 官僚たちの夏
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 1808
   marked_at: "2009-09-25"
-  douban_comment: null
+  douban_comment: 历史正剧...略有粉饰太平...不过有几集很感人...我国的软件业也很需要,像 风越 这样,自称为 "粗人" 的官僚...
   tags: [JPN, Teleplay, History, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平野俊一, 大冈进, 松田礼人]
+    casts: [佐藤浩市, 堺雅人, 高桥克实, 佐野史郎]
+    writers: [桥本裕志]
+  episodes: 10
+  slug: the-summer-of-the-bureaucrats
+  covers:
+  - covers/3761003/01.webp
   douban_url: https://movie.douban.com/subject/3761003/
   user:
     cover: ""
@@ -3623,35 +3808,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 7f0a21e6
-    machine_hash: a4da94c0
+    fingerprint: fb83b2cf
+    machine_hash: ed513162
     missing_since: null
+    missing_reason: null
 - id: "1441060"
   title: 律政英雄
-  original_title: null
-  year: null
+  original_title: HERO
+  year: 2001
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 37650
   marked_at: "2009-09-25"
   douban_comment: null
   tags: [JPN, Teleplay, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 47
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [铃木雅之]
+    casts: [木村拓哉, 松隆子, 三浦友和, 大塚宁宁, 阿部宽, 角野卓造, 儿玉清, 小日向文世, 八岛智人, 胜村政信]
+    writers: [福田靖, 秦建日子]
+  episodes: 11
+  slug: hero-2001
+  covers:
+  - covers/1441060/01.webp
   douban_url: https://movie.douban.com/subject/1441060/
   user:
     cover: ""
@@ -3662,35 +3849,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 7c236a95
-    machine_hash: 042c08ae
+    machine_hash: e76bce7a
     missing_since: null
+    missing_reason: null
 - id: "2074564"
   title: 华丽一族
-  original_title: null
-  year: null
+  original_title: 華麗なる一族
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 18757
   marked_at: "2009-09-23"
-  douban_comment: null
+  douban_comment: 螳螂捕蝉,黄雀在后...
   tags: [Teleplay, JPN, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [山室大辅]
+    casts: [木村拓哉, 北大路欣也, 山本耕史, 铃木京香, 原田美枝子, 仲村亨, 山田优, 相武纱季, 稻森泉, 西田敏行]
+    writers: [桥本裕志, 山崎丰子]
+  episodes: 10
+  slug: karei-naru-ichizoku
+  covers:
+  - covers/2074564/01.webp
   douban_url: https://movie.douban.com/subject/2074564/
   user:
     cover: ""
@@ -3701,35 +3890,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 114afd40
-    machine_hash: 10d2fc38
+    fingerprint: 7adedb10
+    machine_hash: 26667aa6
     missing_since: null
+    missing_reason: null
 - id: "3103678"
-  title: 千谎百计 第一季
+  title: 千谎百计 第一季 Lie to Me Season 1
   original_title: null
-  year: null
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 154398
   marked_at: "2009-09-14"
-  douban_comment: null
+  douban_comment: 多学几招...还蛮有用的...不过基本上是用来撒谎...
   tags: [Teleplay, ENU, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 悬疑, 惊悚, 犯罪]
+  regions: [美国]
+  languages: [英语]
+  runtime: 40
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Robert Schwentke（罗伯特·斯文克）, Adam Davidson（亚当·戴维森）]
+    casts: [Tim Roth（蒂姆·罗斯）, Kelli Williams（凯利·威廉姆斯）, Monica Raymund（莫妮卡·雷蒙德）, Brendan Hines（布伦丹·海因斯）, 梅奇·费法, 西恩·帕特里克·汤玛斯, 哈蕾·麦克法兰, 詹妮弗·比尔斯]
+    writers: [乔希·辛格]
+  episodes: 13
+  slug: lie-to-me-season-1
+  covers:
+  - covers/3103678/01.webp
   douban_url: https://movie.douban.com/subject/3103678/
   user:
     cover: ""
@@ -3740,35 +3931,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 8441df5c
-    machine_hash: 8d84af68
+    fingerprint: 4fc1c9c6
+    machine_hash: e6b84f27
     missing_since: null
+    missing_reason: null
 - id: "1465020"
   title: 钢铁神兵
-  original_title: null
-  year: null
+  original_title: ビート・エックス
+  year: 1996
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 8186
   marked_at: "2009-09-14"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [滨津守, 松井仁之, 高桥幸雄, 冈崎幸男, 井硲清高, 福本洁]
+    casts: [桧山修之, 佐佐木望, 绪方惠美, 一条和矢, 藤原启治, 佐久田修, 堀内贤雄, 汤屋敦子, 小杉十郎太, 二又一成]
+    writers: [车田正美, 滨津守, 菅良幸, 岸间信明, 富田祐弘, 平野靖士]
+  episodes: 25
+  slug: b-t-x
+  covers:
+  - covers/1465020/01.webp
   douban_url: https://movie.douban.com/subject/1465020/
   user:
     cover: ""
@@ -3779,35 +3972,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: cc6edbed
-    machine_hash: 92d2ef51
+    machine_hash: fe64ab3e
     missing_since: null
+    missing_reason: null
 - id: "3004532"
   title: 反叛的鲁路修R2
-  original_title: null
-  year: null
+  original_title: コードギアス 反逆のルルーシュ R2
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 66221
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, Teleplay, War, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [谷口悟朗, 村田和也, 秋田谷典昭, 三宅和男, 米田和弘, 酒井和男, 信田祐, 鸟羽聪, 工藤宽显, 五十岚达矢, 三好正人]
+    casts: [福山润, 樱井孝宏, 野上尤加奈, 水岛大宙, 小清水亚美, 绿川光, 保志总一朗, 后藤邑子, 大原沙耶香, 折笠富美子]
+    writers: [大河内一楼, 吉野弘幸]
+  episodes: 25
+  slug: code-geass-lelouch-of-the-rebellion-r2
+  covers:
+  - covers/3004532/01.webp
   douban_url: https://movie.douban.com/subject/3004532/
   user:
     cover: ""
@@ -3818,35 +4013,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: e491a7cb
-    machine_hash: ef5723d7
+    machine_hash: ba022088
     missing_since: null
+    missing_reason: null
 - id: "2950496"
   title: 再见，绝望先生
-  original_title: null
-  year: null
+  original_title: さよなら絶望先生
+  year: 2007
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 19886
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [JPN, Teleplay, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [新房昭之, 龙轮直征, 宫本幸裕, 板村智幸, 森义博, 镰田祐辅]
+    casts: [神谷浩史, 野中蓝, 井上麻里奈, 真田麻美, 后藤邑子, 新谷良子, 松来未祐, 上田燿司, 水岛大宙, 矢岛晶子]
+    writers: [久米田康治, 金卷兼一, 高山克彦, 久保田雅史]
+  episodes: 12
+  slug: sayonara-zetsubou-sensei
+  covers:
+  - covers/2950496/01.webp
   douban_url: https://movie.douban.com/subject/2950496/
   user:
     cover: ""
@@ -3857,35 +4054,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: dcc177ac
-    machine_hash: 52641abd
+    machine_hash: 6b61c850
     missing_since: null
+    missing_reason: null
 - id: "2085013"
   title: 电脑精灵
-  original_title: null
-  year: null
+  original_title: C.L.Y.D.E
+  year: 1991
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.3
+  douban_score_count: 2895
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [科幻, 动画, 冒险]
+  regions: [法国, 加拿大]
+  languages: [英语, 法语]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Chris Randall（克里斯·兰达尔）]
+    casts: [雅克·费里埃]
+    writers: [Ronald A. Weinberg]
+  episodes: 23
+  slug: c-l-y-d-e
+  covers:
+  - covers/2085013/01.webp
   douban_url: https://movie.douban.com/subject/2085013/
   user:
     cover: ""
@@ -3896,35 +4095,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a80c77a2
-    machine_hash: a71dbb4f
+    machine_hash: eded956d
     missing_since: null
+    missing_reason: null
 - id: "1845597"
   title: 丹佛，最后的恐龙
-  original_title: null
-  year: null
+  original_title: Denver, the Last Dinosaur
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 11968
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, ENU, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 家庭]
+  regions: [美国]
+  languages: [英语]
+  runtime: 29
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Tom Burton（汤姆·波顿）]
+    casts: [Pat Fraley（帕特·弗雷利）, Jack Angel（杰克·安杰尔）, Adam Carl（亚当·卡尔）]
+    writers: [彼得·基弗]
+  episodes: 12
+  slug: denver-the-last-dinosaur
+  covers:
+  - covers/1845597/01.webp
   douban_url: https://movie.douban.com/subject/1845597/
   user:
     cover: ""
@@ -3935,35 +4136,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c0314d6d
-    machine_hash: 9a18684b
+    machine_hash: 86841e2a
     missing_since: null
+    missing_reason: null
 - id: "1808041"
   title: 咪咪流浪记
-  original_title: null
-  year: null
+  original_title: 家なき子
+  year: 1977
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 7321
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 家庭]
+  regions: [日本, 法国]
+  languages: [日语]
+  runtime: 96
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [出崎统, 竹内启雄, 高屋敷英夫]
+    casts: [菅谷政子, 近藤洋介, 铃木弘子, 青野武, 武藤礼子, 小原乃梨子, 高坂真琴]
+    writers: [埃克多·马洛, 山崎晴哉, 伊东恒久]
+  episodes: 51
+  slug: homeless-remi
+  covers:
+  - covers/1808041/01.webp
   douban_url: https://movie.douban.com/subject/1808041/
   user:
     cover: ""
@@ -3974,35 +4177,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 7c1afd31
-    machine_hash: 4dba7a0f
+    machine_hash: b2414c19
     missing_since: null
+    missing_reason: null
 - id: "1484187"
-  title: 怪鸭历险记 第一季
+  title: 怪鸭历险记 第一季 Count Duckula Season 1
   original_title: null
-  year: null
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 18922
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动画, 恐怖, 家庭]
+  regions: [英国]
+  languages: [英语]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [Chris Randall（克里斯·兰达尔）, Keith Scoble]
+    casts: [David Jason（大卫·杰森）, Jack May（杰克·梅）, Brian Trueman, Jimmy Hibbert, 巴里·克莱顿]
+    writers: [Brian Trueman]
+  episodes: 26
+  slug: count-duckula-season-1
+  covers:
+  - covers/1484187/01.webp
   douban_url: https://movie.douban.com/subject/1484187/
   user:
     cover: ""
@@ -4013,35 +4218,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 5d6a7be8
-    machine_hash: f859ef2e
+    machine_hash: 43dccd5c
     missing_since: null
+    missing_reason: null
 - id: "1428576"
   title: 葫芦兄弟
   original_title: null
-  year: null
+  year: 1986
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 151995
   marked_at: "2009-09-13"
   douban_comment: null
   tags: [Animation, Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [胡进庆, 葛桂云, 周克勤]
+    casts: [战车]
+    writers: [姚忠礼, 杨玉良, 胡进庆]
+  episodes: 13
+  slug: the-gourd-brother
+  covers:
+  - covers/1428576/01.webp
   douban_url: https://movie.douban.com/subject/1428576/
   user:
     cover: ""
@@ -4052,35 +4259,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 5e30d00e
-    machine_hash: 0233d03c
+    machine_hash: 5f12c27e
     missing_since: null
+    missing_reason: null
 - id: "2279835"
   title: 三少爷的剑
   original_title: null
-  year: null
+  year: 2001
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.2
+  douban_score_count: 10454
   marked_at: "2009-09-08"
   douban_comment: null
   tags: [Teleplay, CHS, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 47
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [靳德茂]
+    casts: [何中华, 俞飞鸿, 陈龙, 陈继铭, 张伊函, 霍思燕, 刘莉莉, 杨若兮, 石小满, 岳跃利]
+    writers: [古龙]
+  episodes: 34
+  slug: douban-2279835
+  covers:
+  - covers/2279835/01.webp
   douban_url: https://movie.douban.com/subject/2279835/
   user:
     cover: ""
@@ -4091,35 +4300,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 22db4a4f
-    machine_hash: e0add4ef
+    machine_hash: 8983ebd3
     missing_since: null
+    missing_reason: null
 - id: "1794793"
   title: 森林好小子
-  original_title: null
-  year: null
+  original_title: 燃える！お兄さん
+  year: 1988
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 15249
   marked_at: "2009-09-05"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动作, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [小林治, 佐佐木和宏, 红优, 森健, 横山广行, 殿胜秀树, 松园公]
+    casts: [矢尾一树, 本多知惠子, 松冈洋子, 池田秀一, 屋良有作, 速水奖, 山本百合子, 林原惠美, 松井菜樱子, 富泽美智惠]
+    writers: [寺田宪史, 大桥志吉, 静谷伊佐夫, 会川升]
+  episodes: 24
+  slug: forest-boy
+  covers:
+  - covers/1794793/01.webp
   douban_url: https://movie.douban.com/subject/1794793/
   user:
     cover: ""
@@ -4130,35 +4341,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 20c0e3d5
-    machine_hash: 11edae78
+    machine_hash: bc10cf52
     missing_since: null
+    missing_reason: null
 - id: "3069864"
   title: 葫芦小金刚
   original_title: null
-  year: null
+  year: 1989
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 70105
   marked_at: "2009-08-21"
   douban_comment: null
   tags: [Animation, Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 19
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [胡进庆, 葛桂云, 周克勤]
+    casts: [于鼎, 谈鹏飞]
+    writers: [姚忠礼, 杨玉良, 胡进庆]
+  episodes: 6
+  slug: douban-3069864
+  covers:
+  - covers/3069864/01.webp
   douban_url: https://movie.douban.com/subject/3069864/
   user:
     cover: ""
@@ -4169,35 +4382,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 86e52bba
-    machine_hash: e9d5ead5
+    machine_hash: be776f7e
     missing_since: null
+    missing_reason: null
 - id: "2262120"
   title: 我爱美人鱼
   original_title: null
-  year: null
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 1686
   marked_at: "2009-08-13"
   douban_comment: null
   tags: [Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 爱情, 家庭, 奇幻]
+  regions: [台湾]
+  languages: [汉语普通话]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [林义雄]
+    casts: [酒井法子, 邵昕, 苏明明, 秦风]
+    writers: [谭嬣]
+  episodes: 32
+  slug: douban-2262120
+  covers:
+  - covers/2262120/01.webp
   douban_url: https://movie.douban.com/subject/2262120/
   user:
     cover: ""
@@ -4208,35 +4423,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 2e4a7ca3
-    machine_hash: 9944f4d2
+    machine_hash: f7d32d00
     missing_since: null
+    missing_reason: null
 - id: "1465790"
   title: 同一屋檐下
-  original_title: null
-  year: null
+  original_title: ひとつ屋根の下
+  year: 1993
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 13506
   marked_at: "2009-08-13"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [中江功, 永山耕三]
+    casts: [江口洋介, 福山雅治, 石田壹成, 酒井法子, 大路惠美, 山本耕史, 山本圭, 小木茂光, 内田有纪, 中谷美纪]
+    writers: [野岛伸司]
+  episodes: 12
+  slug: under-one-roof
+  covers:
+  - covers/1465790/01.webp
   douban_url: https://movie.douban.com/subject/1465790/
   user:
     cover: ""
@@ -4247,35 +4464,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 755d306b
-    machine_hash: db018918
+    machine_hash: 56d356f4
     missing_since: null
+    missing_reason: null
 - id: "1465787"
   title: 同一屋檐下2
-  original_title: null
-  year: null
+  original_title: ひとつ屋根の下2
+  year: 1997
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 5510
   marked_at: "2009-08-13"
   douban_comment: null
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 家庭]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [永山耕三, 武内英树]
+    casts: [江口洋介, 福山雅治, 山本圭, 酒井法子, 松隆子, 石田壹成, 大路惠美, 山本耕史, 黑田勇树]
+    writers: [野岛伸司]
+  episodes: 12
+  slug: hitotsu-yane-no-shita-2
+  covers:
+  - covers/1465787/01.webp
   douban_url: https://movie.douban.com/subject/1465787/
   user:
     cover: ""
@@ -4286,35 +4505,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 675873c3
-    machine_hash: a039ff31
+    machine_hash: f4d6db28
     missing_since: null
+    missing_reason: null
 - id: "3284269"
   title: 夏目友人帐 第二季
-  original_title: null
-  year: null
+  original_title: 続 夏目友人帳
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 130279
   marked_at: "2009-08-02"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [大森贵弘, 植田秀仁, 中野英明, 清水久敏, 高田淳]
+    casts: [神谷浩史, 井上和彦, 石田彰, 小林沙苗, 伊藤美纪, 泽城美雪, 木村良平, 菅沼久义, 藤村步, 堀江一真]
+    writers: [绿川幸, 金卷兼一, 关岛真赖, 高木登, 荒木宪一]
+  episodes: 13
+  slug: douban-3284269
+  covers:
+  - covers/3284269/01.webp
   douban_url: https://movie.douban.com/subject/3284269/
   user:
     cover: ""
@@ -4325,35 +4546,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 9222939f
-    machine_hash: 19e7b68f
+    machine_hash: 3fb0a1e6
     missing_since: null
+    missing_reason: null
 - id: "1465035"
   title: 魔卡少女樱
-  original_title: null
-  year: null
+  original_title: カードキャプターさくら
+  year: 1998
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 122596
   marked_at: "2009-07-24"
   douban_comment: null
   tags: [Animation, JPN, Adventure, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 动作, 动画, 冒险]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [浅香守生, 神户守, 片渊须直, 田中洋之, 坂田纯一, 高柳滋仁, 政木伸一, 中西伸彰, 佐伯昭志, 真野玲, 水野和则, 山口赖房, 八谷贤一, 长滨亘彦, 松井仁之, 三家本泰美, 安藤健, 三笠修, 高濑节夫, 桥本直人, 富永恒雄]
+    casts: [丹下樱, 岩男润子, 久川绫, 小野坂昌也, 熊井统子, 绪方惠美, 关智一, 田中秀幸, 野上尤加奈, 伊藤美纪]
+    writers: [五十岚皋, 大川七濑]
+  episodes: 70
+  slug: card-captor-sakura
+  covers:
+  - covers/1465035/01.webp
   douban_url: https://movie.douban.com/subject/1465035/
   user:
     cover: ""
@@ -4364,35 +4587,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a5842221
-    machine_hash: 6989fc7b
+    machine_hash: 44b5712b
     missing_since: null
+    missing_reason: null
 - id: "2995127"
   title: 熊猫京京
   original_title: null
-  year: null
+  year: 1996
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.2
+  douban_score_count: 11849
   marked_at: "2009-07-13"
   douban_comment: null
   tags: [Animation, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 儿童, 犯罪, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 20
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王柏荣]
+    casts: [王俪桦, 齐杰, 王羊]
+    writers: [凌纾]
+  episodes: 26
+  slug: douban-2995127
+  covers:
+  - covers/2995127/01.webp
   douban_url: https://movie.douban.com/subject/2995127/
   user:
     cover: ""
@@ -4403,35 +4628,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 517c28b9
-    machine_hash: 2bdf8e4d
+    machine_hash: df67cd12
     missing_since: null
+    missing_reason: null
 - id: "3730636"
   title: 脑神探
-  original_title: null
-  year: null
+  original_title: MR. BRAIN
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 39176
   marked_at: "2009-07-12"
   douban_comment: null
   tags: [JPN, Teleplay, Detective]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 50
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [平川雄一朗, 山室大辅]
+    casts: [木村拓哉, 绫濑遥, 水岛宏, 大地真央, 香川照之, 田中裕二, 松本龟, 广末凉子, 神威乐斗, 龟梨和也]
+    writers: [森下佳子]
+  episodes: 8
+  slug: mr-brain
+  covers:
+  - covers/3730636/01.webp
   douban_url: https://movie.douban.com/subject/3730636/
   user:
     cover: ""
@@ -4442,35 +4669,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 704a6901
-    machine_hash: 40fced7e
+    machine_hash: 54a7e48c
     missing_since: null
+    missing_reason: null
 - id: "2279825"
   title: 小李飞刀
   original_title: null
-  year: null
+  year: 1999
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 76604
   marked_at: "2009-06-21"
   douban_comment: null
   tags: [Teleplay, Kung-Fu, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [武侠, 古装]
+  regions: [中国, 台湾]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [袁和平, 李翰韬]
+    casts: [焦恩俊, 贾静雯, 俞飞鸿, 萧蔷, 吴京, 范冰冰, 林利, 郑佳欣, 陈凯, 高雄]
+    writers: [伊明, 朱羽, 陈文贵]
+  episodes: 40
+  slug: legend-of-dagger-lee
+  covers:
+  - covers/2279825/01.webp
   douban_url: https://movie.douban.com/subject/2279825/
   user:
     cover: ""
@@ -4481,35 +4710,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 8821e351
-    machine_hash: 0187feaa
+    machine_hash: 5ade303a
     missing_since: null
+    missing_reason: null
 - id: "2156779"
   title: 东方小故事
   original_title: null
-  year: null
+  year: 1994
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 6891
   marked_at: "2009-06-14"
   douban_comment: null
   tags: [Teleplay, CHS, Animation, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 儿童, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 10
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [张韵华, 冯广泉, 史久峰]
+    casts: [袁岳, 徐峥, 余彬, 黄达亮, 曹秋根, 姚安濂]
+    writers: [傅星]
+  episodes: 150
+  slug: douban-2156779
+  covers:
+  - covers/2156779/01.webp
   douban_url: https://movie.douban.com/subject/2156779/
   user:
     cover: ""
@@ -4520,35 +4751,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b841074f
-    machine_hash: c2e46896
+    machine_hash: 0cec5ba6
     missing_since: null
+    missing_reason: null
 - id: "3012751"
   title: 哈哈镜花缘
   original_title: null
-  year: null
+  year: 1994
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 14472
   marked_at: "2009-06-12"
   douban_comment: null
   tags: [Animation, CHS, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 22
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [蔡志军]
+    casts: [张伟, 党同义]
+    writers: [蔡志军, 逆风]
+  episodes: 13
+  slug: douban-3012751
+  covers:
+  - covers/3012751/01.webp
   douban_url: https://movie.douban.com/subject/3012751/
   user:
     cover: ""
@@ -4559,35 +4792,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 57cad7d8
-    machine_hash: c72b5a5c
+    machine_hash: eb303fa2
     missing_since: null
+    missing_reason: null
 - id: "2983389"
   title: 寻秦记
-  original_title: null
-  year: null
+  original_title: 尋秦記
+  year: 2001
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 159067
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, War, Sci-Fi, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 历史]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [庄伟建, 石铭泉, 吴锦源, 文伟鸿]
+    casts: [古天乐, 江华, 宣萱, 郭羡妮, 林峯, 滕丽名, 郑雪儿, 雪梨, 郭锋]
+    writers: [黄国辉, 刘彩云, 张小方, 黄易]
+  episodes: 40
+  slug: a-step-into-the-past
+  covers:
+  - covers/2983389/01.webp
   douban_url: https://movie.douban.com/subject/2983389/
   user:
     cover: ""
@@ -4598,35 +4833,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 23cea95c
-    machine_hash: 1d6afe91
+    machine_hash: a826f1ac
     missing_since: null
+    missing_reason: null
 - id: "2411184"
   title: 汉武大帝
   original_title: null
-  year: null
+  year: 2005
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 79543
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, CHS, History, War]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [胡玫]
+    casts: [陈宝国, 焦晃, 归亚蕾, 陶虹, 杨童舒, 林静, 沈保平, 杜淳, 宋晓英, 马少骅]
+    writers: [江奇涛]
+  episodes: 58
+  slug: douban-2411184
+  covers:
+  - covers/2411184/01.webp
   douban_url: https://movie.douban.com/subject/2411184/
   user:
     cover: ""
@@ -4637,35 +4874,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 12158cc7
-    machine_hash: 25d51dc4
+    machine_hash: 1cd1bd85
     missing_since: null
+    missing_reason: null
 - id: "2294255"
   title: 笑傲江湖
   original_title: null
-  year: null
+  year: 1996
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 86062
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, Kung-Fu, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 武侠, 古装]
+  regions: [香港]
+  languages: [汉语普通话, 粤语]
+  runtime: 43
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [刘国豪, 李添胜, 袁英明]
+    casts: [吕颂贤, 梁艺龄, 何宝生, 陈少霞, 何美钿, 鲍方, 鲁振顺, 王伟, 郑柏麟, 陈鸿烈]
+    writers: [金庸, 黄国辉, 赵静蓉, 梁恩东, 汤健萍]
+  episodes: 43
+  slug: state-of-divinity
+  covers:
+  - covers/2294255/01.webp
   douban_url: https://movie.douban.com/subject/2294255/
   user:
     cover: ""
@@ -4676,35 +4915,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a7059f08
-    machine_hash: 123169e8
+    machine_hash: aa309bd0
     missing_since: null
+    missing_reason: null
 - id: "2155226"
   title: 贞观长歌
   original_title: null
-  year: null
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 10266
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, War, History, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 战争, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [吴子牛]
+    casts: [唐国强, 张澜澜, 聂远, 白庆琳, 张铁林, 杜志国, 王绘春, 曹培昌, 刘毓滨, 唐嫣]
+    writers: [周志方]
+  episodes: 82
+  slug: douban-2155226
+  covers:
+  - covers/2155226/01.webp
   douban_url: https://movie.douban.com/subject/2155226/
   user:
     cover: ""
@@ -4715,35 +4956,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b8084640
-    machine_hash: def31f44
+    machine_hash: c5b8b1e0
     missing_since: null
+    missing_reason: null
 - id: "2155164"
   title: 贞观之治
   original_title: null
-  year: null
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.3
+  douban_score_count: 27605
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, History, CHS, War]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [张建亚]
+    casts: [马跃, 苗圃, 马精武, 马少骅, 陆剑民, 金士杰]
+    writers: [阿城, 孟宪实]
+  episodes: 50
+  slug: douban-2155164
+  covers:
+  - covers/2155164/01.webp
   douban_url: https://movie.douban.com/subject/2155164/
   user:
     cover: ""
@@ -4754,35 +4997,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: e0e96332
-    machine_hash: 44b688d6
+    machine_hash: 32c84411
     missing_since: null
+    missing_reason: null
 - id: "1863947"
   title: 神雕侠侣
-  original_title: null
-  year: null
+  original_title: 神鵰俠侶
+  year: 1995
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.2
+  douban_score_count: 246353
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [War, Kung-Fu, Teleplay, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 武侠, 古装]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李添胜]
+    casts: [古天乐, 李若彤, 白彪, 魏秋桦, 傅明宪, 李绮虹, 雪梨, 简佩筠, 张可颐, 刘丹]
+    writers: [黄国辉, 赵静蓉, 金庸]
+  episodes: 32
+  slug: return-of-the-condor-heroes-1995
+  covers:
+  - covers/1863947/01.webp
   douban_url: https://movie.douban.com/subject/1863947/
   user:
     cover: ""
@@ -4793,35 +5038,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: c938495d
-    machine_hash: 016b8aa0
+    machine_hash: cae70f59
     missing_since: null
+    missing_reason: null
 - id: "1863941"
   title: 天龙八部
-  original_title: null
-  year: null
+  original_title: 天龍八部
+  year: 1997
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 202910
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, Kung-Fu, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 武侠, 古装]
+  regions: [香港]
+  languages: [粤语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李添胜]
+    casts: [黄日华, 陈浩民, 樊少皇, 李若彤, 赵学而, 刘乔方, 刘锦玲, 张国强, 潘志文, 何美钿]
+    writers: [金庸, 梁咏梅]
+  episodes: 45
+  slug: eightfold-path-of-the-heavenly-dragon
+  covers:
+  - covers/1863941/01.webp
   douban_url: https://movie.douban.com/subject/1863941/
   user:
     cover: ""
@@ -4832,35 +5079,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a97be5c0
-    machine_hash: 2d7337b5
+    machine_hash: e5cd729c
     missing_since: null
+    missing_reason: null
 - id: "1830575"
   title: 雍正王朝
   original_title: null
-  year: null
+  year: 1999
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.4
+  douban_score_count: 160355
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [CHS, War, History, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 42
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [胡玫]
+    casts: [唐国强, 焦晃, 王绘春, 杜雨露, 徐敏, 王辉, 徐祖明, 贾致刚, 李定保, 杜志国]
+    writers: [刘和平, 二月河]
+  episodes: 44
+  slug: douban-1830575
+  covers:
+  - covers/1830575/01.webp
   douban_url: https://movie.douban.com/subject/1830575/
   user:
     cover: ""
@@ -4871,35 +5120,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a69edd85
-    machine_hash: ca9adceb
+    machine_hash: b188a58b
     missing_since: null
+    missing_reason: null
 - id: "1830528"
   title: 三国演义
   original_title: null
-  year: null
+  year: 1994
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.6
+  douban_score_count: 193452
   marked_at: "2009-06-05"
   douban_comment: null
   tags: [Teleplay, CHS, War, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 历史, 战争]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [王扶林, 蔡晓晴, 张绍林, 孙光明, 张中一, 沈好放]
+    casts: [唐国强, 鲍国安, 孙彦军, 陆树铭, 李靖飞, 洪宇宙, 吴晓东, 魏宗万]
+    writers: [杜家福, 朱晓平, 刘树生, 叶式生, 周锴, 李一波]
+  episodes: 84
+  slug: the-romance-of-three-kingdoms
+  covers:
+  - covers/1830528/01.webp
   douban_url: https://movie.douban.com/subject/1830528/
   user:
     cover: ""
@@ -4910,35 +5161,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a0e0b8a5
-    machine_hash: a5fdb8c8
+    machine_hash: 0f73bf62
     missing_since: null
+    missing_reason: null
 - id: "2041882"
   title: 闪亮的进修医生
-  original_title: null
-  year: null
+  original_title: きらきら研修医
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 334
   marked_at: "2009-05-30"
   douban_comment: null
   tags: [JPN, Animation, Teleplay]
-  genres: []
-  regions: []
-  languages: []
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [今井夏木, 森永恭朗]
+    casts: [小西真奈美]
+    writers: [荒井修子, 徳永友一]
+  episodes: 11
+  slug: douban-2041882
+  covers:
+  - covers/2041882/01.webp
   douban_url: https://movie.douban.com/subject/2041882/
   user:
     cover: ""
@@ -4949,35 +5202,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 8a14a197
-    machine_hash: "24821226"
+    machine_hash: 4663c38d
     missing_since: null
+    missing_reason: null
 - id: "3060542"
   title: 夏目友人帐
-  original_title: null
-  year: null
+  original_title: 夏目友人帳
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.4
+  douban_score_count: 206642
   marked_at: "2009-05-25"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [大森贵弘, 植田秀仁, 小坂春女, 清水久敏, 境桥渡, 黑田晃一郎, 青柳宏宜, 畠山茂树, 河村智之, 松本正幸]
+    casts: [神谷浩史, 井上和彦, 小林沙苗, 藤村步, 石田彰, 堀江一真, 木村良平, 菅沼久义, 伊藤美纪, 伊藤荣次]
+    writers: [绿川幸, 金卷兼一, 关岛真赖, 高木登, 荒木宪一]
+  episodes: 13
+  slug: douban-3060542
+  covers:
+  - covers/3060542/01.webp
   douban_url: https://movie.douban.com/subject/3060542/
   user:
     cover: ""
@@ -4988,35 +5243,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a8588a9f
-    machine_hash: 58ce07cb
+    machine_hash: 53ba26d4
     missing_since: null
+    missing_reason: null
 - id: "2156754"
   title: 魔方大厦
   original_title: null
-  year: null
+  year: 1990
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 47580
   marked_at: "2009-05-18"
   douban_comment: null
   tags: [Animation, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 儿童, 奇幻, 冒险]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 18
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [查侃]
+    casts: [黄澄澄, 韩青]
+    writers: [郑渊洁, 强小柏, 查侃]
+  episodes: 10
+  slug: a-building-of-cube
+  covers:
+  - covers/2156754/01.webp
   douban_url: https://movie.douban.com/subject/2156754/
   user:
     cover: ""
@@ -5027,35 +5284,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 0a5b731c
-    machine_hash: 0f69c63d
+    machine_hash: d2dbef76
     missing_since: null
+    missing_reason: null
 - id: "3227335"
   title: 仙剑奇侠传三
   original_title: null
-  year: null
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 480035
   marked_at: "2009-05-17"
   douban_comment: null
   tags: [Teleplay, Adventure, Animation, CHS]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 奇幻, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李国立]
+    casts: [胡歌, 霍建华, 杨幂, 唐嫣, 刘诗诗, 林子聪, 黄志玮, 郭晓婷, 袁弘, 韩晓]
+    writers: [邓紫珊]
+  episodes: 37
+  slug: chinese-paladin-3
+  covers:
+  - covers/3227335/01.webp
   douban_url: https://movie.douban.com/subject/3227335/
   user:
     cover: ""
@@ -5066,35 +5325,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: f00b60d3
-    machine_hash: e746e2ce
+    machine_hash: 3e6239ef
     missing_since: null
+    missing_reason: null
 - id: "1498604"
   title: 花仙子
-  original_title: null
-  year: null
+  original_title: 花の子ルンルン
+  year: 1979
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.1
+  douban_score_count: 28932
   marked_at: "2009-05-15"
   douban_comment: null
   tags: [Animation, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 家庭, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [设乐博]
+    casts: [冈本茉莉, 水岛裕, 白石冬美, 神山卓三, 喜多道枝, 长谷山治]
+    writers: [城山升]
+  episodes: 50
+  slug: douban-1498604
+  covers:
+  - covers/1498604/01.webp
   douban_url: https://movie.douban.com/subject/1498604/
   user:
     cover: ""
@@ -5105,35 +5366,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 7fcdacf2
-    machine_hash: 8a14a84f
+    machine_hash: 7e590fa3
     missing_since: null
+    missing_reason: null
 - id: "1888063"
   title: 镜花缘
   original_title: null
-  year: null
+  year: 1991
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 5
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.0
+  douban_score_count: 23934
   marked_at: "2009-05-07"
   douban_comment: null
   tags: [Animation, Movie, CHS, History]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 短片, 奇幻, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 19
   credits:
-    directors: []
+    directors: [胡兆洪, 邹勤]
     casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    writers: [李汝珍, 邹勤, 王大为]
+  episodes: 4
+  slug: douban-1888063
+  covers:
+  - covers/1888063/01.webp
   douban_url: https://movie.douban.com/subject/1888063/
   user:
     cover: ""
@@ -5144,35 +5407,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: bcf507ae
-    machine_hash: d74982c8
+    machine_hash: 45bb4ffd
     missing_since: null
+    missing_reason: null
 - id: "3412890"
   title: 秀逗魔导士EVOLUTION-R
-  original_title: null
-  year: null
+  original_title: スレイヤーズ EVOLUTION-R
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.8
+  douban_score_count: 1637
   marked_at: "2009-04-11"
   douban_comment: null
   tags: [Teleplay, Adventure, Animation, JPN]
-  genres: []
-  regions: []
-  languages: []
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡部高志, 则座诚, 秋田谷典昭, 神保昌登, 大野和寿, 园田雅裕, 高岛大辅, 白石道太, 笹原嘉文]
+    casts: [林原惠美, 松本保典, 绿川光, 铃木真仁, 小林由美子]
+    writers: [神坂一, 高山治郎, 山田靖智, 伊藤美智子, 长谷川胜己]
+  episodes: 13
+  slug: evolution-r
+  covers:
+  - covers/3412890/01.webp
   douban_url: https://movie.douban.com/subject/3412890/
   user:
     cover: ""
@@ -5183,35 +5448,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 28acae75
-    machine_hash: 700eca66
+    machine_hash: b64a176a
     missing_since: null
+    missing_reason: null
 - id: "1471928"
   title: 西洋古董洋果子店
-  original_title: null
-  year: null
+  original_title: アンティーク 〜西洋骨董洋菓子店〜
+  year: 2001
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 11049
   marked_at: "2009-04-11"
   douban_comment: null
   tags: [JPN, Teleplay, 大叔, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [本广克行]
+    casts: [泷泽秀明, 椎名桔平, 藤木直人, 阿部宽, 小雪, 江成一树, 小林进, 真锅薰, 西野妙子, 八千草薰]
+    writers: [冈田惠和]
+  episodes: 11
+  slug: antique
+  covers:
+  - covers/1471928/01.webp
   douban_url: https://movie.douban.com/subject/1471928/
   user:
     cover: ""
@@ -5222,35 +5489,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 26eb5da4
-    machine_hash: "75349705"
+    machine_hash: 2abfa8da
     missing_since: null
+    missing_reason: null
 - id: "3402131"
   title: 南家三姐妹 欢迎回来
-  original_title: null
-  year: null
+  original_title: みなみけ おかえり
+  year: 2009
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 5408
   marked_at: "2009-04-04"
   douban_comment: null
   tags: [JPN, Teleplay, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [及川启, 铃木薰, 细田直人, 德本善信, 荒井省吾, 小林浩辅, 山口赖房, 桥口洋介, 吉田理纱子, 友冈新平]
+    casts: [佐藤利奈, 井上麻里奈, 茅原实里, 水树奈奈, 森永理科, 喜多村英梨, 丰崎爱生, 高木礼子, 小野凉子, 千叶纱子]
+    writers: [小鹿理江, 樱场小春]
+  episodes: 13
+  slug: douban-3402131
+  covers:
+  - covers/3402131/01.webp
   douban_url: https://movie.douban.com/subject/3402131/
   user:
     cover: ""
@@ -5261,35 +5530,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 83c7d371
-    machine_hash: 1d759540
+    machine_hash: 6996d460
     missing_since: null
+    missing_reason: null
 - id: "2275496"
   title: 濑户的花嫁
-  original_title: null
-  year: null
+  original_title: 瀬戸の花嫁
+  year: 2007
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 8396
   marked_at: "2009-03-30"
-  douban_comment: null
+  douban_comment: 写作 "仁侠" 读作 "人鱼"...
   tags: [JPN, Teleplay, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [岸诚二, 浅井义之, 仁昌寺义人, 柳濑雄之, 岩田义彦, 青柳宏宜, 秋田谷典昭]
+    casts: [桃井晴子, 水岛大宙, 三宅健太, 村濑克辉, 小野大辅, 野川樱, 桑谷夏子, 森永理科, 矢部雅史, 力丸乃梨子]
+    writers: [木村太彦, 上江洲诚, 柿原优子, 中村浩二郎, 日暮茶坊]
+  episodes: 26
+  slug: seto-no-hanayome
+  covers:
+  - covers/2275496/01.webp
   douban_url: https://movie.douban.com/subject/2275496/
   user:
     cover: ""
@@ -5300,35 +5571,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 50fa233e
-    machine_hash: d67706af
+    fingerprint: 072a86a3
+    machine_hash: 01a548ed
     missing_since: null
+    missing_reason: null
 - id: "2041877"
   title: 嫁个好人家
-  original_title: null
-  year: null
+  original_title: エラいところに嫁いでしまった
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.4
+  douban_score_count: 1897
   marked_at: "2009-03-23"
   douban_comment: null
   tags: [JPN, Teleplay, Romance]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 家庭]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [片山修]
+    casts: [仲间由纪惠, 谷原章介, 松坂庆子, 本田博太郎, 星野知子, 平泉成, 猫背椿, 滨田麻里, 夏菜, 温水洋一]
+    writers: [后藤法子]
+  episodes: 9
+  slug: erai-tokoroni-totsuide-shimatta
+  covers:
+  - covers/2041877/01.webp
   douban_url: https://movie.douban.com/subject/2041877/
   user:
     cover: ""
@@ -5339,35 +5612,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 638a5d7a
-    machine_hash: d1db0f69
+    machine_hash: 1bf98a1b
     missing_since: null
+    missing_reason: null
 - id: "1468983"
   title: 翼·年代记
-  original_title: null
-  year: null
+  original_title: ツバサ・クロニクル
+  year: 2005
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 11293
   marked_at: "2009-03-23"
   douban_comment: null
   tags: [Animation, JPN, Adventure]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 动作, 爱情, 动画, 奇幻, 冒险]
+  regions: [日本]
+  languages: [塔加路语, 日语, 波兰语, 法语, 英语, 西班牙语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [真下耕一, 川面真也, 黑川智之, 有江勇树, 守冈博, 清水久敏, 渡边正树]
+    casts: [入野自由, 牧野由依, 稻田彻, 浪川大辅, 菊地美香, 三木真一郎, 宫田幸季, 川岛得爱, 坂本真绫, 甲斐田裕子]
+    writers: [五十岚皋, 川崎裕之]
+  episodes: 26
+  slug: tsubasa-chronicle
+  covers:
+  - covers/1468983/01.webp
   douban_url: https://movie.douban.com/subject/1468983/
   user:
     cover: ""
@@ -5378,35 +5653,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: cf05486f
-    machine_hash: 9ce19f24
+    machine_hash: a11e823b
     missing_since: null
+    missing_reason: null
 - id: "1465087"
   title: 极道鲜师2
-  original_title: null
-  year: null
+  original_title: ごくせん 2
+  year: 2005
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 32011
   marked_at: "2009-03-23"
   douban_comment: null
   tags: [Movie, JPN, Adventure]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [佐藤东弥]
+    casts: [仲间由纪惠, 龟梨和也, 赤西仁, 小池彻平, 速水直道, 生濑胜久, 谷原章介, 东干久, 宇津井健, 井上顺]
+    writers: [江头美智留, 橫田理惠, 松田裕子]
+  episodes: 10
+  slug: miss2
+  covers:
+  - covers/1465087/01.webp
   douban_url: https://movie.douban.com/subject/1465087/
   user:
     cover: ""
@@ -5417,35 +5694,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 710a0e29
-    machine_hash: cd96a79e
+    machine_hash: eb4a3126
     missing_since: null
+    missing_reason: null
 - id: "3543654"
   title: Chance！她成功的理由
-  original_title: null
-  year: null
+  original_title: チャンス！ ～彼女が成功した理由～
+  year: 2009
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 6.7
+  douban_score_count: 1041
   marked_at: "2009-03-20"
-  douban_comment: null
+  douban_comment: 经济危机下,应该多拍一点立志的电影...呵呵...
   tags: [Movie, JPN]
   genres: []
-  regions: []
-  languages: []
+  regions: [日本]
+  languages: [日语]
   runtime: null
   credits:
     directors: []
-    casts: []
+    casts: [堀北真希, 黑木美沙, 剧团一人, 滨田岳, 冈田义德]
     writers: []
-  episodes: null
-  slug: ""
-  covers: []
+  episodes: 2
+  slug: chance
+  covers:
+  - covers/3543654/01.webp
   douban_url: https://movie.douban.com/subject/3543654/
   user:
     cover: ""
@@ -5456,35 +5735,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: dc78d803
-    machine_hash: fbd06253
+    fingerprint: 1117dfdb
+    machine_hash: 99db33f3
     missing_since: null
+    missing_reason: null
 - id: "3184572"
   title: 紧急救命
-  original_title: null
-  year: null
+  original_title: コード・ブルー -ドクターヘリ緊急救命-
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.5
+  douban_score_count: 46200
   marked_at: "2009-03-18"
   douban_comment: null
   tags: [JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 54
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [叶山浩树, 西浦正记]
+    casts: [山下智久, 新垣结衣, 柳叶敏郎, 户田惠梨香, 比嘉爱未, 浅利阳介, 儿玉清, 胜村政信, 寺岛进, 杉本哲太]
+    writers: [林宏司]
+  episodes: 11
+  slug: code-blue-2008
+  covers:
+  - covers/3184572/01.webp
   douban_url: https://movie.douban.com/subject/3184572/
   user:
     cover: ""
@@ -5495,35 +5776,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 71e934b0
-    machine_hash: dbbfdf91
+    machine_hash: 4dfff096
     missing_since: null
+    missing_reason: null
 - id: "1465689"
   title: 圈套3
-  original_title: null
-  year: null
+  original_title: トリック3
+  year: 2003
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 11129
   marked_at: "2009-03-15"
   douban_comment: null
   tags: [JPN, Teleplay, Mystery, 大叔, TRICK]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 45
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [堤幸彦]
+    casts: [仲间由纪惠, 阿部宽, 野际阳子, 姜畅雄, 大岛蓉子, 生濑胜久]
+    writers: [莳田光治]
+  episodes: 10
+  slug: trick3
+  covers:
+  - covers/1465689/01.webp
   douban_url: https://movie.douban.com/subject/1465689/
   user:
     cover: ""
@@ -5534,35 +5817,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 56ba3e1e
-    machine_hash: f6aa6a5c
+    machine_hash: c968a6db
     missing_since: null
+    missing_reason: null
 - id: "2210031"
   title: 仙剑奇侠传
   original_title: null
-  year: null
+  year: 2005
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 2
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.1
+  douban_score_count: 430190
   marked_at: "2009-03-07"
   douban_comment: null
   tags: [Teleplay, Animation, Game]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 奇幻, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李国立, 吴锦源, 梁胜权, 麦贯之]
+    casts: [胡歌, 刘亦菲, 安以轩, 刘品言, 彭于晏, 谢君豪, 李丽珍, 徐锦江, 谭耀文, 邓家佳]
+    writers: [陶海, 王远, 阎虹宇, 阎振华]
+  episodes: 34
+  slug: chinese-paladin
+  covers:
+  - covers/2210031/01.webp
   douban_url: https://movie.douban.com/subject/2210031/
   user:
     cover: ""
@@ -5573,35 +5858,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 725f9b5f
-    machine_hash: 5c92331f
+    machine_hash: 7350e5c7
     missing_since: null
+    missing_reason: null
 - id: "1465687"
   title: 圈套2
-  original_title: null
-  year: null
+  original_title: トリック2
+  year: 2002
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.8
+  douban_score_count: 14458
   marked_at: "2009-03-07"
   douban_comment: null
   tags: [Movie, JPN, Detective, 大叔, Romance, Adventure, TRICK]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 悬疑, 恐怖]
+  regions: [日本]
+  languages: [日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [堤幸彦, 木村尚]
+    casts: [仲间由纪惠, 阿部宽, 生濑胜久, 野际阳子, 大岛蓉子]
+    writers: [莳田光治, 太田爱, 福田卓郎]
+  episodes: 11
+  slug: trick-2
+  covers:
+  - covers/1465687/01.webp
   douban_url: https://movie.douban.com/subject/1465687/
   user:
     cover: ""
@@ -5612,35 +5899,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 317a0f5c
-    machine_hash: 2f0211c7
+    machine_hash: ebbabc33
     missing_since: null
+    missing_reason: null
 - id: "2330826"
   title: 南家三姐妹 再来一碗
-  original_title: null
-  year: null
+  original_title: みなみけ〜おかわり〜
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 6206
   marked_at: "2009-02-28"
   douban_comment: null
   tags: [Animation, JPN, Teleplay]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [细田直人, 长滨亘彦, 小林浩辅, 雄谷将仁, 北川正人, 松本正幸]
+    casts: [佐藤利奈, 井上麻里奈, 茅原实里, 喜多村英梨, 水树奈奈, 丰崎爱生, 小野大辅, 柿原彻也]
+    writers: [铃木雅词, 佐藤胜一]
+  episodes: 13
+  slug: douban-2330826
+  covers:
+  - covers/2330826/01.webp
   douban_url: https://movie.douban.com/subject/2330826/
   user:
     cover: ""
@@ -5651,35 +5940,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: "82591973"
-    machine_hash: d402371d
+    machine_hash: 77c5dd17
     missing_since: null
+    missing_reason: null
 - id: "1465679"
   title: 圈套
-  original_title: null
-  year: null
+  original_title: トリック
+  year: 2000
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 26789
   marked_at: "2009-02-27"
   douban_comment: null
   tags: [JPN, Teleplay, Mystery, 大叔, Detective, TRICK]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 悬疑]
+  regions: [日本]
+  languages: [日语]
+  runtime: 60
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [堤幸彦, 大根仁, 保母浩章, 木村尚]
+    casts: [仲间由纪惠, 阿部宽, 生濑胜久, 前原一辉, 野际阳子, 大岛蓉子, 菅井琴, 成海璃子]
+    writers: [莳田光治, 林诚人]
+  episodes: 10
+  slug: trick-2000
+  covers:
+  - covers/1465679/01.webp
   douban_url: https://movie.douban.com/subject/1465679/
   user:
     cover: ""
@@ -5690,35 +5981,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b1009416
-    machine_hash: 0b86f266
+    machine_hash: becfd219
     missing_since: null
+    missing_reason: null
 - id: "3158400"
   title: 秀逗魔导士REVOLUTION
-  original_title: null
-  year: null
+  original_title: スレイヤーズREVOLUTION
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.9
+  douban_score_count: 2186
   marked_at: "2009-02-15"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Adventure, Mystery, Romance]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 动画, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [渡部高志, 则座诚, 秋田谷典昭, 神保昌登, 高岛大辅, 白石道太, 冈岛国敏]
+    casts: [林原惠美, 松本保典, 铃木真仁, 绿川光, 小林由美子, 大塚明夫, 石田彰]
+    writers: [神坂一, 高山治郎, 山田靖智, 伊藤美智子, 长谷川胜己]
+  episodes: 13
+  slug: revolution
+  covers:
+  - covers/3158400/01.webp
   douban_url: https://movie.douban.com/subject/3158400/
   user:
     cover: ""
@@ -5729,35 +6022,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 11452f8d
-    machine_hash: 96cc6d59
+    machine_hash: 8821e3d9
     missing_since: null
+    missing_reason: null
 - id: "3034723"
   title: 德鲁亚加之塔～乌鲁克之盾～
-  original_title: null
-  year: null
+  original_title: ドルアーガの塔 ～the Aegis of URUK～
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.5
+  douban_score_count: 2003
   marked_at: "2009-02-08"
   douban_comment: null
   tags: [JPN, Adventure, Animation, Teleplay, Game]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 25
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [千明孝一]
+    casts: [大桥贤一郎, 折笠富美子, 樱井孝宏, 堀江由衣, 早水理沙, 乡田穗积, 茅原实里, 石田彰, 安元洋贵, 土师孝也]
+    writers: [贺东招二]
+  episodes: 13
+  slug: the-aegis-of-uruk
+  covers:
+  - covers/3034723/01.webp
   douban_url: https://movie.douban.com/subject/3034723/
   user:
     cover: ""
@@ -5768,35 +6063,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: b714f2ba
-    machine_hash: 245b8751
+    machine_hash: 889d45aa
     missing_since: null
+    missing_reason: null
 - id: "2330821"
   title: 南家三姐妹
-  original_title: null
-  year: null
+  original_title: みなみけ
+  year: 2007
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 13919
   marked_at: "2009-01-31"
   douban_comment: null
   tags: [Teleplay, JPN, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 喜剧, 爱情, 动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [太田雅彦, 黑柳利充, 小泽一浩, 北川正人, 雄谷将仁, 布施康之, 三家本泰美, 荒井省吾, 矢花馨]
+    casts: [佐藤利奈, 井上麻里奈, 茅原实里, 水树奈奈, 柿原彻也, 森永理科, 小野大辅, 浅沼晋太郎, 川田绅司, 高木礼子]
+    writers: [青岛崇, 子安秀明, 鸿野贵光, 杉原研二]
+  episodes: 13
+  slug: minamike
+  covers:
+  - covers/2330821/01.webp
   douban_url: https://movie.douban.com/subject/2330821/
   user:
     cover: ""
@@ -5807,35 +6104,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: a25b9440
-    machine_hash: 72b6354d
+    machine_hash: d892294b
     missing_since: null
+    missing_reason: null
 - id: "2274891"
   title: 怨屋本铺
-  original_title: null
-  year: null
+  original_title: 怨み屋本舗
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.4
+  douban_score_count: 9036
   marked_at: "2009-01-31"
-  douban_comment: null
+  douban_comment: 双刃剑...
   tags: [Teleplay, JPN]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 29
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [仁木啓介, 冈部绅二]
+    casts: [木下亚由美, 寺岛进]
+    writers: [川嶋澄乃, 栗原正尚]
+  episodes: 12
+  slug: uramiya-honpo
+  covers:
+  - covers/2274891/01.webp
   douban_url: https://movie.douban.com/subject/2274891/
   user:
     cover: ""
@@ -5846,35 +6145,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 2cad71e2
-    machine_hash: 21cae692
+    fingerprint: 43b55f04
+    machine_hash: 98c3d08c
     missing_since: null
+    missing_reason: null
 - id: "2993424"
   title: 中华小当家
-  original_title: null
-  year: null
+  original_title: 中華一番!
+  year: 1997
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.7
+  douban_score_count: 102366
   marked_at: "2009-01-30"
   douban_comment: null
   tags: [Animation, JPN, Teleplay, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 23
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [案纳正美, 杉岛邦久, 香川丰, 高木淳, 高村彰, 渊上真, 羽生尚靖, 西田健一, 铃木轮流郎, 腰繁男]
+    casts: [田中真弓, 雪野五月, 大塚明夫, 置鲇龙太郎, 吉田理保子, 引田有美, 阪口大助, 神奈延年, 岩永哲哉, 野田顺子]
+    writers: [菅良幸, 岸间信明, 户田博史, 小川悦司]
+  episodes: 52
+  slug: douban-2993424
+  covers:
+  - covers/2993424/01.webp
   douban_url: https://movie.douban.com/subject/2993424/
   user:
     cover: ""
@@ -5885,35 +6186,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 3bd33b1d
-    machine_hash: 912a78b0
+    machine_hash: 80c376c5
     missing_since: null
+    missing_reason: null
 - id: "1417946"
-  title: 成长的烦恼 第一季
+  title: 成长的烦恼 第一季 Growing Pains Season 1
   original_title: null
-  year: null
+  year: 1985
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 9.5
+  douban_score_count: 56839
   marked_at: "2009-01-30"
   douban_comment: null
   tags: [Teleplay, ENU]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [喜剧, 家庭]
+  regions: [美国]
+  languages: [英语]
+  runtime: 30
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [John Pasquin（约翰·帕斯昆）]
+    casts: [Alan Thicke（艾伦·锡克）, Joanna Kerns（乔安娜·科恩斯）, Kirk Cameron（柯克·卡梅隆）, Jeremy Miller（杰瑞米·米勒）, 特里茜·古德, 安德鲁·克尼格, K.C.马特尔, Kirsten Dohring, Kelsey Dohring, 山姆·安德森]
+    writers: [尼尔·马林斯]
+  episodes: 22
+  slug: growing-pains-season-1
+  covers:
+  - covers/1417946/01.webp
   douban_url: https://movie.douban.com/subject/1417946/
   user:
     cover: ""
@@ -5924,35 +6227,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 462f2776
-    machine_hash: ae955505
+    machine_hash: e6772804
     missing_since: null
+    missing_reason: null
 - id: "2270422"
   title: 医龙2
-  original_title: null
-  year: null
+  original_title: 医龍2～Team Medical Dragon～
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.6
+  douban_score_count: 11369
   marked_at: "2009-01-26"
   douban_comment: null
   tags: [JPN, Teleplay, Romance, Adventure, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 115
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [水田成英, 叶山浩树, 星野和成]
+    casts: [坂口宪二, 内田有纪, 小池彻平, 阿部贞夫, 水川麻美, 池田铁洋, 佐佐木藏之介, 夏木真理, 岸部一德, 大塚宁宁]
+    writers: [林宏司, 永井明, 乃木坂太郎]
+  episodes: 11
+  slug: 2-team-medical-dragon
+  covers:
+  - covers/2270422/01.webp
   douban_url: https://movie.douban.com/subject/2270422/
   user:
     cover: ""
@@ -5963,35 +6268,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 9b5b8ed6
-    machine_hash: 7f2673b2
+    machine_hash: aa4685a9
     missing_since: null
+    missing_reason: null
 - id: "3142715"
   title: 射雕英雄传
   original_title: null
-  year: null
+  year: 2008
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.7
+  douban_score_count: 56277
   marked_at: "2009-01-18"
   douban_comment: null
   tags: [Teleplay, Kung-Fu, CHS, Romance, Adventure]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [爱情, 武侠, 古装]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 43
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [李国立, 梁胜权, 吴锦源, 黄伟明, 林玉芬]
+    casts: [胡歌, 林依晨, 袁弘, 刘诗诗, 周海媚, 黄秋生, 徐锦江, 李解, 谢娜, 梁家仁]
+    writers: [邓紫珊, 黄浩然, 欧玉娴, 林玉芬, 蔡艺侬, 金庸]
+  episodes: 50
+  slug: douban-3142715
+  covers:
+  - covers/3142715/01.webp
   douban_url: https://movie.douban.com/subject/3142715/
   user:
     cover: ""
@@ -6002,35 +6309,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: "33389818"
-    machine_hash: 119d0219
+    machine_hash: "67065495"
     missing_since: null
+    missing_reason: null
 - id: "2173108"
   title: 医龙
-  original_title: null
-  year: null
+  original_title: 医龍～Team Medical Dragon～
+  year: 2006
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 3
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.9
+  douban_score_count: 18847
   marked_at: "2009-01-18"
   douban_comment: null
   tags: [JPN, Teleplay, Romance, Adventure, Kung-Fu]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情]
+  regions: [日本]
+  languages: [日语]
+  runtime: 58
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [久保田哲史, 水田成英]
+    casts: [坂口宪二, 稻森泉, 小池彻平, 北村一辉, 阿部贞夫, 水川麻美, 池田铁洋, 佐佐木藏之介, 夏木真理, 岸部一德]
+    writers: [林宏司, 永井明, 乃木坂太郎]
+  episodes: 11
+  slug: team-medical-dragon
+  covers:
+  - covers/2173108/01.webp
   douban_url: https://movie.douban.com/subject/2173108/
   user:
     cover: ""
@@ -6041,35 +6350,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
     fingerprint: 6a97d512
-    machine_hash: 0333fb4e
+    machine_hash: f8a5f945
     missing_since: null
+    missing_reason: null
 - id: "3199456"
   title: 魍魉之匣
-  original_title: null
-  year: null
+  original_title: 魍魎の匣
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.0
+  douban_score_count: 13878
   marked_at: "2009-01-11"
-  douban_comment: null
+  douban_comment: 魍魎在人的心中...
   tags: [JPN, Teleplay, Mystery, Adventure, Romance, Animation, 大叔]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画, 悬疑, 惊悚, 犯罪, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [中村亮介, 鹤冈耕次郎, 石塚敦子, 高桥亨, 加濑充子, 又野弘道]
+    casts: [平田广明, 森川智之, 木内秀信, 关贵昭, 浪川大辅, 高桥美佳子, 户松遥, 久川绫, 桑岛法子, 津田匠子]
+    writers: [村井贞之, 藤冈美畅, 京极夏彦]
+  episodes: 13
+  slug: mouryou-no-hako
+  covers:
+  - covers/3199456/01.webp
   douban_url: https://movie.douban.com/subject/3199456/
   user:
     cover: ""
@@ -6080,35 +6391,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 2f0531ef
-    machine_hash: 708ab06b
+    fingerprint: 64b60ccb
+    machine_hash: f8d4b9eb
     missing_since: null
+    missing_reason: null
 - id: "2270380"
   title: 抹布女孩
-  original_title: null
-  year: null
+  original_title: モップガール
+  year: 2007
   type: tv
-  category: null
+  category: series
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 7.6
+  douban_score_count: 5123
   marked_at: "2009-01-02"
-  douban_comment: null
+  douban_comment: 没想到,还蛮感人的...
   tags: [JPN, Teleplay, Sci-Fi, Romance, Adventure]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [剧情, 爱情, 奇幻]
+  regions: [日本]
+  languages: [日语]
+  runtime: 46
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [片山修]
+    casts: [北川景子, 谷原章介, 高冈奏辅, 浅见伶奈, 夏菜, 佐藤二朗, 本田博太郎]
+    writers: [荒井修子]
+  episodes: 10
+  slug: mop-girl
+  covers:
+  - covers/2270380/01.webp
   douban_url: https://movie.douban.com/subject/2270380/
   user:
     cover: ""
@@ -6119,35 +6432,37 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 90a5bbc0
-    machine_hash: f9137721
+    fingerprint: 9883c6d1
+    machine_hash: 17b6a1e4
     missing_since: null
+    missing_reason: null
 - id: "3231661"
   title: 亡念的扎姆德
-  original_title: null
-  year: null
+  original_title: 亡念のザムド
+  year: 2008
   type: tv
-  category: null
+  category: anime
   status: collect
   user_rating: 4
-  douban_score: null
-  douban_score_count: null
+  douban_score: 8.2
+  douban_score_count: 4851
   marked_at: "2009-01-01"
-  douban_comment: null
+  douban_comment: 大型空中飞机...
   tags: [JPN, Teleplay, Adventure, Animation]
-  genres: []
-  regions: []
-  languages: []
-  runtime: null
+  genres: [动画]
+  regions: [日本]
+  languages: [日语]
+  runtime: 24
   credits:
-    directors: []
-    casts: []
-    writers: []
-  episodes: null
-  slug: ""
-  covers: []
+    directors: [宫地昌幸, 德土大介, 野村和也, 池添隆博, 三宅和男, 宫繁之, 绵田慎也, 立仙裕俊, 村田尚树, 宫原秀二, 中川聪, 筱崎康行, 矢吹勉, 安藤正臣, 原口浩]
+    casts: [阿部敦, 三瓶由布子, 折笠富美子, 立花慎之介, 石冢运升, 早水理沙, 本城雄太郎, 松本保典, 玉井夕海, 藤原启治]
+    writers: [野村祐一, 清水惠, 大野木宽, 宫地昌幸]
+  episodes: 26
+  slug: xam-d-lost-memories
+  covers:
+  - covers/3231661/01.webp
   douban_url: https://movie.douban.com/subject/3231661/
   user:
     cover: ""
@@ -6158,8 +6473,9 @@
     review: ""
     hidden: false
   meta:
-    detail_synced_at: null
+    detail_synced_at: "2026-09-29"
     taxonomy_version: 2
-    fingerprint: 46b9175c
-    machine_hash: 4f91222d
+    fingerprint: 7d2fb2ca
+    machine_hash: 3497979d
     missing_since: null
+    missing_reason: null

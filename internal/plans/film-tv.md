@@ -212,9 +212,13 @@ id = 页面总数，0 重复；`type=movie` 3092 + `type=tv` 1200 = 4292）。�
   - [x] 分批与进度：每批结尾打印 `details N | covers M | failed F | …` 与
     **总进度** `progress: details 1234/4292 (28.7%) | pending 3058`；每 50 条 flush 一次
     yml + 状态
-  - [ ] **（开发者手动）列表全量落盘 + 分批补详情**：`poe sync-film-tv --full --limit 0`
+  - [x] **列表全量落盘 + 分批补详情**：`poe sync-film-tv --full --limit 0`
     → 反复 `poe sync-film-tv --limit 300` 直到 `progress: 待补 0`
     （条目数已回填：**4292**；步骤见 `internal/commands.md` 场景 1/3）
+    —— ✅ **已完成（2026-09-29 03:06）**：详情 **4276/4293**、`pending 0`、`gone 19`
+    （19 条已下架且无日期，只能跳过）；`poe film-tv-check` = **0 error**；
+    夜间分批执行（`.cache/film-tv/run_rounds.sh`，本地工具，git-ignored），
+    逐轮日志在 `.cache/film-tv/logs/round-*.log`
   - [x] **首次全量走查的截断修复（2026-09-27 实测暴露）**：首刷只落了 movie 2190 + tv 1200
     = **3390**，而页头是 3092 + 1200 = **4292** —— movie 第 73 页（`start=2190`）返回空页时
     走查当成「列表到底」静默结束（漏掉最老的 ≈900 部）；事后手工请求该页正常返回 30 条，
