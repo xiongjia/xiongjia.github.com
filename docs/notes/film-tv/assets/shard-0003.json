@@ -4,6 +4,80 @@
  "items": [
   {
    "casts": [
+    "松重丰"
+   ],
+   "category": "series",
+   "cover": "covers/36288127/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36288127/01.webp",
+   "date": "2023-04-01",
+   "directors": [
+    "北畑龍一"
+   ],
+   "douban_score": 7.6,
+   "episodes": 6,
+   "genres": [],
+   "id": "36288127",
+   "missing": false,
+   "original_title": "孤独のグルメ配信オリジナル2～五郎、芸人まみれ",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 12,
+   "slug": "douban-36288127",
+   "status": "collect",
+   "tags": [],
+   "title": "孤独的美食家 网络原创版 2～五郎，到处都是谐星",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36288127/",
+   "writers": [
+    "田口佳宏"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "松重丰",
+    "岩松了",
+    "北乃绮",
+    "宅麻伸",
+    "叶山奖之"
+   ],
+   "category": "feature",
+   "cover": "covers/36178160/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36178160/01.webp",
+   "date": "2023-04-01",
+   "directors": [
+    "井川尊史",
+    "北畑龍一"
+   ],
+   "douban_score": 9.1,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "36178160",
+   "missing": false,
+   "original_title": "孤独のグルメ2022大晦日スペシャル 年忘れ、食の格闘技。カニの使いはあらたいへん。",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 90,
+   "slug": "douban-36178160",
+   "status": "collect",
+   "tags": [],
+   "title": "孤独的美食家 2022除夕特别篇",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36178160/",
+   "writers": [
+    "田口佳宏"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
     "邓超",
     "孙俪",
     "许魏洲",
@@ -9223,100 +9297,7 @@
     "Graham Moore（格拉汉姆·摩尔）"
    ],
    "year": 2022
-  },
-  {
-   "casts": [
-    "福士苍汰",
-    "山本美月",
-    "工藤阿须加",
-    "福原遥",
-    "木南晴夏",
-    "今井翼",
-    "光石研",
-    "出口夏希"
-   ],
-   "category": "series",
-   "cover": "covers/35658679/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35658679/01.webp",
-   "date": "2022-04-09",
-   "directors": [
-    "松木创",
-    "菊川诚"
-   ],
-   "douban_score": 4.8,
-   "episodes": 10,
-   "genres": [
-    "爱情",
-    "奇幻"
-   ],
-   "id": "35658679",
-   "missing": false,
-   "original_title": "星から来たあなた",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "日本"
-   ],
-   "runtime": null,
-   "slug": "my-love-from-the-stars",
-   "status": "collect",
-   "tags": [],
-   "title": "来自星星的你(日版)",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/35658679/",
-   "writers": [
-    "关惠理香",
-    "今西祐子"
-   ],
-   "year": 2022
-  },
-  {
-   "casts": [
-    "木村拓哉",
-    "长泽雅美",
-    "小日向文世",
-    "梶原善",
-    "泉泽祐希",
-    "东根作寿英",
-    "石川恋",
-    "鹤见辰吾",
-    "筱井英介",
-    "石桥凌"
-   ],
-   "category": "feature",
-   "cover": "covers/34950972/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34950972/01.webp",
-   "date": "2022-04-04",
-   "directors": [
-    "铃木雅之"
-   ],
-   "douban_score": 6.4,
-   "genres": [
-    "剧情",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "34950972",
-   "missing": false,
-   "original_title": "マスカレード・ナイト",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 129,
-   "slug": "masquerade-night",
-   "status": "collect",
-   "tags": [],
-   "title": "假面之夜",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/34950972/",
-   "writers": [
-    "东野圭吾",
-    "冈田道尚"
-   ],
-   "year": 2021
   }
  ],
- "last_date": "2022-04-04"
+ "last_date": "2022-04-10"
 }

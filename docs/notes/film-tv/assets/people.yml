@@ -3835,6 +3835,33 @@ people:
   roles:
   - actor
   works: 18
+- avg_rating: 3.47
+  douban_id: '27260220'
+  douban_url: https://www.douban.com/personage/27260220/
+  first_year: 2008
+  last_year: 2026
+  name: Brad Pitt（布拉德·皮特）
+  ratings:
+  - 4
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  - 4
+  - 3
+  - 3
+  - 4
+  - 4
+  - 4
+  - 3
+  - 2
+  - 3
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 17
 - avg_rating: 4.52
   douban_id: '27260274'
   douban_url: https://www.douban.com/personage/27260274/
@@ -4712,32 +4739,6 @@ people:
   - 3
   - 3
   - 3
-  roles:
-  - actor
-  works: 16
-- avg_rating: 3.44
-  douban_id: '27260220'
-  douban_url: https://www.douban.com/personage/27260220/
-  first_year: 2008
-  last_year: 2025
-  name: Brad Pitt（布拉德·皮特）
-  ratings:
-  - 3
-  - 4
-  - 3
-  - 3
-  - 3
-  - 4
-  - 3
-  - 3
-  - 4
-  - 4
-  - 4
-  - 3
-  - 2
-  - 3
-  - 5
-  - 4
   roles:
   - actor
   works: 16
@@ -6358,6 +6359,32 @@ people:
   roles:
   - actor
   works: 15
+- avg_rating: 2.53
+  douban_id: '27551710'
+  douban_url: https://www.douban.com/personage/27551710/
+  first_year: 2011
+  last_year: 2026
+  name: 王凯
+  ratings:
+  - 2
+  - 5
+  - 1
+  - 3
+  - 3
+  - 3
+  - 1
+  - 3
+  - 3
+  - 2
+  - 2
+  - 2
+  - 3
+  - 4
+  - 1
+  roles:
+  - actor
+  - director
+  works: 15
 - avg_rating: 3.27
   douban_id: '27224474'
   douban_url: https://www.douban.com/personage/27224474/
@@ -7625,31 +7652,6 @@ people:
   roles:
   - actor
   works: 14
-- avg_rating: 2.57
-  douban_id: '27551710'
-  douban_url: https://www.douban.com/personage/27551710/
-  first_year: 2011
-  last_year: 2025
-  name: 王凯
-  ratings:
-  - 5
-  - 1
-  - 3
-  - 3
-  - 3
-  - 1
-  - 3
-  - 3
-  - 2
-  - 2
-  - 2
-  - 3
-  - 4
-  - 1
-  roles:
-  - actor
-  - director
-  works: 14
 - avg_rating: 2.93
   douban_id: '27246769'
   douban_url: https://www.douban.com/personage/27246769/
@@ -8027,6 +8029,29 @@ people:
   - 3
   - 2
   - 3
+  roles:
+  - actor
+  works: 13
+- avg_rating: 3.38
+  douban_id: '27353786'
+  douban_url: https://www.douban.com/personage/27353786/
+  first_year: 2010
+  last_year: 2026
+  name: J.K. Simmons（J·K·西蒙斯）
+  ratings:
+  - 4
+  - 2
+  - 2
+  - 3
+  - 4
+  - 3
+  - 5
+  - 4
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
   roles:
   - actor
   works: 13
@@ -9723,28 +9748,6 @@ people:
   - 4
   - 4
   - 3
-  roles:
-  - actor
-  works: 12
-- avg_rating: 3.33
-  douban_id: '27353786'
-  douban_url: https://www.douban.com/personage/27353786/
-  first_year: 2010
-  last_year: 2024
-  name: J.K. Simmons（J·K·西蒙斯）
-  ratings:
-  - 2
-  - 2
-  - 3
-  - 4
-  - 3
-  - 5
-  - 4
-  - 3
-  - 3
-  - 3
-  - 4
-  - 4
   roles:
   - actor
   works: 12
@@ -19692,6 +19695,28 @@ people:
   - actor
   - writer
   works: 8
+- avg_rating: 3.0
+  douban_id: '27502403'
+  douban_url: https://www.douban.com/personage/27502403/
+  first_year: 2012
+  last_year: 2026
+  name: David Ayer（大卫·阿耶）
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 3
+  - 3
+  - 2
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 8
 - avg_rating: 3.38
   douban_id: '27431621'
   douban_url: https://www.douban.com/personage/27431621/
@@ -23635,27 +23660,6 @@ people:
   - 3
   roles:
   - actor
-  works: 7
-- avg_rating: 2.9
-  douban_id: '27502403'
-  douban_url: https://www.douban.com/personage/27502403/
-  first_year: 2012
-  last_year: 2024
-  name: David Ayer（大卫·阿耶）
-  ratings:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 2
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  roles:
-  - director
-  - writer
   works: 7
 - avg_rating: 3.12
   douban_id: '27224795'

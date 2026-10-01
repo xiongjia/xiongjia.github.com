@@ -1,14 +1,14 @@
 average_rating: 3.29
 by_category:
-  anime: 939
+  anime: 940
   documentary: 187
-  feature: 2456
+  feature: 2457
   series: 666
   variety: 26
 by_region:
   Japan: 1
   USA: 1
-  中国: 1080
+  中国: 1081
   丹麦: 12
   伊朗: 2
   俄罗斯: 15
@@ -58,7 +58,7 @@ by_region:
   瓜德罗普: 1
   突尼斯: 1
   约旦: 1
-  美国: 1303
+  美国: 1304
   芬兰: 7
   英国: 348
   荷兰: 12
@@ -74,7 +74,7 @@ by_region:
   马耳他: 8
   黎巴嫩: 1
 by_type:
-  movie: 3083
+  movie: 3085
   tv: 1191
 by_year:
   '2008': 182
@@ -95,9 +95,9 @@ by_year:
   '2023': 162
   '2024': 119
   '2025': 95
-  '2026': 70
-hours: 18481
+  '2026': 72
+hours: 18485
 pending: 0
 people: 2000
-rated: 4273
-total: 4274
+rated: 4275
+total: 4276

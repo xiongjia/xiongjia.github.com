@@ -1,7 +1,106 @@
 {
  "count": 200,
- "first_date": "2020-01-25",
+ "first_date": "2020-01-28",
  "items": [
+  {
+   "casts": [
+    "Julianna Margulies（朱丽安娜·玛格丽丝）",
+    "Noah Emmerich（诺亚·艾默里奇）",
+    "Liam Cunningham（利亚姆·坎宁安）",
+    "Topher Grace（托弗·格雷斯）",
+    "James D'Arcy（詹姆斯·达西）",
+    "保罗·詹姆斯",
+    "尼克·瑟西",
+    "Robert Wisdom（罗伯特·维斯多姆）",
+    "Robert Sean Leonard（罗伯特·肖恩·莱纳德）",
+    "马克·凯利"
+   ],
+   "category": "series",
+   "comment": "应景",
+   "cover": "covers/26581181/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26581181/01.webp",
+   "date": "2020-01-28",
+   "directors": [
+    "Michael Uppendahl（迈克尔·乌彭达尔）"
+   ],
+   "douban_score": 8.1,
+   "episodes": 6,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
+   "id": "26581181",
+   "missing": false,
+   "original_title": "The Hot Zone",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 45,
+   "slug": "the-hot-zone",
+   "status": "collect",
+   "tags": [],
+   "title": "血疫",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/26581181/",
+   "writers": [
+    "詹姆士·V·哈特",
+    "杰夫·温塔"
+   ],
+   "year": 2019
+  },
+  {
+   "casts": [
+    "Asa Butterfield（阿萨·巴特菲尔德）",
+    "Gillian Anderson（吉莲·安德森）",
+    "Ncuti Gatwa（舒提·盖特瓦）",
+    "Emma Mackey（艾玛·麦基）",
+    "康纳·斯温德尔",
+    "凯达·威廉姆斯特灵",
+    "艾米·卢·伍德",
+    "钱尼尔·库勒",
+    "塔尼娅·雷诺兹",
+    "帕特里夏·艾莉森"
+   ],
+   "category": "series",
+   "cover": "covers/30438115/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30438115/01.webp",
+   "date": "2020-01-27",
+   "directors": [
+    "Ben Taylor（本·泰勒）",
+    "Sophie Goodhart（索菲·古德哈特）",
+    "艾丽斯·西布赖特"
+   ],
+   "douban_score": 9.1,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "30438115",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "英国"
+   ],
+   "runtime": 50,
+   "slug": "sex-education-season-2",
+   "status": "collect",
+   "tags": [],
+   "title": "性爱自修室 第二季 Sex Education Season 2",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/30438115/",
+   "writers": [
+    "劳瑞·纳恩",
+    "马万·里兹旺",
+    "Sophie Goodhart（索菲·古德哈特）",
+    "罗茜·琼斯",
+    "理查德·加德"
+   ],
+   "year": 2020
+  },
   {
    "casts": [
     "徐峥",
@@ -9192,95 +9291,7 @@
     "Werner Herzog（沃纳·赫尔佐格）"
    ],
    "year": 2007
-  },
-  {
-   "casts": [
-    "崔在焕",
-    "朴庆熙"
-   ],
-   "category": "feature",
-   "comment": "情色电影居然拍出了科幻感",
-   "cover": "covers/27195005/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27195005/01.webp",
-   "date": "2019-02-17",
-   "directors": [
-    "송은주"
-   ],
-   "douban_score": 6.0,
-   "genres": [
-    "喜剧",
-    "爱情",
-    "情色"
-   ],
-   "id": "27195005",
-   "missing": false,
-   "original_title": "성판17",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 80,
-   "slug": "sex-plate-17",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "性版17：男性的17种性幻想",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/27195005/",
-   "writers": [],
-   "year": 2017
-  },
-  {
-   "casts": [
-    "Yalitza Aparicio（雅利扎·阿巴里西奥）",
-    "Marina de Tavira（玛丽娜·德·塔维拉）",
-    "Diego Cortina Autrey（迭戈·科蒂娜·奥特里）",
-    "Carlos Peralta（卡洛斯·佩拉尔塔）",
-    "Marco Graf（马科·格拉夫）",
-    "丹妮拉·德米萨",
-    "南茜·加西亚",
-    "维罗妮卡·加西亚",
-    "安迪·科特斯",
-    "费尔南多·格雷迪亚加"
-   ],
-   "category": "feature",
-   "comment": "其实挺好，但是可能是期待过高了",
-   "cover": "covers/1950330/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1950330/01.webp",
-   "date": "2019-02-17",
-   "directors": [
-    "阿方索·卡隆"
-   ],
-   "douban_score": 8.2,
-   "genres": [
-    "剧情",
-    "家庭"
-   ],
-   "id": "1950330",
-   "missing": false,
-   "original_title": "Roma",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "墨西哥",
-    "美国"
-   ],
-   "runtime": 135,
-   "slug": "roma",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "罗马",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1950330/",
-   "writers": [
-    "阿方索·卡隆"
-   ],
-   "year": 2018
   }
  ],
- "last_date": "2019-02-17"
+ "last_date": "2019-02-21"
 }

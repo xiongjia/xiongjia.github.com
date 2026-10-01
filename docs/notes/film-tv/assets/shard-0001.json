@@ -1,7 +1,91 @@
 {
  "count": 200,
- "first_date": "2026-09-28",
+ "first_date": "2026-10-02",
  "items": [
+  {
+   "casts": [
+    "雷淞然",
+    "张呈",
+    "蔡海婷",
+    "张喆",
+    "王凯",
+    "范哲琛"
+   ],
+   "category": "anime",
+   "cover": "covers/35464353/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35464353/01.webp",
+   "date": "2026-10-02",
+   "directors": [
+    "程腾",
+    "黄珉"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "喜剧",
+    "动画",
+    "悬疑",
+    "奇幻"
+   ],
+   "id": "35464353",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 117,
+   "slug": "demon-agent",
+   "status": "collect",
+   "tags": [],
+   "title": "大唐妖探",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35464353/",
+   "writers": [
+    "张淳",
+    "程腾"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Brad Pitt（布拉德·皮特）",
+    "Uber",
+    "J.K. Simmons（J·K·西蒙斯）",
+    "Anna Lambe（安娜·兰贝）"
+   ],
+   "category": "feature",
+   "cover": "covers/36828393/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36828393/01.webp",
+   "date": "2026-10-01",
+   "directors": [
+    "David Ayer（大卫·阿耶）"
+   ],
+   "douban_score": null,
+   "genres": [
+    "剧情",
+    "动作",
+    "冒险"
+   ],
+   "id": "36828393",
+   "missing": false,
+   "original_title": "Heart of the Beast",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "heart-of-the-beast",
+   "status": "collect",
+   "tags": [],
+   "title": "野兽之心",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36828393/",
+   "writers": [
+    "卡梅伦·亚历山大"
+   ],
+   "year": 2026
+  },
   {
    "casts": [
     "Anne Hathaway（安妮·海瑟薇）",
@@ -9299,99 +9383,7 @@
     "袁和平"
    ],
    "year": 1978
-  },
-  {
-   "casts": [
-    "Lupita Nyong'o（露皮塔·尼永奥）",
-    "Pedro Pascal（佩德罗·帕斯卡）",
-    "Kit Connor（基特·康纳）",
-    "Catherine O'Hara（凯瑟琳·奥哈拉）",
-    "Bill Nighy（比尔·奈伊）",
-    "许玮伦",
-    "亚历桑德拉·诺薇儿",
-    "Matt Berry（马特·贝里）",
-    "Ving Rhames（文·瑞姆斯）",
-    "Mark Hamill（马克·哈米尔）"
-   ],
-   "category": "anime",
-   "cover": "covers/36689857/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36689857/01.webp",
-   "date": "2024-09-21",
-   "directors": [
-    "Chris Sanders（克里斯·桑德斯）"
-   ],
-   "douban_score": 8.2,
-   "genres": [
-    "科幻",
-    "动画",
-    "冒险"
-   ],
-   "id": "36689857",
-   "missing": false,
-   "original_title": "The Wild Robot",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 102,
-   "slug": "the-wild-robot",
-   "status": "collect",
-   "tags": [],
-   "title": "荒野机器人",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36689857/",
-   "writers": [
-    "Chris Sanders（克里斯·桑德斯）"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "Vijay Sethupathi（维杰·西图帕提）",
-    "Anurag Kashyap（阿努拉格·卡施亚普）",
-    "Mamta Mohandas（玛玛塔·莫汉达斯）",
-    "Natarajan Subramaniam（那塔拉简·苏布拉马尼亚姆）",
-    "阿比拉米",
-    "迪维亚·巴拉蒂",
-    "辛加姆普利",
-    "阿鲁多斯",
-    "穆尼什坎特",
-    "萨沙纳·纳米达斯"
-   ],
-   "category": "feature",
-   "cover": "covers/36934908/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36934908/01.webp",
-   "date": "2024-09-15",
-   "directors": [
-    "Nithilan Saminathan（尼蒂兰·萨米纳坦）"
-   ],
-   "douban_score": 8.7,
-   "genres": [
-    "动作",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "36934908",
-   "missing": false,
-   "original_title": "Maharaja",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "印度"
-   ],
-   "runtime": 141,
-   "slug": "maharaja",
-   "status": "collect",
-   "tags": [],
-   "title": "因果报应",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36934908/",
-   "writers": [
-    "Nithilan Saminathan（尼蒂兰·萨米纳坦）"
-   ],
-   "year": 2024
   }
  ],
- "last_date": "2024-09-15"
+ "last_date": "2024-09-28"
 }

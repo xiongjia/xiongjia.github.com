@@ -1,7 +1,117 @@
 {
  "count": 200,
- "first_date": "2021-04-22",
+ "first_date": "2021-05-01",
  "items": [
+  {
+   "casts": [
+    "王宝强",
+    "刘昊然",
+    "妻夫木聪",
+    "Tony Jaa（托尼·贾）",
+    "长泽雅美",
+    "染谷将太",
+    "铃木保奈美",
+    "浅野忠信",
+    "三浦友和",
+    "尚语贤"
+   ],
+   "category": "feature",
+   "cover": "covers/27619748/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27619748/01.webp",
+   "date": "2021-05-01",
+   "directors": [
+    "陈思诚"
+   ],
+   "douban_score": 5.3,
+   "genres": [
+    "喜剧",
+    "悬疑"
+   ],
+   "id": "27619748",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国",
+    "香港",
+    "日本"
+   ],
+   "runtime": 136,
+   "slug": "detective-chinatown-3",
+   "status": "collect",
+   "tags": [],
+   "title": "唐人街探案3",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/27619748/",
+   "writers": [
+    "陈思诚",
+    "张淳",
+    "刘吾驷",
+    "莲舟",
+    "严以宁"
+   ],
+   "year": 2021
+  },
+  {
+   "casts": [
+    "梶裕贵",
+    "石川由依",
+    "井上麻里奈",
+    "神谷浩史",
+    "小野大辅",
+    "朴璐美",
+    "三上枝织",
+    "谷山纪章",
+    "下野纮",
+    "小林优"
+   ],
+   "category": "anime",
+   "cover": "covers/27072327/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27072327/01.webp",
+   "date": "2021-04-25",
+   "directors": [
+    "荒木哲郎",
+    "肥冢正史",
+    "田中洋之",
+    "赤松康裕",
+    "安藤健",
+    "平向智子",
+    "浅见松雄",
+    "内田信吾",
+    "河原龙太",
+    "丝贺慎太郎",
+    "安藤贵史"
+   ],
+   "douban_score": 9.7,
+   "episodes": 12,
+   "genres": [
+    "动作",
+    "科幻",
+    "动画",
+    "灾难"
+   ],
+   "id": "27072327",
+   "missing": false,
+   "original_title": "進撃の巨人 Season 3",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "season-3",
+   "status": "collect",
+   "tags": [],
+   "title": "进击的巨人 第三季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/27072327/",
+   "writers": [
+    "谏山创",
+    "小林靖子",
+    "濑古浩司"
+   ],
+   "year": 2018
+  },
   {
    "casts": [
     "大泉洋",
@@ -8934,106 +9044,7 @@
    "url": "https://movie.douban.com/subject/30362315/",
    "writers": [],
    "year": 2019
-  },
-  {
-   "casts": [
-    "Julianna Margulies（朱丽安娜·玛格丽丝）",
-    "Noah Emmerich（诺亚·艾默里奇）",
-    "Liam Cunningham（利亚姆·坎宁安）",
-    "Topher Grace（托弗·格雷斯）",
-    "James D'Arcy（詹姆斯·达西）",
-    "保罗·詹姆斯",
-    "尼克·瑟西",
-    "Robert Wisdom（罗伯特·维斯多姆）",
-    "Robert Sean Leonard（罗伯特·肖恩·莱纳德）",
-    "马克·凯利"
-   ],
-   "category": "series",
-   "comment": "应景",
-   "cover": "covers/26581181/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26581181/01.webp",
-   "date": "2020-01-28",
-   "directors": [
-    "Michael Uppendahl（迈克尔·乌彭达尔）"
-   ],
-   "douban_score": 8.1,
-   "episodes": 6,
-   "genres": [
-    "剧情",
-    "惊悚"
-   ],
-   "id": "26581181",
-   "missing": false,
-   "original_title": "The Hot Zone",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 45,
-   "slug": "the-hot-zone",
-   "status": "collect",
-   "tags": [],
-   "title": "血疫",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/26581181/",
-   "writers": [
-    "詹姆士·V·哈特",
-    "杰夫·温塔"
-   ],
-   "year": 2019
-  },
-  {
-   "casts": [
-    "Asa Butterfield（阿萨·巴特菲尔德）",
-    "Gillian Anderson（吉莲·安德森）",
-    "Ncuti Gatwa（舒提·盖特瓦）",
-    "Emma Mackey（艾玛·麦基）",
-    "康纳·斯温德尔",
-    "凯达·威廉姆斯特灵",
-    "艾米·卢·伍德",
-    "钱尼尔·库勒",
-    "塔尼娅·雷诺兹",
-    "帕特里夏·艾莉森"
-   ],
-   "category": "series",
-   "cover": "covers/30438115/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30438115/01.webp",
-   "date": "2020-01-27",
-   "directors": [
-    "Ben Taylor（本·泰勒）",
-    "Sophie Goodhart（索菲·古德哈特）",
-    "艾丽斯·西布赖特"
-   ],
-   "douban_score": 9.1,
-   "episodes": 8,
-   "genres": [
-    "剧情",
-    "喜剧"
-   ],
-   "id": "30438115",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "英国"
-   ],
-   "runtime": 50,
-   "slug": "sex-education-season-2",
-   "status": "collect",
-   "tags": [],
-   "title": "性爱自修室 第二季 Sex Education Season 2",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/30438115/",
-   "writers": [
-    "劳瑞·纳恩",
-    "马万·里兹旺",
-    "Sophie Goodhart（索菲·古德哈特）",
-    "罗茜·琼斯",
-    "理查德·加德"
-   ],
-   "year": 2020
   }
  ],
- "last_date": "2020-01-27"
+ "last_date": "2020-01-30"
 }

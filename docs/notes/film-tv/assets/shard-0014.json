@@ -1,7 +1,95 @@
 {
  "count": 200,
- "first_date": "2014-09-08",
+ "first_date": "2014-09-12",
  "items": [
+  {
+   "casts": [
+    "张东健",
+    "元斌",
+    "李恩宙",
+    "孔炯轸",
+    "崔岷植"
+   ],
+   "category": "feature",
+   "comment": "多好的一家...可惜生不逢时...",
+   "cover": "covers/1304972/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1304972/01.webp",
+   "date": "2014-09-12",
+   "directors": [
+    "姜帝圭"
+   ],
+   "douban_score": 8.3,
+   "genres": [
+    "剧情",
+    "动作",
+    "战争"
+   ],
+   "id": "1304972",
+   "missing": false,
+   "original_title": "태극기 휘날리며",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 148,
+   "slug": "brotherhood",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "KOR"
+   ],
+   "title": "太极旗飘扬",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1304972/",
+   "writers": [
+    "姜帝圭",
+    "韩知勋"
+   ],
+   "year": 2004
+  },
+  {
+   "casts": [
+    "大泽隆夫",
+    "松雪泰子",
+    "小林凉子"
+   ],
+   "category": "feature",
+   "cover": "covers/1796778/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1796778/01.webp",
+   "date": "2014-09-11",
+   "directors": [
+    "河野圭太"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "剧情",
+    "家庭"
+   ],
+   "id": "1796778",
+   "missing": false,
+   "original_title": "子ぎつねヘレン",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 104,
+   "slug": "douban-1796778",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Movie"
+   ],
+   "title": "子狐物语",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1796778/",
+   "writers": [
+    "竹田津实",
+    "今井雅子"
+   ],
+   "year": 2006
+  },
   {
    "casts": [
     "田中真弓",
@@ -9660,105 +9748,7 @@
     "皮特·M·列科夫"
    ],
    "year": 2013
-  },
-  {
-   "casts": [
-    "宫内瞳",
-    "土屋太凤",
-    "工藤绫乃",
-    "山下莉绪"
-   ],
-   "category": "series",
-   "comment": "比较混乱...",
-   "cover": "covers/21348941/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/21348941/01.webp",
-   "date": "2013-12-01",
-   "directors": [
-    "塚原あゆ子",
-    "高野英治",
-    "加藤尚樹"
-   ],
-   "douban_score": 7.0,
-   "episodes": 12,
-   "genres": [
-    "剧情"
-   ],
-   "id": "21348941",
-   "missing": false,
-   "original_title": "リミット",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 30,
-   "slug": "limit",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Teleplay"
-   ],
-   "title": "界限",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/21348941/",
-   "writers": [
-    "清水友佳子",
-    "山岡潤平",
-    "すえのぶ けいこ(原作)"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "赵又廷",
-    "冯绍峰",
-    "林更新",
-    "金汎",
-    "杨颖",
-    "刘嘉玲",
-    "胡东",
-    "马京京",
-    "盛鉴",
-    "林朝绪"
-   ],
-   "category": "feature",
-   "cover": "covers/5996801/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5996801/01.webp",
-   "date": "2013-11-30",
-   "directors": [
-    "徐克"
-   ],
-   "douban_score": 6.5,
-   "genres": [
-    "动作",
-    "悬疑",
-    "古装"
-   ],
-   "id": "5996801",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国",
-    "香港"
-   ],
-   "runtime": 133,
-   "slug": "young-detective-dee-rise-of-the-sea-dragon",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS"
-   ],
-   "title": "狄仁杰之神都龙王",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/5996801/",
-   "writers": [
-    "张家鲁",
-    "徐克",
-    "陈国富"
-   ],
-   "year": 2013
   }
  ],
- "last_date": "2013-11-30"
+ "last_date": "2013-12-02"
 }

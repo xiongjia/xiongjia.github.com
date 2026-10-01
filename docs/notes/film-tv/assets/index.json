@@ -6,7 +6,7 @@
     "tv": 39
    },
    "count": 63,
-   "offset": 11,
+   "offset": 13,
    "shard": "shard-0022.json"
   },
   "2008-07": {
@@ -14,7 +14,7 @@
     "movie": 2
    },
    "count": 2,
-   "offset": 9,
+   "offset": 11,
    "shard": "shard-0022.json"
   },
   "2008-08": {
@@ -23,7 +23,7 @@
     "tv": 1
    },
    "count": 3,
-   "offset": 6,
+   "offset": 8,
    "shard": "shard-0022.json"
   },
   "2008-09": {
@@ -32,7 +32,7 @@
     "tv": 1
    },
    "count": 4,
-   "offset": 2,
+   "offset": 4,
    "shard": "shard-0022.json"
   },
   "2008-10": {
@@ -41,7 +41,7 @@
     "tv": 9
    },
    "count": 84,
-   "offset": 118,
+   "offset": 120,
    "shard": "shard-0021.json"
   },
   "2008-11": {
@@ -50,7 +50,7 @@
     "tv": 1
    },
    "count": 7,
-   "offset": 111,
+   "offset": 113,
    "shard": "shard-0021.json"
   },
   "2008-12": {
@@ -59,7 +59,7 @@
     "tv": 5
    },
    "count": 19,
-   "offset": 92,
+   "offset": 94,
    "shard": "shard-0021.json"
   },
   "2009-01": {
@@ -68,7 +68,7 @@
     "tv": 10
    },
    "count": 31,
-   "offset": 61,
+   "offset": 63,
    "shard": "shard-0021.json"
   },
   "2009-02": {
@@ -77,7 +77,7 @@
     "tv": 4
    },
    "count": 10,
-   "offset": 51,
+   "offset": 53,
    "shard": "shard-0021.json"
   },
   "2009-03": {
@@ -86,7 +86,7 @@
     "tv": 9
    },
    "count": 35,
-   "offset": 16,
+   "offset": 18,
    "shard": "shard-0021.json"
   },
   "2009-04": {
@@ -95,8 +95,8 @@
     "tv": 3
    },
    "count": 18,
-   "offset": 198,
-   "shard": "shard-0020.json"
+   "offset": 0,
+   "shard": "shard-0021.json"
   },
   "2009-05": {
    "by_type": {
@@ -104,7 +104,7 @@
     "tv": 6
    },
    "count": 21,
-   "offset": 177,
+   "offset": 179,
    "shard": "shard-0020.json"
   },
   "2009-06": {
@@ -113,7 +113,7 @@
     "tv": 12
    },
    "count": 17,
-   "offset": 160,
+   "offset": 162,
    "shard": "shard-0020.json"
   },
   "2009-07": {
@@ -122,7 +122,7 @@
     "tv": 3
    },
    "count": 4,
-   "offset": 156,
+   "offset": 158,
    "shard": "shard-0020.json"
   },
   "2009-08": {
@@ -131,7 +131,7 @@
     "tv": 5
    },
    "count": 18,
-   "offset": 138,
+   "offset": 140,
    "shard": "shard-0020.json"
   },
   "2009-09": {
@@ -140,7 +140,7 @@
     "tv": 21
    },
    "count": 55,
-   "offset": 83,
+   "offset": 85,
    "shard": "shard-0020.json"
   },
   "2009-10": {
@@ -149,7 +149,7 @@
     "tv": 54
    },
    "count": 131,
-   "offset": 152,
+   "offset": 154,
    "shard": "shard-0019.json"
   },
   "2009-11": {
@@ -158,7 +158,7 @@
     "tv": 11
    },
    "count": 30,
-   "offset": 122,
+   "offset": 124,
    "shard": "shard-0019.json"
   },
   "2009-12": {
@@ -167,7 +167,7 @@
     "tv": 20
    },
    "count": 67,
-   "offset": 55,
+   "offset": 57,
    "shard": "shard-0019.json"
   },
   "2010-01": {
@@ -176,7 +176,7 @@
     "tv": 12
    },
    "count": 32,
-   "offset": 23,
+   "offset": 25,
    "shard": "shard-0019.json"
   },
   "2010-02": {
@@ -185,8 +185,8 @@
     "tv": 2
    },
    "count": 24,
-   "offset": 199,
-   "shard": "shard-0018.json"
+   "offset": 1,
+   "shard": "shard-0019.json"
   },
   "2010-03": {
    "by_type": {
@@ -194,7 +194,7 @@
     "tv": 5
    },
    "count": 18,
-   "offset": 181,
+   "offset": 183,
    "shard": "shard-0018.json"
   },
   "2010-04": {
@@ -203,7 +203,7 @@
     "tv": 6
    },
    "count": 23,
-   "offset": 158,
+   "offset": 160,
    "shard": "shard-0018.json"
   },
   "2010-05": {
@@ -212,7 +212,7 @@
     "tv": 6
    },
    "count": 21,
-   "offset": 137,
+   "offset": 139,
    "shard": "shard-0018.json"
   },
   "2010-06": {
@@ -221,7 +221,7 @@
     "tv": 4
    },
    "count": 15,
-   "offset": 122,
+   "offset": 124,
    "shard": "shard-0018.json"
   },
   "2010-07": {
@@ -230,7 +230,7 @@
     "tv": 4
    },
    "count": 12,
-   "offset": 110,
+   "offset": 112,
    "shard": "shard-0018.json"
   },
   "2010-08": {
@@ -239,7 +239,7 @@
     "tv": 2
    },
    "count": 12,
-   "offset": 98,
+   "offset": 100,
    "shard": "shard-0018.json"
   },
   "2010-09": {
@@ -248,7 +248,7 @@
     "tv": 4
    },
    "count": 9,
-   "offset": 89,
+   "offset": 91,
    "shard": "shard-0018.json"
   },
   "2010-10": {
@@ -257,7 +257,7 @@
     "tv": 3
    },
    "count": 18,
-   "offset": 71,
+   "offset": 73,
    "shard": "shard-0018.json"
   },
   "2010-11": {
@@ -266,7 +266,7 @@
     "tv": 2
    },
    "count": 12,
-   "offset": 59,
+   "offset": 61,
    "shard": "shard-0018.json"
   },
   "2010-12": {
@@ -275,7 +275,7 @@
     "tv": 9
    },
    "count": 22,
-   "offset": 37,
+   "offset": 39,
    "shard": "shard-0018.json"
   },
   "2011-01": {
@@ -284,7 +284,7 @@
     "tv": 4
    },
    "count": 13,
-   "offset": 24,
+   "offset": 26,
    "shard": "shard-0018.json"
   },
   "2011-02": {
@@ -293,7 +293,7 @@
     "tv": 5
    },
    "count": 14,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0018.json"
   },
   "2011-03": {
@@ -302,7 +302,7 @@
     "tv": 2
    },
    "count": 4,
-   "offset": 6,
+   "offset": 8,
    "shard": "shard-0018.json"
   },
   "2011-04": {
@@ -311,7 +311,7 @@
     "tv": 11
    },
    "count": 32,
-   "offset": 174,
+   "offset": 176,
    "shard": "shard-0017.json"
   },
   "2011-05": {
@@ -320,7 +320,7 @@
     "tv": 6
    },
    "count": 16,
-   "offset": 158,
+   "offset": 160,
    "shard": "shard-0017.json"
   },
   "2011-06": {
@@ -329,7 +329,7 @@
     "tv": 5
    },
    "count": 17,
-   "offset": 141,
+   "offset": 143,
    "shard": "shard-0017.json"
   },
   "2011-07": {
@@ -338,7 +338,7 @@
     "tv": 3
    },
    "count": 10,
-   "offset": 131,
+   "offset": 133,
    "shard": "shard-0017.json"
   },
   "2011-08": {
@@ -347,7 +347,7 @@
     "tv": 2
    },
    "count": 12,
-   "offset": 119,
+   "offset": 121,
    "shard": "shard-0017.json"
   },
   "2011-09": {
@@ -356,7 +356,7 @@
     "tv": 1
    },
    "count": 3,
-   "offset": 116,
+   "offset": 118,
    "shard": "shard-0017.json"
   },
   "2011-10": {
@@ -365,7 +365,7 @@
     "tv": 3
    },
    "count": 40,
-   "offset": 76,
+   "offset": 78,
    "shard": "shard-0017.json"
   },
   "2011-11": {
@@ -373,7 +373,7 @@
     "movie": 13
    },
    "count": 13,
-   "offset": 63,
+   "offset": 65,
    "shard": "shard-0017.json"
   },
   "2011-12": {
@@ -382,7 +382,7 @@
     "tv": 3
    },
    "count": 12,
-   "offset": 51,
+   "offset": 53,
    "shard": "shard-0017.json"
   },
   "2012-01": {
@@ -391,7 +391,7 @@
     "tv": 2
    },
    "count": 13,
-   "offset": 38,
+   "offset": 40,
    "shard": "shard-0017.json"
   },
   "2012-02": {
@@ -400,7 +400,7 @@
     "tv": 1
    },
    "count": 12,
-   "offset": 26,
+   "offset": 28,
    "shard": "shard-0017.json"
   },
   "2012-03": {
@@ -409,7 +409,7 @@
     "tv": 6
    },
    "count": 26,
-   "offset": 0,
+   "offset": 2,
    "shard": "shard-0017.json"
   },
   "2012-04": {
@@ -418,7 +418,7 @@
     "tv": 6
    },
    "count": 20,
-   "offset": 180,
+   "offset": 182,
    "shard": "shard-0016.json"
   },
   "2012-05": {
@@ -427,7 +427,7 @@
     "tv": 8
    },
    "count": 25,
-   "offset": 155,
+   "offset": 157,
    "shard": "shard-0016.json"
   },
   "2012-06": {
@@ -436,7 +436,7 @@
     "tv": 4
    },
    "count": 23,
-   "offset": 132,
+   "offset": 134,
    "shard": "shard-0016.json"
   },
   "2012-07": {
@@ -445,7 +445,7 @@
     "tv": 3
    },
    "count": 7,
-   "offset": 125,
+   "offset": 127,
    "shard": "shard-0016.json"
   },
   "2012-08": {
@@ -454,7 +454,7 @@
     "tv": 1
    },
    "count": 19,
-   "offset": 106,
+   "offset": 108,
    "shard": "shard-0016.json"
   },
   "2012-09": {
@@ -463,7 +463,7 @@
     "tv": 3
    },
    "count": 14,
-   "offset": 92,
+   "offset": 94,
    "shard": "shard-0016.json"
   },
   "2012-10": {
@@ -472,7 +472,7 @@
     "tv": 7
    },
    "count": 49,
-   "offset": 43,
+   "offset": 45,
    "shard": "shard-0016.json"
   },
   "2012-11": {
@@ -480,7 +480,7 @@
     "movie": 19
    },
    "count": 19,
-   "offset": 24,
+   "offset": 26,
    "shard": "shard-0016.json"
   },
   "2012-12": {
@@ -489,7 +489,7 @@
     "tv": 11
    },
    "count": 44,
-   "offset": 180,
+   "offset": 182,
    "shard": "shard-0015.json"
   },
   "2013-01": {
@@ -498,7 +498,7 @@
     "tv": 5
    },
    "count": 16,
-   "offset": 164,
+   "offset": 166,
    "shard": "shard-0015.json"
   },
   "2013-02": {
@@ -507,7 +507,7 @@
     "tv": 3
    },
    "count": 32,
-   "offset": 132,
+   "offset": 134,
    "shard": "shard-0015.json"
   },
   "2013-03": {
@@ -516,7 +516,7 @@
     "tv": 4
    },
    "count": 26,
-   "offset": 106,
+   "offset": 108,
    "shard": "shard-0015.json"
   },
   "2013-04": {
@@ -525,7 +525,7 @@
     "tv": 2
    },
    "count": 9,
-   "offset": 97,
+   "offset": 99,
    "shard": "shard-0015.json"
   },
   "2013-05": {
@@ -534,7 +534,7 @@
     "tv": 3
    },
    "count": 11,
-   "offset": 86,
+   "offset": 88,
    "shard": "shard-0015.json"
   },
   "2013-06": {
@@ -543,7 +543,7 @@
     "tv": 3
    },
    "count": 20,
-   "offset": 66,
+   "offset": 68,
    "shard": "shard-0015.json"
   },
   "2013-07": {
@@ -552,7 +552,7 @@
     "tv": 2
    },
    "count": 5,
-   "offset": 61,
+   "offset": 63,
    "shard": "shard-0015.json"
   },
   "2013-08": {
@@ -561,7 +561,7 @@
     "tv": 4
    },
    "count": 15,
-   "offset": 46,
+   "offset": 48,
    "shard": "shard-0015.json"
   },
   "2013-09": {
@@ -570,7 +570,7 @@
     "tv": 6
    },
    "count": 22,
-   "offset": 24,
+   "offset": 26,
    "shard": "shard-0015.json"
   },
   "2013-10": {
@@ -579,7 +579,7 @@
     "tv": 6
    },
    "count": 14,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0015.json"
   },
   "2013-11": {
@@ -588,8 +588,8 @@
     "tv": 4
    },
    "count": 11,
-   "offset": 199,
-   "shard": "shard-0014.json"
+   "offset": 1,
+   "shard": "shard-0015.json"
   },
   "2013-12": {
    "by_type": {
@@ -597,7 +597,7 @@
     "tv": 6
    },
    "count": 24,
-   "offset": 175,
+   "offset": 177,
    "shard": "shard-0014.json"
   },
   "2014-01": {
@@ -606,7 +606,7 @@
     "tv": 1
    },
    "count": 12,
-   "offset": 163,
+   "offset": 165,
    "shard": "shard-0014.json"
   },
   "2014-02": {
@@ -615,7 +615,7 @@
     "tv": 11
    },
    "count": 33,
-   "offset": 130,
+   "offset": 132,
    "shard": "shard-0014.json"
   },
   "2014-03": {
@@ -624,7 +624,7 @@
     "tv": 4
    },
    "count": 12,
-   "offset": 118,
+   "offset": 120,
    "shard": "shard-0014.json"
   },
   "2014-04": {
@@ -633,7 +633,7 @@
     "tv": 4
    },
    "count": 25,
-   "offset": 93,
+   "offset": 95,
    "shard": "shard-0014.json"
   },
   "2014-05": {
@@ -642,7 +642,7 @@
     "tv": 5
    },
    "count": 28,
-   "offset": 65,
+   "offset": 67,
    "shard": "shard-0014.json"
   },
   "2014-06": {
@@ -651,7 +651,7 @@
     "tv": 9
    },
    "count": 19,
-   "offset": 46,
+   "offset": 48,
    "shard": "shard-0014.json"
   },
   "2014-07": {
@@ -660,7 +660,7 @@
     "tv": 7
    },
    "count": 26,
-   "offset": 20,
+   "offset": 22,
    "shard": "shard-0014.json"
   },
   "2014-08": {
@@ -669,7 +669,7 @@
     "tv": 2
    },
    "count": 12,
-   "offset": 8,
+   "offset": 10,
    "shard": "shard-0014.json"
   },
   "2014-09": {
@@ -678,7 +678,7 @@
     "tv": 8
    },
    "count": 20,
-   "offset": 188,
+   "offset": 190,
    "shard": "shard-0013.json"
   },
   "2014-10": {
@@ -687,7 +687,7 @@
     "tv": 6
    },
    "count": 22,
-   "offset": 166,
+   "offset": 168,
    "shard": "shard-0013.json"
   },
   "2014-11": {
@@ -696,7 +696,7 @@
     "tv": 15
    },
    "count": 29,
-   "offset": 137,
+   "offset": 139,
    "shard": "shard-0013.json"
   },
   "2014-12": {
@@ -705,7 +705,7 @@
     "tv": 4
    },
    "count": 48,
-   "offset": 89,
+   "offset": 91,
    "shard": "shard-0013.json"
   },
   "2015-01": {
@@ -714,7 +714,7 @@
     "tv": 4
    },
    "count": 14,
-   "offset": 75,
+   "offset": 77,
    "shard": "shard-0013.json"
   },
   "2015-02": {
@@ -723,7 +723,7 @@
     "tv": 1
    },
    "count": 20,
-   "offset": 55,
+   "offset": 57,
    "shard": "shard-0013.json"
   },
   "2015-03": {
@@ -732,7 +732,7 @@
     "tv": 20
    },
    "count": 47,
-   "offset": 8,
+   "offset": 10,
    "shard": "shard-0013.json"
   },
   "2015-04": {
@@ -741,7 +741,7 @@
     "tv": 7
    },
    "count": 31,
-   "offset": 177,
+   "offset": 179,
    "shard": "shard-0012.json"
   },
   "2015-05": {
@@ -750,7 +750,7 @@
     "tv": 4
    },
    "count": 29,
-   "offset": 148,
+   "offset": 150,
    "shard": "shard-0012.json"
   },
   "2015-06": {
@@ -759,7 +759,7 @@
     "tv": 4
    },
    "count": 28,
-   "offset": 120,
+   "offset": 122,
    "shard": "shard-0012.json"
   },
   "2015-07": {
@@ -768,7 +768,7 @@
     "tv": 9
    },
    "count": 34,
-   "offset": 86,
+   "offset": 88,
    "shard": "shard-0012.json"
   },
   "2015-08": {
@@ -777,7 +777,7 @@
     "tv": 7
    },
    "count": 32,
-   "offset": 54,
+   "offset": 56,
    "shard": "shard-0012.json"
   },
   "2015-09": {
@@ -786,7 +786,7 @@
     "tv": 8
    },
    "count": 54,
-   "offset": 0,
+   "offset": 2,
    "shard": "shard-0012.json"
   },
   "2015-10": {
@@ -795,7 +795,7 @@
     "tv": 4
    },
    "count": 34,
-   "offset": 166,
+   "offset": 168,
    "shard": "shard-0011.json"
   },
   "2015-11": {
@@ -804,7 +804,7 @@
     "tv": 6
    },
    "count": 36,
-   "offset": 130,
+   "offset": 132,
    "shard": "shard-0011.json"
   },
   "2015-12": {
@@ -813,7 +813,7 @@
     "tv": 9
    },
    "count": 42,
-   "offset": 88,
+   "offset": 90,
    "shard": "shard-0011.json"
   },
   "2016-01": {
@@ -822,7 +822,7 @@
     "tv": 5
    },
    "count": 28,
-   "offset": 60,
+   "offset": 62,
    "shard": "shard-0011.json"
   },
   "2016-02": {
@@ -831,7 +831,7 @@
     "tv": 6
    },
    "count": 28,
-   "offset": 32,
+   "offset": 34,
    "shard": "shard-0011.json"
   },
   "2016-03": {
@@ -839,7 +839,7 @@
     "movie": 13
    },
    "count": 13,
-   "offset": 19,
+   "offset": 21,
    "shard": "shard-0011.json"
   },
   "2016-04": {
@@ -847,7 +847,7 @@
     "movie": 14
    },
    "count": 14,
-   "offset": 5,
+   "offset": 7,
    "shard": "shard-0011.json"
   },
   "2016-05": {
@@ -856,7 +856,7 @@
     "tv": 6
    },
    "count": 27,
-   "offset": 178,
+   "offset": 180,
    "shard": "shard-0010.json"
   },
   "2016-06": {
@@ -865,7 +865,7 @@
     "tv": 8
    },
    "count": 21,
-   "offset": 157,
+   "offset": 159,
    "shard": "shard-0010.json"
   },
   "2016-07": {
@@ -874,7 +874,7 @@
     "tv": 7
    },
    "count": 29,
-   "offset": 128,
+   "offset": 130,
    "shard": "shard-0010.json"
   },
   "2016-08": {
@@ -883,7 +883,7 @@
     "tv": 1
    },
    "count": 14,
-   "offset": 114,
+   "offset": 116,
    "shard": "shard-0010.json"
   },
   "2016-09": {
@@ -892,7 +892,7 @@
     "tv": 9
    },
    "count": 26,
-   "offset": 88,
+   "offset": 90,
    "shard": "shard-0010.json"
   },
   "2016-10": {
@@ -901,7 +901,7 @@
     "tv": 5
    },
    "count": 50,
-   "offset": 38,
+   "offset": 40,
    "shard": "shard-0010.json"
   },
   "2016-11": {
@@ -910,7 +910,7 @@
     "tv": 3
    },
    "count": 19,
-   "offset": 19,
+   "offset": 21,
    "shard": "shard-0010.json"
   },
   "2016-12": {
@@ -919,8 +919,8 @@
     "tv": 2
    },
    "count": 20,
-   "offset": 199,
-   "shard": "shard-0009.json"
+   "offset": 1,
+   "shard": "shard-0010.json"
   },
   "2017-01": {
    "by_type": {
@@ -928,7 +928,7 @@
     "tv": 5
    },
    "count": 23,
-   "offset": 176,
+   "offset": 178,
    "shard": "shard-0009.json"
   },
   "2017-02": {
@@ -937,7 +937,7 @@
     "tv": 2
    },
    "count": 14,
-   "offset": 162,
+   "offset": 164,
    "shard": "shard-0009.json"
   },
   "2017-03": {
@@ -946,7 +946,7 @@
     "tv": 2
    },
    "count": 17,
-   "offset": 145,
+   "offset": 147,
    "shard": "shard-0009.json"
   },
   "2017-04": {
@@ -954,7 +954,7 @@
     "movie": 11
    },
    "count": 11,
-   "offset": 134,
+   "offset": 136,
    "shard": "shard-0009.json"
   },
   "2017-05": {
@@ -963,7 +963,7 @@
     "tv": 2
    },
    "count": 11,
-   "offset": 123,
+   "offset": 125,
    "shard": "shard-0009.json"
   },
   "2017-06": {
@@ -971,7 +971,7 @@
     "movie": 13
    },
    "count": 13,
-   "offset": 110,
+   "offset": 112,
    "shard": "shard-0009.json"
   },
   "2017-07": {
@@ -980,7 +980,7 @@
     "tv": 3
    },
    "count": 13,
-   "offset": 97,
+   "offset": 99,
    "shard": "shard-0009.json"
   },
   "2017-08": {
@@ -989,7 +989,7 @@
     "tv": 4
    },
    "count": 29,
-   "offset": 68,
+   "offset": 70,
    "shard": "shard-0009.json"
   },
   "2017-09": {
@@ -998,7 +998,7 @@
     "tv": 4
    },
    "count": 24,
-   "offset": 44,
+   "offset": 46,
    "shard": "shard-0009.json"
   },
   "2017-10": {
@@ -1007,7 +1007,7 @@
     "tv": 8
    },
    "count": 29,
-   "offset": 15,
+   "offset": 17,
    "shard": "shard-0009.json"
   },
   "2017-11": {
@@ -1016,7 +1016,7 @@
     "tv": 1
    },
    "count": 22,
-   "offset": 193,
+   "offset": 195,
    "shard": "shard-0008.json"
   },
   "2017-12": {
@@ -1025,7 +1025,7 @@
     "tv": 10
    },
    "count": 39,
-   "offset": 154,
+   "offset": 156,
    "shard": "shard-0008.json"
   },
   "2018-01": {
@@ -1034,7 +1034,7 @@
     "tv": 12
    },
    "count": 33,
-   "offset": 121,
+   "offset": 123,
    "shard": "shard-0008.json"
   },
   "2018-02": {
@@ -1043,7 +1043,7 @@
     "tv": 14
    },
    "count": 49,
-   "offset": 72,
+   "offset": 74,
    "shard": "shard-0008.json"
   },
   "2018-03": {
@@ -1052,7 +1052,7 @@
     "tv": 9
    },
    "count": 30,
-   "offset": 42,
+   "offset": 44,
    "shard": "shard-0008.json"
   },
   "2018-04": {
@@ -1061,7 +1061,7 @@
     "tv": 15
    },
    "count": 45,
-   "offset": 197,
+   "offset": 199,
    "shard": "shard-0007.json"
   },
   "2018-05": {
@@ -1070,7 +1070,7 @@
     "tv": 6
    },
    "count": 26,
-   "offset": 171,
+   "offset": 173,
    "shard": "shard-0007.json"
   },
   "2018-06": {
@@ -1079,7 +1079,7 @@
     "tv": 6
    },
    "count": 24,
-   "offset": 147,
+   "offset": 149,
    "shard": "shard-0007.json"
   },
   "2018-07": {
@@ -1088,7 +1088,7 @@
     "tv": 7
    },
    "count": 18,
-   "offset": 129,
+   "offset": 131,
    "shard": "shard-0007.json"
   },
   "2018-08": {
@@ -1097,7 +1097,7 @@
     "tv": 6
    },
    "count": 20,
-   "offset": 109,
+   "offset": 111,
    "shard": "shard-0007.json"
   },
   "2018-09": {
@@ -1106,7 +1106,7 @@
     "tv": 6
    },
    "count": 16,
-   "offset": 93,
+   "offset": 95,
    "shard": "shard-0007.json"
   },
   "2018-10": {
@@ -1115,7 +1115,7 @@
     "tv": 6
    },
    "count": 22,
-   "offset": 71,
+   "offset": 73,
    "shard": "shard-0007.json"
   },
   "2018-11": {
@@ -1124,7 +1124,7 @@
     "tv": 3
    },
    "count": 19,
-   "offset": 52,
+   "offset": 54,
    "shard": "shard-0007.json"
   },
   "2018-12": {
@@ -1133,7 +1133,7 @@
     "tv": 7
    },
    "count": 17,
-   "offset": 35,
+   "offset": 37,
    "shard": "shard-0007.json"
   },
   "2019-01": {
@@ -1142,7 +1142,7 @@
     "tv": 3
    },
    "count": 31,
-   "offset": 4,
+   "offset": 6,
    "shard": "shard-0007.json"
   },
   "2019-02": {
@@ -1151,7 +1151,7 @@
     "tv": 1
    },
    "count": 12,
-   "offset": 192,
+   "offset": 194,
    "shard": "shard-0006.json"
   },
   "2019-03": {
@@ -1160,7 +1160,7 @@
     "tv": 3
    },
    "count": 30,
-   "offset": 162,
+   "offset": 164,
    "shard": "shard-0006.json"
   },
   "2019-04": {
@@ -1169,7 +1169,7 @@
     "tv": 8
    },
    "count": 17,
-   "offset": 145,
+   "offset": 147,
    "shard": "shard-0006.json"
   },
   "2019-05": {
@@ -1178,7 +1178,7 @@
     "tv": 7
    },
    "count": 21,
-   "offset": 124,
+   "offset": 126,
    "shard": "shard-0006.json"
   },
   "2019-06": {
@@ -1187,7 +1187,7 @@
     "tv": 4
    },
    "count": 14,
-   "offset": 110,
+   "offset": 112,
    "shard": "shard-0006.json"
   },
   "2019-07": {
@@ -1196,7 +1196,7 @@
     "tv": 1
    },
    "count": 10,
-   "offset": 100,
+   "offset": 102,
    "shard": "shard-0006.json"
   },
   "2019-08": {
@@ -1205,7 +1205,7 @@
     "tv": 4
    },
    "count": 21,
-   "offset": 79,
+   "offset": 81,
    "shard": "shard-0006.json"
   },
   "2019-09": {
@@ -1214,7 +1214,7 @@
     "tv": 3
    },
    "count": 12,
-   "offset": 67,
+   "offset": 69,
    "shard": "shard-0006.json"
   },
   "2019-10": {
@@ -1223,7 +1223,7 @@
     "tv": 5
    },
    "count": 15,
-   "offset": 52,
+   "offset": 54,
    "shard": "shard-0006.json"
   },
   "2019-11": {
@@ -1232,7 +1232,7 @@
     "tv": 3
    },
    "count": 12,
-   "offset": 40,
+   "offset": 42,
    "shard": "shard-0006.json"
   },
   "2019-12": {
@@ -1241,7 +1241,7 @@
     "tv": 11
    },
    "count": 23,
-   "offset": 17,
+   "offset": 19,
    "shard": "shard-0006.json"
   },
   "2020-01": {
@@ -1250,7 +1250,7 @@
     "tv": 8
    },
    "count": 20,
-   "offset": 197,
+   "offset": 199,
    "shard": "shard-0005.json"
   },
   "2020-02": {
@@ -1259,7 +1259,7 @@
     "tv": 9
    },
    "count": 20,
-   "offset": 177,
+   "offset": 179,
    "shard": "shard-0005.json"
   },
   "2020-03": {
@@ -1268,7 +1268,7 @@
     "tv": 9
    },
    "count": 11,
-   "offset": 166,
+   "offset": 168,
    "shard": "shard-0005.json"
   },
   "2020-04": {
@@ -1277,7 +1277,7 @@
     "tv": 6
    },
    "count": 13,
-   "offset": 153,
+   "offset": 155,
    "shard": "shard-0005.json"
   },
   "2020-05": {
@@ -1286,7 +1286,7 @@
     "tv": 2
    },
    "count": 10,
-   "offset": 143,
+   "offset": 145,
    "shard": "shard-0005.json"
   },
   "2020-06": {
@@ -1295,7 +1295,7 @@
     "tv": 7
    },
    "count": 10,
-   "offset": 133,
+   "offset": 135,
    "shard": "shard-0005.json"
   },
   "2020-07": {
@@ -1304,7 +1304,7 @@
     "tv": 6
    },
    "count": 11,
-   "offset": 122,
+   "offset": 124,
    "shard": "shard-0005.json"
   },
   "2020-08": {
@@ -1313,7 +1313,7 @@
     "tv": 7
    },
    "count": 18,
-   "offset": 104,
+   "offset": 106,
    "shard": "shard-0005.json"
   },
   "2020-09": {
@@ -1322,7 +1322,7 @@
     "tv": 4
    },
    "count": 13,
-   "offset": 91,
+   "offset": 93,
    "shard": "shard-0005.json"
   },
   "2020-10": {
@@ -1331,7 +1331,7 @@
     "tv": 12
    },
    "count": 24,
-   "offset": 67,
+   "offset": 69,
    "shard": "shard-0005.json"
   },
   "2020-11": {
@@ -1340,7 +1340,7 @@
     "tv": 5
    },
    "count": 10,
-   "offset": 57,
+   "offset": 59,
    "shard": "shard-0005.json"
   },
   "2020-12": {
@@ -1349,7 +1349,7 @@
     "tv": 3
    },
    "count": 10,
-   "offset": 47,
+   "offset": 49,
    "shard": "shard-0005.json"
   },
   "2021-01": {
@@ -1358,7 +1358,7 @@
     "tv": 6
    },
    "count": 10,
-   "offset": 37,
+   "offset": 39,
    "shard": "shard-0005.json"
   },
   "2021-02": {
@@ -1367,7 +1367,7 @@
     "tv": 5
    },
    "count": 17,
-   "offset": 20,
+   "offset": 22,
    "shard": "shard-0005.json"
   },
   "2021-03": {
@@ -1376,7 +1376,7 @@
     "tv": 3
    },
    "count": 10,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0005.json"
   },
   "2021-04": {
@@ -1385,8 +1385,8 @@
     "tv": 4
    },
    "count": 11,
-   "offset": 199,
-   "shard": "shard-0004.json"
+   "offset": 1,
+   "shard": "shard-0005.json"
   },
   "2021-05": {
    "by_type": {
@@ -1394,7 +1394,7 @@
     "tv": 6
    },
    "count": 26,
-   "offset": 173,
+   "offset": 175,
    "shard": "shard-0004.json"
   },
   "2021-06": {
@@ -1403,7 +1403,7 @@
     "tv": 7
    },
    "count": 17,
-   "offset": 156,
+   "offset": 158,
    "shard": "shard-0004.json"
   },
   "2021-07": {
@@ -1412,7 +1412,7 @@
     "tv": 8
    },
    "count": 23,
-   "offset": 133,
+   "offset": 135,
    "shard": "shard-0004.json"
   },
   "2021-08": {
@@ -1421,7 +1421,7 @@
     "tv": 2
    },
    "count": 18,
-   "offset": 115,
+   "offset": 117,
    "shard": "shard-0004.json"
   },
   "2021-09": {
@@ -1430,7 +1430,7 @@
     "tv": 6
    },
    "count": 17,
-   "offset": 98,
+   "offset": 100,
    "shard": "shard-0004.json"
   },
   "2021-10": {
@@ -1439,7 +1439,7 @@
     "tv": 11
    },
    "count": 21,
-   "offset": 77,
+   "offset": 79,
    "shard": "shard-0004.json"
   },
   "2021-11": {
@@ -1448,7 +1448,7 @@
     "tv": 6
    },
    "count": 19,
-   "offset": 58,
+   "offset": 60,
    "shard": "shard-0004.json"
   },
   "2021-12": {
@@ -1457,7 +1457,7 @@
     "tv": 8
    },
    "count": 16,
-   "offset": 42,
+   "offset": 44,
    "shard": "shard-0004.json"
   },
   "2022-01": {
@@ -1466,7 +1466,7 @@
     "tv": 8
    },
    "count": 17,
-   "offset": 25,
+   "offset": 27,
    "shard": "shard-0004.json"
   },
   "2022-02": {
@@ -1475,7 +1475,7 @@
     "tv": 4
    },
    "count": 15,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0004.json"
   },
   "2022-03": {
@@ -1484,7 +1484,7 @@
     "tv": 2
    },
    "count": 7,
-   "offset": 3,
+   "offset": 5,
    "shard": "shard-0004.json"
   },
   "2022-04": {
@@ -1493,7 +1493,7 @@
     "tv": 6
    },
    "count": 16,
-   "offset": 187,
+   "offset": 189,
    "shard": "shard-0003.json"
   },
   "2022-05": {
@@ -1502,7 +1502,7 @@
     "tv": 7
    },
    "count": 20,
-   "offset": 167,
+   "offset": 169,
    "shard": "shard-0003.json"
   },
   "2022-06": {
@@ -1511,7 +1511,7 @@
     "tv": 6
    },
    "count": 9,
-   "offset": 158,
+   "offset": 160,
    "shard": "shard-0003.json"
   },
   "2022-07": {
@@ -1520,7 +1520,7 @@
     "tv": 12
    },
    "count": 21,
-   "offset": 137,
+   "offset": 139,
    "shard": "shard-0003.json"
   },
   "2022-08": {
@@ -1529,7 +1529,7 @@
     "tv": 3
    },
    "count": 19,
-   "offset": 118,
+   "offset": 120,
    "shard": "shard-0003.json"
   },
   "2022-09": {
@@ -1538,7 +1538,7 @@
     "tv": 4
    },
    "count": 14,
-   "offset": 104,
+   "offset": 106,
    "shard": "shard-0003.json"
   },
   "2022-10": {
@@ -1547,7 +1547,7 @@
     "tv": 12
    },
    "count": 25,
-   "offset": 79,
+   "offset": 81,
    "shard": "shard-0003.json"
   },
   "2022-11": {
@@ -1556,7 +1556,7 @@
     "tv": 2
    },
    "count": 14,
-   "offset": 65,
+   "offset": 67,
    "shard": "shard-0003.json"
   },
   "2022-12": {
@@ -1565,7 +1565,7 @@
     "tv": 7
    },
    "count": 19,
-   "offset": 46,
+   "offset": 48,
    "shard": "shard-0003.json"
   },
   "2023-01": {
@@ -1574,7 +1574,7 @@
     "tv": 9
    },
    "count": 26,
-   "offset": 20,
+   "offset": 22,
    "shard": "shard-0003.json"
   },
   "2023-02": {
@@ -1583,7 +1583,7 @@
     "tv": 6
    },
    "count": 10,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0003.json"
   },
   "2023-03": {
@@ -1592,7 +1592,7 @@
     "tv": 3
    },
    "count": 9,
-   "offset": 1,
+   "offset": 3,
    "shard": "shard-0003.json"
   },
   "2023-04": {
@@ -1601,7 +1601,7 @@
     "tv": 6
    },
    "count": 15,
-   "offset": 186,
+   "offset": 188,
    "shard": "shard-0002.json"
   },
   "2023-05": {
@@ -1610,7 +1610,7 @@
     "tv": 3
    },
    "count": 9,
-   "offset": 177,
+   "offset": 179,
    "shard": "shard-0002.json"
   },
   "2023-06": {
@@ -1619,7 +1619,7 @@
     "tv": 3
    },
    "count": 13,
-   "offset": 164,
+   "offset": 166,
    "shard": "shard-0002.json"
   },
   "2023-07": {
@@ -1628,7 +1628,7 @@
     "tv": 7
    },
    "count": 13,
-   "offset": 151,
+   "offset": 153,
    "shard": "shard-0002.json"
   },
   "2023-08": {
@@ -1637,7 +1637,7 @@
     "tv": 3
    },
    "count": 8,
-   "offset": 143,
+   "offset": 145,
    "shard": "shard-0002.json"
   },
   "2023-09": {
@@ -1646,7 +1646,7 @@
     "tv": 8
    },
    "count": 19,
-   "offset": 124,
+   "offset": 126,
    "shard": "shard-0002.json"
   },
   "2023-10": {
@@ -1655,7 +1655,7 @@
     "tv": 13
    },
    "count": 15,
-   "offset": 109,
+   "offset": 111,
    "shard": "shard-0002.json"
   },
   "2023-11": {
@@ -1664,7 +1664,7 @@
     "tv": 3
    },
    "count": 11,
-   "offset": 98,
+   "offset": 100,
    "shard": "shard-0002.json"
   },
   "2023-12": {
@@ -1673,7 +1673,7 @@
     "tv": 5
    },
    "count": 14,
-   "offset": 84,
+   "offset": 86,
    "shard": "shard-0002.json"
   },
   "2024-01": {
@@ -1682,7 +1682,7 @@
     "tv": 5
    },
    "count": 14,
-   "offset": 70,
+   "offset": 72,
    "shard": "shard-0002.json"
   },
   "2024-02": {
@@ -1691,7 +1691,7 @@
     "tv": 5
    },
    "count": 15,
-   "offset": 55,
+   "offset": 57,
    "shard": "shard-0002.json"
   },
   "2024-03": {
@@ -1700,7 +1700,7 @@
     "tv": 2
    },
    "count": 7,
-   "offset": 48,
+   "offset": 50,
    "shard": "shard-0002.json"
   },
   "2024-04": {
@@ -1709,7 +1709,7 @@
     "tv": 5
    },
    "count": 9,
-   "offset": 39,
+   "offset": 41,
    "shard": "shard-0002.json"
   },
   "2024-05": {
@@ -1718,7 +1718,7 @@
     "tv": 5
    },
    "count": 16,
-   "offset": 23,
+   "offset": 25,
    "shard": "shard-0002.json"
   },
   "2024-06": {
@@ -1727,7 +1727,7 @@
     "tv": 1
    },
    "count": 8,
-   "offset": 15,
+   "offset": 17,
    "shard": "shard-0002.json"
   },
   "2024-07": {
@@ -1735,7 +1735,7 @@
     "movie": 2
    },
    "count": 2,
-   "offset": 13,
+   "offset": 15,
    "shard": "shard-0002.json"
   },
   "2024-08": {
@@ -1744,7 +1744,7 @@
     "tv": 5
    },
    "count": 12,
-   "offset": 1,
+   "offset": 3,
    "shard": "shard-0002.json"
   },
   "2024-09": {
@@ -1753,7 +1753,7 @@
     "tv": 1
    },
    "count": 5,
-   "offset": 196,
+   "offset": 198,
    "shard": "shard-0001.json"
   },
   "2024-10": {
@@ -1762,7 +1762,7 @@
     "tv": 2
    },
    "count": 10,
-   "offset": 186,
+   "offset": 188,
    "shard": "shard-0001.json"
   },
   "2024-11": {
@@ -1771,7 +1771,7 @@
     "tv": 4
    },
    "count": 8,
-   "offset": 178,
+   "offset": 180,
    "shard": "shard-0001.json"
   },
   "2024-12": {
@@ -1780,7 +1780,7 @@
     "tv": 3
    },
    "count": 13,
-   "offset": 165,
+   "offset": 167,
    "shard": "shard-0001.json"
   },
   "2025-01": {
@@ -1789,7 +1789,7 @@
     "tv": 3
    },
    "count": 13,
-   "offset": 152,
+   "offset": 154,
    "shard": "shard-0001.json"
   },
   "2025-02": {
@@ -1798,7 +1798,7 @@
     "tv": 2
    },
    "count": 10,
-   "offset": 142,
+   "offset": 144,
    "shard": "shard-0001.json"
   },
   "2025-03": {
@@ -1807,7 +1807,7 @@
     "tv": 2
    },
    "count": 10,
-   "offset": 132,
+   "offset": 134,
    "shard": "shard-0001.json"
   },
   "2025-04": {
@@ -1816,7 +1816,7 @@
     "tv": 2
    },
    "count": 7,
-   "offset": 125,
+   "offset": 127,
    "shard": "shard-0001.json"
   },
   "2025-05": {
@@ -1825,7 +1825,7 @@
     "tv": 4
    },
    "count": 10,
-   "offset": 115,
+   "offset": 117,
    "shard": "shard-0001.json"
   },
   "2025-06": {
@@ -1833,7 +1833,7 @@
     "movie": 2
    },
    "count": 2,
-   "offset": 113,
+   "offset": 115,
    "shard": "shard-0001.json"
   },
   "2025-07": {
@@ -1842,7 +1842,7 @@
     "tv": 1
    },
    "count": 11,
-   "offset": 102,
+   "offset": 104,
    "shard": "shard-0001.json"
   },
   "2025-08": {
@@ -1851,7 +1851,7 @@
     "tv": 1
    },
    "count": 5,
-   "offset": 97,
+   "offset": 99,
    "shard": "shard-0001.json"
   },
   "2025-09": {
@@ -1860,7 +1860,7 @@
     "tv": 4
    },
    "count": 9,
-   "offset": 88,
+   "offset": 90,
    "shard": "shard-0001.json"
   },
   "2025-10": {
@@ -1869,7 +1869,7 @@
     "tv": 1
    },
    "count": 6,
-   "offset": 82,
+   "offset": 84,
    "shard": "shard-0001.json"
   },
   "2025-11": {
@@ -1878,7 +1878,7 @@
     "tv": 3
    },
    "count": 5,
-   "offset": 77,
+   "offset": 79,
    "shard": "shard-0001.json"
   },
   "2025-12": {
@@ -1887,7 +1887,7 @@
     "tv": 1
    },
    "count": 7,
-   "offset": 70,
+   "offset": 72,
    "shard": "shard-0001.json"
   },
   "2026-01": {
@@ -1895,7 +1895,7 @@
     "movie": 7
    },
    "count": 7,
-   "offset": 63,
+   "offset": 65,
    "shard": "shard-0001.json"
   },
   "2026-02": {
@@ -1904,7 +1904,7 @@
     "tv": 1
    },
    "count": 9,
-   "offset": 54,
+   "offset": 56,
    "shard": "shard-0001.json"
   },
   "2026-03": {
@@ -1913,7 +1913,7 @@
     "tv": 3
    },
    "count": 6,
-   "offset": 48,
+   "offset": 50,
    "shard": "shard-0001.json"
   },
   "2026-04": {
@@ -1922,7 +1922,7 @@
     "tv": 2
    },
    "count": 8,
-   "offset": 40,
+   "offset": 42,
    "shard": "shard-0001.json"
   },
   "2026-05": {
@@ -1930,7 +1930,7 @@
     "movie": 8
    },
    "count": 8,
-   "offset": 32,
+   "offset": 34,
    "shard": "shard-0001.json"
   },
   "2026-06": {
@@ -1939,7 +1939,7 @@
     "tv": 6
    },
    "count": 10,
-   "offset": 22,
+   "offset": 24,
    "shard": "shard-0001.json"
   },
   "2026-07": {
@@ -1948,7 +1948,7 @@
     "tv": 2
    },
    "count": 8,
-   "offset": 14,
+   "offset": 16,
    "shard": "shard-0001.json"
   },
   "2026-08": {
@@ -1957,7 +1957,7 @@
     "tv": 1
    },
    "count": 4,
-   "offset": 10,
+   "offset": 12,
    "shard": "shard-0001.json"
   },
   "2026-09": {
@@ -1966,6 +1966,14 @@
     "tv": 2
    },
    "count": 10,
+   "offset": 2,
+   "shard": "shard-0001.json"
+  },
+  "2026-10": {
+   "by_type": {
+    "movie": 2
+   },
+   "count": 2,
    "offset": 0,
    "shard": "shard-0001.json"
   }
@@ -1996,10 +2004,10 @@
   "shard-0022.json"
  ],
  "totals": {
-  "movies": 3083,
+  "movies": 3085,
   "pending": 0,
-  "rated": 4273,
-  "records": 4293,
+  "rated": 4275,
+  "records": 4295,
   "skipped": 19,
   "tv": 1191
  }

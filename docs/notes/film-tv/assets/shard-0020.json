@@ -1,7 +1,102 @@
 {
  "count": 200,
- "first_date": "2009-10-05",
+ "first_date": "2009-10-06",
  "items": [
+  {
+   "casts": [
+    "丁尼",
+    "胡晓光",
+    "李长华",
+    "李舒田",
+    "王润身",
+    "张良",
+    "胡朋",
+    "李廷秀",
+    "刘季云",
+    "王斑"
+   ],
+   "category": "feature",
+   "cover": "covers/1305227/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1305227/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "王冰"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "战争"
+   ],
+   "id": "1305227",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 101,
+   "slug": "douban-1305227",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS",
+    "History",
+    "War"
+   ],
+   "title": "战上海",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1305227/",
+   "writers": [
+    "群立"
+   ],
+   "year": 1959
+  },
+  {
+   "casts": [
+    "George C. Scott（乔治·C·斯科特）",
+    "Karl Malden（卡尔·莫尔登）",
+    "Stephen Young（斯蒂芬·杨）",
+    "Michael Strong（迈克尔·斯特朗）",
+    "Carey Loftin（凯里·洛夫廷）"
+   ],
+   "category": "feature",
+   "cover": "covers/1298308/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1298308/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "Franklin J. Schaffner（富兰克林·沙夫纳）"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情",
+    "传记",
+    "战争"
+   ],
+   "id": "1298308",
+   "missing": false,
+   "original_title": "Patton",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 172,
+   "slug": "patton",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "War",
+    "History"
+   ],
+   "title": "巴顿将军",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1298308/",
+   "writers": [
+    "Francis Ford Coppola（弗朗西斯·福特·科波拉）",
+    "埃德蒙·H·诺思"
+   ],
+   "year": 1970
+  },
   {
    "casts": [
     "菊池正美",
@@ -9612,116 +9707,7 @@
     "凯文·格雷维奥斯"
    ],
    "year": 2006
-  },
-  {
-   "casts": [
-    "竹内顺子",
-    "中村千绘",
-    "杉山纪彰",
-    "石冢运升",
-    "熊井统子",
-    "井上和彦",
-    "小山力也",
-    "森久保祥太郎",
-    "水树奈奈",
-    "日野聪"
-   ],
-   "category": "anime",
-   "cover": "covers/2369613/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2369613/01.webp",
-   "date": "2009-04-25",
-   "directors": [
-    "龟垣一"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "动作",
-    "动画",
-    "奇幻"
-   ],
-   "id": "2369613",
-   "missing": false,
-   "original_title": "劇場版 NARUTO -ナルト- 疾風伝 絆",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 93,
-   "slug": "naruto-2008",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN",
-    "Adventure",
-    "Animation"
-   ],
-   "title": "火影忍者疾风传剧场版：羁绊",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/2369613/",
-   "writers": [
-    "武上纯希",
-    "岸本齐史"
-   ],
-   "year": 2008
-  },
-  {
-   "casts": [
-    "Kate Beckinsale（凯特·贝金赛尔）",
-    "Scott Speedman（斯科特·斯比德曼）",
-    "Michael Sheen（麦克·辛）",
-    "Shane Brolly（山恩·布罗利）",
-    "Bill Nighy（比尔·奈伊）",
-    "艾尔文·莱德",
-    "索菲娅·迈尔斯",
-    "罗比·基",
-    "Wentworth Miller（温特沃斯·米勒）",
-    "凯文·格雷维奥斯"
-   ],
-   "category": "feature",
-   "cover": "covers/1307527/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1307527/01.webp",
-   "date": "2009-04-25",
-   "directors": [
-    "Len Wiseman（伦·怀斯曼）"
-   ],
-   "douban_score": 7.5,
-   "genres": [
-    "动作",
-    "惊悚",
-    "奇幻"
-   ],
-   "id": "1307527",
-   "missing": false,
-   "original_title": "Underworld",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "英国",
-    "德国",
-    "匈牙利",
-    "美国"
-   ],
-   "runtime": 121,
-   "slug": "underworld",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "Sci-Fi",
-    "Mystery",
-    "Romance"
-   ],
-   "title": "黑夜传说",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1307527/",
-   "writers": [
-    "凯文·格雷维奥斯",
-    "Len Wiseman（伦·怀斯曼）",
-    "Danny McBride"
-   ],
-   "year": 2003
   }
  ],
- "last_date": "2009-04-25"
+ "last_date": "2009-05-01"
 }

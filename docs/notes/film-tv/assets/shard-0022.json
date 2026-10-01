@@ -1,7 +1,115 @@
 {
- "count": 74,
+ "count": 76,
  "first_date": "2008-10-01",
  "items": [
+  {
+   "casts": [
+    "Johnny Depp（约翰尼·德普）",
+    "Geoffrey Rush（杰弗里·拉什）",
+    "Orlando Bloom（奥兰多·布鲁姆）",
+    "Keira Knightley（凯拉·奈特莉）",
+    "Jack Davenport（杰克·达文波特）",
+    "Bill Nighy（比尔·奈伊）",
+    "Jonathan Pryce（乔纳森·普雷斯）",
+    "李·阿伦伯格",
+    "麦肯锡·克鲁克",
+    "Kevin McNally（凯文·麦克纳利）"
+   ],
+   "category": "feature",
+   "comment": "一般...",
+   "cover": "covers/1418192/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1418192/01.webp",
+   "date": "2008-10-01",
+   "directors": [
+    "Gore Verbinski（戈尔·维宾斯基）"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1418192",
+   "missing": false,
+   "original_title": "Pirates of the Caribbean: At World's End",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 169,
+   "slug": "pirates-of-the-caribbean-at-world-s-end",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Adventure",
+    "ENU",
+    "Fantasy"
+   ],
+   "title": "加勒比海盗3：世界的尽头",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1418192/",
+   "writers": [
+    "泰德·艾略特",
+    "特里·鲁西奥"
+   ],
+   "year": 2007
+  },
+  {
+   "casts": [
+    "Johnny Depp（约翰尼·德普）",
+    "Orlando Bloom（奥兰多·布鲁姆）",
+    "Keira Knightley（凯拉·奈特莉）",
+    "Jack Davenport（杰克·达文波特）",
+    "Bill Nighy（比尔·奈伊）",
+    "Jonathan Pryce（乔纳森·普雷斯）",
+    "李·阿伦伯格",
+    "麦肯锡·克鲁克",
+    "Kevin McNally（凯文·麦克纳利）",
+    "大卫·拜利"
+   ],
+   "category": "feature",
+   "comment": "一般...",
+   "cover": "covers/1315574/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1315574/01.webp",
+   "date": "2008-10-01",
+   "directors": [
+    "Gore Verbinski（戈尔·维宾斯基）"
+   ],
+   "douban_score": 8.5,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1315574",
+   "missing": false,
+   "original_title": "Pirates of the Caribbean: Dead Man's Chest",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 151,
+   "slug": "pirates-of-the-caribbean-dead-man-s-chest",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Adventure",
+    "ENU",
+    "Fantasy"
+   ],
+   "title": "加勒比海盗2：亡灵的宝藏",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1315574/",
+   "writers": [
+    "泰德·艾略特",
+    "特里·鲁西奥",
+    "Stuart Beattie（斯图尔特·贝亚蒂耶）",
+    "杰·沃尔伯特"
+   ],
+   "year": 2006
+  },
   {
    "casts": [
     "Johnny Depp（约翰尼·德普）",

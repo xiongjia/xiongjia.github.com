@@ -1,7 +1,99 @@
 {
  "count": 200,
- "first_date": "2024-09-01",
+ "first_date": "2024-09-21",
  "items": [
+  {
+   "casts": [
+    "Lupita Nyong'o（露皮塔·尼永奥）",
+    "Pedro Pascal（佩德罗·帕斯卡）",
+    "Kit Connor（基特·康纳）",
+    "Catherine O'Hara（凯瑟琳·奥哈拉）",
+    "Bill Nighy（比尔·奈伊）",
+    "许玮伦",
+    "亚历桑德拉·诺薇儿",
+    "Matt Berry（马特·贝里）",
+    "Ving Rhames（文·瑞姆斯）",
+    "Mark Hamill（马克·哈米尔）"
+   ],
+   "category": "anime",
+   "cover": "covers/36689857/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36689857/01.webp",
+   "date": "2024-09-21",
+   "directors": [
+    "Chris Sanders（克里斯·桑德斯）"
+   ],
+   "douban_score": 8.2,
+   "genres": [
+    "科幻",
+    "动画",
+    "冒险"
+   ],
+   "id": "36689857",
+   "missing": false,
+   "original_title": "The Wild Robot",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "the-wild-robot",
+   "status": "collect",
+   "tags": [],
+   "title": "荒野机器人",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36689857/",
+   "writers": [
+    "Chris Sanders（克里斯·桑德斯）"
+   ],
+   "year": 2024
+  },
+  {
+   "casts": [
+    "Vijay Sethupathi（维杰·西图帕提）",
+    "Anurag Kashyap（阿努拉格·卡施亚普）",
+    "Mamta Mohandas（玛玛塔·莫汉达斯）",
+    "Natarajan Subramaniam（那塔拉简·苏布拉马尼亚姆）",
+    "阿比拉米",
+    "迪维亚·巴拉蒂",
+    "辛加姆普利",
+    "阿鲁多斯",
+    "穆尼什坎特",
+    "萨沙纳·纳米达斯"
+   ],
+   "category": "feature",
+   "cover": "covers/36934908/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36934908/01.webp",
+   "date": "2024-09-15",
+   "directors": [
+    "Nithilan Saminathan（尼蒂兰·萨米纳坦）"
+   ],
+   "douban_score": 8.7,
+   "genres": [
+    "动作",
+    "悬疑",
+    "犯罪"
+   ],
+   "id": "36934908",
+   "missing": false,
+   "original_title": "Maharaja",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "印度"
+   ],
+   "runtime": 141,
+   "slug": "maharaja",
+   "status": "collect",
+   "tags": [],
+   "title": "因果报应",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36934908/",
+   "writers": [
+    "Nithilan Saminathan（尼蒂兰·萨米纳坦）"
+   ],
+   "year": 2024
+  },
   {
    "casts": [
     "史泽鲲",
@@ -9198,81 +9290,7 @@
    "url": "https://movie.douban.com/subject/36217752/",
    "writers": [],
    "year": 2023
-  },
-  {
-   "casts": [
-    "松重丰"
-   ],
-   "category": "series",
-   "cover": "covers/36288127/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36288127/01.webp",
-   "date": "2023-04-01",
-   "directors": [
-    "北畑龍一"
-   ],
-   "douban_score": 7.6,
-   "episodes": 6,
-   "genres": [],
-   "id": "36288127",
-   "missing": false,
-   "original_title": "孤独のグルメ配信オリジナル2～五郎、芸人まみれ",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 12,
-   "slug": "douban-36288127",
-   "status": "collect",
-   "tags": [],
-   "title": "孤独的美食家 网络原创版 2～五郎，到处都是谐星",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/36288127/",
-   "writers": [
-    "田口佳宏"
-   ],
-   "year": 2023
-  },
-  {
-   "casts": [
-    "松重丰",
-    "岩松了",
-    "北乃绮",
-    "宅麻伸",
-    "叶山奖之"
-   ],
-   "category": "feature",
-   "cover": "covers/36178160/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36178160/01.webp",
-   "date": "2023-04-01",
-   "directors": [
-    "井川尊史",
-    "北畑龍一"
-   ],
-   "douban_score": 9.1,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "36178160",
-   "missing": false,
-   "original_title": "孤独のグルメ2022大晦日スペシャル 年忘れ、食の格闘技。カニの使いはあらたいへん。",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 90,
-   "slug": "douban-36178160",
-   "status": "collect",
-   "tags": [],
-   "title": "孤独的美食家 2022除夕特别篇",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36178160/",
-   "writers": [
-    "田口佳宏"
-   ],
-   "year": 2022
   }
  ],
- "last_date": "2023-04-01"
+ "last_date": "2023-04-02"
 }
