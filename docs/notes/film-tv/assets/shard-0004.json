@@ -1,7 +1,100 @@
 {
  "count": 200,
- "first_date": "2022-04-01",
+ "first_date": "2022-04-09",
  "items": [
+  {
+   "casts": [
+    "福士苍汰",
+    "山本美月",
+    "工藤阿须加",
+    "福原遥",
+    "木南晴夏",
+    "今井翼",
+    "光石研",
+    "出口夏希"
+   ],
+   "category": "series",
+   "cover": "covers/35658679/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35658679/01.webp",
+   "date": "2022-04-09",
+   "directors": [
+    "松木创",
+    "菊川诚"
+   ],
+   "douban_score": 4.8,
+   "episodes": 10,
+   "genres": [
+    "爱情",
+    "奇幻"
+   ],
+   "id": "35658679",
+   "missing": false,
+   "original_title": "星から来たあなた",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "日本"
+   ],
+   "runtime": null,
+   "slug": "my-love-from-the-stars",
+   "status": "collect",
+   "tags": [],
+   "title": "来自星星的你(日版)",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35658679/",
+   "writers": [
+    "关惠理香",
+    "今西祐子"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "木村拓哉",
+    "长泽雅美",
+    "小日向文世",
+    "梶原善",
+    "泉泽祐希",
+    "东根作寿英",
+    "石川恋",
+    "鹤见辰吾",
+    "筱井英介",
+    "石桥凌"
+   ],
+   "category": "feature",
+   "cover": "covers/34950972/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34950972/01.webp",
+   "date": "2022-04-04",
+   "directors": [
+    "铃木雅之"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "犯罪"
+   ],
+   "id": "34950972",
+   "missing": false,
+   "original_title": "マスカレード・ナイト",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 129,
+   "slug": "masquerade-night",
+   "status": "collect",
+   "tags": [],
+   "title": "假面之夜",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/34950972/",
+   "writers": [
+    "东野圭吾",
+    "冈田道尚"
+   ],
+   "year": 2021
+  },
   {
    "casts": [
     "褚珺",
@@ -9149,117 +9242,7 @@
     "郭宇鹏"
    ],
    "year": 2021
-  },
-  {
-   "casts": [
-    "王宝强",
-    "刘昊然",
-    "妻夫木聪",
-    "Tony Jaa（托尼·贾）",
-    "长泽雅美",
-    "染谷将太",
-    "铃木保奈美",
-    "浅野忠信",
-    "三浦友和",
-    "尚语贤"
-   ],
-   "category": "feature",
-   "cover": "covers/27619748/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27619748/01.webp",
-   "date": "2021-05-01",
-   "directors": [
-    "陈思诚"
-   ],
-   "douban_score": 5.3,
-   "genres": [
-    "喜剧",
-    "悬疑"
-   ],
-   "id": "27619748",
-   "missing": false,
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "中国",
-    "香港",
-    "日本"
-   ],
-   "runtime": 136,
-   "slug": "detective-chinatown-3",
-   "status": "collect",
-   "tags": [],
-   "title": "唐人街探案3",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/27619748/",
-   "writers": [
-    "陈思诚",
-    "张淳",
-    "刘吾驷",
-    "莲舟",
-    "严以宁"
-   ],
-   "year": 2021
-  },
-  {
-   "casts": [
-    "梶裕贵",
-    "石川由依",
-    "井上麻里奈",
-    "神谷浩史",
-    "小野大辅",
-    "朴璐美",
-    "三上枝织",
-    "谷山纪章",
-    "下野纮",
-    "小林优"
-   ],
-   "category": "anime",
-   "cover": "covers/27072327/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27072327/01.webp",
-   "date": "2021-04-25",
-   "directors": [
-    "荒木哲郎",
-    "肥冢正史",
-    "田中洋之",
-    "赤松康裕",
-    "安藤健",
-    "平向智子",
-    "浅见松雄",
-    "内田信吾",
-    "河原龙太",
-    "丝贺慎太郎",
-    "安藤贵史"
-   ],
-   "douban_score": 9.7,
-   "episodes": 12,
-   "genres": [
-    "动作",
-    "科幻",
-    "动画",
-    "灾难"
-   ],
-   "id": "27072327",
-   "missing": false,
-   "original_title": "進撃の巨人 Season 3",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 24,
-   "slug": "season-3",
-   "status": "collect",
-   "tags": [],
-   "title": "进击的巨人 第三季",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/27072327/",
-   "writers": [
-    "谏山创",
-    "小林靖子",
-    "濑古浩司"
-   ],
-   "year": 2018
   }
  ],
- "last_date": "2021-04-25"
+ "last_date": "2021-05-01"
 }

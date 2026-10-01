@@ -1,7 +1,116 @@
 {
  "count": 200,
- "first_date": "2009-04-24",
+ "first_date": "2009-04-25",
  "items": [
+  {
+   "casts": [
+    "竹内顺子",
+    "中村千绘",
+    "杉山纪彰",
+    "石冢运升",
+    "熊井统子",
+    "井上和彦",
+    "小山力也",
+    "森久保祥太郎",
+    "水树奈奈",
+    "日野聪"
+   ],
+   "category": "anime",
+   "cover": "covers/2369613/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2369613/01.webp",
+   "date": "2009-04-25",
+   "directors": [
+    "龟垣一"
+   ],
+   "douban_score": 7.3,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻"
+   ],
+   "id": "2369613",
+   "missing": false,
+   "original_title": "劇場版 NARUTO -ナルト- 疾風伝 絆",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 93,
+   "slug": "naruto-2008",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN",
+    "Adventure",
+    "Animation"
+   ],
+   "title": "火影忍者疾风传剧场版：羁绊",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/2369613/",
+   "writers": [
+    "武上纯希",
+    "岸本齐史"
+   ],
+   "year": 2008
+  },
+  {
+   "casts": [
+    "Kate Beckinsale（凯特·贝金赛尔）",
+    "Scott Speedman（斯科特·斯比德曼）",
+    "Michael Sheen（麦克·辛）",
+    "Shane Brolly（山恩·布罗利）",
+    "Bill Nighy（比尔·奈伊）",
+    "艾尔文·莱德",
+    "索菲娅·迈尔斯",
+    "罗比·基",
+    "Wentworth Miller（温特沃斯·米勒）",
+    "凯文·格雷维奥斯"
+   ],
+   "category": "feature",
+   "cover": "covers/1307527/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1307527/01.webp",
+   "date": "2009-04-25",
+   "directors": [
+    "Len Wiseman（伦·怀斯曼）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "动作",
+    "惊悚",
+    "奇幻"
+   ],
+   "id": "1307527",
+   "missing": false,
+   "original_title": "Underworld",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "英国",
+    "德国",
+    "匈牙利",
+    "美国"
+   ],
+   "runtime": 121,
+   "slug": "underworld",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "Sci-Fi",
+    "Mystery",
+    "Romance"
+   ],
+   "title": "黑夜传说",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1307527/",
+   "writers": [
+    "凯文·格雷维奥斯",
+    "Len Wiseman（伦·怀斯曼）",
+    "Danny McBride"
+   ],
+   "year": 2003
+  },
   {
    "casts": [
     "温明娜",
@@ -10397,114 +10506,6 @@
    "writers": [
     "Neil Burger（尼尔·博格）",
     "斯蒂文·米尔豪瑟"
-   ],
-   "year": 2006
-  },
-  {
-   "casts": [
-    "Johnny Depp（约翰尼·德普）",
-    "Geoffrey Rush（杰弗里·拉什）",
-    "Orlando Bloom（奥兰多·布鲁姆）",
-    "Keira Knightley（凯拉·奈特莉）",
-    "Jack Davenport（杰克·达文波特）",
-    "Bill Nighy（比尔·奈伊）",
-    "Jonathan Pryce（乔纳森·普雷斯）",
-    "李·阿伦伯格",
-    "麦肯锡·克鲁克",
-    "Kevin McNally（凯文·麦克纳利）"
-   ],
-   "category": "feature",
-   "comment": "一般...",
-   "cover": "covers/1418192/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1418192/01.webp",
-   "date": "2008-10-01",
-   "directors": [
-    "Gore Verbinski（戈尔·维宾斯基）"
-   ],
-   "douban_score": 8.4,
-   "genres": [
-    "动作",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "1418192",
-   "missing": false,
-   "original_title": "Pirates of the Caribbean: At World's End",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 169,
-   "slug": "pirates-of-the-caribbean-at-world-s-end",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "Adventure",
-    "ENU",
-    "Fantasy"
-   ],
-   "title": "加勒比海盗3：世界的尽头",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1418192/",
-   "writers": [
-    "泰德·艾略特",
-    "特里·鲁西奥"
-   ],
-   "year": 2007
-  },
-  {
-   "casts": [
-    "Johnny Depp（约翰尼·德普）",
-    "Orlando Bloom（奥兰多·布鲁姆）",
-    "Keira Knightley（凯拉·奈特莉）",
-    "Jack Davenport（杰克·达文波特）",
-    "Bill Nighy（比尔·奈伊）",
-    "Jonathan Pryce（乔纳森·普雷斯）",
-    "李·阿伦伯格",
-    "麦肯锡·克鲁克",
-    "Kevin McNally（凯文·麦克纳利）",
-    "大卫·拜利"
-   ],
-   "category": "feature",
-   "comment": "一般...",
-   "cover": "covers/1315574/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1315574/01.webp",
-   "date": "2008-10-01",
-   "directors": [
-    "Gore Verbinski（戈尔·维宾斯基）"
-   ],
-   "douban_score": 8.5,
-   "genres": [
-    "动作",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "1315574",
-   "missing": false,
-   "original_title": "Pirates of the Caribbean: Dead Man's Chest",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 151,
-   "slug": "pirates-of-the-caribbean-dead-man-s-chest",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "Adventure",
-    "ENU",
-    "Fantasy"
-   ],
-   "title": "加勒比海盗2：亡灵的宝藏",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1315574/",
-   "writers": [
-    "泰德·艾略特",
-    "特里·鲁西奥",
-    "Stuart Beattie（斯图尔特·贝亚蒂耶）",
-    "杰·沃尔伯特"
    ],
    "year": 2006
   }

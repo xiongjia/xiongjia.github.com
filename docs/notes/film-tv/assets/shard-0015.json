@@ -1,7 +1,105 @@
 {
  "count": 200,
- "first_date": "2013-11-30",
+ "first_date": "2013-12-01",
  "items": [
+  {
+   "casts": [
+    "宫内瞳",
+    "土屋太凤",
+    "工藤绫乃",
+    "山下莉绪"
+   ],
+   "category": "series",
+   "comment": "比较混乱...",
+   "cover": "covers/21348941/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/21348941/01.webp",
+   "date": "2013-12-01",
+   "directors": [
+    "塚原あゆ子",
+    "高野英治",
+    "加藤尚樹"
+   ],
+   "douban_score": 7.0,
+   "episodes": 12,
+   "genres": [
+    "剧情"
+   ],
+   "id": "21348941",
+   "missing": false,
+   "original_title": "リミット",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 30,
+   "slug": "limit",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Teleplay"
+   ],
+   "title": "界限",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/21348941/",
+   "writers": [
+    "清水友佳子",
+    "山岡潤平",
+    "すえのぶ けいこ(原作)"
+   ],
+   "year": 2013
+  },
+  {
+   "casts": [
+    "赵又廷",
+    "冯绍峰",
+    "林更新",
+    "金汎",
+    "杨颖",
+    "刘嘉玲",
+    "胡东",
+    "马京京",
+    "盛鉴",
+    "林朝绪"
+   ],
+   "category": "feature",
+   "cover": "covers/5996801/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5996801/01.webp",
+   "date": "2013-11-30",
+   "directors": [
+    "徐克"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "动作",
+    "悬疑",
+    "古装"
+   ],
+   "id": "5996801",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 133,
+   "slug": "young-detective-dee-rise-of-the-sea-dragon",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "狄仁杰之神都龙王",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/5996801/",
+   "writers": [
+    "张家鲁",
+    "徐克",
+    "陈国富"
+   ],
+   "year": 2013
+  },
   {
    "casts": [
     "矢作穗香",
@@ -9618,108 +9716,7 @@
     "阿迈德·扎帕"
    ],
    "year": 2012
-  },
-  {
-   "casts": [
-    "米仓凉子",
-    "田中圭",
-    "内田有纪",
-    "胜村政信",
-    "铃木浩介",
-    "紫吹淳",
-    "林丹丹",
-    "山本美月",
-    "岸部一德",
-    "室井滋"
-   ],
-   "category": "series",
-   "cover": "covers/11612463/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/11612463/01.webp",
-   "date": "2012-12-16",
-   "directors": [
-    "田村直己",
-    "松田秀知"
-   ],
-   "douban_score": 8.7,
-   "episodes": 8,
-   "genres": [
-    "剧情",
-    "喜剧",
-    "悬疑"
-   ],
-   "id": "11612463",
-   "missing": false,
-   "original_title": "ドクターX 外科医・大門未知子",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 46,
-   "slug": "x-1",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Teleplay"
-   ],
-   "title": "X医生：外科医生大门未知子 第1季",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/11612463/",
-   "writers": [
-    "中园美保",
-    "林诚人",
-    "寺田敏雄"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "Jake Gyllenhaal（杰克·吉伦哈尔）",
-    "迈克尔·佩纳",
-    "Anna Kendrick（安娜·肯德里克）",
-    "America Ferrera（亚美莉卡·费雷拉）",
-    "Frank Grillo（弗兰克·格里罗）",
-    "David Harbour（大卫·哈伯）",
-    "科迪·霍恩",
-    "娜塔丽·马丁内斯"
-   ],
-   "category": "feature",
-   "comment": "有点像第一人称射击游戏...",
-   "cover": "covers/6128922/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6128922/01.webp",
-   "date": "2012-12-15",
-   "directors": [
-    "David Ayer（大卫·阿耶）"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "剧情",
-    "动作",
-    "犯罪"
-   ],
-   "id": "6128922",
-   "missing": false,
-   "original_title": "End of Watch",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 109,
-   "slug": "end-of-watch",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "警戒结束",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/6128922/",
-   "writers": [
-    "David Ayer（大卫·阿耶）"
-   ],
-   "year": 2012
   }
  ],
- "last_date": "2012-12-15"
+ "last_date": "2012-12-16"
 }

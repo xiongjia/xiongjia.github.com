@@ -1,7 +1,108 @@
 {
  "count": 200,
- "first_date": "2012-12-15",
+ "first_date": "2012-12-16",
  "items": [
+  {
+   "casts": [
+    "米仓凉子",
+    "田中圭",
+    "内田有纪",
+    "胜村政信",
+    "铃木浩介",
+    "紫吹淳",
+    "林丹丹",
+    "山本美月",
+    "岸部一德",
+    "室井滋"
+   ],
+   "category": "series",
+   "cover": "covers/11612463/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/11612463/01.webp",
+   "date": "2012-12-16",
+   "directors": [
+    "田村直己",
+    "松田秀知"
+   ],
+   "douban_score": 8.7,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "悬疑"
+   ],
+   "id": "11612463",
+   "missing": false,
+   "original_title": "ドクターX 外科医・大門未知子",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 46,
+   "slug": "x-1",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Teleplay"
+   ],
+   "title": "X医生：外科医生大门未知子 第1季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/11612463/",
+   "writers": [
+    "中园美保",
+    "林诚人",
+    "寺田敏雄"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "Jake Gyllenhaal（杰克·吉伦哈尔）",
+    "迈克尔·佩纳",
+    "Anna Kendrick（安娜·肯德里克）",
+    "America Ferrera（亚美莉卡·费雷拉）",
+    "Frank Grillo（弗兰克·格里罗）",
+    "David Harbour（大卫·哈伯）",
+    "科迪·霍恩",
+    "娜塔丽·马丁内斯"
+   ],
+   "category": "feature",
+   "comment": "有点像第一人称射击游戏...",
+   "cover": "covers/6128922/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6128922/01.webp",
+   "date": "2012-12-15",
+   "directors": [
+    "David Ayer（大卫·阿耶）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "动作",
+    "犯罪"
+   ],
+   "id": "6128922",
+   "missing": false,
+   "original_title": "End of Watch",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 109,
+   "slug": "end-of-watch",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "警戒结束",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/6128922/",
+   "writers": [
+    "David Ayer（大卫·阿耶）"
+   ],
+   "year": 2012
+  },
   {
    "casts": [
     "Meryl Streep（梅丽尔·斯特里普）",
@@ -9556,95 +9657,7 @@
     "David Koepp（大卫·凯普）"
    ],
    "year": 2011
-  },
-  {
-   "casts": [
-    "岸谷五朗",
-    "深田恭子",
-    "木村多江",
-    "石黑贤"
-   ],
-   "category": "feature",
-   "cover": "covers/5998916/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5998916/01.webp",
-   "date": "2012-04-02",
-   "directors": [
-    "若松節朗"
-   ],
-   "douban_score": 5.6,
-   "genres": [
-    "剧情",
-    "犯罪"
-   ],
-   "id": "5998916",
-   "missing": false,
-   "original_title": "夜明けの街で",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 129,
-   "slug": "in-the-city-of-dawn",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "拂晓之街",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/5998916/",
-   "writers": [
-    "川崎いづみ"
-   ],
-   "year": 2011
-  },
-  {
-   "casts": [
-    "皆川纯子",
-    "置鲇龙太郎",
-    "诹访部顺一",
-    "细谷佳正",
-    "小野大辅"
-   ],
-   "category": "anime",
-   "cover": "covers/7161722/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/7161722/01.webp",
-   "date": "2012-04-01",
-   "directors": [
-    "山本秀世"
-   ],
-   "douban_score": 7.7,
-   "episodes": 13,
-   "genres": [
-    "剧情",
-    "动画",
-    "运动"
-   ],
-   "id": "7161722",
-   "missing": false,
-   "original_title": "新テニスの王子様",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 24,
-   "slug": "the-prince-of-tennis-ii",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Animation",
-    "Teleplay"
-   ],
-   "title": "新网球王子",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/7161722/",
-   "writers": [
-    "许斐刚"
-   ],
-   "year": 2012
   }
  ],
- "last_date": "2012-04-01"
+ "last_date": "2012-04-03"
 }

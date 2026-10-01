@@ -1,7 +1,105 @@
 {
  "count": 200,
- "first_date": "2016-05-06",
+ "first_date": "2016-05-13",
  "items": [
+  {
+   "casts": [
+    "何家劲",
+    "魏秋桦",
+    "李小璐",
+    "鲍正芳",
+    "叶静",
+    "王佩韵",
+    "张振寰",
+    "萧岱青",
+    "鹿峰"
+   ],
+   "category": "series",
+   "cover": "covers/3092095/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3092095/01.webp",
+   "date": "2016-05-13",
+   "directors": [
+    "王钟",
+    "鹿峰",
+    "宗华"
+   ],
+   "douban_score": 7.8,
+   "episodes": 24,
+   "genres": [
+    "剧情",
+    "动作",
+    "爱情",
+    "武侠",
+    "古装"
+   ],
+   "id": "3092095",
+   "missing": false,
+   "original_title": "少年張三豐",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "台湾"
+   ],
+   "runtime": null,
+   "slug": "douban-3092095",
+   "status": "collect",
+   "tags": [
+    "CHS",
+    "Teleplay"
+   ],
+   "title": "少年张三丰",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/3092095/",
+   "writers": [
+    "焦雄健",
+    "石惠"
+   ],
+   "year": 1991
+  },
+  {
+   "casts": [
+    "陈坤",
+    "白百何",
+    "秦昊",
+    "喻恩泰",
+    "王彦霖",
+    "尹昉",
+    "李九霄",
+    "张亦驰",
+    "凌琳",
+    "陈诺"
+   ],
+   "category": "feature",
+   "cover": "covers/25662327/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25662327/01.webp",
+   "date": "2016-05-07",
+   "directors": [
+    "杨庆"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
+   "id": "25662327",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 98,
+   "slug": "chongqing-hot-pot",
+   "status": "collect",
+   "tags": [],
+   "title": "火锅英雄",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/25662327/",
+   "writers": [
+    "杨庆"
+   ],
+   "year": 2016
+  },
   {
    "casts": [
     "Sarah Jessica Parker（莎拉·杰茜卡·帕克）",
@@ -9797,114 +9895,7 @@
     "いずみ吉紘"
    ],
    "year": 2015
-  },
-  {
-   "casts": [
-    "Amy Poehler（艾米·波勒）",
-    "Phyllis Smith（菲利丝·史密斯）",
-    "Richard Kind（理查德·坎德）",
-    "Bill Hader（比尔·哈德尔）",
-    "刘易斯·布莱克",
-    "敏迪·卡灵",
-    "凯特林·迪亚斯",
-    "Diane Lane（戴安·琳恩）",
-    "Kyle MacLachlan（凯尔·麦克拉克伦）",
-    "波拉·庞德斯通"
-   ],
-   "category": "anime",
-   "comment": "世事不如意,十之八九...不思八九,常想一二...",
-   "cover": "covers/10533913/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10533913/01.webp",
-   "date": "2015-10-02",
-   "directors": [
-    "Pete Docter（彼特·道格特）",
-    "Ronaldo Del Carmen（罗纳尔多·德尔·卡门）"
-   ],
-   "douban_score": 8.9,
-   "genres": [
-    "喜剧",
-    "动画",
-    "冒险"
-   ],
-   "id": "10533913",
-   "missing": false,
-   "original_title": "Inside Out",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 95,
-   "slug": "inside-out",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "Animation",
-    "ENU"
-   ],
-   "title": "头脑特工队",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/10533913/",
-   "writers": [
-    "Pete Docter（彼特·道格特）",
-    "Ronaldo Del Carmen（罗纳尔多·德尔·卡门）",
-    "梅格·勒福夫",
-    "Josh Cooley（乔什·库雷）",
-    "迈克尔·阿恩特",
-    "西蒙·里奇",
-    "Bob Peterson（鲍勃·彼德森）",
-    "Bill Hader（比尔·哈德尔）",
-    "Amy Poehler（艾米·波勒）"
-   ],
-   "year": 2015
-  },
-  {
-   "casts": [
-    "赵又廷",
-    "姚晨",
-    "凤小岳",
-    "李晨",
-    "唐嫣",
-    "冯粒",
-    "李光洁",
-    "王庆祥",
-    "吴军",
-    "王德顺"
-   ],
-   "category": "feature",
-   "comment": "故事混乱...除了猪脚团名字和”鬼吹灯”没有联系，我赶脚你还是改名胡建军好些",
-   "cover": "covers/24827406/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/24827406/01.webp",
-   "date": "2015-10-01",
-   "directors": [
-    "陆川"
-   ],
-   "douban_score": 4.4,
-   "genres": [
-    "动作",
-    "惊悚",
-    "冒险"
-   ],
-   "id": "24827406",
-   "missing": false,
-   "pending": false,
-   "rating": 1,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 115,
-   "slug": "chronicles-of-the-ghostly-tribe",
-   "status": "collect",
-   "tags": [],
-   "title": "九层妖塔",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/24827406/",
-   "writers": [
-    "陆川",
-    "天下霸唱"
-   ],
-   "year": 2015
   }
  ],
- "last_date": "2015-10-01"
+ "last_date": "2015-10-02"
 }

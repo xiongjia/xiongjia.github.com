@@ -1,7 +1,112 @@
 {
  "count": 200,
- "first_date": "2015-04-06",
+ "first_date": "2015-04-09",
  "items": [
+  {
+   "casts": [
+    "泽城美雪",
+    "丰永利行",
+    "宫野真守",
+    "花泽香菜",
+    "神谷浩史",
+    "小野大辅",
+    "福山润",
+    "中村悠一",
+    "梶裕贵",
+    "高垣彩阳"
+   ],
+   "category": "anime",
+   "cover": "covers/25846907/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25846907/01.webp",
+   "date": "2015-04-09",
+   "directors": [
+    "大森贵弘",
+    "菅沼荣治",
+    "米田光宏",
+    "前园文夫",
+    "关田修",
+    "有江勇树",
+    "古谷田顺久"
+   ],
+   "douban_score": 8.9,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "动画"
+   ],
+   "id": "25846907",
+   "missing": false,
+   "original_title": "デュラララ!!×2 承",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "douban-25846907",
+   "status": "collect",
+   "tags": [
+    "Animation",
+    "Movie",
+    "JPN"
+   ],
+   "title": "无头骑士异闻录第二季：承",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25846907/",
+   "writers": [
+    "成田良悟",
+    "高木登",
+    "吉永亚矢",
+    "村井贞之",
+    "根元岁三"
+   ],
+   "year": 2015
+  },
+  {
+   "casts": [
+    "马景涛",
+    "范文芳",
+    "郑秀珍",
+    "陈秀丽",
+    "李锦梅",
+    "周初明"
+   ],
+   "category": "series",
+   "cover": "covers/1786724/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1786724/01.webp",
+   "date": "2015-04-09",
+   "directors": [
+    "霍志楷"
+   ],
+   "douban_score": 6.4,
+   "episodes": 40,
+   "genres": [
+    "武侠",
+    "古装"
+   ],
+   "id": "1786724",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "新加坡"
+   ],
+   "runtime": 46,
+   "slug": "douban-1786724",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "CHS"
+   ],
+   "title": "笑傲江湖",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/1786724/",
+   "writers": [
+    "帅雪芳",
+    "金庸"
+   ],
+   "year": 2000
+  },
   {
    "casts": [
     "Eddie Redmayne（埃迪·雷德梅恩）",
@@ -9781,95 +9886,7 @@
     "伊恩·弗莱明"
    ],
    "year": 2002
-  },
-  {
-   "casts": [
-    "张东健",
-    "元斌",
-    "李恩宙",
-    "孔炯轸",
-    "崔岷植"
-   ],
-   "category": "feature",
-   "comment": "多好的一家...可惜生不逢时...",
-   "cover": "covers/1304972/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1304972/01.webp",
-   "date": "2014-09-12",
-   "directors": [
-    "姜帝圭"
-   ],
-   "douban_score": 8.3,
-   "genres": [
-    "剧情",
-    "动作",
-    "战争"
-   ],
-   "id": "1304972",
-   "missing": false,
-   "original_title": "태극기 휘날리며",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 148,
-   "slug": "brotherhood",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "KOR"
-   ],
-   "title": "太极旗飘扬",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1304972/",
-   "writers": [
-    "姜帝圭",
-    "韩知勋"
-   ],
-   "year": 2004
-  },
-  {
-   "casts": [
-    "大泽隆夫",
-    "松雪泰子",
-    "小林凉子"
-   ],
-   "category": "feature",
-   "cover": "covers/1796778/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1796778/01.webp",
-   "date": "2014-09-11",
-   "directors": [
-    "河野圭太"
-   ],
-   "douban_score": 8.0,
-   "genres": [
-    "剧情",
-    "家庭"
-   ],
-   "id": "1796778",
-   "missing": false,
-   "original_title": "子ぎつねヘレン",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 104,
-   "slug": "douban-1796778",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Movie"
-   ],
-   "title": "子狐物语",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1796778/",
-   "writers": [
-    "竹田津实",
-    "今井雅子"
-   ],
-   "year": 2006
   }
  ],
- "last_date": "2014-09-11"
+ "last_date": "2014-09-18"
 }

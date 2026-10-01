@@ -1,6 +1,86 @@
 # Film & TV archive — top-level fields are machine-owned and rewritten from
 # Douban on every sync; edit the `user:` block freely, it is never touched.
 # generated_at: 2026-09-27T16:21+08:00
+- id: "35464353"
+  title: 大唐妖探
+  original_title: null
+  year: 2026
+  type: movie
+  category: anime
+  status: collect
+  user_rating: 2
+  douban_score: 6.3
+  douban_score_count: 11406
+  marked_at: "2026-10-02"
+  douban_comment: null
+  tags: []
+  genres: [喜剧, 动画, 悬疑, 奇幻]
+  regions: [中国]
+  languages: [汉语普通话]
+  runtime: 117
+  credits:
+    directors: [程腾, 黄珉]
+    casts: [雷淞然, 张呈, 蔡海婷, 张喆, 王凯, 范哲琛]
+    writers: [张淳, 程腾]
+  slug: demon-agent
+  covers:
+  - covers/35464353/01.webp
+  douban_url: https://movie.douban.com/subject/35464353/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-10-02"
+    taxonomy_version: 2
+    fingerprint: a88d23a5
+    machine_hash: af829033
+    missing_since: null
+    missing_reason: null
+- id: "36828393"
+  title: 野兽之心
+  original_title: Heart of the Beast
+  year: 2026
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 4
+  douban_score: null
+  douban_score_count: null
+  marked_at: "2026-10-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 动作, 冒险]
+  regions: [美国]
+  languages: [英语]
+  runtime: 102
+  credits:
+    directors: [David Ayer（大卫·阿耶）]
+    casts: [Brad Pitt（布拉德·皮特）, Uber, J.K. Simmons（J·K·西蒙斯）, Anna Lambe（安娜·兰贝）]
+    writers: [卡梅伦·亚历山大]
+  slug: heart-of-the-beast
+  covers:
+  - covers/36828393/01.webp
+  douban_url: https://movie.douban.com/subject/36828393/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-10-02"
+    taxonomy_version: 2
+    fingerprint: 94f6e440
+    machine_hash: 9f4bd305
+    missing_since: null
+    missing_reason: null
 - id: "36318703"
   title: 逃出绝命街
   original_title: The End of Oak Street
