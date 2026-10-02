@@ -32,6 +32,7 @@ hide:
 - 📖 [CS50P 中文精读笔记](https://github.com/LesleyFung/cs50p-notes/) — LesleyFung（CS50's Introduction to Programming with Python 课程精读笔记）
 - 📖 [Think Stats, 3rd edition](https://allendowney.github.io/ThinkStats/) — Allen B. Downey（免费在线书：Python 程序员的概率统计入门）
 - 📖 [Mini-LSM](https://github.com/skyzh/mini-lsm) — skyzh（三周动手课程：用 Rust 从零实现 LSM 存储引擎，覆盖 memtable/SST、compaction、崩溃恢复、MVCC 与事务）
+- 📖 [CSAPP 中文文档与学习资料](https://github.com/SunnyMaria/csapp-zh-markdown) — SunnyMaria（《深入理解计算机系统》第三版全章节 Markdown，含练习题答案、八大实验中文翻译及官方自学实验包）
 
 #### 🗞️ Paper Discovery
 
