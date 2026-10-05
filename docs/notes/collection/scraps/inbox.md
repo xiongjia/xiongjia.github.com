@@ -11,3 +11,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 
 2026-09-28 https://cdyforever.github.io/how-to-live-better/
 2026-10-05 https://github.com/ythx-101/live-panel-skill
+2026-10-06 https://github.com/ikatson/rqbit
