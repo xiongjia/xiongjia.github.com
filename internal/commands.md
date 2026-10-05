@@ -131,26 +131,28 @@ Details:
 
 Opening a new book/article → add an entry to `## Reading Items` in
 `internal/plans/reading-items.md` (the queue file: template comment + entries +
-`## 记录（Log）` 完成/失败 sections — entry format and status semantics are
-documented there in Chinese; the dev plan `internal/plans/arch/reading-assist.md`
+the `## 记录（Log）` 完成/失败 (done/failed) sections — entry format and status
+semantics are documented there in Chinese; the dev plan
+`internal/plans/arch/reading-assist.md`
 keeps design/tasks only, so run history never mixes into it):
 
-1. Duplicate the「模板」comment block, uncomment the copy and fill it in
-   (**keep the template block itself commented** — the parser skips it).
-   Entry keys are the Chinese display names (`slug` / `类型` / `出处` /
-   `状态` / `原材料` / `输出`):
+1. Duplicate the `模板` (template) comment block, uncomment the copy and fill
+   it in (**keep the template block itself commented** — the parser skips it).
+   Entry keys are the Chinese display names (`slug` / `类型` type / `出处`
+   source / `状态` state / `原材料` raw material / `输出` output):
    - **slug**: kebab-case, only `[a-z0-9-]` (e.g. `ddia`; a Chinese book
      title goes in the page `title`, never in filenames)
-   - **类型**: `book` | `novel` | `article` | `paper`
-   - **出处**: Douban entry / URL / DOI (books: bibliography info only)
-   - **状态**: `not-started`
-   - **原材料**: book/novel = a local pdf/epub under the git-ignored `external/`
+   - **类型** (type): `book` | `novel` | `article` | `paper`
+   - **出处** (source): Douban entry / URL / DOI (books: bibliography info only)
+   - **状态** (state): `not-started`
+   - **原材料** (raw material): book/novel = a local pdf/epub under the git-ignored
+     `external/`
      (e.g. `{projectRoot}/external/book/ddia.epub` — never committed);
      article/paper = URL. **Multiple sources are space-separated in one field**
      — a series of articles = several URLs (each URL becomes one `part-000N`
      page), a book split into volumes = several local files (each file = one
      volume `part` page)
-   - **输出**: `docs/notes/reading/<slug>/`
+   - **输出** (output): `docs/notes/reading/<slug>/`
 1. `poe reading-assist list` — confirm the entry is visible (validated)
 1. Start organizing in two steps (or `run <slug>` for both at once):
    - `poe reading-assist cache <slug>` — step 1: fetch/extract sources into
@@ -159,7 +161,8 @@ keeps design/tasks only, so run history never mixes into it):
      (`run` alone picks the first `not-started` entry; `--dry-run` prints the
      selected entry + prompt without calling the AI)
 1. After a successful read the entry state auto-set → `organized` (整理完成 —
-   **not** "you finished reading"); you then adjust the notes by hand and
+   organization done, **not** "you finished reading"); you then adjust the notes
+   by hand and
    commit on your own schedule (no auto PR)
 1. In-reading interactions (Q&A / summary edits / marking read) go through the
    skill trigger words `ask <slug> …` / `done <slug>` (see
@@ -167,7 +170,8 @@ keeps design/tasks only, so run history never mixes into it):
 
 **Local file placement & resolution**: put pdfs/epubs anywhere under the
 git-ignored `external/` (conventionally `external/book/`; never committed).
-`原材料` accepts three forms: an explicit `{projectRoot}/…` path (e.g.
+`原材料` (raw material) accepts three forms: an explicit `{projectRoot}/…` path
+(e.g.
 `{projectRoot}/external/book/1.pdf` — `{projectRoot}` is replaced with the
 repo root, so it works from any checkout), a relative path (tried in order:
 repo root, `external/<path>`, `external/book/<path>`), or an absolute path
@@ -177,9 +181,10 @@ Abort branch (silent exit, zero output — no pages): no entry (also no log
 record) / local file missing / pdf·epub unparseable / URL unreachable / page
 with no readable text (JS-rendered) or too large (provide a local pdf). **Outcome records**: every completed / failed / aborted run
 writes one line per (slug, result) in the `## 记录（Log）` section of
-`internal/plans/reading-items.md` (done → 完成; pi error / no index / mdformat
-failure → 失败; unusable source → 放弃) — re-running the same slug **refreshes**
-the line instead of appending, so the log never grows with repeated runs.
+`internal/plans/reading-items.md` (done → 完成 (done); pi error / no index /
+mdformat failure → 失败 (failed); unusable source → 放弃 (abandoned)) —
+re-running the same slug **refreshes** the line instead of appending, so the log
+never grows with repeated runs.
 
 Full spec: `internal/plans/arch/reading-assist.md`; queue: `internal/plans/reading-items.md`;
 system design: `internal/reading-assist-design.md`.
@@ -353,80 +358,102 @@ Summary: 2 issue(s) found → exit 1
 | `poe sync-film-tv`                   | Sync the collection into `docs/notes/film-tv/data/*.yml`      |
 | `poe film-tv-check [--check-remote]` | Validate the archive (keys, year files, slugs, taxonomy, R2)  |
 
-**四个常用场景（照着做即可）**：
+**Four common scenarios (just follow along)**:
 
-### 1. 首次同步（把豆瓣记录全量落到本站）
+### 1. First sync (land the whole Douban collection on the site)
 
 ```bash
-# 1) 登录一次（弹出浏览器，手工过滑块/验证码，之后自动取 cookie）
+# 1) Log in once (opens a browser; solve the slider/CAPTCHA by hand, the cookie is captured afterwards)
 uv run poe film-tv-login
 
-# 2) 第一遍：把整个收藏列表落成骨架（约 144 页，会中途从匿名回退到账号会话）
+# 2) First pass: turn the whole collection list into skeletons (~144 pages; it falls back from anonymous to the account session mid-way)
 uv run poe sync-film-tv --full --limit 0
 
-# 3) 补详情 + 封面：分批跑（每批 300 条≈15–20 分钟；新条目永远优先）
-uv run poe sync-film-tv --limit 300      # 反复执行，直到 queue: 0 details
+# 3) Fill in details + covers: run in batches (300 items ≈ 15–20 min each; new items always come first)
+uv run poe sync-film-tv --limit 300      # repeat until queue: 0 details
 ```
 
-- 进度看每批结尾的 `details N | covers M | failed F | …`；`film-tv-check` 的
-  `details pending` 归零即补齐
-- 每批结束会自动跑 `film-tv-derive`（分片/索引/stats/people 都是它生成的）
-- 走查可中断可续：`--full` 每页把游标写进 `.cache/film-tv/state/walk.json`，下次 `--full` 从
-  断点继续（增量跑不读也不写游标，`--prune` 绝不复用游标）；空列表页会先重试，**页头
-  `total` 还没收齐就中止**而不是静默截断
-- 完整性自检：`film-tv-check` 现在把「活记录数」和 `walk.json` 里各 tab 的页头 total 比对，
-  偏少直接报 `walk-total` 错误（截断不会再被当成同步成功）
-- 本地封面重复文件：`uv run poe sync-film-tv --dedupe-covers`（默认 dry-run，`--confirm`
-  才真删；只删同一 subject 目录下与「已被引用」封面字节相同的孤立副本）
+- Watch progress in the `details N | covers M | failed F | …` line at the end of
+  each batch; once `details pending` in `film-tv-check` reaches zero, everything
+  is filled in
+- Each batch runs `film-tv-derive` automatically at the end (it generates the
+  shards / index / stats / people files)
+- The walk is resumable: `--full` writes its cursor into
+  `.cache/film-tv/state/walk.json` on every page, and the next `--full` continues
+  from that point (incremental runs neither read nor write the cursor; `--prune`
+  never reuses it); empty list pages are retried first, and it **aborts rather
+  than silently truncating when the page-header `total` has not been fully
+  collected**
+- Integrity self-check: `film-tv-check` now compares the live record count with
+  the page-header total of each tab in `walk.json` and reports a `walk-total`
+  error when it falls short (a truncated walk no longer counts as a successful
+  sync)
+- Duplicate local cover files: `uv run poe sync-film-tv --dedupe-covers`
+  (dry-run by default; only `--confirm` really deletes; it removes orphan copies
+  in the same subject directory whose bytes match an already-referenced cover)
 
-### 2. 上传封面到 bucket（R2）
+### 2. Upload covers to the bucket (R2)
 
 ```bash
-uv run poe film-tv-upload-covers                 # 先 dry-run：看有哪些没传
-uv run poe film-tv-upload-covers --confirm       # 真传（rclone copy，绝不删远端）
-uv run poe film-tv-check --check-remote          # 校对：引用都在 R2、列出孤儿
+uv run poe film-tv-upload-covers                 # dry-run first: see what is not uploaded yet
+uv run poe film-tv-upload-covers --confirm       # really upload (rclone copy; never deletes on the remote)
+uv run poe film-tv-check --check-remote          # cross-check: all references exist in R2, orphans listed
 ```
 
-- 同步只把封面**缓存到本地** `docs/assets/bucket/film-tv/covers/<douban_id>/`（git-ignored），
-  上传是开发者的动作；凭据只在本地 rclone 配置里
-- 远端目录与本地镜像同构：`<remote_prefix>/covers/<douban_id>/NN.webp`（`covers/` 这一段
-  必须保留，否则 `cover_url` 全部 404）
-- 分批可用 `--limit 200`；单条补传 `--only <id|slug>`
-- 传完页面走 R2 主链接；没传时前端自动回退本地镜像（本地预览正常，控制台会有一次 404）
+- The sync only **caches covers locally**
+  (`docs/assets/bucket/film-tv/covers/<douban_id>/`, git-ignored); uploading is
+  the developer's step, and credentials stay in the local rclone config
+- The remote layout mirrors the local one:
+  `<remote_prefix>/covers/<douban_id>/NN.webp` (the `covers/` segment must be
+  kept, otherwise every `cover_url` 404s)
+- Batches via `--limit 200`; upload a single item via `--only <id|slug>`
+- Uploaded pages use the R2 primary URL; when a cover is missing the frontend
+  falls back to the local mirror (local preview works, with one 404 in the
+  console)
 
-### 3. 增量更新（日常只有这一步）
+### 3. Incremental update (the only daily step)
 
 ```bash
-uv run poe sync-film-tv                   # 新增/变更条目 + 继续补 50 条待补详情
-uv run poe film-tv-upload-covers --confirm   # 有新封面才需要
+uv run poe sync-film-tv                   # new/changed items + continue filling 50 pending details
+uv run poe film-tv-upload-covers --confirm   # only needed when there are new covers
 ```
 
-- 默认列表走查只翻 1–3 页（指纹短路），**列表请求匿名、账号零调用**；详情才用 cookie
-- 想连续补齐待补详情：`uv run poe sync-film-tv --limit 300`（可反复跑）
-- 在豆瓣改了几条短评/标签：`uv run poe sync-film-tv --refresh-details 20`（绕过指纹短路重读详情）
-- 只看某一条：`uv run poe sync-film-tv --only <slug> [--covers 8]`
-- 清理已从收藏里移除的条目：`uv run poe sync-film-tv --prune --dry-run`（确认后去掉 `--dry-run`）
-- 手改了年份 yml 之后：`uv run poe film-tv-derive`（只重算派生文件）
+- By default the list walk only turns 1–3 pages (fingerprint short-circuit), and
+  **list requests are anonymous — zero account calls**; only details use the
+  cookie
+- To keep filling pending details: `uv run poe sync-film-tv --limit 300`
+  (repeatable)
+- Changed a few reviews/tags on Douban:
+  `uv run poe sync-film-tv --refresh-details 20` (bypasses the fingerprint
+  short-circuit and re-reads the details)
+- A single item: `uv run poe sync-film-tv --only <slug> [--covers 8]`
+- Drop entries removed from the collection:
+  `uv run poe sync-film-tv --prune --dry-run` (drop `--dry-run` once confirmed)
+- After editing a year YAML by hand: `uv run poe film-tv-derive` (recomputes the
+  derived files only)
 
-### 4. AI 总结（归档页「🤖 观影总结」区块）
+### 4. AI summary (the 「🤖 观影总结」 block on the archive page)
 
 ```bash
-uv run poe update-film-tv-summary              # 调本地 pi CLI 生成，写入页面区块
-uv run poe update-film-tv-summary --dry-run    # 只看提示词（不调 AI）
+uv run poe update-film-tv-summary              # call the local pi CLI, write into the page block
+uv run poe update-film-tv-summary --dry-run    # print the prompt only (no AI call)
 uv run poe update-film-tv-summary --model anthropic/claude-sonnet-4
-uv run poe update-film-tv-summary --output /tmp/summary.md   # 写到别处预览
+uv run poe update-film-tv-summary --output /tmp/summary.md   # write elsewhere for preview
 ```
 
-- 只重写 `docs/notes/film-tv/index.md` 里 `<!-- ai-summary:begin -->…<!-- ai-summary:end -->`
-  之间的内容，**不碰页面其它文字**；pi 调用失败则页面保持原样
-- 摘要正文用中文（页面内容），数据来自 `assets/stats.yml` / `people.yml` / 分片
+- It only rewrites the content between
+  `<!-- ai-summary:begin -->…<!-- ai-summary:end -->` in
+  `docs/notes/film-tv/index.md` and **leaves the rest of the page untouched**;
+  if the pi call fails the page stays as it is
+- The summary body is in Chinese (page content); the data comes from
+  `assets/stats.yml` / `people.yml` / the shards
 
 Pages: `/notes/film-tv/` (overview + all records), `/notes/film-tv/movies/`,
-`/notes/film-tv/tv/`, `/notes/film-tv/people/` (影人榜). The index page carries the
-aggregate statistics + AI summary, and each of the three list pages carries its own
-collapsible watch-volume chart (scoped to 「电影」/「剧集」 on the type pages). Person
-names in the detail dialog and in the people boards link back to
-`/notes/film-tv/?person=<名字>`.
+`/notes/film-tv/tv/`, `/notes/film-tv/people/` (影人 person boards). The index page
+carries the aggregate statistics + AI summary, and each of the three list pages
+carries its own collapsible watch-volume chart (scoped to 「电影」/「剧集」 —
+movies / TV — on the type pages). Person names in the detail dialog and in the
+people boards link back to `/notes/film-tv/?person=<name>`.
 
 Notes:
 
@@ -443,9 +470,10 @@ Notes:
   (`slug: ""`, detail fields `null`); the detail pass fills them in. Pending
   records show up as `details pending` in `film-tv-check`.
 - **Person directory**: `docs/notes/film-tv/data/person-ids.yml` holds
-  `personage id → 显示名`, grown by every sync. Use the id to fetch extra person info
-  later (`https://www.douban.com/personage/<id>/`); `assets/people.yml` carries it as
-  `douban_id` / `douban_url` for the 影人 boards.
+  `personage id → 显示名` (display name), grown by every sync. Use the id to fetch
+  extra person info later (`https://www.douban.com/personage/<id>/`);
+  `assets/people.yml` carries it as `douban_id` / `douban_url` for the 影人
+  (people) boards.
 - **Cover flow**: the sync only **caches covers locally**
   (`docs/assets/bucket/film-tv/covers/<douban_id>/`, git-ignored) — it never touches
   the bucket and needs no R2 credentials. `poe film-tv-upload-covers` is the
