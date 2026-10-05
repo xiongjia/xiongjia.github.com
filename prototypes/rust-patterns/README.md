@@ -30,9 +30,10 @@ just doc                 # rustdoc: the write-ups live in doc comments
 
 ## Patterns
 
-| `id`         | What it shows           |
-| ------------ | ----------------------- |
-| `error_enum` | Hand-written error enum |
+| `id`         | What it shows            |
+| ------------ | ------------------------ |
+| `error_enum` | Hand-written error enum  |
+| `builder`    | Named construction chain |
 
 ### `error_enum`
 
@@ -55,6 +56,31 @@ reads like a sentence:
   the walkthrough — the real file has no such wrapper); closest book section:
   [Idiomatic Errors](https://rust-unofficial.github.io/patterns/idioms/ffi/errors.html)
 
+### `builder`
+
+Constructing a type with several (mostly optional) fields, one named value at a
+time:
+
+- **What it shows**: a `Command` whose fields are private behind three getters,
+  plus the `CommandBuilder` that writes them — `program` / `arg` / `timeout_secs`
+  setters that each name one value, take `self` and return `Self`; the defaults
+  kept in `Default::default()` as the single source, with `new()` delegating to
+  it so the two cannot drift apart; `arg` appending in call order instead of
+  making the caller build a `Vec`; and a `build()` that consumes the builder, so
+  a half-configured one cannot be reused by mistake
+- **Run it**: `cargo run builder` (the walkthrough shows the positional call the
+  builder replaces, then the same command as a chain, then what only the builder
+  can say — the default it kept and the argument order it preserved)
+- **Source**: [src/patterns/builder.rs](./src/patterns/builder.rs)
+- **Comes from**: [Builder](https://rust-unofficial.github.io/patterns/patterns/creational/builder.html)
+  in Rust Design Patterns; the write-up also covers `&mut self` versus consuming
+  `self`, when `build` should return a `Result`, and how `derive_builder`'s
+  generated setters differ by default (they borrow with `&mut self` and its
+  `build` takes `&self`, so one builder can be built more than once;
+  `#[builder(pattern = "owned")]` opts into consuming setters instead). The
+  typestate form (required fields encoded in the type, so `build` only exists
+  once they are set) is left as a pattern of its own
+
 ## Possible next patterns
 
 Candidates for later, picked up when real code asks for them again — **this list
@@ -65,7 +91,6 @@ the reasoning and the book section for each
 - `coercion-arguments` — `&str` over `&String` in public APIs
 - `ctor` / `default` — `new` vs `Default`
 - `newtype` — type safety at no cost
-- `builder` — ownership-friendly construction, optional typestate form
 - `strategy` — closure vs `dyn` vs a generic parameter
 - `raii-guards` / `dtor-finally` — `Drop` cleanup, lock guards
 - `visitor` / `command` / `interpreter` — see how they look in Rust

@@ -26,6 +26,13 @@
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[rust]": {
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "rust-lang.rust-analyzer",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "explicit"
+    }
+  },
   // Rust prototypes live two levels down (prototypes/<name>/Cargo.toml), which
   // rust-analyzer's project discovery does not reach: it only looks at the
   // workspace root and its direct subdirectories, so it would report

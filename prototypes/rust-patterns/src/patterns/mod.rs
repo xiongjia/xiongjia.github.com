@@ -5,6 +5,7 @@
 
 use crate::demo::DemoFn;
 
+pub mod builder;
 pub mod error_enum;
 
 /// One runnable pattern.
@@ -22,11 +23,18 @@ pub struct Pattern {
 }
 
 /// Every pattern, in the order the listing shows them.
-pub const PATTERNS: &[Pattern] = &[Pattern {
-    id: "error_enum",
-    summary: "hand-written error enum: variants, context helpers, Display/source chain",
-    demo: error_enum::demo,
-}];
+pub const PATTERNS: &[Pattern] = &[
+    Pattern {
+        id: "error_enum",
+        summary: "hand-written error enum: variants, context helpers, Display/source chain",
+        demo: error_enum::demo,
+    },
+    Pattern {
+        id: "builder",
+        summary: "named construction: defaults, chained setters, a consuming build",
+        demo: builder::demo,
+    },
+];
 
 /// Look a pattern up by the id typed on the command line.
 #[must_use]
@@ -46,6 +54,12 @@ mod tests {
             assert!(
                 !pattern.summary.is_empty(),
                 "{} has no summary for the listing",
+                pattern.id
+            );
+            assert_eq!(
+                pattern.summary.trim(),
+                pattern.summary,
+                "{} has a padded summary, which shifts the listing",
                 pattern.id
             );
             assert!(
