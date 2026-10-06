@@ -30,6 +30,7 @@ hide:
 
 - [abseil](https://abseil.io/) - C++ 标准库扩展
 - [QuickJS](https://bellard.org/quickjs/) - 轻量可嵌入的 JavaScript 引擎（C，ES2020，作者 Fabrice Bellard）
+- [quickjs-ng](https://github.com/quickjs-ng/quickjs) - QuickJS 的社区维护分支（Next Generation）
 
 ## Tutorials / Learning
 
