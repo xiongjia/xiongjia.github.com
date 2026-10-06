@@ -6,6 +6,7 @@
 use crate::demo::DemoFn;
 
 pub mod builder;
+pub mod command;
 pub mod error_enum;
 
 /// One runnable pattern.
@@ -33,6 +34,11 @@ pub const PATTERNS: &[Pattern] = &[
         id: "builder",
         summary: "named construction: defaults, chained setters, a consuming build",
         demo: builder::demo,
+    },
+    Pattern {
+        id: "command",
+        summary: "commands as values: an edit enum, a queue and an undo stack",
+        demo: command::demo,
     },
 ];
 

@@ -30,10 +30,11 @@ just doc                 # rustdoc: the write-ups live in doc comments
 
 ## Patterns
 
-| `id`         | What it shows            |
-| ------------ | ------------------------ |
-| `error_enum` | Hand-written error enum  |
-| `builder`    | Named construction chain |
+| `id`         | What it shows                 |
+| ------------ | ----------------------------- |
+| `error_enum` | Hand-written error enum       |
+| `builder`    | Named construction chain      |
+| `command`    | Commands as data: queue, undo |
 
 ### `error_enum`
 
@@ -81,6 +82,28 @@ time:
   typestate form (required fields encoded in the type, so `build` only exists
   once they are set) is left as a pattern of its own
 
+### `command`
+
+A request wrapped in a value, so it can be built now and run later:
+
+- **What it shows**: the command pattern in its Rust shape — an `Edit` enum
+  (`Insert` / `Delete`) whose `apply(self, &mut Document)` runs against the
+  document and **returns the command that undoes it**, which is why one
+  `Vec<Edit>` is the queue and, read backwards, the undo stack; an `Editor` that
+  owns the document and that stack, so the inverses it remembers are inverses of
+  what actually happened; positions counted in characters, not bytes, and a
+  `Display` so a queued command logs as one line
+- **Run it**: `cargo run command` (the walkthrough builds a queue without
+  touching the document, runs it, then undoes it command by command)
+- **Source**: [src/patterns/command.rs](./src/patterns/command.rs)
+- **Comes from**: [Command](https://rust-unofficial.github.io/patterns/patterns/behavioural/command.html)
+  in Rust Design Patterns, which shows `Box<dyn Migration>` with `execute` /
+  `rollback` and then function pointers; this file stays with the enum form and
+  returns the inverse instead of writing a `rollback` method per command, so undo
+  is one stack and one `apply` (the open-set form is described in the `Edit`
+  doc but not built — `strategy` / `enum-dispatch` are the patterns for that
+  trade-off)
+
 ## Possible next patterns
 
 Candidates for later, picked up when real code asks for them again — **this list
@@ -93,7 +116,7 @@ the reasoning and the book section for each
 - `newtype` — type safety at no cost
 - `strategy` — closure vs `dyn` vs a generic parameter
 - `raii-guards` / `dtor-finally` — `Drop` cleanup, lock guards
-- `visitor` / `command` / `interpreter` — see how they look in Rust
+- `visitor` / `interpreter` — see how they look in Rust
 - `fold` — build structures with `Iterator::fold`
 - `compose-structs` / `trait-for-bounds` — split fat types, narrow bounds
 - `unsafe-mods` — keep `unsafe` in one small module behind a safe API
