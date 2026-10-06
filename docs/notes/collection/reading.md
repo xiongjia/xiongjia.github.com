@@ -38,6 +38,8 @@ hide:
 
 - [arXiv Daily](https://www.arxivdaily.com/) - 每日 arXiv 论文/趋势推送
 
+- 📖 [高性价比人生指南（全书 34 节）](https://cdyforever.github.io/how-to-live-better/) — cdyforever（665 条建议，每条标注成本、收益、证据等级 A/B/C 与原始文献链接；单文件、可离线阅读）
+
 ### 📝 Notes
 
 - 📝 [Write a TSDB from scratch](https://nakabonne.dev/posts/write-tsdb-from-scratch/) — tstorage 作者系列文章：从零实现 TSDB

@@ -26,6 +26,7 @@ hide:
 - [best-skills](https://github.com/xstongxue/best-skills) - Skill 排行榜
 - [OpenCodeCN Skills](https://www.opencodecn.com/docs/skills/top-6-skill-collections) - Skill 集合
 - [excalidraw-mcp](https://github.com/excalidraw/excalidraw-mcp) - Excalidraw MCP 服务
+- [live-panel-skill](https://github.com/ythx-101/live-panel-skill) - 配置驱动的动画架构图：一个 JSON 生成终端风格常驻动图或浅色信息图，输出 H.264 mp4 / 实时网页（同时是 Claude Code 风格 skill）
 
 ## AI CLI
 

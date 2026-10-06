@@ -25,6 +25,7 @@ hide:
 - [Radarr](https://github.com/Radarr/Radarr) - 电影管理与自动下载
 - [Jackett](https://github.com/Jackett/Jackett) - 找源工具
 - [seerr](https://github.com/seerr-team/seerr) - 媒体请求管理
+- [rqbit](https://github.com/ikatson/rqbit) - Rust 实现的 bittorrent 客户端
 
 ## Movie DB
 
