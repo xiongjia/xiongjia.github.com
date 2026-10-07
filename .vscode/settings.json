@@ -42,6 +42,7 @@
   // prototypes to this list.
   "rust-analyzer.linkedProjects": [
     "prototypes/rust-patterns/Cargo.toml",
+    "prototypes/tauri-demo/src-tauri/Cargo.toml",
     "prototypes/tiny-bitcask/Cargo.toml"
   ]
 }

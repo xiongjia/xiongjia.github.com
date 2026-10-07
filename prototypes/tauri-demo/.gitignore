@@ -1,0 +1,42 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+dist-ssr/
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+# Environment — local-only config
+.env
+.env.local
+.env.*.local
+*.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Local-only draft notes (repo convention: `*-draft.md` is never committed)
+*-draft.md
+
+# OS / Editor
+# The IDE config for this prototype lives in the repo root `.vscode/`
+.DS_Store
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# The Rust side (src-tauri/) carries its own .gitignore: /target/ + /gen/schemas
