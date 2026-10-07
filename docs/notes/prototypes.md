@@ -25,6 +25,7 @@ hide:
 | [pg-boss-demo](#pg-boss-demo)                       | [Job Queue](#job-queue)           | 🟢 Working      | 2026-08-30 |
 | [tiny-bitcask](#tiny-bitcask)                       | [Database](#database)             | 🟡 Experimental | 2026-09-11 |
 | [rust-patterns](#rust-patterns)                     | [Rust](#rust)                     | 🟡 Experimental | 2026-09-25 |
+| [tauri-demo](#tauri-demo)                           | [Desktop](#desktop)               | 🟢 Working      | 2026-10-07 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -175,6 +176,39 @@ Rust 抽象的学习原型（长期维护）：把平时反复遇到的抽象写
 写就写在代码旁边（用法与各模式的说明见原型 README）。
 
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/rust-patterns)
+
+______________________________________________________________________
+
+## Desktop
+
+### tauri-demo
+
+Tauri 2 桌面 Dashboard 原型：Rust 采集本机指标 → IPC → React + shadcn 图表。
+目标是跑通链路（`#[tauri::command]` → `invoke()` → 类型化数据 → 图表），
+不是做一个完整产品。
+
+- Rust 侧用 `sysinfo` 采集 CPU（全局 + 每核）/ 内存 / 磁盘 / 进程，长驻
+  `MetricsState`（复用 `System` handle，CPU 占用取两次刷新的差值）
+- 历史用容量 60 的环形缓冲（`VecDeque<HistoryPoint>`），支撑折线图
+- 两个命令：`system_snapshot`（采样并追加历史）、`system_history`（返回缓冲）；
+  `serde(rename_all = "camelCase")` 让 TS 接口与 Rust 结构体字段一一对应
+- 纯函数 helper（`percent` / `push_history` / `top_processes`）不依赖 Tauri 运行时，
+  可直接单测
+- 前端 React 19 + Tailwind v4 + shadcn/ui（`radix-nova` preset）+ Recharts 3.8：
+  4 个 KPI 卡片、CPU/内存折线、每核占用、Top 8 进程条形、磁盘环形 + 明细列表、
+  Tabs 切换、深色模式，每 2s 轮询一次
+- 浏览器 mock：`pnpm dev` 不启动 Rust 也能跑（badge 显示 `Browser mock`，
+  Tauri 内显示 `Tauri / Rust`），方便前端调试与自动化断言
+- 验证不靠截图：前端用 **Vitest（jsdom + Testing Library）63 个测试**，直接断言
+  渲染后的 DOM（含 Recharts 的真实路径几何：两条折线、每进程一根柱、每挂载点一个
+  扇形；`src/test/setup.ts` 补了 jsdom 缺的 `ResizeObserver` / `matchMedia`）；
+  Rust 侧 `cargo test` 10 个单测 + `cargo clippy --all-targets -- -D warnings` 无告警
+- 工具链彩蛋：脚手架用 Rust CLI（`cargo create-tauri-app`）、TypeScript 7（Go 版，
+  `tsc` 只剩类型检查，JS 编译器 API 已移除 → 用 `oxlint` + `oxlint-tsgolint`
+  做类型感知 lint，因为 `typescript-eslint` 的 peer 限制不支持 TS 7）
+- 打包未做（`tauri build` 的 `.app` 约 4.2 MB），README 记录了
+  `recharts 3.x`、APFS 卷重复上报等踩坑
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/tauri-demo)
 
 ______________________________________________________________________
 

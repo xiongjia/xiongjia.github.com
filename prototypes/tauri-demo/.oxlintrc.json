@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": ["typescript", "react", "import", "unicorn"],
+  "categories": {
+    "correctness": "error",
+    "suspicious": "warn"
+  },
+  "rules": {
+    "typescript/no-floating-promises": "error",
+    "typescript/no-misused-promises": "error",
+    // `import "./index.css"` in main.tsx is the one intentional side-effect
+    // import, so the rule stays on with a CSS exception.
+    "import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }],
+    // React 17+ needs no `React` import for JSX.
+    "react/react-in-jsx-scope": "off"
+  },
+  "options": {
+    "typeAware": true
+  },
+  "ignorePatterns": ["dist", "src-tauri/target", "src/components/ui", "src/lib/utils.ts"]
+}

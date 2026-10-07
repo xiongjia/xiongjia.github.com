@@ -126,6 +126,46 @@ the reasoning and the book section for each
 - `cow` / `entry-api` / `parse-dont-validate` — zero-copy, one lookup, validated types
 - `interior-mutability` — `Cell` / `RefCell` / `Mutex` boundaries
 
+## Later: algorithms and crate recipes
+
+Two things will eventually sit next to the patterns: **algorithms** (small ones I
+want to be able to write from scratch) and **crate recipes** (how a library is
+actually used). Neither exists yet — this section only records where they go, so
+the first one that arrives has a home instead of being squeezed into
+`src/patterns/`.
+
+One directory per kind, one shared mechanism for all of them: the same
+`cargo run <id>` entry, the same `Demo` sink, the same rule that the write-up
+lives in doc comments, and the same tests that assert on the walkthrough text.
+
+```text
+src/
+├── demo.rs          # unchanged
+├── patterns/        # today: error_enum, builder, command
+├── algorithms/      # binary search, LRU, union-find, ...
+└── recipes/         # serde, tokio, ... behind one optional feature each
+```
+
+Each kind answers two questions its own way:
+
+- `patterns` — added when real code shows the same shape again; done when the
+  counter-example rewrites into the shape, with the reason written down
+- `algorithms` — added when I want to write it from scratch at will; done when
+  the doc states the complexity and the tests cover the edges
+- `recipes` — added when I need to evaluate or adopt the crate at work; done
+  when the smallest working usage is shown together with the gotcha it hit
+
+Deliberate limits: algorithms get no benchmark harness (the complexity is one
+line in the doc) and recipes get no API tour (one recipe, one decision point).
+
+Dependencies: pattern and algorithm files stay dependency-free; a recipe brings
+its own crates behind an `optional` feature, and `just check` / `just test` run
+`--all-features`. This becomes a Cargo workspace only if two recipes' deps
+conflict or one needs its own edition/MSRV — not before.
+
+The prototype keeps its name: `patterns` becomes a sibling directory, so a later
+rename would be a `Cargo.toml` + README change, not a layout change.
+
 ## Reading the book alongside
 
 - [Rust Design Patterns](https://rust-unofficial.github.io/patterns/) — the

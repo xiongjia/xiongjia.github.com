@@ -69,6 +69,19 @@ Python `.venv/`, Node `node_modules/`).
   learning prototype; usage and the pattern list are in its README) · created
   2026-09-25 · status `experimental`
 
+## Desktop
+
+- **[tauri-demo](./tauri-demo/README.md)** — Tauri 2 desktop dashboard that
+  bridges Rust and React: `sysinfo` collects CPU / memory / disk / process
+  metrics behind a long-lived app state with a history ring buffer, two
+  `#[tauri::command]`s return camelCase payloads mirrored by TS interfaces,
+  and the React 19 + Tailwind v4 + shadcn/ui frontend renders KPI cards, a
+  Recharts line/bar/donut trio, per-core grid, tabs and a dark mode toggle;
+  runs as a pure browser mock when Vite is started without Tauri; the frontend
+  carries 63 Vitest tests (jsdom + Testing Library) that assert on the rendered
+  DOM, including real Recharts path geometry · created 2026-10-07 · status
+  `working`
+
 ## Maps
 
 - **[protomaps-map-view](./protomaps-map-view/README.md)** — React + Vite + TS
