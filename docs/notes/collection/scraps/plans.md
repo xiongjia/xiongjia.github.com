@@ -23,6 +23,8 @@ ______________________________________________________________________
 
 - 2026-09-03 阅读 https://www.arxivdaily.com/industry-trends/2026-09-01/2608.30730
 
+- 2026-10-08 https://github.com/grpc/grpc-rust
+
 ### 💡 Ideas
 
 <!-- Items go here via: poe collect-idea "content" -->
