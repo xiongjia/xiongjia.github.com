@@ -11,3 +11,5 @@ title: English Scraps Inbox
 2026-08-08 cumbersome
 2026-08-08 The implementation is cumbersome to maintain.
 -->
+
+2026-10-12 capitalism: 出自 Also this week, retro capitalism, mistaken identity, summer, AI-generated speeches
