@@ -81,5 +81,5 @@ weeks:
   # Week 11 — Mon 2026-10-05
   - days: [81.50, 81.50, 81.50, 81.50, 82.50, 82.10, 81.30]
   # Week 12 — Mon 2026-10-12
-  - days: [81.30, 82.10, null, null, null, null, null]
+  - days: [81.30, 82.10, 81.80, null, null, null, null]
 
