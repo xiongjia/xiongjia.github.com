@@ -16,6 +16,7 @@ hide:
 - [animejs](https://animejs.com/) - JavaScript 动画库
 - [markdown-online-editor](https://github.com/nicejade/markdown-online-editor) - Markdown 在线编辑器
 - [antvis/Infographic](https://github.com/antvis/Infographic) - AI 信息图生成与渲染框架（AntV）
+- [Pele](https://pele.run/) - 轻量 Mermaid 图表转 SVG 渲染库（CSS 变量主题化）
 
 ## React
 
@@ -42,3 +43,11 @@ hide:
 
 - [React Board](https://github.com/aditya0929/reactBoard) - Dashboard sample
 - [FinceptTerminal](https://github.com/Fincept-Corporation/FinceptTerminal) - QT Dashboard
+
+## GUI Libraries
+
+- [Dear ImGui](https://github.com/ocornut/imgui) - C++ 即时模式 GUI（无依赖、体积小）
+- [egui](https://github.com/emilk/egui) - Rust 即时模式 GUI，native 与 Web 同一套代码
+- [iced](https://github.com/iced-rs/iced) - Rust 跨平台 GUI 库（受 Elm 架构启发）
+- [mygo](https://github.com/egoist/mygo) - 用 Go 开发桌面应用（原生 UI 或 Web 前端）
+- [bellui](https://github.com/belluikit/bellui) - Go 跨平台 UI 工具包（Material Design 3 + WebGPU，Fyne 分支）
