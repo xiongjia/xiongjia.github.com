@@ -10,6 +10,7 @@ hide:
 
 - [MinIO](https://github.com/minio/minio) - 高性能 S3 兼容对象存储（GNU AGPLv3 开源）
 - [VaultS3](https://github.com/Kodiqa-Solutions/VaultS3) - 轻量 S3 兼容对象存储服务器（单二进制、内置 Web 面板、静态加密）
+- [borderless-storage](https://github.com/borderless-tech/borderless-storage) - 极简 S3 风格对象存储
 
 ## File Hosting
 
