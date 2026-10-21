@@ -16,3 +16,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 2026-10-21 https://github.com/bvaughn/react-resizable-panels
 2026-10-21 https://github.com/motiondivision/motion
 2026-10-21 https://github.com/clauderic/dnd-kit
+2026-10-21 https://github.com/pmndrs/zustand
