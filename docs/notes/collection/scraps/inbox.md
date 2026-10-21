@@ -14,3 +14,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 2026-10-20 https://tree-sitter.github.io/tree-sitter/
 2026-10-21 https://github.com/ionic-team/capacitor
 2026-10-21 https://github.com/bvaughn/react-resizable-panels
+2026-10-21 https://github.com/motiondivision/motion
