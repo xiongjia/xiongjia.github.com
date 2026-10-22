@@ -17,6 +17,9 @@ hide:
 - [markdown-online-editor](https://github.com/nicejade/markdown-online-editor) - Markdown 在线编辑器
 - [antvis/Infographic](https://github.com/antvis/Infographic) - AI 信息图生成与渲染框架（AntV）
 - [Pele](https://pele.run/) - 轻量 Mermaid 图表转 SVG 渲染库（CSS 变量主题化）
+- [tinyjsapp](https://github.com/tarwin/tinyjsapp) - 用 JS 构建原生应用（前后端一体，约 5MB）
+- [CodeMirror](https://codemirror.net/) - 浏览器内代码编辑器组件（可扩展、支持语法高亮）
+- [capacitor](https://github.com/ionic-team/capacitor) - 用 Web 技术构建 iOS / Android / Web 跨平台原生应用（Ionic）
 
 ## React
 
@@ -28,6 +31,10 @@ hide:
 - [emotion-js](https://github.com/emotion-js/emotion) - CSS-in-JS
 - [React Pro Sidebar](https://github.com/azouaoui-med/react-pro-sidebar)
 - [jotai](https://github.com/pmndrs/jotai) - State management
+- [zustand](https://github.com/pmndrs/zustand) - 轻量 React 状态管理（pmndrs）
+- [motion](https://github.com/motiondivision/motion) - React / JS 动画库（原 Framer Motion）
+- [dnd-kit](https://github.com/clauderic/dnd-kit) - React 拖拽排序 toolkit
+- [react-resizable-panels](https://github.com/bvaughn/react-resizable-panels) - React 可拖拽调整大小的面板布局
 
 ## UI Design Resources
 
