@@ -102,3 +102,4 @@ hide:
 - [cordis](https://github.com/cordiverse/cordis) - DHS 的 Plugin 管理机制
 - [Omarchy](https://omarchy.org/) - "Beautiful, Fun & Agentic Linux" by DHH（AI 原生的 Linux 发行版，Omacom 基金会支持）
 - [Homepage](https://gethomepage.dev/) - 自托管首页导航/仪表盘
+- [tree-sitter](https://tree-sitter.github.io/tree-sitter/) - 增量解析库 / 解析器生成器（编辑器语法高亮、代码导航）
