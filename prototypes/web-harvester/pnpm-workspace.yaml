@@ -1,0 +1,5 @@
+# pnpm 11 settings — build scripts must be allow-listed explicitly.
+allowBuilds:
+  esbuild: true
+  "@swc/core": true
+  "@scarf/scarf": false
