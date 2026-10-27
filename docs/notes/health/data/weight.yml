@@ -85,5 +85,5 @@ weeks:
   # Week 13 — Mon 2026-10-19
   - days: [81.70, 81.70, 81.70, 81.30, 81.30, null, 81.30]
   # Week 14 — Mon 2026-10-26
-  - days: [81.70, 83.70, null, null, null, null, null]
+  - days: [81.70, 83.70, 83.10, null, null, null, null]
 
