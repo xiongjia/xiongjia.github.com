@@ -1,0 +1,33 @@
+import type { BrowserContext } from "playwright-core";
+
+/**
+ * Engine abstraction: everything above this interface only touches the
+ * Playwright-compatible `BrowserContext` / `Page` API, so swapping the engine
+ * (Camoufox/Firefox, patchright/Chromium) never touches demo or XHS code.
+ */
+export type BackendName = "camoufox" | "patchright" | "mock";
+
+/** `virtual` = run headed on an Xvfb display (Linux/containers). */
+export type HeadlessMode = boolean | "virtual";
+
+export interface BackendLaunchOptions {
+  /** Persistent profile directory — fingerprint and cookies survive restarts. */
+  profileDir: string;
+  /** `chrome` = installed Chrome (patchright only), `chromium` = bundled build. */
+  channel: "chrome" | "chromium";
+  headless: HeadlessMode;
+  locale: string;
+  timezoneId: string;
+  viewport: { width: number; height: number };
+  /** Milliseconds to wait between actions — useful when watching a run. */
+  slowMo: number;
+  /** Default Camoufox addons to skip (e.g. `["UBO"]`); ignored by other engines. */
+  excludeAddons: string[];
+  /** Fingerprint OS the browser should claim (affects fonts, UA, navigator). */
+  os: "macos" | "windows" | "linux";
+}
+
+export interface BrowserBackend {
+  readonly name: BackendName;
+  launch(options: BackendLaunchOptions): Promise<BrowserContext>;
+}

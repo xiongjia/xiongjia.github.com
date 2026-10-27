@@ -26,6 +26,7 @@ hide:
 | [tiny-bitcask](#tiny-bitcask)                       | [Database](#database)             | 🟡 Experimental | 2026-09-11 |
 | [rust-patterns](#rust-patterns)                     | [Rust](#rust)                     | 🟡 Experimental | 2026-09-25 |
 | [tauri-demo](#tauri-demo)                           | [Desktop](#desktop)               | 🟢 Working      | 2026-10-07 |
+| [web-harvester](#web-harvester)                     | [Scraping](#scraping)             | 🟢 Working      | 2026-10-25 |
 
 状态：🟡 Experimental（实验性，随时变化）· 🟢 Working（已验证可用）· ⏸️ Shelved（搁置）· ✅ Done（完成）· 🗑️ Abandoned（废弃）
 
@@ -235,3 +236,27 @@ React + Vite + TypeScript 原型：在本地 Protomaps 底图上的**通用地�
 - 已知限制：官方字体无 CJK（`pnpm warm:glyphs --source=maplibre` 可解）；
   maplibre 固定 v5（v6 与 pmtiles 协议不兼容，见 README Known issue）
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/protomaps-map-view)
+
+## Scraping
+
+### web-harvester
+
+Node + TypeScript（NestJS 12，pnpm）的浏览器自动化采集原型：用真浏览器做小红书
+登录与数据抓取，对外提供 REST（Swagger 在 `/api/docs`）。
+
+- 引擎可换：默认 **Camoufox**（Firefox 定制内核，指纹一致），`patchright`
+  （驱动本机 Chrome，零下载）作兜底，两者在同一个 `BrowserBackend` 接口下切换
+- 自带离线自检页：`/api/v1/demo/visit` 用真浏览器开页 → 点击 → 等延迟元素 →
+  截图 → 回 JSON，用来区分「引擎坏了」还是「站点改版了」
+- 小红书扫码登录：`/api/v1/xhs/login/qrcode`（返回 PNG）+ `/status`，会话写入
+  0600 cookie jar 复用；`status` 会回读只有登录后才有的侧栏身份
+  （`verified` + `account`），不是只看 cookie 存在
+- 关注列表：`/api/v1/xhs/following` 点开「关注」面板，滚动
+  `.xhs-following-scroll` 并解析 `.xhs-relation-item`（昵称 / 描述 / 头像），
+  结果按行落盘 JSONL
+- 排障：`/api/v1/xhs/debug/following` dump 选择器命中数、面板 DOM、候选元素与
+  截图；风控页（`安全限制 / 300012`）会返回 503 并说明原因
+- 工程：zod 校验配置、ESLint 10 + Prettier + `pnpm check` 门禁、55 个 Vitest
+  单测（引擎用 DI token 注入假实现，测试不开浏览器）
+- 未实现（roadmap）：推荐流 / 搜索 / 笔记详情、MCP server、CLI、发布、代理与限速
+- :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/web-harvester)

@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Environment — never commit real values (.env.example IS committed)
+.env
+.env.local
+.env.*.local
+
+# Runtime state: browser profile, cookies, screenshots, scraped output
+.cache/
+data/
+
+# TypeScript
+*.tsbuildinfo
+
+# Logs
+*.log
+pnpm-debug.log*
+
+# Tests
+coverage/
+
+# OS / Editor
+.DS_Store
+.idea/
+.vscode/

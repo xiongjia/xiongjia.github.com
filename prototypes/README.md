@@ -93,6 +93,20 @@ Python `.venv/`, Node `node_modules/`).
   widget (build:widget, plain-HTML / S3 distribution) · created 2026-08-07 ·
   status `working`
 
+## Scraping
+
+- **[web-harvester](./web-harvester/README.md)** — NestJS 12 + TypeScript
+  browser-automation prototype (pnpm): module-per-concern skeleton
+  (`ConfigModule` / `BrowserModule` / `DemoModule` / `XhsModule`) with a
+  Camoufox (Firefox) default engine and patchright/Chrome fallback behind one
+  `BrowserBackend` interface; an offline demo page drives a real browser
+  (`/api/v1/demo/visit`: DOM, click, delayed element, screenshot); Xiaohongshu QR
+  login (session jar 0600, login-gated identity verification) and the account's
+  following list (`.xhs-relation-panel` rows → JSONL) both verified on a real
+  account; ESLint 10 + Prettier + `pnpm check`, 55 Vitest specs (engine faked
+  through a DI token); read operations / MCP / CLI listed as roadmap, not built ·
+  created 2026-10-25 · status `working`
+
 ## Convention
 
 - Directory, gitignore, and fmt/lint skip rules: see the Prototype Convention in `AGENTS.md`

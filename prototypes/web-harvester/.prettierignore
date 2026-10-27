@@ -1,0 +1,6 @@
+# build artifacts / generated files
+dist/
+coverage/
+
+# lockfile is generated — don't reformat
+pnpm-lock.yaml

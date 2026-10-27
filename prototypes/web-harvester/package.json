@@ -1,0 +1,55 @@
+{
+  "name": "web-harvester",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TypeScript/NestJS prototype: a self-hosted demo page plus Xiaohongshu operations driven by a real browser (patchright by default, Camoufox optional), exposed over REST and MCP.",
+  "packageManager": "pnpm@11.25.0",
+  "engines": {
+    "node": ">=22.12"
+  },
+  "scripts": {
+    "browser:install": "patchright install chromium",
+    "build": "nest build",
+    "camoufox:download": "node scripts/download-camoufox-zip.mjs",
+    "camoufox:fetch": "node scripts/fetch-camoufox.mjs",
+    "check": "pnpm typecheck && pnpm lint && pnpm format:check && pnpm test",
+    "dev": "nest start --watch",
+    "dev:headed": "HARVEST_HEADLESS=false HARVEST_SLOWMO=250 nest start",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "node dist/main.js",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@nestjs/common": "^12.0.0",
+    "@nestjs/config": "^12.0.0",
+    "@nestjs/core": "^12.0.0",
+    "@nestjs/platform-express": "^12.0.1",
+    "@nestjs/swagger": "^12.0.1",
+    "camoufox": "^0.5.8",
+    "patchright": "^1.64.1",
+    "playwright-core": "1.62.1",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "swagger-ui-express": "^5.0.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@nestjs/cli": "^12.0.0",
+    "@nestjs/testing": "^12.0.0",
+    "@swc/core": "^1.16.20",
+    "@types/express": "^5.0.0",
+    "@types/node": "^24.0.0",
+    "eslint": "^10.13.0",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "^3.9.6",
+    "typescript": "~6.0.3",
+    "typescript-eslint": "^8.72.0",
+    "unplugin-swc": "^2.0.0",
+    "vitest": "^4.0.0"
+  }
+}
