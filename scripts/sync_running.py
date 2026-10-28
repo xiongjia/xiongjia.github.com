@@ -54,6 +54,15 @@ CACHE_FILE = CACHE_DIR / "splits.json"
 # activity ids are small (~6e8). The threshold separates the two ID spaces.
 _OLD_ID_THRESHOLD = 10**9
 _GARTH_CLIENT = None
+# Garmin CN reads are slow and occasionally hang: 10 s (garth's default) is
+# too tight, so give each request a generous read window.
+_GARMIN_TIMEOUT = 30
+# Outer retry for connection-level failures (see _connectapi): sleeps between
+# attempts, one entry per retry, so len(_GARMIN_BACKOFF) + 1 attempts total.
+_GARMIN_BACKOFF = (5, 15)
+# Transient failures worth replaying. Real HTTP errors (401/404/5xx) are not
+# included: they need a human look, not another attempt.
+_GARMIN_TRANSIENT = (requests.exceptions.Timeout, requests.exceptions.ConnectionError)
 
 
 def _garmin_client():
@@ -66,7 +75,7 @@ def _garmin_client():
     if not token:
         print("Error: GARMIN_SECRET_STRING_CN not set in .env", file=sys.stderr)
         sys.exit(1)
-    garth.configure(domain="garmin.cn", ssl_verify=False)
+    garth.configure(domain="garmin.cn", ssl_verify=False, timeout=_GARMIN_TIMEOUT)
     # retrying session: Garmin CN occasionally times out mid-read; without
     # this one slow response fails the whole sync (and the cron run). Retry
     # transient connect/read errors with a short backoff instead — the sync
@@ -82,7 +91,9 @@ def _build_session() -> requests.Session:
 
     connect=3 / read=2 retries (total capped at 3) with a short backoff;
     idempotent GETs only — writes (POST/DELETE) are never auto-retried, so
-    a retried token refresh can't double-consume anything."""
+    a retried token refresh can't double-consume anything. The OAuth2 refresh
+    is a signed POST, so it is *not* covered here; `_connectapi` retries the
+    whole call from the outside instead."""
     from requests.adapters import HTTPAdapter
     from urllib3.util.retry import Retry
 
@@ -101,6 +112,40 @@ def _build_session() -> requests.Session:
     return session
 
 
+def _connectapi(path: str):
+    """GET a Garmin connectapi path, retrying transient network failures.
+
+    urllib3-level retries (``_build_session``) only cover GETs, but garth
+    refreshes the OAuth2 token with a signed POST to
+    ``connectapi.garmin.cn/oauth-service/oauth/exchange/user/2.0`` before the
+    first call whenever the token has expired. That POST is excluded from the
+    session retry, so a single slow read there raised ``ReadTimeout`` and
+    aborted the entire sync — exactly how the 2026-10-13/15/16/18/29 cron runs
+    died (~15 s in, one 10 s attempt). Retry from the outside instead: every
+    Garmin call here is a read, and a retry re-triggers the token refresh that
+    failed, so replaying is safe.
+
+    Raises the last error when all attempts fail; per-activity callers
+    (``_fetch_splits_and_polyline``) swallow that and retry on the next sync.
+    Only connection-level failures are replayed (``_GARMIN_TRANSIENT``) — an
+    HTTP error such as a 401 fails fast so the run reports it.
+    """
+    client = _garmin_client()
+    attempts = len(_GARMIN_BACKOFF) + 1
+    for attempt in range(1, attempts + 1):
+        try:
+            return client.connectapi(path)
+        except _GARMIN_TRANSIENT as exc:
+            if attempt >= attempts:
+                raise
+            delay = _GARMIN_BACKOFF[attempt - 1]
+            print(
+                f"  ⚠️  Garmin request failed ({attempt}/{attempts}): {exc} — retrying in {delay}s",
+                file=sys.stderr,
+            )
+            time.sleep(delay)
+
+
 def _fetch_garmin_activities() -> list[dict]:
     """Fetch the full running activity list from Garmin (newest first).
 
@@ -110,7 +155,6 @@ def _fetch_garmin_activities() -> list[dict]:
     mechanism, so a previously-failed activity (even one older than the
     newest synced) is retried on every run until it succeeds.
     """
-    client = _garmin_client()
     all_activities: list[dict] = []
     start = 0
     limit = 100
@@ -120,7 +164,7 @@ def _fetch_garmin_activities() -> list[dict]:
             f"/activitylist-service/activities/search/activities"
             f"?start={start}&limit={limit}&activityType=running"
         )
-        batch = client.connectapi(url)
+        batch = _connectapi(url)
         if not batch:
             break
         all_activities.extend(batch)
@@ -179,10 +223,9 @@ def _garmin_to_activity(garmin_act: dict) -> dict:
 
 def _fetch_splits_and_polyline(activity_id: int) -> dict | None:
     """Fetch splits + polyline for one activity; None on failure."""
-    client = _garmin_client()
     try:
         # Get splits
-        splits_result = client.connectapi(f"/activity-service/activity/{activity_id}/splits")
+        splits_result = _connectapi(f"/activity-service/activity/{activity_id}/splits")
         lap_dtos = (splits_result or {}).get("lapDTOs") or []
         splits = []
         for lap in lap_dtos:
@@ -201,7 +244,7 @@ def _fetch_splits_and_polyline(activity_id: int) -> dict | None:
             )
 
         # Get polyline from details endpoint
-        details = client.connectapi(
+        details = _connectapi(
             f"/activity-service/activity/{activity_id}/details?maxChartSize=0&maxPolylineSize=4000"
         )
         # Garmin returns polyline as an array of {lat, lon} points, encode to Google Polyline

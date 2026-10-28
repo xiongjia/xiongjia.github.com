@@ -741,3 +741,94 @@ def test_health_macros_registers_running_macros():
     # superseded by the lazy pace dialog + heatmap summary line
     assert "running_summary" not in env.registered
     assert "running_pace_section" not in env.registered
+
+
+# ---------------------------------------------------------------------------
+#  sync_running: Garmin call retries (the OAuth2 refresh POST is a signed POST,
+#  so the session-level urllib3 retry (GET-only) never covered it — a single
+#  slow read there killed a whole cron sync)
+# ---------------------------------------------------------------------------
+
+
+class _FakeClient:
+    """Stands in for garth.Client: each call pops the next scripted outcome."""
+
+    def __init__(self, outcomes):
+        self.outcomes = list(outcomes)
+        self.calls = []
+
+    def connectapi(self, path):
+        self.calls.append(path)
+        outcome = self.outcomes.pop(0)
+        if isinstance(outcome, Exception):
+            raise outcome
+        return outcome
+
+
+def test_connectapi_retries_transient_timeout(monkeypatch, capsys):
+    import requests
+    import sync_running as sr
+
+    client = _FakeClient([requests.exceptions.ReadTimeout("read timed out"), [{"activityId": 1}]])
+    monkeypatch.setattr(sr, "_garmin_client", lambda: client)
+    monkeypatch.setattr(sr.time, "sleep", lambda *_: None)
+
+    assert sr._connectapi("/activitylist-service") == [{"activityId": 1}]
+    assert len(client.calls) == 2
+    assert "retrying" in capsys.readouterr().err
+
+
+def test_connectapi_reraises_after_all_attempts(monkeypatch):
+    import requests
+    import sync_running as sr
+
+    attempts = len(sr._GARMIN_BACKOFF) + 1
+    client = _FakeClient([requests.exceptions.ConnectionError("boom")] * attempts)
+    monkeypatch.setattr(sr, "_garmin_client", lambda: client)
+    monkeypatch.setattr(sr.time, "sleep", lambda *_: None)
+
+    with pytest.raises(requests.exceptions.ConnectionError):
+        sr._connectapi("/activitylist-service")
+    assert len(client.calls) == attempts
+
+
+def test_connectapi_does_not_retry_http_errors(monkeypatch):
+    """A real HTTP failure (404 etc.) is not a transient network error."""
+    import requests
+    import sync_running as sr
+
+    err = requests.exceptions.HTTPError("404 Client Error")
+    client = _FakeClient([err, [{"activityId": 1}]])
+    monkeypatch.setattr(sr, "_garmin_client", lambda: client)
+    monkeypatch.setattr(sr.time, "sleep", lambda *_: None)
+
+    with pytest.raises(requests.exceptions.HTTPError):
+        sr._connectapi("/activitylist-service")
+    assert len(client.calls) == 1
+
+
+def test_fetch_splits_retries_via_connectapi(monkeypatch):
+    """A transient failure on the splits call is retried, not lost."""
+    import requests
+    import sync_running as sr
+
+    splits = {
+        "lapDTOs": [
+            {
+                "distance": 1000.0,
+                "movingDuration": 300.0,
+                "averageMovingSpeed": 3.3333,
+                "averageHR": 150,
+            }
+        ]
+    }
+    details = {"geoPolylineDTO": {"polyline": [{"lat": 31.1, "lon": 121.5}]}}
+    client = _FakeClient([requests.exceptions.ReadTimeout("slow"), splits, details])
+    monkeypatch.setattr(sr, "_garmin_client", lambda: client)
+    monkeypatch.setattr(sr.time, "sleep", lambda *_: None)
+
+    det = sr._fetch_splits_and_polyline(123)
+    assert det is not None
+    assert len(client.calls) == 3
+    assert det["splits"][0]["km"] == 1.0
+    assert det["summary_polyline"]
