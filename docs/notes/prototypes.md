@@ -241,22 +241,42 @@ React + Vite + TypeScript 原型：在本地 Protomaps 底图上的**通用地�
 
 ### web-harvester
 
-Node + TypeScript（NestJS 12，pnpm）的浏览器自动化采集原型：用真浏览器做小红书
-登录与数据抓取，对外提供 REST（Swagger 在 `/api/docs`）。
+Node + TypeScript（NestJS 12，pnpm）的浏览器自动化采集原型：一个可热换脚本的
+**flow 引擎**（抓取脚本是 `.jsonc` 数据，不是代码）＋ 小红书的登录与关注列表，
+对外提供 REST（Swagger 在 `/api/docs`）。
 
-- 引擎可换：默认 **Camoufox**（Firefox 定制内核，指纹一致），`patchright`
-  （驱动本机 Chrome，零下载）作兜底，两者在同一个 `BrowserBackend` 接口下切换
-- 自带离线自检页：`/api/v1/demo/visit` 用真浏览器开页 → 点击 → 等延迟元素 →
-  截图 → 回 JSON，用来区分「引擎坏了」还是「站点改版了」
-- 小红书扫码登录：`/api/v1/xhs/login/qrcode`（返回 PNG）+ `/status`，会话写入
-  0600 cookie jar 复用；`status` 会回读只有登录后才有的侧栏身份
-  （`verified` + `account`），不是只看 cookie 存在
-- 关注列表：`/api/v1/xhs/following` 点开「关注」面板，滚动
-  `.xhs-following-scroll` 并解析 `.xhs-relation-item`（昵称 / 描述 / 头像），
-  结果按行落盘 JSONL
+- **Flow 引擎**：一个 flow = 一个 `.jsonc` 文件（类型化 input、步骤数组、output
+  映射），zod 校验、自动生成 `flow.schema.json` 给编辑器补全；原语含
+  `goto / wait / click / fill / press / text / extract / scroll / screenshot / assertNotBlocked / include / if`，支持候选选择器、`{{input.x}}` 插值、
+  `retry`、按 mtime 热加载
+- **组合**：`include` 把 `kind: "fragment"` 的 flow 插到当前位置（同页面同变量），
+  环与 >5 层嵌套拒绝；`GET /api/v1/flows` 直接给「谁 include 谁」的图
+- **异步执行**：`POST /flows/:name/runs` → `202 + runId`，`GET /runs/:id` 查状态、
+  `/output` 取 JSON、`/artifacts` 列产物、`/events` 走 SSE、`/cancel` 取消；
+  结果落 `data/runs/<id>/`（`run.json` 状态机 + `output.json` + `artifacts/`），
+  失败自动留现场截图。标了 `"sync": true` 的短 flow 还可以走
+  `POST /flows/:name/run` 一步拿结果，`?artifact=qr` 直接把产物当响应体返回
+- **Profile**：一个 profile 一套独立浏览器目录（cookies/localStorage）+ 冻结的
+  Camoufox 指纹 preset，`?profile=` 选身份、`/profiles` 列表、
+  `PATCH/DELETE` 增删改；默认 profile 沿用原有 `.cache/profile`，登录态不丢
+- **节流写在 flow 里**：flow 可声明 `throttle`（最小间隔 + `scope`），三个 xhs
+  flow 共用 `scope: "xhs"`、20 秒间隔 —— 手动连打或脚本突发都会被拉平到同一节奏，
+  其他 flow 不受影响
+- **引擎可换**：默认 **Camoufox**（Firefox 定制内核，指纹一致），`patchright`
+  （驱动本机 Chrome，零下载）作兜底，两者在同一个 `BrowserBackend` 接口下切换；
+  引擎留在进程内（不做独立 engine 进程）
+- 小红书扫码登录：也是 flow —— `flows/xhs-login-qr.jsonc` 负责出二维码（宿主把
+  `artifacts/qr.png` 当响应体返回）、`flows/xhs-login-check.jsonc` 负责回读只有登录
+  后才有的侧栏身份作为 `verified` 证据；会话保存在 profile 的持久浏览器目录里，
+  0600 cookie jar 只作可移植副本，`/status` 有 60s 验证缓存
+- 关注列表：`flows/xhs-following.jsonc` 点开「关注」面板、滚
+  `.xhs-following-scroll`、用 `extract`（含 `{ selector, attr }` 读头像 `src`）抓
+  `.xhs-relation-item`；手写的 `/api/v1/xhs/following` 与调试端点已退役（迁移前
+  做过 A/B，账号与头像完全一致）
 - 排障：`/api/v1/xhs/debug/following` dump 选择器命中数、面板 DOM、候选元素与
   截图；风控页（`安全限制 / 300012`）会返回 503 并说明原因
-- 工程：zod 校验配置、ESLint 10 + Prettier + `pnpm check` 门禁、55 个 Vitest
+- 工程：zod 校验配置、ESLint 10 + Prettier + `pnpm check` 门禁、182 个 Vitest
   单测（引擎用 DI token 注入假实现，测试不开浏览器）
-- 未实现（roadmap）：推荐流 / 搜索 / 笔记详情、MCP server、CLI、发布、代理与限速
+- 未实现（roadmap）：推荐流 / 搜索 / 笔记详情、MCP server、CLI、发布、限速与
+  `/healthz`
 - :simple-github: [Source](https://github.com/xiongjia/xiongjia.github.com/tree/master/prototypes/web-harvester)

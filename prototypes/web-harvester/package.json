@@ -17,6 +17,7 @@
     "dev:headed": "HARVEST_HEADLESS=false HARVEST_SLOWMO=250 nest start",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
+    "flow:schema": "pnpm build && node scripts/emit-flow-schema.mjs",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "node dist/main.js",

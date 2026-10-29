@@ -7,7 +7,7 @@ import { z } from "zod";
  * `ConfigModule.forRoot`), validated once at boot, and then read through
  * `ConfigService` with the exact key names below.
  */
-export const envSchema = z.object({
+const envSchema = z.object({
   /** Bind address. Keep the default loopback — there is no auth layer. */
   HARVEST_HOST: z.string().min(1).default("127.0.0.1"),
   HARVEST_PORT: z.coerce.number().int().positive().default(8765),
@@ -34,8 +34,16 @@ export const envSchema = z.object({
     .default("true")
     .transform((value) => (value === "virtual" ? "virtual" : value === "true")),
 
-  /** Persistent browser profile (fingerprint + cookies live here). */
+  /**
+   * Browser directory of the *default* profile. Other profiles live under
+   * `HARVEST_PROFILES_DIR/<name>/browser`, so an existing logged-in profile keeps
+   * working after the switch to named profiles.
+   */
   HARVEST_PROFILE_DIR: z.string().min(1).default(".cache/profile"),
+  /** One directory per profile: `<name>/profile.json` + `<name>/browser/`. */
+  HARVEST_PROFILES_DIR: z.string().min(1).default(".cache/profiles"),
+  /** Default timeout for page operations (navigation, locators), ms. */
+  HARVEST_PAGE_TIMEOUT: z.coerce.number().int().min(1_000).default(15_000),
   /** Scraped output, screenshots included. */
   HARVEST_DATA_DIR: z.string().min(1).default("data"),
 
@@ -71,6 +79,24 @@ export const envSchema = z.object({
         .map((name) => name.trim().toUpperCase())
         .filter((name) => name.length > 0),
     ),
+
+  /**
+   * Flow files: `flows/` is baked into the release, this directory is writable
+   * and shadows a built-in flow of the same name (swap a scraping script without
+   * rebuilding the host).
+   */
+  HARVEST_FLOWS_DIR: z.string().min(1).default(".cache/flows"),
+  /** One directory per run: `run.json`, `output.json`, `artifacts/`. */
+  HARVEST_RUNS_DIR: z.string().min(1).default("data/runs"),
+  /** Finished runs kept per kind before the oldest are pruned (failed keep 2x). */
+  HARVEST_RUN_KEEP: z.coerce.number().int().min(5).default(50),
+  /** Runs allowed to wait behind a profile before submissions answer 429. */
+  HARVEST_QUEUE_DEPTH: z.coerce.number().int().min(1).default(8),
+  /** Profile used when a request does not name one (created on first use). */
+  HARVEST_PROFILE: z
+    .string()
+    .regex(/^[a-z0-9][a-z0-9._-]*$/, { message: "use lower-case kebab-case" })
+    .default("main"),
 
   /** Milliseconds between browser actions — set >0 to slow a run down. */
   HARVEST_SLOWMO: z.coerce.number().int().min(0).default(0),

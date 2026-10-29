@@ -1,0 +1,549 @@
+{
+  "$id": "https://web-harvester.local/flow.schema.json",
+  "title": "web-harvester flow",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "description": "Editor hint, e.g. `./flow.schema.json`; ignored at runtime.",
+      "$ref": "#/$defs/__schema0"
+    },
+    "name": {
+      "description": "Flow id; must match the file name.",
+      "$ref": "#/$defs/flowName"
+    },
+    "version": {
+      "description": "Author's own version number (informational).",
+      "$ref": "#/$defs/__schema1"
+    },
+    "apiVersion": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991,
+      "description": "DSL version; must match the host's `FLOW_API_VERSION`."
+    },
+    "throttle": {
+      "description": "Minimum gap between runs of this flow (`scope` shares the gap with other flows — e.g. every xhs flow on one account). Nothing else is affected.",
+      "$ref": "#/$defs/__schema2"
+    },
+    "sync": {
+      "description": "Short flows that may be run synchronously (`POST /flows/:name/run`): the response carries the result instead of a run id.",
+      "$ref": "#/$defs/__schema3"
+    },
+    "kind": {
+      "description": "`fragment` = only meant to be included (cannot be run directly, has no input/output); default `flow`.",
+      "$ref": "#/$defs/__schema4"
+    },
+    "description": {
+      "description": "What this flow does.",
+      "$ref": "#/$defs/__schema5"
+    },
+    "input": {
+      "description": "Typed inputs, addressable as `{{input.<name>}}`.",
+      "$ref": "#/$defs/__schema6"
+    },
+    "steps": {
+      "minItems": 1,
+      "maxItems": 200,
+      "type": "array",
+      "items": { "$ref": "#/$defs/step" },
+      "description": "Ordered steps; `use` pulls in another flow file instead of copying its steps."
+    },
+    "output": {
+      "description": "Result key → variable a step captured with `as`.",
+      "$ref": "#/$defs/__schema45"
+    }
+  },
+  "required": ["name", "apiVersion", "steps"],
+  "additionalProperties": false,
+  "$defs": {
+    "__schema0": { "type": "string" },
+    "flowName": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 64,
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "description": "Flow id: lower-case kebab-case, also the file name."
+    },
+    "__schema1": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 9007199254740991
+    },
+    "__schema2": {
+      "type": "object",
+      "properties": {
+        "minIntervalMs": { "type": "integer", "minimum": 0, "maximum": 600000 },
+        "scope": { "type": "string", "minLength": 1, "maxLength": 64 }
+      },
+      "required": ["minIntervalMs"],
+      "additionalProperties": false
+    },
+    "__schema3": { "type": "boolean" },
+    "__schema4": { "type": "string", "enum": ["flow", "fragment"] },
+    "__schema5": { "type": "string", "maxLength": 500 },
+    "__schema6": {
+      "type": "object",
+      "propertyNames": { "type": "string" },
+      "additionalProperties": { "$ref": "#/$defs/inputParam" }
+    },
+    "inputParam": {
+      "type": "object",
+      "properties": {
+        "type": { "$ref": "#/$defs/__schema7" },
+        "default": { "$ref": "#/$defs/__schema8" },
+        "required": { "$ref": "#/$defs/__schema10" },
+        "description": { "$ref": "#/$defs/__schema12" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "__schema7": {
+      "type": "string",
+      "enum": ["string", "number", "boolean"],
+      "description": "Value type; the caller's JSON is coerced to it."
+    },
+    "__schema8": {
+      "description": "Used when the caller omits this input; may be a template.",
+      "$ref": "#/$defs/__schema9"
+    },
+    "__schema9": { "type": ["string", "number", "boolean"] },
+    "__schema10": {
+      "description": "Fail the run when the caller omits it and there is no default.",
+      "$ref": "#/$defs/__schema11"
+    },
+    "__schema11": { "type": "boolean" },
+    "__schema12": {
+      "description": "Shown here and in the editor.",
+      "$ref": "#/$defs/__schema13"
+    },
+    "__schema13": { "type": "string", "maxLength": 200 },
+    "step": { "$ref": "#/$defs/__schema14" },
+    "__schema14": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "goto",
+              "description": "Open a URL."
+            },
+            "url": {
+              "type": "string",
+              "minLength": 1,
+              "description": "URL to open; `{{input.x}}` and `{{self}}` are substituted."
+            }
+          },
+          "required": ["action", "url"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "wait",
+              "description": "Wait for a selector to reach a state, or wait `ms` when no selector is given."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "ms": {
+              "description": "Milliseconds to wait when no selector is given.",
+              "$ref": "#/$defs/__schema24"
+            },
+            "state": {
+              "description": "What to wait for: drawn on screen, or merely in the DOM.",
+              "$ref": "#/$defs/__schema25"
+            },
+            "timeout": { "$ref": "#/$defs/timeout" }
+          },
+          "required": ["action"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "click",
+              "description": "Click the first selector that matches."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "timeout": { "$ref": "#/$defs/timeout" },
+            "optional": { "$ref": "#/$defs/__schema26" }
+          },
+          "required": ["action", "selector"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "fill",
+              "description": "Type a value into the first matching field."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "value": {
+              "type": "string",
+              "description": "Text to type; `{{input.x}}` is substituted."
+            },
+            "timeout": { "$ref": "#/$defs/timeout" }
+          },
+          "required": ["action", "selector", "value"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "press",
+              "description": "Press a key, optionally on a selector."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "key": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Key or chord, e.g. `Enter`, `Control+A`."
+            }
+          },
+          "required": ["action", "key"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "text",
+              "description": "Read an element's text into a variable for `output`."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "as": { "$ref": "#/$defs/__schema28" },
+            "optional": { "$ref": "#/$defs/__schema26" }
+          },
+          "required": ["action", "selector", "as"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "extract",
+              "description": "Collect matching rows into an array of JSON objects."
+            },
+            "item": {
+              "description": "Selector for the rows themselves (the repeated element).",
+              "$ref": "#/$defs/selector"
+            },
+            "fields": {
+              "type": "object",
+              "propertyNames": { "$ref": "#/$defs/__schema29" },
+              "additionalProperties": { "$ref": "#/$defs/__schema30" },
+              "description": "Per-column selectors relative to the row (`:scope` = the row itself), or `{ selector, attr }` to read an attribute."
+            },
+            "as": {
+              "description": "Variable name the rows are stored under, read back by `output`.",
+              "$ref": "#/$defs/__schema28"
+            },
+            "limit": {
+              "description": "Maximum number of rows to keep (default 200).",
+              "$ref": "#/$defs/__schema32"
+            },
+            "uniqueBy": {
+              "description": "Drop rows repeating the same value of these fields (first wins).",
+              "$ref": "#/$defs/__schema33"
+            }
+          },
+          "required": ["action", "item", "fields", "as"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "screenshot",
+              "description": "Save a PNG under the run's `artifacts/` directory."
+            },
+            "selector": {
+              "description": "When given, capture just this element.",
+              "$ref": "#/$defs/selector"
+            },
+            "name": {
+              "description": "Artifact name without extension (default `screenshot`).",
+              "$ref": "#/$defs/__schema35"
+            },
+            "fullPage": {
+              "description": "Capture the whole page instead of the viewport.",
+              "$ref": "#/$defs/__schema36"
+            }
+          },
+          "required": ["action"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "scroll",
+              "description": "Scroll a container until it stops moving or growing, e.g. before reading a long list."
+            },
+            "target": {
+              "description": "The scrollable container (not the window): its own scrollTop is moved.",
+              "$ref": "#/$defs/selector"
+            },
+            "by": {
+              "description": "Pixels per round (default 1000).",
+              "$ref": "#/$defs/__schema37"
+            },
+            "until": {
+              "description": "Stop when the position stops moving (`end`, default) or when the content stops growing (`grow`, for lazy lists).",
+              "$ref": "#/$defs/__schema38"
+            },
+            "settleMs": {
+              "description": "Wait after each round (default 400).",
+              "$ref": "#/$defs/__schema39"
+            },
+            "maxRounds": {
+              "description": "Safety cap on scroll rounds (default 50).",
+              "$ref": "#/$defs/__schema40"
+            }
+          },
+          "required": ["action", "target"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "attribute",
+              "description": "Read one attribute of an element into a variable."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "name": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Attribute name, e.g. `href`, `src`, `data-id`."
+            },
+            "as": {
+              "description": "Variable name the value is stored under, read back by `output` / `{{vars.x}}`.",
+              "$ref": "#/$defs/__schema28"
+            },
+            "optional": { "$ref": "#/$defs/__schema26" }
+          },
+          "required": ["action", "selector", "name", "as"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "assertNotBlocked",
+              "description": "Fail the run as `blocked` when the page matches a pattern."
+            },
+            "patterns": {
+              "minItems": 1,
+              "type": "array",
+              "items": { "$ref": "#/$defs/__schema41" },
+              "description": "Regexes (plain text also works) that mean the site blocked us."
+            }
+          },
+          "required": ["action", "patterns"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "include",
+              "description": "Insert the steps of another flow file right here."
+            },
+            "flow": {
+              "description": "Fragment to include (`kind: \"fragment\"`); it runs on this page and shares these variables.",
+              "$ref": "#/$defs/flowName"
+            }
+          },
+          "required": ["action", "flow"],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "desc": { "$ref": "#/$defs/__schema15" },
+            "retry": { "$ref": "#/$defs/__schema17" },
+            "when": { "$ref": "#/$defs/__schema19" },
+            "action": {
+              "type": "string",
+              "const": "if",
+              "description": "Run `then` when the selector matches (or is visible), otherwise `else`."
+            },
+            "selector": { "$ref": "#/$defs/selector" },
+            "state": {
+              "description": "Branch on visibility (`visible`, default) or mere presence (`attached`).",
+              "$ref": "#/$defs/__schema42"
+            },
+            "then": {
+              "description": "Steps to run on a match.",
+              "$ref": "#/$defs/__schema43"
+            },
+            "else": {
+              "description": "Steps to run otherwise.",
+              "$ref": "#/$defs/__schema44"
+            }
+          },
+          "required": ["action", "selector"],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "__schema15": {
+      "description": "One human sentence: the step's line in `meta.steps`.",
+      "$ref": "#/$defs/__schema16"
+    },
+    "__schema16": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "__schema17": {
+      "description": "Retry this step on failure (attempts, delay between them).",
+      "$ref": "#/$defs/__schema18"
+    },
+    "__schema18": {
+      "type": "object",
+      "properties": {
+        "attempts": { "type": "integer", "minimum": 1, "maximum": 10 },
+        "delayMs": { "type": "integer", "minimum": 0, "maximum": 60000 }
+      },
+      "required": ["attempts"],
+      "additionalProperties": false
+    },
+    "__schema19": {
+      "description": "Skip this step unless the template is truthy; a leading `!` negates it.",
+      "$ref": "#/$defs/__schema20"
+    },
+    "__schema20": { "type": "string", "minLength": 1, "maxLength": 200 },
+    "selector": {
+      "anyOf": [
+        { "$ref": "#/$defs/__schema21" },
+        { "$ref": "#/$defs/__schema22" }
+      ],
+      "description": "A selector, or a list of candidates tried in order (first hit wins)."
+    },
+    "__schema21": { "type": "string", "minLength": 1 },
+    "__schema22": {
+      "minItems": 1,
+      "type": "array",
+      "items": { "$ref": "#/$defs/__schema23" }
+    },
+    "__schema23": { "type": "string", "minLength": 1 },
+    "__schema24": { "type": "integer", "minimum": 0, "maximum": 120000 },
+    "__schema25": { "type": "string", "enum": ["visible", "attached"] },
+    "timeout": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 120000,
+      "description": "Milliseconds to wait for this step before failing (default 5000)."
+    },
+    "__schema26": {
+      "description": "Skip instead of failing when the selector is absent (the variable becomes an empty string).",
+      "$ref": "#/$defs/__schema27"
+    },
+    "__schema27": { "type": "boolean" },
+    "__schema28": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Variable name the value is stored under, read back by `output`."
+    },
+    "__schema29": { "type": "string" },
+    "__schema30": {
+      "anyOf": [
+        { "$ref": "#/$defs/selector" },
+        { "$ref": "#/$defs/__schema31" }
+      ],
+      "description": "Text of the row's element, or one of its attributes."
+    },
+    "__schema31": {
+      "type": "object",
+      "properties": {
+        "selector": { "$ref": "#/$defs/selector" },
+        "attr": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Attribute to read instead of the text (e.g. `src`, `href`)."
+        }
+      },
+      "required": ["selector", "attr"],
+      "additionalProperties": false
+    },
+    "__schema32": { "type": "integer", "exclusiveMinimum": 0, "maximum": 2000 },
+    "__schema33": {
+      "minItems": 1,
+      "type": "array",
+      "items": { "$ref": "#/$defs/__schema34" }
+    },
+    "__schema34": { "type": "string", "minLength": 1 },
+    "__schema35": { "type": "string", "minLength": 1 },
+    "__schema36": { "type": "boolean" },
+    "__schema37": {
+      "type": "integer",
+      "exclusiveMinimum": 0,
+      "maximum": 20000
+    },
+    "__schema38": { "type": "string", "enum": ["end", "grow"] },
+    "__schema39": { "type": "integer", "minimum": 0, "maximum": 10000 },
+    "__schema40": { "type": "integer", "exclusiveMinimum": 0, "maximum": 500 },
+    "__schema41": { "type": "string", "minLength": 1 },
+    "__schema42": { "type": "string", "enum": ["visible", "attached"] },
+    "__schema43": {
+      "minItems": 1,
+      "type": "array",
+      "items": { "$ref": "#/$defs/step" }
+    },
+    "__schema44": { "type": "array", "items": { "$ref": "#/$defs/step" } },
+    "__schema45": {
+      "type": "object",
+      "propertyNames": { "type": "string" },
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    }
+  }
+}

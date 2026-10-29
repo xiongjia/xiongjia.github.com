@@ -1,0 +1,128 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "xhs-following",
+  "version": 1,
+  "apiVersion": 1,
+  // One account, one site: every xhs flow shares this gap so a burst of calls
+  // (manual or automated) cannot look like a bot. Other flows are untouched.
+  "throttle": { "scope": "xhs", "minIntervalMs": 20000 },
+  "description": "Read the accounts this identity follows (关注). Needs a logged-in browser profile — the session comes from the profile's own browser directory, not from this file.",
+  "input": {
+    "profileId": {
+      "type": "string",
+      "description": "Whose following list; omitted = the signed-in account (read from the sidebar)."
+    }
+  },
+  "steps": [
+    {
+      "desc": "open the site and land on the signed-in sidebar",
+      "action": "goto",
+      "url": "https://www.xiaohongshu.com/explore",
+      "retry": { "attempts": 2, "delayMs": 1500 }
+    },
+    {
+      "desc": "the sidebar identity only renders for a logged-in session",
+      "action": "wait",
+      "selector": [".user .name", ".side-bar .user", ".user-avatar"],
+      "state": "visible",
+      "timeout": 15000
+    },
+    {
+      "desc": "fail loudly on the risk-control page instead of scraping nothing",
+      "action": "assertNotBlocked",
+      "patterns": ["安全限制", "IP存在风险", "300012"]
+    },
+    {
+      "desc": "own profile link (read before navigating away from the home page)",
+      "action": "attribute",
+      "selector": [
+        ".user a[href*='/user/profile']",
+        ".side-bar a[href*='/user/profile']",
+        "a[href*='/user/profile/']"
+      ],
+      "name": "href",
+      "as": "ownProfileHref",
+      "when": "!{{input.profileId}}"
+    },
+    {
+      "desc": "open the profile we were asked for",
+      "action": "goto",
+      "url": "https://www.xiaohongshu.com/user/profile/{{input.profileId}}",
+      "when": "{{input.profileId}}"
+    },
+    {
+      "desc": "open our own profile",
+      "action": "goto",
+      "url": "{{vars.ownProfileHref}}",
+      "when": "!{{input.profileId}}"
+    },
+    {
+      "desc": "the profile header needs a moment to render",
+      "action": "wait",
+      "ms": 2000
+    },
+    {
+      "desc": "open the 关注 panel from the counter",
+      "action": "click",
+      "selector": [
+        ".clickable:has-text('关注')",
+        ".user-interactions .clickable:has-text('关注')"
+      ],
+      "timeout": 8000
+    },
+    {
+      "desc": "the panel holds both 关注 and 粉丝",
+      "action": "wait",
+      "selector": ".xhs-relation-panel",
+      "state": "visible",
+      "timeout": 8000
+    },
+    {
+      "desc": "switch the panel to 关注 when it opened on 粉丝",
+      "action": "if",
+      "selector": [
+        ".xhs-panel-tab:has-text('关注')",
+        ".xhs-tab-label:text-is('关注')"
+      ],
+      "state": "visible",
+      "then": [
+        {
+          "action": "click",
+          "selector": [
+            ".xhs-panel-tab:has-text('关注')",
+            ".xhs-tab-label:text-is('关注')"
+          ]
+        },
+        { "action": "wait", "ms": 1200 }
+      ]
+    },
+    {
+      "desc": "scroll the panel's own container to the end so every row renders",
+      "action": "scroll",
+      "target": [
+        ".xhs-following-scroll",
+        ".xhs-relation-panel [class*='scroll']"
+      ],
+      "by": 1200,
+      "until": "end",
+      "settleMs": 900,
+      "maxRounds": 12
+    },
+    {
+      "desc": "read every row (nickname, description, avatar)",
+      "action": "extract",
+      "item": ".xhs-relation-item",
+      "fields": {
+        "name": "[class*='relation-name']",
+        "desc": "[class*='relation-desc']",
+        "avatar": { "selector": "img", "attr": "src" }
+      },
+      "as": "rows",
+      "limit": 500,
+      "uniqueBy": ["name", "avatar"]
+    }
+  ],
+  "output": {
+    "rows": "rows"
+  }
+}

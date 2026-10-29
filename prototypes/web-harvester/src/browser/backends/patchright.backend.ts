@@ -1,6 +1,10 @@
 import type { BrowserContext } from "playwright-core";
 import { chromium } from "patchright";
-import type { BackendLaunchOptions, BrowserBackend } from "./backend";
+import {
+  toProxy,
+  type BackendLaunchOptions,
+  type BrowserBackend,
+} from "./backend";
 
 /**
  * Patchright (patched Playwright/Chromium) backend — the fallback engine.
@@ -21,6 +25,7 @@ export const patchrightBackend: BrowserBackend = {
       locale: options.locale,
       timezoneId: options.timezoneId,
       slowMo: options.slowMo,
+      proxy: toProxy(options.proxy),
       args: ["--no-default-browser-check", "--no-first-run"],
     });
     return context as unknown as BrowserContext;

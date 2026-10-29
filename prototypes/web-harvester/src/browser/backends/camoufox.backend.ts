@@ -4,7 +4,11 @@ import {
   listInstalled as listCamoufoxBuilds,
 } from "camoufox";
 import type { BrowserContext } from "playwright-core";
-import type { BackendLaunchOptions, BrowserBackend } from "./backend";
+import {
+  toProxy,
+  type BackendLaunchOptions,
+  type BrowserBackend,
+} from "./backend";
 
 const MISSING_BUILD =
   "Camoufox's Firefox build is not installed (it is a ~1.3 GB download from GitHub releases). " +
@@ -38,10 +42,11 @@ export const camoufoxBackend: BrowserBackend = {
       locale: options.locale,
       window: [options.viewport.width, options.viewport.height],
       slowMo: options.slowMo,
+      // Frozen at profile creation: a new preset each launch would mean a new
+      // device for the same account, which is exactly the signal we avoid.
+      fingerprint_preset: options.preset,
+      proxy: toProxy(options.proxy),
     });
     return context as unknown as BrowserContext;
   },
 };
-
-/** Surfaced by the demo controller so a missing build reads as 503, not 500. */
-export const CAMOUFOX_MISSING_BUILD_MESSAGE = MISSING_BUILD;

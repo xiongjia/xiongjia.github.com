@@ -1,0 +1,68 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "demo-visit",
+  "version": 1,
+  "apiVersion": 1,
+  "description": "Self-check: open the offline demo page, prove interaction, read it into JSON.",
+  "input": {
+    "url": {
+      "type": "string",
+      "default": "{{self}}/api/v1/demo",
+      "description": "Page to visit; defaults to this host's own self-check page."
+    }
+  },
+  "steps": [
+    {
+      "desc": "open the self-check page",
+      "action": "goto",
+      "url": "{{input.url}}"
+    },
+    {
+      "desc": "wait for the element that appears after 1s",
+      "action": "wait",
+      "selector": "#delayed",
+      "state": "visible",
+      "timeout": 5000
+    },
+    {
+      "desc": "click the button (candidate selectors, first hit wins)",
+      "action": "click",
+      // `#bump` is the real one; the second candidate shows the fallback order.
+      "selector": ["#bump", "#does-not-exist"]
+    },
+
+    // The reading steps live in flows/demo-read-page.jsonc. `include` splices them
+    // in here: same page, same variables, and this flow keeps `output` below.
+    // `GET /api/v1/flows` shows the edge, too: demo-visit → demo-read-page.
+    {
+      "desc": "read the page",
+      "action": "include",
+      "flow": "demo-read-page"
+    },
+
+    {
+      "desc": "fail loudly if the site answers with a risk-control page",
+      "action": "assertNotBlocked",
+      "patterns": ["安全限制"]
+    },
+    {
+      "desc": "screenshot only when the delayed element is there",
+      "action": "if",
+      "selector": "#delayed",
+      "then": [
+        {
+          "desc": "capture the whole page",
+          "action": "screenshot",
+          "name": "visit",
+          "fullPage": true
+        }
+      ]
+    }
+  ],
+  "output": {
+    "heading": "heading",
+    "clickResult": "clickResult",
+    "delayedText": "delayedText",
+    "paragraphs": "paragraphs"
+  }
+}

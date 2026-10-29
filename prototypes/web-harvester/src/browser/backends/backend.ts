@@ -25,6 +25,25 @@ export interface BackendLaunchOptions {
   excludeAddons: string[];
   /** Fingerprint OS the browser should claim (affects fonts, UA, navigator). */
   os: "macos" | "windows" | "linux";
+  /** Frozen fpgen preset, so a profile keeps one identity across restarts. */
+  preset: Record<string, unknown>;
+  /** `http(s)://user:pass@host:port`, already validated by the profile file. */
+  proxy: string | null;
+}
+
+/** `http://user:pass@host:3128` → Playwright's proxy config, or nothing. */
+export function toProxy(
+  proxy: string | null,
+): { server: string; username?: string; password?: string } | undefined {
+  if (!proxy) {
+    return undefined;
+  }
+  const url = new URL(proxy);
+  return {
+    server: `${url.protocol}//${url.host}`,
+    ...(url.username ? { username: decodeURIComponent(url.username) } : {}),
+    ...(url.password ? { password: decodeURIComponent(url.password) } : {}),
+  };
 }
 
 export interface BrowserBackend {

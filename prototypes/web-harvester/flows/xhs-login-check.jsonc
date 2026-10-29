@@ -1,0 +1,59 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "xhs-login-check",
+  "version": 1,
+  "apiVersion": 1,
+  // One account, one site: every xhs flow shares this gap so a burst of calls
+  // (manual or automated) cannot look like a bot. Other flows are untouched.
+  "throttle": { "scope": "xhs", "minIntervalMs": 20000 },
+  "sync": true,
+  "description": "Prove a session is real: read the signed-in sidebar identity. Fails when the session is stale, fails as `blocked` on the risk-control page.",
+  "steps": [
+    {
+      "desc": "open the site",
+      "action": "goto",
+      "url": "https://www.xiaohongshu.com/explore"
+    },
+    { "action": "wait", "ms": 1200 },
+    {
+      "desc": "a rejected IP is not a stale session",
+      "action": "assertNotBlocked",
+      "patterns": ["安全限制", "IP存在风险", "300012"]
+    },
+    {
+      "desc": "the sidebar identity only renders for a signed-in session",
+      "action": "wait",
+      "selector": [".user .name", ".side-bar .user", ".user-avatar"],
+      "state": "visible",
+      "timeout": 6000
+    },
+    {
+      "desc": "nickname",
+      "action": "text",
+      "selector": [
+        ".user .name",
+        ".side-bar .user .name",
+        ".user .user-name",
+        "[class*='user'] [class*='name']"
+      ],
+      "as": "nickname",
+      "optional": true
+    },
+    {
+      "desc": "profile link (carries the user id)",
+      "action": "attribute",
+      "selector": [
+        ".user a[href*='/user/profile']",
+        ".side-bar a[href*='/user/profile']",
+        "a[href*='/user/profile/']"
+      ],
+      "name": "href",
+      "as": "profileHref",
+      "optional": true
+    }
+  ],
+  "output": {
+    "nickname": "nickname",
+    "profileHref": "profileHref"
+  }
+}

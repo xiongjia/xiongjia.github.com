@@ -1,0 +1,113 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "xhs-login-qr",
+  "version": 1,
+  "apiVersion": 1,
+  // One account, one site: every xhs flow shares this gap so a burst of calls
+  // (manual or automated) cannot look like a bot. Other flows are untouched.
+  "throttle": { "scope": "xhs", "minIntervalMs": 20000 },
+  "sync": true,
+  "description": "Produce the Xiaohongshu login QR as artifacts/qr.png. Short by design: one run per /xhs/login/qrcode call, so the code is always fresh.",
+  "steps": [
+    {
+      "desc": "open the site (the QR only lives inside the login modal)",
+      "action": "goto",
+      "url": "https://www.xiaohongshu.com/explore",
+      "retry": { "attempts": 2, "delayMs": 1500 }
+    },
+    {
+      "desc": "let the risk-control redirect happen before looking for a QR",
+      "action": "wait",
+      "ms": 2500
+    },
+    {
+      "desc": "a rejected IP must read as blocked, not as 'no QR found'",
+      "action": "assertNotBlocked",
+      "patterns": ["安全限制", "IP存在风险", "300012"]
+    },
+    {
+      "desc": "QR already on screen → capture just the code",
+      "action": "if",
+      "selector": [
+        "img.qrcode-img",
+        ".qrcode-img",
+        ".qrcode img",
+        ".login-container .qrcode",
+        "canvas.qrcode",
+        ".qrcode"
+      ],
+      "state": "visible",
+      "then": [
+        {
+          "desc": "the QR element itself",
+          "action": "screenshot",
+          "selector": [
+            "img.qrcode-img",
+            ".qrcode-img",
+            ".qrcode img",
+            ".login-container .qrcode",
+            "canvas.qrcode",
+            ".qrcode"
+          ],
+          "name": "qr"
+        }
+      ],
+      "else": [
+        {
+          "desc": "open the login modal (already logged in → no trigger)",
+          "action": "click",
+          "optional": true,
+          "selector": [
+            "text=登录",
+            ".login-btn",
+            ".side-bar .user .login-btn",
+            "button:has-text('登录')"
+          ],
+          "timeout": 8000
+        },
+        { "action": "wait", "ms": 1500 },
+        {
+          "desc": "re-check after opening the modal",
+          "action": "assertNotBlocked",
+          "patterns": ["安全限制", "IP存在风险", "300012"]
+        },
+        {
+          "desc": "capture the code, or the viewport when the site was re-skinned",
+          "action": "if",
+          "selector": [
+            "img.qrcode-img",
+            ".qrcode-img",
+            ".qrcode img",
+            ".login-container .qrcode",
+            "canvas.qrcode",
+            ".qrcode"
+          ],
+          "state": "visible",
+          "then": [
+            {
+              "desc": "the QR element itself",
+              "action": "screenshot",
+              "selector": [
+                "img.qrcode-img",
+                ".qrcode-img",
+                ".qrcode img",
+                ".login-container .qrcode",
+                "canvas.qrcode",
+                ".qrcode"
+              ],
+              "name": "qr"
+            }
+          ],
+          "else": [
+            {
+              "desc": "better a slightly wrong image than a blank failure",
+              "action": "screenshot",
+              "name": "qr",
+              "fullPage": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
