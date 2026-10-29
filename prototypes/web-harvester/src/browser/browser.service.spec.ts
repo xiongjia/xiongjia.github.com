@@ -4,6 +4,7 @@ import { mkdtemp, readFile, rm } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { ProfileRegistry } from "../profile/registry";
 import type { BackendLaunchOptions, BrowserBackend } from "./backends/backend";
 import { BrowserService } from "./browser.service";
 
@@ -62,13 +63,40 @@ function makeConfig(values: Record<string, unknown> = {}): ConfigService {
     HARVEST_EXCLUDE_ADDONS: ["UBO"],
     HARVEST_LOCALE: "zh-CN",
     HARVEST_TIMEZONE: "Asia/Shanghai",
-    HARVEST_PROFILE_DIR: ".cache/profile",
+    HARVEST_PROFILE_DIR: join(tmpdir(), "harvester-spec-profile"),
     HARVEST_DATA_DIR: "data",
     HARVEST_VIEWPORT_WIDTH: 1280,
     HARVEST_VIEWPORT_HEIGHT: 800,
     ...values,
   };
   return { get: (key: string) => defaults[key] } as unknown as ConfigService;
+}
+
+/** Registry on a temp root: profile creation is part of the behaviour here. */
+function makeProfiles(dataDir: string, values: Record<string, unknown> = {}) {
+  return new ProfileRegistry(
+    makeConfig({
+      HARVEST_PROFILES_DIR: join(dataDir, "profiles"),
+      HARVEST_PROFILE_DIR: join(dataDir, "profile"),
+      ...values,
+    }),
+  );
+}
+
+function makeService(
+  values: Record<string, unknown>,
+  dataDir: string,
+  backends: BrowserBackend[],
+): BrowserService {
+  return new BrowserService(
+    makeConfig({
+      HARVEST_PROFILES_DIR: join(dataDir, "profiles"),
+      HARVEST_PROFILE_DIR: join(dataDir, "profile"),
+      ...values,
+    }),
+    makeProfiles(dataDir, values),
+    backends,
+  );
 }
 
 describe("BrowserService", () => {
@@ -84,7 +112,7 @@ describe("BrowserService", () => {
 
   it("launches the backend only once across calls", async () => {
     const { backend, launch } = makeBackend();
-    const service = new BrowserService(makeConfig(), [backend]);
+    const service = makeService({}, dataDir, [backend]);
 
     await service.getContext();
     await service.getContext();
@@ -94,8 +122,9 @@ describe("BrowserService", () => {
 
   it("passes the profile, channel and fingerprint settings to the backend", async () => {
     const { backend, launch } = makeBackend();
-    const service = new BrowserService(
-      makeConfig({ HARVEST_HEADLESS: false, HARVEST_CHANNEL: "chromium" }),
+    const service = makeService(
+      { HARVEST_HEADLESS: false, HARVEST_CHANNEL: "chromium" },
+      dataDir,
       [backend],
     );
 
@@ -104,7 +133,7 @@ describe("BrowserService", () => {
     const options = launch.mock
       .calls[0]?.[0] as unknown as BackendLaunchOptions;
     expect(options).toMatchObject({
-      profileDir: ".cache/profile",
+      profileDir: join(dataDir, "profile"),
       channel: "chromium",
       headless: false,
       locale: "zh-CN",
@@ -118,7 +147,7 @@ describe("BrowserService", () => {
 
   it("runs page work serially and always closes the page", async () => {
     const { backend } = makeBackend();
-    const service = new BrowserService(makeConfig(), [backend]);
+    const service = makeService({}, dataDir, [backend]);
     const order: string[] = [];
     let active = 0;
     let maxActive = 0;
@@ -143,7 +172,7 @@ describe("BrowserService", () => {
 
   it("closes the page and rethrows when the task fails", async () => {
     const { backend } = makeBackend();
-    const service = new BrowserService(makeConfig(), [backend]);
+    const service = makeService({}, dataDir, [backend]);
     const context = await service.getContext();
     const page = makePage();
     context.newPage = vi.fn(
@@ -160,10 +189,9 @@ describe("BrowserService", () => {
 
   it("writes screenshots under <dataDir>/screenshots", async () => {
     const { backend } = makeBackend();
-    const service = new BrowserService(
-      makeConfig({ HARVEST_DATA_DIR: dataDir }),
-      [backend],
-    );
+    const service = makeService({ HARVEST_DATA_DIR: dataDir }, dataDir, [
+      backend,
+    ]);
 
     const path = await service.withPage(async (page) =>
       service.screenshot(page, "demo"),
@@ -174,19 +202,61 @@ describe("BrowserService", () => {
     await expect(readFile(path, "utf8")).resolves.toBe("png");
   });
 
-  it("rejects engines that are not registered", async () => {
-    const { backend } = makeBackend();
+  it("keeps one context per profile, each in its own directory", async () => {
+    const { backend, launch } = makeBackend();
+    const service = makeService({}, dataDir, [backend]);
+
+    await service.getContext("main");
+    await service.getContext("second");
+    await service.getContext("second");
+
+    expect(launch).toHaveBeenCalledTimes(2);
+    const dirs = launch.mock.calls.map(
+      (call) => (call[0] as unknown as BackendLaunchOptions).profileDir,
+    );
+    expect(dirs).toEqual([
+      join(dataDir, "profile"),
+      join(dataDir, "profiles", "second", "browser"),
+    ]);
+  });
+
+  it("hands the frozen preset and locale of the profile to the backend", async () => {
+    const { backend, launch } = makeBackend();
+    const profiles = makeProfiles(dataDir, { HARVEST_LOCALE: "en-US" });
     const service = new BrowserService(
-      makeConfig({ HARVEST_BROWSER: "mock" }),
+      makeConfig({
+        HARVEST_PROFILES_DIR: join(dataDir, "profiles"),
+        HARVEST_PROFILE_DIR: join(dataDir, "profile"),
+        HARVEST_LOCALE: "en-US",
+      }),
+      profiles,
       [backend],
     );
+
+    await service.getContext();
+
+    const options = launch.mock
+      .calls[0]?.[0] as unknown as BackendLaunchOptions;
+    expect(options.locale).toBe("en-US");
+    expect(options.proxy).toBeNull();
+    // Frozen in profile.json, so restarts keep the same device.
+    const stored = await profiles.get("main");
+    expect(options.preset).toEqual(stored.preset);
+    expect(Object.keys(stored.preset).length).toBeGreaterThan(0);
+  });
+
+  it("rejects engines that are not registered", async () => {
+    const { backend } = makeBackend();
+    const service = makeService({ HARVEST_BROWSER: "mock" }, dataDir, [
+      backend,
+    ]);
 
     await expect(service.getContext()).rejects.toThrow(/mock.*not implemented/);
   });
 
   it("closes the context on module destroy and relaunches afterwards", async () => {
     const { backend, launch } = makeBackend();
-    const service = new BrowserService(makeConfig(), [backend]);
+    const service = makeService({}, dataDir, [backend]);
     const context = await service.getContext();
 
     await service.onModuleDestroy();
@@ -198,7 +268,7 @@ describe("BrowserService", () => {
 
   it("ignores destroy when nothing was launched", async () => {
     const { backend, launch } = makeBackend();
-    const service = new BrowserService(makeConfig(), [backend]);
+    const service = makeService({}, dataDir, [backend]);
 
     await service.onModuleDestroy();
     expect(launch).not.toHaveBeenCalled();

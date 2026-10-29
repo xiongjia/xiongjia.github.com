@@ -11,6 +11,7 @@ import type { Response } from "express";
 import { readFile } from "node:fs/promises";
 import { BrowserService } from "../browser/browser.service";
 import { apiPath } from "../common/api";
+import { selfBaseUrl } from "../common/self-url";
 import { DEMO_PAGE_HTML, DEMO_SELECTORS } from "./demo.page";
 
 export interface DemoVisitResult {
@@ -54,7 +55,7 @@ export class DemoController {
     description: "DOM snapshot, interaction result, screenshot path, timing",
   })
   async visit(): Promise<DemoVisitResult> {
-    const url = `${this.selfBaseUrl()}${apiPath("demo")}`;
+    const url = `${selfBaseUrl(this.config)}${apiPath("demo")}`;
     const startedAt = Date.now();
 
     return this.withBrowserErrors(async () =>
@@ -100,7 +101,7 @@ export class DemoController {
   async screenshot(@Res() res: Response): Promise<void> {
     const path = await this.withBrowserErrors(async () =>
       this.browser.withPage(async (page) => {
-        await page.goto(`${this.selfBaseUrl()}${apiPath("demo")}`, {
+        await page.goto(`${selfBaseUrl(this.config)}${apiPath("demo")}`, {
           waitUntil: "domcontentloaded",
         });
         await page.waitForSelector(DEMO_SELECTORS.delayed, {
@@ -130,14 +131,5 @@ export class DemoController {
       }
       throw error;
     }
-  }
-
-  /** The browser must reach this server over loopback, never over `0.0.0.0`. */
-  private selfBaseUrl(): string {
-    const host = this.config.get<string>("HARVEST_HOST") ?? "127.0.0.1";
-    const port = this.config.get<number>("HARVEST_PORT") ?? 8765;
-    const reachableHost =
-      host === "0.0.0.0" || host === "::" ? "127.0.0.1" : host;
-    return `http://${reachableHost}:${port}`;
   }
 }

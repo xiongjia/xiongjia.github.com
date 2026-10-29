@@ -96,16 +96,19 @@ Python `.venv/`, Node `node_modules/`).
 ## Scraping
 
 - **[web-harvester](./web-harvester/README.md)** — NestJS 12 + TypeScript
-  browser-automation prototype (pnpm): module-per-concern skeleton
-  (`ConfigModule` / `BrowserModule` / `DemoModule` / `XhsModule`) with a
-  Camoufox (Firefox) default engine and patchright/Chrome fallback behind one
-  `BrowserBackend` interface; an offline demo page drives a real browser
-  (`/api/v1/demo/visit`: DOM, click, delayed element, screenshot); Xiaohongshu QR
-  login (session jar 0600, login-gated identity verification) and the account's
-  following list (`.xhs-relation-panel` rows → JSONL) both verified on a real
-  account; ESLint 10 + Prettier + `pnpm check`, 55 Vitest specs (engine faked
-  through a DI token); read operations / MCP / CLI listed as roadmap, not built ·
-  created 2026-10-25 · status `working`
+  browser-automation prototype (pnpm): a **flow engine** (`.jsonc` flows with
+  typed input, steps and an output map; zod-validated, generated JSON Schema for
+  editors, `include` fragments, submit/poll runs API with per-profile queues,
+  run output + artifacts + SSE, `scroll`/`retry`/`if`/`extract` primitives) on
+  top of a Camoufox (Firefox) default engine and patchright/Chrome fallback
+  behind one `BrowserBackend` interface; **profiles** are one persistent browser
+  directory each with a frozen fingerprint, editable over REST; an offline demo
+  page drives a real browser (`/api/v1/demo/visit`, the reference flow); plus
+  Xiaohongshu QR login (session jar 0600, login-gated identity verification) and
+  the account's following list (JSONL), both verified on a real account; ESLint
+  10 + Prettier + `pnpm check`, 182 Vitest specs (engine faked through a DI
+  token); XHS-on-flows / read operations / MCP / CLI listed as roadmap, not
+  built · created 2026-10-25 · status `working`
 
 ## Convention
 

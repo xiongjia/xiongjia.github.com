@@ -1,4 +1,5 @@
 import { Global, Module } from "@nestjs/common";
+import { ProfileRegistry } from "../profile/registry";
 import { DEFAULT_BACKENDS, BROWSER_BACKENDS } from "./backends/index";
 import { BrowserService } from "./browser.service";
 
@@ -6,9 +7,10 @@ import { BrowserService } from "./browser.service";
 @Global()
 @Module({
   providers: [
+    ProfileRegistry,
     BrowserService,
     { provide: BROWSER_BACKENDS, useValue: DEFAULT_BACKENDS },
   ],
-  exports: [BrowserService],
+  exports: [ProfileRegistry, BrowserService],
 })
 export class BrowserModule {}

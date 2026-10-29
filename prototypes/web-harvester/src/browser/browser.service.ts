@@ -8,10 +8,11 @@ import { ConfigService } from "@nestjs/config";
 import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import type { BrowserContext, Cookie, Page } from "playwright-core";
+import { ProfileRegistry } from "../profile/registry";
 import type { BackendName, BrowserBackend } from "./backends/backend";
 import { BROWSER_BACKENDS } from "./backends/index";
 
-/** Minimal serial queue: one page at a time per browser, no extra dependency. */
+/** Minimal serial queue: one task at a time, no extra dependency. */
 function createSerialQueue(): <T>(task: () => Promise<T>) => Promise<T> {
   let tail: Promise<unknown> = Promise.resolve();
   return <T>(task: () => Promise<T>): Promise<T> => {
@@ -22,54 +23,68 @@ function createSerialQueue(): <T>(task: () => Promise<T>) => Promise<T> {
 }
 
 /**
- * Owns the single browser instance for the process.
+ * Owns one persistent browser context per profile.
  *
- * Pages are handed out through `withPage`, which serialises work: one account
- * means one profile, and two concurrent page loads on the same profile are both
- * a fingerprint leak and a flakiness source.
+ * Serialisation is per profile, not global: two profiles may browse at the same
+ * time, but two page loads on the same profile are a fingerprint leak and a
+ * flakiness source. Every method defaults to `HARVEST_PROFILE`, so existing
+ * single-profile callers (Xiaohongshu) keep working unchanged.
  */
 @Injectable()
 export class BrowserService implements OnModuleDestroy {
   private readonly logger = new Logger(BrowserService.name);
   private readonly backends: Map<BackendName, BrowserBackend>;
-  private readonly serial = createSerialQueue();
-
-  private context?: BrowserContext;
-  private launching?: Promise<BrowserContext>;
-  /** Long-lived pages (e.g. a login page that must survive between requests). */
-  private readonly persistent = new Map<string, Page>();
+  private readonly serials = new Map<
+    string,
+    ReturnType<typeof createSerialQueue>
+  >();
+  private readonly contexts = new Map<string, BrowserContext>();
+  private readonly launching = new Map<string, Promise<BrowserContext>>();
 
   constructor(
     private readonly config: ConfigService,
+    private readonly profiles: ProfileRegistry,
     @Inject(BROWSER_BACKENDS) backends: BrowserBackend[],
   ) {
     this.backends = new Map(backends.map((backend) => [backend.name, backend]));
-  }
-
-  /** Camoufox's name for the host platform (keeps fonts and UA consistent). */
-  private get hostOs(): "macos" | "windows" | "linux" {
-    if (process.platform === "darwin") return "macos";
-    if (process.platform === "win32") return "windows";
-    return "linux";
   }
 
   get dataDir(): string {
     return this.config.get<string>("HARVEST_DATA_DIR") ?? "data";
   }
 
-  async getContext(): Promise<BrowserContext> {
-    if (this.context) {
-      return this.context;
-    }
-    this.launching ??= this.launch();
-    this.context = await this.launching;
-    return this.context;
+  /** Profile used when a caller does not name one. */
+  get defaultProfile(): string {
+    return this.profiles.defaultName;
   }
 
-  /** Run `fn` with a fresh page; the page is always closed afterwards. */
-  async withPage<T>(fn: (page: Page) => Promise<T>): Promise<T> {
-    return this.serial(async () => {
-      const context = await this.getContext();
+  async getContext(profile = this.defaultProfile): Promise<BrowserContext> {
+    const existing = this.contexts.get(profile);
+    if (existing) {
+      return existing;
+    }
+    let pending = this.launching.get(profile);
+    if (!pending) {
+      pending = this.launch(profile);
+      this.launching.set(profile, pending);
+    }
+    const context = await pending;
+    this.contexts.set(profile, context);
+    return context;
+  }
+
+  /** Run `fn` with a fresh page on `profile`; the page is always closed. */
+  async withPage<T>(
+    fn: (page: Page) => Promise<T>,
+    profile = this.defaultProfile,
+  ): Promise<T> {
+    let serial = this.serials.get(profile);
+    if (!serial) {
+      serial = createSerialQueue();
+      this.serials.set(profile, serial);
+    }
+    return serial(async () => {
+      const context = await this.getContext(profile);
       const page = await context.newPage();
       try {
         return await fn(page);
@@ -79,38 +94,17 @@ export class BrowserService implements OnModuleDestroy {
     });
   }
 
-  /**
-   * A page that stays open between requests, keyed by name.
-   *
-   * Needed by flows that span multiple HTTP calls — QR login being the obvious
-   * one: the page holding the QR code must not be closed while the user scans.
-   */
-  async persistentPage(key: string): Promise<Page> {
-    const existing = this.persistent.get(key);
-    if (existing && !existing.isClosed()) {
-      return existing;
-    }
-    const context = await this.getContext();
-    const page = await context.newPage();
-    page.setDefaultTimeout(15_000);
-    this.persistent.set(key, page);
-    return page;
-  }
-
-  async releasePage(key: string): Promise<void> {
-    const page = this.persistent.get(key);
-    this.persistent.delete(key);
-    await page?.close().catch(() => undefined);
-  }
-
-  async cookies(): Promise<Cookie[]> {
-    const context = await this.getContext();
+  async cookies(profile = this.defaultProfile): Promise<Cookie[]> {
+    const context = await this.getContext(profile);
     return context.cookies();
   }
 
   /** Seed a fresh context with a previously saved session. */
-  async addCookies(cookies: Cookie[]): Promise<void> {
-    const context = await this.getContext();
+  async addCookies(
+    cookies: Cookie[],
+    profile = this.defaultProfile,
+  ): Promise<void> {
+    const context = await this.getContext(profile);
     await context.addCookies(cookies);
   }
 
@@ -127,71 +121,64 @@ export class BrowserService implements OnModuleDestroy {
   }
 
   async onModuleDestroy(): Promise<void> {
-    if (!this.context) {
-      return;
+    for (const [profile, context] of this.contexts) {
+      this.logger.log(`Closing browser context (profile ${profile})`);
+      await context.close().catch((error: unknown) => {
+        this.logger.warn(
+          `Failed to close context for profile ${profile}: ${String(error)}`,
+        );
+      });
     }
-    for (const key of [...this.persistent.keys()]) {
-      await this.releasePage(key);
-    }
-    this.logger.log("Closing browser context");
-    await this.context.close().catch((error: unknown) => {
-      this.logger.warn(`Failed to close browser context: ${String(error)}`);
-    });
-    this.context = undefined;
-    // Drop the memoised launch promise too, otherwise getContext() would hand
-    // back the already-closed context after a destroy/relaunch cycle.
-    this.launching = undefined;
+    this.contexts.clear();
+    // Drop the memoised launch promises too, otherwise getContext() would hand
+    // back an already-closed context after a destroy/relaunch cycle.
+    this.launching.clear();
   }
 
-  private async launch(): Promise<BrowserContext> {
-    const name =
-      this.config.get<BackendName>("HARVEST_BROWSER") ?? "patchright";
-    const backend = this.backends.get(name);
+  private get pageTimeout(): number {
+    return this.config.get<number>("HARVEST_PAGE_TIMEOUT") ?? 15_000;
+  }
+
+  private async launch(profileName: string): Promise<BrowserContext> {
+    const profile = await this.profiles.get(profileName);
+    const backend = this.backends.get(profile.engine as BackendName);
     if (!backend) {
       throw new Error(
-        `Browser backend "${name}" is not implemented yet (available: ${[...this.backends.keys()].join(", ")})`,
+        `Browser backend "${profile.engine}" is not implemented yet (available: ${[...this.backends.keys()].join(", ")})`,
       );
     }
 
-    const profileDir =
-      this.config.get<string>("HARVEST_PROFILE_DIR") ?? ".cache/profile";
+    const profileDir = this.profiles.browserDir(profile);
     await mkdir(profileDir, { recursive: true });
 
-    const viewport = {
-      width: this.config.get<number>("HARVEST_VIEWPORT_WIDTH") ?? 1280,
-      height: this.config.get<number>("HARVEST_VIEWPORT_HEIGHT") ?? 800,
-    };
     const headless =
       this.config.get<boolean | "virtual">("HARVEST_HEADLESS") ?? true;
-    const slowMo = this.config.get<number>("HARVEST_SLOWMO") ?? 0;
-    const channel =
-      this.config.get<"chrome" | "chromium">("HARVEST_CHANNEL") ?? "chrome";
     const excludeAddons =
       this.config.get<string[]>("HARVEST_EXCLUDE_ADDONS") ?? [];
-    const os =
-      this.config.get<"macos" | "windows" | "linux">("HARVEST_OS") ??
-      this.hostOs;
 
     const engine =
       backend.name === "patchright"
-        ? `${backend.name}/${channel}`
+        ? `${backend.name}/${this.config.get<string>("HARVEST_CHANNEL") ?? "chrome"}`
         : backend.name;
     this.logger.log(
-      `Launching ${engine} (headless=${headless}, os=${os}, profile=${profileDir})`,
+      `Launching ${engine} for profile "${profile.name}" (headless=${headless}, os=${profile.os}, dir=${profileDir})`,
     );
+
     const context = await backend.launch({
       profileDir,
-      channel,
+      channel:
+        this.config.get<"chrome" | "chromium">("HARVEST_CHANNEL") ?? "chrome",
       headless,
-      locale: this.config.get<string>("HARVEST_LOCALE") ?? "zh-CN",
-      timezoneId:
-        this.config.get<string>("HARVEST_TIMEZONE") ?? "Asia/Shanghai",
-      viewport,
-      slowMo,
+      locale: profile.locale,
+      timezoneId: profile.timezoneId,
+      viewport: profile.viewport,
+      slowMo: this.config.get<number>("HARVEST_SLOWMO") ?? 0,
       excludeAddons,
-      os,
+      os: profile.os,
+      preset: profile.preset,
+      proxy: profile.proxy,
     });
-    context.setDefaultTimeout(15_000);
+    context.setDefaultTimeout(this.pageTimeout);
     return context;
   }
 }

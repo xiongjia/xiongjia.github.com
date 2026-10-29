@@ -3,6 +3,7 @@ import { ConfigModule } from "@nestjs/config";
 import { BrowserModule } from "./browser/browser.module";
 import { validateEnv } from "./config/env";
 import { DemoModule } from "./demo/demo.module";
+import { FlowsModule } from "./flows/flows.module";
 import { XhsModule } from "./xhs/xhs.module";
 
 @Module({
@@ -15,6 +16,7 @@ import { XhsModule } from "./xhs/xhs.module";
     }),
     BrowserModule,
     DemoModule,
+    FlowsModule,
     XhsModule,
   ],
 })

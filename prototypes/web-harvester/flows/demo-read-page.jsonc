@@ -1,0 +1,40 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "demo-read-page",
+  "kind": "fragment",
+  "version": 1,
+  "apiVersion": 1,
+  "description": "Read the self-check page into variables. A fragment: demo-visit includes it, it cannot be run on its own.",
+
+  // No `input` / `output` here on purpose: the including flow declares them, and
+  // the variables captured below are visible to it.
+  "steps": [
+    {
+      "desc": "read the click result",
+      "action": "text",
+      "selector": "#status",
+      "as": "clickResult"
+    },
+    {
+      "desc": "read the heading",
+      "action": "text",
+      "selector": "#title",
+      "as": "heading"
+    },
+    {
+      "desc": "read the delayed text",
+      "action": "text",
+      "selector": "#delayed",
+      "as": "delayedText"
+    },
+    {
+      "desc": "collect every paragraph as JSON rows",
+      "action": "extract",
+      // `body p` are the rows; `:scope` reads each row's own text.
+      "item": "body p",
+      "fields": { "text": ":scope" },
+      "as": "paragraphs",
+      "limit": 5
+    }
+  ]
+}
