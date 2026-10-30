@@ -32,6 +32,21 @@ from shared.env import load_env_files  # noqa: E402
 API_BASE = "https://api.github.com"
 DEFAULT_TIMEOUT = 900  # seconds to wait for checks
 POLL_INTERVAL = 30
+# Delays between retries on ONE route (`_request`): one entry per retry, so
+# len(RETRY_BACKOFF) + 1 attempts per route. Routes are tried in order —
+# direct first, then BOT_HTTP_PROXY (see `GitHubAPI._build_routes`).
+RETRY_BACKOFF = (3, 10)
+# Seconds to wait for one response. A direct attempt must not hang forever on a
+# blackholed route, otherwise the proxy fallback never gets its turn; the proxy
+# route reuses it too (observed 0.8-11 s for a healthy proxied request).
+REQUEST_TIMEOUT = 30
+# Failures worth replaying. Pushing through an HTTP proxy regularly drops the
+# connection (SSL EOF / "Remote end closed connection" / read timeout) after
+# the server already did the work, so one unlucky request must not fail a
+# whole bot run. urllib wraps socket/SSL errors in URLError; OSError covers
+# the ones that escape unwrapped (e.g. during ``resp.read()``). HTTPError is a
+# URLError subclass, so it must be handled *before* this tuple.
+_TRANSIENT_ERRORS = (urllib.error.URLError, OSError)
 
 
 def _default_repo() -> str:
@@ -80,18 +95,90 @@ class GitHubAPI:
                 "init",
             )
         # bot-specific proxy (GitHub unreachable directly, e.g. mainland China)
+        # — the *fallback* route: direct is tried first, see _build_routes.
         self.proxy = os.environ.get("BOT_HTTP_PROXY")
-        self._opener = self._build_opener()
+        self.timeout = float(os.environ.get("BOT_HTTP_TIMEOUT") or REQUEST_TIMEOUT)
+        self._routes = self._build_routes()
 
-    def _build_opener(self) -> urllib.request.OpenerDirector:
+    def _build_routes(self) -> list[tuple[str, urllib.request.OpenerDirector]]:
+        """Request routes in the order they are tried: direct, then proxy.
+
+        Direct first because the developer's proxy is routinely slower and
+        flakier than the direct route (2026-10: 1 in 4 requests died, 5-89 s
+        each) — the proxy is only worth its cost when GitHub is unreachable,
+        which is what ``BOT_HTTP_PROXY`` stays there for. ``BOT_HTTP_DIRECT=0``
+        drops the direct route, restoring proxy-only behaviour for networks
+        that blackhole github.com.
+        """
+        direct = (os.environ.get("BOT_HTTP_DIRECT") or "1").strip().lower()
+        routes: list[tuple[str, urllib.request.OpenerDirector]] = []
+        if not self.proxy or direct not in ("0", "false", "no", "off"):
+            routes.append(("direct", self._build_opener(None)))
         if self.proxy:
-            handler = urllib.request.ProxyHandler({"http": self.proxy, "https": self.proxy})
+            routes.append((f"proxy {self.proxy}", self._build_opener(self.proxy)))
+        return routes
+
+    def _build_opener(self, proxy: str | None) -> urllib.request.OpenerDirector:
+        """Opener for one route.
+
+        ``proxy=None`` must be *genuinely* direct: an empty ``ProxyHandler``
+        stops urllib from picking up ``HTTP(S)_PROXY`` from the environment,
+        which ``git_bot._apply_proxy`` exports for subprocesses — otherwise the
+        "direct" route would silently reuse the proxy.
+        """
+        if proxy:
+            handler = urllib.request.ProxyHandler({"http": proxy, "https": proxy})
             return urllib.request.build_opener(handler)
-        return urllib.request.build_opener()
+        return urllib.request.build_opener(urllib.request.ProxyHandler({}))
 
     # -- low level -----------------------------------------------------------
 
     def _request(self, method: str, path: str, payload: dict | None = None):
+        """Call the REST API: direct route first, proxy as fallback, each retried.
+
+        Every route gets ``len(RETRY_BACKOFF) + 1`` attempts with a short
+        backoff; a route that stays down hands over to the next one, and the
+        last error is raised when all of them are exhausted.
+
+        Retries are safe for every call made here: GETs are reads, PATCHes set
+        an absolute state, and the two non-idempotent writes recognise "already
+        applied" answers — ``create_pr`` returns the PR behind a 422 duplicate
+        head, ``merge`` returns the PR behind a 405 already-merged. HTTP errors
+        are never retried: they need a human look, not another attempt.
+        """
+        attempts = len(RETRY_BACKOFF) + 1
+        last: Exception | None = None
+        for index, (route, opener) in enumerate(self._routes):
+            for attempt in range(1, attempts + 1):
+                try:
+                    return self._request_once(opener, method, path, payload)
+                except _TRANSIENT_ERRORS as exc:
+                    last = exc
+                    if attempt >= attempts:
+                        break  # route down — try the next one
+                    delay = RETRY_BACKOFF[attempt - 1]
+                    print(
+                        f"⚠ GitHub API {method} {path} via {route} failed "
+                        f"({attempt}/{attempts}): {exc} — retrying in {delay}s",
+                        file=sys.stderr,
+                    )
+                    time.sleep(delay)
+            if index < len(self._routes) - 1:
+                print(
+                    f"⚠ {route} route exhausted — falling back to {self._routes[index + 1][0]}",
+                    file=sys.stderr,
+                )
+        assert last is not None  # every route ended on a transient error
+        raise last
+
+    def _request_once(
+        self,
+        opener: urllib.request.OpenerDirector,
+        method: str,
+        path: str,
+        payload: dict | None = None,
+    ):
+        """One attempt over one route, no retry (see ``_request``)."""
         url = f"{API_BASE}/repos/{self.repo}{path}"
         body = json.dumps(payload).encode("utf-8") if payload is not None else None
         req = urllib.request.Request(url, data=body, method=method)
@@ -101,7 +188,7 @@ class GitHubAPI:
         if body is not None:
             req.add_header("Content-Type", "application/json")
         try:
-            with self._opener.open(req) as resp:
+            with opener.open(req, timeout=self.timeout) as resp:
                 raw = resp.read()
                 return json.loads(raw) if raw else None
         except urllib.error.HTTPError as exc:
@@ -122,12 +209,22 @@ class GitHubAPI:
         body: str,
         draft: bool = True,
     ) -> tuple[int, str]:
-        """Open a PR; returns ``(number, html_url)``."""
-        data = self._request(
-            "POST",
-            "/pulls",
-            {"head": head, "base": base, "title": title, "body": body, "draft": draft},
-        )
+        """Open a PR; returns ``(number, html_url)``.
+
+        Idempotent under retry: a dropped connection can follow a POST the
+        server already applied, so the replay answers 422 ("A pull request
+        already exists") — hand back that PR instead of failing the run. A 422
+        without an existing PR (e.g. "no commits between …") still raises.
+        """
+        payload = {"head": head, "base": base, "title": title, "body": body, "draft": draft}
+        try:
+            data = self._request("POST", "/pulls", payload)
+        except GitHubError as exc:
+            existing = self.find_pr_by_head(head) if exc.status == 422 else None
+            if not existing:
+                raise
+            print(f"ℹ PR for {head} already exists — reusing #{existing['number']}")
+            return existing["number"], existing["html_url"]
         return data["number"], data["html_url"]
 
     def list_prs(self, state: str = "all", head: str | None = None) -> list[dict]:
@@ -147,7 +244,19 @@ class GitHubAPI:
         self._request("PATCH", f"/pulls/{pull_number}", {"draft": False})
 
     def merge(self, pull_number: int, method: str = "squash") -> dict:
-        return self._request("PUT", f"/pulls/{pull_number}/merge", {"merge_method": method})
+        """Merge a PR; returns the PR payload.
+
+        Idempotent under retry: replaying the merge answers 405 once the PR is
+        already merged, so re-read it and report success. A 405 with the PR
+        still unmerged (conflicts, blocked checks) is a real failure.
+        """
+        try:
+            return self._request("PUT", f"/pulls/{pull_number}/merge", {"merge_method": method})
+        except GitHubError as exc:
+            pr = self._request("GET", f"/pulls/{pull_number}") if exc.status == 405 else None
+            if not (pr or {}).get("merged"):
+                raise
+            return pr
 
     # -- checks ----------------------------------------------------------------
 

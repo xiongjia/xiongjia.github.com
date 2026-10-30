@@ -512,7 +512,9 @@ What it configures:
 | `BOT_GH_TOKEN` / `BOT_WORKTREE_DIR`                                                                          | Bot PAT / bot worktree base dir                                                          |
 | `BOT_BASE_BRANCH`                                                                                            | Bot fork base branch (default: `master`)                                                 |
 | `BOT_SKIP_TESTS`                                                                                             | Skip the python unit-test step in the bot's local CI gate                                |
-| `BOT_HTTP_PROXY`                                                                                             | Bot proxy for GitHub API / git push / mermaid download                                   |
+| `BOT_HTTP_PROXY`                                                                                             | Bot proxy for mermaid download; fallback route for git fetch/push + GitHub API calls     |
+| `BOT_HTTP_DIRECT`                                                                                            | `0` = skip the direct route for git fetch/push + GitHub API calls (proxy only)           |
+| `BOT_HTTP_TIMEOUT`                                                                                           | Per-attempt response timeout (s) for GitHub API calls (default: 30)                      |
 | `READING_PROXY`                                                                                              | Reading-assist URL fetch proxy (per machine)                                             |
 | `READING_CACHE_DIR`                                                                                          | Reading-assist extraction/pre-fetch local cache (default: system temp)                   |
 

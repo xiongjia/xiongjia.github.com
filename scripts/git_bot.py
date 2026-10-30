@@ -136,19 +136,74 @@ def _apply_proxy() -> None:
         os.environ.setdefault("NO_PROXY", "127.0.0.1,localhost")
 
 
-def _git_proxy_args() -> list[str]:
-    """``-c http.proxy=…`` args for git network ops when BOT_HTTP_PROXY is set.
+def _git_net_routes() -> list[list[str]]:
+    """``-c`` args per network route, in the order they are tried.
 
-    git does not reliably read HTTPS_PROXY as http.proxy, so network git
-    commands (fetch / push / remote delete) pass it explicitly. HTTP/2 is
-    forced off as well (``http.version=HTTP/1.1``): git's HTTP/2 over a
-    CONNECT proxy frequently dies with "Error in the HTTP2 framing layer"
-    (e.g. through the local 127.0.0.1:1095 proxy).
+    Direct first, then ``BOT_HTTP_PROXY`` — same policy as the GitHub API
+    client (``shared/github_api.py``): the developer's proxy is routinely
+    slower and flakier than the direct route, so it is only worth its cost
+    when github.com is unreachable. ``BOT_HTTP_DIRECT=0`` drops the direct
+    route (proxy only) for networks that blackhole github.com.
+
+    The proxy route passes ``http.proxy`` explicitly (git does not reliably
+    read HTTPS_PROXY) and forces ``http.version=HTTP/1.1``: git's HTTP/2 over
+    a CONNECT proxy frequently dies with "Error in the HTTP2 framing layer".
+    The direct route keeps HTTP/2 — only proxy CONNECT trips that bug.
     """
     proxy = os.environ.get("BOT_HTTP_PROXY")
-    if not proxy:
-        return []  # direct connections keep HTTP/2 (only proxy CONNECT trips it)
-    return ["-c", f"http.proxy={proxy}", "-c", "http.version=HTTP/1.1"]
+    direct = (os.environ.get("BOT_HTTP_DIRECT") or "1").strip().lower()
+    routes: list[list[str]] = []
+    if not proxy or direct not in ("0", "false", "no", "off"):
+        routes.append([])
+    if proxy:
+        routes.append(["-c", f"http.proxy={proxy}", "-c", "http.version=HTTP/1.1"])
+    return routes
+
+
+def _is_transient_git_error(exc: Exception) -> bool:
+    return any(s in str(exc).lower() for s in _PUSH_RETRIABLE)
+
+
+def git_net(
+    args: list[str],
+    cwd: Path,
+    env: dict[str, str] | None = None,
+    attempts: int = 5,
+) -> None:
+    """Run a network git command (fetch / push / remote delete) with retries.
+
+    ``args`` is what follows the route's ``-c`` flags, e.g. ``["fetch",
+    "origin"]``. Each route gets ``attempts`` tries on transient connection
+    errors (``_PUSH_RETRIABLE``: a proxy dropping the TLS connection after the
+    server accepted the ref, "Empty reply", timeouts…); a route that stays
+    down hands over to the next one, and the last error is raised when all of
+    them are exhausted. Auth/config errors are never retried.
+    """
+    routes = _git_net_routes()
+    last: BotError | None = None
+    for index, route_args in enumerate(routes):
+        label = f"proxy {os.environ.get('BOT_HTTP_PROXY')}" if route_args else "direct"
+        for attempt in range(attempts):
+            try:
+                git(*route_args, *args, cwd=cwd, env=env)
+                return
+            except BotError as exc:
+                last = exc
+                if not _is_transient_git_error(exc):
+                    raise
+                if attempt < attempts - 1:
+                    print(
+                        f"⚠ git {args[0]} via {label} failed ({attempt + 1}/{attempts}): {exc}"
+                        " — retrying…",
+                        file=sys.stderr,
+                    )
+                    time.sleep(min(3 * (attempt + 1), 20))
+        if index < len(routes) - 1:
+            next_route = routes[index + 1]
+            next_label = f"proxy {os.environ.get('BOT_HTTP_PROXY')}" if next_route else "direct"
+            print(f"⚠ git {args[0]}: {label} route exhausted — falling back to {next_label}")
+    assert last is not None  # every route ended on a transient error
+    raise last
 
 
 def worktree_base(args) -> Path:
@@ -161,7 +216,7 @@ def worktree_base(args) -> Path:
 
 def create_worktree(branch: str, workdir: Path) -> None:
     workdir.parent.mkdir(parents=True, exist_ok=True)
-    git(*_git_proxy_args(), "fetch", "origin", cwd=REPO_ROOT)
+    git_net(["fetch", "origin"], cwd=REPO_ROOT)
     git("worktree", "add", "-b", branch, str(workdir), f"origin/{base_branch()}", cwd=REPO_ROOT)
 
 
@@ -320,30 +375,15 @@ def push_branch(workdir: Path, branch: str) -> None:
     Pushing through an HTTP proxy sometimes drops the connection after the
     server already accepted the ref ("Remote end closed connection without
     response") — the ref lands but git reports failure. Retry a few times
-    before giving up; auth/config errors are not retried.
+    per route (direct first, then proxy) before giving up; auth/config errors
+    are not retried.
     """
-    args = _git_proxy_args()
-    last: BotError | None = None
-    for attempt in range(5):
-        try:
-            git(*args, "push", "-u", "origin", branch, cwd=workdir, env=_git_auth_env())
-            return
-        except BotError as exc:
-            last = exc
-            if not any(s in str(exc).lower() for s in _PUSH_RETRIABLE):
-                raise
-            print(
-                f"⚠ push failed ({attempt + 1}/5): {exc} — retrying…",
-                file=sys.stderr,
-            )
-            time.sleep(min(3 * (attempt + 1), 20))
-    raise last
+    git_net(["push", "-u", "origin", branch], cwd=workdir, env=_git_auth_env())
 
 
 def delete_remote_branch(branch: str) -> None:
     _bot_branch_guard(branch)
-    args = _git_proxy_args()
-    git(*args, "push", "origin", "--delete", branch, cwd=REPO_ROOT, env=_git_auth_env())
+    git_net(["push", "origin", "--delete", branch], cwd=REPO_ROOT, env=_git_auth_env())
 
 
 def _basic_auth() -> str:
