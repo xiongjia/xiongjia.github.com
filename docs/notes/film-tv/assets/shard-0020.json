@@ -1,7 +1,311 @@
 {
  "count": 200,
- "first_date": "2009-10-06",
+ "first_date": "2009-10-07",
  "items": [
+  {
+   "casts": [
+    "Arnold Schwarzenegger（阿诺·施瓦辛格）",
+    "Linda Hamilton（琳达·汉密尔顿）",
+    "Edward Furlong（爱德华·福隆）",
+    "Robert Patrick（罗伯特·帕特里克）",
+    "Earl Boen（厄尔·伯恩）",
+    "Joe Morton（乔·莫顿）",
+    "埃帕莎·默克森",
+    "卡斯图罗·格雷拉",
+    "丹尼·库克塞",
+    "詹妮特·戈德斯坦恩"
+   ],
+   "category": "feature",
+   "cover": "covers/1291844/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291844/01.webp",
+   "date": "2009-10-07",
+   "directors": [
+    "James Cameron（詹姆斯·卡梅隆）"
+   ],
+   "douban_score": 8.8,
+   "genres": [
+    "动作",
+    "科幻"
+   ],
+   "id": "1291844",
+   "missing": false,
+   "original_title": "Terminator 2: Judgment Day",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "法国"
+   ],
+   "runtime": 137,
+   "slug": "terminator-2-judgment-day",
+   "status": "collect",
+   "tags": [
+    "Sci-Fi",
+    "Movie",
+    "ENU"
+   ],
+   "title": "终结者2：审判日",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1291844/",
+   "writers": [
+    "James Cameron（詹姆斯·卡梅隆）",
+    "小威廉·威谢尔"
+   ],
+   "year": 1991
+  },
+  {
+   "casts": [
+    "高山南",
+    "山崎和佳奈",
+    "神谷明",
+    "林原惠美",
+    "岩居由希子",
+    "高木涉",
+    "大谷育江",
+    "绪方贤一",
+    "堀川亮",
+    "宫村优子"
+   ],
+   "category": "anime",
+   "comment": "偶像剧...",
+   "cover": "covers/3387546/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3387546/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "山本泰一郎"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "动画",
+    "悬疑"
+   ],
+   "id": "3387546",
+   "missing": false,
+   "original_title": "名探偵コナン 漆黒の追跡者",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 111,
+   "slug": "detective-conan-the-raven-chaser",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Animation",
+    "JPN",
+    "Detective"
+   ],
+   "title": "名侦探柯南：漆黑的追踪者",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3387546/",
+   "writers": [
+    "古内一成"
+   ],
+   "year": 2009
+  },
+  {
+   "casts": [
+    "草尾毅",
+    "绿川光",
+    "梁田清之",
+    "置鲇龙太郎",
+    "盐屋翼",
+    "原惠理子",
+    "平松晶子",
+    "田中秀幸",
+    "小野坂昌也",
+    "神奈延年"
+   ],
+   "category": "anime",
+   "cover": "covers/1998799/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1998799/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "西泽信孝",
+    "角铜博之",
+    "志水淳儿",
+    "明比正行",
+    "又野弘道",
+    "中村哲治",
+    "竹之内和久"
+   ],
+   "douban_score": 9.7,
+   "episodes": 101,
+   "genres": [
+    "喜剧",
+    "动画",
+    "运动"
+   ],
+   "id": "1998799",
+   "missing": false,
+   "original_title": "スラムダンク",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 22,
+   "slug": "slam-dunk",
+   "status": "collect",
+   "tags": [
+    "Animation",
+    "Teleplay",
+    "JPN"
+   ],
+   "title": "灌篮高手",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/1998799/",
+   "writers": [
+    "井上雄彦",
+    "岸间信明",
+    "菅良幸"
+   ],
+   "year": 1993
+  },
+  {
+   "casts": [
+    "樱井翔",
+    "伊势谷友介",
+    "苍井优",
+    "加濑亮",
+    "关惠美",
+    "堺雅人"
+   ],
+   "category": "feature",
+   "comment": "离开动画差远了...",
+   "cover": "covers/1796053/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1796053/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "高田雅博"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "爱情"
+   ],
+   "id": "1796053",
+   "missing": false,
+   "original_title": "ハチミツとクローバー",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 117,
+   "slug": "honey-clover",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN",
+    "Animation"
+   ],
+   "title": "蜂蜜与四叶草",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1796053/",
+   "writers": [
+    "河原雅彦",
+    "高田雅博"
+   ],
+   "year": 2006
+  },
+  {
+   "casts": [
+    "王玉珍",
+    "夏奎斌",
+    "傅凌",
+    "谢添",
+    "陈仁萱",
+    "章继超",
+    "王正相",
+    "程学钦",
+    "刘淑琪",
+    "周森冠"
+   ],
+   "category": "feature",
+   "cover": "covers/1498716/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1498716/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "谢添",
+    "陈方千",
+    "徐枫"
+   ],
+   "douban_score": 7.4,
+   "genres": [
+    "音乐",
+    "战争"
+   ],
+   "id": "1498716",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 112,
+   "slug": "douban-1498716",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS",
+    "History",
+    "War"
+   ],
+   "title": "洪湖赤卫队",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1498716/",
+   "writers": [
+    "张敬安",
+    "梅少山"
+   ],
+   "year": 1961
+  },
+  {
+   "casts": [
+    "Allen Swift",
+    "Leen Jongewaard"
+   ],
+   "category": "anime",
+   "cover": "covers/1449381/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1449381/01.webp",
+   "date": "2009-10-06",
+   "directors": [
+    "Talus Taylor",
+    "Annette Tison"
+   ],
+   "douban_score": 9.0,
+   "episodes": 45,
+   "genres": [
+    "动画"
+   ],
+   "id": "1449381",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "荷兰",
+    "日本",
+    "美国",
+    "法国"
+   ],
+   "runtime": 26,
+   "slug": "les-barbapapa-season-1",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "Animation",
+    "FRA"
+   ],
+   "title": "巴巴爸爸 第一季 Les Barbapapa Season 1",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/1449381/",
+   "writers": [
+    "Talus Taylor",
+    "Annette Tison"
+   ],
+   "year": 1974
+  },
   {
    "casts": [
     "丁尼",
@@ -9405,309 +9709,7 @@
     "王大为"
    ],
    "year": 1991
-  },
-  {
-   "casts": [
-    "Brad Pitt（布拉德·皮特）",
-    "Diane Kruger（黛安·克鲁格）",
-    "Orlando Bloom（奥兰多·布鲁姆）",
-    "Julian Glover（朱利安·格洛弗）",
-    "Brian Cox（布莱恩·考克斯）",
-    "内森·琼斯",
-    "Eric Bana（艾瑞克·巴纳）",
-    "雅各布·史密斯",
-    "Rose Byrne（萝丝·拜恩）",
-    "Peter O'Toole（彼得·奥图尔）"
-   ],
-   "category": "feature",
-   "cover": "covers/1308751/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1308751/01.webp",
-   "date": "2009-05-06",
-   "directors": [
-    "Wolfgang Petersen（沃尔夫冈·彼德森）"
-   ],
-   "douban_score": 7.6,
-   "genres": [
-    "动作",
-    "爱情"
-   ],
-   "id": "1308751",
-   "missing": false,
-   "original_title": "Troy",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "美国",
-    "马耳他",
-    "英国"
-   ],
-   "runtime": 163,
-   "slug": "troy",
-   "status": "collect",
-   "tags": [
-    "History",
-    "Movie",
-    "ENU",
-    "War"
-   ],
-   "title": "特洛伊",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1308751/",
-   "writers": [
-    "David Benioff（戴维·贝尼奥夫）"
-   ],
-   "year": 2004
-  },
-  {
-   "casts": [
-    "Michael Sheen（麦克·辛）",
-    "Bill Nighy（比尔·奈伊）",
-    "Rhona Mitra（罗娜·迈特拉）",
-    "Steven Mackintosh（斯蒂文·麦金托什）"
-   ],
-   "category": "feature",
-   "cover": "covers/2132941/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2132941/01.webp",
-   "date": "2009-05-03",
-   "directors": [
-    "Patrick Tatopoulos（帕特里克·塔特普洛斯）"
-   ],
-   "douban_score": 6.9,
-   "genres": [
-    "动作",
-    "惊悚",
-    "奇幻"
-   ],
-   "id": "2132941",
-   "missing": false,
-   "original_title": "Underworld: Rise of the Lycans",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国",
-    "新西兰"
-   ],
-   "runtime": 92,
-   "slug": "underworld-rise-of-the-lycans",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "Sci-Fi",
-    "War"
-   ],
-   "title": "黑夜传说3：狼族崛起",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/2132941/",
-   "writers": [
-    "Danny McBride（丹尼·麦克布莱德）",
-    "Len Wiseman（伦·怀斯曼）"
-   ],
-   "year": 2009
-  },
-  {
-   "casts": [
-    "福山雅治",
-    "柴崎幸",
-    "堤真一",
-    "松雪泰子",
-    "北村一辉",
-    "金泽美穗"
-   ],
-   "category": "feature",
-   "cover": "covers/2369845/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2369845/01.webp",
-   "date": "2009-05-02",
-   "directors": [
-    "西谷弘"
-   ],
-   "douban_score": 8.4,
-   "genres": [
-    "剧情",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "2369845",
-   "missing": false,
-   "original_title": "容疑者Xの献身",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 128,
-   "slug": "yogisha-x-no-kenshin",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN",
-    "Detective"
-   ],
-   "title": "嫌疑人X的献身",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/2369845/",
-   "writers": [
-    "福田靖",
-    "东野圭吾"
-   ],
-   "year": 2008
-  },
-  {
-   "casts": [
-    "Matt Damon（马特·达蒙）",
-    "Robin Williams（罗宾·威廉姆斯）",
-    "Ben Affleck（本·阿弗莱克）",
-    "斯特兰·斯卡斯加德",
-    "Minnie Driver（明妮·德里弗）",
-    "Casey Affleck（卡西·阿弗莱克）",
-    "Cole Hauser（科尔·豪瑟）",
-    "约翰·迈顿",
-    "丹·华盛顿",
-    "艾莉森·福兰德"
-   ],
-   "category": "feature",
-   "cover": "covers/1292656/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1292656/01.webp",
-   "date": "2009-05-02",
-   "directors": [
-    "Gus Van Sant（格斯·范·桑特）"
-   ],
-   "douban_score": 9.0,
-   "genres": [
-    "剧情"
-   ],
-   "id": "1292656",
-   "missing": false,
-   "original_title": "Good Will Hunting",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 126,
-   "slug": "good-will-hunting",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "EDU"
-   ],
-   "title": "心灵捕手",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1292656/",
-   "writers": [
-    "Ben Affleck（本·阿弗莱克）",
-    "Matt Damon（马特·达蒙）"
-   ],
-   "year": 1997
-  },
-  {
-   "casts": [
-    "Robin Williams（罗宾·威廉姆斯）",
-    "Embeth Davidtz（艾伯丝·戴维兹）",
-    "Sam Neill（山姆·尼尔）",
-    "Oliver Platt（奥利弗·普莱特）",
-    "Kiersten Warren（绮尔斯腾·瓦伦）",
-    "Wendy Crewson（温迪·古逊）",
-    "海莉·凯特·爱森伯格",
-    "林兹·利瑟曼",
-    "安吉拉·兰迪斯",
-    "约翰·迈克尔·辛吉斯"
-   ],
-   "category": "feature",
-   "cover": "covers/1292529/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1292529/01.webp",
-   "date": "2009-05-02",
-   "directors": [
-    "Chris Columbus（克里斯·哥伦布）"
-   ],
-   "douban_score": 8.6,
-   "genres": [
-    "剧情",
-    "喜剧",
-    "科幻"
-   ],
-   "id": "1292529",
-   "missing": false,
-   "original_title": "Bicentennial Man",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国",
-    "德国"
-   ],
-   "runtime": 132,
-   "slug": "bicentennial-man",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "Romance",
-    "Sci-Fi",
-    "ENU"
-   ],
-   "title": "机器管家",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1292529/",
-   "writers": [
-    "尼古拉斯·卡赞",
-    "艾萨克·阿西莫夫",
-    "罗伯特·西尔弗伯格"
-   ],
-   "year": 1999
-  },
-  {
-   "casts": [
-    "Kate Beckinsale（凯特·贝金赛尔）",
-    "Scott Speedman（斯科特·斯比德曼）",
-    "Tony Curran（托尼·库兰）",
-    "Derek Jacobi（德里克·雅各比）",
-    "Bill Nighy（比尔·奈伊）",
-    "Steven Mackintosh（斯蒂文·麦金托什）",
-    "Shane Brolly（山恩·布罗利）",
-    "布莱恩·斯蒂尔",
-    "兹塔·格罗格",
-    "约翰·曼"
-   ],
-   "category": "feature",
-   "cover": "covers/1422920/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1422920/01.webp",
-   "date": "2009-05-01",
-   "directors": [
-    "Len Wiseman（伦·怀斯曼）"
-   ],
-   "douban_score": 7.4,
-   "genres": [
-    "动作",
-    "惊悚",
-    "奇幻"
-   ],
-   "id": "1422920",
-   "missing": false,
-   "original_title": "Underworld: Evolution",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国",
-    "加拿大"
-   ],
-   "runtime": 106,
-   "slug": "underworld-evolution",
-   "status": "collect",
-   "tags": [
-    "Sci-Fi",
-    "Movie",
-    "ENU"
-   ],
-   "title": "黑夜传说2：进化",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1422920/",
-   "writers": [
-    "Danny McBride",
-    "Len Wiseman（伦·怀斯曼）",
-    "凯文·格雷维奥斯"
-   ],
-   "year": 2006
   }
  ],
- "last_date": "2009-05-01"
+ "last_date": "2009-05-07"
 }

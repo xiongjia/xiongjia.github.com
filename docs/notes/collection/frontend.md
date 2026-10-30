@@ -20,6 +20,7 @@ hide:
 - [tinyjsapp](https://github.com/tarwin/tinyjsapp) - 用 JS 构建原生应用（前后端一体，约 5MB）
 - [CodeMirror](https://codemirror.net/) - 浏览器内代码编辑器组件（可扩展、支持语法高亮）
 - [capacitor](https://github.com/ionic-team/capacitor) - 用 Web 技术构建 iOS / Android / Web 跨平台原生应用（Ionic）
+- [aframe-vr-player](https://github.com/mysterion/aframe-vr-player) - 基于 A-Frame / WebXR 的 VR 视频播放器（PC 端串流到手机 Cardboard，支持 VR180/360）
 
 ## React
 

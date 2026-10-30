@@ -1,7 +1,304 @@
 {
  "count": 200,
- "first_date": "2012-04-02",
+ "first_date": "2012-04-06",
  "items": [
+  {
+   "casts": [
+    "Liam McIntyre（连姆·麦肯泰尔）",
+    "Manu Bennett（马努·贝内特）",
+    "Daniel Feuerriegel（丹尼尔·弗雷里格尔）",
+    "Peter Mensah（彼得·门萨）",
+    "露西·劳莱丝",
+    "尼克·塔拉贝",
+    "薇娃·碧安卡",
+    "帕纳·贺玛·泰勒",
+    "辛希亚·阿戴-罗宾森",
+    "达斯汀·克莱尔"
+   ],
+   "category": "series",
+   "cover": "covers/6017331/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6017331/01.webp",
+   "date": "2012-04-06",
+   "directors": [
+    "Michael Hurst（迈克尔·赫斯特）",
+    "Jesse Warn（杰西·沃恩）",
+    "布兰登·马赫",
+    "马克·贝斯利",
+    "Rick Jacobson（里克·雅各布森）",
+    "克里斯·马丁-琼斯",
+    "T·J·斯科特"
+   ],
+   "douban_score": 8.8,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "动作",
+    "情色",
+    "传记",
+    "历史",
+    "冒险"
+   ],
+   "id": "6017331",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 55,
+   "slug": "spartacus-vengeance-season-2",
+   "status": "collect",
+   "tags": [
+    "ENU",
+    "Teleplay"
+   ],
+   "title": "斯巴达克斯：复仇 第二季 Spartacus: Vengeance Season 2",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/6017331/",
+   "writers": [
+    "Steven S. DeKnight（斯蒂文·S·迪奈特）",
+    "布伦特·弗莱彻",
+    "特蕾西·贝洛莫",
+    "Allison Miller（艾莉森·米勒）",
+    "阿隆·赫布林",
+    "托德·赫布林",
+    "米沙·格林",
+    "谢默斯·凯文·费伊",
+    "杰德·韦登"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "山田孝之",
+    "小西真奈美",
+    "真木阳子",
+    "池胁千鹤",
+    "二阶堂富美"
+   ],
+   "category": "feature",
+   "cover": "covers/5367941/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5367941/01.webp",
+   "date": "2012-04-04",
+   "directors": [
+    "岩田由纪"
+   ],
+   "douban_score": 6.9,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "5367941",
+   "missing": false,
+   "original_title": "指輪をはめたい",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 108,
+   "slug": "yubiwa-wo-hametai",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "我想戴上戒指",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/5367941/",
+   "writers": [
+    "岩田由纪"
+   ],
+   "year": 2011
+  },
+  {
+   "casts": [
+    "上野树里",
+    "大杉涟"
+   ],
+   "category": "documentary",
+   "cover": "covers/10553095/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10553095/01.webp",
+   "date": "2012-04-04",
+   "directors": [
+    "高砂佳典",
+    "田淵盛之"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "纪录片"
+   ],
+   "id": "10553095",
+   "missing": false,
+   "original_title": "上野樹里が行く！桜前線大追跡 ～ヒマラヤから日本列島5,400キロの桜ロード～",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 95,
+   "slug": "ueno-juri-ga-iku-sakura-zensen-dai-tuiseki",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "上野树里之行！樱花前线大追迹～从喜马拉雅到日本列岛5400公里的樱之路~",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/10553095/",
+   "writers": [],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "Martina Hill（玛蒂娜·希尔）",
+    "Michael Krabbe（迈克尔·克罗贝）",
+    "Maurizio Magno（马里奇奥·马格诺）",
+    "Marc Benjamin Puch（马克·本杰明·普赫）"
+   ],
+   "category": "series",
+   "comment": "小孩会被他玩死的...",
+   "cover": "covers/10537919/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10537919/01.webp",
+   "date": "2012-04-04",
+   "directors": [
+    "Marco Musienko"
+   ],
+   "douban_score": 8.3,
+   "episodes": 8,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "10537919",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "德国"
+   ],
+   "runtime": 22,
+   "slug": "knallerfrauen-season-1",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "other_lang"
+   ],
+   "title": "屌丝女士 第一季 Knallerfrauen Season 1",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/10537919/",
+   "writers": [
+    "David Flasch",
+    "玛蒂娜·希尔 Martina Hill",
+    "Olivia Cote",
+    "Marco Musienko",
+    "Judith Siboni"
+   ],
+   "year": 2011
+  },
+  {
+   "casts": [
+    "户田惠梨香",
+    "加濑亮",
+    "浅野优子",
+    "谷村美月",
+    "福田沙纪",
+    "神木隆之介",
+    "龙雷太",
+    "椎名桔平",
+    "城田优",
+    "绪方义博"
+   ],
+   "category": "feature",
+   "comment": "越来越像 美剧 Hero 了...",
+   "cover": "covers/6717574/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6717574/01.webp",
+   "date": "2012-04-03",
+   "directors": [
+    "堤幸彦"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "剧情",
+    "悬疑"
+   ],
+   "id": "6717574",
+   "missing": false,
+   "original_title": "SPEC〜翔〜",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 92,
+   "slug": "spec-3",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "SP",
+    "JPN"
+   ],
+   "title": "SPEC：翔",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/6717574/",
+   "writers": [
+    "西荻弓绘"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "Tom Cruise（汤姆·克鲁斯）",
+    "Jeremy Renner（杰瑞米·雷纳）",
+    "Simon Pegg（西蒙·佩吉）",
+    "Paula Patton（宝拉·巴顿）",
+    "蕾雅·赛杜",
+    "Michael Nyqvist（迈克尔·恩奎斯特）",
+    "弗拉基米尔·马什科夫",
+    "萨穆里·埃德尔曼",
+    "伊万·舍甫多夫",
+    "Anil Kapoor（亚尼·卡普尔）"
+   ],
+   "category": "feature",
+   "comment": "他真都 50 了?",
+   "cover": "covers/3068206/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3068206/01.webp",
+   "date": "2012-04-03",
+   "directors": [
+    "Brad Bird（布拉德·伯德）"
+   ],
+   "douban_score": 8.4,
+   "genres": [
+    "动作",
+    "惊悚",
+    "冒险"
+   ],
+   "id": "3068206",
+   "missing": false,
+   "original_title": "Mission: Impossible - Ghost Protocol",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 133,
+   "slug": "mission-impossible-ghost-protocol",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "大叔"
+   ],
+   "title": "碟中谍4",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3068206/",
+   "writers": [
+    "布鲁斯·盖勒",
+    "乔什·阿佩尔鲍姆",
+    "安德烈·内梅克",
+    "斯蒂文·泽里安",
+    "David Koepp（大卫·凯普）"
+   ],
+   "year": 2011
+  },
   {
    "casts": [
     "岸谷五朗",
@@ -9560,292 +9857,7 @@
     "源孝志"
    ],
    "year": 2011
-  },
-  {
-   "casts": [
-    "筱原凉子",
-    "冈田将生",
-    "大泉洋",
-    "桐谷健太",
-    "生濑胜久",
-    "宇津井健",
-    "山口纱弥加",
-    "能世安奈",
-    "铃木身来"
-   ],
-   "category": "series",
-   "cover": "covers/4920522/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4920522/01.webp",
-   "date": "2011-04-04",
-   "directors": [
-    "佐藤东弥",
-    "南云圣一"
-   ],
-   "douban_score": 7.3,
-   "episodes": 9,
-   "genres": [
-    "剧情"
-   ],
-   "id": "4920522",
-   "missing": false,
-   "original_title": "黄金の豚-会計検査庁 特別調査課-",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 45,
-   "slug": "ougon-no-buta",
-   "status": "collect",
-   "tags": [
-    "Animation",
-    "Teleplay"
-   ],
-   "title": "黄金猪",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/4920522/",
-   "writers": [
-    "吉田智子"
-   ],
-   "year": 2010
-  },
-  {
-   "casts": [
-    "中井贵一",
-    "木村佳乃",
-    "堺正章",
-    "岸部一德",
-    "长门裕之"
-   ],
-   "category": "feature",
-   "comment": "语言的艺术...",
-   "cover": "covers/1806013/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1806013/01.webp",
-   "date": "2011-04-04",
-   "directors": [
-    "津川雅彦"
-   ],
-   "douban_score": 7.6,
-   "genres": [
-    "剧情",
-    "喜剧"
-   ],
-   "id": "1806013",
-   "missing": false,
-   "original_title": "寝ずの番",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 110,
-   "slug": "a-hardest-night",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "守灵夜",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1806013/",
-   "writers": [
-    "大森寿美男"
-   ],
-   "year": 2006
-  },
-  {
-   "casts": [
-    "户田惠梨香",
-    "三浦春马",
-    "篠田麻里子",
-    "武井咲",
-    "菅田将晖",
-    "刚力彩芽",
-    "中岛健人",
-    "石桥杏奈",
-    "能世安奈",
-    "内田有纪"
-   ],
-   "category": "series",
-   "comment": "多好的老师啊...",
-   "cover": "covers/5370353/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5370353/01.webp",
-   "date": "2011-04-03",
-   "directors": [
-    "西浦正记"
-   ],
-   "douban_score": 6.8,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "爱情"
-   ],
-   "id": "5370353",
-   "missing": false,
-   "original_title": "大切なことはすべて君が教えてくれた",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 54,
-   "slug": "taisetsu-na-koto-wa-subete-kimi-ga-oshiete-kureta",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "JPN"
-   ],
-   "title": "你教会了我什么最重要",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/5370353/",
-   "writers": [
-    "安达奈绪子"
-   ],
-   "year": 2011
-  },
-  {
-   "casts": [
-    "大原沙耶香",
-    "福山润",
-    "中井和哉"
-   ],
-   "category": "anime",
-   "cover": "covers/5337533/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5337533/01.webp",
-   "date": "2011-04-03",
-   "directors": [
-    "水岛努"
-   ],
-   "douban_score": 9.2,
-   "genres": [
-    "动画",
-    "恐怖",
-    "短片"
-   ],
-   "id": "5337533",
-   "missing": false,
-   "original_title": "xxxHOLiC・籠",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 41,
-   "slug": "xxxholic",
-   "status": "collect",
-   "tags": [
-    "OVA",
-    "Animation",
-    "Teleplay",
-    "Movie",
-    "JPN"
-   ],
-   "title": "四月一日灵异事件簿·笼",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/5337533/",
-   "writers": [
-    "大川七濑",
-    "五十岚皋"
-   ],
-   "year": 2010
-  },
-  {
-   "casts": [
-    "志田未来",
-    "佐佐木藏之介",
-    "本仮屋唯佳",
-    "池津祥子",
-    "升毅",
-    "林丹丹",
-    "龙星凉",
-    "堀内敬子",
-    "吹越满"
-   ],
-   "category": "series",
-   "comment": "东野的结局都是留伏笔...",
-   "cover": "covers/5294707/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5294707/01.webp",
-   "date": "2011-04-03",
-   "directors": [
-    "唐木希浩"
-   ],
-   "douban_score": 7.3,
-   "episodes": 9,
-   "genres": [
-    "剧情"
-   ],
-   "id": "5294707",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 60,
-   "slug": "himitsu",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Teleplay"
-   ],
-   "title": "秘密",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/5294707/",
-   "writers": [
-    "东野圭吾",
-    "吉田纪子"
-   ],
-   "year": 2010
-  },
-  {
-   "casts": [
-    "徐静蕾",
-    "李亚鹏",
-    "王学兵",
-    "何洁",
-    "程伊",
-    "崔达治",
-    "岳小军",
-    "冯粒",
-    "宁浩",
-    "徐冬冬"
-   ],
-   "category": "feature",
-   "cover": "covers/4896263/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4896263/01.webp",
-   "date": "2011-04-03",
-   "directors": [
-    "张一白"
-   ],
-   "douban_score": 6.5,
-   "genres": [
-    "剧情",
-    "爱情"
-   ],
-   "id": "4896263",
-   "missing": false,
-   "pending": false,
-   "rating": 1,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 103,
-   "slug": "eternal-moment",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS"
-   ],
-   "title": "将爱情进行到底",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/4896263/",
-   "writers": [
-    "沈巍",
-    "邢爱娜",
-    "某小丫"
-   ],
-   "year": 2011
   }
  ],
- "last_date": "2011-04-03"
+ "last_date": "2011-04-04"
 }

@@ -1,7 +1,304 @@
 {
  "count": 200,
- "first_date": "2013-12-01",
+ "first_date": "2013-12-14",
  "items": [
+  {
+   "casts": [
+    "张京",
+    "王莹",
+    "章萍",
+    "乔奇",
+    "牛星丽",
+    "温海波",
+    "冯小宁",
+    "刘佳",
+    "黎频"
+   ],
+   "category": "feature",
+   "cover": "covers/1440283/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1440283/01.webp",
+   "date": "2013-12-14",
+   "directors": [
+    "翁路明",
+    "宋崇"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "剧情",
+    "科幻",
+    "儿童"
+   ],
+   "id": "1440283",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 86,
+   "slug": "douban-1440283",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS",
+    "Sci-Fi"
+   ],
+   "title": "霹雳贝贝",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1440283/",
+   "writers": [
+    "张之路"
+   ],
+   "year": 1988
+  },
+  {
+   "casts": [
+    "Linda Hamilton",
+    "Ron Perlman",
+    "Roy Dotrice",
+    "Richard Partlow"
+   ],
+   "category": "series",
+   "comment": "其实他是兔唇吧?",
+   "cover": "covers/1428242/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1428242/01.webp",
+   "date": "2013-12-14",
+   "directors": [
+    "Victor Lobl",
+    "Gus Trikonis"
+   ],
+   "douban_score": 8.1,
+   "episodes": 22,
+   "genres": [
+    "剧情",
+    "爱情",
+    "犯罪",
+    "奇幻"
+   ],
+   "id": "1428242",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "beauty-and-the-beast-season-1",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "ENU"
+   ],
+   "title": "侠胆雄狮 第一季 Beauty and the Beast Season 1",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/1428242/",
+   "writers": [
+    "Ron Koslow"
+   ],
+   "year": 1987
+  },
+  {
+   "casts": [
+    "能年玲奈",
+    "桥本爱",
+    "小泉今日子",
+    "宫本信子",
+    "药师丸博子",
+    "蟹江敬三",
+    "尾美利德",
+    "杉本哲太",
+    "松田龙平",
+    "有村架纯"
+   ],
+   "category": "series",
+   "cover": "covers/10581289/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10581289/01.webp",
+   "date": "2013-12-14",
+   "directors": [
+    "井上刚",
+    "吉田照幸",
+    "梶原登城",
+    "西村武五郎",
+    "桑野智宏"
+   ],
+   "douban_score": 9.2,
+   "episodes": 156,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "10581289",
+   "missing": false,
+   "original_title": "あまちゃん",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 15,
+   "slug": "amachan",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "海女",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/10581289/",
+   "writers": [
+    "宫藤官九郎"
+   ],
+   "year": 2013
+  },
+  {
+   "casts": [
+    "桥本爱",
+    "高良健吾",
+    "矢岛健一",
+    "波冈一喜",
+    "胜村政信"
+   ],
+   "category": "series",
+   "cover": "covers/25703782/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25703782/01.webp",
+   "date": "2013-12-10",
+   "directors": [
+    "河合勇人",
+    "桥本光二郎"
+   ],
+   "douban_score": 7.5,
+   "episodes": 8,
+   "genres": [
+    "喜剧",
+    "犯罪"
+   ],
+   "id": "25703782",
+   "missing": false,
+   "original_title": "ハードナッツ！～数字girlの恋する事件簿～",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 47,
+   "slug": "girl-2013",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Movie"
+   ],
+   "title": "数学女孩的恋爱事件簿",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25703782/",
+   "writers": [
+    "莳田光治",
+    "山浦雅大",
+    "徳尾浩司"
+   ],
+   "year": 2013
+  },
+  {
+   "casts": [
+    "Logan Lerman（罗根·勒曼）",
+    "Alexandra Daddario（亚历山德拉·达达里奥）",
+    "Douglas Smith（道格拉斯·史密斯）",
+    "Leven Rambin（莱文·兰宾）",
+    "Brandon T. Jackson（布兰登·T·杰克逊）",
+    "杰克·阿贝尔",
+    "Anthony Head（安东尼·海德）",
+    "Stanley Tucci（斯坦利·图齐）",
+    "帕洛玛·克维亚特科夫斯基",
+    "内森·菲利安"
+   ],
+   "category": "feature",
+   "cover": "covers/10439805/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10439805/01.webp",
+   "date": "2013-12-05",
+   "directors": [
+    "Thor Freudenthal（托尔·弗罗伊登塔尔）"
+   ],
+   "douban_score": 5.9,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "10439805",
+   "missing": false,
+   "original_title": "Percy Jackson: Sea of Monsters",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 106,
+   "slug": "percy-jackson-sea-of-monsters",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "波西·杰克逊与魔兽之海",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/10439805/",
+   "writers": [
+    "马克·古根海姆",
+    "雷克·莱尔顿"
+   ],
+   "year": 2013
+  },
+  {
+   "casts": [
+    "Ryan Reynolds（瑞安·雷诺兹）",
+    "Jeff Bridges（杰夫·布里吉斯）",
+    "Kevin Bacon（凯文·贝肯）",
+    "Mary-Louise Parker（玛丽-露易丝·帕克）",
+    "Robert Knepper（罗伯特·克耐普）",
+    "吴汉章",
+    "迈克·奥麦利",
+    "斯特芬妮·斯佐斯塔克",
+    "派珀·麦肯锡·哈里斯",
+    "玛丽莎·米勒"
+   ],
+   "category": "feature",
+   "cover": "covers/3264229/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3264229/01.webp",
+   "date": "2013-12-02",
+   "directors": [
+    "Robert Schwentke（罗伯特·斯文克）"
+   ],
+   "douban_score": 6.3,
+   "genres": [
+    "喜剧",
+    "动作",
+    "犯罪",
+    "奇幻"
+   ],
+   "id": "3264229",
+   "missing": false,
+   "original_title": "R.I.P.D.",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 96,
+   "slug": "r-i-p-d",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "冥界警局",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3264229/",
+   "writers": [
+    "费尔·海伊",
+    "马特·曼弗莱迪",
+    "皮特·M·列科夫"
+   ],
+   "year": 2013
+  },
   {
    "casts": [
     "宫内瞳",
@@ -9423,300 +9720,7 @@
     "坂口理子"
    ],
    "year": 2012
-  },
-  {
-   "casts": [
-    "江口洋介",
-    "常盘贵子",
-    "堤真一",
-    "香川照之",
-    "长泽雅美",
-    "北村有起哉",
-    "神保悟志",
-    "加藤清史郎",
-    "杉本哲太",
-    "北村总一朗"
-   ],
-   "category": "series",
-   "cover": "covers/10508900/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10508900/01.webp",
-   "date": "2012-12-23",
-   "directors": [
-    "石井祐介"
-   ],
-   "douban_score": 7.1,
-   "episodes": 1,
-   "genres": [
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "10508900",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 123,
-   "slug": "douban-10508900",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "SP",
-    "JPN"
-   ],
-   "title": "再会",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/10508900/",
-   "writers": [
-    "桥本裕志"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "Cam Gigandet（凯姆·吉甘戴）",
-    "William Fichtner（威廉·菲克纳）",
-    "Robert Knepper（罗伯特·克耐普）",
-    "Kathleen Robertson（凯瑟琳·罗伯特森）",
-    "Anson Mount（安松·蒙特）",
-    "弗莱迪·罗德里格兹",
-    "艾迪·凯伊·托马斯"
-   ],
-   "category": "feature",
-   "cover": "covers/10467174/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10467174/01.webp",
-   "date": "2012-12-23",
-   "directors": [
-    "John Stockwell（约翰·斯托克韦尔）"
-   ],
-   "douban_score": 6.4,
-   "genres": [
-    "剧情",
-    "动作",
-    "犯罪"
-   ],
-   "id": "10467174",
-   "missing": false,
-   "original_title": "Seal Team 6: The Raid on Osama Bin Laden",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 87,
-   "slug": "seal-team-6-the-raid-on-osama-bin-laden",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "海豹六队：突袭奥萨马本拉登",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/10467174/",
-   "writers": [
-    "Kendall Lampkin"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "役所广司",
-    "松隆子",
-    "佐藤浩市",
-    "香取慎吾",
-    "筱原凉子",
-    "户田惠子",
-    "生濑胜久",
-    "麻生久美子",
-    "唐泽寿明",
-    "江原由希子"
-   ],
-   "category": "feature",
-   "cover": "covers/1482316/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1482316/01.webp",
-   "date": "2012-12-22",
-   "directors": [
-    "三谷幸喜"
-   ],
-   "douban_score": 8.0,
-   "genres": [
-    "剧情",
-    "喜剧",
-    "爱情"
-   ],
-   "id": "1482316",
-   "missing": false,
-   "original_title": "THE 有頂天ホテル",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 136,
-   "slug": "the-2006",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "有顶天酒店",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1482316/",
-   "writers": [
-    "三谷幸喜"
-   ],
-   "year": 2006
-  },
-  {
-   "casts": [
-    "郭富城",
-    "梁家辉",
-    "李治廷",
-    "彭于晏",
-    "杨采妮",
-    "马伊琍",
-    "林家栋",
-    "安志杰",
-    "钱嘉乐",
-    "尹子维"
-   ],
-   "category": "feature",
-   "cover": "covers/6890730/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6890730/01.webp",
-   "date": "2012-12-21",
-   "directors": [
-    "梁乐民",
-    "陆剑青"
-   ],
-   "douban_score": 7.6,
-   "genres": [
-    "剧情",
-    "动作",
-    "犯罪"
-   ],
-   "id": "6890730",
-   "missing": false,
-   "original_title": "寒戰",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "香港",
-    "中国"
-   ],
-   "runtime": 102,
-   "slug": "cold-war",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS"
-   ],
-   "title": "寒战",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/6890730/",
-   "writers": [
-    "梁乐民",
-    "陆剑青"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "徐峥",
-    "王宝强",
-    "李曼",
-    "李小璐",
-    "左小青",
-    "张歆艺",
-    "黄小蕾",
-    "马健",
-    "邱林"
-   ],
-   "category": "feature",
-   "cover": "covers/4237879/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4237879/01.webp",
-   "date": "2012-12-21",
-   "directors": [
-    "叶伟民"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "4237879",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 91,
-   "slug": "lost-on-journey",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS"
-   ],
-   "title": "人在囧途",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/4237879/",
-   "writers": [
-    "田羽生",
-    "史晨赟",
-    "徐元丰"
-   ],
-   "year": 2010
-  },
-  {
-   "casts": [
-    "Jennifer Garner（詹妮弗·加纳）",
-    "Joel Edgerton（乔尔·埃哲顿）",
-    "Ron Livingston（朗·里维斯顿）",
-    "Rosemarie DeWitt（罗丝玛丽·德薇特）",
-    "Dianne Wiest（黛安·韦斯特）",
-    "迈克尔·阿登",
-    "Cameron 'CJ' Adams（卡梅隆·CJ·亚当斯）",
-    "David Morse（大卫·摩斯）",
-    "奥德娅·拉什"
-   ],
-   "category": "feature",
-   "cover": "covers/3819871/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3819871/01.webp",
-   "date": "2012-12-16",
-   "directors": [
-    "Peter Hedges（彼得·赫奇斯）"
-   ],
-   "douban_score": 7.8,
-   "genres": [
-    "剧情",
-    "喜剧",
-    "家庭",
-    "奇幻"
-   ],
-   "id": "3819871",
-   "missing": false,
-   "original_title": "The Odd Life of Timothy Green",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 105,
-   "slug": "the-odd-life-of-timothy-green",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "蒂莫西的奇异生活",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/3819871/",
-   "writers": [
-    "Peter Hedges（彼得·赫奇斯）",
-    "阿迈德·扎帕"
-   ],
-   "year": 2012
   }
  ],
- "last_date": "2012-12-16"
+ "last_date": "2012-12-23"
 }

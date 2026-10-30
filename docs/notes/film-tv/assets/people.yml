@@ -214,6 +214,54 @@ people:
   roles:
   - actor
   works: 41
+- avg_rating: 4.11
+  douban_id: '27493159'
+  douban_url: https://www.douban.com/personage/27493159/
+  first_year: 2008
+  last_year: 2026
+  name: 神谷浩史
+  ratings:
+  - 4
+  - 5
+  - 5
+  - 5
+  - 4
+  - 4
+  - 4
+  - 4
+  - 5
+  - 5
+  - 5
+  - 4
+  - 5
+  - 5
+  - 4
+  - 5
+  - 5
+  - 4
+  - 4
+  - 5
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  - 4
+  - 4
+  - 3
+  - 3
+  - 4
+  - 4
+  - 3
+  - 3
+  - 4
+  - 5
+  - 4
+  - 4
+  - 4
+  roles:
+  - actor
+  works: 38
 - avg_rating: 3.54
   douban_id: '27228880'
   douban_url: https://www.douban.com/personage/27228880/
@@ -256,53 +304,6 @@ people:
   - 3
   - 3
   - 3
-  - 4
-  - 4
-  roles:
-  - actor
-  works: 37
-- avg_rating: 4.11
-  douban_id: '27493159'
-  douban_url: https://www.douban.com/personage/27493159/
-  first_year: 2008
-  last_year: 2025
-  name: 神谷浩史
-  ratings:
-  - 5
-  - 5
-  - 5
-  - 4
-  - 4
-  - 4
-  - 4
-  - 5
-  - 5
-  - 5
-  - 4
-  - 5
-  - 5
-  - 4
-  - 5
-  - 5
-  - 4
-  - 4
-  - 5
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
-  - 4
-  - 4
-  - 3
-  - 3
-  - 4
-  - 4
-  - 3
-  - 3
-  - 4
-  - 5
-  - 4
   - 4
   - 4
   roles:
@@ -842,6 +843,43 @@ people:
   roles:
   - actor
   works: 27
+- avg_rating: 3.81
+  douban_id: '27225633'
+  douban_url: https://www.douban.com/personage/27225633/
+  first_year: 2008
+  last_year: 2026
+  name: 泽城美雪
+  ratings:
+  - 4
+  - 3
+  - 5
+  - 3
+  - 3
+  - 3
+  - 5
+  - 3
+  - 4
+  - 5
+  - 4
+  - 3
+  - 4
+  - 4
+  - 4
+  - 3
+  - 5
+  - 5
+  - 4
+  - 3
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  - 5
+  - 5
+  roles:
+  - actor
+  works: 27
 - avg_rating: 3.63
   douban_id: '27242972'
   douban_url: https://www.douban.com/personage/27242972/
@@ -949,42 +987,6 @@ people:
   - 2
   - 3
   - 3
-  roles:
-  - actor
-  works: 26
-- avg_rating: 3.81
-  douban_id: '27225633'
-  douban_url: https://www.douban.com/personage/27225633/
-  first_year: 2008
-  last_year: 2021
-  name: 泽城美雪
-  ratings:
-  - 3
-  - 5
-  - 3
-  - 3
-  - 3
-  - 5
-  - 3
-  - 4
-  - 5
-  - 4
-  - 3
-  - 4
-  - 4
-  - 4
-  - 3
-  - 5
-  - 5
-  - 4
-  - 3
-  - 3
-  - 4
-  - 3
-  - 3
-  - 3
-  - 5
-  - 5
   roles:
   - actor
   works: 26
@@ -1670,6 +1672,38 @@ people:
   - director
   - writer
   works: 23
+- avg_rating: 3.55
+  douban_id: '27433564'
+  douban_url: https://www.douban.com/personage/27433564/
+  first_year: 2010
+  last_year: 2026
+  name: 佐藤健
+  ratings:
+  - 1
+  - 3
+  - 3
+  - 3
+  - 3
+  - 5
+  - 4
+  - 4
+  - 5
+  - 4
+  - 3
+  - 3
+  - 3
+  - 4
+  - 2
+  - 4
+  - 5
+  - 4
+  - 3
+  - 3
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 22
 - avg_rating: 3.32
   douban_id: '27243183'
   douban_url: https://www.douban.com/personage/27243183/
@@ -1826,37 +1860,6 @@ people:
   - 3
   roles:
   - writer
-  works: 21
-- avg_rating: 3.67
-  douban_id: '27433564'
-  douban_url: https://www.douban.com/personage/27433564/
-  first_year: 2010
-  last_year: 2025
-  name: 佐藤健
-  ratings:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 5
-  - 4
-  - 4
-  - 5
-  - 4
-  - 3
-  - 3
-  - 3
-  - 4
-  - 2
-  - 4
-  - 5
-  - 4
-  - 3
-  - 3
-  - 5
-  - 4
-  roles:
-  - actor
   works: 21
 - avg_rating: 3.43
   douban_id: '27254149'
@@ -2490,6 +2493,54 @@ people:
   - director
   - writer
   works: 20
+- avg_rating: 2.78
+  douban_id: '27253787'
+  douban_url: https://www.douban.com/personage/27253787/
+  first_year: 2008
+  last_year: 2026
+  name: 周星驰
+  ratings:
+  - 1
+  - 1
+  - 2
+  - 2
+  - 1
+  - 3
+  - 4
+  - 2
+  - 2
+  - 4
+  - 4
+  - 4
+  - 1
+  - 1
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  - director
+  - writer
+  works: 20
 - avg_rating: 3.3
   douban_id: '27242777'
   douban_url: https://www.douban.com/personage/27242777/
@@ -2821,6 +2872,35 @@ people:
   roles:
   - actor
   works: 19
+- avg_rating: 3.95
+  douban_id: '27211129'
+  douban_url: https://www.douban.com/personage/27211129/
+  first_year: 2008
+  last_year: 2026
+  name: 入野自由
+  ratings:
+  - 4
+  - 4
+  - 5
+  - 3
+  - 3
+  - 5
+  - 5
+  - 5
+  - 3
+  - 5
+  - 3
+  - 5
+  - 3
+  - 3
+  - 4
+  - 3
+  - 5
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 19
 - avg_rating: 3.11
   douban_id: '27503012'
   douban_url: https://www.douban.com/personage/27503012/
@@ -2936,52 +3016,6 @@ people:
   - 4
   roles:
   - actor
-  works: 19
-- avg_rating: 2.88
-  douban_id: '27253787'
-  douban_url: https://www.douban.com/personage/27253787/
-  first_year: 2008
-  last_year: 2019
-  name: 周星驰
-  ratings:
-  - 2
-  - 2
-  - 1
-  - 3
-  - 4
-  - 2
-  - 2
-  - 4
-  - 4
-  - 4
-  - 1
-  - 1
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
-  - 3
-  - 3
-  - 3
-  roles:
-  - actor
-  - director
-  - writer
   works: 19
 - avg_rating: 2.84
   douban_id: '27247546'
@@ -3129,6 +3163,35 @@ people:
   - 4
   - 3
   - 4
+  roles:
+  - actor
+  works: 19
+- avg_rating: 2.84
+  douban_id: '27324010'
+  douban_url: https://www.douban.com/personage/27324010/
+  first_year: 2008
+  last_year: 2026
+  name: 梁家辉
+  ratings:
+  - 4
+  - 3
+  - 1
+  - 2
+  - 3
+  - 2
+  - 1
+  - 3
+  - 3
+  - 5
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
   roles:
   - actor
   works: 19
@@ -3299,34 +3362,6 @@ people:
   - 5
   - 3
   - 3
-  - 3
-  roles:
-  - actor
-  works: 18
-- avg_rating: 3.94
-  douban_id: '27211129'
-  douban_url: https://www.douban.com/personage/27211129/
-  first_year: 2008
-  last_year: 2026
-  name: 入野自由
-  ratings:
-  - 4
-  - 5
-  - 3
-  - 3
-  - 5
-  - 5
-  - 5
-  - 3
-  - 5
-  - 3
-  - 5
-  - 3
-  - 3
-  - 4
-  - 3
-  - 5
-  - 4
   - 3
   roles:
   - actor
@@ -3583,6 +3618,34 @@ people:
   roles:
   - actor
   works: 18
+- avg_rating: 3.56
+  douban_id: '27485583'
+  douban_url: https://www.douban.com/personage/27485583/
+  first_year: 2010
+  last_year: 2026
+  name: 日笠阳子
+  ratings:
+  - 4
+  - 3
+  - 5
+  - 3
+  - 5
+  - 3
+  - 3
+  - 4
+  - 3
+  - 4
+  - 3
+  - 5
+  - 3
+  - 3
+  - 5
+  - 3
+  - 3
+  - 2
+  roles:
+  - actor
+  works: 18
 - avg_rating: 3.11
   douban_id: '27228391'
   douban_url: https://www.douban.com/personage/27228391/
@@ -3608,34 +3671,6 @@ people:
   - 3
   - 2
   - 2
-  roles:
-  - actor
-  works: 18
-- avg_rating: 2.78
-  douban_id: '27324010'
-  douban_url: https://www.douban.com/personage/27324010/
-  first_year: 2008
-  last_year: 2026
-  name: 梁家辉
-  ratings:
-  - 3
-  - 1
-  - 2
-  - 3
-  - 2
-  - 1
-  - 3
-  - 3
-  - 5
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
   roles:
   - actor
   works: 18
@@ -4358,33 +4393,6 @@ people:
   - 4
   - 2
   - 4
-  roles:
-  - actor
-  works: 17
-- avg_rating: 3.53
-  douban_id: '27485583'
-  douban_url: https://www.douban.com/personage/27485583/
-  first_year: 2010
-  last_year: 2026
-  name: 日笠阳子
-  ratings:
-  - 3
-  - 5
-  - 3
-  - 5
-  - 3
-  - 3
-  - 4
-  - 3
-  - 4
-  - 3
-  - 5
-  - 3
-  - 3
-  - 5
-  - 3
-  - 3
-  - 2
   roles:
   - actor
   works: 17
@@ -7141,6 +7149,30 @@ people:
   roles:
   - actor
   works: 14
+- avg_rating: 2.64
+  douban_id: '27242654'
+  douban_url: https://www.douban.com/personage/27242654/
+  first_year: 2008
+  last_year: 2026
+  name: 刘嘉玲
+  ratings:
+  - 1
+  - 2
+  - 1
+  - 3
+  - 4
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 2
+  - 3
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 14
 - avg_rating: 3.14
   douban_id: '27480508'
   douban_url: https://www.douban.com/personage/27480508/
@@ -7651,6 +7683,41 @@ people:
   - 3
   roles:
   - actor
+  works: 14
+- avg_rating: 3.21
+  douban_id: '27487235'
+  douban_url: https://www.douban.com/personage/27487235/
+  first_year: 2010
+  last_year: 2026
+  name: 福田雄一
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 1
+  - 1
+  - 3
+  - 5
+  - 5
+  - 3
+  - 3
+  - 4
+  - 4
+  - 5
+  - 5
+  - 2
+  - 5
+  - 5
+  - 3
+  - 3
+  - 2
+  - 2
+  - 2
+  - 2
+  roles:
+  - director
+  - writer
   works: 14
 - avg_rating: 2.93
   douban_id: '27246769'
@@ -8448,29 +8515,6 @@ people:
   roles:
   - actor
   works: 13
-- avg_rating: 2.77
-  douban_id: '27242654'
-  douban_url: https://www.douban.com/personage/27242654/
-  first_year: 2008
-  last_year: 2022
-  name: 刘嘉玲
-  ratings:
-  - 2
-  - 1
-  - 3
-  - 4
-  - 3
-  - 3
-  - 3
-  - 3
-  - 3
-  - 2
-  - 3
-  - 3
-  - 3
-  roles:
-  - actor
-  works: 13
 - avg_rating: 3.46
   douban_id: '27485624'
   douban_url: https://www.douban.com/personage/27485624/
@@ -9055,39 +9099,6 @@ people:
   - 3
   roles:
   - actor
-  works: 13
-- avg_rating: 3.23
-  douban_id: '27487235'
-  douban_url: https://www.douban.com/personage/27487235/
-  first_year: 2010
-  last_year: 2023
-  name: 福田雄一
-  ratings:
-  - 3
-  - 3
-  - 1
-  - 1
-  - 3
-  - 5
-  - 5
-  - 3
-  - 3
-  - 4
-  - 4
-  - 5
-  - 5
-  - 2
-  - 5
-  - 5
-  - 3
-  - 3
-  - 2
-  - 2
-  - 2
-  - 2
-  roles:
-  - director
-  - writer
   works: 13
 - avg_rating: 3.62
   douban_id: '27247725'
@@ -10384,6 +10395,28 @@ people:
   roles:
   - actor
   works: 12
+- avg_rating: 2.75
+  douban_id: '27499687'
+  douban_url: https://www.douban.com/personage/27499687/
+  first_year: 2014
+  last_year: 2026
+  name: 北村匠海
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 2
+  - 4
+  - 3
+  - 1
+  - 3
+  - 3
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 12
 - avg_rating: 3.08
   douban_id: '27220265'
   douban_url: https://www.douban.com/personage/27220265/
@@ -11087,6 +11120,28 @@ people:
   - 2
   - 5
   - 3
+  - 1
+  roles:
+  - actor
+  works: 12
+- avg_rating: 2.08
+  douban_id: '27492012'
+  douban_url: https://www.douban.com/personage/27492012/
+  first_year: 2015
+  last_year: 2026
+  name: 潘斌龙
+  ratings:
+  - 3
+  - 1
+  - 3
+  - 4
+  - 3
+  - 1
+  - 2
+  - 2
+  - 3
+  - 1
+  - 1
   - 1
   roles:
   - actor
@@ -12404,6 +12459,27 @@ people:
   - director
   - writer
   works: 11
+- avg_rating: 2.73
+  douban_id: '27480243'
+  douban_url: https://www.douban.com/personage/27480243/
+  first_year: 2009
+  last_year: 2026
+  name: 倪大红
+  ratings:
+  - 4
+  - 2
+  - 3
+  - 3
+  - 3
+  - 4
+  - 3
+  - 1
+  - 1
+  - 3
+  - 3
+  roles:
+  - actor
+  works: 11
 - avg_rating: 3.09
   douban_id: '27504432'
   douban_url: https://www.douban.com/personage/27504432/
@@ -12489,27 +12565,6 @@ people:
   roles:
   - director
   - writer
-  works: 11
-- avg_rating: 2.73
-  douban_id: '27499687'
-  douban_url: https://www.douban.com/personage/27499687/
-  first_year: 2014
-  last_year: 2023
-  name: 北村匠海
-  ratings:
-  - 3
-  - 3
-  - 3
-  - 2
-  - 4
-  - 3
-  - 1
-  - 3
-  - 3
-  - 2
-  - 3
-  roles:
-  - actor
   works: 11
 - avg_rating: 2.64
   douban_id: '27499365'
@@ -13388,27 +13443,6 @@ people:
   - 3
   - 4
   - 5
-  roles:
-  - actor
-  works: 11
-- avg_rating: 2.0
-  douban_id: '27492012'
-  douban_url: https://www.douban.com/personage/27492012/
-  first_year: 2015
-  last_year: 2026
-  name: 潘斌龙
-  ratings:
-  - 1
-  - 3
-  - 4
-  - 3
-  - 1
-  - 2
-  - 2
-  - 3
-  - 1
-  - 1
-  - 1
   roles:
   - actor
   works: 11
@@ -14841,26 +14875,6 @@ people:
   roles:
   - actor
   works: 10
-- avg_rating: 2.6
-  douban_id: '27480243'
-  douban_url: https://www.douban.com/personage/27480243/
-  first_year: 2009
-  last_year: 2023
-  name: 倪大红
-  ratings:
-  - 2
-  - 3
-  - 3
-  - 3
-  - 4
-  - 3
-  - 1
-  - 1
-  - 3
-  - 3
-  roles:
-  - actor
-  works: 10
 - avg_rating: 2.9
   douban_id: '27256003'
   douban_url: https://www.douban.com/personage/27256003/
@@ -15520,6 +15534,26 @@ people:
   - director
   - writer
   works: 10
+- avg_rating: 2.7
+  douban_id: '27222570'
+  douban_url: https://www.douban.com/personage/27222570/
+  first_year: 2011
+  last_year: 2026
+  name: 惠英红
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 4
+  - 1
+  - 1
+  - 3
+  - 3
+  - 4
+  - 1
+  roles:
+  - actor
+  works: 10
 - avg_rating: 2.9
   douban_id: '27494770'
   douban_url: https://www.douban.com/personage/27494770/
@@ -15881,6 +15915,26 @@ people:
   - 3
   - 5
   - 4
+  roles:
+  - actor
+  works: 10
+- avg_rating: 4.0
+  douban_id: '27398556'
+  douban_url: https://www.douban.com/personage/27398556/
+  first_year: 2008
+  last_year: 2026
+  name: 甲斐田裕子
+  ratings:
+  - 4
+  - 5
+  - 3
+  - 4
+  - 4
+  - 5
+  - 4
+  - 3
+  - 5
+  - 3
   roles:
   - actor
   works: 10
@@ -18223,25 +18277,6 @@ people:
   roles:
   - actor
   works: 9
-- avg_rating: 2.56
-  douban_id: '27222570'
-  douban_url: https://www.douban.com/personage/27222570/
-  first_year: 2011
-  last_year: 2026
-  name: 惠英红
-  ratings:
-  - 3
-  - 3
-  - 4
-  - 1
-  - 1
-  - 3
-  - 3
-  - 4
-  - 1
-  roles:
-  - actor
-  works: 9
 - avg_rating: 1.89
   douban_id: '27402318'
   douban_url: https://www.douban.com/personage/27402318/
@@ -18821,25 +18856,6 @@ people:
   roles:
   - actor
   works: 9
-- avg_rating: 4.0
-  douban_id: '27398556'
-  douban_url: https://www.douban.com/personage/27398556/
-  first_year: 2008
-  last_year: 2025
-  name: 甲斐田裕子
-  ratings:
-  - 5
-  - 3
-  - 4
-  - 4
-  - 5
-  - 4
-  - 3
-  - 5
-  - 3
-  roles:
-  - actor
-  works: 9
 - avg_rating: 2.22
   douban_id: '27504288'
   douban_url: https://www.douban.com/personage/27504288/
@@ -19226,6 +19242,26 @@ people:
   - 3
   roles:
   - actor
+  works: 9
+- avg_rating: 2.78
+  douban_id: '36216060'
+  douban_url: https://www.douban.com/personage/36216060/
+  first_year: 2008
+  last_year: 2026
+  name: 郭涛
+  ratings:
+  - 4
+  - 3
+  - 3
+  - 4
+  - 3
+  - 1
+  - 2
+  - 1
+  - 4
+  roles:
+  - actor
+  - writer
   works: 9
 - avg_rating: 2.78
   douban_id: '27546007'
@@ -21450,6 +21486,24 @@ people:
   roles:
   - actor
   works: 8
+- avg_rating: 2.62
+  douban_id: '27251120'
+  douban_url: https://www.douban.com/personage/27251120/
+  first_year: 2008
+  last_year: 2026
+  name: 安志杰
+  ratings:
+  - 3
+  - 1
+  - 1
+  - 5
+  - 3
+  - 3
+  - 2
+  - 3
+  roles:
+  - actor
+  works: 8
 - avg_rating: 3.5
   douban_id: '27251182'
   douban_url: https://www.douban.com/personage/27251182/
@@ -23035,24 +23089,6 @@ people:
   - 3
   - 4
   - 2
-  roles:
-  - actor
-  works: 8
-- avg_rating: 2.62
-  douban_id: '35233994'
-  douban_url: https://www.douban.com/personage/35233994/
-  first_year: 2008
-  last_year: 2017
-  name: 郭涛
-  ratings:
-  - 3
-  - 3
-  - 4
-  - 3
-  - 1
-  - 2
-  - 1
-  - 4
   roles:
   - actor
   works: 8
@@ -24962,6 +24998,23 @@ people:
   roles:
   - actor
   works: 7
+- avg_rating: 3.71
+  douban_id: '27255868'
+  douban_url: https://www.douban.com/personage/27255868/
+  first_year: 2008
+  last_year: 2026
+  name: 上户彩
+  ratings:
+  - 3
+  - 5
+  - 2
+  - 5
+  - 4
+  - 3
+  - 4
+  roles:
+  - actor
+  works: 7
 - avg_rating: 3.57
   douban_id: '34968302'
   douban_url: https://www.douban.com/personage/34968302/
@@ -25471,6 +25524,23 @@ people:
   roles:
   - director
   works: 7
+- avg_rating: 3.14
+  douban_id: '27239225'
+  douban_url: https://www.douban.com/personage/27239225/
+  first_year: 2008
+  last_year: 2026
+  name: 叶童
+  ratings:
+  - 4
+  - 3
+  - 1
+  - 4
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 7
 - avg_rating: 1.86
   douban_id: '27480372'
   douban_url: https://www.douban.com/personage/27480372/
@@ -25797,23 +25867,6 @@ people:
   - 2
   - 3
   - 4
-  - 3
-  roles:
-  - actor
-  works: 7
-- avg_rating: 2.57
-  douban_id: '27251120'
-  douban_url: https://www.douban.com/personage/27251120/
-  first_year: 2008
-  last_year: 2016
-  name: 安志杰
-  ratings:
-  - 1
-  - 1
-  - 5
-  - 3
-  - 3
-  - 2
   - 3
   roles:
   - actor
@@ -30696,22 +30749,6 @@ people:
   roles:
   - actor
   works: 6
-- avg_rating: 3.83
-  douban_id: '27255868'
-  douban_url: https://www.douban.com/personage/27255868/
-  first_year: 2008
-  last_year: 2020
-  name: 上户彩
-  ratings:
-  - 5
-  - 2
-  - 5
-  - 4
-  - 3
-  - 4
-  roles:
-  - actor
-  works: 6
 - avg_rating: 1.83
   douban_id: '27497403'
   douban_url: https://www.douban.com/personage/27497403/
@@ -31452,22 +31489,6 @@ people:
   - 4
   roles:
   - writer
-  works: 6
-- avg_rating: 3.0
-  douban_id: '27239225'
-  douban_url: https://www.douban.com/personage/27239225/
-  first_year: 2008
-  last_year: 2019
-  name: 叶童
-  ratings:
-  - 3
-  - 1
-  - 4
-  - 3
-  - 4
-  - 3
-  roles:
-  - actor
   works: 6
 - avg_rating: 2.86
   douban_id: '27527041'
@@ -32517,6 +32538,22 @@ people:
   - 3
   - 3
   - 3
+  - 3
+  roles:
+  - actor
+  works: 6
+- avg_rating: 2.33
+  douban_id: '27502847'
+  douban_url: https://www.douban.com/personage/27502847/
+  first_year: 2016
+  last_year: 2026
+  name: 张艺兴
+  ratings:
+  - 1
+  - 3
+  - 3
+  - 3
+  - 1
   - 3
   roles:
   - actor
@@ -33875,6 +33912,22 @@ people:
   roles:
   - actor
   works: 6
+- avg_rating: 4.0
+  douban_id: '27493630'
+  douban_url: https://www.douban.com/personage/27493630/
+  first_year: 2010
+  last_year: 2026
+  name: 竹本英史
+  ratings:
+  - 4
+  - 4
+  - 4
+  - 4
+  - 5
+  - 3
+  roles:
+  - actor
+  works: 6
 - avg_rating: 3.5
   douban_id: '34807643'
   douban_url: https://www.douban.com/personage/34807643/
@@ -34260,6 +34313,22 @@ people:
   - 3
   roles:
   - director
+  works: 6
+- avg_rating: 3.0
+  douban_id: '33406048'
+  douban_url: https://www.douban.com/personage/33406048/
+  first_year: 2021
+  last_year: 2026
+  name: 谢伊·哈顿
+  ratings:
+  - 5
+  - 3
+  - 3
+  - 2
+  - 2
+  - 3
+  roles:
+  - writer
   works: 6
 - avg_rating: 3.83
   douban_id: '32448158'
@@ -34810,6 +34879,28 @@ people:
   - 3
   - 1
   - 1
+  - 3
+  - 3
+  roles:
+  - director
+  - writer
+  works: 6
+- avg_rating: 3.0
+  douban_id: '27504054'
+  douban_url: https://www.douban.com/personage/27504054/
+  first_year: 2015
+  last_year: 2026
+  name: 韩延
+  ratings:
+  - 4
+  - 4
+  - 2
+  - 2
+  - 4
+  - 4
+  - 2
+  - 2
+  - 3
   - 3
   - 3
   roles:
@@ -39294,66 +39385,6 @@ people:
   - 4
   - 3
   - 3
-  roles:
-  - actor
-  works: 5
-- avg_rating: 3.4
-  douban_id: '27252582'
-  douban_url: https://www.douban.com/personage/27252582/
-  first_year: 2009
-  last_year: 2015
-  name: 小山高生
-  ratings:
-  - 4
-  - 3
-  - 3
-  - 4
-  - 3
-  roles:
-  - writer
-  works: 5
-- avg_rating: 2.6
-  douban_id: '27480405'
-  douban_url: https://www.douban.com/personage/27480405/
-  first_year: 2014
-  last_year: 2020
-  name: 小松和重
-  ratings:
-  - 3
-  - 2
-  - 3
-  - 3
-  - 2
-  roles:
-  - actor
-  works: 5
-- avg_rating: 3.4
-  douban_id: '27494027'
-  douban_url: https://www.douban.com/personage/27494027/
-  first_year: 2008
-  last_year: 2014
-  name: 小松隆志
-  ratings:
-  - 3
-  - 2
-  - 3
-  - 5
-  - 4
-  roles:
-  - director
-  works: 5
-- avg_rating: 2.8
-  douban_id: '27493452'
-  douban_url: https://www.douban.com/personage/27493452/
-  first_year: 2009
-  last_year: 2024
-  name: 小林星兰
-  ratings:
-  - 3
-  - 3
-  - 3
-  - 3
-  - 2
   roles:
   - actor
   works: 5

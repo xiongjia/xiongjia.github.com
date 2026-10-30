@@ -1,7 +1,284 @@
 {
  "count": 200,
- "first_date": "2017-01-02",
+ "first_date": "2017-01-14",
  "items": [
+  {
+   "casts": [
+    "林更新",
+    "何润东",
+    "江一燕",
+    "蒋梦婕",
+    "鲍起静",
+    "顾曹斌",
+    "马京京",
+    "徐少强",
+    "顾冠忠",
+    "吴元俊"
+   ],
+   "category": "feature",
+   "cover": "covers/21350556/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/21350556/01.webp",
+   "date": "2017-01-14",
+   "directors": [
+    "尔冬升"
+   ],
+   "douban_score": 4.8,
+   "genres": [
+    "剧情",
+    "动作",
+    "武侠",
+    "古装"
+   ],
+   "id": "21350556",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 107,
+   "slug": "sword-master",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "三少爷的剑",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/21350556/",
+   "writers": [
+    "古龙",
+    "徐克",
+    "尔冬升",
+    "秦天南"
+   ],
+   "year": 2016
+  },
+  {
+   "casts": [
+    "周星驰",
+    "吴孟达",
+    "梁咏琪",
+    "孙佳君",
+    "徐锦江",
+    "黄一飞",
+    "江欣燕",
+    "朱咪咪",
+    "李健仁",
+    "郑祖"
+   ],
+   "category": "feature",
+   "cover": "covers/1300498/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1300498/01.webp",
+   "date": "2017-01-14",
+   "directors": [
+    "叶伟民"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "喜剧",
+    "科幻",
+    "奇幻"
+   ],
+   "id": "1300498",
+   "missing": false,
+   "original_title": "百變星君",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "香港"
+   ],
+   "runtime": 90,
+   "slug": "sixty-million-dollar-man",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "百变星君",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1300498/",
+   "writers": [
+    "叶伟民"
+   ],
+   "year": 1995
+  },
+  {
+   "casts": [
+    "松重丰"
+   ],
+   "category": "feature",
+   "comment": "惊现本帮菜...",
+   "cover": "covers/26926305/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26926305/01.webp",
+   "date": "2017-01-08",
+   "directors": [],
+   "douban_score": 9.0,
+   "genres": [
+    "剧情"
+   ],
+   "id": "26926305",
+   "missing": false,
+   "original_title": "孤独のグルメお正月スペシャル～井之頭五郎の長い一日～",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 52,
+   "slug": "douban-26926305",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "SP",
+    "JPN"
+   ],
+   "title": "孤独的美食家正月特别篇：井之头五郎漫长的一天",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/26926305/",
+   "writers": [
+    "久住昌之"
+   ],
+   "year": 2017
+  },
+  {
+   "casts": [
+    "李立宏"
+   ],
+   "category": "documentary",
+   "comment": "猪杂粥; 鱼仔饼; 双皮奶; 牛展包仔饭; 各种鱼还有自梳女....几个印象深的点...",
+   "cover": "covers/26784894/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26784894/01.webp",
+   "date": "2017-01-08",
+   "directors": [
+    "刘硕",
+    "费牖明"
+   ],
+   "douban_score": 9.0,
+   "episodes": 3,
+   "genres": [
+    "纪录片"
+   ],
+   "id": "26784894",
+   "missing": false,
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 50,
+   "slug": "a-bite-of-shunde",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "寻味顺德",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/26784894/",
+   "writers": [],
+   "year": 2016
+  },
+  {
+   "casts": [
+    "Ben Affleck（本·阿弗莱克）",
+    "Anna Kendrick（安娜·肯德里克）",
+    "J.K. Simmons（J·K·西蒙斯）",
+    "Jon Bernthal（乔·博恩瑟）",
+    "Jeffrey Tambor（杰弗里·塔伯）",
+    "辛希亚·阿戴-罗宾森",
+    "John Lithgow（约翰·利思戈）",
+    "Jean Smart（珍·斯玛特）",
+    "安迪·昂伯格",
+    "艾莉森·赖特"
+   ],
+   "category": "feature",
+   "comment": "蝙蝠侠还会做会计...",
+   "cover": "covers/24325861/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/24325861/01.webp",
+   "date": "2017-01-08",
+   "directors": [
+    "Gavin O'Connor（加文·奥康纳）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "动作",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "24325861",
+   "missing": false,
+   "original_title": "The Accountant",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 128,
+   "slug": "the-accountant",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "会计刺客",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/24325861/",
+   "writers": [
+    "比尔·迪比克"
+   ],
+   "year": 2016
+  },
+  {
+   "casts": [
+    "Zach Galifianakis（扎克·加利凡纳基斯）",
+    "Isla Fisher（艾拉·菲舍尔）",
+    "Jon Hamm（乔恩·哈姆）",
+    "Gal Gadot（盖尔·加朵）",
+    "Patton Oswalt（帕顿·奥斯瓦尔特）",
+    "赵明",
+    "马特·沃尔什",
+    "玛莉贝丝·梦露",
+    "麦克·刘",
+    "凯文·杜恩"
+   ],
+   "category": "feature",
+   "comment": "不够贱...(-_-;)",
+   "cover": "covers/25847558/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25847558/01.webp",
+   "date": "2017-01-07",
+   "directors": [
+    "Greg Mottola（格雷格·莫托拉）"
+   ],
+   "douban_score": 6.1,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "动作"
+   ],
+   "id": "25847558",
+   "missing": false,
+   "original_title": "Keeping Up with the Joneses",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "keeping-up-with-the-joneses",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "邻家大贱谍",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/25847558/",
+   "writers": [
+    "迈克尔·勒西厄尔"
+   ],
+   "year": 2016
+  },
   {
    "casts": [
     "陈宝国",
@@ -9548,338 +9825,7 @@
     "蔡国荣"
    ],
    "year": 2000
-  },
-  {
-   "casts": [
-    "Paul Walker（保罗·沃克）",
-    "Vin Diesel（范·迪塞尔）",
-    "Michelle Rodriguez（米歇尔·罗德里格兹）",
-    "Jordana Brewster（乔丹娜·布鲁斯特）",
-    "尹成植",
-    "马特·斯查尔兹",
-    "Chad Lindberg（查德·林德伯格）",
-    "强尼·斯特朗",
-    "泰德·拉文",
-    "杰鲁"
-   ],
-   "category": "feature",
-   "cover": "covers/1304899/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1304899/01.webp",
-   "date": "2016-05-20",
-   "directors": [
-    "Rob Cohen（罗伯·科恩）"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "动作",
-    "犯罪"
-   ],
-   "id": "1304899",
-   "missing": false,
-   "original_title": "The Fast and the Furious",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "美国",
-    "德国"
-   ],
-   "runtime": 106,
-   "slug": "the-fast-and-the-furious",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "速度与激情",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1304899/",
-   "writers": [
-    "肯·李",
-    "盖瑞·斯科特·汤普森",
-    "埃里克·伯吉斯特",
-    "David Ayer（大卫·阿耶）"
-   ],
-   "year": 2001
-  },
-  {
-   "casts": [
-    "Maisie Williams（麦茜·威廉姆斯）",
-    "Emilia Clarke（艾米莉亚·克拉克）",
-    "Richard Madden（理查德·麦登）",
-    "Isaac Hempstead-Wright（伊萨克·亨普斯特德-怀特）",
-    "Stephen Dillane（斯蒂芬·迪兰）",
-    "Peter Dinklage（彼特·丁拉基）",
-    "汉娜·穆雷",
-    "Rose Leslie（露丝·莱斯利）",
-    "Sophie Turner（苏菲·特纳）",
-    "Charles Dance（查尔斯·丹斯）"
-   ],
-   "category": "series",
-   "cover": "covers/6558062/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6558062/01.webp",
-   "date": "2016-05-15",
-   "directors": [
-    "Alan Taylor（阿兰·泰勒）",
-    "Alik Sakharov（阿利克·萨哈罗夫）",
-    "大卫·彼特拉克",
-    "David Nutter（大卫·努特尔）",
-    "Neil Marshall（尼尔·马歇尔）"
-   ],
-   "douban_score": 9.5,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "6558062",
-   "missing": false,
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国",
-    "英国"
-   ],
-   "runtime": 60,
-   "slug": "game-of-thrones-season-2",
-   "status": "collect",
-   "tags": [
-    "ENU",
-    "Teleplay"
-   ],
-   "title": "权力的游戏 第二季 Game of Thrones Season 2",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/6558062/",
-   "writers": [
-    "乔治·马丁",
-    "David Benioff（戴维·贝尼奥夫）",
-    "D.B. Weiss（D·B·威斯）"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "Emilia Clarke（艾米莉亚·克拉克）",
-    "Peter Dinklage（彼特·丁拉基）",
-    "Kit Harington（基特·哈灵顿）",
-    "Lena Headey（琳娜·海蒂）",
-    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
-    "Maisie Williams（麦茜·威廉姆斯）",
-    "Sophie Turner（苏菲·特纳）",
-    "娜塔莉·多默尔",
-    "艾丹·吉伦",
-    "Stephen Dillane（斯蒂芬·迪兰）"
-   ],
-   "category": "series",
-   "cover": "covers/25826612/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25826612/01.webp",
-   "date": "2016-05-15",
-   "directors": [
-    "Michael Slovis（迈克尔·斯洛维斯）",
-    "Mark Mylod（马克·梅罗德）",
-    "Jeremy Podeswa（杰雷米·波德斯瓦）",
-    "Miguel Sapochnik（米格尔·萨普什尼克）",
-    "David Nutter（大卫·努特尔）"
-   ],
-   "douban_score": 9.4,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "25826612",
-   "missing": false,
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 60,
-   "slug": "game-of-thrones-season-5",
-   "status": "collect",
-   "tags": [
-    "ENU",
-    "Teleplay"
-   ],
-   "title": "权力的游戏 第五季 Game of Thrones Season 5",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/25826612/",
-   "writers": [
-    "David Benioff（戴维·贝尼奥夫）",
-    "D.B. Weiss（D·B·威斯）",
-    "乔治·马丁"
-   ],
-   "year": 2015
-  },
-  {
-   "casts": [
-    "Peter Dinklage（彼特·丁拉基）",
-    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
-    "Lena Headey（琳娜·海蒂）",
-    "Emilia Clarke（艾米莉亚·克拉克）",
-    "Kit Harington（基特·哈灵顿）",
-    "Charles Dance（查尔斯·丹斯）",
-    "娜塔莉·多默尔",
-    "杰克·格里森",
-    "Sophie Turner（苏菲·特纳）",
-    "Maisie Williams（麦茜·威廉姆斯）"
-   ],
-   "category": "series",
-   "cover": "covers/23232876/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/23232876/01.webp",
-   "date": "2016-05-15",
-   "directors": [
-    "D.B. Weiss（D·B·威斯）",
-    "Alex Graves（亚历克斯·格雷夫斯）",
-    "米歇尔·麦克拉伦",
-    "Alik Sakharov（阿利克·萨哈罗夫）",
-    "Neil Marshall（尼尔·马歇尔）"
-   ],
-   "douban_score": 9.6,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "23232876",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国",
-    "英国"
-   ],
-   "runtime": 60,
-   "slug": "game-of-thrones-season-4",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "ENU"
-   ],
-   "title": "权力的游戏 第四季 Game of Thrones Season 4",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/23232876/",
-   "writers": [
-    "David Benioff（戴维·贝尼奥夫）",
-    "D.B. Weiss（D·B·威斯）",
-    "乔治·马丁"
-   ],
-   "year": 2014
-  },
-  {
-   "casts": [
-    "Maisie Williams（麦茜·威廉姆斯）",
-    "Emilia Clarke（艾米莉亚·克拉克）",
-    "Richard Madden（理查德·麦登）",
-    "Isaac Hempstead-Wright（伊萨克·亨普斯特德-怀特）",
-    "Stephen Dillane（斯蒂芬·迪兰）",
-    "Peter Dinklage（彼特·丁拉基）",
-    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
-    "杰克·格里森",
-    "Kit Harington（基特·哈灵顿）",
-    "Sophie Turner（苏菲·特纳）"
-   ],
-   "category": "series",
-   "cover": "covers/10590706/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10590706/01.webp",
-   "date": "2016-05-15",
-   "directors": [
-    "Daniel Minahan（丹尼尔·米纳汉）",
-    "David Benioff（戴维·贝尼奥夫）",
-    "Alex Graves（亚历克斯·格雷夫斯）",
-    "Alik Sakharov（阿利克·萨哈罗夫）",
-    "米歇尔·麦克拉伦",
-    "David Nutter（大卫·努特尔）"
-   ],
-   "douban_score": 9.5,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "10590706",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国",
-    "英国"
-   ],
-   "runtime": 60,
-   "slug": "game-of-thrones-season-3",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "ENU"
-   ],
-   "title": "权力的游戏 第三季 Game of Thrones Season 3",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/10590706/",
-   "writers": [
-    "David Benioff（戴维·贝尼奥夫）",
-    "D.B. Weiss（D·B·威斯）",
-    "乔治·马丁"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "Chris Evans（克里斯·埃文斯）",
-    "Robert Downey Jr.（小罗伯特·唐尼）",
-    "Scarlett Johansson（斯嘉丽·约翰逊）",
-    "Sebastian Stan（塞巴斯蒂安·斯坦）",
-    "Anthony Mackie（安东尼·麦凯）",
-    "Don Cheadle（唐·钱德尔）",
-    "Jeremy Renner（杰瑞米·雷纳）",
-    "Chadwick Boseman（查德维克·博斯曼）",
-    "Paul Bettany（保罗·贝坦尼）",
-    "Elizabeth Olsen（伊丽莎白·奥尔森）"
-   ],
-   "category": "feature",
-   "comment": "也就看個熱鬧...看完別急著走,兩彩蛋",
-   "cover": "covers/25820460/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25820460/01.webp",
-   "date": "2016-05-14",
-   "directors": [
-    "Anthony Russo（安东尼·罗素）",
-    "Joe Russo（乔·罗素）"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "动作",
-    "科幻"
-   ],
-   "id": "25820460",
-   "missing": false,
-   "original_title": "Captain America: Civil War",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 148,
-   "slug": "captain-america-civil-war",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "美国队长3",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/25820460/",
-   "writers": [
-    "克里斯托弗·马库斯",
-    "斯蒂芬·麦克菲利",
-    "乔·西蒙",
-    "杰克·科比",
-    "马克·米勒",
-    "史提夫·麦尼文"
-   ],
-   "year": 2016
   }
  ],
- "last_date": "2016-05-14"
+ "last_date": "2016-05-21"
 }

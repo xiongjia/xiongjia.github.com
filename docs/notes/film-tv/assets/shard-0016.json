@@ -1,7 +1,300 @@
 {
  "count": 200,
- "first_date": "2012-12-16",
+ "first_date": "2012-12-23",
  "items": [
+  {
+   "casts": [
+    "江口洋介",
+    "常盘贵子",
+    "堤真一",
+    "香川照之",
+    "长泽雅美",
+    "北村有起哉",
+    "神保悟志",
+    "加藤清史郎",
+    "杉本哲太",
+    "北村总一朗"
+   ],
+   "category": "series",
+   "cover": "covers/10508900/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10508900/01.webp",
+   "date": "2012-12-23",
+   "directors": [
+    "石井祐介"
+   ],
+   "douban_score": 7.1,
+   "episodes": 1,
+   "genres": [
+    "悬疑",
+    "犯罪"
+   ],
+   "id": "10508900",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 123,
+   "slug": "douban-10508900",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "SP",
+    "JPN"
+   ],
+   "title": "再会",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/10508900/",
+   "writers": [
+    "桥本裕志"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "Cam Gigandet（凯姆·吉甘戴）",
+    "William Fichtner（威廉·菲克纳）",
+    "Robert Knepper（罗伯特·克耐普）",
+    "Kathleen Robertson（凯瑟琳·罗伯特森）",
+    "Anson Mount（安松·蒙特）",
+    "弗莱迪·罗德里格兹",
+    "艾迪·凯伊·托马斯"
+   ],
+   "category": "feature",
+   "cover": "covers/10467174/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10467174/01.webp",
+   "date": "2012-12-23",
+   "directors": [
+    "John Stockwell（约翰·斯托克韦尔）"
+   ],
+   "douban_score": 6.4,
+   "genres": [
+    "剧情",
+    "动作",
+    "犯罪"
+   ],
+   "id": "10467174",
+   "missing": false,
+   "original_title": "Seal Team 6: The Raid on Osama Bin Laden",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 87,
+   "slug": "seal-team-6-the-raid-on-osama-bin-laden",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "海豹六队：突袭奥萨马本拉登",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/10467174/",
+   "writers": [
+    "Kendall Lampkin"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "役所广司",
+    "松隆子",
+    "佐藤浩市",
+    "香取慎吾",
+    "筱原凉子",
+    "户田惠子",
+    "生濑胜久",
+    "麻生久美子",
+    "唐泽寿明",
+    "江原由希子"
+   ],
+   "category": "feature",
+   "cover": "covers/1482316/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1482316/01.webp",
+   "date": "2012-12-22",
+   "directors": [
+    "三谷幸喜"
+   ],
+   "douban_score": 8.0,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情"
+   ],
+   "id": "1482316",
+   "missing": false,
+   "original_title": "THE 有頂天ホテル",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 136,
+   "slug": "the-2006",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "有顶天酒店",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1482316/",
+   "writers": [
+    "三谷幸喜"
+   ],
+   "year": 2006
+  },
+  {
+   "casts": [
+    "郭富城",
+    "梁家辉",
+    "李治廷",
+    "彭于晏",
+    "杨采妮",
+    "马伊琍",
+    "林家栋",
+    "安志杰",
+    "钱嘉乐",
+    "尹子维"
+   ],
+   "category": "feature",
+   "cover": "covers/6890730/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6890730/01.webp",
+   "date": "2012-12-21",
+   "directors": [
+    "梁乐民",
+    "陆剑青"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "犯罪"
+   ],
+   "id": "6890730",
+   "missing": false,
+   "original_title": "寒戰",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "香港",
+    "中国"
+   ],
+   "runtime": 102,
+   "slug": "cold-war",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "寒战",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/6890730/",
+   "writers": [
+    "梁乐民",
+    "陆剑青"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "徐峥",
+    "王宝强",
+    "李曼",
+    "李小璐",
+    "左小青",
+    "张歆艺",
+    "黄小蕾",
+    "马健",
+    "邱林"
+   ],
+   "category": "feature",
+   "cover": "covers/4237879/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4237879/01.webp",
+   "date": "2012-12-21",
+   "directors": [
+    "叶伟民"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "4237879",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 91,
+   "slug": "lost-on-journey",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "人在囧途",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/4237879/",
+   "writers": [
+    "田羽生",
+    "史晨赟",
+    "徐元丰"
+   ],
+   "year": 2010
+  },
+  {
+   "casts": [
+    "Jennifer Garner（詹妮弗·加纳）",
+    "Joel Edgerton（乔尔·埃哲顿）",
+    "Ron Livingston（朗·里维斯顿）",
+    "Rosemarie DeWitt（罗丝玛丽·德薇特）",
+    "Dianne Wiest（黛安·韦斯特）",
+    "迈克尔·阿登",
+    "Cameron 'CJ' Adams（卡梅隆·CJ·亚当斯）",
+    "David Morse（大卫·摩斯）",
+    "奥德娅·拉什"
+   ],
+   "category": "feature",
+   "cover": "covers/3819871/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3819871/01.webp",
+   "date": "2012-12-16",
+   "directors": [
+    "Peter Hedges（彼得·赫奇斯）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "家庭",
+    "奇幻"
+   ],
+   "id": "3819871",
+   "missing": false,
+   "original_title": "The Odd Life of Timothy Green",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 105,
+   "slug": "the-odd-life-of-timothy-green",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "蒂莫西的奇异生活",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3819871/",
+   "writers": [
+    "Peter Hedges（彼得·赫奇斯）",
+    "阿迈德·扎帕"
+   ],
+   "year": 2012
+  },
   {
    "casts": [
     "米仓凉子",
@@ -9360,304 +9653,7 @@
     "斯蒂文·泽里安"
    ],
    "year": 1993
-  },
-  {
-   "casts": [
-    "Liam McIntyre（连姆·麦肯泰尔）",
-    "Manu Bennett（马努·贝内特）",
-    "Daniel Feuerriegel（丹尼尔·弗雷里格尔）",
-    "Peter Mensah（彼得·门萨）",
-    "露西·劳莱丝",
-    "尼克·塔拉贝",
-    "薇娃·碧安卡",
-    "帕纳·贺玛·泰勒",
-    "辛希亚·阿戴-罗宾森",
-    "达斯汀·克莱尔"
-   ],
-   "category": "series",
-   "cover": "covers/6017331/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6017331/01.webp",
-   "date": "2012-04-06",
-   "directors": [
-    "Michael Hurst（迈克尔·赫斯特）",
-    "Jesse Warn（杰西·沃恩）",
-    "布兰登·马赫",
-    "马克·贝斯利",
-    "Rick Jacobson（里克·雅各布森）",
-    "克里斯·马丁-琼斯",
-    "T·J·斯科特"
-   ],
-   "douban_score": 8.8,
-   "episodes": 10,
-   "genres": [
-    "剧情",
-    "动作",
-    "情色",
-    "传记",
-    "历史",
-    "冒险"
-   ],
-   "id": "6017331",
-   "missing": false,
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 55,
-   "slug": "spartacus-vengeance-season-2",
-   "status": "collect",
-   "tags": [
-    "ENU",
-    "Teleplay"
-   ],
-   "title": "斯巴达克斯：复仇 第二季 Spartacus: Vengeance Season 2",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/6017331/",
-   "writers": [
-    "Steven S. DeKnight（斯蒂文·S·迪奈特）",
-    "布伦特·弗莱彻",
-    "特蕾西·贝洛莫",
-    "Allison Miller（艾莉森·米勒）",
-    "阿隆·赫布林",
-    "托德·赫布林",
-    "米沙·格林",
-    "谢默斯·凯文·费伊",
-    "杰德·韦登"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "山田孝之",
-    "小西真奈美",
-    "真木阳子",
-    "池胁千鹤",
-    "二阶堂富美"
-   ],
-   "category": "feature",
-   "cover": "covers/5367941/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5367941/01.webp",
-   "date": "2012-04-04",
-   "directors": [
-    "岩田由纪"
-   ],
-   "douban_score": 6.9,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "5367941",
-   "missing": false,
-   "original_title": "指輪をはめたい",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 108,
-   "slug": "yubiwa-wo-hametai",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "我想戴上戒指",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/5367941/",
-   "writers": [
-    "岩田由纪"
-   ],
-   "year": 2011
-  },
-  {
-   "casts": [
-    "上野树里",
-    "大杉涟"
-   ],
-   "category": "documentary",
-   "cover": "covers/10553095/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10553095/01.webp",
-   "date": "2012-04-04",
-   "directors": [
-    "高砂佳典",
-    "田淵盛之"
-   ],
-   "douban_score": 7.8,
-   "genres": [
-    "纪录片"
-   ],
-   "id": "10553095",
-   "missing": false,
-   "original_title": "上野樹里が行く！桜前線大追跡 ～ヒマラヤから日本列島5,400キロの桜ロード～",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 95,
-   "slug": "ueno-juri-ga-iku-sakura-zensen-dai-tuiseki",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "上野树里之行！樱花前线大追迹～从喜马拉雅到日本列岛5400公里的樱之路~",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/10553095/",
-   "writers": [],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "Martina Hill（玛蒂娜·希尔）",
-    "Michael Krabbe（迈克尔·克罗贝）",
-    "Maurizio Magno（马里奇奥·马格诺）",
-    "Marc Benjamin Puch（马克·本杰明·普赫）"
-   ],
-   "category": "series",
-   "comment": "小孩会被他玩死的...",
-   "cover": "covers/10537919/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10537919/01.webp",
-   "date": "2012-04-04",
-   "directors": [
-    "Marco Musienko"
-   ],
-   "douban_score": 8.3,
-   "episodes": 8,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "10537919",
-   "missing": false,
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "德国"
-   ],
-   "runtime": 22,
-   "slug": "knallerfrauen-season-1",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "other_lang"
-   ],
-   "title": "屌丝女士 第一季 Knallerfrauen Season 1",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/10537919/",
-   "writers": [
-    "David Flasch",
-    "玛蒂娜·希尔 Martina Hill",
-    "Olivia Cote",
-    "Marco Musienko",
-    "Judith Siboni"
-   ],
-   "year": 2011
-  },
-  {
-   "casts": [
-    "户田惠梨香",
-    "加濑亮",
-    "浅野优子",
-    "谷村美月",
-    "福田沙纪",
-    "神木隆之介",
-    "龙雷太",
-    "椎名桔平",
-    "城田优",
-    "绪方义博"
-   ],
-   "category": "feature",
-   "comment": "越来越像 美剧 Hero 了...",
-   "cover": "covers/6717574/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6717574/01.webp",
-   "date": "2012-04-03",
-   "directors": [
-    "堤幸彦"
-   ],
-   "douban_score": 8.4,
-   "genres": [
-    "剧情",
-    "悬疑"
-   ],
-   "id": "6717574",
-   "missing": false,
-   "original_title": "SPEC〜翔〜",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 92,
-   "slug": "spec-3",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "SP",
-    "JPN"
-   ],
-   "title": "SPEC：翔",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/6717574/",
-   "writers": [
-    "西荻弓绘"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "Tom Cruise（汤姆·克鲁斯）",
-    "Jeremy Renner（杰瑞米·雷纳）",
-    "Simon Pegg（西蒙·佩吉）",
-    "Paula Patton（宝拉·巴顿）",
-    "蕾雅·赛杜",
-    "Michael Nyqvist（迈克尔·恩奎斯特）",
-    "弗拉基米尔·马什科夫",
-    "萨穆里·埃德尔曼",
-    "伊万·舍甫多夫",
-    "Anil Kapoor（亚尼·卡普尔）"
-   ],
-   "category": "feature",
-   "comment": "他真都 50 了?",
-   "cover": "covers/3068206/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3068206/01.webp",
-   "date": "2012-04-03",
-   "directors": [
-    "Brad Bird（布拉德·伯德）"
-   ],
-   "douban_score": 8.4,
-   "genres": [
-    "动作",
-    "惊悚",
-    "冒险"
-   ],
-   "id": "3068206",
-   "missing": false,
-   "original_title": "Mission: Impossible - Ghost Protocol",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 133,
-   "slug": "mission-impossible-ghost-protocol",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "大叔"
-   ],
-   "title": "碟中谍4",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/3068206/",
-   "writers": [
-    "布鲁斯·盖勒",
-    "乔什·阿佩尔鲍姆",
-    "安德烈·内梅克",
-    "斯蒂文·泽里安",
-    "David Koepp（大卫·凯普）"
-   ],
-   "year": 2011
   }
  ],
- "last_date": "2012-04-03"
+ "last_date": "2012-04-07"
 }

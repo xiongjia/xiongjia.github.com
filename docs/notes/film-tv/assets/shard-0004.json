@@ -1,7 +1,287 @@
 {
  "count": 200,
- "first_date": "2022-04-09",
+ "first_date": "2022-04-19",
  "items": [
+  {
+   "casts": [
+    "中岛健人",
+    "小芝风花",
+    "赤楚卫二",
+    "佐久间由衣",
+    "高桥优斗",
+    "宇垣美里",
+    "LiLiCo",
+    "木村佑一",
+    "菅原大吉",
+    "本多力"
+   ],
+   "category": "series",
+   "cover": "covers/35467021/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35467021/01.webp",
+   "date": "2022-04-19",
+   "directors": [
+    "纸谷枫",
+    "木下高男"
+   ],
+   "douban_score": 6.8,
+   "episodes": 10,
+   "genres": [
+    "喜剧",
+    "爱情"
+   ],
+   "id": "35467021",
+   "missing": false,
+   "original_title": "彼女はキレイだった",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": null,
+   "slug": "she-was-pretty",
+   "status": "collect",
+   "tags": [],
+   "title": "她很漂亮",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35467021/",
+   "writers": [
+    "清水友佳子",
+    "三浦希纱"
+   ],
+   "year": 2021
+  },
+  {
+   "casts": [
+    "Robert Pattinson（罗伯特·帕丁森）",
+    "佐伊·克罗维兹",
+    "Paul Dano（保罗·达诺）",
+    "Colin Farrell（科林·法瑞尔）",
+    "Jeffrey Wright（杰弗里·怀特）",
+    "Andy Serkis（安迪·瑟金斯）",
+    "John Turturro（约翰·特托罗）",
+    "Peter Sarsgaard（彼得·萨斯加德）",
+    "巴里·基奥恩",
+    "杰米·劳森"
+   ],
+   "category": "feature",
+   "cover": "covers/6424756/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6424756/01.webp",
+   "date": "2022-04-18",
+   "directors": [
+    "Matt Reeves（马特·里夫斯）"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "动作",
+    "悬疑",
+    "犯罪"
+   ],
+   "id": "6424756",
+   "missing": false,
+   "original_title": "The Batman",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 176,
+   "slug": "the-batman",
+   "status": "collect",
+   "tags": [],
+   "title": "新蝙蝠侠",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/6424756/",
+   "writers": [
+    "Matt Reeves（马特·里夫斯）",
+    "彼得·克莱格",
+    "比尔·芬格",
+    "鲍勃·凯恩"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "Naomi Watts（娜奥米·沃茨）",
+    "Denis O'Hare（丹尼斯·欧哈拉）",
+    "Billy Howle（比利·豪尔）",
+    "Eliot Sumner（艾略特·萨姆纳）",
+    "帕克·索耶",
+    "约书亚·罗林斯"
+   ],
+   "category": "feature",
+   "cover": "covers/35351430/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35351430/01.webp",
+   "date": "2022-04-16",
+   "directors": [
+    "玛乌戈扎塔·舒莫夫斯卡",
+    "米歇尔·恩格勒"
+   ],
+   "douban_score": 5.8,
+   "genres": [
+    "剧情",
+    "惊悚"
+   ],
+   "id": "35351430",
+   "missing": false,
+   "original_title": "Infinite Storm",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "英国",
+    "波兰",
+    "澳大利亚"
+   ],
+   "runtime": 97,
+   "slug": "infinite-storm",
+   "status": "collect",
+   "tags": [],
+   "title": "无限风暴",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35351430/",
+   "writers": [
+    "约书亚·罗林斯",
+    "帕姆·巴勒斯"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "Harold Perrineau（哈罗德·佩里诺）",
+    "Catalina Sandino Moreno（卡塔琳娜·桑地诺·莫雷诺）",
+    "Eion Bailey（艾恩·贝利）",
+    "Hannah Cheramy（汉娜·切尔敏）",
+    "Ricky He（瑞奇·何）",
+    "肖恩·摩忠德",
+    "大卫·阿尔帕伊",
+    "伊丽莎白·桑德斯",
+    "斯科特·麦克科德"
+   ],
+   "category": "series",
+   "cover": "covers/35460437/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35460437/01.webp",
+   "date": "2022-04-15",
+   "directors": [
+    "Jack Bender（杰克·本德）"
+   ],
+   "douban_score": 6.6,
+   "episodes": 10,
+   "genres": [
+    "科幻",
+    "恐怖"
+   ],
+   "id": "35460437",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 50,
+   "slug": "from-season-1",
+   "status": "collect",
+   "tags": [],
+   "title": "梦魇绝镇 第一季 From Season 1",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35460437/",
+   "writers": [
+    "John Griffin"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "Will Smith（威尔·史密斯）",
+    "Demi Singleton（黛米·辛格顿）",
+    "Saniyya Sidney（萨尼雅·西德尼）",
+    "Aunjanue Ellis-Taylor（安洁纽·艾莉丝-泰勒）",
+    "Jon Bernthal（乔·博恩瑟）",
+    "Tony Goldwyn（托尼·戈德温）",
+    "米凯拉·拉沙·巴塞洛缪",
+    "达尼埃莱·劳森",
+    "莱拉·克劳福德",
+    "埃里卡·林格"
+   ],
+   "category": "feature",
+   "cover": "covers/30481476/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30481476/01.webp",
+   "date": "2022-04-11",
+   "directors": [
+    "Reinaldo Marcus Green（雷纳尔多·马库斯·格林）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "剧情",
+    "传记",
+    "运动"
+   ],
+   "id": "30481476",
+   "missing": false,
+   "original_title": "King Richard",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 144,
+   "slug": "king-richard",
+   "status": "collect",
+   "tags": [],
+   "title": "国王理查德",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/30481476/",
+   "writers": [
+    "扎克·贝林"
+   ],
+   "year": 2021
+  },
+  {
+   "casts": [
+    "Mark Rylance（马克·里朗斯）",
+    "Simon Russell Beale（西蒙·拉塞尔·比尔）",
+    "Johnny Flynn（强尼·弗林）",
+    "Nikki Amuka-Bird（妮基·阿姆卡-伯德）",
+    "Zoey Deutch（佐伊·达奇）",
+    "艾伦·迈赫迪扎德",
+    "Dylan O'Brien（迪伦·奥布莱恩）",
+    "乔纳森·麦克莱恩",
+    "John Gumley-Mason",
+    "Stephen Knox"
+   ],
+   "category": "feature",
+   "cover": "covers/35372415/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35372415/01.webp",
+   "date": "2022-04-10",
+   "directors": [
+    "Graham Moore（格拉汉姆·摩尔）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "35372415",
+   "missing": false,
+   "original_title": "The Outfit",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 106,
+   "slug": "the-outfit",
+   "status": "collect",
+   "tags": [],
+   "title": "套装",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35372415/",
+   "writers": [
+    "乔纳森·麦克莱恩",
+    "Graham Moore（格拉汉姆·摩尔）"
+   ],
+   "year": 2022
+  },
   {
    "casts": [
     "福士苍汰",
@@ -8953,296 +9233,7 @@
     "Sebastian Peiter"
    ],
    "year": 2018
-  },
-  {
-   "casts": [
-    "花江夏树",
-    "鬼头明里",
-    "下野纮",
-    "松冈祯丞",
-    "日野聪",
-    "平川大辅",
-    "石田彰",
-    "樱井孝宏",
-    "小西克幸",
-    "早见沙织"
-   ],
-   "category": "anime",
-   "comment": "如果上映，得去补票",
-   "cover": "covers/34845781/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34845781/01.webp",
-   "date": "2021-05-02",
-   "directors": [
-    "外崎春雄"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "动作",
-    "动画",
-    "奇幻"
-   ],
-   "id": "34845781",
-   "missing": false,
-   "original_title": "劇場版 鬼滅の刃 無限列車編",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 117,
-   "slug": "demon-slayer-kimetsu-no-yaiba-the-movie-mugen-train",
-   "status": "collect",
-   "tags": [],
-   "title": "鬼灭之刃 剧场版 无限列车篇",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/34845781/",
-   "writers": [
-    "吾峠呼世晴"
-   ],
-   "year": 2020
-  },
-  {
-   "casts": [
-    "梶裕贵",
-    "石川由依",
-    "井上麻里奈",
-    "三上枝织",
-    "下野纮",
-    "小林优",
-    "谷山纪章",
-    "细谷佳正",
-    "朴璐美",
-    "神谷浩史"
-   ],
-   "category": "anime",
-   "cover": "covers/33440021/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33440021/01.webp",
-   "date": "2021-05-02",
-   "directors": [
-    "林祐一郎",
-    "宇田钢之介",
-    "山崎光惠",
-    "森邦宏",
-    "宍户淳",
-    "德土大介",
-    "平向智子",
-    "牧田佳织",
-    "下司泰弘",
-    "大峰辉之",
-    "茉田哲明",
-    "高桥英俊",
-    "曹毅",
-    "杨烈骏"
-   ],
-   "douban_score": 9.4,
-   "episodes": 16,
-   "genres": [
-    "剧情",
-    "动作",
-    "科幻",
-    "动画"
-   ],
-   "id": "33440021",
-   "missing": false,
-   "original_title": "進撃の巨人 The Final Season Part.1",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 24,
-   "slug": "the-final-season-part-1",
-   "status": "collect",
-   "tags": [],
-   "title": "进击的巨人 最终季 Part.1",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/33440021/",
-   "writers": [
-    "濑古浩司",
-    "谏山创"
-   ],
-   "year": 2020
-  },
-  {
-   "casts": [
-    "Anthony Hopkins（安东尼·霍普金斯）",
-    "Olivia Colman（奥利维娅·科尔曼）",
-    "Mark Gatiss（马克·加蒂斯）",
-    "Olivia Williams（奥莉维亚·威廉姆斯）",
-    "Imogen Poots（伊莫琴·普茨）",
-    "Rufus Sewell（卢夫斯·塞维尔）",
-    "阿耶莎·达尔克",
-    "罗曼·泽勒",
-    "雷·伯内特",
-    "阿德南·昆迪"
-   ],
-   "category": "feature",
-   "comment": "等我老年痴呆不记得开机密码是可怎么活？",
-   "cover": "covers/33432655/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/33432655/01.webp",
-   "date": "2021-05-02",
-   "directors": [
-    "Florian Zeller（佛罗莱恩·泽勒）"
-   ],
-   "douban_score": 8.6,
-   "genres": [
-    "剧情"
-   ],
-   "id": "33432655",
-   "missing": false,
-   "original_title": "The Father",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "英国",
-    "法国"
-   ],
-   "runtime": 97,
-   "slug": "the-father",
-   "status": "collect",
-   "tags": [],
-   "title": "困在时间里的父亲",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/33432655/",
-   "writers": [
-    "克里斯托弗·汉普顿",
-    "Florian Zeller（佛罗莱恩·泽勒）"
-   ],
-   "year": 2020
-  },
-  {
-   "casts": [
-    "沈磊",
-    "程玉珠",
-    "黄翔宇",
-    "王肖兵",
-    "倪康"
-   ],
-   "category": "anime",
-   "cover": "covers/35256194/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35256194/01.webp",
-   "date": "2021-05-01",
-   "directors": [
-    "沈乐平"
-   ],
-   "douban_score": 8.0,
-   "episodes": 52,
-   "genres": [
-    "动画",
-    "奇幻"
-   ],
-   "id": "35256194",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 20,
-   "slug": "douban-35256194",
-   "status": "collect",
-   "tags": [],
-   "title": "斗罗大陆1 第四季",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/35256194/",
-   "writers": [
-    "沈欢愉",
-    "石海燕",
-    "毛司桦",
-    "董缘"
-   ],
-   "year": 2020
-  },
-  {
-   "casts": [
-    "Tilda Swinton（蒂尔达·斯文顿）",
-    "阿古斯丁·阿莫多瓦"
-   ],
-   "category": "feature",
-   "comment": "大型 AirPods 广告",
-   "cover": "covers/34869150/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34869150/01.webp",
-   "date": "2021-05-01",
-   "directors": [
-    "佩德罗·阿莫多瓦"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "剧情",
-    "短片"
-   ],
-   "id": "34869150",
-   "missing": false,
-   "original_title": "The Human Voice",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "西班牙"
-   ],
-   "runtime": 30,
-   "slug": "the-human-voice",
-   "status": "collect",
-   "tags": [],
-   "title": "人类的呼声",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/34869150/",
-   "writers": [
-    "佩德罗·阿莫多瓦",
-    "让·科克托"
-   ],
-   "year": 2020
-  },
-  {
-   "casts": [
-    "贾玲",
-    "张小斐",
-    "沈腾",
-    "陈赫",
-    "刘佳",
-    "丁嘉丽",
-    "王琳",
-    "杜源",
-    "何翯",
-    "何欢"
-   ],
-   "category": "feature",
-   "comment": "有一天能回到出生之前，最重要的事就是阻止自己出生！",
-   "cover": "covers/34841067/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34841067/01.webp",
-   "date": "2021-05-01",
-   "directors": [
-    "贾玲"
-   ],
-   "douban_score": 7.7,
-   "genres": [
-    "剧情",
-    "喜剧",
-    "奇幻"
-   ],
-   "id": "34841067",
-   "missing": false,
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 128,
-   "slug": "hi-mom",
-   "status": "collect",
-   "tags": [],
-   "title": "你好，李焕英",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/34841067/",
-   "writers": [
-    "贾玲",
-    "孙集斌",
-    "王宇",
-    "刘宏禄",
-    "卜钰",
-    "郭宇鹏"
-   ],
-   "year": 2021
   }
  ],
- "last_date": "2021-05-01"
+ "last_date": "2021-05-02"
 }

@@ -1,7 +1,269 @@
 {
  "count": 200,
- "first_date": "2019-02-17",
+ "first_date": "2019-02-24",
  "items": [
+  {
+   "casts": [
+    "谢苗",
+    "陈梦希",
+    "热依娜",
+    "李帛轩",
+    "容尔甲",
+    "苑航铭",
+    "叶品峰",
+    "谢恺宇",
+    "徐子奇",
+    "龙杨杨"
+   ],
+   "category": "feature",
+   "comment": "「犯我强汉者，虽远必诛；凡我大汉子民，虽远必救」",
+   "cover": "covers/30353507/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30353507/01.webp",
+   "date": "2019-02-24",
+   "directors": [
+    "回宇"
+   ],
+   "douban_score": 5.7,
+   "genres": [
+    "历史"
+   ],
+   "id": "30353507",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 85,
+   "slug": "han-dynasty-thirteen-general",
+   "status": "collect",
+   "tags": [],
+   "title": "大汉十三将之血战疏勒城",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/30353507/",
+   "writers": [
+    "宋争",
+    "三尺",
+    "李柔"
+   ],
+   "year": 2019
+  },
+  {
+   "casts": [
+    "Namgyal Sherpa（纳格尔·夏尔巴）",
+    "Chakra B. Karki（查克拉·B·卡基）",
+    "Patrick Stewart（帕特里克·斯图尔特）"
+   ],
+   "category": "documentary",
+   "cover": "covers/30167539/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30167539/01.webp",
+   "date": "2019-02-24",
+   "directors": [
+    "Marina Martins（玛丽娜·马丁斯）"
+   ],
+   "douban_score": 9.0,
+   "genres": [
+    "纪录片"
+   ],
+   "id": "30167539",
+   "missing": false,
+   "original_title": "Death Zone: Cleaning Mount Everest",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "尼泊尔"
+   ],
+   "runtime": 99,
+   "slug": "death-zone-cleaning-mount-everest",
+   "status": "collect",
+   "tags": [],
+   "title": "珠峰清道夫",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/30167539/",
+   "writers": [
+    "Marina Martins（玛丽娜·马丁斯）"
+   ],
+   "year": 2018
+  },
+  {
+   "casts": [
+    "夏雨",
+    "乔振宇",
+    "蔡文静",
+    "田中千绘",
+    "王刚",
+    "曾江",
+    "吕中",
+    "潘粤明",
+    "黄海冰",
+    "汤镇宗"
+   ],
+   "category": "series",
+   "cover": "covers/26675617/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26675617/01.webp",
+   "date": "2019-02-24",
+   "directors": [
+    "五百",
+    "余庆"
+   ],
+   "douban_score": 6.6,
+   "episodes": 36,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "冒险"
+   ],
+   "id": "26675617",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 45,
+   "slug": "mystery-of-antiques",
+   "status": "collect",
+   "tags": [],
+   "title": "古董局中局",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/26675617/",
+   "writers": [
+    "刘殷实",
+    "卢源",
+    "马伯庸"
+   ],
+   "year": 2018
+  },
+  {
+   "casts": [
+    "蔡珩",
+    "顾璇",
+    "于恒",
+    "成泰燊",
+    "马浴柯",
+    "陈雨锶"
+   ],
+   "category": "feature",
+   "cover": "covers/26744597/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26744597/01.webp",
+   "date": "2019-02-23",
+   "directors": [
+    "非行"
+   ],
+   "douban_score": 3.2,
+   "genres": [
+    "动作",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "26744597",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 110,
+   "slug": "mojin-the-worm-valley",
+   "status": "collect",
+   "tags": [],
+   "title": "云南虫谷",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/26744597/",
+   "writers": [
+    "非行",
+    "顾浩然"
+   ],
+   "year": 2018
+  },
+  {
+   "casts": [
+    "Rosa Salazar（罗莎·萨拉查）",
+    "Christoph Waltz（克里斯托弗·瓦尔兹）",
+    "Keean Johnson（基恩·约翰逊）",
+    "Ed Skrein（艾德·斯克林）",
+    "Mahershala Ali（马赫沙拉·阿里）",
+    "Jennifer Connelly（詹妮弗·康纳利）",
+    "杰基·厄尔·哈利",
+    "拉娜·康多",
+    "Jorge Lendeborg Jr.（小豪尔赫·兰登伯格）",
+    "艾莎·冈萨雷斯"
+   ],
+   "category": "feature",
+   "comment": "视效很不错，战斗场面很不错，机械设定也可以。剧情就很弱了，男主跟 sb 似的，老爸还不错。",
+   "cover": "covers/1652592/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1652592/01.webp",
+   "date": "2019-02-23",
+   "directors": [
+    "Robert Rodriguez（罗伯特·罗德里格兹）"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
+   "id": "1652592",
+   "missing": false,
+   "original_title": "Alita: Battle Angel",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "日本",
+    "加拿大"
+   ],
+   "runtime": 122,
+   "slug": "alita-battle-angel",
+   "status": "collect",
+   "tags": [],
+   "title": "阿丽塔：战斗天使",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1652592/",
+   "writers": [
+    "James Cameron（詹姆斯·卡梅隆）",
+    "莱塔·卡罗格里迪斯",
+    "木城幸人"
+   ],
+   "year": 2019
+  },
+  {
+   "casts": [
+    "Werner Herzog（沃纳·赫尔佐格）",
+    "Ryan Andrew Evans（莱恩·安德鲁·伊万斯）",
+    "Ashrita Furman"
+   ],
+   "category": "documentary",
+   "cover": "covers/2237378/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2237378/01.webp",
+   "date": "2019-02-21",
+   "directors": [
+    "Werner Herzog（沃纳·赫尔佐格）"
+   ],
+   "douban_score": 8.9,
+   "genres": [
+    "纪录片"
+   ],
+   "id": "2237378",
+   "missing": false,
+   "original_title": "Encounters at the End of the World",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 99,
+   "slug": "encounters-at-the-end-of-the-world",
+   "status": "collect",
+   "tags": [],
+   "title": "在世界尽头相遇",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/2237378/",
+   "writers": [
+    "Werner Herzog（沃纳·赫尔佐格）"
+   ],
+   "year": 2007
+  },
   {
    "casts": [
     "崔在焕",
@@ -8914,263 +9176,7 @@
     "福田雄一"
    ],
    "year": 2017
-  },
-  {
-   "casts": [
-    "杉山纪彰",
-    "下屋则子",
-    "神谷浩史",
-    "川澄绫子",
-    "植田佳奈",
-    "伊藤美纪",
-    "中田让治",
-    "津嘉山正种",
-    "真殿光昭",
-    "小山力也"
-   ],
-   "category": "anime",
-   "comment": "后半部很燃",
-   "cover": "covers/25937991/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25937991/01.webp",
-   "date": "2018-05-09",
-   "directors": [
-    "须藤友德"
-   ],
-   "douban_score": 7.4,
-   "genres": [
-    "动画",
-    "奇幻"
-   ],
-   "id": "25937991",
-   "missing": false,
-   "original_title": "劇場版 Fate/stay night [Heaven's Feel] I. presage flower",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 120,
-   "slug": "fate-stay-night-heaven-s-feel-i-presage-flower",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "命运之夜——天之杯Ⅰ：恶兆之花",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/25937991/",
-   "writers": [
-    "奈须蘑菇",
-    "桧山彬"
-   ],
-   "year": 2017
-  },
-  {
-   "casts": [
-    "Saara Chaudry（莎拉·乔德利）",
-    "Soma Chhaya（索玛·查亚）",
-    "Noorin Gulamgaus（诺林·古拉姆高斯）",
-    "Laara Sadiq（拉腊·萨迪克）",
-    "Ali Badshah（阿里·巴德沙阿）",
-    "莎斯塔·拉蒂夫",
-    "坎扎·费里斯",
-    "卡瓦·阿达",
-    "凯恩·马洪",
-    "阿里·卡兹米"
-   ],
-   "category": "anime",
-   "comment": "这段历史，就是最近发生的",
-   "cover": "covers/26346327/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26346327/01.webp",
-   "date": "2018-05-06",
-   "directors": [
-    "Nora Twomey（诺拉·托梅）"
-   ],
-   "douban_score": 8.3,
-   "genres": [
-    "剧情",
-    "动画",
-    "家庭"
-   ],
-   "id": "26346327",
-   "missing": false,
-   "original_title": "The Breadwinner",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "爱尔兰",
-    "加拿大",
-    "卢森堡",
-    "美国",
-    "英国",
-    "法国"
-   ],
-   "runtime": 94,
-   "slug": "the-breadwinner",
-   "status": "collect",
-   "tags": [],
-   "title": "养家之人",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/26346327/",
-   "writers": [
-    "安妮塔·多兰",
-    "黛博拉·伊莉丝"
-   ],
-   "year": 2017
-  },
-  {
-   "casts": [
-    "朴槿惠"
-   ],
-   "category": "documentary",
-   "comment": "无作为，无能，怕惹麻烦...救出来的基本是自救...",
-   "cover": "covers/26895312/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26895312/01.webp",
-   "date": "2018-05-05",
-   "directors": [],
-   "douban_score": 8.5,
-   "genres": [
-    "纪录片"
-   ],
-   "id": "26895312",
-   "missing": false,
-   "original_title": "세월호 골든타임, 국가는 없었다",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 40,
-   "slug": "douban-26895312",
-   "status": "collect",
-   "tags": [],
-   "title": "黄金救援时间内毫无作为的国家",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/26895312/",
-   "writers": [],
-   "year": 2017
-  },
-  {
-   "casts": [],
-   "category": "documentary",
-   "comment": "船要翻了...船员去抢救自己手机了,带队老师慌忙失措,第一个发出求救电话的是一个高中生 (最后这孩子没救到)...整个过程有点像公司倒闭...",
-   "cover": "covers/27119319/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27119319/01.webp",
-   "date": "2018-05-04",
-   "directors": [
-    "NHK"
-   ],
-   "douban_score": 8.3,
-   "genres": [
-    "纪录片"
-   ],
-   "id": "27119319",
-   "missing": false,
-   "original_title": "セウォル号沈没事故～生死を分けた１０１分～",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 60,
-   "slug": "douban-27119319",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "世越号沉没～生死存亡的101分钟",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/27119319/",
-   "writers": [],
-   "year": 2017
-  },
-  {
-   "casts": [
-    "张涵予",
-    "福山雅治",
-    "戚薇",
-    "河智苑",
-    "国村隼",
-    "竹中直人",
-    "仓田保昭",
-    "斋藤工",
-    "吴飞霞",
-    "宫内瞳"
-   ],
-   "category": "feature",
-   "cover": "covers/26348414/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26348414/01.webp",
-   "date": "2018-05-01",
-   "directors": [
-    "吴宇森"
-   ],
-   "douban_score": 4.4,
-   "genres": [
-    "剧情",
-    "动作",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "26348414",
-   "missing": false,
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "香港",
-    "中国"
-   ],
-   "runtime": 106,
-   "slug": "manhunt",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "追捕",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/26348414/",
-   "writers": [
-    "陈庆嘉",
-    "陈嘉上",
-    "阮世生",
-    "江良至",
-    "顾在林",
-    "王思敏",
-    "叶沛洁"
-   ],
-   "year": 2017
-  },
-  {
-   "casts": [
-    "李立宏"
-   ],
-   "category": "documentary",
-   "cover": "covers/30157159/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30157159/01.webp",
-   "date": "2018-04-30",
-   "directors": [
-    "王立平"
-   ],
-   "douban_score": null,
-   "episodes": 8,
-   "genres": [
-    "纪录片"
-   ],
-   "id": "30157159",
-   "missing": false,
-   "pending": false,
-   "rating": 1,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 50,
-   "slug": "douban-30157159",
-   "status": "collect",
-   "tags": [],
-   "title": "大国重器 第二季",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/30157159/",
-   "writers": [],
-   "year": 2018
   }
  ],
- "last_date": "2018-04-30"
+ "last_date": "2018-05-10"
 }
