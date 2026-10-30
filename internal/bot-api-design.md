@@ -870,7 +870,13 @@ server {
   GitHub — the API server must reach the internet (or go through
   `BOT_HTTP_PROXY`). Pushing through a proxy can transiently drop the
   connection after the server accepted the ref; `push_branch` retries on
-  such connection errors.
+  such connection errors. The same policy covers the whole network path:
+  direct first, `BOT_HTTP_PROXY` as fallback, each route retried several
+  times (`BOT_HTTP_DIRECT=0` for proxy-only, `BOT_HTTP_TIMEOUT` for the
+  per-attempt timeout) — `git_net` for git fetch/push/remote-delete,
+  `shared/github_api.py` for the REST calls. The two non-idempotent writes
+  are replay-safe: `create_pr` reuses the PR behind a 422 duplicate head,
+  `merge` reports success for a 405 already-merged.
 - **Resource footprint**: FastAPI + uvicorn single worker uses ~30–50 MB —
   negligible.
 

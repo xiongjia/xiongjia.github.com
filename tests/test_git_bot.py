@@ -11,6 +11,7 @@ import os
 import re
 import sys
 from datetime import datetime
+from pathlib import Path
 from types import SimpleNamespace
 
 import git_bot as gb
@@ -431,24 +432,75 @@ def test_apply_proxy_bot_wins_over_shell():
         os.environ.pop("NO_PROXY", None)
 
 
-def test_git_proxy_args_when_set():
-    os.environ["BOT_HTTP_PROXY"] = "http://bot:1095"
-    try:
-        # HTTP/2 over a CONNECT proxy fails with "Error in the HTTP2 framing
-        # layer" — the proxy path must force HTTP/1.1
-        assert gb._git_proxy_args() == [
-            "-c",
-            "http.proxy=http://bot:1095",
-            "-c",
-            "http.version=HTTP/1.1",
-        ]
-    finally:
-        os.environ.pop("BOT_HTTP_PROXY", None)
+def test_git_net_routes_direct_first_then_proxy(monkeypatch):
+    monkeypatch.setenv("BOT_HTTP_PROXY", "http://bot:1095")
+    monkeypatch.delenv("BOT_HTTP_DIRECT", raising=False)
+    # HTTP/2 over a CONNECT proxy fails with "Error in the HTTP2 framing
+    # layer" — the proxy route must force HTTP/1.1, the direct route keeps it
+    assert gb._git_net_routes() == [
+        [],
+        ["-c", "http.proxy=http://bot:1095", "-c", "http.version=HTTP/1.1"],
+    ]
 
 
-def test_git_proxy_args_empty_when_unset():
-    os.environ.pop("BOT_HTTP_PROXY", None)
-    assert gb._git_proxy_args() == []
+def test_git_net_routes_direct_only_when_unset(monkeypatch):
+    monkeypatch.delenv("BOT_HTTP_PROXY", raising=False)
+    assert gb._git_net_routes() == [[]]
+
+
+def test_git_net_routes_proxy_only_when_direct_disabled(monkeypatch):
+    monkeypatch.setenv("BOT_HTTP_PROXY", "http://bot:1095")
+    monkeypatch.setenv("BOT_HTTP_DIRECT", "0")
+    assert gb._git_net_routes() == [
+        ["-c", "http.proxy=http://bot:1095", "-c", "http.version=HTTP/1.1"]
+    ]
+
+
+def test_git_net_retries_direct_then_falls_back_to_proxy(monkeypatch):
+    monkeypatch.setenv("BOT_HTTP_PROXY", "http://bot:1095")
+    monkeypatch.delenv("BOT_HTTP_DIRECT", raising=False)
+    monkeypatch.setattr(gb.time, "sleep", lambda _seconds: None)
+    calls = []
+
+    def fake_git(*args, **kwargs):
+        calls.append(args)
+        if not any(arg.startswith("http.proxy=") for arg in args):
+            raise gb.BotError("git fetch origin failed in /repo: Empty reply from server")
+        return ""
+
+    monkeypatch.setattr(gb, "git", fake_git)
+    gb.git_net(["fetch", "origin"], cwd=Path("."), attempts=3)
+    assert len(calls) == 4  # 3 direct attempts, then one proxied retry wins
+    assert calls[-1] == (
+        "-c",
+        "http.proxy=http://bot:1095",
+        "-c",
+        "http.version=HTTP/1.1",
+        "fetch",
+        "origin",
+    )
+
+
+def test_git_net_stops_at_first_success(monkeypatch):
+    monkeypatch.setenv("BOT_HTTP_PROXY", "http://bot:1095")
+    calls = []
+    monkeypatch.setattr(gb, "git", lambda *args, **kwargs: calls.append(args) or "")
+    gb.git_net(["fetch", "origin"], cwd=Path("."))
+    assert calls == [("fetch", "origin")]  # direct route, nothing proxied
+
+
+def test_git_net_does_not_retry_auth_errors(monkeypatch):
+    monkeypatch.delenv("BOT_HTTP_PROXY", raising=False)
+    calls = []
+
+    def fake_git(*args, **kwargs):
+        calls.append(args)
+        raise gb.BotError("git push origin main failed in /repo: Authentication failed")
+
+    monkeypatch.setattr(gb, "git", fake_git)
+    with pytest.raises(gb.BotError):
+        gb.git_net(["push", "origin", "main"], cwd=Path("."))
+    assert len(calls) == 1
 
 
 # -- branch guard -----------------------------------------------------------
