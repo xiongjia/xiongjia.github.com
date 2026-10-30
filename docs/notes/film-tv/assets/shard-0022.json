@@ -1,7 +1,321 @@
 {
- "count": 76,
- "first_date": "2008-10-01",
+ "count": 82,
+ "first_date": "2008-10-11",
  "items": [
+  {
+   "casts": [
+    "日高范子",
+    "坂本千夏",
+    "糸井重里",
+    "岛本须美",
+    "北林谷荣",
+    "高木均",
+    "雨笠利幸",
+    "丸山裕子",
+    "广濑正志",
+    "鹫尾真知子"
+   ],
+   "category": "anime",
+   "comment": "很好...",
+   "cover": "covers/1291560/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291560/01.webp",
+   "date": "2008-10-11",
+   "directors": [
+    "宫崎骏"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1291560",
+   "missing": false,
+   "original_title": "となりのトトロ",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 86,
+   "slug": "tonari-no-totoro",
+   "status": "collect",
+   "tags": [
+    "Adventure",
+    "Movie",
+    "JPN",
+    "Animation",
+    "Mystery"
+   ],
+   "title": "龙猫",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1291560/",
+   "writers": [
+    "宫崎骏"
+   ],
+   "year": 1988
+  },
+  {
+   "casts": [
+    "周星驰",
+    "元秋",
+    "元华",
+    "黄圣依",
+    "梁小龙",
+    "陈国坤",
+    "田启文",
+    "林子聪",
+    "林雪",
+    "冯克安"
+   ],
+   "category": "feature",
+   "comment": "星爷...",
+   "cover": "covers/1291543/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291543/01.webp",
+   "date": "2008-10-11",
+   "directors": [
+    "周星驰"
+   ],
+   "douban_score": 8.9,
+   "genres": [
+    "喜剧",
+    "动作",
+    "犯罪",
+    "奇幻"
+   ],
+   "id": "1291543",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 100,
+   "slug": "kung-fu-hustle",
+   "status": "collect",
+   "tags": [
+    "CHS",
+    "Movie",
+    "Comedy",
+    "Kung-Fu"
+   ],
+   "title": "功夫",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1291543/",
+   "writers": [
+    "曾瑾昌",
+    "陈文强",
+    "周星驰",
+    "霍昕"
+   ],
+   "year": 2004
+  },
+  {
+   "casts": [
+    "Brad Pitt（布拉德·皮特）",
+    "Cate Blanchett（凯特·布兰切特）",
+    "盖尔·加西亚·贝纳尔",
+    "Adriana Barraza（阿德里安娜·巴拉萨）",
+    "菊地凛子",
+    "役所广司",
+    "迈克尔·佩纳"
+   ],
+   "category": "feature",
+   "comment": "孩子的教育很重要...",
+   "cover": "covers/1498818/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1498818/01.webp",
+   "date": "2008-10-05",
+   "directors": [
+    "亚历杭德罗·冈萨雷斯·伊尼亚里图"
+   ],
+   "douban_score": 8.1,
+   "genres": [
+    "剧情"
+   ],
+   "id": "1498818",
+   "missing": false,
+   "original_title": "Babel",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "法国",
+    "美国",
+    "墨西哥"
+   ],
+   "runtime": 143,
+   "slug": "babel",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "Drama"
+   ],
+   "title": "通天塔",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1498818/",
+   "writers": [
+    "吉列尔莫·阿里亚加"
+   ],
+   "year": 2006
+  },
+  {
+   "casts": [
+    "Ray Winstone（雷·温斯顿）",
+    "Crispin Glover（克里斯平·格洛弗）",
+    "Angelina Jolie（安吉丽娜·朱莉）",
+    "Robin Wright（罗宾·怀特）",
+    "Anthony Hopkins（安东尼·霍普金斯）",
+    "John Malkovich（约翰·马尔科维奇）",
+    "艾莉森·洛曼"
+   ],
+   "category": "anime",
+   "comment": "一般...",
+   "cover": "covers/1792917/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1792917/01.webp",
+   "date": "2008-10-01",
+   "directors": [
+    "Robert Zemeckis（罗伯特·泽米吉斯）"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "动作",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1792917",
+   "missing": false,
+   "original_title": "Beowulf",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 115,
+   "slug": "beowulf",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "Animation",
+    "War"
+   ],
+   "title": "贝奥武夫",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1792917/",
+   "writers": [
+    "尼尔·盖曼",
+    "罗杰·阿夫瑞"
+   ],
+   "year": 2007
+  },
+  {
+   "casts": [
+    "Nicole Kidman（妮可·基德曼）",
+    "Daniel Craig（丹尼尔·克雷格）",
+    "Dakota Blue Richards（达科塔·布鲁·理查兹）",
+    "Eva Green（伊娃·格林）",
+    "Sam Elliott（山姆·埃利奥特）",
+    "Christopher Lee（克里斯托弗·李）",
+    "Freddie Highmore（弗莱迪·海默）",
+    "Ian McKellen（伊恩·麦克莱恩）",
+    "Kristin Scott Thomas（克里斯汀·斯科特·托马斯）",
+    "Kathy Bates（凯西·贝茨）"
+   ],
+   "category": "feature",
+   "comment": "不符合原来的希望...",
+   "cover": "covers/1585146/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1585146/01.webp",
+   "date": "2008-10-01",
+   "directors": [
+    "Chris Weitz（克里斯·韦兹）"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "家庭",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1585146",
+   "missing": false,
+   "original_title": "The Golden Compass",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 113,
+   "slug": "the-golden-compass",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Adventure",
+    "ENU",
+    "Sci-Fi",
+    "Animation"
+   ],
+   "title": "黄金罗盘",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1585146/",
+   "writers": [
+    "Chris Weitz（克里斯·韦兹）",
+    "菲利普·普尔曼"
+   ],
+   "year": 2007
+  },
+  {
+   "casts": [
+    "Edward Norton（爱德华·诺顿）",
+    "Paul Giamatti（保罗·吉亚玛提）",
+    "Jessica Biel（杰西卡·贝尔）",
+    "Rufus Sewell（卢夫斯·塞维尔）",
+    "Eddie Marsan（埃迪·马森）",
+    "Aaron Taylor-Johnson（亚伦·泰勒-约翰逊）",
+    "Eleanor Tomlinson（埃莉诺·汤姆林森）"
+   ],
+   "category": "feature",
+   "comment": "一场大骗局...",
+   "cover": "covers/1467044/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1467044/01.webp",
+   "date": "2008-10-01",
+   "directors": [
+    "Neil Burger（尼尔·博格）"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "爱情",
+    "悬疑"
+   ],
+   "id": "1467044",
+   "missing": false,
+   "original_title": "The Illusionist",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "捷克"
+   ],
+   "runtime": 110,
+   "slug": "the-illusionist",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU",
+    "Detective"
+   ],
+   "title": "魔术师",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1467044/",
+   "writers": [
+    "Neil Burger（尼尔·博格）",
+    "斯蒂文·米尔豪瑟"
+   ],
+   "year": 2006
+  },
   {
    "casts": [
     "Johnny Depp（约翰尼·德普）",

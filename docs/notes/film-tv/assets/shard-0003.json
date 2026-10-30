@@ -1,7 +1,282 @@
 {
  "count": 200,
- "first_date": "2023-04-01",
+ "first_date": "2023-04-16",
  "items": [
+  {
+   "casts": [
+    "Steven Yeun（史蒂文·元）",
+    "黄阿丽",
+    "Joseph Lee（约瑟夫·李）",
+    "Young Mazino（扬·马齐诺）",
+    "雷米·霍尔特",
+    "崔大卫",
+    "佩蒂·安武",
+    "阿什利·朴",
+    "Maria Bello（玛丽亚·贝罗）",
+    "Justin H. Min（贾斯汀·闵）"
+   ],
+   "category": "series",
+   "cover": "covers/35413042/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35413042/01.webp",
+   "date": "2023-04-16",
+   "directors": [
+    "宫崎光代",
+    "Jake Schreier（杰克·施莱尔）",
+    "李成真"
+   ],
+   "douban_score": 8.6,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "35413042",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 30,
+   "slug": "beef-season-1",
+   "status": "collect",
+   "tags": [],
+   "title": "怒呛人生 第一季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35413042/",
+   "writers": [
+    "李成真",
+    "凯莉·肯珀",
+    "亚历克斯·罗素",
+    "玛丽·汉洪·阮",
+    "尼科·古铁雷斯-科夫纳",
+    "乔安娜·卡洛",
+    "凯文·罗森",
+    "简·基昂·弗雷泽",
+    "爱丽丝·朱"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "Chris Pratt（克里斯·帕拉特）",
+    "Anya Taylor-Joy（安雅·泰勒-乔伊）",
+    "Charlie Day（查理·戴）",
+    "Jack Black（杰克·布莱克）",
+    "Keegan-Michael Key（科甘-迈克尔·凯）",
+    "Seth Rogen（塞斯·罗根）",
+    "弗莱德·阿米森",
+    "凯文·迈克尔·理查德森",
+    "朱丽叶·杰勒尼克",
+    "Sebastian Maniscalco（塞巴斯蒂安·马尼斯科）"
+   ],
+   "category": "anime",
+   "cover": "covers/27199894/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27199894/01.webp",
+   "date": "2023-04-08",
+   "directors": [
+    "Aaron Horvath（亚伦·霍瓦斯）",
+    "Michael Jelenic（迈克尔·杰勒尼克）"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "喜剧",
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "27199894",
+   "missing": false,
+   "original_title": "The Super Mario Bros. Movie",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国",
+    "日本"
+   ],
+   "runtime": 92,
+   "slug": "the-super-mario-bros-movie",
+   "status": "collect",
+   "tags": [],
+   "title": "超级马力欧兄弟大电影",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/27199894/",
+   "writers": [
+    "马修·福格尔"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "Adam Driver（亚当·德赖弗）",
+    "Ariana Greenblatt（阿丽亚娜·格林布拉特）",
+    "Chloe Coleman（克洛伊·科尔曼）",
+    "Nika King（妮卡·金）",
+    "布莱恩·达尔"
+   ],
+   "category": "feature",
+   "cover": "covers/35197766/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35197766/01.webp",
+   "date": "2023-04-07",
+   "directors": [
+    "Scott Beck（斯科特·贝克）",
+    "Bryan Woods（布莱恩·伍兹）"
+   ],
+   "douban_score": 4.6,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "惊悚",
+    "冒险"
+   ],
+   "id": "35197766",
+   "missing": false,
+   "original_title": "65",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国",
+    "加拿大"
+   ],
+   "runtime": 93,
+   "slug": "douban-35197766",
+   "status": "collect",
+   "tags": [],
+   "title": "逃出白垩纪",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/35197766/",
+   "writers": [
+    "Scott Beck（斯科特·贝克）",
+    "Bryan Woods（布莱恩·伍兹）"
+   ],
+   "year": 2023
+  },
+  {
+   "casts": [
+    "马思纯",
+    "俞飞鸿",
+    "彭于晏",
+    "张钧甯",
+    "范伟",
+    "梁洛施",
+    "张佳宁",
+    "尹昉",
+    "秦沛",
+    "白冰"
+   ],
+   "category": "feature",
+   "cover": "covers/27102476/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/27102476/01.webp",
+   "date": "2023-04-06",
+   "directors": [
+    "许鞍华"
+   ],
+   "douban_score": 5.0,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "27102476",
+   "missing": false,
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 144,
+   "slug": "love-after-love",
+   "status": "collect",
+   "tags": [],
+   "title": "第一炉香",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/27102476/",
+   "writers": [
+    "王安忆",
+    "张爱玲"
+   ],
+   "year": 2020
+  },
+  {
+   "casts": [
+    "蔷薇园啊呜",
+    "森山未来",
+    "柄本佑",
+    "津田健次郎",
+    "松重丰",
+    "中川晴树",
+    "本多力"
+   ],
+   "category": "anime",
+   "cover": "covers/34430141/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34430141/01.webp",
+   "date": "2023-04-05",
+   "directors": [
+    "汤浅政明"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "动画",
+    "音乐",
+    "奇幻"
+   ],
+   "id": "34430141",
+   "missing": false,
+   "original_title": "犬王",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 98,
+   "slug": "inu-oh",
+   "status": "collect",
+   "tags": [],
+   "title": "平家物语：犬王",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/34430141/",
+   "writers": [
+    "野木亚纪子"
+   ],
+   "year": 2021
+  },
+  {
+   "casts": [
+    "June Yoon"
+   ],
+   "category": "documentary",
+   "cover": "covers/36217752/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36217752/01.webp",
+   "date": "2023-04-02",
+   "directors": [
+    "조성현"
+   ],
+   "douban_score": 7.3,
+   "episodes": 8,
+   "genres": [
+    "纪录片",
+    "犯罪"
+   ],
+   "id": "36217752",
+   "missing": false,
+   "original_title": "나는 신이다: 신이 배신한 사람들",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 60,
+   "slug": "in-the-name-of-god-a-holy-betrayal",
+   "status": "collect",
+   "tags": [
+    "Movie"
+   ],
+   "title": "以神之名：信仰的背叛",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/36217752/",
+   "writers": [],
+   "year": 2023
+  },
   {
    "casts": [
     "松重丰"
@@ -9017,287 +9292,7 @@
     "万佳龙"
    ],
    "year": 2022
-  },
-  {
-   "casts": [
-    "中岛健人",
-    "小芝风花",
-    "赤楚卫二",
-    "佐久间由衣",
-    "高桥优斗",
-    "宇垣美里",
-    "LiLiCo",
-    "木村佑一",
-    "菅原大吉",
-    "本多力"
-   ],
-   "category": "series",
-   "cover": "covers/35467021/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35467021/01.webp",
-   "date": "2022-04-19",
-   "directors": [
-    "纸谷枫",
-    "木下高男"
-   ],
-   "douban_score": 6.8,
-   "episodes": 10,
-   "genres": [
-    "喜剧",
-    "爱情"
-   ],
-   "id": "35467021",
-   "missing": false,
-   "original_title": "彼女はキレイだった",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": null,
-   "slug": "she-was-pretty",
-   "status": "collect",
-   "tags": [],
-   "title": "她很漂亮",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/35467021/",
-   "writers": [
-    "清水友佳子",
-    "三浦希纱"
-   ],
-   "year": 2021
-  },
-  {
-   "casts": [
-    "Robert Pattinson（罗伯特·帕丁森）",
-    "佐伊·克罗维兹",
-    "Paul Dano（保罗·达诺）",
-    "Colin Farrell（科林·法瑞尔）",
-    "Jeffrey Wright（杰弗里·怀特）",
-    "Andy Serkis（安迪·瑟金斯）",
-    "John Turturro（约翰·特托罗）",
-    "Peter Sarsgaard（彼得·萨斯加德）",
-    "巴里·基奥恩",
-    "杰米·劳森"
-   ],
-   "category": "feature",
-   "cover": "covers/6424756/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6424756/01.webp",
-   "date": "2022-04-18",
-   "directors": [
-    "Matt Reeves（马特·里夫斯）"
-   ],
-   "douban_score": 7.2,
-   "genres": [
-    "剧情",
-    "动作",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "6424756",
-   "missing": false,
-   "original_title": "The Batman",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 176,
-   "slug": "the-batman",
-   "status": "collect",
-   "tags": [],
-   "title": "新蝙蝠侠",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/6424756/",
-   "writers": [
-    "Matt Reeves（马特·里夫斯）",
-    "彼得·克莱格",
-    "比尔·芬格",
-    "鲍勃·凯恩"
-   ],
-   "year": 2022
-  },
-  {
-   "casts": [
-    "Naomi Watts（娜奥米·沃茨）",
-    "Denis O'Hare（丹尼斯·欧哈拉）",
-    "Billy Howle（比利·豪尔）",
-    "Eliot Sumner（艾略特·萨姆纳）",
-    "帕克·索耶",
-    "约书亚·罗林斯"
-   ],
-   "category": "feature",
-   "cover": "covers/35351430/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35351430/01.webp",
-   "date": "2022-04-16",
-   "directors": [
-    "玛乌戈扎塔·舒莫夫斯卡",
-    "米歇尔·恩格勒"
-   ],
-   "douban_score": 5.8,
-   "genres": [
-    "剧情",
-    "惊悚"
-   ],
-   "id": "35351430",
-   "missing": false,
-   "original_title": "Infinite Storm",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "英国",
-    "波兰",
-    "澳大利亚"
-   ],
-   "runtime": 97,
-   "slug": "infinite-storm",
-   "status": "collect",
-   "tags": [],
-   "title": "无限风暴",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/35351430/",
-   "writers": [
-    "约书亚·罗林斯",
-    "帕姆·巴勒斯"
-   ],
-   "year": 2022
-  },
-  {
-   "casts": [
-    "Harold Perrineau（哈罗德·佩里诺）",
-    "Catalina Sandino Moreno（卡塔琳娜·桑地诺·莫雷诺）",
-    "Eion Bailey（艾恩·贝利）",
-    "Hannah Cheramy（汉娜·切尔敏）",
-    "Ricky He（瑞奇·何）",
-    "肖恩·摩忠德",
-    "大卫·阿尔帕伊",
-    "伊丽莎白·桑德斯",
-    "斯科特·麦克科德"
-   ],
-   "category": "series",
-   "cover": "covers/35460437/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35460437/01.webp",
-   "date": "2022-04-15",
-   "directors": [
-    "Jack Bender（杰克·本德）"
-   ],
-   "douban_score": 6.6,
-   "episodes": 10,
-   "genres": [
-    "科幻",
-    "恐怖"
-   ],
-   "id": "35460437",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 50,
-   "slug": "from-season-1",
-   "status": "collect",
-   "tags": [],
-   "title": "梦魇绝镇 第一季 From Season 1",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/35460437/",
-   "writers": [
-    "John Griffin"
-   ],
-   "year": 2022
-  },
-  {
-   "casts": [
-    "Will Smith（威尔·史密斯）",
-    "Demi Singleton（黛米·辛格顿）",
-    "Saniyya Sidney（萨尼雅·西德尼）",
-    "Aunjanue Ellis-Taylor（安洁纽·艾莉丝-泰勒）",
-    "Jon Bernthal（乔·博恩瑟）",
-    "Tony Goldwyn（托尼·戈德温）",
-    "米凯拉·拉沙·巴塞洛缪",
-    "达尼埃莱·劳森",
-    "莱拉·克劳福德",
-    "埃里卡·林格"
-   ],
-   "category": "feature",
-   "cover": "covers/30481476/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30481476/01.webp",
-   "date": "2022-04-11",
-   "directors": [
-    "Reinaldo Marcus Green（雷纳尔多·马库斯·格林）"
-   ],
-   "douban_score": 7.5,
-   "genres": [
-    "剧情",
-    "传记",
-    "运动"
-   ],
-   "id": "30481476",
-   "missing": false,
-   "original_title": "King Richard",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 144,
-   "slug": "king-richard",
-   "status": "collect",
-   "tags": [],
-   "title": "国王理查德",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/30481476/",
-   "writers": [
-    "扎克·贝林"
-   ],
-   "year": 2021
-  },
-  {
-   "casts": [
-    "Mark Rylance（马克·里朗斯）",
-    "Simon Russell Beale（西蒙·拉塞尔·比尔）",
-    "Johnny Flynn（强尼·弗林）",
-    "Nikki Amuka-Bird（妮基·阿姆卡-伯德）",
-    "Zoey Deutch（佐伊·达奇）",
-    "艾伦·迈赫迪扎德",
-    "Dylan O'Brien（迪伦·奥布莱恩）",
-    "乔纳森·麦克莱恩",
-    "John Gumley-Mason",
-    "Stephen Knox"
-   ],
-   "category": "feature",
-   "cover": "covers/35372415/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35372415/01.webp",
-   "date": "2022-04-10",
-   "directors": [
-    "Graham Moore（格拉汉姆·摩尔）"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "剧情",
-    "惊悚",
-    "犯罪"
-   ],
-   "id": "35372415",
-   "missing": false,
-   "original_title": "The Outfit",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 106,
-   "slug": "the-outfit",
-   "status": "collect",
-   "tags": [],
-   "title": "套装",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/35372415/",
-   "writers": [
-    "乔纳森·麦克莱恩",
-    "Graham Moore（格拉汉姆·摩尔）"
-   ],
-   "year": 2022
   }
  ],
- "last_date": "2022-04-10"
+ "last_date": "2022-04-23"
 }

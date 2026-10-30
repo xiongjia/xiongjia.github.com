@@ -1,7 +1,290 @@
 {
  "count": 200,
- "first_date": "2015-04-09",
+ "first_date": "2015-04-11",
  "items": [
+  {
+   "casts": [
+    "山口智充",
+    "户田惠梨香",
+    "伊東四朗",
+    "津川雅彦",
+    "小出惠介",
+    "利重剛",
+    "荒川良良",
+    "平冈佑太",
+    "酒井敏也",
+    "白川和子"
+   ],
+   "category": "feature",
+   "cover": "covers/3113817/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3113817/01.webp",
+   "date": "2015-04-11",
+   "directors": [
+    "加藤義人"
+   ],
+   "douban_score": 7.7,
+   "genres": [],
+   "id": "3113817",
+   "missing": false,
+   "original_title": "奇跡の動物園2008～旭山動物園物語～",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": null,
+   "slug": "douban-3113817",
+   "status": "collect",
+   "tags": [
+    "SP",
+    "Movie",
+    "JPN"
+   ],
+   "title": "奇迹动物园2008",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3113817/",
+   "writers": [
+    "大島里美"
+   ],
+   "year": 2008
+  },
+  {
+   "casts": [
+    "松冈祯丞",
+    "茅野爱衣",
+    "日笠阳子",
+    "田村由香里",
+    "井口裕香",
+    "能登麻美子",
+    "泽城美雪",
+    "钉宫理惠"
+   ],
+   "category": "anime",
+   "cover": "covers/25921805/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25921805/01.webp",
+   "date": "2015-04-11",
+   "directors": [
+    "大馆康二"
+   ],
+   "douban_score": 7.8,
+   "episodes": 6,
+   "genres": [
+    "动画"
+   ],
+   "id": "25921805",
+   "missing": false,
+   "original_title": "ノーゲーム・ノーライフ ミニOVA",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 3,
+   "slug": "ova",
+   "status": "collect",
+   "tags": [
+    "OVA",
+    "Animation",
+    "Teleplay"
+   ],
+   "title": "游戏人生 OVA",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25921805/",
+   "writers": [
+    "青岛崇"
+   ],
+   "year": 2014
+  },
+  {
+   "casts": [
+    "寺岛拓笃",
+    "加藤英美里",
+    "前野智昭",
+    "中田让治",
+    "山下大辉",
+    "柿原彻也",
+    "下野纮",
+    "樱井孝宏",
+    "原由实",
+    "高垣彩阳"
+   ],
+   "category": "anime",
+   "cover": "covers/25851661/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25851661/01.webp",
+   "date": "2015-04-11",
+   "directors": [
+    "石平信司"
+   ],
+   "douban_score": 8.2,
+   "episodes": 25,
+   "genres": [
+    "动画"
+   ],
+   "id": "25851661",
+   "missing": false,
+   "original_title": "ログ・ホライズン 第2シリーズ",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 25,
+   "slug": "log-horizon-season-2",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN",
+    "Animation"
+   ],
+   "title": "记录的地平线 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25851661/",
+   "writers": [
+    "根元歳三",
+    "橙乃ままれ(原作)"
+   ],
+   "year": 2014
+  },
+  {
+   "casts": [
+    "山口智充",
+    "广末凉子",
+    "户田惠梨香",
+    "小出惠介"
+   ],
+   "category": "feature",
+   "cover": "covers/2299434/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2299434/01.webp",
+   "date": "2015-04-11",
+   "directors": [
+    "加藤義人"
+   ],
+   "douban_score": 7.6,
+   "genres": [],
+   "id": "2299434",
+   "missing": false,
+   "original_title": "奇跡の動物園2007〜旭山動物園物語〜",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 112,
+   "slug": "douban-2299434",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "SP",
+    "JPN"
+   ],
+   "title": "奇迹动物园-旭山动物园物语2007",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/2299434/",
+   "writers": [
+    "相良敦子"
+   ],
+   "year": 2007
+  },
+  {
+   "casts": [
+    "Shailene Woodley（谢琳·伍德蕾）",
+    "Theo James（西奥·詹姆斯）",
+    "Ashley Judd（艾什莉·贾德）",
+    "Jai Courtney（杰·科特尼）",
+    "Ray Stevenson（雷·史蒂文森）",
+    "佐伊·克罗维兹",
+    "Miles Teller（迈尔斯·特勒）",
+    "Tony Goldwyn（托尼·戈德温）",
+    "Ansel Elgort（安塞尔·艾尔高特）",
+    "李美琪"
+   ],
+   "category": "feature",
+   "comment": "我肯定是混日子派别的...",
+   "cover": "covers/6424814/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6424814/01.webp",
+   "date": "2015-04-10",
+   "directors": [
+    "Neil Burger（尼尔·博格）"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "动作",
+    "科幻",
+    "冒险"
+   ],
+   "id": "6424814",
+   "missing": false,
+   "original_title": "Divergent",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 139,
+   "slug": "divergent",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Sci-Fi",
+    "ENU"
+   ],
+   "title": "分歧者：异类觉醒",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/6424814/",
+   "writers": [
+    "埃文·达赫迪",
+    "瓦内莎·泰勒"
+   ],
+   "year": 2014
+  },
+  {
+   "casts": [
+    "泽城美雪",
+    "黑田崇矢",
+    "小林沙苗",
+    "宫野真守",
+    "花泽香菜",
+    "神谷浩史",
+    "小野大辅",
+    "福山润",
+    "中村悠一",
+    "梶裕贵"
+   ],
+   "category": "anime",
+   "cover": "covers/5992987/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5992987/01.webp",
+   "date": "2015-04-09",
+   "directors": [
+    "大森贵弘"
+   ],
+   "douban_score": 8.8,
+   "genres": [
+    "动画"
+   ],
+   "id": "5992987",
+   "missing": false,
+   "original_title": "デュラララ!! 第25話 天下泰平",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 24,
+   "slug": "douban-5992987",
+   "status": "collect",
+   "tags": [
+    "Animation",
+    "JPN",
+    "OVA"
+   ],
+   "title": "无头骑士异闻录：天下泰平",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/5992987/",
+   "writers": [
+    "丰永利行"
+   ],
+   "year": 2011
+  },
   {
    "casts": [
     "泽城美雪",
@@ -9586,307 +9869,7 @@
     "久住昌之"
    ],
    "year": 2014
-  },
-  {
-   "casts": [
-    "木村拓哉",
-    "北川景子",
-    "杉本哲太",
-    "滨田岳",
-    "正名仆藏",
-    "吉田羊",
-    "田中要次",
-    "松重丰",
-    "八岛智人",
-    "小日向文世"
-   ],
-   "category": "series",
-   "comment": "时隔这么多年...",
-   "cover": "covers/25874886/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25874886/01.webp",
-   "date": "2014-09-25",
-   "directors": [
-    "铃木雅之",
-    "平野真",
-    "金井纮"
-   ],
-   "douban_score": 8.2,
-   "episodes": 11,
-   "genres": [
-    "剧情"
-   ],
-   "id": "25874886",
-   "missing": false,
-   "original_title": "HERO2014",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 69,
-   "slug": "hero2014",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "JPN"
-   ],
-   "title": "律政英雄2014",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/25874886/",
-   "writers": [
-    "福田靖"
-   ],
-   "year": 2014
-  },
-  {
-   "casts": [
-    "中村悠一",
-    "小泽亚李",
-    "冈本信彦",
-    "小野友树",
-    "中原麻衣",
-    "木村良平",
-    "泽城美雪",
-    "三宅健太",
-    "小野大辅",
-    "川澄绫子"
-   ],
-   "category": "anime",
-   "comment": "论 职业病对日常生活的影响...",
-   "cover": "covers/25850705/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25850705/01.webp",
-   "date": "2014-09-23",
-   "directors": [
-    "山崎光惠",
-    "竹下良平",
-    "渡部稳宽",
-    "守田艺成",
-    "野木森达哉"
-   ],
-   "douban_score": 9.3,
-   "episodes": 12,
-   "genres": [
-    "喜剧",
-    "动画"
-   ],
-   "id": "25850705",
-   "missing": false,
-   "original_title": "月刊少女野崎くん",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 23,
-   "slug": "gekkan-shojo-nozaki-kun",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Animation",
-    "Teleplay"
-   ],
-   "title": "月刊少女野崎君",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/25850705/",
-   "writers": [
-    "中村能子"
-   ],
-   "year": 2014
-  },
-  {
-   "casts": [
-    "户田惠梨香",
-    "多部未华子",
-    "真木阳子",
-    "滨田岳",
-    "金子统昭",
-    "三津谷叶子",
-    "铃木杏",
-    "池松壮亮",
-    "金井勇太"
-   ],
-   "category": "series",
-   "comment": "淡中知真味",
-   "cover": "covers/24749750/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/24749750/01.webp",
-   "date": "2014-09-21",
-   "directors": [
-    "广木隆一"
-   ],
-   "douban_score": 6.9,
-   "episodes": 3,
-   "genres": [
-    "爱情"
-   ],
-   "id": "24749750",
-   "missing": false,
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "日本"
-   ],
-   "runtime": null,
-   "slug": "i-love-you",
-   "status": "collect",
-   "tags": [
-    "JPN",
-    "Movie"
-   ],
-   "title": "I LOVE YOU",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/24749750/",
-   "writers": [
-    "及川章太郎"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "堀北真希",
-    "松田龙平",
-    "余贵美子",
-    "温水洋一",
-    "麻生祐未",
-    "田代沙耶香",
-    "井口薰仁",
-    "冈山天音"
-   ],
-   "category": "feature",
-   "comment": "龙平就打了个酱油...",
-   "cover": "covers/21360431/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/21360431/01.webp",
-   "date": "2014-09-21",
-   "directors": [
-    "吉田惠辅"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "剧情",
-    "喜剧"
-   ],
-   "id": "21360431",
-   "missing": false,
-   "original_title": "麦子さんと",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 95,
-   "slug": "mugiko-san-to",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "麦子小姐",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/21360431/",
-   "writers": [
-    "吉田惠辅",
-    "仁志原了"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "小芝风花",
-    "尾野真千子",
-    "山本浩司",
-    "广田亮平",
-    "宫泽理惠",
-    "筒井道隆",
-    "浅野忠信"
-   ],
-   "category": "feature",
-   "cover": "covers/24321268/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/24321268/01.webp",
-   "date": "2014-09-20",
-   "directors": [
-    "清水崇"
-   ],
-   "douban_score": 5.8,
-   "genres": [
-    "剧情",
-    "奇幻"
-   ],
-   "id": "24321268",
-   "missing": false,
-   "original_title": "魔女の宅急便",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 108,
-   "slug": "majo-no-takkyubin",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "魔女宅急便 真人版",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/24321268/",
-   "writers": [
-    "奥寺佐渡子",
-    "清水崇",
-    "角野荣子"
-   ],
-   "year": 2014
-  },
-  {
-   "casts": [
-    "Pierce Brosnan（皮尔斯·布鲁斯南）",
-    "Halle Berry（哈莉·贝瑞）",
-    "Toby Stephens（托比·斯蒂芬斯）",
-    "裴淳华",
-    "尹成植",
-    "Judi Dench（朱迪·丹奇）",
-    "John Cleese（约翰·克里斯）",
-    "Michael Madsen（迈克尔·马德森）",
-    "李威尹",
-    "曾江"
-   ],
-   "category": "feature",
-   "cover": "covers/1303773/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1303773/01.webp",
-   "date": "2014-09-18",
-   "directors": [
-    "Lee Tamahori（李·塔玛霍瑞）"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "动作",
-    "惊悚",
-    "冒险"
-   ],
-   "id": "1303773",
-   "missing": false,
-   "original_title": "Die Another Day",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "英国",
-    "美国"
-   ],
-   "runtime": 133,
-   "slug": "die-another-day",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "007之择日而亡",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1303773/",
-   "writers": [
-    "尼尔·珀维斯",
-    "罗伯特·韦德",
-    "伊恩·弗莱明"
-   ],
-   "year": 2002
   }
  ],
- "last_date": "2014-09-18"
+ "last_date": "2014-09-27"
 }

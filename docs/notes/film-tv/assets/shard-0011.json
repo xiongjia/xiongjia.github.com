@@ -1,7 +1,338 @@
 {
  "count": 200,
- "first_date": "2016-05-13",
+ "first_date": "2016-05-20",
  "items": [
+  {
+   "casts": [
+    "Paul Walker（保罗·沃克）",
+    "Vin Diesel（范·迪塞尔）",
+    "Michelle Rodriguez（米歇尔·罗德里格兹）",
+    "Jordana Brewster（乔丹娜·布鲁斯特）",
+    "尹成植",
+    "马特·斯查尔兹",
+    "Chad Lindberg（查德·林德伯格）",
+    "强尼·斯特朗",
+    "泰德·拉文",
+    "杰鲁"
+   ],
+   "category": "feature",
+   "cover": "covers/1304899/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1304899/01.webp",
+   "date": "2016-05-20",
+   "directors": [
+    "Rob Cohen（罗伯·科恩）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "动作",
+    "犯罪"
+   ],
+   "id": "1304899",
+   "missing": false,
+   "original_title": "The Fast and the Furious",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国",
+    "德国"
+   ],
+   "runtime": 106,
+   "slug": "the-fast-and-the-furious",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "速度与激情",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1304899/",
+   "writers": [
+    "肯·李",
+    "盖瑞·斯科特·汤普森",
+    "埃里克·伯吉斯特",
+    "David Ayer（大卫·阿耶）"
+   ],
+   "year": 2001
+  },
+  {
+   "casts": [
+    "Maisie Williams（麦茜·威廉姆斯）",
+    "Emilia Clarke（艾米莉亚·克拉克）",
+    "Richard Madden（理查德·麦登）",
+    "Isaac Hempstead-Wright（伊萨克·亨普斯特德-怀特）",
+    "Stephen Dillane（斯蒂芬·迪兰）",
+    "Peter Dinklage（彼特·丁拉基）",
+    "汉娜·穆雷",
+    "Rose Leslie（露丝·莱斯利）",
+    "Sophie Turner（苏菲·特纳）",
+    "Charles Dance（查尔斯·丹斯）"
+   ],
+   "category": "series",
+   "cover": "covers/6558062/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6558062/01.webp",
+   "date": "2016-05-15",
+   "directors": [
+    "Alan Taylor（阿兰·泰勒）",
+    "Alik Sakharov（阿利克·萨哈罗夫）",
+    "大卫·彼特拉克",
+    "David Nutter（大卫·努特尔）",
+    "Neil Marshall（尼尔·马歇尔）"
+   ],
+   "douban_score": 9.5,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "6558062",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 60,
+   "slug": "game-of-thrones-season-2",
+   "status": "collect",
+   "tags": [
+    "ENU",
+    "Teleplay"
+   ],
+   "title": "权力的游戏 第二季 Game of Thrones Season 2",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/6558062/",
+   "writers": [
+    "乔治·马丁",
+    "David Benioff（戴维·贝尼奥夫）",
+    "D.B. Weiss（D·B·威斯）"
+   ],
+   "year": 2012
+  },
+  {
+   "casts": [
+    "Emilia Clarke（艾米莉亚·克拉克）",
+    "Peter Dinklage（彼特·丁拉基）",
+    "Kit Harington（基特·哈灵顿）",
+    "Lena Headey（琳娜·海蒂）",
+    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
+    "Maisie Williams（麦茜·威廉姆斯）",
+    "Sophie Turner（苏菲·特纳）",
+    "娜塔莉·多默尔",
+    "艾丹·吉伦",
+    "Stephen Dillane（斯蒂芬·迪兰）"
+   ],
+   "category": "series",
+   "cover": "covers/25826612/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25826612/01.webp",
+   "date": "2016-05-15",
+   "directors": [
+    "Michael Slovis（迈克尔·斯洛维斯）",
+    "Mark Mylod（马克·梅罗德）",
+    "Jeremy Podeswa（杰雷米·波德斯瓦）",
+    "Miguel Sapochnik（米格尔·萨普什尼克）",
+    "David Nutter（大卫·努特尔）"
+   ],
+   "douban_score": 9.4,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "25826612",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 60,
+   "slug": "game-of-thrones-season-5",
+   "status": "collect",
+   "tags": [
+    "ENU",
+    "Teleplay"
+   ],
+   "title": "权力的游戏 第五季 Game of Thrones Season 5",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25826612/",
+   "writers": [
+    "David Benioff（戴维·贝尼奥夫）",
+    "D.B. Weiss（D·B·威斯）",
+    "乔治·马丁"
+   ],
+   "year": 2015
+  },
+  {
+   "casts": [
+    "Peter Dinklage（彼特·丁拉基）",
+    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
+    "Lena Headey（琳娜·海蒂）",
+    "Emilia Clarke（艾米莉亚·克拉克）",
+    "Kit Harington（基特·哈灵顿）",
+    "Charles Dance（查尔斯·丹斯）",
+    "娜塔莉·多默尔",
+    "杰克·格里森",
+    "Sophie Turner（苏菲·特纳）",
+    "Maisie Williams（麦茜·威廉姆斯）"
+   ],
+   "category": "series",
+   "cover": "covers/23232876/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/23232876/01.webp",
+   "date": "2016-05-15",
+   "directors": [
+    "D.B. Weiss（D·B·威斯）",
+    "Alex Graves（亚历克斯·格雷夫斯）",
+    "米歇尔·麦克拉伦",
+    "Alik Sakharov（阿利克·萨哈罗夫）",
+    "Neil Marshall（尼尔·马歇尔）"
+   ],
+   "douban_score": 9.6,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "23232876",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 60,
+   "slug": "game-of-thrones-season-4",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "ENU"
+   ],
+   "title": "权力的游戏 第四季 Game of Thrones Season 4",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/23232876/",
+   "writers": [
+    "David Benioff（戴维·贝尼奥夫）",
+    "D.B. Weiss（D·B·威斯）",
+    "乔治·马丁"
+   ],
+   "year": 2014
+  },
+  {
+   "casts": [
+    "Maisie Williams（麦茜·威廉姆斯）",
+    "Emilia Clarke（艾米莉亚·克拉克）",
+    "Richard Madden（理查德·麦登）",
+    "Isaac Hempstead-Wright（伊萨克·亨普斯特德-怀特）",
+    "Stephen Dillane（斯蒂芬·迪兰）",
+    "Peter Dinklage（彼特·丁拉基）",
+    "Nikolaj Coster-Waldau（尼古拉·科斯特-瓦尔道）",
+    "杰克·格里森",
+    "Kit Harington（基特·哈灵顿）",
+    "Sophie Turner（苏菲·特纳）"
+   ],
+   "category": "series",
+   "cover": "covers/10590706/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10590706/01.webp",
+   "date": "2016-05-15",
+   "directors": [
+    "Daniel Minahan（丹尼尔·米纳汉）",
+    "David Benioff（戴维·贝尼奥夫）",
+    "Alex Graves（亚历克斯·格雷夫斯）",
+    "Alik Sakharov（阿利克·萨哈罗夫）",
+    "米歇尔·麦克拉伦",
+    "David Nutter（大卫·努特尔）"
+   ],
+   "douban_score": 9.5,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "10590706",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国",
+    "英国"
+   ],
+   "runtime": 60,
+   "slug": "game-of-thrones-season-3",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "ENU"
+   ],
+   "title": "权力的游戏 第三季 Game of Thrones Season 3",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/10590706/",
+   "writers": [
+    "David Benioff（戴维·贝尼奥夫）",
+    "D.B. Weiss（D·B·威斯）",
+    "乔治·马丁"
+   ],
+   "year": 2013
+  },
+  {
+   "casts": [
+    "Chris Evans（克里斯·埃文斯）",
+    "Robert Downey Jr.（小罗伯特·唐尼）",
+    "Scarlett Johansson（斯嘉丽·约翰逊）",
+    "Sebastian Stan（塞巴斯蒂安·斯坦）",
+    "Anthony Mackie（安东尼·麦凯）",
+    "Don Cheadle（唐·钱德尔）",
+    "Jeremy Renner（杰瑞米·雷纳）",
+    "Chadwick Boseman（查德维克·博斯曼）",
+    "Paul Bettany（保罗·贝坦尼）",
+    "Elizabeth Olsen（伊丽莎白·奥尔森）"
+   ],
+   "category": "feature",
+   "comment": "也就看個熱鬧...看完別急著走,兩彩蛋",
+   "cover": "covers/25820460/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25820460/01.webp",
+   "date": "2016-05-14",
+   "directors": [
+    "Anthony Russo（安东尼·罗素）",
+    "Joe Russo（乔·罗素）"
+   ],
+   "douban_score": 7.9,
+   "genres": [
+    "动作",
+    "科幻"
+   ],
+   "id": "25820460",
+   "missing": false,
+   "original_title": "Captain America: Civil War",
+   "pending": false,
+   "rating": 2,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 148,
+   "slug": "captain-america-civil-war",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "美国队长3",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/25820460/",
+   "writers": [
+    "克里斯托弗·马库斯",
+    "斯蒂芬·麦克菲利",
+    "乔·西蒙",
+    "杰克·科比",
+    "马克·米勒",
+    "史提夫·麦尼文"
+   ],
+   "year": 2016
+  },
   {
    "casts": [
     "何家劲",
@@ -9623,279 +9954,7 @@
     "中村义洋"
    ],
    "year": 2013
-  },
-  {
-   "casts": [
-    "全智贤",
-    "李政宰",
-    "河正宇",
-    "吴达洙",
-    "赵震雄",
-    "李璟荣",
-    "崔德文",
-    "金义城",
-    "朴炳垠",
-    "陈庆"
-   ],
-   "category": "feature",
-   "comment": "韩国流抗日神剧",
-   "cover": "covers/25823132/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25823132/01.webp",
-   "date": "2015-10-03",
-   "directors": [
-    "崔东勋"
-   ],
-   "douban_score": 8.1,
-   "genres": [
-    "剧情",
-    "动作",
-    "历史",
-    "犯罪"
-   ],
-   "id": "25823132",
-   "missing": false,
-   "original_title": "암살",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 140,
-   "slug": "assassination",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS",
-    "KOR",
-    "JPN"
-   ],
-   "title": "暗杀",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/25823132/",
-   "writers": [
-    "崔东勋",
-    "李基哲"
-   ],
-   "year": 2015
-  },
-  {
-   "casts": [
-    "河北麻友子",
-    "井上正大",
-    "工藤绫乃",
-    "伊藤和枝"
-   ],
-   "category": "feature",
-   "comment": "被名字骗了...还以为是两仪式姐姐...",
-   "cover": "covers/20562082/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/20562082/01.webp",
-   "date": "2015-10-03",
-   "directors": [
-    "堀江庆"
-   ],
-   "douban_score": 5.0,
-   "genres": [
-    "剧情"
-   ],
-   "id": "20562082",
-   "missing": false,
-   "original_title": "空の境界",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 92,
-   "slug": "sora-no-kyokaisen",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "空之境界",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/20562082/",
-   "writers": [
-    "堀江庆"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "水谷丰",
-    "安田成美",
-    "滨田龙臣",
-    "桥本爱",
-    "草笛光子"
-   ],
-   "category": "feature",
-   "cover": "covers/6424170/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/6424170/01.webp",
-   "date": "2015-10-02",
-   "directors": [
-    "和泉圣治"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "剧情"
-   ],
-   "id": "6424170",
-   "missing": false,
-   "original_title": "HOME 愛しの座敷わらし",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 109,
-   "slug": "home",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "有爱的座敷童子",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/6424170/",
-   "writers": [
-    "金子成人",
-    "荻原浩"
-   ],
-   "year": 2012
-  },
-  {
-   "casts": [
-    "宋慧乔",
-    "姜栋元",
-    "吉高由里子"
-   ],
-   "category": "feature",
-   "cover": "covers/4099462/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4099462/01.webp",
-   "date": "2015-10-02",
-   "directors": [
-    "行定勋",
-    "Wisit Sasanatieng（韦西·沙赞那庭）"
-   ],
-   "douban_score": 6.1,
-   "genres": [
-    "剧情"
-   ],
-   "id": "4099462",
-   "missing": false,
-   "original_title": "카멜리아",
-   "pending": false,
-   "rating": 2,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 138,
-   "slug": "camellia",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN",
-    "KOR",
-    "other_lang"
-   ],
-   "title": "山茶花",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/4099462/",
-   "writers": [],
-   "year": 2010
-  },
-  {
-   "casts": [
-    "新垣结衣",
-    "内藤刚志",
-    "柄本时生",
-    "染谷将太",
-    "永山绚斗",
-    "奈津子",
-    "秋山奈奈"
-   ],
-   "category": "feature",
-   "cover": "covers/3143647/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3143647/01.webp",
-   "date": "2015-10-02",
-   "directors": [
-    "渡边谦作"
-   ],
-   "douban_score": 6.5,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "3143647",
-   "missing": false,
-   "original_title": "フレフレ少女",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 114,
-   "slug": "cheer-cheer-cheer",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN"
-   ],
-   "title": "应援团少女",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/3143647/",
-   "writers": [
-    "桥本裕志"
-   ],
-   "year": 2008
-  },
-  {
-   "casts": [
-    "村上虹郎",
-    "滨边美波",
-    "志尊淳",
-    "松井爱莉",
-    "饭丰万理江",
-    "高畑裕太",
-    "谷花音",
-    "佐藤瑠生亮",
-    "高桥幸圣",
-    "小泉今日子"
-   ],
-   "category": "feature",
-   "cover": "covers/26426019/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26426019/01.webp",
-   "date": "2015-10-02",
-   "directors": [
-    "西浦正记"
-   ],
-   "douban_score": 7.5,
-   "genres": [
-    "剧情"
-   ],
-   "id": "26426019",
-   "missing": false,
-   "original_title": "あの日見た花の名前を僕達はまだ知らない。",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 113,
-   "slug": "douban-26426019",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "JPN",
-    "Animation"
-   ],
-   "title": "我们仍未知道那天所看见的花的名字",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/26426019/",
-   "writers": [
-    "いずみ吉紘"
-   ],
-   "year": 2015
   }
  ],
- "last_date": "2015-10-02"
+ "last_date": "2015-10-04"
 }

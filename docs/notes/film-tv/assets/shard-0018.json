@@ -1,7 +1,292 @@
 {
  "count": 200,
- "first_date": "2011-04-03",
+ "first_date": "2011-04-04",
  "items": [
+  {
+   "casts": [
+    "筱原凉子",
+    "冈田将生",
+    "大泉洋",
+    "桐谷健太",
+    "生濑胜久",
+    "宇津井健",
+    "山口纱弥加",
+    "能世安奈",
+    "铃木身来"
+   ],
+   "category": "series",
+   "cover": "covers/4920522/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4920522/01.webp",
+   "date": "2011-04-04",
+   "directors": [
+    "佐藤东弥",
+    "南云圣一"
+   ],
+   "douban_score": 7.3,
+   "episodes": 9,
+   "genres": [
+    "剧情"
+   ],
+   "id": "4920522",
+   "missing": false,
+   "original_title": "黄金の豚-会計検査庁 特別調査課-",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 45,
+   "slug": "ougon-no-buta",
+   "status": "collect",
+   "tags": [
+    "Animation",
+    "Teleplay"
+   ],
+   "title": "黄金猪",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/4920522/",
+   "writers": [
+    "吉田智子"
+   ],
+   "year": 2010
+  },
+  {
+   "casts": [
+    "中井贵一",
+    "木村佳乃",
+    "堺正章",
+    "岸部一德",
+    "长门裕之"
+   ],
+   "category": "feature",
+   "comment": "语言的艺术...",
+   "cover": "covers/1806013/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1806013/01.webp",
+   "date": "2011-04-04",
+   "directors": [
+    "津川雅彦"
+   ],
+   "douban_score": 7.6,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "1806013",
+   "missing": false,
+   "original_title": "寝ずの番",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 110,
+   "slug": "a-hardest-night",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "守灵夜",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1806013/",
+   "writers": [
+    "大森寿美男"
+   ],
+   "year": 2006
+  },
+  {
+   "casts": [
+    "户田惠梨香",
+    "三浦春马",
+    "篠田麻里子",
+    "武井咲",
+    "菅田将晖",
+    "刚力彩芽",
+    "中岛健人",
+    "石桥杏奈",
+    "能世安奈",
+    "内田有纪"
+   ],
+   "category": "series",
+   "comment": "多好的老师啊...",
+   "cover": "covers/5370353/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5370353/01.webp",
+   "date": "2011-04-03",
+   "directors": [
+    "西浦正记"
+   ],
+   "douban_score": 6.8,
+   "episodes": 10,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "5370353",
+   "missing": false,
+   "original_title": "大切なことはすべて君が教えてくれた",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 54,
+   "slug": "taisetsu-na-koto-wa-subete-kimi-ga-oshiete-kureta",
+   "status": "collect",
+   "tags": [
+    "Teleplay",
+    "JPN"
+   ],
+   "title": "你教会了我什么最重要",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/5370353/",
+   "writers": [
+    "安达奈绪子"
+   ],
+   "year": 2011
+  },
+  {
+   "casts": [
+    "大原沙耶香",
+    "福山润",
+    "中井和哉"
+   ],
+   "category": "anime",
+   "cover": "covers/5337533/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5337533/01.webp",
+   "date": "2011-04-03",
+   "directors": [
+    "水岛努"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "动画",
+    "恐怖",
+    "短片"
+   ],
+   "id": "5337533",
+   "missing": false,
+   "original_title": "xxxHOLiC・籠",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 41,
+   "slug": "xxxholic",
+   "status": "collect",
+   "tags": [
+    "OVA",
+    "Animation",
+    "Teleplay",
+    "Movie",
+    "JPN"
+   ],
+   "title": "四月一日灵异事件簿·笼",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/5337533/",
+   "writers": [
+    "大川七濑",
+    "五十岚皋"
+   ],
+   "year": 2010
+  },
+  {
+   "casts": [
+    "志田未来",
+    "佐佐木藏之介",
+    "本仮屋唯佳",
+    "池津祥子",
+    "升毅",
+    "林丹丹",
+    "龙星凉",
+    "堀内敬子",
+    "吹越满"
+   ],
+   "category": "series",
+   "comment": "东野的结局都是留伏笔...",
+   "cover": "covers/5294707/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/5294707/01.webp",
+   "date": "2011-04-03",
+   "directors": [
+    "唐木希浩"
+   ],
+   "douban_score": 7.3,
+   "episodes": 9,
+   "genres": [
+    "剧情"
+   ],
+   "id": "5294707",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 60,
+   "slug": "himitsu",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Teleplay"
+   ],
+   "title": "秘密",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/5294707/",
+   "writers": [
+    "东野圭吾",
+    "吉田纪子"
+   ],
+   "year": 2010
+  },
+  {
+   "casts": [
+    "徐静蕾",
+    "李亚鹏",
+    "王学兵",
+    "何洁",
+    "程伊",
+    "崔达治",
+    "岳小军",
+    "冯粒",
+    "宁浩",
+    "徐冬冬"
+   ],
+   "category": "feature",
+   "cover": "covers/4896263/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4896263/01.webp",
+   "date": "2011-04-03",
+   "directors": [
+    "张一白"
+   ],
+   "douban_score": 6.5,
+   "genres": [
+    "剧情",
+    "爱情"
+   ],
+   "id": "4896263",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 103,
+   "slug": "eternal-moment",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "将爱情进行到底",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/4896263/",
+   "writers": [
+    "沈巍",
+    "邢爱娜",
+    "某小丫"
+   ],
+   "year": 2011
+  },
   {
    "casts": [
     "多部未华子",
@@ -9611,312 +9896,7 @@
     "李仁港"
    ],
    "year": 2010
-  },
-  {
-   "casts": [
-    "Robert Downey Jr.（小罗伯特·唐尼）",
-    "Jude Law（裘德·洛）",
-    "Rachel McAdams（瑞秋·麦克亚当斯）",
-    "Mark Strong（马克·斯特朗）",
-    "Eddie Marsan（埃迪·马森）",
-    "罗伯特·梅耶",
-    "Geraldine James（杰拉丁妮·詹姆斯）",
-    "Kelly Reilly（凯利·蕾莉）",
-    "William Houston（威廉·休斯顿）",
-    "汉斯·麦瑟逊"
-   ],
-   "category": "feature",
-   "cover": "covers/2998270/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2998270/01.webp",
-   "date": "2010-03-13",
-   "directors": [
-    "Guy Ritchie（盖·里奇）"
-   ],
-   "douban_score": 7.7,
-   "genres": [
-    "动作",
-    "悬疑",
-    "犯罪"
-   ],
-   "id": "2998270",
-   "missing": false,
-   "original_title": "Sherlock Holmes",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国",
-    "德国",
-    "英国",
-    "澳大利亚"
-   ],
-   "runtime": 128,
-   "slug": "sherlock-holmes",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "Detective"
-   ],
-   "title": "大侦探福尔摩斯",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/2998270/",
-   "writers": [
-    "迈克尔·罗伯特·约翰逊",
-    "安东尼·佩卡姆",
-    "Simon Kinberg（西蒙·金伯格）"
-   ],
-   "year": 2009
-  },
-  {
-   "casts": [
-    "Anna Torv（安娜·托芙）",
-    "John Noble（约翰·诺贝尔）",
-    "Joshua Jackson（乔舒亚·杰克逊）"
-   ],
-   "category": "series",
-   "cover": "covers/2338071/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2338071/01.webp",
-   "date": "2010-03-09",
-   "directors": [
-    "Alex Graves（亚历克斯·格雷夫斯）",
-    "Paul A. Edwards（保罗·A·爱德华兹）",
-    "Frederick E.O. Toye（弗雷德里克·E·O·托耶）",
-    "克里斯托弗·米西亚诺",
-    "比尔·艾格斯",
-    "布拉德·安德森",
-    "格温妮丝·霍德-佩顿",
-    "迈克尔·津伯格",
-    "约翰·波尔森",
-    "诺维托·巴尔瓦",
-    "Akiva Goldsman（阿齐瓦·高斯曼）",
-    "鲍比·罗斯"
-   ],
-   "douban_score": 8.7,
-   "episodes": 20,
-   "genres": [
-    "剧情",
-    "科幻",
-    "悬疑",
-    "惊悚",
-    "恐怖"
-   ],
-   "id": "2338071",
-   "missing": false,
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国",
-    "加拿大"
-   ],
-   "runtime": 45,
-   "slug": "fringe-season-1",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "Sci-Fi",
-    "ENU"
-   ],
-   "title": "危机边缘 第一季 Fringe Season 1",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/2338071/",
-   "writers": [
-    "J.J. Abrams（J·J·艾布拉姆斯）"
-   ],
-   "year": 2008
-  },
-  {
-   "casts": [
-    "胡歌",
-    "白冰",
-    "张世",
-    "任泉",
-    "陈紫函",
-    "金莎",
-    "李易祥",
-    "谭凯",
-    "张萌"
-   ],
-   "category": "series",
-   "comment": "这是一部 3 手以上的改变剧...电视剧<神话> --> 电影 <神话> --> 电影<古今大战秦俑情>...这样让我想起了,早年 语文考试的作文,一篇文章到处套用.",
-   "cover": "covers/3732699/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3732699/01.webp",
-   "date": "2010-03-04",
-   "directors": [
-    "蒋家骏"
-   ],
-   "douban_score": 7.7,
-   "episodes": 50,
-   "genres": [
-    "剧情",
-    "动作",
-    "奇幻"
-   ],
-   "id": "3732699",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 46,
-   "slug": "the-myth",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "CHS",
-    "Kung-Fu",
-    "Sci-Fi",
-    "History"
-   ],
-   "title": "神话",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/3732699/",
-   "writers": [
-    "李海蜀"
-   ],
-   "year": 2010
-  },
-  {
-   "casts": [],
-   "category": "anime",
-   "cover": "covers/1883642/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1883642/01.webp",
-   "date": "2010-03-04",
-   "directors": [
-    "胡进庆"
-   ],
-   "douban_score": 7.7,
-   "genres": [
-    "动画",
-    "短片"
-   ],
-   "id": "1883642",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 27,
-   "slug": "douban-1883642",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS",
-    "Animation",
-    "Sci-Fi"
-   ],
-   "title": "丁丁战猴王",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1883642/",
-   "writers": [
-    "欧阳宇平",
-    "余又晨",
-    "胡进庆"
-   ],
-   "year": 1980
-  },
-  {
-   "casts": [
-    "张艺谋",
-    "巩俐",
-    "于荣光",
-    "吴天明",
-    "陆树铭"
-   ],
-   "category": "feature",
-   "cover": "covers/1300082/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1300082/01.webp",
-   "date": "2010-03-04",
-   "directors": [
-    "程小东"
-   ],
-   "douban_score": 7.1,
-   "genres": [
-    "爱情",
-    "奇幻",
-    "冒险",
-    "古装"
-   ],
-   "id": "1300082",
-   "missing": false,
-   "original_title": "秦俑",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "香港",
-    "中国"
-   ],
-   "runtime": 106,
-   "slug": "a-terra-cotta-warrior",
-   "status": "collect",
-   "tags": [
-    "History",
-    "Movie",
-    "War",
-    "Sci-Fi"
-   ],
-   "title": "古今大战秦俑情",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1300082/",
-   "writers": [
-    "李碧华"
-   ],
-   "year": 1990
-  },
-  {
-   "casts": [
-    "黄晓明",
-    "刘亦菲",
-    "陈紫函",
-    "杨幂",
-    "谢昀杉",
-    "王洛勇",
-    "孔琳",
-    "赵鸿飞",
-    "钱博",
-    "孟广美"
-   ],
-   "category": "series",
-   "cover": "covers/2375707/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2375707/01.webp",
-   "date": "2010-03-01",
-   "directors": [
-    "于敏"
-   ],
-   "douban_score": 7.8,
-   "episodes": 41,
-   "genres": [
-    "武侠",
-    "古装"
-   ],
-   "id": "2375707",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 40,
-   "slug": "the-return-of-the-condor-heroes",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "CHS",
-    "Kung-Fu",
-    "History"
-   ],
-   "title": "神雕侠侣",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/2375707/",
-   "writers": [
-    "刘毅",
-    "王雪静",
-    "谭岚",
-    "郎雪枫"
-   ],
-   "year": 2006
   }
  ],
- "last_date": "2010-03-01"
+ "last_date": "2010-03-13"
 }

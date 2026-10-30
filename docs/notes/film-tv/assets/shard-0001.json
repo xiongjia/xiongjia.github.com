@@ -1,7 +1,290 @@
 {
  "count": 200,
- "first_date": "2026-10-02",
+ "first_date": "2026-10-27",
  "items": [
+  {
+   "casts": [
+    "朱一龙",
+    "檀健次",
+    "梁家辉",
+    "卫诗雅",
+    "惠英红",
+    "李施嬅",
+    "袁富华",
+    "倪大红",
+    "叶童",
+    "黄觉"
+   ],
+   "category": "feature",
+   "cover": "covers/37508847/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37508847/01.webp",
+   "date": "2026-10-27",
+   "directors": [
+    "韩延"
+   ],
+   "douban_score": 7.2,
+   "genres": [
+    "剧情",
+    "犯罪"
+   ],
+   "id": "37508847",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 160,
+   "slug": "douban-37508847",
+   "status": "collect",
+   "tags": [],
+   "title": "空枪",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37508847/",
+   "writers": [
+    "陈舒",
+    "韩延",
+    "郭涛"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "潘斌龙",
+    "安志杰",
+    "奚望",
+    "淳于珊珊",
+    "姜政宇",
+    "郭宏杰",
+    "胡笑源",
+    "许明虎",
+    "赵靖舒玉",
+    "宁小花"
+   ],
+   "category": "feature",
+   "cover": "covers/37516455/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37516455/01.webp",
+   "date": "2026-10-18",
+   "directors": [
+    "刘文普"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "犯罪",
+    "武侠",
+    "古装"
+   ],
+   "id": "37516455",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 98,
+   "slug": "a-better-jianghu",
+   "status": "collect",
+   "tags": [],
+   "title": "杯雪·一战成名",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37516455/",
+   "writers": [
+    "杨秉佳",
+    "鹿迅",
+    "小椴"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "Austin Abrams（奥斯汀·艾布拉姆斯）",
+    "Zach Cherry（扎克·切利）",
+    "Kali Reis（卡莉·瑞斯）",
+    "Paul Walter Hauser（保罗·沃尔特·豪泽）",
+    "Andrea Miltner（安德莉亚·米尔特纳）",
+    "萨拉·帕克斯顿",
+    "威尔·梅瑞克",
+    "约翰诺·威尔逊",
+    "卡雷尔·多布雷",
+    "佐伊·贝拉斯"
+   ],
+   "category": "feature",
+   "cover": "covers/37068446/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37068446/01.webp",
+   "date": "2026-10-05",
+   "directors": [
+    "Zach Cregger（扎克·克雷格）"
+   ],
+   "douban_score": 7.3,
+   "genres": [
+    "科幻",
+    "惊悚",
+    "恐怖"
+   ],
+   "id": "37068446",
+   "missing": false,
+   "original_title": "Resident Evil",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "德国",
+    "法国",
+    "美国"
+   ],
+   "runtime": 94,
+   "slug": "resident-evil-2026",
+   "status": "collect",
+   "tags": [],
+   "title": "生化危机：爆发夜",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37068446/",
+   "writers": [
+    "Zach Cregger（扎克·克雷格）",
+    "谢伊·哈顿"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "日笠阳子",
+    "平野文",
+    "本多真梨子",
+    "入野自由",
+    "甲斐田裕子",
+    "神谷浩史",
+    "黑泽朋世",
+    "榊原良子",
+    "泽城美雪",
+    "竹本英史"
+   ],
+   "category": "anime",
+   "cover": "covers/37170498/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37170498/01.webp",
+   "date": "2026-10-04",
+   "directors": [
+    "越田知明",
+    "中村健治"
+   ],
+   "douban_score": 7.1,
+   "genres": [
+    "动画",
+    "悬疑",
+    "恐怖"
+   ],
+   "id": "37170498",
+   "missing": false,
+   "original_title": "劇場版モノノ怪 第三章 蛇神",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 89,
+   "slug": "mononoke-the-movie-chapter-iii-the-curse-of-the-serpent",
+   "status": "collect",
+   "tags": [],
+   "title": "怪化猫：蛇神",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37170498/",
+   "writers": [
+    "新八角"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "目黑莲",
+    "高桥文哉",
+    "上户彩",
+    "吉本实由",
+    "横田真悠",
+    "户塚纯贵",
+    "盐野瑛久",
+    "渡边圭祐",
+    "北村匠海",
+    "八木勇征"
+   ],
+   "category": "feature",
+   "cover": "covers/37233625/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37233625/01.webp",
+   "date": "2026-10-03",
+   "directors": [
+    "福田雄一"
+   ],
+   "douban_score": 6.6,
+   "genres": [
+    "剧情",
+    "动作"
+   ],
+   "id": "37233625",
+   "missing": false,
+   "original_title": "サカモトデイズ 実写",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 128,
+   "slug": "sakamoto-days",
+   "status": "collect",
+   "tags": [],
+   "title": "坂本日常 真人版",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/37233625/",
+   "writers": [
+    "福田雄一",
+    "铃木祐斗"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "张小斐",
+    "迪丽热巴",
+    "张艺兴",
+    "刘嘉玲",
+    "佐藤健",
+    "艾米",
+    "雪野",
+    "蔡思贝",
+    "胡予安",
+    "倪好"
+   ],
+   "category": "feature",
+   "cover": "covers/36452545/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36452545/01.webp",
+   "date": "2026-10-03",
+   "directors": [
+    "周星驰"
+   ],
+   "douban_score": 5.9,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "运动"
+   ],
+   "id": "36452545",
+   "missing": false,
+   "pending": false,
+   "rating": 1,
+   "regions": [
+    "中国",
+    "香港"
+   ],
+   "runtime": 106,
+   "slug": "kung-fu-soccer",
+   "status": "collect",
+   "tags": [],
+   "title": "功夫女足",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36452545/",
+   "writers": [
+    "周星驰",
+    "何颖璇"
+   ],
+   "year": 2026
+  },
   {
    "casts": [
     "雷淞然",
@@ -9115,275 +9398,7 @@
     "陈肯"
    ],
    "year": 2024
-  },
-  {
-   "casts": [
-    "幽舞越山",
-    "大白",
-    "蒋静菊",
-    "万舒心",
-    "季骜杰",
-    "李姗姗",
-    "苏阳林",
-    "张远韬",
-    "林帽帽"
-   ],
-   "category": "anime",
-   "cover": "covers/37060861/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/37060861/01.webp",
-   "date": "2024-10-06",
-   "directors": [
-    "平安夜的噩梦",
-    "阳刻"
-   ],
-   "douban_score": 6.2,
-   "genres": [
-    "科幻",
-    "动画",
-    "悬疑",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "37060861",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 129,
-   "slug": "douban-37060861",
-   "status": "collect",
-   "tags": [],
-   "title": "盒中之海",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/37060861/",
-   "writers": [
-    "艾叶"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "徐峥",
-    "辛芷蕾",
-    "王骁",
-    "贾冰",
-    "冯兵",
-    "丁勇岱",
-    "丁嘉丽",
-    "陈哈琳",
-    "邬家楷",
-    "刘美含"
-   ],
-   "category": "feature",
-   "cover": "covers/36774001/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36774001/01.webp",
-   "date": "2024-10-03",
-   "directors": [
-    "徐峥"
-   ],
-   "douban_score": 6.6,
-   "genres": [
-    "剧情"
-   ],
-   "id": "36774001",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 121,
-   "slug": "upstream",
-   "status": "collect",
-   "tags": [],
-   "title": "逆行人生",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36774001/",
-   "writers": [
-    "何可可",
-    "徐峥"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "马正阳",
-    "夏觅尘",
-    "王潇倩",
-    "段艺璇",
-    "赵哲豪",
-    "家明",
-    "孙熹鹤",
-    "胡良伟",
-    "三石"
-   ],
-   "category": "anime",
-   "cover": "covers/36589904/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36589904/01.webp",
-   "date": "2024-10-03",
-   "directors": [
-    "曾元俊"
-   ],
-   "douban_score": 8.4,
-   "episodes": 15,
-   "genres": [
-    "动画",
-    "奇幻"
-   ],
-   "id": "36589904",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 25,
-   "slug": "slay-the-gods",
-   "status": "collect",
-   "tags": [],
-   "title": "斩神之凡尘神域",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/36589904/",
-   "writers": [
-    "曾元俊",
-    "彭雅彬"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "沈腾",
-    "马丽",
-    "史彭元",
-    "萨日娜",
-    "肖帛辰",
-    "张子栋",
-    "李嘉琦",
-    "魏翔",
-    "贾冰",
-    "于洋"
-   ],
-   "category": "feature",
-   "cover": "covers/36653918/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36653918/01.webp",
-   "date": "2024-10-01",
-   "directors": [
-    "闫非",
-    "彭大魔"
-   ],
-   "douban_score": 7.1,
-   "genres": [
-    "喜剧"
-   ],
-   "id": "36653918",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 133,
-   "slug": "successor",
-   "status": "collect",
-   "tags": [],
-   "title": "抓娃娃",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36653918/",
-   "writers": [
-    "彭大魔",
-    "闫非",
-    "林炳宝"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "Chris Hemsworth（克里斯·海姆斯沃斯）",
-    "Brian Tyree Henry（布莱恩·泰里·亨利）",
-    "Scarlett Johansson（斯嘉丽·约翰逊）",
-    "Keegan-Michael Key（科甘-迈克尔·凯）",
-    "Jon Hamm（乔恩·哈姆）",
-    "Steve Buscemi（史蒂夫·布西密）",
-    "Laurence Fishburne（劳伦斯·菲什伯恩）",
-    "凡妮莎·利古力",
-    "乔恩·贝利",
-    "杰森·科诺皮索斯"
-   ],
-   "category": "anime",
-   "cover": "covers/34960078/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34960078/01.webp",
-   "date": "2024-09-28",
-   "directors": [
-    "Josh Cooley（乔什·库雷）"
-   ],
-   "douban_score": 7.9,
-   "genres": [
-    "动作",
-    "科幻",
-    "动画",
-    "冒险"
-   ],
-   "id": "34960078",
-   "missing": false,
-   "original_title": "Transformers One",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 104,
-   "slug": "transformers-one",
-   "status": "collect",
-   "tags": [],
-   "title": "变形金刚：起源",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/34960078/",
-   "writers": [
-    "埃里克·皮尔森",
-    "安德鲁·贝伦",
-    "加百利·法拉利"
-   ],
-   "year": 2024
-  },
-  {
-   "casts": [
-    "成龙",
-    "黄正利",
-    "石天"
-   ],
-   "category": "feature",
-   "cover": "covers/1296693/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1296693/01.webp",
-   "date": "2024-09-28",
-   "directors": [
-    "袁和平"
-   ],
-   "douban_score": 7.8,
-   "genres": [
-    "喜剧",
-    "动作"
-   ],
-   "id": "1296693",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "香港"
-   ],
-   "runtime": 111,
-   "slug": "drunken-monkey-in-the-tiger-s-eyes",
-   "status": "collect",
-   "tags": [],
-   "title": "醉拳",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1296693/",
-   "writers": [
-    "袁和平"
-   ],
-   "year": 1978
   }
  ],
- "last_date": "2024-09-28"
+ "last_date": "2024-10-07"
 }
