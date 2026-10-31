@@ -889,7 +889,8 @@ class MomentPlugin(BasePlugin):
         year_grids}``: ``month_rows`` is chronological ``{label, count}`` for
         the Mermaid chart — gap-filled (zero-activity months included) and
         capped at the last 24 months; ``chart_labels`` is the same labels with
-        the ones that would overlap blanked out (see `shared.chart_labels`);
+        the ones that would overlap blanked out (unique invisible placeholders,
+        see `shared.chart_labels`);
         ``top_tags`` is count-desc ``{name, count}`` capped at 15;
         ``year_grids`` is per-year ``{year, rows}`` with rows = month 1..12 →
         ``{day, count, level}`` cells for the activity heatmap.

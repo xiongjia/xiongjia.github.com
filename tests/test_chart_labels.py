@@ -4,10 +4,12 @@ import re
 from pathlib import Path
 
 from shared.chart_labels import (
-    BLANK_LABEL,
+    BLANK_CHAR,
     CHAR_WIDTH_PX,
     PLOT_WIDTH_PX,
+    blank_label,
     format_x_axis,
+    is_blank,
     label_budget,
     thin_labels,
 )
@@ -56,8 +58,8 @@ def test_budget_matches_measured_geometry():
 
 
 def test_budget_unchanged_by_thinning():
-    # placeholders are one character wide, so they can never widen the
-    # widest-label estimate — re-thinning a uniform-format list is stable
+    # placeholders render 0px wide, so they can never widen the widest-label
+    # estimate — re-thinning a uniform-format list is stable
     labels = _dates(60)
     assert label_budget(thin_labels(labels)) == label_budget(labels)
 
@@ -81,15 +83,25 @@ def test_thin_labels_preserves_length_and_alignment():
     labels = _dates(60)
     thinned = thin_labels(labels)
     assert len(thinned) == len(labels)
-    kept = [index for index, label in enumerate(thinned) if label != BLANK_LABEL]
+    kept = [index for index, label in enumerate(thinned) if not is_blank(label)]
     # kept positions are evenly spaced and keep their original labels
     assert all(labels[index] == thinned[index] for index in kept)
     assert {b - a for a, b in zip(kept, kept[1:])} == {kept[1] - kept[0]}
 
 
+def test_thin_labels_keeps_every_slot_unique():
+    """Regression: mermaid plots on a band scale keyed by label text, so two
+    equal placeholders collapse into one band and drag their data points to the
+    left edge of the plot (the zigzag bug that hit the weight chart at 13
+    weeks). Every returned label must stay a distinct scale key."""
+    for count, chars in ((13, 5), (14, 5), (24, 7), (60, 5), (60, 8), (500, 5)):
+        thinned = thin_labels(_dates(count, chars=chars))
+        assert len(set(thinned)) == len(thinned), f"{count} labels produce a duplicate slot"
+
+
 def test_thin_labels_bounded_by_budget():
     labels = _dates(60)
-    kept = [label for label in thin_labels(labels) if label != BLANK_LABEL]
+    kept = [label for label in thin_labels(labels) if not is_blank(label)]
     assert len(kept) <= label_budget(labels)
 
 
@@ -99,10 +111,13 @@ def test_thin_labels_always_keeps_latest():
         assert thinned[-1] == _dates(count)[-1]
 
 
-def test_thin_labels_placeholder_is_single_space():
-    # mermaid 10.9 rejects "" as a label but accepts a space
+def test_thin_labels_placeholder_is_zero_width():
+    # mermaid 10.9 rejects "" as a label but a zero-width space renders nothing
     thinned = thin_labels(_dates(60))
-    assert set(thinned) - set(_dates(60)) == {BLANK_LABEL}
+    placeholders = [label for label in thinned if is_blank(label)]
+    assert placeholders
+    assert all(label and set(label) == {BLANK_CHAR} for label in placeholders)
+    assert placeholders[0] == blank_label(0)
 
 
 def test_thinned_spacing_exceeds_label_width():
@@ -116,7 +131,7 @@ def test_thinned_spacing_exceeds_label_width():
     """
     for count, chars in ((13, 5), (30, 8), (60, 5), (60, 8), (500, 5)):
         thinned = thin_labels(_dates(count, chars=chars))
-        kept = [index for index, label in enumerate(thinned) if label != BLANK_LABEL]
+        kept = [index for index, label in enumerate(thinned) if not is_blank(label)]
         step = kept[1] - kept[0] if len(kept) > 1 else 1
         spacing = PLOT_WIDTH_PX / max(1, count - 1) * step
         assert spacing > chars * CHAR_WIDTH_PX, f"{count} labels of {chars} chars would overlap"
@@ -131,5 +146,8 @@ def test_format_x_axis_quotes_and_joins():
 
 def test_format_x_axis_keeps_blank_slots():
     labels = _dates(60)
-    blanks = [label for label in thin_labels(labels) if label == BLANK_LABEL]
-    assert format_x_axis(labels).count(f'"{BLANK_LABEL}"') == len(blanks)
+    thinned = thin_labels(labels)
+    assert any(is_blank(label) for label in thinned), "fixture must produce placeholders"
+    # every slot survives verbatim, placeholders included (index-aligned with
+    # the data points, and each one a distinct band-scale key)
+    assert re.findall(r'"([^"]*)"', format_x_axis(labels)) == thinned

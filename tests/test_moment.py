@@ -33,7 +33,7 @@ from mkdocs_moment.plugin import (  # noqa: E402
     _valid_htmlmin_value,
 )
 
-from shared.chart_labels import BLANK_LABEL, label_budget, thin_labels  # noqa: E402
+from shared.chart_labels import is_blank, label_budget, thin_labels  # noqa: E402
 
 # same path constant as tests/test_running_css.py (palette parity)
 MOMENT_TEMPLATE = (
@@ -788,7 +788,7 @@ def test_build_stats_chart_capped_at_24_months():
 
 def test_build_stats_chart_labels_thinned_to_fit():
     """24 x-axis labels of `YYYY-MM` would overlap: the chart gets a thinned
-    copy, index-aligned with month_rows (blank slots keep the positions)."""
+    copy, index-aligned with month_rows (dropped slots keep the positions)."""
     plugin = MomentPlugin()
     plugin._load_config({"path": "moments"})
     plugin._moments = _monthly_moments(30)
@@ -796,29 +796,29 @@ def test_build_stats_chart_labels_thinned_to_fit():
     labels = stats["chart_labels"]
     month_labels = [r["label"] for r in stats["month_rows"]]
     assert len(labels) == len(month_labels) == 24
-    # kept labels are the originals, dropped ones are the blank placeholder
+    # kept labels are the originals, dropped ones are the invisible placeholder
     assert all(
-        label == month or label == BLANK_LABEL
-        for label, month in zip(labels, month_labels, strict=True)
+        label == month or is_blank(label) for label, month in zip(labels, month_labels, strict=True)
     )
-    kept = [label for label in labels if label != BLANK_LABEL]
+    kept = [label for label in labels if not is_blank(label)]
     assert 1 < len(kept) <= label_budget(month_labels)
     assert labels[-1] == month_labels[-1]  # latest month always labeled
 
 
 def test_stats_chart_axis_survives_minification():
     """The thinned x-axis is emitted inside `<div class="mermaid" pre>` and then
-    minified: the single-space placeholders must survive, because mermaid
-    rejects an empty `""` label (the chart would fail to parse).
+    minified: the placeholders must survive byte-for-byte, because mermaid
+    rejects an empty `""` label (the chart would fail to parse) and needs every
+    slot to stay a distinct band-scale key.
 
     Pinned on the shipped HTML (not the decoded DOM): htmlmin leaves the
     preformatted block verbatim, and a browser would decode `&#34;` into `"`
-    for mermaid's textContent reader anyway — so only the space itself matters.
+    for mermaid's textContent reader anyway — so only the U+200B characters
+    themselves matter.
     """
     labels = thin_labels([f"2025-{mo:02d}" for mo in range(1, 13)])
     labels += [f"2026-{mo:02d}" for mo in range(1, 13)]
-    blanks = [label for label in labels if label == BLANK_LABEL]
-    assert blanks, "fixture must actually produce placeholders"
+    assert any(is_blank(label) for label in labels), "fixture must produce placeholders"
     # render the template's own x-axis line, not a copy of it
     line = next(
         raw
@@ -830,7 +830,8 @@ def test_stats_chart_axis_survives_minification():
 
     out = htmlmin.minify(diagram, **_HTMLMIN_OPTS)
 
-    assert out.count(f'"{BLANK_LABEL}"') == len(blanks)
+    minified = next(row for row in out.splitlines() if "x-axis" in row)
+    assert re.findall(r'"([^"]*)"', minified) == labels
 
 
 def test_build_stats_empty():
