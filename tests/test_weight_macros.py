@@ -16,7 +16,7 @@ sys.path.insert(
 
 from weight_macros import _chart, _get_labels, _table  # noqa: E402
 
-from shared.chart_labels import label_budget  # noqa: E402
+from shared.chart_labels import is_blank, label_budget  # noqa: E402
 
 
 def _data(**overrides) -> dict:
@@ -64,11 +64,12 @@ def _weeks(n: int) -> list[dict]:
 def _x_labels(out: str) -> list[str]:
     """Extract the x-axis labels from the rendered chart source.
 
-    Blanked slots come back as empty strings (the placeholder is a single
-    space, which is stripped here).
+    Dropped slots come back as empty strings (the placeholder is a run of
+    zero-width spaces, see `shared.chart_labels`).
     """
     raw = out.split("x-axis [", 1)[1].split("]", 1)[0]
-    return [part.strip().strip('"').strip() for part in raw.split(",")]
+    labels = [part.strip().strip('"') for part in raw.split(",")]
+    return ["" if is_blank(label) else label for label in labels]
 
 
 def _line_values(out: str) -> list[str]:
