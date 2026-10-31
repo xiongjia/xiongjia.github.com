@@ -100,13 +100,15 @@ Python `.venv/`, Node `node_modules/`).
   typed input, steps and an output map; zod-validated, generated JSON Schema for
   editors, `include` fragments, submit/poll runs API with per-profile queues,
   run output + artifacts + SSE, `scroll`/`retry`/`if`/`extract` primitives) on
-  top of a Camoufox (Firefox) default engine and patchright/Chrome fallback
-  behind one `BrowserBackend` interface; **profiles** are one persistent browser
+  top of three engines behind one `BrowserBackend` interface — Camoufox (Firefox)
+  by default, patchright/Chrome as the zero-download fallback, CloakBrowser
+  (patched Chromium) for stealth — switchable with `HARVEST_BROWSER`, each engine
+  in its own browser directory; **profiles** are one persistent browser
   directory each with a frozen fingerprint, editable over REST; an offline demo
   page drives a real browser (`/api/v1/demo/visit`, the reference flow); plus
   Xiaohongshu QR login (session jar 0600, login-gated identity verification) and
   the account's following list (JSONL), both verified on a real account; ESLint
-  10 + Prettier + `pnpm check`, 182 Vitest specs (engine faked through a DI
+  10 + Prettier + `pnpm check`, 204 Vitest specs (engine faked through a DI
   token); XHS-on-flows / read operations / MCP / CLI listed as roadmap, not
   built · created 2026-10-25 · status `working`
 

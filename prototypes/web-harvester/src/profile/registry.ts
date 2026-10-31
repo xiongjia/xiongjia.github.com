@@ -26,8 +26,10 @@ const BROWSER_DIR = "browser";
  *   browser/       # the persistent browser profile (cookies, localStorage)
  * ```
  *
- * The default profile keeps using `HARVEST_PROFILE_DIR` as its browser directory,
- * so an existing logged-in profile (Xiaohongshu session) survives this change.
+ * Inside a browser directory each engine gets its own subdirectory (Firefox
+ * profile vs Chromium user data dir), see `browserDir`. The default profile keeps
+ * using `HARVEST_PROFILE_DIR` as its base directory, so an existing logged-in
+ * profile (Xiaohongshu session) survives this change.
  */
 @Injectable()
 export class ProfileRegistry {
@@ -49,17 +51,39 @@ export class ProfileRegistry {
   }
 
   /**
-   * Where this profile's browser lives.
+   * Engine a launch would actually use.
    *
-   * The default profile honours the legacy `HARVEST_PROFILE_DIR` so an existing
-   * `.cache/profile` is not thrown away; every other profile gets its own
-   * directory under the profiles root.
+   * `HARVEST_BROWSER` is the switch: when it is set it wins over every profile,
+   * which is what makes `HARVEST_BROWSER=cloakbrowser pnpm dev` a full swap
+   * without touching `profile.json`. When it is unset each profile keeps its own
+   * engine, so a profile created as Camoufox stays Camoufox.
+   */
+  effectiveEngine(profile: ProfileConfig): ProfileConfig["engine"] {
+    return (
+      this.config.get<ProfileConfig["engine"]>("HARVEST_BROWSER") ??
+      profile.engine
+    );
+  }
+
+  /**
+   * Where this profile's browser lives, per engine.
+   *
+   * The engines do not share a profile format (Firefox profile vs Chromium user
+   * data dir), so each engine gets its own directory: switching engines then
+   * leaves the other engine's session intact instead of corrupting it, and
+   * switching back brings the login with it.
+   *
+   * Camoufox keeps the unsuffixed path on purpose — `HARVEST_PROFILE_DIR` (the
+   * default profile) and `<profile>/browser` already hold logged-in Firefox
+   * profiles, and moving them would throw those sessions away.
    */
   browserDir(profile: ProfileConfig): string {
-    if (profile.name === this.defaultName) {
-      return this.config.get<string>("HARVEST_PROFILE_DIR") ?? ".cache/profile";
-    }
-    return join(this.profileDir(profile.name), BROWSER_DIR);
+    const base =
+      profile.name === this.defaultName
+        ? (this.config.get<string>("HARVEST_PROFILE_DIR") ?? ".cache/profile")
+        : join(this.profileDir(profile.name), BROWSER_DIR);
+    const engine = this.effectiveEngine(profile);
+    return engine === "camoufox" ? base : join(base, engine);
   }
 
   /** Read a profile, creating it with sensible defaults on first use. */
@@ -160,6 +184,7 @@ export class ProfileRegistry {
     return {
       name: profile.name,
       engine: profile.engine,
+      effectiveEngine: this.effectiveEngine(profile),
       os: profile.os,
       locale: profile.locale,
       timezoneId: profile.timezoneId,
@@ -171,10 +196,11 @@ export class ProfileRegistry {
   private async create(name: string, path: string): Promise<ProfileConfig> {
     const config = this.config;
     const os = config.get<ProfileConfig["os"]>("HARVEST_OS") ?? hostOs();
+    const engine =
+      config.get<ProfileConfig["engine"]>("HARVEST_BROWSER") ?? "camoufox";
     const profile: ProfileConfig = {
       name,
-      engine:
-        config.get<ProfileConfig["engine"]>("HARVEST_BROWSER") ?? "camoufox",
+      engine,
       os,
       locale: config.get<string>("HARVEST_LOCALE") ?? "zh-CN",
       timezoneId: config.get<string>("HARVEST_TIMEZONE") ?? "Asia/Shanghai",
@@ -183,7 +209,9 @@ export class ProfileRegistry {
         height: config.get<number>("HARVEST_VIEWPORT_HEIGHT") ?? 800,
       },
       proxy: null,
-      preset: newPreset(os),
+      // Only Camoufox draws from a preset; Chromium engines get their identity
+      // from the profile directory itself.
+      preset: engine === "camoufox" ? newPreset(os) : {},
     };
 
     await mkdir(join(this.rootDir, name), { recursive: true });

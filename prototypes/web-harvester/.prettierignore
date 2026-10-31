@@ -4,3 +4,6 @@ coverage/
 
 # lockfile is generated — don't reformat
 pnpm-lock.yaml
+
+# local planning drafts (gitignored, never part of the codebase)
+*-draft.md

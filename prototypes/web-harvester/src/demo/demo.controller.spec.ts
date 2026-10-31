@@ -5,6 +5,7 @@ import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { EngineNotReadyError } from "../browser/backends";
 import type { BrowserService } from "../browser/browser.service";
 import { DemoController } from "./demo.controller";
 import { DEMO_PAGE_HTML } from "./demo.page";
@@ -139,5 +140,25 @@ describe("DemoController", () => {
     expect(headers["Content-Type"]).toBe("image/png");
     expect(headers["Content-Length"]).toBe(String("fake-png".length));
     expect(end).toHaveBeenCalledTimes(1);
+  });
+
+  it("answers 503 when the engine is not ready", async () => {
+    const { browser, withPage } = makeBrowser(makePage(), "unused");
+    withPage.mockRejectedValueOnce(
+      new EngineNotReadyError(
+        "CloakBrowser's stealth Chromium build is not installed",
+      ),
+    );
+    const controller = new DemoController(browser, makeConfig());
+
+    await expect(controller.visit()).rejects.toMatchObject({ status: 503 });
+  });
+
+  it("leaves a genuine bug as a 500", async () => {
+    const { browser, withPage } = makeBrowser(makePage(), "unused");
+    withPage.mockRejectedValueOnce(new Error("boom"));
+    const controller = new DemoController(browser, makeConfig());
+
+    await expect(controller.visit()).rejects.toThrow("boom");
   });
 });

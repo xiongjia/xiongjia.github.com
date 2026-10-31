@@ -1,12 +1,14 @@
-# Two runtime images:
+# Three runtime images:
 #   runtime (default) — patchright + bundled Chromium, i.e. no Camoufox download
 #   camoufox          — also bakes Camoufox's Firefox build in at build time,
 #                       which is the only place the 1.3 GB fetch belongs
+#   cloakbrowser      — bakes CloakBrowser's ~200 MB stealth Chromium in instead
 #
 #   docker build -t web-harvester .
 #   docker build --target camoufox \
 #     --build-arg CAMOUFOX_MIRROR=https://ghfast.top/ \
 #     -t web-harvester:camoufox .
+#   docker build --target cloakbrowser -t web-harvester:cloakbrowser .
 
 FROM node:24-bookworm-slim AS build
 WORKDIR /app
@@ -53,3 +55,14 @@ ARG CAMOUFOX_MIRROR=
 ENV CAMOUFOX_MIRROR=${CAMOUFOX_MIRROR}
 RUN pnpm camoufox:fetch
 ENV HARVEST_BROWSER=camoufox
+
+# CloakBrowser variant: the stealth Chromium build is fetched during the build
+# (cloakbrowser.dev redirects to GitHub releases, ~200 MB) and cached in the
+# image. Builds newer than v146 need a license key at run time:
+#   docker run -e CLOAKBROWSER_LICENSE_KEY=cb_xxxx ...
+# The free key allows a single concurrent session, so stay on one profile.
+FROM runtime AS cloakbrowser
+ENV CLOAKBROWSER_CACHE_DIR=/app/.cloakbrowser \
+    CLOAKBROWSER_AUTO_UPDATE=false \
+    HARVEST_BROWSER=cloakbrowser
+RUN pnpm exec cloakbrowser install && chown -R app /app/.cloakbrowser

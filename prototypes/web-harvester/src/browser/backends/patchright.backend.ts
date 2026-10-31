@@ -5,6 +5,10 @@ import {
   type BackendLaunchOptions,
   type BrowserBackend,
 } from "./backend";
+import {
+  CHROMIUM_NO_PROMPT_ARGS,
+  repairChromiumProfile,
+} from "./chromium-profile";
 
 /**
  * Patchright (patched Playwright/Chromium) backend — the fallback engine.
@@ -16,6 +20,9 @@ export const patchrightBackend: BrowserBackend = {
   name: "patchright",
 
   async launch(options: BackendLaunchOptions): Promise<BrowserContext> {
+    // Same Chromium, same "last session crashed" marker to clear.
+    await repairChromiumProfile(options.profileDir);
+
     const context = await chromium.launchPersistentContext(options.profileDir, {
       // Real Chrome by default: no browser download and a far more common
       // fingerprint than a bundled Chromium build.
@@ -26,7 +33,7 @@ export const patchrightBackend: BrowserBackend = {
       timezoneId: options.timezoneId,
       slowMo: options.slowMo,
       proxy: toProxy(options.proxy),
-      args: ["--no-default-browser-check", "--no-first-run"],
+      args: CHROMIUM_NO_PROMPT_ARGS,
     });
     return context as unknown as BrowserContext;
   },

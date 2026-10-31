@@ -3,3 +3,5 @@ allowBuilds:
   esbuild: true
   "@swc/core": true
   "@scarf/scarf": false
+minimumReleaseAgeExclude:
+  - cloakbrowser@0.6.5

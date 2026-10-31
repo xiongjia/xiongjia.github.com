@@ -13,12 +13,15 @@ const envSchema = z.object({
   HARVEST_PORT: z.coerce.number().int().positive().default(8765),
 
   /**
-   * Browser engine. `camoufox` (patched Firefox) is the default; `patchright`
-   * drives your installed Chrome and needs no extra download.
+   * Browser engine. Unset = each profile's own `engine` decides, and a new
+   * profile is created as `camoufox` (patched Firefox). Set = a global override
+   * applied to every profile, which is how the engine is switched:
+   * `camoufox` | `patchright` (installed Chrome, no download) |
+   * `cloakbrowser` (stealth Chromium, needs its own build).
    */
   HARVEST_BROWSER: z
-    .enum(["patchright", "camoufox", "mock"])
-    .default("camoufox"),
+    .enum(["patchright", "camoufox", "cloakbrowser", "mock"])
+    .optional(),
   /**
    * Playwright channel: "chrome" uses the locally installed Google Chrome (no
    * 180MB download, and the engine is real Chrome — good for anti-bot),
@@ -100,6 +103,16 @@ const envSchema = z.object({
 
   /** Milliseconds between browser actions — set >0 to slow a run down. */
   HARVEST_SLOWMO: z.coerce.number().int().min(0).default(0),
+  /**
+   * Give the browser back when nobody is using it.
+   *
+   * `0` (default) keeps every context warm until shutdown. Any other value
+   * closes a context that has been idle that long — cookies and the fingerprint
+   * stay in the profile directory, so the only cost is the next launch. Runs
+   * that are in flight are never interrupted. `POST /api/v1/browser/close` does
+   * the same on demand.
+   */
+  HARVEST_BROWSER_IDLE_MS: z.coerce.number().int().min(0).default(0),
   HARVEST_VIEWPORT_WIDTH: z.coerce.number().int().positive().default(1280),
   HARVEST_VIEWPORT_HEIGHT: z.coerce.number().int().positive().default(800),
 });

@@ -254,6 +254,35 @@ describe("BrowserService", () => {
     await expect(service.getContext()).rejects.toThrow(/mock.*not implemented/);
   });
 
+  it("switches engine with HARVEST_BROWSER, profile file untouched", async () => {
+    // The profile on disk was created as Camoufox.
+    await makeProfiles(dataDir).get("main");
+
+    const camoufox = makeBackend();
+    const cloak = makeBackend({ name: "cloakbrowser" });
+    const profiles = makeProfiles(dataDir, { HARVEST_BROWSER: "cloakbrowser" });
+    const service = new BrowserService(
+      makeConfig({
+        HARVEST_PROFILES_DIR: join(dataDir, "profiles"),
+        HARVEST_PROFILE_DIR: join(dataDir, "profile"),
+        HARVEST_BROWSER: "cloakbrowser",
+      }),
+      profiles,
+      [camoufox.backend, cloak.backend],
+    );
+
+    await service.getContext();
+
+    expect(camoufox.launch).not.toHaveBeenCalled();
+    expect(cloak.launch).toHaveBeenCalledTimes(1);
+    // Chromium engines never share the Camoufox (Firefox) profile directory.
+    expect(
+      (cloak.launch.mock.calls[0]?.[0] as unknown as BackendLaunchOptions)
+        .profileDir,
+    ).toBe(join(dataDir, "profile", "cloakbrowser"));
+    expect((await profiles.get("main")).engine).toBe("camoufox");
+  });
+
   it("closes the context on module destroy and relaunches afterwards", async () => {
     const { backend, launch } = makeBackend();
     const service = makeService({}, dataDir, [backend]);
@@ -272,5 +301,112 @@ describe("BrowserService", () => {
 
     await service.onModuleDestroy();
     expect(launch).not.toHaveBeenCalled();
+  });
+
+  it("closes a context on demand and relaunches on the next use", async () => {
+    const { backend, launch } = makeBackend();
+    const service = makeService({}, dataDir, [backend]);
+    const context = await service.getContext();
+
+    await expect(service.close()).resolves.toBe(true);
+    expect(context.close).toHaveBeenCalledTimes(1);
+    // Nothing open, so closing again is a no-op rather than an error.
+    await expect(service.close()).resolves.toBe(false);
+    expect(service.status()).toEqual([]);
+
+    await service.getContext();
+    expect(launch).toHaveBeenCalledTimes(2);
+  });
+
+  it("reports the open contexts with engine and idle time", async () => {
+    const { backend } = makeBackend({ name: "cloakbrowser" });
+    const service = makeService({ HARVEST_BROWSER: "cloakbrowser" }, dataDir, [
+      backend,
+    ]);
+
+    await service.getContext("main");
+    await service.getContext("second");
+    await service.withPage(async () => undefined, "second");
+
+    expect(service.status()).toMatchObject([
+      { profile: "main", engine: "cloakbrowser", busy: false },
+      { profile: "second", engine: "cloakbrowser", busy: false },
+    ]);
+    expect(service.status()[0]?.idleMs).toBeGreaterThanOrEqual(0);
+  });
+
+  it("closes every open context at once", async () => {
+    const { backend } = makeBackend();
+    const service = makeService({}, dataDir, [backend]);
+    const first = await service.getContext("main");
+    const second = await service.getContext("second");
+
+    await expect(service.closeAll()).resolves.toEqual(["main", "second"]);
+    expect(first.close).toHaveBeenCalledTimes(1);
+    expect(second.close).toHaveBeenCalledTimes(1);
+    await expect(service.closeAll()).resolves.toEqual([]);
+  });
+
+  describe("idle close", () => {
+    beforeEach(() => {
+      vi.useFakeTimers();
+    });
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it("releases a context that sat idle for HARVEST_BROWSER_IDLE_MS", async () => {
+      const { backend, launch } = makeBackend();
+      const service = makeService({ HARVEST_BROWSER_IDLE_MS: 1_000 }, dataDir, [
+        backend,
+      ]);
+      const context = await service.getContext();
+
+      await vi.advanceTimersByTimeAsync(600);
+      expect(context.close).not.toHaveBeenCalled();
+
+      await vi.advanceTimersByTimeAsync(600);
+      expect(context.close).toHaveBeenCalledTimes(1);
+
+      // The session is on disk: the next use just launches again.
+      await service.getContext();
+      expect(launch).toHaveBeenCalledTimes(2);
+    });
+
+    it("never closes while a run holds the context", async () => {
+      const { backend } = makeBackend();
+      const service = makeService({ HARVEST_BROWSER_IDLE_MS: 100 }, dataDir, [
+        backend,
+      ]);
+      const context = await service.getContext();
+
+      let release = (): void => undefined;
+      const held = service.withPage(
+        () =>
+          new Promise<void>((resolve) => {
+            release = resolve;
+          }),
+      );
+      await vi.advanceTimersByTimeAsync(1_000);
+      expect(context.close).not.toHaveBeenCalled();
+
+      release();
+      await held;
+      await vi.advanceTimersByTimeAsync(1_000);
+      expect(context.close).toHaveBeenCalledTimes(1);
+    });
+
+    it("stays out of the way when the switch is off", async () => {
+      const { backend } = makeBackend();
+      const service = makeService({ HARVEST_BROWSER_IDLE_MS: 0 }, dataDir, [
+        backend,
+      ]);
+      const context = await service.getContext();
+
+      await vi.advanceTimersByTimeAsync(60_000);
+
+      expect(context.close).not.toHaveBeenCalled();
+    });
   });
 });

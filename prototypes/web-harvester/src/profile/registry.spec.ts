@@ -21,6 +21,17 @@ function makeConfig(values: Record<string, unknown> = {}): ConfigService {
   return { get: (key: string) => defaults[key] } as unknown as ConfigService;
 }
 
+/** A registry rooted in the temp dir — never in the repo's `.cache/`. */
+function makeRegistry(baseDir: string, values: Record<string, unknown> = {}) {
+  return new ProfileRegistry(
+    makeConfig({
+      HARVEST_PROFILES_DIR: join(baseDir, "profiles"),
+      HARVEST_PROFILE_DIR: join(baseDir, "profile"),
+      ...values,
+    }),
+  );
+}
+
 describe("ProfileRegistry", () => {
   let dir: string;
   let config: ConfigService;
@@ -75,6 +86,52 @@ describe("ProfileRegistry", () => {
     expect(registry.browserDir(other)).toBe(
       join(dir, "profiles", "second", "browser"),
     );
+  });
+
+  it("creates a CloakBrowser profile without a Camoufox preset", async () => {
+    const cloak = makeRegistry(dir, { HARVEST_BROWSER: "cloakbrowser" });
+
+    const profile = await cloak.get("main");
+
+    expect(profile.engine).toBe("cloakbrowser");
+    // Chromium engines take their identity from the profile directory.
+    expect(profile.preset).toEqual({});
+  });
+
+  it("keeps one browser directory per engine", async () => {
+    const camoufoxProfile = await registry.get("main");
+    const cloak = makeRegistry(dir, { HARVEST_BROWSER: "cloakbrowser" });
+    const cloakProfile = await cloak.get("main");
+
+    // Camoufox keeps the legacy path, Chromium engines get their own subdir, so
+    // switching engines never touches the other engine's cookies.
+    expect(registry.browserDir(camoufoxProfile)).toBe(join(dir, "profile"));
+    expect(cloak.browserDir(cloakProfile)).toBe(
+      join(dir, "profile", "cloakbrowser"),
+    );
+    expect(cloak.browserDir({ ...camoufoxProfile, name: "second" })).toBe(
+      join(dir, "profiles", "second", "browser", "cloakbrowser"),
+    );
+  });
+
+  it("lets HARVEST_BROWSER override a profile that already has an engine", async () => {
+    const stored = await registry.get("main");
+    expect(stored.engine).toBe("camoufox");
+
+    const overridden = makeRegistry(dir, { HARVEST_BROWSER: "cloakbrowser" });
+    const profile = await overridden.get("main");
+
+    // The file stays untouched …
+    expect(profile.engine).toBe("camoufox");
+    // … the launch does not: engine and directory both follow the env.
+    expect(overridden.effectiveEngine(profile)).toBe("cloakbrowser");
+    expect(overridden.browserDir(profile)).toBe(
+      join(dir, "profile", "cloakbrowser"),
+    );
+    expect(await overridden.summary(profile)).toMatchObject({
+      engine: "camoufox",
+      effectiveEngine: "cloakbrowser",
+    });
   });
 
   it("lists every directory plus the untouched default", async () => {

@@ -9,6 +9,7 @@ import { ConfigService } from "@nestjs/config";
 import { ApiOkResponse, ApiOperation, ApiTags } from "@nestjs/swagger";
 import type { Response } from "express";
 import { readFile } from "node:fs/promises";
+import { EngineNotReadyError } from "../browser/backends";
 import { BrowserService } from "../browser/browser.service";
 import { apiPath } from "../common/api";
 import { selfBaseUrl } from "../common/self-url";
@@ -118,15 +119,12 @@ export class DemoController {
     res.end(buffer);
   }
 
-  /** A missing engine build is an operator problem, not a server bug. */
+  /** A missing engine build (or refusing license) is an operator problem, not a server bug. */
   private async withBrowserErrors<T>(run: () => Promise<T>): Promise<T> {
     try {
       return await run();
     } catch (error) {
-      if (
-        error instanceof Error &&
-        /Camoufox's Firefox build/.test(error.message)
-      ) {
+      if (error instanceof EngineNotReadyError) {
         throw new ServiceUnavailableException(error.message);
       }
       throw error;

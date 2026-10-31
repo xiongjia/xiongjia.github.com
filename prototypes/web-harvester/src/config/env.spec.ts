@@ -6,7 +6,9 @@ describe("validateEnv", () => {
     const env = validateEnv({});
     expect(env.HARVEST_HOST).toBe("127.0.0.1");
     expect(env.HARVEST_PORT).toBe(8765);
-    expect(env.HARVEST_BROWSER).toBe("camoufox");
+    // Unset on purpose: every profile keeps its own engine, and a new profile is
+    // created as camoufox. Setting it turns the variable into a global override.
+    expect(env.HARVEST_BROWSER).toBeUndefined();
     expect(env.HARVEST_SLOWMO).toBe(0);
     // addons.mozilla.org answers 451 here, so the default addon is skipped
     expect(env.HARVEST_EXCLUDE_ADDONS).toEqual(["UBO"]);
@@ -54,6 +56,18 @@ describe("validateEnv", () => {
   it("rejects an unknown backend", () => {
     expect(() => validateEnv({ HARVEST_BROWSER: "chrome" })).toThrow(
       /Invalid environment/,
+    );
+  });
+
+  it("accepts every engine, including the stealth Chromium one", () => {
+    expect(
+      validateEnv({ HARVEST_BROWSER: "cloakbrowser" }).HARVEST_BROWSER,
+    ).toBe("cloakbrowser");
+    expect(validateEnv({ HARVEST_BROWSER: "patchright" }).HARVEST_BROWSER).toBe(
+      "patchright",
+    );
+    expect(validateEnv({ HARVEST_BROWSER: "camoufox" }).HARVEST_BROWSER).toBe(
+      "camoufox",
     );
   });
 });
