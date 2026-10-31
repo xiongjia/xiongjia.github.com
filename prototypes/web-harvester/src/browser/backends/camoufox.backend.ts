@@ -5,6 +5,7 @@ import {
 } from "camoufox";
 import type { BrowserContext } from "playwright-core";
 import {
+  EngineNotReadyError,
   toProxy,
   type BackendLaunchOptions,
   type BrowserBackend,
@@ -29,7 +30,7 @@ export const camoufoxBackend: BrowserBackend = {
 
   async launch(options: BackendLaunchOptions): Promise<BrowserContext> {
     if (listCamoufoxBuilds().length === 0) {
-      throw new Error(MISSING_BUILD);
+      throw new EngineNotReadyError(MISSING_BUILD);
     }
 
     const context = await Camoufox({

@@ -12,8 +12,11 @@ TypeScript / NestJS prototype of a browser-driven harvester. Two halves:
   contract — a PNG body, a 0600 cookie jar, the 60s verification cache.
 
 Engine-agnostic: **Camoufox** (patched Firefox) is the default, **patchright**
-(installed Chrome) is the zero-download fallback. Both run **in-process** — no
-separate engine service. No Python is written here.
+(installed Chrome) is the zero-download fallback, **CloakBrowser** (patched
+Chromium) is the stealth option. All three run **in-process** — no separate
+engine service. `HARVEST_BROWSER` switches between them; each engine keeps its own
+browser directory, so a switch does not throw the other engine's login away. No
+Python is written here.
 
 Status: `working` — the demo flow and the profile/runs layer are verified against
 the live host; Xiaohongshu login + following were verified on a real account.
@@ -42,7 +45,24 @@ CAMOUFOX_ZIP=~/Downloads/camoufox-156.0.1-beta.36-mac.arm64.zip pnpm camoufox:fe
 
 # no download at all — installed Chrome
 HARVEST_BROWSER=patchright pnpm dev
+
+# stealth Chromium: build once (~200 MB), then switch to it
+pnpm cloakbrowser:install
+HARVEST_BROWSER=cloakbrowser pnpm dev
 ```
+
+`HARVEST_BROWSER` is a **global override** when set — the engine of every profile
+— and unset means "use each profile's own engine" (a new profile is created as
+`camoufox`). Switching is safe in both directions because the engines write to
+different directories: `.cache/profile` (Camoufox) vs
+`.cache/profile/cloakbrowser` / `.cache/profile/patchright`.
+
+CloakBrowser notes: builds after v146 need a license key
+(`pnpm exec cloakbrowser login`, free with a GitHub sign-in) and the free key
+allows **one concurrent session**, so it is one profile at a time; its
+`--fingerprint` seed is frozen inside the profile directory, i.e. the same idea as
+Camoufox's preset. `CLOAKBROWSER_AUTO_UPDATE=false` is set in `.env.example`: a
+silent binary swap would change the fingerprint mid-season.
 
 Docker fetches it at **build** time, never at run time:
 
@@ -51,6 +71,8 @@ docker build -t web-harvester .                                   # patchright o
 docker build --target camoufox \
   --build-arg CAMOUFOX_MIRROR=https://ghfast.top/ \
   -t web-harvester:camoufox .                                     # bakes the build in
+docker build --target cloakbrowser \
+  -t web-harvester:cloakbrowser .                                 # stealth Chromium
 ```
 
 Measured here: one connection is capped near 1.3 MB/s, `github.com` release
@@ -101,6 +123,13 @@ answers `503` with the command to run.
 | `DELETE /api/v1/profiles/:name`    | Delete one and its browser dir (the default is refused) |
 | `GET /api/v1/profiles/:name/queue` | What it is running and what waits behind it             |
 
+**Browser lifecycle** (giving the memory back between runs):
+
+| Route                        | Does                                                        |
+| ---------------------------- | ----------------------------------------------------------- |
+| `GET /api/v1/browser`        | Open contexts: profile, engine, idle ms, busy               |
+| `POST /api/v1/browser/close` | Close them now (`?profile=<name>` for one); session is kept |
+
 **Xiaohongshu** (thin host layer over the xhs flows):
 
 | Route                          | Does                                                            |
@@ -115,14 +144,23 @@ under `/api/v1`; Swagger is not.
 ## Profiles
 
 A profile is one browser identity: its own browser directory (cookies,
-localStorage), locale, timezone, viewport, optional proxy and a **frozen** Camoufox
-preset — so the same account keeps the same fingerprint across restarts.
+localStorage), locale, timezone, viewport, optional proxy and — for Camoufox — a
+**frozen** preset, so the same account keeps the same fingerprint across restarts.
 
 ```
 .cache/profiles/<name>/profile.json   # engine, os, locale, timezone, viewport, proxy, preset
 .cache/profiles/<name>/browser/       # persistent browser profile — except for the default
 .cache/profile/                       # ← the *default* profile's browser directory
 ```
+
+Inside a browser directory each engine has its own subdirectory, because a
+Firefox profile and a Chromium user-data dir cannot be the same thing:
+
+| Engine       | Directory                                      |
+| :----------- | :--------------------------------------------- |
+| Camoufox     | `…/browser/` (unsuffixed — the existing login) |
+| cloakbrowser | `…/browser/cloakbrowser/`                      |
+| patchright   | `…/browser/patchright/`                        |
 
 Concretely, with the defaults (`HARVEST_PROFILES_DIR=.cache/profiles`,
 `HARVEST_PROFILE=main`, `HARVEST_PROFILE_DIR=.cache/profile`):
@@ -131,8 +169,9 @@ Concretely, with the defaults (`HARVEST_PROFILES_DIR=.cache/profiles`,
 | :---------------------------------- | :--------------------------------------------------------------------- |
 | config of the default profile       | `.cache/profiles/main/profile.json`                                    |
 | browser data of the default profile | `.cache/profile/` (111 MB here: cookies, cache, the logged-in session) |
+| … same profile, CloakBrowser        | `.cache/profile/cloakbrowser/`                                         |
 | config of any other profile         | `.cache/profiles/<name>/profile.json`                                  |
-| browser data of any other profile   | `.cache/profiles/<name>/browser/`                                      |
+| browser data of any other profile   | `.cache/profiles/<name>/browser/` (+ `/<engine>/` for Chromium ones)   |
 | runs (output, screenshots)          | `data/runs/<id>/`                                                      |
 
 The asymmetry is deliberate: `main` keeps `HARVEST_PROFILE_DIR` so the existing
@@ -140,9 +179,13 @@ logged-in Xiaohongshu session survives the move to named profiles. Everything un
 `.cache/` and `data/` is gitignored.
 
 - Created on first use, from `HARVEST_*` defaults; the preset is drawn once and
-  written back (a fresh preset per launch would look like a new device). Once the
-  file exists it is the source of truth for `engine`/`os`/`locale`/`timezone`/
-  `viewport`/`proxy` — edit it (or delete it) rather than changing the env.
+  written back (a fresh preset per launch would look like a new device). The file
+  is the source of truth for `engine`/`os`/`locale`/`timezone`/`viewport`/`proxy`
+  — **except** when `HARVEST_BROWSER` is set, which overrides the engine of every
+  profile (and with it the browser directory). `GET /api/v1/profiles` reports both
+  `engine` (what the file says) and `effectiveEngine` (what a launch would use).
+- `os` and `preset` are Camoufox-only: Chromium engines claim the platform they
+  actually run on and get their identity from the profile directory.
 - The **default** profile (`HARVEST_PROFILE`, `main`) keeps using
   `HARVEST_PROFILE_DIR` (`.cache/profile`), so an existing logged-in browser
   profile — the Xiaohongshu session — is not thrown away.
@@ -304,7 +347,7 @@ the next milestone, not part of this one.
 All commands from `prototypes/web-harvester/`.
 
 1. **Gate, no server**: `pnpm check` → `ESLint: No issues found`, `All matched
-files use Prettier code style!`, `Test Files 18 passed / Tests 182 passed`.
+files use Prettier code style!`, `Test Files 18 passed / Tests 204 passed`.
 2. **Start**: `pnpm dev` → logs `listening on http://127.0.0.1:8765`,
    `self-check page: .../api/v1/demo`, `swagger: .../api/docs`.
 3. **Static page**: open <http://127.0.0.1:8765/api/v1/demo> — button flips
@@ -324,7 +367,8 @@ files use Prettier code style!`, `Test Files 18 passed / Tests 182 passed`.
    throttle; do not hammer the real site). Compare UAs:
    `curl -s localhost:8765/api/v1/demo/visit | grep -o 'Chrome/[0-9.]*'` —
    headless Chromium reports `HeadlessChrome/156`, headed reports `Chrome/156`
-   (Camoufox reports a normal Firefox UA either way).
+   (Camoufox reports a normal Firefox UA either way; CloakBrowser reports the
+   Chrome UA its build claims, headed or not).
 7. **Swagger**: <http://127.0.0.1:8765/api/docs> lists the demo, flow, run,
    profile and XHS routes; "Try it out" works.
 8. **Watch mode**: edit a string in `src/demo/demo.page.ts` — server restarts
@@ -339,15 +383,27 @@ files use Prettier code style!`, `Test Files 18 passed / Tests 182 passed`.
     `.../runs?profile=second` creates `.cache/profiles/second/{profile.json,browser/}`
     on first use; `PATCH /api/v1/profiles/second -d '{"locale":"en-US"}'` edits one;
     `DELETE /api/v1/profiles/second` removes it (the default one is refused).
-11. **Isolation / validation**: `HARVEST_PORT=8800 pnpm dev` serves on the new port;
+    Each entry shows `engine` (the file) and `effectiveEngine` (the launch).
+11. **Switch engines**: `HARVEST_BROWSER=cloakbrowser pnpm dev` → the log line says
+    `Launching cloakbrowser for profile "main" [HARVEST_BROWSER overrides camoufox]
+… dir=.cache/profile/cloakbrowser`; `/api/v1/demo/visit` still answers. Remove
+    the variable and Camoufox's directory (and its XHS login) is used again.
+12. **Release the browser**: `curl -s localhost:8765/api/v1/browser | jq` shows the
+    open context and its `idleMs`; `curl -s -X POST localhost:8765/api/v1/browser/close`
+    closes it (`{"closed":["main"]}`) and the browser's processes disappear —
+    the next run relaunches with the same cookies. `HARVEST_BROWSER_IDLE_MS=60000`
+    does the same automatically (log: `Releasing idle browser context`).
+13. **Isolation / validation**: `HARVEST_PORT=8800 pnpm dev` serves on the new port;
     `HARVEST_BROWSER=chrome pnpm dev` must fail with `Invalid environment`.
-12. **Cleanup**: `rm -rf data .cache` (runs, screenshots + profiles, all gitignored).
+14. **Cleanup**: `rm -rf data .cache` (runs, screenshots + profiles, all gitignored).
 
 | Symptom                                            | Likely cause                                                 |
 | -------------------------------------------------- | ------------------------------------------------------------ |
 | `EADDRINUSE`                                       | port taken → `HARVEST_PORT=8801 pnpm dev`                    |
 | `waitForSelector timeout` / 500                    | wrong URL prefix, or stale profile → `rm -rf .cache/profile` |
 | `Executable doesn't exist`                         | `HARVEST_CHANNEL=chrome` without Chrome → use `chromium`     |
+| `CloakBrowser's stealth Chromium build is not …`   | 503 → `pnpm cloakbrowser:install`                            |
+| `CloakBrowser refused the launch for licensing …`  | 503 → `pnpm exec cloakbrowser login` (one session, free key) |
 | `Can't resolve dependencies of the BrowserService` | an injected provider became `import type` (breaks Nest DI)   |
 
 ## Xiaohongshu login
@@ -452,6 +508,39 @@ section for why identity lives in a browser directory instead.
 
 Recorded here on purpose: this prototype keeps no plan file under `internal/plans/`.
 
+**Browser lifecycle: done.** Contexts used to stay warm until process exit — fine
+for a long-running host, wasteful on a laptop. `HARVEST_BROWSER_IDLE_MS` now closes
+a context that has been idle that long (`0`, the default, keeps the old
+behaviour), `POST /api/v1/browser/close` does it on demand and
+`GET /api/v1/browser` shows what is open. The sweep is one `unref()`ed interval
+started on first use; it skips any profile with work in flight (`inFlight` is
+bumped inside `withPage`), and closing never touches the profile directory — a
+closed browser costs one launch (~2–6 s), not a re-login.
+
+**No more "Restore pages?": done.** A Chromium profile that was killed keeps
+`exit_type: Crashed`, and the next launch greets you with a restore bubble (and,
+if accepted, someone else's tabs). `backends/chromium-profile.ts` now flips that
+marker to `Normal` right before a launch — writing the file and nothing else, and
+leaving missing or half-written files alone — and both Chromium backends pass
+`--hide-crash-restore-bubble` + `--disable-session-crashed-bubble` as a second line
+of defence. Verified against a real crashed profile: the log prints
+`Repaired an unclean Chromium profile (Default/Preferences)` and the file is
+`Normal` before the browser starts.
+
+**Third engine + switching: done.** `cloakbrowser` joined the backend registry
+(`src/browser/backends/cloakbrowser.backend.ts`), built on
+`launchPersistentContext()` — the same `BrowserContext` contract the other two
+return, so no flow, run or XHS code changed. Two decisions worth remembering:
+`HARVEST_BROWSER` lost its default and became an _override_ (unset = per-profile
+engine, set = global switch — an older `.env` that still says
+`HARVEST_BROWSER=camoufox` now pins every profile to Camoufox, so comment it out to
+keep per-profile engines), and browser directories became engine-scoped
+(`<browser dir>/<engine>`, Camoufox keeping the legacy path) — without that a
+Firefox profile and a Chromium user-data dir would have collided the moment the
+engine was switched. "Engine not ready" (missing build, refused license) is now a
+typed `EngineNotReadyError` mapped to `503` in the controller, instead of a
+regex over the Camoufox message.
+
 **XHS following → flow: done.** `flows/xhs-following.jsonc` drives the real site
 (open → sidebar identity wait → risk-control check → own-profile `href` via
 `attribute` → 关注 panel → tab switch inside `if` → `scroll` the panel container →
@@ -481,15 +570,24 @@ way for the XHS flow.
 
 ## Tests
 
-`pnpm test` — no browser and no network: 15 specs, 171 cases.
+`pnpm test` — no browser and no network: 18 specs, 204 cases.
 
-- **Config / browser**: `config/env.spec.ts` (defaults, coercion, unknown engine),
-  `browser/browser.service.spec.ts` (one launch per profile, per-profile
-  directories, frozen preset/locale/proxy forwarded, serialisation per profile,
-  relaunch after destroy).
+- **Config / browser**: `config/env.spec.ts` (defaults, coercion, unknown engine,
+  every accepted engine), `browser/browser.service.spec.ts` (one launch per
+  profile, per-profile directories, frozen preset/locale/proxy forwarded,
+  serialisation per profile, relaunch after destroy, engine switch through
+  `HARVEST_BROWSER`, on-demand and idle close under `vi.useFakeTimers`, status),
+  `browser/browser.controller.spec.ts` (status shape, close one, close all),
+  `browser/backends/cloakbrowser.backend.spec.ts` (the library
+  is mocked: no build → `EngineNotReadyError` and no download, `CLOAKBROWSER_BINARY_PATH`
+  accepted, options mapping, `virtual` → headed, license refusal, real errors pass
+  through, crashed profile repaired before the hand-off),
+  `browser/backends/chromium-profile.spec.ts` (`exit_type: Crashed` → `Normal`,
+  clean profile untouched, older `Preferences` layout, missing/corrupt files
+  ignored).
 - **Demo**: `demo/demo.page.spec.ts` (selectors, stays offline),
   `demo/demo.controller.spec.ts` (`/api/v1` self URL, loopback fallback, DOM
-  mapping, PNG headers).
+  mapping, PNG headers, engine-not-ready → 503).
 - **Flow DSL**: `flow/jsonc.spec.ts` (comments + trailing commas, `//` inside
   strings untouched), `flow/schema.spec.ts` (the shipped flows parse, strict
   fields, input coercion, generated schema in sync and every action documented),
@@ -515,26 +613,31 @@ browser instead of launching one. `vitest.config.mts` uses `unplugin-swc`
 
 ## Environment
 
-| Key                                        | Default                   | Notes                                             |
-| ------------------------------------------ | ------------------------- | ------------------------------------------------- |
-| `HARVEST_HOST` / `HARVEST_PORT`            | `127.0.0.1` / `8765`      | no auth layer — keep it loopback                  |
-| `HARVEST_BROWSER`                          | `camoufox`                | engine of a _new_ profile (`patchright` = Chrome) |
-| `HARVEST_CHANNEL`                          | `chrome`                  | or `chromium` (bundled)                           |
-| `HARVEST_HEADLESS`                         | `true`                    | UA caveat above                                   |
-| `HARVEST_PROFILE_DIR` / `HARVEST_DATA_DIR` | `.cache/profile` / `data` | browser dir of the default profile / output       |
-| `HARVEST_LOCALE` / `HARVEST_TIMEZONE`      | `zh-CN` / `Asia/Shanghai` | keep aligned with the account                     |
-| `HARVEST_PROFILES_DIR`                     | `.cache/profiles`         | one directory per profile                         |
-| `HARVEST_PROFILE`                          | `main`                    | default profile (created on first use)            |
-| `HARVEST_PAGE_TIMEOUT`                     | `15000`                   | default page/locator timeout (ms)                 |
-| `HARVEST_FLOWS_DIR`                        | `.cache/flows`            | writable flows; shadows a built-in name           |
-| `HARVEST_RUNS_DIR`                         | `data/runs`               | one directory per run                             |
-| `HARVEST_RUN_KEEP`                         | `50`                      | finished runs kept (failed keep 2x)               |
-| `HARVEST_QUEUE_DEPTH`                      | `8`                       | queued runs per profile before `429`              |
-| `HARVEST_OS`                               | host OS                   | fingerprint OS of a _new_ profile (fonts, UA)     |
-| `HARVEST_SLOWMO`                           | `0`                       | ms between browser actions (watching a run)       |
-| `HARVEST_VIEWPORT_WIDTH` / `_HEIGHT`       | `1280` / `800`            | viewport of a _new_ profile                       |
-| `HARVEST_XHS_COOKIES`                      | `.cache/xhs-cookies.json` | portable copy of the session (0600)               |
-| `HARVEST_XHS_SETTLE_MS`                    | `8000`                    | how long the login QR may take to render          |
+| Key                                        | Default                   | Notes                                                                                                                         |
+| ------------------------------------------ | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `HARVEST_HOST` / `HARVEST_PORT`            | `127.0.0.1` / `8765`      | no auth layer — keep it loopback                                                                                              |
+| `HARVEST_BROWSER`                          | unset                     | unset = each profile's own engine (`camoufox` for new ones); set = override all: `camoufox` \| `patchright` \| `cloakbrowser` |
+| `HARVEST_CHANNEL`                          | `chrome`                  | patchright only; or `chromium` (bundled)                                                                                      |
+| `HARVEST_HEADLESS`                         | `true`                    | UA caveat above                                                                                                               |
+| `HARVEST_PROFILE_DIR` / `HARVEST_DATA_DIR` | `.cache/profile` / `data` | browser dir of the default profile / output                                                                                   |
+| `HARVEST_LOCALE` / `HARVEST_TIMEZONE`      | `zh-CN` / `Asia/Shanghai` | keep aligned with the account                                                                                                 |
+| `HARVEST_PROFILES_DIR`                     | `.cache/profiles`         | one directory per profile                                                                                                     |
+| `HARVEST_PROFILE`                          | `main`                    | default profile (created on first use)                                                                                        |
+| `HARVEST_PAGE_TIMEOUT`                     | `15000`                   | default page/locator timeout (ms)                                                                                             |
+| `HARVEST_FLOWS_DIR`                        | `.cache/flows`            | writable flows; shadows a built-in name                                                                                       |
+| `HARVEST_RUNS_DIR`                         | `data/runs`               | one directory per run                                                                                                         |
+| `HARVEST_RUN_KEEP`                         | `50`                      | finished runs kept (failed keep 2x)                                                                                           |
+| `HARVEST_QUEUE_DEPTH`                      | `8`                       | queued runs per profile before `429`                                                                                          |
+| `HARVEST_OS`                               | host OS                   | fingerprint OS of a _new_ profile (fonts, UA)                                                                                 |
+| `HARVEST_SLOWMO`                           | `0`                       | ms between browser actions (watching a run)                                                                                   |
+| `HARVEST_BROWSER_IDLE_MS`                  | `0`                       | close a context idle that long — `0` keeps it warm until exit, in-flight runs are never interrupted                           |
+| `HARVEST_VIEWPORT_WIDTH` / `_HEIGHT`       | `1280` / `800`            | viewport of a _new_ profile                                                                                                   |
+| `HARVEST_XHS_COOKIES`                      | `.cache/xhs-cookies.json` | portable copy of the session (0600)                                                                                           |
+| `HARVEST_XHS_SETTLE_MS`                    | `8000`                    | how long the login QR may take to render                                                                                      |
+| `CLOAKBROWSER_LICENSE_KEY`                 | —                         | CloakBrowser only; read by the library, free key = one session                                                                |
+| `CLOAKBROWSER_CACHE_DIR`                   | `~/.cloakbrowser`         | where the stealth Chromium build lives                                                                                        |
+| `CLOAKBROWSER_AUTO_UPDATE`                 | `false` here              | a silent binary swap changes the fingerprint                                                                                  |
+| `CLOAKBROWSER_BINARY_PATH`                 | —                         | drive your own Chromium build instead                                                                                         |
 
 ## Layout
 
@@ -546,7 +649,7 @@ src/
 ├── flow/            # DSL: schema (zod) + jsonc reader + loader + step-runner
 ├── flows/           # FlowModule: FlowService + controller (submit/poll/cancel)
 ├── run/             # RunStore (run.json/output.json) + RunQueue (per profile)
-├── profile/         # ProfileRegistry: profiles/<name>/{profile.json,browser/}
+├── profile/         # ProfileRegistry: profiles/<name>/{profile.json,browser/<engine>/}
 ├── xhs/             # XhsModule: XhsService (session + jar) + controller
 ├── config/env.ts    # zod-validated HARVEST_*
 ├── browser/         # BrowserModule (@Global) + BrowserService + backends/
@@ -571,5 +674,32 @@ zod schema (`pnpm flow:schema`).
   `pnpm camoufox:download` (parallel + resumable) or `CAMOUFOX_ZIP=… pnpm
 camoufox:fetch` for dev; the Docker `camoufox` target bakes it in. `patchright`
   is the zero-download engine.
+- **CloakBrowser** ships its own patched Chromium (`pnpm cloakbrowser:install`,
+  ~200 MB from `cloakbrowser.dev` → GitHub releases, so a mirror-less network may
+  need `-x`/proxy retries). Builds after v146 are gated: `pnpm exec cloakbrowser
+login` stores a key at `~/.cloakbrowser/license.key`, and the free key holds
+  **one** concurrent session — a second profile on the same key fails to launch.
+  Its identity is `userDataDir` + a frozen `--fingerprint` seed, so the profile's
+  `os`/`preset` are Camoufox-only fields.
+- **“Restore pages?” after an unclean exit**: Chromium marks the profile
+  `exit_type: Crashed` while it runs and only clears it on a clean shutdown, so a
+  killed process (`pkill -9`, `docker stop`, a laptop that slept) makes the next
+  launch offer to reopen the old tabs — not something a scraping profile wants.
+  Both Chromium engines now clear that marker before launching
+  (`backends/chromium-profile.ts`, log line `Repaired an unclean Chromium profile`)
+  _and_ pass `--hide-crash-restore-bubble` / `--disable-session-crashed-bubble`.
+  Closing via `POST /api/v1/browser/close`, the idle sweep or `SIGTERM` already
+  exits cleanly and writes `Normal` itself.
+- **Engine switching** is `HARVEST_BROWSER` (boot time, not hot): it overrides the
+  profile's own engine and moves the launch to `<browser dir>/<engine>`. The
+  unsuffixed directory stays Camoufox's, which is what keeps the existing
+  logged-in XHS profile usable.
+- **The browser outlives the run on purpose** (a warm context is what makes a
+  second run fast), so `HARVEST_BROWSER_IDLE_MS` and `POST /api/v1/browser/close`
+  are how you get the memory back — a page-less idle Chromium here still holds
+  ~5 processes and a few hundred MB. Closing loses nothing: cookies, localStorage
+  and the fingerprint are on disk in the profile directory. The **server** process
+  keeps running either way; for one-shot use run the container with `--rm` and
+  stop it when the run is done.
 - Unit tests never launch a browser; `.cache/` and `data/` are gitignored, and
   the repo's Python toolchain (`ruff`, `poe fmt`) ignores this directory.

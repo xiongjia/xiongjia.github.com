@@ -1,5 +1,6 @@
 import type { BrowserBackend } from "./backend";
 import { camoufoxBackend } from "./camoufox.backend";
+import { cloakbrowserBackend } from "./cloakbrowser.backend";
 import { patchrightBackend } from "./patchright.backend";
 
 /**
@@ -14,4 +15,7 @@ export const BROWSER_BACKENDS = Symbol("BROWSER_BACKENDS");
 export const DEFAULT_BACKENDS: BrowserBackend[] = [
   camoufoxBackend,
   patchrightBackend,
+  cloakbrowserBackend,
 ];
+
+export { EngineNotReadyError } from "./backend";

@@ -1,11 +1,13 @@
 import { Global, Module } from "@nestjs/common";
 import { ProfileRegistry } from "../profile/registry";
 import { DEFAULT_BACKENDS, BROWSER_BACKENDS } from "./backends/index";
+import { BrowserController } from "./browser.controller";
 import { BrowserService } from "./browser.service";
 
 /** Shared by DemoModule (self-check) and XhsModule (real scraping). */
 @Global()
 @Module({
+  controllers: [BrowserController],
   providers: [
     ProfileRegistry,
     BrowserService,

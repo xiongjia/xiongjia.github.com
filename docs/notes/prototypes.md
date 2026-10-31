@@ -259,12 +259,19 @@ Node + TypeScript（NestJS 12，pnpm）的浏览器自动化采集原型：一�
 - **Profile**：一个 profile 一套独立浏览器目录（cookies/localStorage）+ 冻结的
   Camoufox 指纹 preset，`?profile=` 选身份、`/profiles` 列表、
   `PATCH/DELETE` 增删改；默认 profile 沿用原有 `.cache/profile`，登录态不丢
+- **浏览器可回收**：context 默认常驻（第二次跑得快），`HARVEST_BROWSER_IDLE_MS`
+  设成毫秒数就在空闲那么久后自动关掉（默认 `0` = 不关），
+  `POST /api/v1/browser/close` 随时手动关，`GET /api/v1/browser` 看谁开着、空闲多久；
+  关闭只释放内存和子进程，cookie 与指纹在 profile 目录里，下次启动即恢复
 - **节流写在 flow 里**：flow 可声明 `throttle`（最小间隔 + `scope`），三个 xhs
   flow 共用 `scope: "xhs"`、20 秒间隔 —— 手动连打或脚本突发都会被拉平到同一节奏，
   其他 flow 不受影响
 - **引擎可换**：默认 **Camoufox**（Firefox 定制内核，指纹一致），`patchright`
-  （驱动本机 Chrome，零下载）作兜底，两者在同一个 `BrowserBackend` 接口下切换；
-  引擎留在进程内（不做独立 engine 进程）
+  （驱动本机 Chrome，零下载）作兜底，**CloakBrowser**（源码级 patch 的 Chromium）
+  走隐匿路线，三者共用同一个 `BrowserBackend` 接口；`HARVEST_BROWSER` 是切换开关
+  （不设 = 每个 profile 用自己的引擎，设了 = 全局覆盖），每个引擎各占一个
+  `<browser dir>/<engine>` 子目录，来回切都不丢对面登录态；引擎留在进程内（不做
+  独立 engine 进程）
 - 小红书扫码登录：也是 flow —— `flows/xhs-login-qr.jsonc` 负责出二维码（宿主把
   `artifacts/qr.png` 当响应体返回）、`flows/xhs-login-check.jsonc` 负责回读只有登录
   后才有的侧栏身份作为 `verified` 证据；会话保存在 profile 的持久浏览器目录里，
@@ -275,7 +282,7 @@ Node + TypeScript（NestJS 12，pnpm）的浏览器自动化采集原型：一�
   做过 A/B，账号与头像完全一致）
 - 排障：`/api/v1/xhs/debug/following` dump 选择器命中数、面板 DOM、候选元素与
   截图；风控页（`安全限制 / 300012`）会返回 503 并说明原因
-- 工程：zod 校验配置、ESLint 10 + Prettier + `pnpm check` 门禁、182 个 Vitest
+- 工程：zod 校验配置、ESLint 10 + Prettier + `pnpm check` 门禁、204 个 Vitest
   单测（引擎用 DI token 注入假实现，测试不开浏览器）
 - 未实现（roadmap）：推荐流 / 搜索 / 笔记详情、MCP server、CLI、发布、限速与
   `/healthz`

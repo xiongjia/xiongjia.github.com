@@ -16,8 +16,13 @@ export const profileSchema = z
       .min(1)
       .max(64)
       .regex(/^[a-z0-9][a-z0-9._-]*$/, "use lower-case kebab-case"),
-    engine: z.enum(["camoufox", "patchright"]).default("camoufox"),
-    /** Fingerprint OS Camoufox should claim (fonts and UA follow it). */
+    engine: z
+      .enum(["camoufox", "patchright", "cloakbrowser"])
+      .default("camoufox"),
+    /**
+     * Fingerprint OS Camoufox should claim (fonts and UA follow it). The Chromium
+     * engines have no such switch: their platform is the one they run on.
+     */
     os: z.enum(["macos", "windows", "linux"]).default("macos"),
     locale: z.string().min(1).default("zh-CN"),
     timezoneId: z.string().min(1).default("Asia/Shanghai"),
@@ -37,7 +42,7 @@ export const profileSchema = z
         (value) => value === null || isHttpUrl(value),
         "use http(s)://[user:pass@]host:port",
       ),
-    /** Frozen Camoufox fingerprint preset (empty for patchright). */
+    /** Frozen Camoufox fingerprint preset (empty for patchright/cloakbrowser). */
     preset: z.record(z.string(), z.unknown()).default({}),
   })
   .strict();
@@ -46,7 +51,10 @@ export type ProfileConfig = z.infer<typeof profileSchema>;
 /** What `GET /api/v1/profiles` may reveal: never the preset. */
 export interface ProfileSummary {
   name: string;
+  /** Engine stored in `profile.json` (what a new profile would be created as). */
   engine: ProfileConfig["engine"];
+  /** Engine a launch would actually use: `HARVEST_BROWSER` wins when set. */
+  effectiveEngine: ProfileConfig["engine"];
   os: ProfileConfig["os"];
   locale: string;
   timezoneId: string;
@@ -77,7 +85,7 @@ export function hostOs(): ProfileConfig["os"] {
   return "linux";
 }
 
-/** A fresh preset to freeze into a new profile. */
+/** A fresh preset to freeze into a new profile (Camoufox only). */
 export function newPreset(os: ProfileConfig["os"]): Record<string, unknown> {
   return (getRandomPreset(os) as Record<string, unknown> | null) ?? {};
 }

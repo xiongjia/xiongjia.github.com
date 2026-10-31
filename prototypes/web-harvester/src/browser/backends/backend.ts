@@ -3,9 +3,24 @@ import type { BrowserContext } from "playwright-core";
 /**
  * Engine abstraction: everything above this interface only touches the
  * Playwright-compatible `BrowserContext` / `Page` API, so swapping the engine
- * (Camoufox/Firefox, patchright/Chromium) never touches demo or XHS code.
+ * (Camoufox/Firefox, patchright or CloakBrowser/Chromium) never touches demo or
+ * XHS code.
  */
-export type BackendName = "camoufox" | "patchright" | "mock";
+export type BackendName = "camoufox" | "patchright" | "cloakbrowser" | "mock";
+
+/**
+ * Thrown when an engine is configured but cannot start: its browser build is
+ * missing, or its license refuses the launch.
+ *
+ * The HTTP layer maps this to `503 Service Unavailable` — it is an operator
+ * problem with a concrete remedy, never a bug in the request.
+ */
+export class EngineNotReadyError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "EngineNotReadyError";
+  }
+}
 
 /** `virtual` = run headed on an Xvfb display (Linux/containers). */
 export type HeadlessMode = boolean | "virtual";
