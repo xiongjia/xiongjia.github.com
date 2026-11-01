@@ -13,7 +13,7 @@ CFG = {
         "backlinks": {
             "enabled": True,
             "include": ["notes/**"],
-            "exclude": ["notes/posts/**", "moments/**", "notes/_index_content.md"],
+            "exclude": ["notes/posts/**", "moments/**"],
             "max_backlinks": 20,
             "graph": {
                 "enabled": True,
@@ -213,18 +213,20 @@ def test_build_index_map_and_edges(tmp_path):
 
 
 def test_build_index_applies_excludes(tmp_path):
+    """The default `exclude` globs (blog posts, moments) keep pages out of the index."""
     docs = tmp_path / "docs"
     (docs / "notes").mkdir(parents=True)
     (docs / "notes" / "ok.md").write_text("body", encoding="utf-8")
-    (docs / "notes" / "_index_content.md").write_text("body", encoding="utf-8")
     (docs / "notes" / "posts").mkdir()
     (docs / "notes" / "posts" / "p.md").write_text("body", encoding="utf-8")
+    (docs / "moments").mkdir()
+    (docs / "moments" / "m.md").write_text("body", encoding="utf-8")
 
     files = Files(
         [
             _file("notes/ok.md", tmp_path),
-            _file("notes/_index_content.md", tmp_path),
             _file("notes/posts/p.md", tmp_path),
+            _file("moments/m.md", tmp_path),
         ]
     )
     pages, edges, _ = bl._build_index(files, docs, bl._load_config(CFG))

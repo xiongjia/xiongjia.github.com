@@ -49,14 +49,12 @@ class MkdocsYamlError(RuntimeError):
     """mkdocs.yml could not be parsed/read (raised in ``strict`` mode only)."""
 
 
-def load_extra(key: str, label: str = "mkdocs_yaml", *, strict: bool = False) -> dict:
-    """Read ``extra.<key>`` from mkdocs.yml (empty dict when absent/unreadable).
+def load_document(label: str = "mkdocs_yaml", *, strict: bool = False) -> dict:
+    """Read the whole mkdocs.yml (empty dict when unreadable).
 
-    *label* prefixes the stderr warning on problems, so callers keep a
-    recognizable message (e.g. ``bucket-sync``). By default problems degrade
-    to an empty dict with a warning; with *strict* they raise
-    :class:`MkdocsYamlError` instead (callers that must fail fast, e.g.
-    git_bot's task registry).
+    `load_extra` is the narrow accessor used by CLI scripts; this one exists for
+    invariants that live outside `extra` — e.g. a test asserting the
+    `exclude_docs` fragment rules. Same degrade/strict semantics.
     """
     if not MKDOCS_YML.is_file():
         return {}
@@ -68,6 +66,19 @@ def load_extra(key: str, label: str = "mkdocs_yaml", *, strict: bool = False) ->
         return {}  # empty file — treat as absent, no warning
     if not isinstance(data, dict):
         return _degrade_or_raise(f"{label}: {MKDOCS_YML} is not a mapping", strict)
+    return data
+
+
+def load_extra(key: str, label: str = "mkdocs_yaml", *, strict: bool = False) -> dict:
+    """Read ``extra.<key>`` from mkdocs.yml (empty dict when absent/unreadable).
+
+    *label* prefixes the stderr warning on problems, so callers keep a
+    recognizable message (e.g. ``bucket-sync``). By default problems degrade
+    to an empty dict with a warning; with *strict* they raise
+    :class:`MkdocsYamlError` instead (callers that must fail fast, e.g.
+    git_bot's task registry).
+    """
+    data = load_document(label, strict=strict)
     extra = data.get("extra", {})
     if not isinstance(extra, dict):
         return _degrade_or_raise(f"{label}: 'extra' in {MKDOCS_YML} is not a mapping", strict)
