@@ -7,6 +7,11 @@ rendered here at build time from ``stats.yml``.
 
 Registered as a second module in mkdocs.yml's ``macros`` plugin config; the
 health module keeps owning the health pages.
+
+Everything these macros emit is synced archive data, so each root element
+carries ``data-search-exclude``: Material's search plugin skips such subtrees,
+keeping thousands of record/person rows out of the search index while the
+pages render unchanged (see ``plugins/search_exclude.py``).
 """
 
 from __future__ import annotations
@@ -229,7 +234,7 @@ def define_env(env) -> None:
         """
         base = page_assets()
         parts = [
-            f'<div class="film-tv" data-kind="{kind}" data-json-base="{base}"'
+            f'<div class="film-tv" data-search-exclude data-kind="{kind}" data-json-base="{base}"'
             f' data-cover-local-base="{local_cover_base()}">',
             '<p class="film-tv__banner" role="status" aria-live="polite"></p>',
             # navigation sits *above* the content (month/page controls first, then the
@@ -251,7 +256,7 @@ def define_env(env) -> None:
         stats = _load_stats()
         if not stats:
             return (
-                '<p class="film-tv-stat__empty">暂无统计数据 —— 先跑 '
+                '<p class="film-tv-stat__empty" data-search-exclude>暂无统计数据 —— 先跑 '
                 "`poe sync-film-tv` + `poe film-tv-derive`。</p>"
             )
         total = stats.get("total") or 0
@@ -288,12 +293,15 @@ def define_env(env) -> None:
         # running.md), collapsed by default so the overview stays short
         hint = f"{len(by_category)} 类 · {len(by_year)} 个年份 · {len(by_region)} 个地区"
         details = (
-            '<details class="film-tv-stat"><summary>📊 统计分布'
+            '<details class="film-tv-stat" data-search-exclude><summary>📊 统计分布'
             f'<span class="film-tv-stat__hint">{hint}</span></summary>'
             f'<div class="film-tv-stat__grid">{distributions}</div>'
             "</details>"
         )
-        blocks = [f'<div class="film-tv-stat__cards">{card_html}</div>', details]
+        blocks = [
+            f'<div class="film-tv-stat__cards" data-search-exclude>{card_html}</div>',
+            details,
+        ]
         return "\n\n".join(blocks) + "\n"
 
     @env.macro
@@ -303,14 +311,14 @@ def define_env(env) -> None:
         people = _load_asset("people.yml").get("people") or []
         if not people:
             return (
-                '<p class="film-tv-stat__empty">暂无影人统计 —— 先跑 '
+                '<p class="film-tv-stat__empty" data-search-exclude>暂无影人统计 —— 先跑 '
                 "`poe sync-film-tv` + `poe film-tv-derive`。</p>"
             )
         blocks = []
         for role in ("director", "actor", "writer"):
             subset = [person for person in people if role in (person.get("roles") or [])]
             blocks.append(
-                f'<section class="film-tv-people__board">'
+                f'<section class="film-tv-people__board" data-search-exclude>'
                 f"<h3>{ROLE_LABELS[role]} · 作品最多 Top {limit}</h3>"
                 f"{_people_rows(subset, limit=limit, link_base=link_base)}</section>"
             )
@@ -338,7 +346,8 @@ def define_env(env) -> None:
         # tall, so it stays out of the way until asked for; the summary carries the
         # headline number so the closed state is still informative
         return (
-            f'<details class="film-tv-chart" data-kind="{kind}" data-json-base="{base}"'
+            f'<details class="film-tv-chart" data-search-exclude data-kind="{kind}"'
+            f' data-json-base="{base}"'
             f' aria-label="{scope}观影量统计">'
             f"<summary>📈 观影量（{scope}）{hint_html}</summary>"
             '<div class="film-tv-chart__controls"></div>'
@@ -353,14 +362,16 @@ def define_env(env) -> None:
         stats = _load_stats()
         if not stats:
             return (
-                '<p class="film-tv-note">归档还没有数据（先跑一次 '
+                '<p class="film-tv-note" data-search-exclude>归档还没有数据（先跑一次 '
                 "<code>poe sync-film-tv</code>）。</p>"
             )
         pending = stats.get("pending")
         if not pending:
-            return '<p class="film-tv-note">归档已补齐（全部条目都有详情）。</p>'
+            return (
+                '<p class="film-tv-note" data-search-exclude>归档已补齐（全部条目都有详情）。</p>'
+            )
         return (
-            '<p class="film-tv-note">还有 '
+            '<p class="film-tv-note" data-search-exclude>还有 '
             f"<strong>{pending}</strong> 条待补详情（列表骨架已存，"
             "跑 <code>poe sync-film-tv --limit 300</code> 分批补齐）。</p>"
         )
@@ -369,7 +380,7 @@ def define_env(env) -> None:
 def _dialog_markup() -> str:
     """Shared detail dialog (one per page; the JS fills it in)."""
     return (
-        '<dialog class="film-tv-dialog">'
+        '<dialog class="film-tv-dialog" data-search-exclude>'
         '<div class="film-tv-dialog__body">'
         '<div class="film-tv-dialog__cover"></div>'
         '<div class="film-tv-dialog__main">'

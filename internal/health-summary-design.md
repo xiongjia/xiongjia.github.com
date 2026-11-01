@@ -144,8 +144,8 @@ code block and mangles it. Therefore:
 
 - `plugins/snippet_include.py` splices the fragment at build time (same
   mechanism as `notes/_index_content.md`)
-- `mkdocs.yml` `exclude_docs: notes/health/_summary.md` prevents the fragment
-  from being built as a standalone page — it exists only for inclusion
+- `mkdocs.yml` → `exclude_docs: **/_*.md` prevents the fragment from being
+  built as a standalone page — it exists only for inclusion
 - `force_render_paths: "notes/health/*"` already covers the page; the include
   content needs no macros
 

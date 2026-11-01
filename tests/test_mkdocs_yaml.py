@@ -5,6 +5,36 @@ import pytest
 import shared.mkdocs_yaml as mky
 
 
+def test_load_document_returns_every_top_level_key(tmp_path, monkeypatch):
+    yml = tmp_path / "mkdocs.yml"
+    yml.write_text(
+        "site_name: !ENV [SITE_NAME, 'x']\n"
+        "exclude_docs: |\n  **/_*.md\n"
+        "extra:\n  bucket:\n    enabled: true\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(mky, "MKDOCS_YML", yml)
+    document = mky.load_document()
+    assert document["site_name"] == "x"
+    assert document["exclude_docs"] == "**/_*.md\n"
+    assert document["extra"] == {"bucket": {"enabled": True}}
+
+
+def test_load_document_missing_file_is_empty(tmp_path, monkeypatch):
+    monkeypatch.setattr(mky, "MKDOCS_YML", tmp_path / "nope.yml")
+    assert mky.load_document() == {}
+
+
+def test_load_document_parse_error_degrades_or_raises(tmp_path, monkeypatch, capsys):
+    yml = tmp_path / "mkdocs.yml"
+    yml.write_text("exclude_docs: [unclosed\n", encoding="utf-8")
+    monkeypatch.setattr(mky, "MKDOCS_YML", yml)
+    assert mky.load_document() == {}
+    assert "cannot parse" in capsys.readouterr().err
+    with pytest.raises(mky.MkdocsYamlError):
+        mky.load_document(strict=True)
+
+
 def test_load_extra_missing_file(tmp_path, monkeypatch):
     monkeypatch.setattr(mky, "MKDOCS_YML", tmp_path / "nope.yml")
     assert mky.load_extra("bucket") == {}

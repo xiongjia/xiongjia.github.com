@@ -9,6 +9,7 @@ fields, and the markup the macros hand to the pages.
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -360,7 +361,8 @@ def test_page_macro_markup_and_assets_base():
     env = load_macros("notes/film-tv/movies/")
     html = env.macros["film_tv_page"]("movie")
 
-    assert 'class="film-tv" data-kind="movie"' in html
+    assert re.search(r'<div class="film-tv"[^>]*data-search-exclude', html)
+    assert re.search(r'<div class="film-tv"[^>]*data-kind="movie"', html)
     assert 'data-json-base="../assets/"' in html
     # local mirror base for the cover fallback (page-relative)
     assert 'data-cover-local-base="../../../assets/bucket/film-tv/"' in html
@@ -524,7 +526,8 @@ def test_chart_macro_emits_the_client_side_container(tmp_path, monkeypatch):
 
     html = env.macros["film_tv_chart"]()
 
-    assert '<details class="film-tv-chart" data-kind=""' in html
+    assert re.search(r'<details class="film-tv-chart"[^>]*data-search-exclude', html)
+    assert re.search(r'<details class="film-tv-chart"[^>]*data-kind=""', html)
     assert 'data-json-base="assets/"' in html
     assert "<summary>📈 观影量（影视）" in html
     # the closed hint is the *archive* total (all months, all types), while the

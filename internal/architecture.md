@@ -135,6 +135,7 @@ xiongjia.github.com/
 │   ├── snippet_include.py         # `<!-- include: -->` snippet expansion
 │   ├── moment_hook.py             # Moment micro-post timeline (delegates to mkdocs_moment)
 │   ├── backlinks.py               # Bidirectional links & topology graphs
+│   ├── search_exclude.py          # Search-index hygiene (data-search-exclude)
 │   ├── mermaid_assets.py          # Mermaid JS loader (CDN-first, local fallback)
 │   └── mkdocs_moment/             # Moment plugin package
 ├── overrides/                     # MkDocs Material theme overrides
@@ -181,9 +182,21 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 `on_post_page`).
 
 - **`draft_filter.py`** — Filters out `draft: true` pages in production (env-driven)
-- **`snippet_include.py`** — Expands `<!-- include: path -->` snippet markers
+- **`snippet_include.py`** — Expands `<!-- include: path -->` snippet markers;
+  the included files are `_`-prefixed fragments (see below)
 - **`moment_hook.py`** — Moment micro-post timeline (delegates to `plugins/mkdocs_moment/`)
 - **`backlinks.py`** — Bidirectional links: backlinks + topology graphs (see below)
+- **`search_exclude.py`** — Keeps auto-generated markup out of the search index
+  by injecting `data-search-exclude` at `on_page_content` (Material's search
+  plugin skips marked subtrees; the attribute cannot be expressed in Markdown
+  here, since `attr_list` on admonition titles is unsupported). Two rules:
+  every Mermaid diagram block (both loader shapes — `<pre class="mermaid">` and
+  `<code class="mermaid">`) and every card opened by the
+  `<!-- search-exclude -->` marker — which is what `backlinks.py` emits into its
+  `Backlinks (N)` / `Links (N)` cards, so matching never depends on their title
+  and hand-written admonitions stay searchable. `extra.search_exclude.enabled`
+  toggles these two rules only: film & TV synced data is marked at its source
+  (`shared/macros/film_tv_macros.py`) and stays excluded either way.
 - **`bucket_url.py`** — Rewrites asset links matching `extra.bucket` prefixes
   (`assets/bucket/`) to the bucket `base_url` at build time; env overrides
   `MKDOCS_BUCKET_ENABLED` / `MKDOCS_BUCKET_BASE_URL` (see
@@ -212,10 +225,21 @@ register callbacks on MkDocs lifecycle events (`on_files`, `on_pre_build`,
 `footnotes`) are Python-Markdown extensions, **not** MkDocs-level plugins,
 and operate at the Markdown rendering layer.
 
+### Fragment files (`_` prefix)
+
+A file named `_*.md` anywhere under `docs/` is an include **fragment**, not a
+page: `mkdocs.yml` → `exclude_docs` lists `**/_*.md`, so MkDocs never builds
+it — no page, no search entry, no orphan URL under `site/`. A real page pulls
+the fragment in with `<!-- include: path -->` (`snippet_include.py`), which
+reads it straight from `docs_dir` and therefore ignores the exclusion.
+Current fragments: `docs/notes/_index_content.md` (NOTES landing body) and
+`docs/notes/health/_summary.md` (health index summary). Never reference a
+fragment's URL in prose — it does not exist.
+
 ## Bidirectional Links (双向链接)
 
 Bidirectional navigation is implemented by the custom hook
-[`plugins/backlinks.py`](../plugins/backlinks.py) (registered **last** in
+[`plugins/backlinks.py`](../plugins/backlinks.py) (registered in
 `mkdocs.yml` → `hooks`). Two features:
 
 1. **Backlinks (反向链接)** — pages with incoming links show a collapsed
@@ -265,9 +289,14 @@ rejected alternatives:
 - Generated graphs emit `flowchart {layout.upper()}` (lowercase `graph lr` is a
   mermaid 10.9.0 parse quirk) with ASCII node ids, title labels, and
   **relative** `click` URLs (per AGENTS.md relative-link convention).
-- Hook ordering: registered **last**, so `draft_filter` has already dropped
-  drafts and the `macros` plugin has already rendered jinja (plugins run before
-  hooks) — extracted edges are consistent with what pages actually show.
+- Hook ordering: runs after `draft_filter` (drafts already dropped) and after
+  the `macros` plugin (plugins run before hooks) — extracted edges are
+  consistent with what pages actually show.
+- **Search noise**: the injected link lists and graph source are kept out of
+  the search index by `plugins/search_exclude.py`, which marks those cards
+  `data-search-exclude` at `on_page_content` (before the search plugin indexes
+  `page.content`). Each card starts with the `<!-- search-exclude -->` marker,
+  so the hook never has to infer intent from the card title.
 - Macro-generated links are not in the pre-scan edge set; currently verified
   empty (health macros emit no cross-page markdown links). If a future macro
   emits links, per-page backlinks/graphs would miss them — revisit then.

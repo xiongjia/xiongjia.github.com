@@ -22,7 +22,7 @@ Usage in mkdocs.yml:
       backlinks:
         enabled: true
         include: ["notes/**"]        # gitignore-style globs relative to docs_dir
-        exclude: ["notes/posts/**", "moments/**", "notes/_index_content.md"]
+        exclude: ["notes/posts/**", "moments/**"]
         max_backlinks: 20            # cap per page, "all" for unlimited
         graph:
           enabled: true
@@ -58,10 +58,14 @@ _LINK_PATTERN = re.compile(r"(?<!!)\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)")
 _FENCE_PATTERN = re.compile(r"```.*?```", re.S)
 _CODE_SPAN_PATTERN = re.compile(r"`[^`\n]*`")
 
+#: HTML-comment marker emitted at the top of every generated card; the
+#: `search_exclude` hook recognises it and drops the card from the search index.
+_SEARCH_EXCLUDE_MARKER = "<!-- search-exclude -->"
+
 _DEFAULT_CONFIG = {
     "enabled": True,
     "include": ["notes/**"],
-    "exclude": ["notes/posts/**", "moments/**", "notes/_index_content.md"],
+    "exclude": ["notes/posts/**", "moments/**"],
     "max_backlinks": 20,
     "graph": {
         "enabled": True,
@@ -384,8 +388,17 @@ def _link_list(page_src_uri: str, targets, cap) -> str:
 
 
 def _card(title: str, lines) -> str:
-    """A collapsed admonition (`??? info`) with 4-space indented content."""
-    return f'??? info "{title}"\n' + "\n".join("    " + line for line in lines)
+    """A collapsed admonition (`??? info`) with 4-space indented content.
+
+    The body opens with the `<!-- search-exclude -->` marker so
+    `plugins/search_exclude.py` can drop the whole card from the search index
+    without guessing from the title: the marker makes the (auto-generated)
+    intent explicit, and hand-written admonitions never match. The blank line
+    after it is required — without it Python-Markdown treats the following
+    lines as part of the HTML-comment block and the link list loses its markup.
+    """
+    body = [_SEARCH_EXCLUDE_MARKER, "", *lines]
+    return f'??? info "{title}"\n' + "\n".join("    " + line for line in body)
 
 
 def _neighborhood(start: str, depth: int, max_nodes: int) -> set[str]:
