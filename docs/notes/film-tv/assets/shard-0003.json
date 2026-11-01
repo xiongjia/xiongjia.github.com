@@ -1,7 +1,100 @@
 {
  "count": 200,
- "first_date": "2023-04-16",
+ "first_date": "2023-04-19",
  "items": [
+  {
+   "casts": [
+    "徐佳琦",
+    "张杰",
+    "苏尚卿",
+    "张碧玉",
+    "钱琛",
+    "赵爽",
+    "李诗萌",
+    "宝木中阳",
+    "刘校妤",
+    "杨天翔"
+   ],
+   "category": "anime",
+   "cover": "covers/35679820/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35679820/01.webp",
+   "date": "2023-04-19",
+   "directors": [
+    "王丰彬"
+   ],
+   "douban_score": 7.8,
+   "episodes": 24,
+   "genres": [
+    "动画"
+   ],
+   "id": "35679820",
+   "missing": false,
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 15,
+   "slug": "no-doubt-in-us-ii",
+   "status": "collect",
+   "tags": [],
+   "title": "两不疑 第二季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35679820/",
+   "writers": [
+    "桃子",
+    "小凡",
+    "罗梓瑜"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "水野索诺娅",
+    "Nick Offerman（尼克·奥弗曼）",
+    "Alison Pill（艾丽森·皮尔）",
+    "Stephen McKinley Henderson（斯蒂芬·麦金利·亨德森）",
+    "Karl Glusman（卡尔·格洛斯曼）",
+    "河镇",
+    "Zach Grenier（扎克·格雷尼尔）",
+    "Cailee Spaeny（卡莉·史派妮）",
+    "杰佛逊·豪尔",
+    "The Insects"
+   ],
+   "category": "series",
+   "cover": "covers/30169926/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/30169926/01.webp",
+   "date": "2023-04-19",
+   "directors": [
+    "Alex Garland（亚历克斯·加兰）"
+   ],
+   "douban_score": 7.6,
+   "episodes": 8,
+   "genres": [
+    "剧情",
+    "科幻",
+    "惊悚"
+   ],
+   "id": "30169926",
+   "missing": false,
+   "original_title": "Devs",
+   "pending": false,
+   "rating": 4,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 57,
+   "slug": "devs",
+   "status": "collect",
+   "tags": [],
+   "title": "开发者",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/30169926/",
+   "writers": [
+    "Alex Garland（亚历克斯·加兰）"
+   ],
+   "year": 2020
+  },
   {
    "casts": [
     "Steven Yeun（史蒂文·元）",
@@ -9203,96 +9296,7 @@
     "陈肯"
    ],
    "year": 2022
-  },
-  {
-   "casts": [
-    "Tom Holland（汤姆·霍兰德）",
-    "Mark Wahlberg（马克·沃尔伯格）",
-    "Sophia Ali（索菲娅·阿里）",
-    "Tati Gabrielle（塔蒂·加布里埃）",
-    "Antonio Banderas（安东尼奥·班德拉斯）",
-    "Steven Waddington（史蒂芬·威丁顿）",
-    "乔治娅·古德曼",
-    "迪尔梅德·默塔",
-    "约瑟夫·巴德拉玛",
-    "阿拉娜·博登"
-   ],
-   "category": "feature",
-   "cover": "covers/3822687/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3822687/01.webp",
-   "date": "2022-04-23",
-   "directors": [
-    "Ruben Fleischer（鲁本·弗雷斯彻）"
-   ],
-   "douban_score": 6.0,
-   "genres": [
-    "动作",
-    "冒险"
-   ],
-   "id": "3822687",
-   "missing": false,
-   "original_title": "Uncharted",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 116,
-   "slug": "uncharted",
-   "status": "collect",
-   "tags": [],
-   "title": "神秘海域",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/3822687/",
-   "writers": [
-    "雷夫·贾金斯",
-    "阿特·马库姆",
-    "马特·霍洛维"
-   ],
-   "year": 2022
-  },
-  {
-   "casts": [
-    "刘思岑",
-    "贺文潇",
-    "刘晴"
-   ],
-   "category": "anime",
-   "cover": "covers/35346290/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35346290/01.webp",
-   "date": "2022-04-23",
-   "directors": [
-    "曲艺",
-    "刘猛"
-   ],
-   "douban_score": 6.0,
-   "episodes": 12,
-   "genres": [
-    "动画",
-    "奇幻",
-    "冒险"
-   ],
-   "id": "35346290",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 24,
-   "slug": "immortality",
-   "status": "collect",
-   "tags": [],
-   "title": "永生之无尽仙途",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/35346290/",
-   "writers": [
-    "白杨",
-    "黄磊",
-    "万佳龙"
-   ],
-   "year": 2022
   }
  ],
- "last_date": "2022-04-23"
+ "last_date": "2022-04-24"
 }

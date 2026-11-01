@@ -1,7 +1,104 @@
 {
  "count": 200,
- "first_date": "2015-10-03",
+ "first_date": "2015-10-04",
  "items": [
+  {
+   "casts": [
+    "周润发",
+    "张艾嘉",
+    "陈奕迅",
+    "汤唯",
+    "王杍逸",
+    "郎月婷",
+    "张兆辉",
+    "天心",
+    "车婉婉",
+    "洪天明"
+   ],
+   "category": "feature",
+   "cover": "covers/11776289/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/11776289/01.webp",
+   "date": "2015-10-04",
+   "directors": [
+    "杜琪峰"
+   ],
+   "douban_score": 6.0,
+   "genres": [
+    "剧情",
+    "喜剧",
+    "爱情",
+    "歌舞"
+   ],
+   "id": "11776289",
+   "missing": false,
+   "original_title": "華麗上班族",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "香港",
+    "中国"
+   ],
+   "runtime": 119,
+   "slug": "office",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "CHS"
+   ],
+   "title": "华丽上班族",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/11776289/",
+   "writers": [
+    "张艾嘉"
+   ],
+   "year": 2015
+  },
+  {
+   "casts": [
+    "滨田岳",
+    "仓科加奈",
+    "永山绚斗",
+    "波瑠",
+    "田中圭",
+    "柳原晴郎",
+    "大塚宁宁"
+   ],
+   "category": "feature",
+   "cover": "covers/10540077/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/10540077/01.webp",
+   "date": "2015-10-04",
+   "directors": [
+    "中村义洋"
+   ],
+   "douban_score": 7.5,
+   "genres": [
+    "喜剧"
+   ],
+   "id": "10540077",
+   "missing": false,
+   "original_title": "みなさん、さようなら",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 120,
+   "slug": "minasan-sayonara",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "JPN"
+   ],
+   "title": "大家，再见",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/10540077/",
+   "writers": [
+    "久保寺健彦",
+    "林民夫",
+    "中村义洋"
+   ],
+   "year": 2013
+  },
   {
    "casts": [
     "全智贤",
@@ -9650,98 +9747,7 @@
     "于勇敢"
    ],
    "year": 2014
-  },
-  {
-   "casts": [
-    "山口智充",
-    "戸田恵梨香",
-    "小出恵介",
-    "利重剛",
-    "荒川良々",
-    "山内圭哉",
-    "飯田基祐",
-    "黒島結菜",
-    "城島茂",
-    "伊東四朗"
-   ],
-   "category": "feature",
-   "cover": "covers/26322631/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26322631/01.webp",
-   "date": "2015-04-12",
-   "directors": [
-    "加藤義人"
-   ],
-   "douban_score": 7.2,
-   "genres": [
-    "剧情"
-   ],
-   "id": "26322631",
-   "missing": false,
-   "original_title": "新・奇跡の動物園 旭山動物園物語2015～命のバトン～",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": 112,
-   "slug": "douban-26322631",
-   "status": "collect",
-   "tags": [
-    "SP",
-    "Movie",
-    "JPN"
-   ],
-   "title": "奇迹动物园2015：生命的接力棒",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/26322631/",
-   "writers": [
-    "相良敦子"
-   ],
-   "year": 2015
-  },
-  {
-   "casts": [
-    "山口智充",
-    "户田惠梨香",
-    "伊东四朗",
-    "小出惠介",
-    "利重刚",
-    "荒川良良",
-    "倍赏千惠子",
-    "酒井敏也"
-   ],
-   "category": "feature",
-   "cover": "",
-   "date": "2015-04-11",
-   "directors": [
-    "加藤義人"
-   ],
-   "douban_score": 7.6,
-   "genres": [],
-   "id": "3118852",
-   "missing": false,
-   "original_title": "奇跡の動物園〜旭山動物園物語〜",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "日本"
-   ],
-   "runtime": null,
-   "slug": "douban-3118852",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "SP",
-    "JPN"
-   ],
-   "title": "奇迹动物园2006",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/3118852/",
-   "writers": [
-    "相良敦子"
-   ],
-   "year": 2006
   }
  ],
- "last_date": "2015-04-11"
+ "last_date": "2015-04-12"
 }

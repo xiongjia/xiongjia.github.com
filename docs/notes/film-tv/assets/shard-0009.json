@@ -1,7 +1,111 @@
 {
  "count": 200,
- "first_date": "2017-12-01",
+ "first_date": "2017-12-02",
  "items": [
+  {
+   "casts": [
+    "千眼美子",
+    "冈本信彦",
+    "山寺宏一",
+    "林原惠美",
+    "松尾铃木",
+    "名冢佳织",
+    "高木涉",
+    "樱井孝宏",
+    "津田健次郎"
+   ],
+   "category": "anime",
+   "cover": "covers/26864121/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26864121/01.webp",
+   "date": "2017-12-02",
+   "directors": [
+    "鹤卷和哉",
+    "黑川智之",
+    "吉浦康裕",
+    "谷田部透湖",
+    "鬼冢大辅",
+    "吉崎响"
+   ],
+   "douban_score": 8.3,
+   "episodes": 2,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "26864121",
+   "missing": false,
+   "original_title": "龍の歯医者",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 45,
+   "slug": "the-dragon-dentist",
+   "status": "collect",
+   "tags": [],
+   "title": "龙的牙医",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/26864121/",
+   "writers": [
+    "舞城王太郎",
+    "榎户洋司"
+   ],
+   "year": 2017
+  },
+  {
+   "casts": [
+    "Jeremy Renner（杰瑞米·雷纳）",
+    "Elizabeth Olsen（伊丽莎白·奥尔森）",
+    "Kelsey Asbille（凯尔西·阿斯比尔）",
+    "Julia Jones（茱莉亚·琼斯）",
+    "Teo Briones（特欧·布里奥尼斯）",
+    "阿佩萨纳赫克沃特",
+    "格雷厄姆·格林",
+    "Tantoo Cardinal（坦图·卡丁诺）",
+    "埃里克·兰格",
+    "吉尔·伯明翰"
+   ],
+   "category": "feature",
+   "comment": "狙击手的重要性...",
+   "cover": "covers/26389601/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/26389601/01.webp",
+   "date": "2017-12-02",
+   "directors": [
+    "Taylor Sheridan（泰勒·谢里丹）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "悬疑",
+    "犯罪"
+   ],
+   "id": "26389601",
+   "missing": false,
+   "original_title": "Wind River",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "英国",
+    "加拿大",
+    "美国"
+   ],
+   "runtime": 107,
+   "slug": "wind-river",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "ENU"
+   ],
+   "title": "猎凶风河谷",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/26389601/",
+   "writers": [
+    "Taylor Sheridan（泰勒·谢里丹）"
+   ],
+   "year": 2017
+  },
   {
    "casts": [
     "Gary Oldman（加里·奥德曼）",
@@ -9747,111 +9851,7 @@
     "宝拉·霍金斯"
    ],
    "year": 2016
-  },
-  {
-   "casts": [
-    "李铭顺",
-    "范文芳",
-    "朱厚任",
-    "何咏芳",
-    "林湘萍",
-    "丁岚",
-    "李南星"
-   ],
-   "category": "series",
-   "cover": "covers/1830558/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1830558/01.webp",
-   "date": "2017-01-15",
-   "directors": [
-    "马玉辉",
-    "谢敏洋",
-    "蔡晶盛",
-    "张龙敏",
-    "卢燕金"
-   ],
-   "douban_score": 7.3,
-   "episodes": 40,
-   "genres": [
-    "爱情",
-    "武侠",
-    "古装"
-   ],
-   "id": "1830558",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "新加坡"
-   ],
-   "runtime": 47,
-   "slug": "return-of-the-condor-heroes",
-   "status": "collect",
-   "tags": [
-    "Teleplay",
-    "CHS"
-   ],
-   "title": "神雕侠侣",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/1830558/",
-   "writers": [
-    "赵志坚"
-   ],
-   "year": 1998
-  },
-  {
-   "casts": [
-    "Felicity Jones（菲丽希缇·琼斯）",
-    "Diego Luna（迭戈·卢纳）",
-    "甄子丹",
-    "Ben Mendelsohn（本·门德尔森）",
-    "Mads Mikkelsen（麦斯·米科尔森）",
-    "Alan Tudyk（艾伦·图代克）",
-    "Forest Whitaker（福里斯特·惠特克）",
-    "姜文",
-    "Riz Ahmed（里兹·阿迈德）",
-    "乔纳森·阿里斯"
-   ],
-   "category": "feature",
-   "comment": "设计系统的时候记得留点坑，以便日后洗白用...",
-   "cover": "covers/25894431/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25894431/01.webp",
-   "date": "2017-01-14",
-   "directors": [
-    "Gareth Edwards（加里斯·爱德华斯）"
-   ],
-   "douban_score": 7.3,
-   "genres": [
-    "动作",
-    "科幻",
-    "冒险"
-   ],
-   "id": "25894431",
-   "missing": false,
-   "original_title": "Rogue One: A Star Wars Story",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 134,
-   "slug": "rogue-one-a-star-wars-story",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU"
-   ],
-   "title": "星球大战外传：侠盗一号",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/25894431/",
-   "writers": [
-    "Chris Weitz（克里斯·韦兹）",
-    "Tony Gilroy（托尼·吉尔罗伊）",
-    "约翰·诺尔",
-    "加里·维塔",
-    "George Lucas（乔治·卢卡斯）"
-   ],
-   "year": 2016
   }
  ],
- "last_date": "2017-01-14"
+ "last_date": "2017-01-15"
 }

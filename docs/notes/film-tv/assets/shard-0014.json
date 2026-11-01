@@ -1,7 +1,103 @@
 {
  "count": 200,
- "first_date": "2014-09-25",
+ "first_date": "2014-09-29",
  "items": [
+  {
+   "casts": [
+    "小野大辅",
+    "诹访部顺一",
+    "原凉子",
+    "梶裕贵",
+    "内山昂辉",
+    "古木望",
+    "大久保瑠美",
+    "远藤璃菜",
+    "潘惠美",
+    "立木文彦"
+   ],
+   "category": "anime",
+   "comment": "萝莉教你做人...",
+   "cover": "covers/25731203/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25731203/01.webp",
+   "date": "2014-09-29",
+   "directors": [
+    "橘正纪",
+    "川面真也",
+    "金子伸吾",
+    "饭野慎也",
+    "大野和寿",
+    "石川健朝"
+   ],
+   "douban_score": 9.3,
+   "episodes": 12,
+   "genres": [
+    "剧情",
+    "动画"
+   ],
+   "id": "25731203",
+   "missing": false,
+   "original_title": "ばらかもん",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 22,
+   "slug": "barakamon",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Animation",
+    "Teleplay"
+   ],
+   "title": "元气囝仔",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25731203/",
+   "writers": [
+    "杉浦理史"
+   ],
+   "year": 2014
+  },
+  {
+   "casts": [
+    "松重丰"
+   ],
+   "category": "series",
+   "cover": "covers/25890096/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/25890096/01.webp",
+   "date": "2014-09-27",
+   "directors": [
+    "井川尊史"
+   ],
+   "douban_score": 9.3,
+   "episodes": 12,
+   "genres": [
+    "剧情"
+   ],
+   "id": "25890096",
+   "missing": false,
+   "original_title": "孤独のグルメ Season4",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 33,
+   "slug": "season4",
+   "status": "collect",
+   "tags": [
+    "JPN",
+    "Teleplay"
+   ],
+   "title": "孤独的美食家 第四季",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/25890096/",
+   "writers": [
+    "田口佳宏",
+    "久住昌之"
+   ],
+   "year": 2014
+  },
   {
    "casts": [
     "木村拓哉",
@@ -9652,106 +9748,7 @@
     "森治美"
    ],
    "year": 1996
-  },
-  {
-   "casts": [
-    "Matt Damon（马特·达蒙）",
-    "Jodie Foster（朱迪·福斯特）",
-    "Sharlto Copley（沙尔托·科普雷）",
-    "Alice Braga（艾莉丝·布拉加）",
-    "Diego Luna（迭戈·卢纳）",
-    "Wagner Moura（瓦格纳·马拉）",
-    "William Fichtner（威廉·菲克纳）",
-    "布兰登·奥雷",
-    "乔希·布莱克",
-    "艾玛·特伦布莱"
-   ],
-   "category": "feature",
-   "cover": "covers/4116481/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/4116481/01.webp",
-   "date": "2013-12-21",
-   "directors": [
-    "Neill Blomkamp（尼尔·布洛姆坎普）"
-   ],
-   "douban_score": 6.5,
-   "genres": [
-    "剧情",
-    "动作",
-    "科幻"
-   ],
-   "id": "4116481",
-   "missing": false,
-   "original_title": "Elysium",
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "美国"
-   ],
-   "runtime": 109,
-   "slug": "elysium",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "Sci-Fi",
-    "ENU"
-   ],
-   "title": "极乐空间",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/4116481/",
-   "writers": [
-    "Neill Blomkamp（尼尔·布洛姆坎普）"
-   ],
-   "year": 2013
-  },
-  {
-   "casts": [
-    "张曼玉",
-    "邬君梅",
-    "杨紫琼",
-    "赵文瑄",
-    "吴兴国",
-    "姜文",
-    "金燕玲",
-    "牛振华",
-    "张烨"
-   ],
-   "category": "feature",
-   "cover": "covers/1302455/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1302455/01.webp",
-   "date": "2013-12-21",
-   "directors": [
-    "张婉婷"
-   ],
-   "douban_score": 7.7,
-   "genres": [
-    "剧情",
-    "爱情",
-    "历史"
-   ],
-   "id": "1302455",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国",
-    "香港",
-    "日本"
-   ],
-   "runtime": 145,
-   "slug": "the-soong-sisters",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "CHS"
-   ],
-   "title": "宋家皇朝",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1302455/",
-   "writers": [
-    "罗启锐"
-   ],
-   "year": 1997
   }
  ],
- "last_date": "2013-12-21"
+ "last_date": "2013-12-22"
 }

@@ -1,7 +1,96 @@
 {
  "count": 200,
- "first_date": "2022-04-19",
+ "first_date": "2022-04-23",
  "items": [
+  {
+   "casts": [
+    "Tom Holland（汤姆·霍兰德）",
+    "Mark Wahlberg（马克·沃尔伯格）",
+    "Sophia Ali（索菲娅·阿里）",
+    "Tati Gabrielle（塔蒂·加布里埃）",
+    "Antonio Banderas（安东尼奥·班德拉斯）",
+    "Steven Waddington（史蒂芬·威丁顿）",
+    "乔治娅·古德曼",
+    "迪尔梅德·默塔",
+    "约瑟夫·巴德拉玛",
+    "阿拉娜·博登"
+   ],
+   "category": "feature",
+   "cover": "covers/3822687/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/3822687/01.webp",
+   "date": "2022-04-23",
+   "directors": [
+    "Ruben Fleischer（鲁本·弗雷斯彻）"
+   ],
+   "douban_score": 6.0,
+   "genres": [
+    "动作",
+    "冒险"
+   ],
+   "id": "3822687",
+   "missing": false,
+   "original_title": "Uncharted",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 116,
+   "slug": "uncharted",
+   "status": "collect",
+   "tags": [],
+   "title": "神秘海域",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/3822687/",
+   "writers": [
+    "雷夫·贾金斯",
+    "阿特·马库姆",
+    "马特·霍洛维"
+   ],
+   "year": 2022
+  },
+  {
+   "casts": [
+    "刘思岑",
+    "贺文潇",
+    "刘晴"
+   ],
+   "category": "anime",
+   "cover": "covers/35346290/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/35346290/01.webp",
+   "date": "2022-04-23",
+   "directors": [
+    "曲艺",
+    "刘猛"
+   ],
+   "douban_score": 6.0,
+   "episodes": 12,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "35346290",
+   "missing": false,
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "中国"
+   ],
+   "runtime": 24,
+   "slug": "immortality",
+   "status": "collect",
+   "tags": [],
+   "title": "永生之无尽仙途",
+   "type": "tv",
+   "url": "https://movie.douban.com/subject/35346290/",
+   "writers": [
+    "白杨",
+    "黄磊",
+    "万佳龙"
+   ],
+   "year": 2022
+  },
   {
    "casts": [
     "中岛健人",
@@ -9142,98 +9231,7 @@
    "url": "https://movie.douban.com/subject/26874505/",
    "writers": [],
    "year": 2017
-  },
-  {
-   "casts": [
-    "郎雄",
-    "杨贵媚",
-    "吴倩莲",
-    "王渝文",
-    "张艾嘉",
-    "归亚蕾",
-    "赵文瑄",
-    "陈昭荣",
-    "陈捷文",
-    "卢金城"
-   ],
-   "category": "feature",
-   "cover": "covers/1291818/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291818/01.webp",
-   "date": "2021-05-03",
-   "directors": [
-    "李安"
-   ],
-   "douban_score": 9.2,
-   "genres": [
-    "剧情",
-    "家庭"
-   ],
-   "id": "1291818",
-   "missing": false,
-   "original_title": "飲食男女",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "台湾",
-    "美国"
-   ],
-   "runtime": 124,
-   "slug": "eat-drink-man-woman",
-   "status": "collect",
-   "tags": [
-    "Movie"
-   ],
-   "title": "饮食男女",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1291818/",
-   "writers": [
-    "李安",
-    "王蕙玲",
-    "詹姆斯·夏慕斯"
-   ],
-   "year": 1994
-  },
-  {
-   "casts": [
-    "Gaziza Tleubay",
-    "Dinara Baktybaeva",
-    "Rebecca Dimech",
-    "Anthea Zammit",
-    "Aimée Akakpo-Toulan",
-    "Ceciline Abissi"
-   ],
-   "category": "series",
-   "cover": "covers/34970206/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/34970206/01.webp",
-   "date": "2021-05-02",
-   "directors": [
-    "John Wate"
-   ],
-   "douban_score": 8.3,
-   "episodes": 5,
-   "genres": [
-    "历史"
-   ],
-   "id": "34970206",
-   "missing": false,
-   "original_title": "Epic Warrior Women",
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "英国"
-   ],
-   "runtime": 44,
-   "slug": "epic-warrior-women",
-   "status": "collect",
-   "tags": [],
-   "title": "史诗女武将",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/34970206/",
-   "writers": [
-    "Sebastian Peiter"
-   ],
-   "year": 2018
   }
  ],
- "last_date": "2021-05-02"
+ "last_date": "2021-05-03"
 }
