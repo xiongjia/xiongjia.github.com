@@ -4,6 +4,110 @@
  "items": [
   {
    "casts": [
+    "Roy Scheider（罗伊·谢德）",
+    "Robert Shaw（罗伯特·肖）",
+    "Richard Dreyfuss（理查德·德莱福斯）",
+    "Lorraine Gary（洛兰·加里）",
+    "Murray Hamilton（莫瑞·汉密尔顿）",
+    "卡尔·哥特列布",
+    "杰弗瑞·克莱默",
+    "苏珊·巴克林尼",
+    "乔纳森·菲利",
+    "泰迪·格鲁斯曼"
+   ],
+   "category": "feature",
+   "cover": "covers/1294941/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1294941/01.webp",
+   "date": "2009-10-07",
+   "directors": [
+    "Steven Spielberg（史蒂文·斯皮尔伯格）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "惊悚",
+    "冒险"
+   ],
+   "id": "1294941",
+   "missing": false,
+   "original_title": "Jaws",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 124,
+   "slug": "jaws",
+   "status": "collect",
+   "tags": [
+    "Movie",
+    "Sci-Fi",
+    "ENU"
+   ],
+   "title": "大白鲨",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1294941/",
+   "writers": [
+    "彼得·本奇利",
+    "卡尔·哥特列布"
+   ],
+   "year": 1975
+  },
+  {
+   "casts": [
+    "Peter Weller（彼得·威勒）",
+    "Nancy Allen（南茜·艾伦）",
+    "Dan O'Herlihy（丹·奥赫里奇）",
+    "Ronny Cox（罗尼·考克斯）",
+    "Miguel Ferrer（米盖尔·弗尔）",
+    "柯特伍德·史密斯",
+    "雷·怀斯",
+    "保罗·麦克兰尼",
+    "杰西·D·戈因斯",
+    "罗伯特·多奎"
+   ],
+   "category": "feature",
+   "cover": "covers/1294791/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1294791/01.webp",
+   "date": "2009-10-07",
+   "directors": [
+    "Paul Verhoeven（保罗·范霍文）"
+   ],
+   "douban_score": 7.8,
+   "genres": [
+    "剧情",
+    "动作",
+    "科幻",
+    "惊悚",
+    "犯罪"
+   ],
+   "id": "1294791",
+   "missing": false,
+   "original_title": "RoboCop",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "美国"
+   ],
+   "runtime": 102,
+   "slug": "robocop",
+   "status": "collect",
+   "tags": [
+    "Sci-Fi",
+    "Movie",
+    "ENU"
+   ],
+   "title": "机器战警",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1294791/",
+   "writers": [
+    "爱德·诺麦尔",
+    "迈克尔·迈纳"
+   ],
+   "year": 1987
+  },
+  {
+   "casts": [
     "Arnold Schwarzenegger（阿诺·施瓦辛格）",
     "Linda Hamilton（琳达·汉密尔顿）",
     "Edward Furlong（爱德华·福隆）",
@@ -9612,104 +9716,7 @@
     "城山升"
    ],
    "year": 1979
-  },
-  {
-   "casts": [
-    "Chris Pine（克里斯·派恩）",
-    "Zachary Quinto（扎克瑞·昆图）",
-    "Leonard Nimoy（伦纳德·尼莫伊）",
-    "Eric Bana（艾瑞克·巴纳）",
-    "Bruce Greenwood（布鲁斯·格林伍德）",
-    "Karl Urban（卡尔·厄本）",
-    "Zoe Saldana（佐伊·索尔达娜）",
-    "Simon Pegg（西蒙·佩吉）",
-    "John Cho（约翰·赵）",
-    "Anton Yelchin（安东·叶利钦）"
-   ],
-   "category": "feature",
-   "cover": "covers/2132932/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/2132932/01.webp",
-   "date": "2009-05-07",
-   "directors": [
-    "J.J. Abrams（J·J·艾布拉姆斯）"
-   ],
-   "douban_score": 8.1,
-   "genres": [
-    "动作",
-    "科幻",
-    "冒险"
-   ],
-   "id": "2132932",
-   "missing": false,
-   "original_title": "Star Trek",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "美国",
-    "德国"
-   ],
-   "runtime": 127,
-   "slug": "star-trek",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "ENU",
-    "Sci-Fi"
-   ],
-   "title": "星际迷航",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/2132932/",
-   "writers": [
-    "罗伯托·奥奇",
-    "Alex Kurtzman（亚历克斯·库尔茨曼）",
-    "吉恩·罗登伯里"
-   ],
-   "year": 2009
-  },
-  {
-   "casts": [],
-   "category": "anime",
-   "cover": "covers/1888063/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1888063/01.webp",
-   "date": "2009-05-07",
-   "directors": [
-    "胡兆洪",
-    "邹勤"
-   ],
-   "douban_score": 9.0,
-   "episodes": 4,
-   "genres": [
-    "动画",
-    "短片",
-    "奇幻",
-    "古装"
-   ],
-   "id": "1888063",
-   "missing": false,
-   "pending": false,
-   "rating": 5,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 19,
-   "slug": "douban-1888063",
-   "status": "collect",
-   "tags": [
-    "Animation",
-    "Movie",
-    "CHS",
-    "History"
-   ],
-   "title": "镜花缘",
-   "type": "tv",
-   "url": "https://movie.douban.com/subject/1888063/",
-   "writers": [
-    "李汝珍",
-    "邹勤",
-    "王大为"
-   ],
-   "year": 1991
   }
  ],
- "last_date": "2009-05-07"
+ "last_date": "2009-05-15"
 }

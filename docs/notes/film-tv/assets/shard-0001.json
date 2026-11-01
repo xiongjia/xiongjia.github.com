@@ -1,7 +1,97 @@
 {
  "count": 200,
- "first_date": "2026-10-27",
+ "first_date": "2026-11-01",
  "items": [
+  {
+   "casts": [
+    "崔岷植",
+    "韩素希",
+    "金准韩",
+    "柳慧英",
+    "金琴顺",
+    "朴艺妮",
+    "金曜汉",
+    "任晟均",
+    "尹相贞"
+   ],
+   "category": "feature",
+   "cover": "covers/36944373/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36944373/01.webp",
+   "date": "2026-11-01",
+   "directors": [
+    "金度英"
+   ],
+   "douban_score": 6.8,
+   "genres": [
+    "剧情",
+    "喜剧"
+   ],
+   "id": "36944373",
+   "missing": false,
+   "original_title": "인턴",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "韩国"
+   ],
+   "runtime": 132,
+   "slug": "the-intern-2026",
+   "status": "collect",
+   "tags": [],
+   "title": "实习生",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36944373/",
+   "writers": [
+    "Nancy Meyers（南希·迈耶斯）"
+   ],
+   "year": 2026
+  },
+  {
+   "casts": [
+    "更登彭措",
+    "Tom Hiddleston（汤姆·希德勒斯顿）",
+    "Willem Dafoe（威廉·达福）",
+    "Caitriona Balfe（凯特芮娜·巴尔夫）",
+    "Tenzin Jigmey",
+    "Umesh Tamang",
+    "廷妮·拉姆"
+   ],
+   "category": "feature",
+   "cover": "covers/36887293/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36887293/01.webp",
+   "date": "2026-11-01",
+   "directors": [
+    "Jennifer Peedom（詹妮弗·皮多姆）"
+   ],
+   "douban_score": 7.7,
+   "genres": [
+    "剧情",
+    "传记",
+    "历史",
+    "冒险"
+   ],
+   "id": "36887293",
+   "missing": false,
+   "original_title": "Tenzing",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "澳大利亚",
+    "美国"
+   ],
+   "runtime": 128,
+   "slug": "tenzing",
+   "status": "collect",
+   "tags": [],
+   "title": "登峰传奇：丹增诺盖",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/36887293/",
+   "writers": [
+    "Jennifer Peedom（詹妮弗·皮多姆）",
+    "卢克·戴维斯"
+   ],
+   "year": 2026
+  },
   {
    "casts": [
     "朱一龙",
@@ -9304,101 +9394,7 @@
     "Todd Phillips（托德·菲利普斯）"
    ],
    "year": 2024
-  },
-  {
-   "casts": [
-    "李英爱",
-    "李炳宪",
-    "宋康昊",
-    "申河均",
-    "金太祐",
-    "赫伯特·乌利齐",
-    "克里斯托夫·霍夫里希特",
-    "李汉伟",
-    "奇周峯",
-    "陈泰贤"
-   ],
-   "category": "feature",
-   "cover": "covers/1306664/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1306664/01.webp",
-   "date": "2024-10-19",
-   "directors": [
-    "朴赞郁"
-   ],
-   "douban_score": 9.0,
-   "genres": [
-    "剧情",
-    "战争"
-   ],
-   "id": "1306664",
-   "missing": false,
-   "original_title": "공동경비구역 JSA",
-   "pending": false,
-   "rating": 4,
-   "regions": [
-    "韩国"
-   ],
-   "runtime": 110,
-   "slug": "jsa",
-   "status": "collect",
-   "tags": [
-    "Movie",
-    "KOR"
-   ],
-   "title": "共同警备区",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/1306664/",
-   "writers": [
-    "金炫锡",
-    "李无影",
-    "郑成山",
-    "朴赞郁",
-    "朴尚渊"
-   ],
-   "year": 2000
-  },
-  {
-   "casts": [
-    "锦鲤",
-    "刘晴",
-    "边江",
-    "常蓉珊",
-    "刘思岑"
-   ],
-   "category": "anime",
-   "cover": "covers/36823396/01.webp",
-   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/36823396/01.webp",
-   "date": "2024-10-07",
-   "directors": [
-    "陈成",
-    "张帅"
-   ],
-   "douban_score": 5.9,
-   "genres": [
-    "动作",
-    "动画",
-    "奇幻"
-   ],
-   "id": "36823396",
-   "missing": false,
-   "pending": false,
-   "rating": 3,
-   "regions": [
-    "中国"
-   ],
-   "runtime": 90,
-   "slug": "perfect-world-movie-ashes-of-the-fire",
-   "status": "collect",
-   "tags": [],
-   "title": "完美世界剧场版 火之灰烬",
-   "type": "movie",
-   "url": "https://movie.douban.com/subject/36823396/",
-   "writers": [
-    "袁洁",
-    "陈肯"
-   ],
-   "year": 2024
   }
  ],
- "last_date": "2024-10-07"
+ "last_date": "2024-10-19"
 }

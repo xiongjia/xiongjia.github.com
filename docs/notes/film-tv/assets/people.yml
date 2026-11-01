@@ -7053,6 +7053,30 @@ people:
   - actor
   - writer
   works: 14
+- avg_rating: 3.5
+  douban_id: '27216230'
+  douban_url: https://www.douban.com/personage/27216230/
+  first_year: 2009
+  last_year: 2026
+  name: Willem Dafoe（威廉·达福）
+  ratings:
+  - 3
+  - 3
+  - 4
+  - 5
+  - 4
+  - 4
+  - 4
+  - 3
+  - 1
+  - 5
+  - 3
+  - 3
+  - 4
+  - 3
+  roles:
+  - actor
+  works: 14
 - avg_rating: 3.21
   douban_id: '27503047'
   douban_url: https://www.douban.com/personage/27503047/
@@ -8304,29 +8328,6 @@ people:
   - 3
   - 3
   - 4
-  roles:
-  - actor
-  works: 13
-- avg_rating: 3.54
-  douban_id: '27216230'
-  douban_url: https://www.douban.com/personage/27216230/
-  first_year: 2009
-  last_year: 2022
-  name: Willem Dafoe（威廉·达福）
-  ratings:
-  - 3
-  - 4
-  - 5
-  - 4
-  - 4
-  - 4
-  - 3
-  - 1
-  - 5
-  - 3
-  - 3
-  - 4
-  - 3
   roles:
   - actor
   works: 13
@@ -10168,6 +10169,28 @@ people:
   roles:
   - director
   - writer
+  works: 12
+- avg_rating: 3.25
+  douban_id: '27210286'
+  douban_url: https://www.douban.com/personage/27210286/
+  first_year: 2012
+  last_year: 2026
+  name: Tom Hiddleston（汤姆·希德勒斯顿）
+  ratings:
+  - 3
+  - 4
+  - 5
+  - 4
+  - 2
+  - 3
+  - 2
+  - 3
+  - 3
+  - 3
+  - 3
+  - 4
+  roles:
+  - actor
   works: 12
 - avg_rating: 3.25
   douban_id: '27494832'
@@ -12187,27 +12210,6 @@ people:
   - 3
   - 3
   - 3
-  roles:
-  - actor
-  works: 11
-- avg_rating: 3.27
-  douban_id: '27210286'
-  douban_url: https://www.douban.com/personage/27210286/
-  first_year: 2012
-  last_year: 2025
-  name: Tom Hiddleston（汤姆·希德勒斯顿）
-  ratings:
-  - 4
-  - 5
-  - 4
-  - 2
-  - 3
-  - 2
-  - 3
-  - 3
-  - 3
-  - 3
-  - 4
   roles:
   - actor
   works: 11
@@ -21702,6 +21704,24 @@ people:
   roles:
   - actor
   works: 8
+- avg_rating: 3.75
+  douban_id: '27250898'
+  douban_url: https://www.douban.com/personage/27250898/
+  first_year: 2012
+  last_year: 2026
+  name: 崔岷植
+  ratings:
+  - 3
+  - 3
+  - 3
+  - 5
+  - 3
+  - 4
+  - 5
+  - 4
+  roles:
+  - actor
+  works: 8
 - avg_rating: 3.12
   douban_id: '27251545'
   douban_url: https://www.douban.com/personage/27251545/
@@ -26150,23 +26170,6 @@ people:
   roles:
   - actor
   - writer
-  works: 7
-- avg_rating: 3.86
-  douban_id: '27250898'
-  douban_url: https://www.douban.com/personage/27250898/
-  first_year: 2012
-  last_year: 2024
-  name: 崔岷植
-  ratings:
-  - 3
-  - 3
-  - 5
-  - 3
-  - 4
-  - 5
-  - 4
-  roles:
-  - actor
   works: 7
 - avg_rating: 3.86
   douban_id: '27547576'

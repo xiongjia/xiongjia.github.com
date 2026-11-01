@@ -1,7 +1,117 @@
 {
- "count": 82,
+ "count": 84,
  "first_date": "2008-10-11",
  "items": [
+  {
+   "casts": [
+    "田中真弓",
+    "横泽启子",
+    "初井言荣",
+    "寺田农",
+    "常田富士男",
+    "永井一郎",
+    "糸博",
+    "鹫尾真知子",
+    "神山卓三",
+    "安原义人"
+   ],
+   "category": "anime",
+   "comment": "很好...",
+   "cover": "covers/1291583/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291583/01.webp",
+   "date": "2008-10-11",
+   "directors": [
+    "宫崎骏"
+   ],
+   "douban_score": 9.2,
+   "genres": [
+    "动画",
+    "奇幻",
+    "冒险"
+   ],
+   "id": "1291583",
+   "missing": false,
+   "original_title": "天空の城ラピュタ",
+   "pending": false,
+   "rating": 5,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 125,
+   "slug": "tenku-no-shiro-rapyuta",
+   "status": "collect",
+   "tags": [
+    "宮﨑駿",
+    "Adventure",
+    "Animation",
+    "JPN",
+    "Mystery",
+    "Movie",
+    "Romance"
+   ],
+   "title": "天空之城",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1291583/",
+   "writers": [
+    "宫崎骏"
+   ],
+   "year": 1986
+  },
+  {
+   "casts": [
+    "柊瑠美",
+    "入野自由",
+    "夏木真理",
+    "菅原文太",
+    "中村彰男",
+    "玉井夕海",
+    "神木隆之介",
+    "内藤刚志",
+    "泽口靖子",
+    "我修院达也"
+   ],
+   "category": "anime",
+   "comment": "蛮好的...",
+   "cover": "covers/1291561/01.webp",
+   "cover_url": "https://pub-b2aff5be2d184901860b85a97a002a8c.r2.dev/data/film-tv/covers/1291561/01.webp",
+   "date": "2008-10-11",
+   "directors": [
+    "宫崎骏"
+   ],
+   "douban_score": 9.4,
+   "genres": [
+    "剧情",
+    "动画",
+    "奇幻"
+   ],
+   "id": "1291561",
+   "missing": false,
+   "original_title": "千と千尋の神隠し",
+   "pending": false,
+   "rating": 3,
+   "regions": [
+    "日本"
+   ],
+   "runtime": 125,
+   "slug": "spirited-away",
+   "status": "collect",
+   "tags": [
+    "宮﨑駿",
+    "Movie",
+    "JPN",
+    "Adventure",
+    "Animation",
+    "Drama",
+    "Mystery"
+   ],
+   "title": "千与千寻",
+   "type": "movie",
+   "url": "https://movie.douban.com/subject/1291561/",
+   "writers": [
+    "宫崎骏"
+   ],
+   "year": 2001
+  },
   {
    "casts": [
     "日高范子",

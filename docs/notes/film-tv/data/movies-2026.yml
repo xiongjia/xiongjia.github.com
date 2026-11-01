@@ -1,6 +1,86 @@
 # Film & TV archive — top-level fields are machine-owned and rewritten from
 # Douban on every sync; edit the `user:` block freely, it is never touched.
 # generated_at: 2026-09-27T16:21+08:00
+- id: "36944373"
+  title: 实习生
+  original_title: 인턴
+  year: 2026
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 6.8
+  douban_score_count: 1722
+  marked_at: "2026-11-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 喜剧]
+  regions: [韩国]
+  languages: [韩语]
+  runtime: 132
+  credits:
+    directors: [金度英]
+    casts: [崔岷植, 韩素希, 金准韩, 柳慧英, 金琴顺, 朴艺妮, 金曜汉, 任晟均, 尹相贞]
+    writers: [南希·迈耶斯]
+  slug: the-intern-2026
+  covers:
+  - covers/36944373/01.webp
+  douban_url: https://movie.douban.com/subject/36944373/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-11-01"
+    taxonomy_version: 2
+    fingerprint: af85448d
+    machine_hash: 448464e5
+    missing_since: null
+    missing_reason: null
+- id: "36887293"
+  title: 登峰传奇：丹增诺盖
+  original_title: Tenzing
+  year: 2026
+  type: movie
+  category: feature
+  status: collect
+  user_rating: 3
+  douban_score: 7.7
+  douban_score_count: 2931
+  marked_at: "2026-11-01"
+  douban_comment: null
+  tags: []
+  genres: [剧情, 传记, 历史, 冒险]
+  regions: [澳大利亚, 美国]
+  languages: [英语]
+  runtime: 128
+  credits:
+    directors: [Jennifer Peedom（詹妮弗·皮多姆）]
+    casts: [更登彭措, Tom Hiddleston（汤姆·希德勒斯顿）, Willem Dafoe（威廉·达福）, Caitriona Balfe（凯特芮娜·巴尔夫）, Tenzin Jigmey, Umesh Tamang, 廷妮·拉姆]
+    writers: [Jennifer Peedom（詹妮弗·皮多姆）, 卢克·戴维斯]
+  slug: tenzing
+  covers:
+  - covers/36887293/01.webp
+  douban_url: https://movie.douban.com/subject/36887293/
+  user:
+    cover: ""
+    hidden_comment: false
+    my_rating: null
+    my_tags: []
+    watched_at: ""
+    review: ""
+    hidden: false
+  meta:
+    detail_synced_at: "2026-11-01"
+    taxonomy_version: 2
+    fingerprint: a4706f3e
+    machine_hash: 1cad34bd
+    missing_since: null
+    missing_reason: null
 - id: "37508847"
   title: 空枪
   original_title: null
