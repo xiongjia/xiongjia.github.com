@@ -19,10 +19,13 @@ function makeRes() {
 const STATUS: LoginStatus = {
   loggedIn: true,
   verified: true,
+  phase: "verified",
+  sessionCookie: true,
   blocked: false,
   account: { nickname: "测试用户", userId: "abc123" },
   cookieNames: ["web_session"],
   qrSource: "img.qrcode-img",
+  loginRunId: null,
   savedAt: "2026-10-25T00:00:00.000Z",
   checkedAt: "2026-10-25T00:01:00.000Z",
 };
@@ -31,6 +34,7 @@ function makeService(overrides: Partial<XhsService> = {}) {
   const service = {
     qrCode: vi.fn(async () => ({
       png: Buffer.from("png"),
+      runId: "run-1",
       source: "img.qrcode-img",
     })),
     status: vi.fn(async () => STATUS),
@@ -41,7 +45,7 @@ function makeService(overrides: Partial<XhsService> = {}) {
 }
 
 describe("XhsController", () => {
-  it("streams the QR code with its source", async () => {
+  it("streams the QR code with its source and the run holding the page", async () => {
     const controller = new XhsController(makeService());
     const { res, headers, end } = makeRes();
 
@@ -52,7 +56,26 @@ describe("XhsController", () => {
       String(Buffer.from("png").byteLength),
     );
     expect(headers["X-QR-Source"]).toBe("img.qrcode-img");
+    // The run outlives the response: it is the scan window.
+    expect(headers["X-Login-Run"]).toBe("run-1");
     expect(end).toHaveBeenCalledTimes(1);
+  });
+
+  it("marks the source as pending while the page is still painting", async () => {
+    const controller = new XhsController(
+      makeService({
+        qrCode: vi.fn(async () => ({
+          png: Buffer.from("png"),
+          runId: "run-1",
+          source: null,
+        })),
+      }),
+    );
+    const { res, headers } = makeRes();
+
+    await controller.qrCode(res);
+
+    expect(headers["X-QR-Source"]).toBe("pending");
   });
 
   it("turns a browser failure into 503 with the reason", async () => {
@@ -67,6 +90,26 @@ describe("XhsController", () => {
 
     await expect(controller.qrCode(res)).rejects.toBeInstanceOf(
       ServiceUnavailableException,
+    );
+  });
+
+  it("keeps an already typed 503 instead of wrapping it twice", async () => {
+    const controller = new XhsController(
+      makeService({
+        qrCode: vi.fn(async () => {
+          throw new ServiceUnavailableException("blocked: IP存在风险");
+        }),
+      }),
+    );
+    const { res } = makeRes();
+
+    const error = await controller
+      .qrCode(res)
+      .catch((caught: unknown) => caught);
+
+    expect(error).toBeInstanceOf(ServiceUnavailableException);
+    expect((error as ServiceUnavailableException).message).toBe(
+      "blocked: IP存在风险",
     );
   });
 

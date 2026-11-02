@@ -1,0 +1,57 @@
+{
+  "$schema": "./flow.schema.json",
+  "name": "xhs-login-scan",
+  "version": 1,
+  "apiVersion": 1,
+  // One account, one site: every xhs flow shares this gap so a burst of calls
+  // (manual or automated) cannot look like a bot. Other flows are untouched.
+  "throttle": { "scope": "xhs", "minIntervalMs": 20000 },
+  "description": "Wait for a human to scan the login QR, then read the signed-in sidebar identity. The page IS the login: XHS applies the scan in the page that is polling the code, so this run has to stay on it — closing the page early (a 4s screenshot run) is why a scanned code never produced a session.",
+  "steps": [
+    {
+      "desc": "open the site and put the QR on screen (artifacts/qr.png)",
+      "action": "include",
+      "flow": "xhs-qr-open"
+    },
+    {
+      "desc": "the scan window: stay on this page until the sidebar identity appears — 3 minutes is well past the code's own lifetime, so a scan that lands always wins",
+      "action": "wait",
+      "selector": [".user .name", ".side-bar .user", ".user-avatar"],
+      "state": "visible",
+      "timeout": 180000
+    },
+    {
+      "desc": "reading the identity is what proves the scan actually landed",
+      "action": "assertNotBlocked",
+      "patterns": ["安全限制", "IP存在风险", "300012"]
+    },
+    {
+      "desc": "nickname",
+      "action": "text",
+      "selector": [
+        ".user .name",
+        ".side-bar .user .name",
+        ".user .user-name",
+        "[class*='user'] [class*='name']"
+      ],
+      "as": "nickname",
+      "optional": true
+    },
+    {
+      "desc": "profile link (carries the user id)",
+      "action": "attribute",
+      "selector": [
+        ".user a[href*='/user/profile']",
+        ".side-bar a[href*='/user/profile']",
+        "a[href*='/user/profile/']"
+      ],
+      "name": "href",
+      "as": "profileHref",
+      "optional": true
+    }
+  ],
+  "output": {
+    "nickname": "nickname",
+    "profileHref": "profileHref"
+  }
+}

@@ -7,9 +7,9 @@ TypeScript / NestJS prototype of a browser-driven harvester. Two halves:
   a real browser, and returns JSON through a submit/poll API. Swapping a script is
   editing a file, not rebuilding the host.
 - **Xiaohongshu operations on top of it**: the following list
-  (`flows/xhs-following.jsonc`), the login QR (`flows/xhs-login-qr.jsonc`) and the
-  session proof (`flows/xhs-login-check.jsonc`) are flows; the host keeps the HTTP
-  contract — a PNG body, a 0600 cookie jar, the 60s verification cache.
+  (`flows/xhs-following.jsonc`), the scan-window login (`flows/xhs-login-scan.jsonc`)
+  and the session proof (`flows/xhs-login-check.jsonc`) are flows; the host keeps
+  the HTTP contract — a PNG body, a 0600 cookie jar, the 60s verification cache.
 
 Engine-agnostic: **Camoufox** (patched Firefox) is the default, **patchright**
 (installed Chrome) is the zero-download fallback, **CloakBrowser** (patched
@@ -19,8 +19,8 @@ browser directory, so a switch does not throw the other engine's login away. No
 Python is written here.
 
 Status: `working` — the demo flow and the profile/runs layer are verified against
-the live host; Xiaohongshu login + following were verified on a real account.
-Moving XHS onto the DSL is the next milestone (see the roadmap).
+the live host; Xiaohongshu following was verified on a real account. A login is a
+_live page_, not a token: see [Xiaohongshu login](#xiaohongshu-login).
 
 ## Quick start
 
@@ -132,11 +132,11 @@ answers `503` with the command to run.
 
 **Xiaohongshu** (thin host layer over the xhs flows):
 
-| Route                          | Does                                                            |
-| ------------------------------ | --------------------------------------------------------------- |
-| `GET /api/v1/xhs/login/qrcode` | Login QR as `image/png`, produced by `flows/xhs-login-qr.jsonc` |
-| `GET /api/v1/xhs/login/status` | `loggedIn` / `verified` / `blocked` / `account`, 60s cache      |
-| `DELETE /api/v1/xhs/login`     | Clear the session (cookies + jar)                               |
+| Route                          | Does                                                                                                  |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------- |
+| `GET /api/v1/xhs/login/qrcode` | Login QR as `image/png`; the run that produced it keeps the page open for the scan (`xhs-login-scan`) |
+| `GET /api/v1/xhs/login/status` | `phase` / `loggedIn` / `sessionCookie` / `account`, follows the pending scan, 60s cache               |
+| `DELETE /api/v1/xhs/login`     | Cancel the pending scan, clear cookies + jar                                                          |
 
 Swagger UI: `GET /api/docs` (JSON at `/api/docs-json`). Feature routes are versioned
 under `/api/v1`; Swagger is not.
@@ -409,42 +409,96 @@ files use Prettier code style!`, `Test Files 18 passed / Tests 204 passed`.
 ## Xiaohongshu login
 
 ```bash
-curl -s localhost:8765/api/v1/xhs/login/qrcode -o qr.png   # scan with the app
-curl -s localhost:8765/api/v1/xhs/login/status             # loggedIn: true, then it stops asking
+curl -s localhost:8765/api/v1/xhs/login/qrcode -o qr.png   # 1. code + a live login page
+# 2. scan it with the app within ~3 min
+curl -s localhost:8765/api/v1/xhs/login/status | jq '{phase,loggedIn,account}'
 ```
 
-- `/qrcode` runs `flows/xhs-login-qr.jsonc` on every call (so the code is never
-  stale) and streams its `qr.png` artifact; there is no long-lived login page.
-- The session lives in the profile's browser directory; a 0600 jar
-  (`HARVEST_XHS_COOKIES`, default `.cache/xhs-cookies.json`) is kept as a portable
-  copy and seeded into a fresh context on the first `status` call.
-- `status` returns two different things on purpose: `loggedIn` means "a
-  `web_session` cookie exists", `verified` means "login-gated content was read
-  back". The proof is the signed-in sidebar identity, which only renders for an
-  authenticated user:
+**The page is the login.** Xiaohongshu applies a scan inside the page that is
+polling the code, so the run that produced the QR has to stay on that page. `/qrcode`
+therefore answers with the PNG and keeps the run going:
 
-  ```json
-  {
-    "loggedIn": true,
-    "verified": true,
-    "blocked": false,
-    "account": { "nickname": "阿甲", "userId": "5f8a1b2c" },
-    "cookieNames": ["web_session", "a1"],
-    "savedAt": "2026-10-27T16:40:00.000Z",
-    "checkedAt": "2026-10-27T16:41:02.000Z"
-  }
-  ```
+| Step                    | What happens                                                                                                                                     |
+| :---------------------- | :----------------------------------------------------------------------------------------------------------------------------------------------- |
+| `GET /xhs/login/qrcode` | cancels any older login run, starts `flows/xhs-login-scan.jsonc`, streams `artifacts/qr.png` as soon as it exists (`X-Login-Run`, `X-QR-Source`) |
+| the run                 | stays on the page until the sidebar identity appears — `include xhs-qr-open` → `wait … timeout: 180000` → `text`/`attribute`                     |
+| the scan                | XHS sets `web_session` **in that page's context**                                                                                                |
+| `GET /xhs/login/status` | `phase: "waiting-scan"` while the run lives, then `verified` + `account`                                                                         |
+| the watcher             | the host polls that run every 2 s, so a scan that lands writes the 0600 jar **even if nobody calls `/status`**                                   |
+| `DELETE /xhs/login`     | cancels the pending run, clears cookies, empties the jar                                                                                         |
 
-  `verified` is the result of `flows/xhs-login-check.jsonc` (which reads the
-  sidebar); a stale cookie makes that run fail and yields `loggedIn: true,
-verified: false, account: null` — the signal to scan again. A `blocked` failure
-  becomes `blocked: true`. Verification is cached for 60 s, and only the nickname
-  and public user id are returned (no personal fields).
+`/status` is therefore a read, not the trigger: scanning and going straight to
+`xhs-following` still leaves a populated jar behind (that gap used to leave the jar
+at whatever the previous write was — an empty one after a logout).
 
-- Xiaohongshu rejects some source IPs with its risk-control page
-  (`安全限制` / `error_code=300012`). That is reported as `503` (or
-  `blocked: true` in the status payload) instead of a useless screenshot —
-  retry from another network.
+`flows/xhs-login-qr.jsonc` still exists as a short flow (`?artifact=qr`) to look at
+the code or debug the selectors — but a run of it cannot log you in: the page is
+closed seconds later, and a scan needs a page that is still asking the site whether
+the code was approved.
+
+### `status` fields
+
+| Field                 | Meaning                                                                                   |
+| :-------------------- | :---------------------------------------------------------------------------------------- |
+| `phase`               | `anonymous` · `waiting-scan` · `verified` · `stale` · `blocked`                           |
+| `loggedIn`/`verified` | true only when login-gated data was read back — the real signal                           |
+| `sessionCookie`       | a `web_session` cookie exists — **guests get one too**, so it is never a login on its own |
+| `account`             | `{ nickname, userId }` from the signed-in sidebar, `null` when unproven                   |
+| `loginRunId`          | run currently holding the QR page, `null` when there is none                              |
+| `savedAt`/`checkedAt` | when the jar was last written / when this answer was produced                             |
+
+```json
+{
+  "phase": "verified",
+  "loggedIn": true,
+  "verified": true,
+  "sessionCookie": true,
+  "blocked": false,
+  "account": { "nickname": "阿甲", "userId": "5f8a1b2c" },
+  "cookieNames": ["web_session", "a1"],
+  "qrSource": "img.qrcode-img",
+  "loginRunId": null,
+  "savedAt": "2026-10-27T16:40:00.000Z",
+  "checkedAt": "2026-10-27T16:41:02.000Z"
+}
+```
+
+`phase: "stale"` (`sessionCookie: true`, `account: null`) is the signal to scan
+again: a guest cookie, a revoked session and a logged-out browser all look like
+that. `phase: "blocked"` means XHS served its risk-control page (`安全限制` /
+`error_code=300012`), which also answers `503` — retry from another network.
+Verification is cached for 60 s, and only the nickname and public user id are
+returned (no personal fields).
+
+### Keeping the login
+
+The session is not a token this project can refresh: it is the browser profile's
+cookies plus the fingerprint that earned them. Four things keep it alive:
+
+1. **Same profile, same engine** — with the defaults that is
+   `.cache/profile/cloakbrowser/` (CloakBrowser), `.cache/profile/` (Camoufox) or
+   `.cache/profile/patchright/`. Changing `HARVEST_BROWSER` or `HARVEST_PROFILE`
+   switches identity, which XHS sees as a new device (and may answer with risk
+   control).
+2. **Clean shutdown after a fresh login** — Chromium/Firefox flush cookies to the
+   profile directory on `Ctrl-C`/`SIGTERM` (`enableShutdownHooks`); `kill -9` skips
+   the flush, which is why the jar below exists.
+3. **The 0600 jar** — `HARVEST_XHS_COOKIES` (default `.cache/xhs-cookies.json`) is
+   written by the scan watcher the moment a scan is verified (no `/status` poll
+   needed) and re-seeded into the next fresh context (`ensureSessionLoaded`), so a
+   hard kill or a reboot costs a browser launch, not a login. Copy it together with
+   the profile directory to move the account to another machine, then start with the
+   same `HARVEST_PROFILE_DIR`. The jar is never trusted over the profile: `/status`
+   asks the profile and refills an empty or stale jar, so a logout followed by a new
+   scan cannot leave the copy behind.
+4. **No identity churn** — `HARVEST_BROWSER_IDLE_MS` and `POST /api/v1/browser/close`
+   only release memory (a closed context costs one launch, ~2–6 s); they never drop
+   the session. `CLOAKBROWSER_AUTO_UPDATE=false` keeps the binary (and therefore the
+   frozen fingerprint seed) from moving under a live profile.
+
+What to avoid: `rm -rf .cache/profile`, `DELETE /xhs/login`, a proxy/IP change
+mid-season, and launching a second profile/engine for the same account in parallel
+(CloakBrowser's free key allows one concurrent session anyway).
 
 ### Following (关注)
 
@@ -548,20 +602,30 @@ regex over the Camoufox message.
 hand-written endpoint on the same account: same nicknames, same avatar URLs. The
 old `GET /api/v1/xhs/following` stays for comparison and rollback.
 
-**XHS login → flow: done, host keeps the contract.** Login was the awkward one
-because the QR must stay valid while a human scans (`/status` is polled between
-calls). The run model does not stretch to a ten-minute run, so the page work was
-cut into two short flows and the stateful parts stayed in the host:
+**XHS login → flow: done, and it needs a live page.** The first version cut the
+login into two short flows and served the QR from a ~4-second run. It could not
+work: XHS applies a scan inside the polling page, so a code whose page is already
+closed never turns into a session — the symptom was "I scanned it, `status` says
+`loggedIn: true` (that was the guest `web_session` cookie), and `xhs-following`
+still fails with no sidebar identity". Now one run owns the whole window
+(`xhs-login-scan`: QR on screen → `wait` up to 3 min for the sidebar identity) and
+`status` follows that run instead of re-probing the site:
 
-| Endpoint                | Flow                                                         | Host keeps                                                             |
-| :---------------------- | :----------------------------------------------------------- | :--------------------------------------------------------------------- |
-| `GET /xhs/login/qrcode` | `xhs-login-qr` (one run per call → the code is always fresh) | serves `artifacts/qr.png` as the response body, `X-QR-Source` header   |
-| `GET /xhs/login/status` | `xhs-login-check` (only on a cache miss)                     | session detection, 0600 jar, 60s verification cache, `blocked` mapping |
-| `DELETE /xhs/login`     | —                                                            | `context.clearCookies()` + empty jar                                   |
+| Endpoint                | Flow                                                     | Host keeps                                                                    |
+| :---------------------- | :------------------------------------------------------- | :---------------------------------------------------------------------------- |
+| `GET /xhs/login/qrcode` | `xhs-login-scan` (starts it, does not await it)          | polls for `artifacts/qr.png`, answers the PNG + `X-Login-Run`, keeps the run  |
+| `GET /xhs/login/status` | follows that run; `xhs-login-check` only on a cache miss | phase mapping, 0600 jar on success, 60s verification cache, `blocked` mapping |
+| `DELETE /xhs/login`     | —                                                        | cancels the pending run, `context.clearCookies()` + empty jar                 |
 
-A stale session and a risk-control page are distinguished by the run's failure
-code (`timeout` vs `blocked`), not by a second page probe. With profiles the
-browser directory is the real session store; the jar is now only a portable copy.
+A stale session and a risk-control page are still distinguished by the run's
+failure code (`timeout` vs `blocked`), and a page that vanished mid-step is now
+`engine-closed` instead of a misleading `timeout`. With profiles the browser
+directory is the real session store; the jar is the portable copy that survives a
+hard kill.
+
+**Long waits are cancellable.** `wait` steps race the run's abort signal, so a
+cancelled scan window (new QR, `DELETE /xhs/login`, logout) releases the page and
+the profile's serial queue immediately instead of after its 3-minute timeout.
 
 **Adding a primitive** is the cheap path when a site needs something the DSL lacks:
 `schema.ts` (type + zod + `.describe()`), `step-runner.ts` (case), a spec case, then
@@ -633,7 +697,7 @@ browser instead of launching one. `vitest.config.mts` uses `unplugin-swc`
 | `HARVEST_BROWSER_IDLE_MS`                  | `0`                       | close a context idle that long — `0` keeps it warm until exit, in-flight runs are never interrupted                           |
 | `HARVEST_VIEWPORT_WIDTH` / `_HEIGHT`       | `1280` / `800`            | viewport of a _new_ profile                                                                                                   |
 | `HARVEST_XHS_COOKIES`                      | `.cache/xhs-cookies.json` | portable copy of the session (0600)                                                                                           |
-| `HARVEST_XHS_SETTLE_MS`                    | `8000`                    | how long the login QR may take to render                                                                                      |
+| `HARVEST_XHS_QR_WAIT_MS`                   | `60000`                   | how long `/xhs/login/qrcode` waits for the page to paint the QR (throttle + launch), not for the scan                         |
 | `CLOAKBROWSER_LICENSE_KEY`                 | —                         | CloakBrowser only; read by the library, free key = one session                                                                |
 | `CLOAKBROWSER_CACHE_DIR`                   | `~/.cloakbrowser`         | where the stealth Chromium build lives                                                                                        |
 | `CLOAKBROWSER_AUTO_UPDATE`                 | `false` here              | a silent binary swap changes the fingerprint                                                                                  |

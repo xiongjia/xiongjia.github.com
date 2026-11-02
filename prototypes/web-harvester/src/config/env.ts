@@ -51,10 +51,12 @@ const envSchema = z.object({
   HARVEST_DATA_DIR: z.string().min(1).default("data"),
 
   /**
-   * How long the login page may take to paint its QR before we screenshot the
-   * whole viewport instead (the risk-control redirect also has to fit in here).
+   * How long `GET /xhs/login/qrcode` waits for the login page to put the QR in
+   * `artifacts/qr.png` before answering 503. It covers the flow's throttle (20 s)
+   * plus the engine launch, not the scan itself — the scan is followed by
+   * `status` while the run keeps the page open.
    */
-  HARVEST_XHS_SETTLE_MS: z.coerce.number().int().min(0).default(8_000),
+  HARVEST_XHS_QR_WAIT_MS: z.coerce.number().int().min(1_000).default(60_000),
 
   /** Where the Xiaohongshu session jar lives (mode 0600 when written). */
   HARVEST_XHS_COOKIES: z.string().min(1).default(".cache/xhs-cookies.json"),

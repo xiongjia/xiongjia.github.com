@@ -26,8 +26,12 @@ const timeoutSpec = z
   .number()
   .int()
   .positive()
-  .max(120_000)
-  .describe("Milliseconds to wait for this step before failing (default 5000).")
+  // Long on purpose: a human-in-the-loop step (waiting for a QR scan) is legal,
+  // and the run stays cancellable through the abort signal.
+  .max(300_000)
+  .describe(
+    "Milliseconds to wait for this step before failing (default 5000, max 300000).",
+  )
   .meta({ id: "timeout" });
 
 /** Flow names are file names and URL segments — nothing else. */
