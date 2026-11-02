@@ -2,6 +2,7 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
   Res,
   ServiceUnavailableException,
 } from "@nestjs/common";
@@ -24,28 +25,37 @@ export class XhsController {
   @Get("login/qrcode")
   @ApiOperation({
     summary:
-      "QR code for logging in (image/png); scan it with the Xiaohongshu app",
+      "QR code for logging in (image/png); scan it while the run that produced it keeps the page open",
   })
   async qrCode(@Res() res: Response): Promise<void> {
-    const { png, source } = await this.xhs.qrCode().catch((error: unknown) => {
-      throw new ServiceUnavailableException(
-        `Could not open the Xiaohongshu login page: ${error instanceof Error ? error.message : String(error)}`,
-      );
-    });
+    const { png, runId, source } = await this.xhs
+      .qrCode()
+      .catch((error: unknown) => {
+        if (error instanceof HttpException) {
+          throw error;
+        }
+        throw new ServiceUnavailableException(
+          `Could not open the Xiaohongshu login page: ${error instanceof Error ? error.message : String(error)}`,
+        );
+      });
 
     res.setHeader("Content-Type", "image/png");
     res.setHeader("Content-Length", String(png.byteLength));
-    res.setHeader("X-QR-Source", source);
+    // `pending` = the page is still painting; the selector is known only once the
+    // run finishes, and the run outlives this response on purpose.
+    res.setHeader("X-QR-Source", source ?? "pending");
+    res.setHeader("X-Login-Run", runId);
     res.end(png);
   }
 
   @Get("login/status")
   @ApiOperation({
     summary:
-      "Whether a session exists; saves the cookies on the first successful poll",
+      "Where the session stands; follows the pending scan run and saves the jar once a login lands",
   })
   @ApiOkResponse({
-    description: "{ loggedIn, cookieNames, qrSource, savedAt }",
+    description:
+      "{ phase, loggedIn, verified, sessionCookie, account, loginRunId, savedAt } — `loggedIn` is true only for a verified session, a guest web_session is not one",
   })
   status(): Promise<LoginStatus> {
     return this.xhs.status();

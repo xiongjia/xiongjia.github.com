@@ -7,7 +7,13 @@ export type FlowErrorCode =
   | "assert-failed"
   | "no-output-var"
   | "bad-fragment"
-  | "cancelled";
+  | "cancelled"
+  /**
+   * The page/context went away mid-step (engine crash, closed window, an
+   * operator shutdown). Not a selector problem: retrying the same selector will
+   * fail again, so it is reported separately from `timeout`.
+   */
+  | "engine-closed";
 
 /**
  * A flow-level failure.

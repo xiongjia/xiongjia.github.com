@@ -481,8 +481,8 @@
     "timeout": {
       "type": "integer",
       "exclusiveMinimum": 0,
-      "maximum": 120000,
-      "description": "Milliseconds to wait for this step before failing (default 5000)."
+      "maximum": 300000,
+      "description": "Milliseconds to wait for this step before failing (default 5000, max 300000)."
     },
     "__schema26": {
       "description": "Skip instead of failing when the selector is absent (the variable becomes an empty string).",

@@ -175,14 +175,20 @@ async function runStep(
     }
 
     case "wait": {
+      // A wait can be minutes long (the login scan window), so it has to give up
+      // as soon as the run is cancelled — otherwise an abandoned run keeps the
+      // profile's queue busy until its own timeout runs out.
       if (step.selector === undefined) {
-        await page.waitForTimeout(step.ms ?? 0);
+        await abortable(ctx, page.waitForTimeout(step.ms ?? 0));
         return;
       }
-      const used = await waitForAny(page, step.selector, ctx, {
-        state: step.state ?? WAIT_STATE.state,
-        timeout: step.timeout ?? DEFAULT_TIMEOUT,
-      });
+      const used = await abortable(
+        ctx,
+        waitForAny(page, step.selector, ctx, {
+          state: step.state ?? WAIT_STATE.state,
+          timeout: step.timeout ?? DEFAULT_TIMEOUT,
+        }),
+      );
       ctx.meta.usedSelectors[`${key}wait`] = used;
       return;
     }
@@ -609,10 +615,17 @@ async function waitForAny(
   const fail =
     (label: string) =>
     (error: unknown): never => {
-      throw new FlowError(
-        "timeout",
-        `${label} did not become ${options.state} within ${options.timeout}ms: ${message(error)}`,
-      );
+      // A page/context that went away is an engine problem, not a selector
+      // problem: report it as such instead of selling it as "timed out".
+      throw targetClosed(error)
+        ? new FlowError(
+            "engine-closed",
+            `the page went away while waiting for ${label} (${options.timeout}ms budget): ${message(error)}`,
+          )
+        : new FlowError(
+            "timeout",
+            `${label} did not become ${options.state} within ${options.timeout}ms: ${message(error)}`,
+          );
     };
 
   if (list.length === 1) {
@@ -643,6 +656,45 @@ async function waitForAny(
 
 async function safeCount(locator: Locator): Promise<number> {
   return locator.count().catch(() => 0);
+}
+
+/** True when the failure is "the browser/page is gone", not "nothing matched". */
+function targetClosed(error: unknown): boolean {
+  return /has been closed|Target closed|Browser closed|page has been closed/i.test(
+    message(error),
+  );
+}
+
+/**
+ * Reject a pending wait as `cancelled` the moment the run is aborted.
+ *
+ * The underlying promise is still awaited (its failure can no longer be
+ * unhandled), it just stops being the answer: a long wait would otherwise keep a
+ * cancelled run — and the profile's serial queue behind it — alive.
+ */
+function abortable<T>(ctx: RunContext, promise: Promise<T>): Promise<T> {
+  const signal = ctx.signal;
+  if (!signal) {
+    return promise;
+  }
+  const cancelled = new FlowError("cancelled", "run cancelled while waiting");
+  if (signal.aborted) {
+    return Promise.reject(cancelled);
+  }
+  return new Promise<T>((resolve, reject) => {
+    const onAbort = () => reject(cancelled);
+    signal.addEventListener("abort", onAbort, { once: true });
+    promise.then(
+      (value) => {
+        signal.removeEventListener("abort", onAbort);
+        resolve(value);
+      },
+      (error: unknown) => {
+        signal.removeEventListener("abort", onAbort);
+        reject(error);
+      },
+    );
+  });
 }
 
 /** Patterns are regexes, but a literal string still has to work. */
