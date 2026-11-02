@@ -112,6 +112,9 @@ on) and are only linked from here.
   renders the demo with `aria-pressed` state and `bg-primary` on the button; generated CSS contains
   `.bg-primary{background-color:var(--primary)}`
 - Pitfalls / decisions:
+  - File names were converted from `PascalCase.tsx` to lowercase kebab-case after B1 (e.g.
+    `App.tsx` → `index.tsx`, `Layout.tsx` → `layout.tsx`, `HelloDemoRoute.tsx` →
+    `hello-demo-route.tsx`), aligning with shadcn's naming; see Conventions → File naming
   - `typescript` is pinned to `~5.9.3`: latest is 7.0.2 but `typescript-eslint@8` requires `<6.1.0`
   - `@frontend-lab/ui` is aliased to source in `vite.config.ts`, so the shared package needs no build
     step; the workspace dependency still covers types and is checked by `pnpm typecheck`
@@ -123,6 +126,27 @@ on) and are only linked from here.
     instead of using their config presets, to stay independent of config-shape changes
 
 ## Conventions
+
+### File naming
+
+Lowercase **kebab-case**, matching shadcn's file naming (`dropdown-menu.tsx`, `use-mobile.ts`,
+blocks such as `login-01/`). This is a hard rule, not a preference:
+
+- Every `.ts` / `.tsx` file under `apps/` and `packages/` is lowercase kebab-case
+  (`hello-demo-route.tsx`) — never `PascalCase.tsx` and never `snake_case.tsx`
+- Directories follow the same rule (`components/command-palette/`, `blocks/kanban-01/`)
+- Exported symbols keep their natural casing, so the file → symbol mapping stays predictable:
+  `routes/home-route.tsx` → `HomeRoute`, `hooks/use-media-query.ts` → `useMediaQuery`,
+  `lib/format-date.ts` → `formatDate`
+- A folder's own entry files use `index.tsx` (barrel/entry) and `layout.tsx` (shell), mirroring
+  shadcn / Next's `app/` layout
+- Tool-mandated file names keep their spelling: `vite.config.ts`, `eslint.config.mjs`,
+  `tsconfig.base.json`, `pnpm-lock.yaml`, `.prettierrc.json`
+- Why: case-insensitive filesystems (macOS/Windows) turn `App.tsx` vs `app.tsx` into a real
+  collision, and the shadcn CLI writes kebab-case files, so mixing styles guarantees churn
+  (see the B1 batch log entry for the rename that established this)
+
+### Workflow
 
 - English everywhere in this folder (README, code, comments, MDX). Chinese learning notes belong in
   the site repo under `docs/notes/`, not here.

@@ -1,8 +1,8 @@
 import { createBrowserRouter, Link, RouterProvider } from 'react-router-dom'
 
-import { Layout } from './Layout'
-import { HelloDemoRoute } from './routes/HelloDemoRoute'
-import { HomeRoute } from './routes/HomeRoute'
+import { Layout } from './layout'
+import { HelloDemoRoute } from './routes/hello-demo-route'
+import { HomeRoute } from './routes/home-route'
 
 function NotFoundRoute() {
   return (
