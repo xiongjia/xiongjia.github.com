@@ -1,0 +1,28 @@
+---
+title: Focus rings
+summary: outline-none, focus and focus-visible side by side, with the input modality made visible.
+order: 20
+---
+
+## What this proves
+
+`focus:` and `focus-visible:` are not interchangeable. Clicking a `focus:ring` button lights it up;
+clicking a `focus-visible:ring` button does not. Tabbing lights up both.
+
+## Decisions
+
+- **`outline-none` is always paired with a replacement ring.** The first button shows what happens
+  without one: the control becomes invisible to keyboard users. It is in the demo on purpose.
+- **`focus-visible` is the default in this lab.** Browsers decide keyboard intent well enough now,
+  and the alternative (`:focus`) makes pointer interactions noisy on every click.
+- **`ring-offset-2` on filled buttons.** A ring drawn on the button edge disappears when the button
+  sits on a same-coloured surface; the offset gives it a gap.
+- **The "last input" badge exists for verification.** Focus visuals cannot be asserted from a
+  screenshot, but "did the browser report keyboard or pointer" can be read from the DOM, which is how
+  this page is checked in the batch log.
+
+## Pitfalls
+
+- `overflow-hidden` on an ancestor clips the ring; look at the parent before blaming the utility
+- A `disabled` button is not focusable, so `focus-visible` never fires — reflect the state elsewhere
+- Components that wrap a native control must not swallow `onFocus`/`onBlur` when they forward refs

@@ -1,0 +1,40 @@
+---
+title: Design tokens
+summary: Semantic CSS variables, mapped into Tailwind v4 utilities through @theme inline.
+order: 10
+---
+
+Semantic tokens are the seam between "what the UI means" and "what a utility class is called".
+`bg-primary` never carries a hard-coded colour: it reads `--color-primary`, which reads `--primary`.
+
+## Three layers
+
+| Layer     | Lives in                            | Example      | Changes when                    |
+| --------- | ----------------------------------- | ------------ | ------------------------------- |
+| Primitive | `tokens.css` (B6 splits these out)  | `--blue-600` | the palette is re-drawn         |
+| Semantic  | `packages/ui/src/styles/tokens.css` | `--primary`  | a theme or style preset changes |
+| Utility   | `@theme inline` in the same file    | `bg-primary` | never — it only maps            |
+
+The point of the split: the utility layer only ever references the semantic layer. That is what lets
+B5 (light/dark) and B6 (style presets) swap values without touching a single component.
+
+## The mapping
+
+```css
+:root {
+  --primary: oklch(0.55 0.19 265);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+}
+```
+
+`oklch()` keeps light and dark ramps perceptually even, and `@theme inline` makes Tailwind emit
+`background-color: var(--primary)` — the generated CSS contains `var(...)`, never a frozen colour.
+
+## Rules of thumb
+
+- Reach for a semantic token first; if none fits, add one instead of sprinkling a raw colour
+- Never reference a `--color-*` variable directly from a component — use the utility class
+- Component variants (`size`, `variant`) pick tokens; they do not invent colours

@@ -1,4 +1,4 @@
-import type { ButtonHTMLAttributes } from 'react'
+import type { ButtonHTMLAttributes, Ref } from 'react'
 
 import { cn } from '../lib/cn'
 
@@ -8,6 +8,8 @@ export type ButtonSize = 'sm' | 'md'
 export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   variant?: ButtonVariant
   size?: ButtonSize
+  /** React 19 passes `ref` as a prop; it lands on the underlying `<button>`. */
+  ref?: Ref<HTMLButtonElement>
 }
 
 const base =

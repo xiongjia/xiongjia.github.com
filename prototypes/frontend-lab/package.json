@@ -9,6 +9,9 @@
   },
   "scripts": {
     "dev": "pnpm --filter @frontend-lab/lab dev",
+    "generate": "pnpm --filter @frontend-lab/lab generate",
+    "content:index": "pnpm --filter @frontend-lab/lab content:index",
+    "demos:index": "pnpm --filter @frontend-lab/lab demos:index",
     "build": "pnpm --filter @frontend-lab/lab build",
     "preview": "pnpm --filter @frontend-lab/lab preview",
     "typecheck": "pnpm -r --if-present typecheck",

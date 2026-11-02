@@ -1,5 +1,6 @@
 @import 'tailwindcss';
 @import '../../../../packages/ui/src/styles/tokens.css';
+@import './mdx.css';
 
 html,
 body,
