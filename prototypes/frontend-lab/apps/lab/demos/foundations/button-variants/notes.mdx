@@ -1,0 +1,28 @@
+---
+title: Button variants
+summary: One component, a variant matrix, and class merging that lets callers override defaults.
+order: 10
+---
+
+## What this proves
+
+`Button` owns the base styles and a `variant` / `size` matrix; callers can still override any
+utility. Both are only safe because of `cn()`.
+
+## Decisions
+
+- **Variants are a record, not a chain of ternaries.** `Record<ButtonVariant, string>` makes a new
+  variant a compile error until it is styled — no silent fallthrough to the base classes.
+- **`cn()` is clsx + tailwind-merge.** clsx resolves conditional class names; tailwind-merge resolves
+  conflicts (`bg-primary` + `bg-accent` -> `bg-accent`). Without the merge step, the winner depends
+  on CSS order, which is exactly the kind of bug that only shows up in production.
+- **The override example is the interesting one.** `Button variant="primary" className="bg-accent"`
+  renders `bg-accent` only. The "Classes on the live button" line reads the DOM back, so the merge
+  result is visible instead of assumed.
+- **Disabled state uses `disabled:opacity-50` + `pointer-events-none`.** Keeping the ring on hover is
+  not an option here: `disabled` buttons are not focusable, so the pointer is the only affordance left.
+
+## Next
+
+B6 adds style presets: the same `variant` strings, different tokens behind them. The component API
+should not need to change for that.

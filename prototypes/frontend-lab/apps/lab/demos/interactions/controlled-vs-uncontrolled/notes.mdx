@@ -1,0 +1,32 @@
+---
+title: Controlled vs uncontrolled
+summary: Two inputs, one commit counter — the cost of owning the value, measured instead of argued.
+order: 10
+---
+
+## What this proves
+
+Controlled inputs re-render the owner on every keystroke. Uncontrolled inputs do not re-render until
+someone asks for the value. The commit counter above is the measurement, not a rendering estimate.
+
+## Decisions
+
+- **The counter lives in a ref that is incremented during render.** Instrumentation like this is the
+  one place where mutating a ref during render is acceptable: the number is the whole point, and
+  moving it into `useEffect` would count commits after the fact while adding a render each time.
+- **"Read value" is the honest uncontrolled API.** `ref.current.value` gives the value without
+  owning it; `form.elements` would work too. The read itself must trigger a render, which is why the
+  "last reads" line changes.
+- **No controlled-state library.** For a demo a `useState` is the smallest thing that proves the
+  point; a store would hide the commit cost that this page is about.
+- **Both inputs keep the focus ring.** Uncontrolled is not "cheaper UI", it is the same UI with a
+  different owner.
+
+## When to pick which
+
+| Need                                                            | Controlled   | Uncontrolled                   |
+| --------------------------------------------------------------- | ------------ | ------------------------------ |
+| Derived UI while typing (counters, validation, disabled submit) | yes          | extra wiring                   |
+| Programmatic reset / formatting                                 | yes          | `key` change or `form.reset()` |
+| Large form, read once on submit                                 | wasteful     | yes                            |
+| File input                                                      | not possible | yes (the DOM owns files)       |

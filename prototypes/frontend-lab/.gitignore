@@ -1,0 +1,7 @@
+node_modules/
+dist/
+coverage/
+.vite/
+apps/lab/src/generated/
+*.local
+.DS_Store

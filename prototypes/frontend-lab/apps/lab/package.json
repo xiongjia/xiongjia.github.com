@@ -1,0 +1,35 @@
+{
+  "name": "@frontend-lab/lab",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "content:index": "node plugins/content-index.ts",
+    "demos:index": "node plugins/demo-registry.ts",
+    "generate": "pnpm content:index && pnpm demos:index",
+    "build": "pnpm generate && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "pnpm generate && tsc --noEmit"
+  },
+  "dependencies": {
+    "@frontend-lab/ui": "workspace:*",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router-dom": "^7.18.5"
+  },
+  "devDependencies": {
+    "@mdx-js/rollup": "^3.1.1",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.6",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.1",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9.3",
+    "vite": "^8.3.5",
+    "yaml": "^2.9.1"
+  }
+}

@@ -1,0 +1,116 @@
+/*
+ * Typography for MDX bodies.
+ *
+ * MDX produces unstyled semantic elements, and the lab deliberately does not pull in
+ * `@tailwindcss/typography`: the tokens here are ours, so the content follows the same semantic
+ * layer as the components (and B5/B6 can re-theme it for free).
+ */
+
+@layer components {
+  .mdx {
+    font-size: 0.9375rem;
+    line-height: 1.7;
+    color: var(--foreground);
+  }
+
+  .mdx > * + * {
+    margin-top: 1rem;
+  }
+
+  .mdx h2 {
+    margin-top: 2rem;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .mdx h3 {
+    margin-top: 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+  }
+
+  .mdx a {
+    color: var(--primary);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+
+  .mdx strong {
+    font-weight: 600;
+  }
+
+  .mdx ul,
+  .mdx ol {
+    padding-left: 1.25rem;
+  }
+
+  .mdx ul {
+    list-style: disc;
+  }
+
+  .mdx ol {
+    list-style: decimal;
+  }
+
+  .mdx li + li {
+    margin-top: 0.375rem;
+  }
+
+  .mdx code {
+    border-radius: 0.25rem;
+    background: var(--muted);
+    padding: 0.125rem 0.3125rem;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.8125rem;
+  }
+
+  .mdx pre {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem;
+    background: var(--muted);
+    padding: 0.875rem 1rem;
+  }
+
+  .mdx pre code {
+    background: transparent;
+    padding: 0;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+  }
+
+  .mdx blockquote {
+    border-left: 2px solid var(--border);
+    padding-left: 0.875rem;
+    color: var(--muted-foreground);
+  }
+
+  .mdx table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .mdx th,
+  .mdx td {
+    border-bottom: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .mdx th {
+    font-weight: 600;
+    color: var(--foreground);
+  }
+
+  .mdx td {
+    color: var(--muted-foreground);
+  }
+
+  .mdx hr {
+    border: 0;
+    border-top: 1px solid var(--border);
+  }
+}

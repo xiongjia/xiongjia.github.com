@@ -1,0 +1,42 @@
+---
+title: Controlled vs uncontrolled
+summary: Where the value lives decides how much React re-renders and who owns the truth.
+order: 10
+---
+
+## Controlled
+
+The component owns nothing: the parent passes `value` and receives `onChange`.
+
+```tsx
+const [value, setValue] = useState('')
+<Input value={value} onChange={(event) => setValue(event.target.value)} />
+```
+
+- Single source of truth, so derived UI (counters, validation, disabled states) stays in sync
+- Every keystroke re-renders the parent — keep the subtree cheap, or debounce
+- Required when someone else must transform, validate or reset the value
+
+## Uncontrolled
+
+The DOM owns the value; React reads it on demand through a ref or form data.
+
+```tsx
+const ref = useRef<HTMLInputElement>(null)
+<Input ref={ref} defaultValue="initial" />
+```
+
+- Cheaper for long forms and for values nobody reads until submit
+- No derived UI without extra wiring; resets need `form.reset()` or a key change
+- The right default for file inputs and anything else with native browser behaviour
+
+## Choosing
+
+| Need                                      | Controlled | Uncontrolled |
+| ----------------------------------------- | ---------- | ------------ |
+| Derived or validated UI on each keystroke | yes        | no           |
+| Programmatic reset or live formatting     | yes        | awkward      |
+| Very large form, read once on submit      | wasteful   | yes          |
+
+The lab default is controlled, because every demo here has to prove state visibly. Reach for
+uncontrolled only when the extra renders are measurable.

@@ -69,6 +69,16 @@ Python `.venv/`, Node `node_modules/`).
   learning prototype; usage and the pattern list are in its README) · created
   2026-09-25 · status `experimental`
 
+## Frontend
+
+- **[frontend-lab](./frontend-lab/README.md)** — Frontend Lab: an experiment lab for frontend
+  techniques (not a component library, not a lighter Storybook), built batch by batch against a
+  17-batch roadmap in its README; pnpm workspace with `apps/lab` (React 19 + React Router 7 + Vite 8
+  + Tailwind v4, TS strict) and `packages/ui` (Button + `cn()` + semantic design tokens mapped into
+  Tailwind via `@theme inline`), app shell with sidebar/header/404 route, one interactive inline demo,
+  and a `pnpm check` gate (tsc + eslint + prettier); MDX content, demo registry, light/dark, style
+  presets and i18n are the next batches · created 2026-11-02 · status `experimental`
+
 ## Desktop
 
 - **[tauri-demo](./tauri-demo/README.md)** — Tauri 2 desktop dashboard that

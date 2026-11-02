@@ -1,0 +1,9 @@
+packages:
+  - apps/*
+  - packages/*
+
+minimumReleaseAgeExclude:
+  - globals@17.14.0
+
+onlyBuiltDependencies:
+  - esbuild

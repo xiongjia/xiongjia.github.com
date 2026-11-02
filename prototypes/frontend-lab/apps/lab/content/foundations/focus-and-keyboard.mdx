@@ -1,0 +1,34 @@
+---
+title: Focus and keyboard
+summary: Why every interactive element needs a visible focus ring, and how to keep it without fighting the browser.
+order: 20
+---
+
+Keyboard users navigate the page by focus, so focus is a feature, not styling polish. The lab rule
+is blunt: every interactive element ships a visible ring, and no ring is removed without a
+replacement.
+
+## The pattern
+
+```tsx
+className={cn(
+  'rounded-md outline-none',
+  'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+)}
+```
+
+- `outline-none` kills the platform default on every browser, so the replacement has to be there
+- `focus-visible`, not `focus`: mouse clicks stay quiet, keyboard navigation gets the ring
+- `ring-offset-2` keeps the ring readable on filled buttons
+
+## Verifying it
+
+Keyboard paths cannot be checked by eyeballing a screenshot. Tab through every control and assert on
+DOM state instead: the demo page exposes `aria-pressed`, so a headless `--dump-dom` run can confirm
+both the state and the ring class.
+
+## Pitfalls
+
+- `outline: none` without a replacement is a WCAG 2.4.7 failure, not a style choice
+- Focus rings inside `overflow-hidden` ancestors get clipped — check the parent before blaming the ring
+- A modal focus trap must return focus to the trigger on close (B16 covers the command palette)
