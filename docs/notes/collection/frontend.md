@@ -51,6 +51,7 @@ hide:
 
 - [React Board](https://github.com/aditya0929/reactBoard) - Dashboard sample
 - [FinceptTerminal](https://github.com/Fincept-Corporation/FinceptTerminal) - QT Dashboard
+- [floorplan-3d](https://wy51ai.github.io/floorplan-3d/) - 单页 Three.js 户型装修 3D 设计器（拖动旋转/调整尺寸，纯 HTML 无构建，[GitHub](https://github.com/wy51ai/floorplan-3d)）
 
 ## GUI Libraries
 
