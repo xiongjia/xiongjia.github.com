@@ -1,31 +1,66 @@
 /*
  * Semantic design tokens.
  *
- * B1 ships the light values only, to prove the token layer works end to end
- * (`bg-primary`, `border-border`, ...). B5 adds the light/dark split plus the
- * persisted preference store, B6 adds multiple style presets that override a
- * subset of these tokens.
+ * The middle layer between the primitive palette (`palette.css`) and the utilities (`@theme
+ * inline`): `--primary` means "the brand surface", `--border` means "a divider line". Components
+ * only ever use this layer, so a mode or a style preset swaps values without touching a class.
+ *
+ * Modes are keyed off `data-theme` on `<html>`, which the bootstrap script in `index.html` sets
+ * before first paint (no flash). `:root` carries the light values as a fallback for the no-JS case.
+ * B6 adds `data-style` presets on top: a preset overrides a subset of these tokens, per mode.
  */
 
+/* Mode-independent token: the corner radius has no light/dark value. */
 :root {
-  --background: oklch(0.99 0.002 265);
-  --foreground: oklch(0.22 0.015 265);
-  --card: oklch(1 0 0);
-  --card-foreground: var(--foreground);
-  --muted: oklch(0.96 0.004 265);
-  --muted-foreground: oklch(0.52 0.015 265);
-  --secondary: oklch(0.95 0.012 265);
-  --secondary-foreground: oklch(0.3 0.02 265);
-  --accent: oklch(0.93 0.02 265);
-  --primary: oklch(0.55 0.19 265);
-  --primary-foreground: oklch(0.99 0.002 265);
-  --destructive: oklch(0.58 0.2 25);
-  --destructive-foreground: oklch(0.99 0.002 265);
-  --border: oklch(0.9 0.006 265);
-  --ring: oklch(0.6 0.17 265);
   --radius: 0.625rem;
 }
 
+:root,
+[data-theme='light'] {
+  --background: var(--gray-50);
+  --foreground: var(--gray-800);
+  --card: var(--gray-0);
+  --card-foreground: var(--foreground);
+  --muted: var(--gray-100);
+  --muted-foreground: var(--gray-500);
+  --secondary: var(--gray-100);
+  --secondary-foreground: var(--gray-700);
+  --accent: var(--gray-200);
+  --primary: var(--blue-600);
+  --primary-foreground: var(--gray-50);
+  --destructive: var(--red-500);
+  --destructive-foreground: var(--gray-50);
+  --border: var(--gray-300);
+  --ring: var(--blue-500);
+
+  /* Native controls (scrollbars, form widgets, the canvas) follow the document, not the tokens. */
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  --background: var(--gray-950);
+  --foreground: var(--gray-100);
+  --card: var(--gray-900);
+  --card-foreground: var(--foreground);
+  --muted: var(--gray-800);
+  --muted-foreground: var(--gray-400);
+  --secondary: var(--gray-800);
+  --secondary-foreground: var(--gray-100);
+  --accent: var(--gray-700);
+  --primary: var(--blue-400);
+  --primary-foreground: var(--gray-950);
+  --destructive: var(--red-500);
+  --destructive-foreground: var(--gray-50);
+  --border: var(--gray-700);
+  --ring: var(--blue-400);
+
+  color-scheme: dark;
+}
+
+/*
+ * `@theme inline` maps semantic tokens to Tailwind utilities. `inline` keeps the `var(...)`
+ * reference in the generated CSS, so `bg-primary` follows a mode or style change at runtime.
+ */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

@@ -1,3 +1,4 @@
+import { I18nProvider } from '@/i18n/provider'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import { Layout } from './layout'
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
   },
 ])
 
+/** The provider wraps the router, so every route (and the shell) can read the locale. */
 export function App() {
-  return <RouterProvider router={router} />
+  return (
+    <I18nProvider>
+      <RouterProvider router={router} />
+    </I18nProvider>
+  )
 }

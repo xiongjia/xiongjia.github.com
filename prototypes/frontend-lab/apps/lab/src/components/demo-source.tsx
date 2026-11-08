@@ -1,6 +1,8 @@
 import type { Demo } from '@/generated/demo-registry'
 import { Suspense, use, useEffect, useState } from 'react'
 
+import { useI18n } from '../i18n/use-i18n'
+
 /** One promise per demo: re-rendering the panel must not re-fetch the raw file. */
 const cache = new Map<string, Promise<string>>()
 
@@ -15,6 +17,7 @@ function loadSource(demo: Demo): Promise<string> {
 
 function CopyButton({ text }: { text: string }) {
   const [status, setStatus] = useState<'idle' | 'copied' | 'failed'>('idle')
+  const { t } = useI18n()
 
   useEffect(() => {
     if (status === 'idle') return
@@ -35,8 +38,8 @@ function CopyButton({ text }: { text: string }) {
       onClick={copy}
       className="rounded-md border border-border px-2.5 py-1.5 text-xs outline-none hover:bg-muted focus-visible:ring-2 focus-visible:ring-ring"
     >
-      {status === 'copied' ? 'Copied' : status === 'failed' ? 'Copy failed' : 'Copy'}
-      <span className="sr-only"> source of the demo</span>
+      {status === 'copied' ? t.demo.copied : status === 'failed' ? t.demo.copyFailed : t.demo.copy}
+      <span className="sr-only"> {t.demo.copyTarget}</span>
     </button>
   )
 }
@@ -60,8 +63,10 @@ function SourceCode({ demo }: { demo: Demo }) {
 }
 
 export function DemoSource({ demo }: { demo: Demo }) {
+  const { t } = useI18n()
+
   return (
-    <Suspense fallback={<p className="text-sm text-muted-foreground">Loading source…</p>}>
+    <Suspense fallback={<p className="text-sm text-muted-foreground">{t.demo.loadingSource}</p>}>
       <SourceCode demo={demo} />
     </Suspense>
   )

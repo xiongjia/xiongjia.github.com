@@ -1,15 +1,16 @@
 import { Link } from 'react-router-dom'
 
+import { useI18n } from '../../i18n/use-i18n'
+
 export function NotFoundRoute() {
+  const { t } = useI18n()
+
   return (
     <div className="space-y-3">
-      <h1 className="text-xl font-semibold">Page not found</h1>
-      <p className="text-sm text-muted-foreground">
-        There is no page at this path. Content pages are generated from <code>content/</code>, so a
-        missing page usually means a typo in the URL or a deleted <code>.mdx</code> file.
-      </p>
+      <h1 className="text-xl font-semibold">{t.notFound.title}</h1>
+      <p className="text-sm text-muted-foreground">{t.notFound.body}</p>
       <Link to="/" className="text-sm font-medium text-primary underline underline-offset-4">
-        Back to home
+        {t.notFound.back}
       </Link>
     </div>
   )

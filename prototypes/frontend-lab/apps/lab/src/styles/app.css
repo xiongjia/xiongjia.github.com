@@ -1,6 +1,14 @@
 @import 'tailwindcss';
+@import '../../../../packages/ui/src/styles/palette.css';
 @import '../../../../packages/ui/src/styles/tokens.css';
+@import '../../../../packages/ui/src/styles/styles.css';
 @import './mdx.css';
+
+/*
+ * `dark:` utilities follow the `data-theme` attribute the bootstrap script sets, not the OS media
+ * query directly: the user's persisted choice has to win over the system preference.
+ */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 html,
 body,
@@ -10,6 +18,8 @@ body,
 
 body {
   margin: 0;
+  background: var(--background);
+  color: var(--foreground);
   font-family:
     ui-sans-serif,
     system-ui,

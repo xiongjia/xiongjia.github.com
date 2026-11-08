@@ -1,0 +1,51 @@
+---
+title: Color modes
+summary: One attribute on the html element, a bootstrap script that beats the first paint, and a persisted choice.
+order: 30
+---
+
+## The switch
+
+Everything hangs off a single attribute:
+
+```html
+<html data-theme="dark"></html>
+```
+
+`tokens.css` defines the light values on `:root` and overrides the same tokens under
+`[data-theme='dark']`. No component checks the mode, no context is needed, and every demo follows
+for free because they all read semantic tokens.
+
+## No flash
+
+The preference lives in `localStorage` under `frontend-lab:theme`, but React is not running yet on
+the first paint. So `index.html` carries an inline script that reads the stored mode, resolves
+`system` through `prefers-color-scheme`, and stamps `data-theme` before the stylesheet is applied:
+
+```js
+var stored = localStorage.getItem('frontend-lab:theme')
+var dark =
+  stored === 'dark' ||
+  (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+```
+
+`useTheme()` then owns the attribute for the rest of the session: it persists the choice, re-applies
+it when the OS preference changes in `system` mode, and the `storage` event keeps other tabs honest.
+
+## Details that are easy to miss
+
+- `color-scheme: light | dark` is set per mode, so scrollbars, form controls and the canvas match —
+  the tokens alone do not repaint native widgets
+- `@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *))` makes `dark:`
+  utilities follow the attribute instead of the media query; the user's choice has to win
+- The dark values are not inverted light values: surfaces get lighter as they come forward
+  (`--card` above `--background`), and the brand colour moves up the ramp so it keeps contrast
+- A first visit defaults to `system`, so the lab matches the rest of the desktop before the user has
+  expressed any preference
+
+## Verifying it
+
+The mode is DOM state, so it is assertable: dump `document.documentElement.dataset.theme`, read the
+computed `--background` in both modes, reload and confirm both survive. A screenshot would only show
+the happy path.

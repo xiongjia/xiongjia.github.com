@@ -5,14 +5,14 @@ import { fileURLToPath } from 'node:url'
 import type { Plugin } from 'vite'
 
 import {
+  defaultLocale,
   importSpecifier,
   labRoot,
+  locales,
   quote,
-  readFrontmatterFile,
-  readOrder,
-  readText,
-  renderSummary,
+  requireFrontmatterFile,
   titleize,
+  type Locale,
 } from './frontmatter.ts'
 import { createIndexPlugin } from './index-plugin.ts'
 
@@ -24,12 +24,13 @@ import { createIndexPlugin } from './index-plugin.ts'
  *
  *   demos/foundations/button-variants/
  *   ├── demo.tsx
- *   └── notes.mdx
+ *   ├── notes.mdx        English write-up + labels
+ *   └── notes.zh.mdx     Chinese write-up + labels (optional)
  *
- * The folder path becomes the slug (`foundations/button-variants` -> `/demos/foundations/button-variants`),
- * the top-level folder becomes the group, and `notes.mdx` frontmatter supplies the label. Everything
- * is lazy: component, raw source and notes are separate dynamic imports, so a page only pays for the
- * demo it opens.
+ * The folder path becomes the slug (`foundations/button-variants` ->
+ * `/demos/foundations/button-variants`), the top-level folder becomes the group, and each locale's
+ * notes supply that locale's label. Everything is lazy: component, raw source and each locale's
+ * notes are separate dynamic imports, so a page only pays for what it opens.
  */
 
 export const defaultDemosDir = path.join(labRoot, 'demos')
@@ -39,17 +40,26 @@ export const defaultOutFile = path.join(labRoot, 'src/generated/demo-registry.ts
 const ROOT_GROUP_ID = 'general'
 
 const DEMO_FILE = 'demo.tsx'
-const NOTES_FILE = 'notes.mdx'
+
+/** Locale-independent file name of the write-up for a locale. */
+export function notesFileName(locale: Locale): string {
+  return locale === defaultLocale ? 'notes.mdx' : `notes.${locale}.mdx`
+}
+
+/** One locale of a demo, as the generator sees it. */
+export type DemoLocaleSource = {
+  title: string
+  summary: string
+  notesFile?: string
+}
 
 /** One demo folder, as the generator sees it. */
-export type DemoEntry = {
+export type DemoSource = {
   slug: string
-  title: string
-  summary?: string
   order: number
   group: string
   demoFile: string
-  notesFile?: string
+  locales: { en: DemoLocaleSource; zh?: DemoLocaleSource }
 }
 
 export type GenerateOptions = {
@@ -57,22 +67,29 @@ export type GenerateOptions = {
   outFile?: string
 }
 
-function compareDemos(a: DemoEntry, b: DemoEntry): number {
+function compareDemos(a: DemoSource, b: DemoSource): number {
   if (a.group !== b.group) return a.group.localeCompare(b.group)
   if (a.order !== b.order) return a.order - b.order
-  return a.title.localeCompare(b.title)
+  return a.locales.en.title.localeCompare(b.locales.en.title)
 }
 
 /** Find every folder that contains a `demo.tsx`; nested folders are not descended into. */
-async function findDemoDirs(dir: string): Promise<{ file: string; notes: boolean }[]> {
+async function findDemoDirs(
+  dir: string,
+): Promise<{ file: string; notes: Partial<Record<Locale, string>> }[]> {
   const entries = await readdir(dir, { withFileTypes: true })
   const names = new Set(entries.filter((entry) => entry.isFile()).map((entry) => entry.name))
 
   if (names.has(DEMO_FILE)) {
-    return [{ file: path.join(dir, DEMO_FILE), notes: names.has(NOTES_FILE) }]
+    const notes: Partial<Record<Locale, string>> = {}
+    for (const locale of locales) {
+      const name = notesFileName(locale)
+      if (names.has(name)) notes[locale] = path.join(dir, name)
+    }
+    return [{ file: path.join(dir, DEMO_FILE), notes }]
   }
 
-  const found: { file: string; notes: boolean }[] = []
+  const found: { file: string; notes: Partial<Record<Locale, string>> }[] = []
   for (const entry of entries.sort((a, b) => a.name.localeCompare(b.name))) {
     if (!entry.isDirectory()) continue
     found.push(...(await findDemoDirs(path.join(dir, entry.name))))
@@ -81,28 +98,39 @@ async function findDemoDirs(dir: string): Promise<{ file: string; notes: boolean
 }
 
 /** Read every demo folder under `demosDir` and return its metadata, sorted for the sidebar. */
-export async function scanDemos(demosDir: string = defaultDemosDir): Promise<DemoEntry[]> {
+export async function scanDemos(demosDir: string = defaultDemosDir): Promise<DemoSource[]> {
   const found = await findDemoDirs(demosDir)
 
   const demos = await Promise.all(
-    found.map(async ({ file, notes }): Promise<DemoEntry> => {
+    found.map(async ({ file, notes }): Promise<DemoSource> => {
       const folder = path.dirname(file)
       const slug = path.relative(demosDir, folder).split(path.sep).join('/')
       const segments = slug.split('/')
       const folderName = segments.at(-1) ?? slug
       const group = segments.length > 1 ? String(segments[0]) : ROOT_GROUP_ID
-      const fallbackTitle = titleize(folderName) || folderName
-      const notesFile = notes ? path.join(folder, NOTES_FILE) : undefined
-      const data = notesFile ? await readFrontmatterFile(notesFile) : {}
+      const fallbackTitle = titleize(folderName)
+
+      const sources: { en: DemoLocaleSource; zh?: DemoLocaleSource } = {
+        en: { title: fallbackTitle, summary: '' },
+      }
+      const orders: Partial<Record<Locale, number>> = {}
+
+      for (const locale of locales) {
+        const notesFile = notes[locale]
+        if (!notesFile) continue
+        // Notes carry the label; the English write-up is required by the content check.
+        const { data } = await requireFrontmatterFile(notesFile)
+        sources[locale] = { title: data.title, summary: data.summary, notesFile }
+        orders[locale] = data.order
+      }
 
       return {
         slug,
-        title: readText(data.title) ?? fallbackTitle,
-        summary: readText(data.summary),
-        order: readOrder(data.order),
+        // English owns the sort key, like content pages.
+        order: orders.en ?? 0,
         group,
         demoFile: file,
-        notesFile,
+        locales: sources,
       }
     }),
   )
@@ -110,24 +138,36 @@ export async function scanDemos(demosDir: string = defaultDemosDir): Promise<Dem
   return demos.sort(compareDemos)
 }
 
+/** Render one locale property of a demo (indented for the generated module). */
+function renderLocale(key: Locale, entry: DemoLocaleSource, outFile: string): string {
+  const notes = entry.notesFile
+    ? `\n        loadNotes: () => import(${importSpecifier(outFile, entry.notesFile)}),`
+    : ''
+
+  return `      ${key}: {
+        title: ${quote(entry.title)},
+        summary: ${quote(entry.summary)},${notes}
+      },`
+}
+
 /** Render the generated `demo-registry.ts` source for the given demos. */
 export function renderRegistry(
-  demos: DemoEntry[],
+  demos: DemoSource[],
   { outFile = defaultOutFile }: GenerateOptions = {},
 ): string {
   const groupIds = [...new Set(demos.map((demo) => demo.group))]
 
   const demoEntries = demos.map((demo) => {
-    const notes = demo.notesFile
-      ? `\n    loadNotes: () => import(${importSpecifier(outFile, demo.notesFile)}),`
-      : ''
+    const zh = demo.locales.zh ? `\n${renderLocale('zh', demo.locales.zh, outFile)}` : ''
     return `  {
     slug: ${quote(demo.slug)},
-    title: ${quote(demo.title)},${renderSummary(demo.summary)}
     order: ${demo.order},
     group: ${quote(demo.group)},
     load: () => import(${importSpecifier(outFile, demo.demoFile)}),
-    loadSource: () => import(${importSpecifier(outFile, demo.demoFile, '?raw')}),${notes}
+    loadSource: () => import(${importSpecifier(outFile, demo.demoFile, '?raw')}),
+    locales: {
+${renderLocale('en', demo.locales.en, outFile)}${zh}
+    },
   },`
   })
 
@@ -145,21 +185,30 @@ export function renderRegistry(
 
 import type { ComponentType } from 'react'
 
+export type Locale = ${locales.map((locale) => quote(locale)).join(' | ')}
+
+export const locales: Locale[] = [${locales.map((locale) => quote(locale)).join(', ')}]
+
+export type DemoLocaleEntry = {
+  title: string
+  summary: string
+  /** The write-up for this locale; absent until the translation exists. */
+  loadNotes?: () => Promise<{ default: ComponentType }>
+}
+
 export type Demo = {
   /** Folder path inside \`demos/\`, e.g. \`foundations/button-variants\`. */
   slug: string
-  title: string
-  summary?: string
-  /** Sort key inside the group. */
+  /** Sort key inside the group; always taken from the English notes. */
   order: number
   /** Top-level folder inside \`demos/\`. */
   group: string
-  /** The demo component (\`demo.tsx\` default export). */
+  /** The demo component (\`demo.tsx\` default export) — code is not localised. */
   load: () => Promise<{ default: ComponentType }>
   /** Raw \`demo.tsx\` text for the Source tab. */
   loadSource: () => Promise<{ default: string }>
-  /** The write-up (\`notes.mdx\`); absent when a demo has no notes yet. */
-  loadNotes?: () => Promise<{ default: ComponentType }>
+  /** Per-locale labels and write-ups. */
+  locales: { en: DemoLocaleEntry; zh?: DemoLocaleEntry }
 }
 
 export type DemoGroup = {
@@ -189,7 +238,7 @@ export function findDemoGroup(id: string): DemoGroup | undefined {
 /** Scan `demos/` and write the generated registry module. */
 export async function writeDemoRegistry(
   options: GenerateOptions = {},
-): Promise<{ demos: DemoEntry[]; outFile: string }> {
+): Promise<{ demos: DemoSource[]; outFile: string }> {
   const demosDir = options.demosDir ?? defaultDemosDir
   const outFile = options.outFile ?? defaultOutFile
   const demos = await scanDemos(demosDir)

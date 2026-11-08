@@ -1,0 +1,54 @@
+/*
+ * Primitive palette.
+ *
+ * These are raw colours with names that describe the colour, not its job: `--blue-600` says nothing
+ * about buttons, links or focus rings. Only `tokens.css` is allowed to reference them; components
+ * and MDX use the semantic layer (`bg-primary`, `text-muted-foreground`, ...).
+ *
+ * Why a separate file: a style preset (B6) re-points semantic tokens at different primitives, and a
+ * palette swap only ever touches this file.
+ */
+
+:root {
+  /* Neutral ramp, light -> dark. A touch of chroma keeps the greys from looking dead next to blue. */
+  --gray-0: oklch(1 0 0);
+  --gray-50: oklch(0.99 0.002 265);
+  --gray-100: oklch(0.965 0.004 265);
+  --gray-200: oklch(0.93 0.006 265);
+  --gray-300: oklch(0.88 0.008 265);
+  --gray-400: oklch(0.72 0.012 265);
+  --gray-500: oklch(0.56 0.015 265);
+  --gray-600: oklch(0.44 0.016 265);
+  --gray-700: oklch(0.33 0.018 265);
+  --gray-800: oklch(0.25 0.016 265);
+  --gray-900: oklch(0.19 0.014 265);
+  --gray-950: oklch(0.13 0.01 265);
+
+  /* Brand ramp. */
+  --blue-400: oklch(0.68 0.16 265);
+  --blue-500: oklch(0.6 0.18 265);
+  --blue-600: oklch(0.55 0.19 265);
+  --blue-700: oklch(0.48 0.18 265);
+
+  /* Destructive ramp. */
+  --red-500: oklch(0.58 0.2 25);
+  --red-600: oklch(0.52 0.19 25);
+
+  /* Warm neutral ramp + amber brand, used by the `warm` style preset. */
+  --warm-50: oklch(0.985 0.006 75);
+  --warm-100: oklch(0.965 0.012 75);
+  --warm-200: oklch(0.93 0.02 75);
+  --warm-300: oklch(0.87 0.028 70);
+  --warm-400: oklch(0.72 0.03 70);
+  --warm-500: oklch(0.56 0.03 65);
+  --warm-600: oklch(0.45 0.03 60);
+  --warm-700: oklch(0.35 0.025 55);
+  --warm-800: oklch(0.27 0.02 50);
+  --warm-900: oklch(0.21 0.015 50);
+  --warm-950: oklch(0.14 0.012 45);
+
+  --amber-400: oklch(0.83 0.14 75);
+  --amber-500: oklch(0.76 0.15 70);
+  --amber-600: oklch(0.67 0.15 60);
+  --amber-700: oklch(0.58 0.14 55);
+}

@@ -1,0 +1,27 @@
+---
+title: Color tokens
+summary: Every semantic token, its resolved value, and the mode each one was computed for.
+order: 30
+---
+
+## What this proves
+
+The mode is one attribute on `<html>`, and the tokens above are re-read from the cascade after
+every switch. Nothing in this demo listens to a theme context — the stylesheet did the work.
+
+## Decisions
+
+- **The demo reads the DOM, not a hook.** A demo folder must stay self-contained, so it observes
+  `data-theme` with a `MutationObserver` and reads values with `getComputedStyle`. That is also the
+  contract a stylesheet sees, which makes it the honest seam to test.
+- **Values are printed, not described.** A `oklch(...)` string next to each swatch means the page
+  can be asserted from the DOM: a test compares the two modes instead of trusting a screenshot.
+- **All fourteen semantic tokens, no primitives.** If a swatch is missing here, the UI cannot use
+  it; the palette layer stays invisible by design.
+
+## Pitfalls
+
+- `getComputedStyle` returns the computed value of `var(--x)`, not the token name — assert on the
+  swatch's `background-color` if you need to verify the mapping instead of the value
+- Reading tokens during render is fine for display, but a component that _stores_ them will hold a
+  stale colour after a mode switch

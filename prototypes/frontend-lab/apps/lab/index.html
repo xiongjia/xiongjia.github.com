@@ -4,6 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Frontend Lab</title>
+    <script>
+      /*
+       * Display bootstrap: resolve the persisted mode and style preset before the stylesheet and
+       * before first paint, so the first frame is already correct — React mounts later without a
+       * flash of the wrong theme. Kept in sync with `src/prefs/{theme,style}.ts`; a value that is
+       * not in the accepted list falls back to the default instead of propagating junk.
+       */
+      ;(function () {
+        var root = document.documentElement
+        var theme = 'light'
+        var style = 'default'
+
+        try {
+          var storedTheme = localStorage.getItem('frontend-lab:theme')
+          var mode = storedTheme === 'light' || storedTheme === 'dark' ? storedTheme : 'system'
+          var dark =
+            mode === 'dark' ||
+            (mode === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+          theme = dark ? 'dark' : 'light'
+
+          var storedStyle = localStorage.getItem('frontend-lab:style')
+          if (['default', 'sharp', 'warm', 'mono'].indexOf(storedStyle) >= 0) style = storedStyle
+
+          var storedLocale = localStorage.getItem('frontend-lab:locale')
+          if (storedLocale === 'zh') root.lang = 'zh-CN'
+        } catch (error) {
+          /* storage unavailable: keep the defaults */
+        }
+
+        root.dataset.theme = theme
+        root.dataset.style = style
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>

@@ -11,14 +11,17 @@
     "dev": "pnpm --filter @frontend-lab/lab dev",
     "generate": "pnpm --filter @frontend-lab/lab generate",
     "content:index": "pnpm --filter @frontend-lab/lab content:index",
+    "content:check": "pnpm --filter @frontend-lab/lab content:check",
     "demos:index": "pnpm --filter @frontend-lab/lab demos:index",
     "build": "pnpm --filter @frontend-lab/lab build",
     "preview": "pnpm --filter @frontend-lab/lab preview",
+    "test": "pnpm --filter @frontend-lab/lab test",
     "typecheck": "pnpm -r --if-present typecheck",
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "check": "pnpm typecheck && pnpm lint && pnpm format:check"
+    "check": "pnpm typecheck && pnpm content:check && pnpm style:check && pnpm lint && pnpm format:check && pnpm test",
+    "style:check": "pnpm --filter @frontend-lab/lab style:check"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

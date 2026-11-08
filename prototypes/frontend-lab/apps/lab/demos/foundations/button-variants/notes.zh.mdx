@@ -1,0 +1,25 @@
+---
+title: 按钮变体
+summary: 一个组件、一张变体矩阵，以及允许调用方覆盖默认值的类名合并。
+---
+
+## 证明了什么
+
+`Button` 持有基础样式和 `variant` / `size` 矩阵，调用方依然能覆盖任意工具类。这两件事都靠
+`cn()` 才安全。
+
+## 决策
+
+- **变体是记录，不是三元表达式链。** `Record<ButtonVariant, string>` 让新增变体在未写样式时变成
+  编译错误 —— 不会静默落到基础类。
+- **`cn()` 是 clsx + tailwind-merge。** clsx 处理条件类名；tailwind-merge 处理冲突
+  （`bg-primary` + `bg-accent` → `bg-accent`）。少了合并这步，胜出者取决于 CSS 顺序，这正是那类
+  只在生产环境出现的 bug。
+- **覆盖示例才是重点。** `Button variant="primary" className="bg-accent"` 只渲染 `bg-accent`。
+  “实时按钮上的类名”一行把 DOM 读回来，所以合并结果是被看到的，而不是被假设的。
+- **禁用态用 `disabled:opacity-50` + `pointer-events-none`。** 这里没法保留悬停环：`disabled`
+  按钮不可聚焦，指针是最后一点可用的提示。
+
+## 下一步
+
+B6 加入样式预设：同样的 `variant` 字符串，背后是不同的令牌。组件 API 不需要为此改动。

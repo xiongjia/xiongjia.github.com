@@ -1,0 +1,31 @@
+---
+title: 焦点与键盘
+summary: 为什么每个可交互元素都要有可见的焦点环，以及如何在不和浏览器较劲的前提下做到。
+---
+
+键盘用户靠焦点在页面上移动，所以焦点是功能，不是样式装饰。实验室的规则很直接：每个可交互元素
+都有可见的焦点环，去掉默认样式就必须给出替代方案。
+
+## 模式
+
+```tsx
+className={cn(
+  'rounded-md outline-none',
+  'focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2',
+)}
+```
+
+- `outline-none` 在所有浏览器上关掉平台默认样式，因此替代方案必须存在
+- 用 `focus-visible` 而不是 `focus`：鼠标点击保持安静，键盘导航才有环
+- `ring-offset-2` 让环在填充色按钮上依然清晰
+
+## 怎么验证
+
+键盘路径没法靠盯截图确认。逐个 Tab 过去，断言 DOM 状态：示例页把 `aria-pressed` 暴露出来，
+无头 `--dump-dom` 就能同时确认状态和环的类名。
+
+## 坑
+
+- 只写 `outline: none` 而不给替代方案，是 WCAG 2.4.7 的失败，不是审美选择
+- `overflow-hidden` 的祖先会裁掉焦点环，先检查父元素再怀疑工具类
+- 模态的焦点陷阱必须在关闭时把焦点还给触发它的元素（命令面板见 B16）
