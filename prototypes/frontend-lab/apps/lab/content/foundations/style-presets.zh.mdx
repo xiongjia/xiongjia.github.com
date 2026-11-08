@@ -1,0 +1,43 @@
+---
+title: 样式预设
+summary: 样式是第二层令牌，并且由检查脚本来校验，而不是靠信任。
+---
+
+## 分层
+
+```text
+palette.css   --gray-300、--blue-600、--amber-500    原始值
+tokens.css    --border、--primary、--radius          随模式变化的语义
+styles.css    [data-style='warm'] { --primary: ... } 预设覆盖
+@theme        bg-border、text-primary-foreground     工具类
+```
+
+预设只能重新指向已经存在的令牌。这条规则避免了第四层变成第二套设计系统：如果某个样式需要新的
+概念，这个概念属于语义层，那里每个样式都会拿到它的取值。
+
+## 新增一个预设
+
+1. 在 `palette.css` 里补上需要的原始色（或复用现有的）
+2. 在 `styles.css` 里加 `[data-style='<id>']` 块：每个模式一块，与模式无关的（`--radius`）放
+   普通块
+3. 把 id 加进 `apps/lab/src/prefs/style.ts` 的 `styleValues`
+4. 运行 `pnpm style:check`：未知令牌名、缺少 CSS 块、缺少预设登记、丢了暗色块、解析不到的
+   `var(--x)`，都会让它失败
+
+## 为什么不做成组件变体
+
+给按钮加 `variant="warm"` 会把矩阵乘到每个组件上，主题也就从令牌跑到了 TypeScript 里。预设层
+只保留一个事实来源：CSS 变量。组件与样式无关，这也是切换样式能带动所有示例，而不用改任何示例
+文件的原因。
+
+## 作用域
+
+预设只是选择器，所以可以作用于任意子树：
+
+```tsx
+<div data-style="warm" data-theme="dark">
+  <Button>蓝色页面里的琥珀色</Button>
+</div>
+```
+
+令牌演示就是这样同时展示四个预设的，也是实验室不需要 `StyleProvider` 的原因。

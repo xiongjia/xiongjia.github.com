@@ -1,0 +1,33 @@
+---
+title: Style playground
+summary: Four presets side by side, each scoped to its own subtree, plus the globally active one.
+order: 40
+---
+
+## What this proves
+
+A style preset is a second layer of semantic-token overrides keyed off `data-style`. Switching it
+re-points `--primary`, `--radius`, the neutral surfaces and the ring — so the shell, MDX pages and
+every demo change together, without any component knowing a style exists.
+
+## Decisions
+
+- **Presets override tokens, not components.** No `style` prop, no context, no variant explosion:
+  the same `Button` renders blue, amber or greyscale depending on the nearest `[data-style]`.
+- **Scoping falls out for free.** Each card above sets `data-style` on a plain `div`, so the demo
+  can show all four presets at once while the site keeps its global choice.
+- **The `[data-style][data-theme]` selectors are compound on purpose.** They out-rank the mode-only
+  blocks in `tokens.css` regardless of import order, so a preset can never half-apply.
+- **`sharp` only overrides `--radius`.** A preset must state how it differs; it does not have to
+  restate colours it keeps. The check accepts a mode-independent block as covering both modes.
+- **The resolved radius is printed.** Corners are the hardest visual difference to assert from a
+  screenshot, and `getComputedStyle` gives an exact string.
+
+## Pitfalls
+
+- A preset that forgets the dark block silently keeps light colours in dark mode — the style check
+  compares preset blocks per mode, not just per token
+- `@theme inline` means utilities read `var(--token)`; a preset written against `--color-*` instead
+  of the semantic name would compile and then do nothing
+- Scoped presets also re-declare `color-scheme`, so native controls inside a scoped card follow the
+  card, not the page

@@ -7,13 +7,13 @@ import type { Plugin } from 'vite'
 import {
   importSpecifier,
   labRoot,
+  locales,
   quote,
-  readFrontmatterFile,
-  readOrder,
-  readText,
-  renderSummary,
+  requireFrontmatterFile,
+  splitLocalePath,
   titleize,
   walkFiles,
+  type Locale,
 } from './frontmatter.ts'
 import { createIndexPlugin } from './index-plugin.ts'
 
@@ -24,10 +24,14 @@ import { createIndexPlugin } from './index-plugin.ts'
  * module scans the folder, reads each file's frontmatter and writes a typed module
  * (`src/generated/content-index.ts`) that the sidebar, the home page and the router consume.
  *
+ * Localisation is file-based: `design-tokens.mdx` is English, `design-tokens.zh.mdx` is the
+ * Chinese sibling of the same page. Both land on one slug with per-locale metadata and per-locale
+ * lazy imports, so switching language swaps the MDX chunk without touching the registry.
+ *
  * Runs in three places:
  *   - `vite` dev/build, through `contentIndexPlugin()`
  *   - `pnpm content:index`, as a CLI (so `tsc --noEmit` always sees the file)
- *   - (B4) content checks, which will reuse `scanContent()`
+ *   - `plugins/content-check.ts`, which reuses `scanContent()` to prove the frontmatter is valid
  */
 
 export const defaultContentDir = path.join(labRoot, 'content')
@@ -36,14 +40,21 @@ export const defaultOutFile = path.join(labRoot, 'src/generated/content-index.ts
 /** Group id used for pages that sit directly in `content/`. */
 const ROOT_GROUP_ID = 'general'
 
-/** One MDX page, as the app sees it. */
-export type ContentPage = {
-  /** Route path without extension: `foundations/design-tokens` -> `/foundations/design-tokens`. */
-  slug: string
+/** One locale of a page, as the generator sees it. */
+export type LocaleSource = {
   title: string
-  summary?: string
+  summary: string
+  order: number
+  file: string
+}
+
+/** One MDX page (all its locales), as the generator sees it. */
+export type ContentPageSource = {
+  /** Route path without extension or locale: `foundations/design-tokens`. */
+  slug: string
   order: number
   group: string
+  locales: { en: LocaleSource; zh?: LocaleSource }
 }
 
 export type GenerateOptions = {
@@ -51,55 +62,88 @@ export type GenerateOptions = {
   outFile?: string
 }
 
-function comparePages(a: ContentPage, b: ContentPage): number {
+function comparePages(a: ContentPageSource, b: ContentPageSource): number {
   if (a.group !== b.group) return a.group.localeCompare(b.group)
   if (a.order !== b.order) return a.order - b.order
-  return a.title.localeCompare(b.title)
+  return a.locales.en.title.localeCompare(b.locales.en.title)
 }
 
-/** Read every `.mdx` file under `contentDir` and return its metadata, sorted for the sidebar. */
-export async function scanContent(contentDir: string = defaultContentDir): Promise<ContentPage[]> {
+/** Read every `.mdx` file under `contentDir` and group it by slug and locale. */
+export async function scanContent(
+  contentDir: string = defaultContentDir,
+): Promise<ContentPageSource[]> {
   const files = await walkFiles(contentDir, ['.mdx'])
 
-  const pages = await Promise.all(
-    files.map(async (file): Promise<ContentPage> => {
-      const relativePath = path.relative(contentDir, file).split(path.sep).join('/')
-      const slug = relativePath.replace(/\.mdx$/, '')
-      const segments = slug.split('/')
-      const fileName = segments.at(-1) ?? slug
-      const fallbackTitle = titleize(fileName) || fileName
-      const group = segments.length > 1 ? String(segments[0]) : ROOT_GROUP_ID
+  type PageEntries = { group: string; locales: Partial<Record<Locale, LocaleSource>> }
+  const entries = new Map<string, PageEntries>()
 
-      const data = await readFrontmatterFile(file)
+  for (const file of files) {
+    const relativePath = path.relative(contentDir, file).split(path.sep).join('/')
+    const { baseSlug, locale } = splitLocalePath(relativePath.replace(/\.mdx$/, ''))
+    const segments = baseSlug.split('/')
+    const group = segments.length > 1 ? String(segments[0]) : ROOT_GROUP_ID
 
-      return {
-        slug,
-        title: readText(data.title) ?? fallbackTitle,
-        summary: readText(data.summary),
-        order: readOrder(data.order),
-        group,
-      }
-    }),
-  )
+    // Throws on invalid frontmatter: the schema is the contract, not a suggestion.
+    const { data } = await requireFrontmatterFile(file)
+
+    const entry = entries.get(baseSlug) ?? { group, locales: {} }
+    entry.locales[locale] = {
+      title: data.title,
+      summary: data.summary,
+      order: data.order,
+      file,
+    }
+    entries.set(baseSlug, entry)
+  }
+
+  const pages: ContentPageSource[] = []
+  for (const [slug, entry] of entries) {
+    const en = entry.locales.en
+    if (!en) {
+      throw new Error(
+        `Missing English page for '${slug}': every locale needs a base .mdx file (found: ${locales
+          .filter((locale) => entry.locales[locale])
+          .join(', ')})`,
+      )
+    }
+
+    pages.push({
+      slug,
+      // English owns the sort key; a translated file never moves the sidebar on its own.
+      order: en.order,
+      group: entry.group,
+      locales: { en, zh: entry.locales.zh },
+    })
+  }
 
   return pages.sort(comparePages)
 }
 
+/** Render one locale property of a page (indented for the generated module). */
+function renderLocale(key: Locale, entry: LocaleSource, outFile: string): string {
+  return `      ${key}: {
+        title: ${quote(entry.title)},
+        summary: ${quote(entry.summary)},
+        load: () => import(${importSpecifier(outFile, entry.file)}),
+      },`
+}
+
 /** Render the generated `content-index.ts` source for the given pages. */
 export function renderIndex(
-  pages: ContentPage[],
-  { contentDir = defaultContentDir, outFile = defaultOutFile }: GenerateOptions = {},
+  pages: ContentPageSource[],
+  { outFile = defaultOutFile }: GenerateOptions = {},
 ): string {
   const groupIds = [...new Set(pages.map((page) => page.group))]
 
   const pageEntries = pages.map((page) => {
-    const file = path.join(contentDir, `${page.slug}.mdx`)
+    const zh = page.locales.zh ? `\n${renderLocale('zh', page.locales.zh, outFile)}` : ''
     return `  {
     slug: ${quote(page.slug)},
-    title: ${quote(page.title)},${renderSummary(page.summary)}
     order: ${page.order},
     group: ${quote(page.group)},
-    load: () => import(${importSpecifier(outFile, file)}),
+    locales: {
+${renderLocale('en', page.locales.en, outFile)}${zh}
+    },
   },`
   })
 
@@ -117,16 +161,26 @@ export function renderIndex(
 
 import type { ComponentType } from 'react'
 
+export type Locale = ${locales.map((locale) => quote(locale)).join(' | ')}
+
+export const locales: Locale[] = [${locales.map((locale) => quote(locale)).join(', ')}]
+
+export type ContentLocaleEntry = {
+  title: string
+  summary: string
+  /** The MDX module for this locale. */
+  load: () => Promise<{ default: ComponentType }>
+}
+
 export type ContentPage = {
   /** Route path without extension, e.g. \`foundations/design-tokens\`. */
   slug: string
-  title: string
-  summary?: string
-  /** Sort key inside the group. */
+  /** Sort key inside the group; always taken from the English file. */
   order: number
   /** Top-level folder inside \`content/\`. */
   group: string
-  load: () => Promise<{ default: ComponentType }>
+  /** English is always present; a translation is only present once its file exists. */
+  locales: { en: ContentLocaleEntry; zh?: ContentLocaleEntry }
 }
 
 export type ContentGroup = {
@@ -156,13 +210,13 @@ export function findContentGroup(id: string): ContentGroup | undefined {
 /** Scan `content/` and write the generated index module. */
 export async function writeContentIndex(
   options: GenerateOptions = {},
-): Promise<{ pages: ContentPage[]; outFile: string }> {
+): Promise<{ pages: ContentPageSource[]; outFile: string }> {
   const contentDir = options.contentDir ?? defaultContentDir
   const outFile = options.outFile ?? defaultOutFile
   const pages = await scanContent(contentDir)
 
   await mkdir(path.dirname(outFile), { recursive: true })
-  await writeFile(outFile, renderIndex(pages, { contentDir, outFile }), 'utf8')
+  await writeFile(outFile, renderIndex(pages, { outFile }), 'utf8')
 
   return { pages, outFile }
 }

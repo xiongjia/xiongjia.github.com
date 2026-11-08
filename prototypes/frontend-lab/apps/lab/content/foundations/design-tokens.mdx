@@ -9,20 +9,25 @@ Semantic tokens are the seam between "what the UI means" and "what a utility cla
 
 ## Three layers
 
-| Layer     | Lives in                            | Example      | Changes when                    |
-| --------- | ----------------------------------- | ------------ | ------------------------------- |
-| Primitive | `tokens.css` (B6 splits these out)  | `--blue-600` | the palette is re-drawn         |
-| Semantic  | `packages/ui/src/styles/tokens.css` | `--primary`  | a theme or style preset changes |
-| Utility   | `@theme inline` in the same file    | `bg-primary` | never — it only maps            |
+| Layer     | Lives in                             | Example      | Changes when                    |
+| --------- | ------------------------------------ | ------------ | ------------------------------- |
+| Primitive | `packages/ui/src/styles/palette.css` | `--blue-600` | the palette is re-drawn         |
+| Semantic  | `packages/ui/src/styles/tokens.css`  | `--primary`  | the mode or a style preset says |
+| Utility   | `@theme inline` in the same file     | `bg-primary` | never — it only maps            |
 
-The point of the split: the utility layer only ever references the semantic layer. That is what lets
-B5 (light/dark) and B6 (style presets) swap values without touching a single component.
+The point of the split: the utility layer only ever references the semantic layer, and only the
+semantic layer may reference the palette. That is what lets the light/dark modes and (B6) style
+presets swap values without touching a single component.
 
 ## The mapping
 
 ```css
 :root {
-  --primary: oklch(0.55 0.19 265);
+  --primary: var(--blue-600);
+}
+
+[data-theme='dark'] {
+  --primary: var(--blue-400);
 }
 
 @theme inline {

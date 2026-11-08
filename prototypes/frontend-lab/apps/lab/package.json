@@ -6,11 +6,14 @@
   "scripts": {
     "dev": "vite",
     "content:index": "node plugins/content-index.ts",
+    "content:check": "node plugins/content-check.ts",
     "demos:index": "node plugins/demo-registry.ts",
     "generate": "pnpm content:index && pnpm demos:index",
-    "build": "pnpm generate && tsc --noEmit && vite build",
+    "test": "node --test",
+    "build": "pnpm generate && pnpm content:check && pnpm style:check && tsc --noEmit && vite build",
     "preview": "vite preview",
-    "typecheck": "pnpm generate && tsc --noEmit"
+    "typecheck": "pnpm generate && tsc --noEmit",
+    "style:check": "node plugins/style-check.ts"
   },
   "dependencies": {
     "@frontend-lab/ui": "workspace:*",
@@ -30,6 +33,7 @@
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9.3",
     "vite": "^8.3.5",
-    "yaml": "^2.9.1"
+    "yaml": "^2.9.1",
+    "zod": "^4.6.7"
   }
 }

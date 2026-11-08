@@ -73,11 +73,14 @@ Python `.venv/`, Node `node_modules/`).
 
 - **[frontend-lab](./frontend-lab/README.md)** — Frontend Lab: an experiment lab for frontend
   techniques (not a component library, not a lighter Storybook), built batch by batch against a
-  17-batch roadmap in its README; pnpm workspace with `apps/lab` (React 19 + React Router 7 + Vite 8
-  + Tailwind v4, TS strict) and `packages/ui` (Button + `cn()` + semantic design tokens mapped into
-  Tailwind via `@theme inline`), app shell with sidebar/header/404 route, one interactive inline demo,
-  and a `pnpm check` gate (tsc + eslint + prettier); MDX content, demo registry, light/dark, style
-  presets and i18n are the next batches · created 2026-11-02 · status `experimental`
+  17-batch roadmap in its README (B1–B7 done); pnpm workspace with `apps/lab` (React 19 + React
+  Router 7 + Vite 8 + Tailwind v4, TS strict) and `packages/ui` (Button, SegmentedControl, `cn()`,
+  three token layers mapped into Tailwind via `@theme inline`); MDX content loop and demo registry
+  with generated indexes, light/dark theme with a persisted preference (no flash), four style
+  presets scoped by attribute, typed EN/中文 dictionaries with bilingual MDX and a
+  missing-translation badge; `pnpm check` gates all of it (Zod frontmatter, content/demo checks,
+  style-token check, ESLint boundary zones, prettier, `node:test`) · created 2026-11-02 · status
+  `experimental`
 
 ## Desktop
 

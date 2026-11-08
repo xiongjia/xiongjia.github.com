@@ -1,0 +1,47 @@
+---
+title: 配色模式
+summary: html 元素上的一个属性、一段抢在首帧之前执行的启动脚本，以及被持久化的选择。
+---
+
+## 开关
+
+一切都挂在一个属性上：
+
+```html
+<html data-theme="dark"></html>
+```
+
+`tokens.css` 在 `:root` 上定义亮色值，在 `[data-theme='dark']` 下覆盖同一批令牌。没有组件去判断
+当前模式，也不需要 context，所有示例因为只用语义令牌而自动跟随。
+
+## 不闪一下
+
+偏好存在 `localStorage` 的 `frontend-lab:theme` 里，但首帧时 React 还没跑起来。于是
+`index.html` 里放了一段内联脚本：读取已保存的模式，用 `prefers-color-scheme` 解析 `system`，
+在样式表生效之前就把 `data-theme` 写到 `<html>` 上：
+
+```js
+var stored = localStorage.getItem('frontend-lab:theme')
+var dark =
+  stored === 'dark' ||
+  (stored !== 'light' && window.matchMedia('(prefers-color-scheme: dark)').matches)
+document.documentElement.dataset.theme = dark ? 'dark' : 'light'
+```
+
+之后由 `useTheme()` 接管这个属性：持久化选择、在 `system` 模式下响应操作系统变化，并用
+`storage` 事件让其他标签页保持一致。
+
+## 容易漏掉的细节
+
+- `color-scheme: light | dark` 按模式设置，滚动条、表单控件和画布才会跟着变 —— 光有令牌不会
+  重绘原生控件
+- `@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *))` 让 `dark:` 工具类
+  跟随属性而不是媒体查询：用户的选择必须优先
+- 暗色不是亮色的反相：层级越靠前的表面越亮（`--card` 高于 `--background`），品牌色沿色阶上移
+  以保持对比度
+- 首次访问默认 `system`，在用户表达偏好之前先跟随桌面环境
+
+## 怎么验证
+
+模式是 DOM 状态，所以可断言：读取 `document.documentElement.dataset.theme`，分别在两种模式下读
+计算后的 `--background`，刷新后确认两者都还在。截图只能证明理想路径。

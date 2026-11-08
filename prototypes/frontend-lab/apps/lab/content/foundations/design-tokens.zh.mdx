@@ -1,0 +1,43 @@
+---
+title: 设计令牌
+summary: 语义化 CSS 变量，通过 @theme inline 映射成 Tailwind v4 的工具类。
+---
+
+语义令牌是「界面表达什么」与「工具类叫什么」之间的接缝。`bg-primary` 从不写死颜色：它读
+`--color-primary`，后者读 `--primary`。
+
+## 三层结构
+
+| 层   | 位置                                 | 例子         | 什么时候变         |
+| ---- | ------------------------------------ | ------------ | ------------------ |
+| 原始 | `packages/ui/src/styles/palette.css` | `--blue-600` | 重新绘制色板时     |
+| 语义 | `packages/ui/src/styles/tokens.css`  | `--primary`  | 模式或样式预设     |
+| 工具 | 同一文件里的 `@theme inline`         | `bg-primary` | 永不改变，只做映射 |
+
+分层的意义：工具层只引用语义层，也只有语义层可以引用原始色板。正因如此，明暗模式与（B6 的）
+样式预设才能在不碰任何组件的前提下整体换血。
+
+## 映射
+
+```css
+:root {
+  --primary: var(--blue-600);
+}
+
+[data-theme='dark'] {
+  --primary: var(--blue-400);
+}
+
+@theme inline {
+  --color-primary: var(--primary);
+}
+```
+
+`oklch()` 让明暗两条色阶在感知上更均匀，`@theme inline` 让 Tailwind 生成
+`background-color: var(--primary)` —— 产物里是 `var(...)`，而不是冻结的颜色值。
+
+## 经验规则
+
+- 优先用语义令牌；没有合适的就新增一个，而不是随手写死颜色
+- 组件里永远不要直接引用 `--color-*` 变量，用工具类
+- 组件变体（`size`、`variant`）只挑选令牌，不自己发明颜色

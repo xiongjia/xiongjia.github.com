@@ -1,0 +1,47 @@
+---
+title: Style presets
+summary: A style is a second token layer, checked against the semantic set instead of trusted.
+order: 40
+---
+
+## The layering
+
+```text
+palette.css   --gray-300, --blue-600, --amber-500      raw values
+tokens.css    --border, --primary, --radius            mode-aware semantics
+styles.css    [data-style='warm'] { --primary: ... }   preset overrides
+@theme        bg-border, text-primary-foreground       utilities
+```
+
+A preset may only re-point tokens that already exist. That one rule is what keeps the fourth layer
+from becoming a second design system: if a style needs a new concept, the concept belongs in the
+semantic layer, where every style gets a value for it.
+
+## Adding a preset
+
+1. Add the palette values it needs to `palette.css` (or reuse existing ones)
+2. Add `[data-style='<id>']` blocks to `styles.css`, one per mode, plus the mode-independent ones
+   (`--radius`) in a plain block
+3. Add the id to `styleValues` in `apps/lab/src/prefs/style.ts`
+4. Run `pnpm style:check` — it fails on an unknown token name, a preset without a CSS block, a CSS
+   block without a preset, a missing dark variant, or a `var(--x)` that does not resolve
+
+## Why not a component variant
+
+`variant="warm"` on a button would multiply the matrix by every component, and the theme would then
+live in TypeScript rather than in the tokens. The preset layer keeps one source of truth: the CSS
+variable. Components stay style-agnostic, which is also why switching a style updates the demos
+without touching a single demo file.
+
+## Scoping
+
+Because a preset is just a selector, it applies to any subtree:
+
+```tsx
+<div data-style="warm" data-theme="dark">
+  <Button>Amber in a blue page</Button>
+</div>
+```
+
+That is how the token playground shows four presets at once, and it is the reason the lab does not
+need a `StyleProvider`.

@@ -1,3 +1,5 @@
 export { Button } from './components/button'
 export type { ButtonProps, ButtonSize, ButtonVariant } from './components/button'
+export { SegmentedControl } from './components/segmented-control'
+export type { SegmentedControlProps, SegmentedOption } from './components/segmented-control'
 export { cn } from './lib/cn'
