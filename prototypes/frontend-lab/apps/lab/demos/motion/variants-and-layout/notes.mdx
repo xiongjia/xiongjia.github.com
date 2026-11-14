@@ -1,0 +1,48 @@
+---
+title: Variants and layout
+summary: Orchestration from the parent, position animation with `layout`, and exit animations with `AnimatePresence`.
+order: 10
+---
+
+## What this proves
+
+Motion is not "CSS with a JS API". Three of its features have no practical CSS equivalent: staggered
+orchestration declared once on the parent, `layout` animation of position changes, and unmount
+animations that keep an element alive until it finishes leaving.
+
+## Decisions
+
+- **Variants on the parent, states on the children.** `staggerChildren` lives in the list's `show`
+  variant; a child only names `hidden` / `show` / `exit`. Adding an item does not require touching
+  its transition, and re-timing the list is one number.
+- **`layout` on both the list and the items.** The parent keeps the measurement pass in one place;
+  the items animate their own boxes. Without the parent's `layout`, a reorder animates but the
+  surrounding gaps jump.
+- **`AnimatePresence` with `mode="popLayout"`.** Removal keeps the element mounted for its exit
+  animation _and_ takes it out of the flow immediately, so the remaining items slide up while the
+  removed one fades — the alternative (`mode="sync"`) delays the layout until the exit finishes.
+- **A spring for the entrance, a duration for the exit.** Springs are for things the user can
+  interrupt; an exit that must complete quickly is easier to reason about with a fixed duration.
+- **Reduced motion is a value, not a branch.** `useReducedMotion()` collapses the transition duration
+  to zero: the same components, the same end states, no movement.
+
+## Why `layout` is cheap
+
+Motion measures the element before and after the DOM change (`getBoundingClientRect`), then animates
+a transform from the old box to the new one. Nothing animates `height`, so there is no per-frame
+layout, and the trick composes with `AnimatePresence` because the element never leaves the DOM during
+the transition.
+
+## Pitfalls
+
+- `layout` on an element whose size changes because a sibling was removed produces a "squash"
+  unless `layout` is on the container too — measure the whole group, animate the parts.
+- `AnimatePresence` matches children by `key`; an index key makes removal animate the wrong item.
+- `whileHover={{ scale }}` on a list item conflicts with a text selection unless the item ignores
+  pointer select (`select-none`) — a detail a CSS `:hover` rule never has to think about.
+- Motion's `transition` prop on a child overrides the variant's transition. That is how reduced
+  motion is applied here without duplicating the variants.
+
+## Next
+
+Gestures: the same primitives (`whileHover`, `whileTap`) plus drag constraints and motion values.

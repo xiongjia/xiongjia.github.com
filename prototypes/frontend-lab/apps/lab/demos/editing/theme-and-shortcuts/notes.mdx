@@ -1,0 +1,52 @@
+---
+title: Themes and shortcuts
+summary: Compartments reconfigure a live editor, and Prec decides which keymap wins — both without rebuilding the view.
+order: 20
+---
+
+## What this proves
+
+Two things that look like "recreate the editor" are actually one dispatch: a **compartment** swaps
+an extension set (the theme, the read-only flags), and **precedence** decides which keymap handles a
+key. Neither touches the document, the selections or the undo history.
+
+## Decisions
+
+- **Theme as a compartment, not a prop on `EditorState.create`.** Rebuilding the state on a theme
+  change would be correct on the first frame and destructive on the second: undo stack gone,
+  selection gone, scroll position gone. `Compartment.reconfigure` replaces one extension in place.
+- **The token theme is the default, and it needs no mode prop.** Every colour is
+  `var(--primary)`, `var(--muted-foreground)`, `color-mix(… var(--primary) …)`, so the editor follows
+  `data-theme` and even the B6 style presets. `one-dark` is in the demo purely as the counter-example:
+  a packaged palette cannot follow a token.
+- **`Prec.highest` around the demo keymap.** The wrapper appends caller extensions last, and
+  CodeMirror resolves conflicts by precedence, so an unprefixed keymap would lose `Tab` to the
+  default `indentWithTab`. Precedence is a function of position, not of how "important" the binding
+  feels.
+- **`preventDefault: true` on the bindings.** `Tab` and `Mod-Enter` are browser shortcuts; returning
+  `true` from `run` tells CodeMirror the key was handled, `preventDefault` stops the browser from
+  also doing its thing (focus move, submit).
+- **Read-only is two extensions.** `EditorState.readOnly` blocks transactions, `EditorView.editable`
+  stops the DOM from accepting input. Only setting one of them leaves a confusing half-state:
+  an editor that accepts keystrokes and throws them away, or one that looks editable and is not.
+
+## Writing syntax colours as tokens
+
+`HighlightStyle.define([{ tag: tags.keyword, color: 'var(--primary)' }])` is enough, because the
+style is emitted as CSS and browsers resolve `var()` inside it. The consequence: one highlight style
+covers light, dark and every preset — and a preset author gets syntax colours for free.
+
+## Pitfalls
+
+- A keymap added through the `extensions` prop is **appended**, so it has lower precedence than the
+  defaults. That is the right default (callers usually extend) and the wrong one for overrides.
+- `run` returning `false` means "not handled" — the event continues to the next binding and then to
+  the browser. `Escape`-to-blur returns `false` here on purpose, so other `Escape` handlers
+  (autocomplete, search panel) still get their chance.
+- Compartments must be created once (`useRef`) and used with the same instance in `of()` and
+  `reconfigure()`. A fresh `new Compartment()` per render reconfigures nothing.
+
+## Next
+
+The third experiment computes decorations from a state field — the mechanism behind search
+highlighting, lint squiggles and inline widgets.

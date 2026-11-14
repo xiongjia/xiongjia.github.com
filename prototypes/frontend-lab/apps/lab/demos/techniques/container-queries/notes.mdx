@@ -1,0 +1,40 @@
+---
+title: Container queries
+summary: '@container beats sm: inside a column — the card follows its own width, not the window.'
+order: 10
+---
+
+## What this proves
+
+`sm:flex-row` asks how wide the _viewport_ is. `@sm:flex-row` asks how wide the _container_ is. In a
+column layout those two answers diverge, and the container query is the one the component author
+actually meant.
+
+## Decisions
+
+- **`@container` on a real wrapper, not on the card.** The query container has to be the element
+  whose width is measured. Putting `@container` on the card itself would measure the card after
+  layout, which is a self-reference the browser resolves to zero height, not the box the reader
+  sees.
+- **Both cards are rendered side by side on purpose.** A single card "working" proves nothing; the
+  dashed viewport card is the control that shows what happens without container queries.
+- **The width comes from a slider, the measurement from `ResizeObserver`.** The slider is the input,
+  the observed `contentRect` is the truth — the printed `measured` value is what the query actually
+  saw, so a clamp or a max-width cannot hide behind the declared number.
+- **Default container sizes are `rem`-based.** `@sm` is 24rem of container, not 640px of viewport,
+  so root font-size changes move both the card and the breakpoint together.
+- **Named containers (`@container/card`) are for nesting.** Without a name, a nested card answers to
+  its nearest container ancestor; with two levels of cards that is usually the wrong one.
+
+## Pitfalls
+
+- `container-type: inline-size` also creates a new containment context, so the container no longer
+  grows with its content in the inline direction. A container that must size to its content needs
+  `container-type: normal` — and then it cannot be queried.
+- `@container` is not a substitute for `sm:` when the layout _does_ depend on the window (a
+  full-width hero, for example). Pick the one that matches the question.
+
+## Next
+
+B10 wraps resizable panels around this: the panel is the container, and the cards inside stay
+correct while the split moves.

@@ -1,0 +1,52 @@
+---
+title: Tailwind deep dive
+summary: Five experiments that separate the utilities people memorise from the ones that change layout behaviour.
+order: 10
+---
+
+## Why this batch exists
+
+The lab already uses Tailwind v4 everywhere, so B8 is not an introduction: it is the set of features
+that a component library lives or dies by, each proved by a runnable demo with a written conclusion.
+
+| Experiment           | Question it answers                                                        |
+| -------------------- | -------------------------------------------------------------------------- |
+| Container queries    | Should this component answer to the window or to its own width?            |
+| `has-*` and `peer-*` | How much interaction state belongs in CSS instead of React?                |
+| Variant rules        | Which selector does a variant actually generate?                           |
+| Keyframes vs Motion  | When is a CSS animation the right tool, and when does interruption matter? |
+| Grid and subgrid     | How do rows stay aligned, and how do I stop fixing the track count?        |
+
+## The mental model
+
+Tailwind v4 compiles one CSS file from the utilities it finds, and a **variant is a selector
+template**. `sm:` is a media query, `@sm:` is a container query, `has-[…]:` is `:has(…)`,
+`data-[…]:` is an attribute selector, `*:` is `& > *`. Nearly every "how do I do X in Tailwind"
+question is really "which selector do I need", and the answer is usually a browser feature the
+utility is naming.
+
+Three consequences worth remembering:
+
+- **Container queries are the default for components, viewport queries for pages.** A card that
+  reflows because the window resized but its column did not is a bug, not a feature.
+- **Native state beats duplicated state.** `:invalid`, `:checked`, `open`, `aria-sort` already exist
+  in the DOM; `has-*`, `peer-*` and the state variants read them. React state is for data that does
+  not exist in the DOM.
+- **Matching specificity is not the goal; matching the DOM is.** `has-[input:invalid]` cannot drift
+  from validation the way a `useState` flag can, because there is only one source.
+
+## What the experiments changed in the lab
+
+- `styles/animations.css` now registers `--animate-kick`, because a demo folder may only contain
+  `demo.tsx` and its notes — a named keyframe animation belongs in the shared stylesheet.
+- `@container` is what B10's resizable panels rely on: the pane is the container.
+- The `data-state` contract in the variant experiment is the same one B11 and B12 use, which keeps
+  the CSS honest when a store, not a local `useState`, owns the state.
+
+## Limits
+
+- Every experiment is verified through the DOM: computed styles, `getAnimations()`, `matches()`. A
+  screenshot of a hover state would prove nothing about the selector.
+- Tailwind v4's variant list is still moving (`nth-*`, `in-*`, `not-*` arrived across minor
+  releases). The demos stick to variants that exist in the pinned version and fail loudly if they
+  do not — an unknown variant produces no CSS at all.

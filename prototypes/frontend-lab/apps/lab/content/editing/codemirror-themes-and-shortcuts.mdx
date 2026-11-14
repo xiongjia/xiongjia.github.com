@@ -1,0 +1,70 @@
+---
+title: Editor themes and shortcuts
+summary: Compartments reconfigure a live editor, precedence decides which keymap wins, and a token theme needs no mode prop.
+order: 20
+---
+
+## Reconfiguring, not rebuilding
+
+`Compartment` is the answer to "the theme changed, the editor is still open". One extension slot is
+created once, and a `reconfigure` effect swaps its contents:
+
+```ts
+const themeSlot = new Compartment()
+
+// creation
+EditorState.create({ extensions: [themeSlot.of(tokenTheme)] })
+
+// later
+view.dispatch({ effects: themeSlot.reconfigure(oneDark) })
+```
+
+The document, the selections, the scroll offset and the undo stack are untouched — the update cycle
+only recomputes the styles. Rebuilding the state instead produces an editor that looks right and has
+lost everything the user did.
+
+Try it: [themes and shortcuts](/demos/editing/theme-and-shortcuts).
+
+## Keymaps are a precedence problem
+
+`keymap.of([...])` contributes to a facet; when a key is pressed, the **first matching binding in the
+highest-precedence keymap** wins. Two practical consequences:
+
+- An extension passed in _after_ the defaults has lower precedence. `Tab` therefore still hits the
+  default `indentWithTab` unless the demo wraps its keymap in `Prec.highest(...)`.
+- `preventDefault: true` is separate from returning `true`. `run` returning `true` says "handled";
+  `preventDefault` says "and do not let the browser also do something" — both are needed for `Tab`
+  and `Mod-Enter`.
+
+Order inside a single `keymap.of` array still matters for ties; use it for related bindings, and
+precedence for overrides.
+
+## Themes as tokens
+
+The lab's editor theme is deliberately boring:
+
+```ts
+EditorView.theme({
+  '.cm-content': { caretColor: 'var(--primary)' },
+  '.cm-gutters': { backgroundColor: 'var(--muted)', color: 'var(--muted-foreground)' },
+})
+```
+
+Every value is a CSS variable from `tokens.css`, so the editor follows `data-theme` — and the B6
+style presets — with no mode prop, no `MutationObserver` and no second theme. Syntax colours work the
+same way, because `HighlightStyle` entries are emitted as CSS:
+
+```ts
+HighlightStyle.define([{ tag: tags.keyword, color: 'var(--primary)' }])
+```
+
+The one-dark theme in the demo exists as the counter-example: a packaged palette is a fixed list of
+hex values and cannot follow a token, which is visible the moment the header switches mode.
+
+## Read-only is two switches
+
+- `EditorState.readOnly` rejects transactions that change the document.
+- `EditorView.editable` removes the contenteditable behaviour from the DOM.
+
+Only one of them leaves a half-state: an editor that accepts keystrokes and throws them away, or one
+that looks editable and refuses to type. Both live in the same compartment as a pair.

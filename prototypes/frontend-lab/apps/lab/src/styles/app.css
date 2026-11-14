@@ -3,6 +3,7 @@
 @import '../../../../packages/ui/src/styles/tokens.css';
 @import '../../../../packages/ui/src/styles/styles.css';
 @import './mdx.css';
+@import './animations.css';
 
 /*
  * `dark:` utilities follow the `data-theme` attribute the bootstrap script sets, not the OS media

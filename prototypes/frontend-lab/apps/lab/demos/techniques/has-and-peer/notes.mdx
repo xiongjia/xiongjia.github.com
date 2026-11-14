@@ -1,0 +1,42 @@
+---
+title: 'has-* and peer-*'
+summary: Parent and sibling styling driven by native DOM state — validation, checkboxes and radio rows without a single conditional class.
+order: 20
+---
+
+## What this proves
+
+Four native states (`:invalid`, `:checked`, a sibling checkbox, the presence of a child element) are
+enough to build selection and validation UI. React keeps storing values, but **no React state
+decides a colour**: `has-[…]` and `peer-checked:` read the DOM directly, so the style cannot
+disagree with the element.
+
+## Decisions
+
+- **`has-*` for parents, `peer-*` for siblings.** `has-[input:invalid]` styles an ancestor from a
+  descendant; `peer-checked:block` styles a following sibling. Reaching for the wrong one is the
+  usual bug: a wrapper can only see descendants, a sibling can only see siblings.
+- **`group-has-[…]` instead of many `has-[…]` utilities.** The wrapper sets `group`, and both the
+  border and the helper text use the same condition — one place to change the rule.
+- **The radio row uses `has-[:checked]`, not `aria-pressed`.** Real radios already carry the state;
+  duplicating it in a class name means the CSS can fall out of sync after a form reset.
+- **`invalid:` on the input, `has-[input:invalid]` on the wrapper.** The state is read once by the
+  browser and inherited by every ancestor that asks, instead of being recomputed in JS on each
+  keystroke.
+- **`:has()` is also the reason the demo is honest.** The utility compiles to a selector the browser
+  evaluates; if it did not match, nothing would be styled. There is no JS fallback hiding a mistake.
+
+## Pitfalls
+
+- `:invalid` fires before the user touched the field: an empty `required` input is invalid on first
+  paint. `:user-invalid` is the variant that waits for interaction — but it also waits for a blur, so
+  a live counter demo cannot show it mid-typing.
+- `peer-*` only works for elements **after** the peer in DOM order, and the peer needs the `peer`
+  class. A `peer-checked:` on a wrapping `<div>` around the input silently never matches.
+- `has-[img]` re-evaluates on DOM changes. Hiding an image with `display: none` still counts — the
+  condition is about the element existing, not being visible.
+
+## Next
+
+B12's drag demos use the same idea with `data-*` attributes, which are cheaper to re-evaluate than
+`:has()` chains when a pointer moves every frame.

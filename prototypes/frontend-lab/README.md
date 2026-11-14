@@ -8,8 +8,8 @@ Core principle: **MDX explains, React components interact, single-library experi
 technique, composed demos prove a real scenario.**
 
 - Created: 2026-11-02
-- Status: `experimental` (Wave 2 reached at B7: shell, content loop, demo system, quality gates,
-  theme, style presets, i18n)
+- Status: `experimental` (Wave 3 reached at B12: shell, content loop, demo system, quality gates,
+  theme, style presets, i18n, plus the single-library experiments B8–B12)
 - Plan of record: the roadmap below (batches B1–B17). The discussion draft lives outside the repo.
 
 ## Quick start
@@ -28,7 +28,7 @@ pnpm preview        # serve the production build
 
 Requires Node >= 22.12 (`.nvmrc` pins 24) and pnpm 11.
 
-## What works today (B7)
+## What works today (B12)
 
 - pnpm workspace with one app (`apps/lab`) and one shared package (`packages/ui`)
 - React 19 + React Router 7 + Vite 8 + Tailwind v4, TypeScript strict
@@ -47,11 +47,24 @@ Requires Node >= 22.12 (`.nvmrc` pins 24) and pnpm 11.
   and a sidebar + home list derived from it — adding an `.mdx` file needs no code change
 - **Demo system**: demo folders under `demos/`, a generated registry, a Preview / Source / Notes shell
   (source is the real file, copyable), and a per-demo error boundary so one crash cannot take the page
-  down — five demos ship today
+  down — 20 demos ship today
 - **Quality gates**: `pnpm check` = generate + typecheck + `content:check` + `style:check` + eslint +
   prettier + `node:test`; `pnpm build` runs the same checks before `vite build`
+- **Tailwind deep dive (B8)**: five experiments — container queries, `has-*` / `peer-*`, variant
+  rules, keyframes vs Motion, grid + subgrid
+- **CodeMirror (B9)**: `packages/editor`, a non-controlled editor wrapper with compartment-based
+  theme and read-only, token-driven syntax colours, and three experiments (minimal editor, themes /
+  keymaps, decorations)
+- **Panels (B10)**: `packages/panels`, a dependency-free split with pointer capture, keyboard resize
+  (`role="separator"`), clamping and `localStorage` persistence; panes are `@container`s
+- **Zustand (B11)**: `packages/state`, a store factory (`createStoreContext`) with a vanilla store in
+  a context, per-instance providers, and selector / `useShallow` guidance with render counts as
+  evidence
+- **Motion + dnd-kit (B12)**: variants with orchestration, `layout`, `AnimatePresence`, drag
+  constraints and motion values; a sortable list whose keyboard sensor and live announcements are
+  first-class
 
-Not built yet: the single-library experiments (B8-B12) and the composed scenarios (B13-B17).
+Not built yet: the composed scenarios (B13-B17).
 
 ## Adding a content page
 
@@ -138,12 +151,15 @@ frontend-lab/
 │       ├── components/       # button, segmented-control
 │       ├── lib/              # cn()
 │       └── styles/           # palette.css, tokens.css, styles.css
-├── eslint.config.mjs         # incl. boundary zones between app / demos / ui / plugins
+├── packages/editor/          # CodeMirror wrapper: mount once, compartments, token theme
+├── packages/panels/          # split pane + persisted split size (no dependencies)
+├── packages/state/           # zustand store factory + useShallow re-export
+├── eslint.config.mjs         # incl. boundary zones between app / demos / packages / plugins
 ├── tsconfig.base.json
 └── pnpm-workspace.yaml
 ```
 
-Planned additions: `packages/{mdx-runtime,editor,panels,charts,state}`.
+Planned additions: `packages/{mdx-runtime,charts}` (B13-B17).
 
 ## Roadmap
 
@@ -172,11 +188,11 @@ B3 completion is the vertical-slice MVP: worth pausing and re-evaluating scope t
 
 | #   | Batch              | Goal                                                      | Exit criteria                                 | Status |
 | --- | ------------------ | --------------------------------------------------------- | --------------------------------------------- | ------ |
-| B8  | Tailwind deep dive | `@container`, `has-*`, variant rules, keyframes vs Motion | at least 5 experiments, each with conclusions | todo   |
-| B9  | CodeMirror         | minimal editor, theme/shortcuts, decorations/transactions | 3 MDX pages + 3 demos                         | todo   |
-| B10 | Panels             | resizable layout, keyboard resize, persisted sizes        | layout survives reload, keyboard path works   | todo   |
-| B11 | Zustand            | store factory, selectors, derived state, per-instance     | demos share the factory, no global singletons | todo   |
-| B12 | Motion + dnd-kit   | variants/layout/gestures, sensors/collision/sortable      | keyboard sensor verified for every drag demo  | todo   |
+| B8  | Tailwind deep dive | `@container`, `has-*`, variant rules, keyframes vs Motion | at least 5 experiments, each with conclusions | done   |
+| B9  | CodeMirror         | minimal editor, theme/shortcuts, decorations/transactions | 3 MDX pages + 3 demos                         | done   |
+| B10 | Panels             | resizable layout, keyboard resize, persisted sizes        | layout survives reload, keyboard path works   | done   |
+| B11 | Zustand            | store factory, selectors, derived state, per-instance     | demos share the factory, no global singletons | done   |
+| B12 | Motion + dnd-kit   | variants/layout/gestures, sensors/collision/sortable      | keyboard sensor verified for every drag demo  | done   |
 
 ### Wave 4 · Composed scenarios
 
@@ -418,6 +434,142 @@ preview`), plus `pnpm check` / `pnpm build` green
   - Chinese content is real content, not a token translation: the tables and code samples are
     rewritten, because a half-translated table reads worse than English
 
+### B8 · Tailwind deep dive — done
+
+- Goal: separate the utilities people memorise from the ones that change layout behaviour
+- Built: five experiments under `demos/techniques/` with a page at `content/techniques/tailwind-deep-dive`
+  - `container-queries`: one card markup rendered twice — `@container` vs `sm:` — with a slider for the
+    container width and a `ResizeObserver` readout of the width the query actually saw
+  - `has-and-peer`: `group-has-[input:invalid]` validation, `peer-checked` reveal, `has-[:checked]`
+    radio rows, `has-[img]` card padding — no React state decides any colour
+  - `variant-rules`: `*:` children, `nth-3:` stripes, `not-last:`, `data-[state=…]`, `aria-[sort=…]`,
+    `open:`, and `starting:` for inserted nodes
+  - `keyframes-vs-motion`: the same impulse through `@keyframes` (restarted by remounting) and
+    Motion (`y: [null, -32, 0]`, continuing from the current value), with `getAnimations()` printed
+  - `grid-subgrid`: `col-span-full grid grid-cols-subgrid` rows vs flex rows from the same data, plus
+    `repeat(auto-fit, minmax(7rem, 1fr))`
+- Exit check (CDP over `vite preview`, DOM only): the container-query card reports
+  `flex-direction: column` at 220px and `row` at 700px while the viewport never changes; the
+  `has-[input:invalid]` wrapper's `border-top-color` moves from the destructive token back to the
+  border token when the value becomes valid; the built CSS contains `:has(:is(input:invalid)`,
+  `container-type:inline-size`, `@starting-style`, `grid-template-columns:subgrid`,
+  `nth-child(3)` and `@keyframes kick`
+- Pitfalls / decisions:
+  - A named keyframe animation cannot live in a demo folder (`demo.tsx` + notes only), so
+    `--animate-kick` is registered under `@theme` in `src/styles/animations.css` and used as a
+    normal utility
+  - `nth-3:` compiles to `:nth-child(3)` — it selects the third sibling, not "every third"; striping
+    rows 3 and 6 needs `nth-[3n]:` or a computed index, which the notes call out
+  - Tailwind's automatic content detection scans MDX too, so a class name quoted in prose lands in
+    the built CSS; harmless here, but it is why `grid-template-columns:…` appears in the bundle
+  - React's value tracker defeats `input.value = x` in a CDP script; the verification harness has to
+    use the native `HTMLInputElement.prototype.value` setter or the demo looks broken
+
+### B9 · CodeMirror — done
+
+- Goal: an editor wrapper that is a component, not a framework, plus three experiments
+- Built:
+  - `packages/editor`: `CodeEditor` (mount once, `initialDoc` not `value`, callbacks in refs,
+    `Compartment`s for theme and read-only, `onView` handle), `baseExtensions`, `themeExtension`,
+    `labEditorTheme` + `labHighlightStyle` written entirely in CSS variables
+  - `demos/editing/minimal-editor`: undo/redo, a three-part transaction, and a deliberate "read the
+    document" pull that keeps the "keystrokes seen by React: 0" claim honest
+  - `demos/editing/theme-and-shortcuts`: `tokens` vs `one-dark` through a compartment (undo still
+    works afterwards), read-only as two extensions, a `Prec.highest` keymap overriding `Tab`
+  - `demos/editing/decorations`: a tag field recomputed on `docChanged` and a search field driven by a
+    `StateEffect`, both providing decorations; counts read back from the state
+  - Three pages: `editing/codemirror-basics`, `editing/codemirror-themes-and-shortcuts`,
+    `editing/codemirror-decorations`
+- Exit check (CDP): `.cm-content` paints 7 tag marks; typing in the search box raises the derived hit
+  count; the theme switch keeps the view (undo still enabled); all three routes render in both locales
+- Pitfalls / decisions:
+  - `@codemirror/*` ends up in two manifests (the package and the app, for demos that need
+    `StateField`/`Decoration` directly); pnpm resolves both to one instance, which is what matters
+    for `instanceof`-based facets
+  - Extensions passed by a caller are appended, so they have _lower_ precedence than the defaults —
+    the right default for extension, the wrong one for override, hence `Prec.highest` in the demo
+  - `EditorView.theme` keys are selectors and self-references (`&.cm-focused`); a plain CSS rule
+    silently does nothing
+  - Fast Refresh complains when a `.tsx` file exports both a component and helpers, so
+    `extensions.ts` was split out of `code-editor.tsx`
+
+### B10 · Panels — done
+
+- Goal: a split that survives a reload and works without a pointer
+- Built:
+  - `packages/panels` (no dependencies): `useSplitSize` (percentage, `localStorage`, clamped on read
+    and write) and `SplitPane` (pointer capture, `role="separator"` with `aria-valuenow` /
+    `aria-orientation` / `aria-valuetext`, arrows ±4%, PageUp/PageDown ±12%, Home/End, Enter resets,
+    double-click resets, both panes `@container`)
+  - `demos/layout/split-pane`: persisted horizontal split with a nested vertical split, live pane
+    width readouts and the stored value printed from `localStorage`
+  - `demos/layout/keyboard-resize`: focus the separator, every key echoed, `aria-valuenow` and the
+    size log read back from the DOM
+  - Page: `layout/resizable-panels`
+- Exit check (CDP): ArrowRight moves `aria-valuenow` 50 → 54, End jumps to 85, Enter resets to 50;
+  three ArrowRight presses then a reload restore the stored 63% (and `localStorage` holds it)
+- Pitfalls / decisions:
+  - `aria-orientation` describes the separator, not the layout: a horizontal layout needs a _vertical_
+    separator
+  - `setPointerCapture` is what makes a fast drag survive leaving the 6px handle, and it removes the
+    need for a global `user-select: none`
+  - The separator is 6px wide, so its focus ring has to be drawn inset
+  - Persisting on every `pointermove` writes ~60 times a second; fine for one key, a debounce the
+    moment several splits are saved together
+
+### B11 · Zustand — done
+
+- Goal: per-instance state from one definition, and selectors that measurably narrow subscriptions
+- Built:
+  - `packages/state`: `createStoreContext` (vanilla `createStore` in a context, store created in a
+    `useState` initialiser, `useSelector` + `useStoreApi`, named errors when the provider is missing)
+    and a `useShallow` re-export
+  - `demos/state/store-factory`: two providers of one factory next to two panels of a module-level
+    `create()` store, with render counters
+  - `demos/state/selectors-and-derived`: a todo store with per-row selectors, `useShallow`-wrapped
+    derived selectors, render counters per component, a `store.subscribe` log outside React
+  - Page: `state/zustand-store-factory`
+- Exit check (CDP): clicking instance A's `+` twice leaves B at 0; the shared pair both read 1 after
+  one click; render counts confirm the store-factory panels do not notify each other
+- Pitfalls / decisions:
+  - `useRef(createStore(...))` and `useState(createStore(...))` both recreate the store; only a lazy
+    `useState` initialiser gives one store per mounted provider
+  - zustand v5 compares with `Object.is` — a derived array/object needs `useShallow` or every update
+    re-renders every consumer
+  - Actions stay a stable nested object (`state.actions`); recreating them inside `set()` would
+    re-render every dispatcher-only component
+  - The module-level store is kept in the demo on purpose: it is a legitimate app-wide pattern, and
+    seeing it share state is the fastest way to understand why the factory exists
+
+### B12 · Motion + dnd-kit — done
+
+- Goal: variants, layout animation and gestures from Motion; sensors, collision and sortable from
+  dnd-kit — with the keyboard path verified rather than assumed
+- Built:
+  - `demos/motion/variants-and-layout`: staggered variants declared on the parent, `layout` on list and
+    items with shuffle, `AnimatePresence mode="popLayout"` for removal, reduced motion collapsing the
+    duration
+  - `demos/motion/gestures`: `dragConstraints` from a ref, `dragElastic` and `dragSnapToOrigin` as
+    controls, `whileHover`/`whileTap`, `MotionValue` + `useSpring` readout, drag disabled under reduced
+    motion
+  - `demos/motion/dnd-sortable`: `PointerSensor` (4px threshold) + `KeyboardSensor` with
+    `sortableKeyboardCoordinates`, `closestCenter` vs `rectIntersection` toggle, `DragOverlay`,
+    custom `announcements` echoed into a visible log
+  - Pages: `motion/motion-variants-and-gestures`, `motion/dnd-kit-sortable`
+- Exit check (CDP): focus the first row, `Space`, `ArrowDown`, `Space` reorders
+  `Design tokens|Component API|…` to `Component API|Design tokens|…` and the log shows
+  `Picked up tokens` → `tokens is over components` → `Dropped tokens at position components` — the
+  same strings a screen reader receives
+- Pitfalls / decisions:
+  - `layout` and `drag` both own `transform`; a draggable inside an animated list needs the drag
+    transform on an inner element
+  - `AnimatePresence` needs stable keys — an index key animates whichever item landed in that slot
+  - `announcements` / `screenReaderInstructions` are passed through `accessibility={{ … }}` on
+    `DndContext` (v6), not as top-level props
+  - `activationConstraint: { distance: 4 }` is what keeps a click a click
+  - Reduced motion is handled per interaction: durations collapse for variants, the drag is disabled
+    entirely, because an instant drag leaves pointer and element disagreeing
+
 ## Conventions
 
 ### File naming
@@ -486,6 +638,9 @@ and a DOM assertion that it survives a reload.
 - `src/i18n/locales.ts` and `apps/lab/plugins/frontmatter.ts` both list the locales; `content:check`
   fails when they drift, because the generators and the app would otherwise disagree about which
   languages exist.
+- Translation coverage after B12: every content page has a `.zh.mdx`. The demo write-ups added in
+  B8-B12 are English-only on purpose — the sidebar's `EN` badge is the designed path for that, and
+  keeping a visible set of untranslated demos is what stops the badge from rotting.
 
 ### Workflow
 

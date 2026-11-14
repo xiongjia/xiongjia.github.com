@@ -1,0 +1,45 @@
+---
+title: Decorations and transactions
+summary: Two state fields paint marks over the document — one recomputed on edits, one driven by an effect — with the counts read back from the state.
+order: 30
+---
+
+## What this proves
+
+Decorations are the CodeMirror mechanism behind search highlights, lint squiggles and inline
+widgets. They are **ranges stored in a state field**, not DOM you insert yourself: that is what keeps
+them aligned while the document changes and what lets several features decorate the same range
+independently.
+
+## Decisions
+
+- **A `StateField`, not a `ViewPlugin`.** A view plugin reads the document and paints; a state field
+  is part of the state, so it can be mapped through changes and used by other extensions (`provide:
+EditorView.decorations.from(field)`). The tag field recomputes only on `docChanged`.
+- **`Decoration.set(ranges, true)`.** The second argument says "already sorted"; computing ranges
+  with `matchAll` gives that for free, and skipping the sort is the difference between O(n) and
+  O(n log n) on a large document.
+- **The search query is state, carried by an effect.** `setSearch` is a `StateEffect`; the field
+  consumes it in `update`. That is the idiomatic way to push imperative input (a text box, a
+  toolbar) into the editor without rebuilding the state.
+- **Two providers, no coordination.** The tag field and the search field each provide their own
+  decoration set; the editor merges them. If they were one field, every search keystroke would
+  re-scan for tags.
+- **Counts are read from the state, not tracked in React.** `state.field(tagField).size` is the
+  truth; mirrored counters are how decoration demos usually start lying.
+
+## Pitfalls
+
+- Decoration marks must be sorted by `from` and must not overlap in the same "group" — overlapping
+  marks are allowed for different groups but a single unsorted set throws at `Decoration.set`.
+- `Decoration.mark` has to be **created once** (module scope), not per build: a fresh instance per
+  range defeats the range comparison and re-renders the whole set.
+- Marks cannot change line structure. Anything that inserts elements (a checkbox before a task, a
+  colour swatch) is a `Decoration.widget` or `Decoration.replace`, not a class on a mark.
+- `scrollIntoView: true` is a transaction annotation, not a view call — it composes with the
+  selection change in the same dispatch and cannot interleave with a re-render.
+
+## Next
+
+B13's IDE workspace combines this with the editor package and the B10 panels: decorations for
+diagnostics, panels for the file tree and the editor.

@@ -88,14 +88,14 @@ export default tseslint.config(
     },
   },
 
-  // Shared package: no knowledge of the app that consumes it.
+  // Shared packages: no knowledge of the app that consumes them.
   {
-    files: ['packages/ui/**/*.{ts,tsx}'],
+    files: ['packages/*/**/*.{ts,tsx}'],
     rules: {
       'no-restricted-imports': restrictImports([
         {
           group: ['@frontend-lab/lab*', '**/apps/**', '@/**'],
-          message: 'packages/ui must not depend on the app or the lab alias.',
+          message: 'A shared package must not depend on the app or the lab alias.',
         },
       ]),
     },

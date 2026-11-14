@@ -1,0 +1,65 @@
+---
+title: CodeMirror basics
+summary: An immutable EditorState, transactions that describe every change, and a thin React wrapper that refuses to own the document.
+order: 10
+---
+
+## The shape of CodeMirror 6
+
+Three nouns explain almost everything:
+
+- **`EditorState`** — an immutable value: document, selections, and the results of every extension.
+- **Transaction** — a description of a change (new document ranges, selections, effects, annotations).
+  `state.update(spec)` returns a transaction; `view.dispatch(spec)` applies it.
+- **`EditorView`** — the DOM. It renders a state and dispatches transactions; it owns no document.
+
+Because the state is a value, "did the document change" is a comparison, "undo" is a list of previous
+states, and an extension is a pure function of the state rather than a listener race.
+
+Try it: [the minimal editor demo](/demos/editing/minimal-editor).
+
+## Extensions are the API
+
+Everything is an extension: line numbers, history, keymaps, languages, themes, decorations. They
+compose into one array and CodeMirror resolves them into facets (many contributions, one resolved
+value) or state fields (one value per editor). Two mechanisms matter later:
+
+- **`Compartment`** — a stable handle for a _slice_ of the configuration. `compartment.of(...)` at
+  create time, `compartment.reconfigure(...)` as an effect later. This is how a theme or a read-only
+  flag changes without rebuilding the state.
+- **`Prec`** — explicit precedence. Extension arrays are ordered, and for facets like the keymap the
+  earlier entry wins.
+
+## The React boundary
+
+The lab's wrapper (`packages/editor`) exists to make exactly one trade-off:
+
+```tsx
+<CodeEditor initialDoc={source} theme={theme} onChange={handleChange} onView={keepView} />
+```
+
+- The document is **uncontrolled**. React renders a container; CodeMirror renders the text.
+- Runtime changes go through `Compartment.reconfigure` or `dispatch`, never through a new state.
+- `onView` hands out the `EditorView` for commands (`undo`, custom transactions, decorations).
+
+A controlled `value={doc}` prop looks friendlier and is the usual mistake: every keystroke becomes a
+React state update, every parent re-render pushes the document back into the editor, and the
+selection plus undo history are the first casualties.
+
+## Where the code lives
+
+| File                                  | Owns                                                          |
+| ------------------------------------- | ------------------------------------------------------------- |
+| `packages/editor/src/code-editor.tsx` | the mount effect, compartments, default extension set         |
+| `packages/editor/src/theme.ts`        | `EditorView.theme` + `HighlightStyle`, both written in tokens |
+| `apps/lab/demos/editing/*`            | the experiments; anything specific to one demo stays there    |
+
+## Pitfalls
+
+- `EditorState.create` must run **once per mounted view**. StrictMode mounts effects twice; the
+  cleanup has to `view.destroy()` or two editors stack up in one host element.
+- A `dispatch` with nothing to apply still runs the update cycle. Empty dispatches in a render path
+  are a performance bug, not a refresh.
+- Sizes come from the container, not from the editor: CodeMirror fills its parent. A host with no
+  height renders a 0px editor that "looks broken" for a reason that has nothing to do with
+  CodeMirror.

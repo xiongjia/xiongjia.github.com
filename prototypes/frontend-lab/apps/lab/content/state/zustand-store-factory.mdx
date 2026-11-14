@@ -1,0 +1,75 @@
+---
+title: Zustand store factory
+summary: A vanilla store in a context gives per-instance state; selectors and useShallow decide how narrow the subscriptions are.
+order: 10
+---
+
+## The problem with the default
+
+`import { create } from 'zustand'` produces a **module-level** store: every component that imports
+the module shares one instance, for the lifetime of the tab. That is a good fit for a session-wide
+store (a command palette, a theme override) and a bug for anything that can appear twice — two
+editors, two kanban boards, two demos on one page.
+
+The lab's `packages/state` therefore exposes a factory:
+
+```ts
+const todos = createStoreContext<TodoState>((set) => ({ … }), { name: 'todos' })
+
+<todos.Provider>…</todos.Provider>
+
+const visible = todos.useSelector((state) => state.filter)
+const store = todos.useStoreApi()
+```
+
+## What the factory builds
+
+| Piece         | Implementation                             | Why                                            |
+| ------------- | ------------------------------------------ | ---------------------------------------------- |
+| `Provider`    | `useState(() => createStore(…))` + context | one store per mounted instance, not per render |
+| `useSelector` | `useStore(api, selector)`                  | re-render only on the selected slice           |
+| `useStoreApi` | the raw `StoreApi`                         | reads and subscriptions outside React          |
+
+The store itself is a `zustand/vanilla` store: `getState`, `setState`, `subscribe`. React is one
+consumer among others, which is exactly why the factory can offer a non-React escape hatch without a
+second implementation.
+
+## Selector discipline
+
+Zustand v5 compares selector results with `Object.is`, and no longer shallow-compares for you:
+
+```ts
+// re-renders on every store update: a new array each call
+const visible = store.useSelector((s) => s.todos.filter(matches).map((t) => t.id))
+
+// stable: shallow comparison of the derived array
+const visible = store.useSelector(useShallow((s) => s.todos.filter(matches).map((t) => t.id)))
+```
+
+`useShallow` is re-exported by the package so a demo (or an app module) imports one dependency
+instead of two.
+
+## Actions belong in the state
+
+Keeping `actions` as one nested object in the store gives every consumer a stable reference:
+
+```ts
+const actions = store.useSelector((state) => state.actions) // never changes
+```
+
+A button that only dispatches then never re-renders when data changes. Recreating the actions object
+inside `set()` — the tempting "everything in one object literal" style — silently re-renders every
+consumer on every action.
+
+## Where this stops
+
+- No middleware in the lab package: `persist` and `devtools` are store-level concerns, and wrapping
+  the factory's `createStore` call with them is a two-line change when a demo needs one.
+- No store-level `subscribeWithSelector`: `store.subscribe(listener)` plus a manual filter is enough
+  for B11, and it makes the React and non-React paths read the same.
+
+## Measuring instead of trusting
+
+The second experiment prints a render count per component. Selectors are a performance mechanism;
+without a measurement, "I used a selector" and "I used a selector that does nothing" look identical
+in code review.

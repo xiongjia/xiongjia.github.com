@@ -1,0 +1,62 @@
+---
+title: dnd-kit sortable
+summary: Sensors, collision detection and announcements — a sortable list whose keyboard path is a first-class feature, not a fallback.
+order: 20
+---
+
+## Why a library for drag
+
+Drag-and-drop looks like pointer events and is really a state machine: a drag can start, hover
+several targets, be cancelled, be dropped, be interrupted by `Escape`, scroll the container while
+hovering, or be performed entirely from the keyboard. dnd-kit models all of that and exposes it as
+three layers, which is also the reason a demo can be honest about what it costs.
+
+| Layer     | Question it answers            | Swap it to change                    |
+| --------- | ------------------------------ | ------------------------------------ |
+| Sensors   | how does a drag begin?         | pointer / touch / keyboard           |
+| Collision | which target is the drag over? | `closestCenter` / `rectIntersection` |
+| Strategy  | how do the items reorder?      | vertical / horizontal / grid         |
+
+## The keyboard path is the feature
+
+```ts
+useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+```
+
+`Tab` to a row, `Space` to pick it up, arrows to move, `Space` to drop, `Esc` to cancel — and every
+step is announced through a live region. This is not a nice-to-have bolted onto the pointer path: it
+is the same state machine driven by a different sensor, which is why it works without a single
+`if (isKeyboard)` in the item components.
+
+Details that make it work in practice:
+
+- **`attributes` on the row.** `useSortable` supplies `role="button"`, `tabIndex`, `aria-roledescription`
+  and the instructions reference — spreading them is what makes the row reachable at all.
+- **`sortableKeyboardCoordinates` as the getter.** Without it, arrows move a floating overlay by
+  pixels; with it, they move the item to the previous/next sortable slot.
+- **Announcements.** Defaults exist; supplying them (as the demo does) is how the messages get
+  reviewed and, in this lab, echoed into a visible log.
+
+## Collision detection is a UX choice
+
+`closestCenter` targets the droppable whose centre is nearest the dragged centre; `rectIntersection`
+targets the one whose rectangle overlaps most. For equal-height rows they agree. For a grid of cards
+they do not, and which one "feels right" depends on whether the user is thinking about positions or
+about overlaps. The demo toggles between them so the difference is observable rather than argued.
+
+## What the lab keeps small
+
+- No multi-container sorting (that is B14's kanban problem, and it needs a store — B11's factory).
+- No persistence here: the order lives in `useState`, because the experiment is the mechanism.
+- No drag handle component: the whole row is the handle, which is the simplest thing that stays
+  keyboard-reachable. A dedicated handle would add `setActivatorNodeRef` and a second focus target.
+
+## Pitfalls
+
+- `activationConstraint: { distance: 4 }` keeps clicks working. Without a constraint, a click starts
+  and ends a drag and `onClick` fires unreliably.
+- `DragOverlay` should render the lifted copy; measuring the original while it also moves makes the
+  sortable boxes flicker.
+- `CSS.Transform.toString(transform)` is required — `transform` is `{ x, y, scaleX, scaleY }`, and
+  `String(transform)` is `[object Object]`.
+- `touch-action: none` (Tailwind's `touch-none`) on the item, or a touch drag scrolls the page.

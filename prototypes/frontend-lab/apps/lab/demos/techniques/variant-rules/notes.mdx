@@ -1,0 +1,42 @@
+---
+title: Variant rules
+summary: Children spans, nth striping, data- and aria-driven states, details open and @starting-style — variants as selector generators.
+order: 30
+---
+
+## What this proves
+
+A Tailwind variant is a selector template, not a class prefix. `*:` reaches direct children, `**:`
+reaches every descendant, `data-[state=active]:` keys off an attribute, `aria-[sort=descending]:`
+keys off an accessibility state, and `starting:` is the CSS `@starting-style` at-rule. Once that is
+clear, "which variant do I need" becomes "which selector do I need".
+
+## Decisions
+
+- **Attribute state, not a class per state.** The three status cards carry `data-state` and one class
+  list; adding a fourth state means adding a `data-[state=…]` rule, not a fourth `||` branch.
+- **`aria-sort` is the state, the underline is the rendering.** Styling an `aria-*` attribute keeps
+  the visual and the announced state in one place — the classic bug is a visual arrow that never
+  reaches the accessibility tree.
+- **`starting:` for insertion, not a mount effect.** `@starting-style` animates an element's first
+  render natively; a `useEffect` that flips a class runs after paint and flashes the final state.
+- **`group-open:` instead of `open:[&_summary]`.** The `group` class on `<details>` and
+  `group-open:` on the summary is shorter and reads as one relation.
+- **`not-last:` beats `divide-y` here.** `divide-*` produces a border on every boundary including
+  ones the surrounding card already draws; `not-last:border-b` says exactly what is wanted.
+
+## Pitfalls
+
+- `*:` only matches **direct** children. A list wrapped in one extra `<div>` silently loses its
+  styles — `**:` would still match, at the cost of a much more expensive selector.
+- `nth-3:` counts _siblings in DOM order_, so filtering a list in JS re-numbers the stripes. If the
+  stripe must survive filtering, compute the index in the data.
+- Arbitrary `data-[…]` selectors are attribute selectors: `data-[state=open]` matches the string
+  `open`, so a boolean attribute needs `data-[state]` or `data-[open=true]`.
+- `starting:` needs a `transition` (or an `animation`) to have something to interpolate; on its own
+  it only sets the initial value.
+
+## Next
+
+B8's last experiment compares these declarative animations with Motion's imperative ones, where
+interruption and spring physics are the deciding factors.

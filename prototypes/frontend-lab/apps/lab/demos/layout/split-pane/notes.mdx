@@ -1,0 +1,50 @@
+---
+title: Split pane
+summary: A percentage-based split that persists to localStorage, composes into nested splits, and turns each pane into a container.
+order: 10
+---
+
+## What this proves
+
+A resizable layout is three separate problems: measuring the drag, storing the result, and making the
+panes good citizens afterwards. `packages/panels` solves them in ~180 lines with no dependency — and
+the third one is where B8 pays off: every pane is a `@container`, so the cards inside reflow on the
+pane width and never on the window width.
+
+## Decisions
+
+- **Percentages, not pixels.** A stored `320px` is wrong on the next viewport. A percentage survives a
+  window resize and needs no `ResizeObserver` to stay correct.
+- **`setPointerCapture` on the separator.** Without capture, a fast drag leaves the 6px handle, the
+  events stop, and the pointer-up lands on whatever is underneath. Capture also suppresses text
+  selection during the drag without a `user-select: none` on `<body>`.
+- **Clamping on read and on write.** A hand-edited `localStorage` value, or a future change to
+  `min`/`max`, must not be able to produce a zero-width pane. `clampSize` runs both when the stored
+  value is parsed and when a new one is set.
+- **The default size is a prop of the hook, not of the component.** `useSplitSize` owns persistence
+  and bounds; `SplitPane` is presentational and takes `size` + `onSizeChange`. That split is what
+  makes the same component usable for a persisted IDE layout and for a throwaway demo.
+- **`flexBasis` percentages with `flex-grow/shrink: 0`.** Letting flexbox grow the panes would fight
+  the stored size; pinning both to 0 makes the basis the only thing that decides.
+
+## Composition
+
+The nested vertical split inside the right pane is not a special case in the component: a `SplitPane`
+is a normal box, so a second one fits inside a pane. Inverting the nested percentage
+(`onSizeChange={(next) => setSize(100 - next)}`) is the demo's decision, not the library's — the pane
+above simply wants a different anchor.
+
+## Pitfalls
+
+- `@container` on the pane means `overflow: auto` has to be on the pane too. Without it, a pane whose
+  content is wider than the basis pushes the layout instead of scrolling.
+- Persisting on every `pointermove` writes ~60 times a second. It is harmless for a single key, but a
+  debounce belongs here the moment several splits are saved together.
+- Double-click to reset is a nicety, not the accessibility path: the keyboard reset is `Enter`, and
+  both call the same `onSizeChange(50)`.
+- The separator is 6px wide for the pointer but its focus ring is drawn inset; an outline on a 6px
+  element is otherwise clipped by the neighbouring pane.
+
+## Next
+
+B13 puts the editor in one pane and the preview in the other, with the same persistence contract.

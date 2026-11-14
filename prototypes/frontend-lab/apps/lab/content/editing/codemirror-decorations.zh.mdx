@@ -1,0 +1,59 @@
+---
+title: 装饰与 state field
+summary: 文档上的区间，由 state field 保持正确、由 effect 推入——以及为什么这比插 DOM 靠谱。
+---
+
+## 是区间，不是 DOM
+
+一个装饰就是「文档区间 + 渲染指令」：`Decoration.mark({ class })` 包裹文字，
+`Decoration.widget` 插入元素，`Decoration.replace` 隐藏或替换区间。编辑器把所有提供者的区间合并后
+统一绘制，于是两个功能可以装饰重叠的文字而互不知情。
+
+试一下：[装饰与事务](/demos/editing/decorations)。
+
+## State field 让它保持诚实
+
+```ts
+const todoField = StateField.define<DecorationSet>({
+  create: (state) => marks(state.doc.toString()),
+  update: (marks, tr) => (tr.docChanged ? marks(tr.state.doc.toString()) : marks),
+  provide: (field) => EditorView.decorations.from(field),
+})
+```
+
+这种形状带来三个性质：
+
+- **它随改动映射。** 装饰集是文档上的区间集，在前方插入文字时标记会跟着移动（本例选择整体重算）。
+- **它是 state。** 其他扩展可以读它，测试可以断言它，而 `provide` 是它和 DOM 之间唯一的连接。
+- **该重算才重算。** 选区变化时 `tr.docChanged` 为 false，什么都不用做。
+
+## Effect 是输入通道
+
+命令式 UI（搜索框、工具栏、语言开关）通过 effect 推进编辑器：
+
+```ts
+const setSearch = StateEffect.define<string>()
+view.dispatch({ effects: setSearch.of(query) })
+```
+
+field 在 `update` 里消费它，位置和消费文档改动完全相同。这就是为什么示例可以用 React 的 `<input>`
+驱动高亮，而编辑器和 React 都不必假装自己拥有高亮状态。
+
+## 几条省事的规则
+
+- **装饰对象只在模块级创建一次。** 更新集合时 `Decoration.mark()` 按引用比较，每次渲染都新建实例
+  等于每次按键全量重绘。
+- **传入已排序的区间。** `Decoration.set(ranges, true)` 的 `true` 表示跳过排序；未排序会直接抛错，
+  而不是悄悄放错位置。
+- **保持排序便宜。** `matchAll` 本身就按文档顺序给出区间。
+- **标记不能改变行结构。** 需要插入元素就用 widget，需要隐藏既有元素就用 replace。
+
+## 与编辑器包的组合
+
+`packages/editor` 接受一个 `extensions` 数组，所以示例的 field 不会渗进共享组件：
+
+```tsx
+<CodeEditor initialDoc={doc} extensions={[tagField, searchField]} onView={keepView} />
+```
+
+B13 的诊断功能会放进同一个槽位：一个「懂诊断」的编辑器包是框架，一个接受扩展的编辑器包才是组件。

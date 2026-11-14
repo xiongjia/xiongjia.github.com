@@ -1,0 +1,68 @@
+---
+title: Decorations and state fields
+summary: Ranges over the document, kept correct by a state field, pushed in with effects — and why that beats inserting DOM.
+order: 30
+---
+
+## Ranges, not DOM
+
+A decoration is a range in the document plus a rendering instruction:
+`Decoration.mark({ class })` wraps text, `Decoration.widget` inserts an element,
+`Decoration.replace` hides or substitutes a range. The editor merges every provider's ranges and
+paints them, which means two features can decorate overlapping text without knowing about each other.
+
+Try it: [decorations and transactions](/demos/editing/decorations).
+
+## A state field keeps them honest
+
+```ts
+const todoField = StateField.define<DecorationSet>({
+  create: (state) => marks(state.doc.toString()),
+  update: (marks, tr) => (tr.docChanged ? marks(tr.state.doc.toString()) : marks),
+  provide: (field) => EditorView.decorations.from(field),
+})
+```
+
+Three properties fall out of that shape:
+
+- **It maps through changes.** A decoration set is a range set over the document; when text is
+  inserted before a mark, the mark moves with it (or is rebuilt, as here).
+- **It is state.** Other extensions can read it, tests can assert on it, and `provide` is the only
+  link between the field and the DOM.
+- **It only recomputes when it must.** `tr.docChanged` is false on a selection change, so typing
+  nowhere costs nothing.
+
+## Effects are the input channel
+
+Imperative UI (a search box, a toolbar, a language switch) pushes into the editor through effects:
+
+```ts
+const setSearch = StateEffect.define<string>()
+view.dispatch({ effects: setSearch.of(query) })
+```
+
+The field consumes it in `update`, exactly where it consumes document changes. That is why the demo
+can drive highlights from a React `<input>` without the editor and React both pretending to own the
+highlight state.
+
+## Rules that save a debugging session
+
+- **Create decorations once**, at module scope. `Decoration.mark()` objects are compared by identity
+  when the set updates; a fresh instance per range re-renders everything on every keystroke.
+- **Pass sorted ranges.** `Decoration.set(ranges, true)` with `true` skips the sort; unsorted input
+  throws instead of silently misplacing marks.
+- **Keep the sort cheap.** `matchAll` already yields ranges in document order.
+- **Marks cannot change line structure.** Anything that inserts elements is a widget; anything that
+  hides an existing element is a replace.
+
+## Composing with the editor package
+
+`packages/editor` accepts an `extensions` array, so a demo's fields never leak into the shared
+component:
+
+```tsx
+<CodeEditor initialDoc={doc} extensions={[tagField, searchField]} onView={keepView} />
+```
+
+The same slot is how B13 will add diagnostics: an editor package that knows about "diagnostics" would
+be a framework; one that accepts extensions is a component.

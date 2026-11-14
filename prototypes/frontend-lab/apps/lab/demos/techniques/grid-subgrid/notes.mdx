@@ -1,0 +1,39 @@
+---
+title: Grid and subgrid
+summary: Rows that share the parent's tracks, plus auto-fit for the cases where the track count should not be fixed.
+order: 50
+---
+
+## What this proves
+
+`subgrid` makes a child grid **inherit the parent's tracks** instead of defining its own. That is
+what keeps a table-like list aligned when one cell's content grows, and it is the one layout problem
+`display: contents` and flexbox both fail at.
+
+## Decisions
+
+- **`col-span-full grid grid-cols-subgrid` per row.** `col-span-full` puts the row across every
+  parent track, `grid-cols-subgrid` makes the row's own columns _be_ the parent's columns. Both
+  halves are required; either one alone produces a normal nested grid.
+- **The header is a subgrid row too.** Duplicating `grid-cols-[…]` on the header would work until
+  someone edits one of the two definitions — which is exactly the drift subgrid removes.
+- **`minmax(0, 2fr)` on the first track.** Plain `1fr` refuses to shrink below its content's
+  min-content width, so a long path pushes the whole table wide. `minmax(0, …)` is the fix.
+- **The toggle renders flex rows from the same data.** A before/after comparison inside one demo
+  makes the alignment difference observable; a single subgrid table on its own proves nothing.
+- **auto-fit is a separate section on purpose.** Subgrid aligns across rows with a fixed track
+  count; `repeat(auto-fit, minmax(7rem, 1fr))` chooses the track count from the available width.
+  They compose, but they are not the same tool.
+
+## Pitfalls
+
+- `grid-cols-subgrid` needs the parent to actually have tracks at the positions the child spans. A
+  child spanning 3 columns of a 2-column parent is invalid and falls back to a normal grid.
+- Subgrid is a grid feature: the child must be a grid item, so the row cannot also be
+  `display: contents`.
+- `auto-fit` collapses empty tracks (`auto-fill` keeps them). For a grid of cards that must stay
+  left-aligned when only two exist, `auto-fill` is usually the right one.
+
+## Next
+
+B15's dashboard builder uses these tracks with explicit, drag-controlled spans.

@@ -1,0 +1,47 @@
+---
+title: Minimal editor
+summary: Mount CodeMirror once, let the EditorState own the document, and read it out on demand instead of on every keystroke.
+order: 10
+---
+
+## What this proves
+
+A working editor is `EditorState` + `EditorView` + a handful of extensions. The interesting part is
+the boundary with React: the document belongs to CodeMirror, React renders the _container_, and the
+two only exchange data at deliberate moments.
+
+## Decisions
+
+- **`initialDoc`, not `value`.** A controlled editor pushes every keystroke through `useState`,
+  re-renders the tree, and — worse — makes the document a function of the parent's render, which is
+  how selection and undo history get lost when a parent re-renders for an unrelated reason.
+- **The mount effect depends on nothing.** Extensions are built once, `EditorState.create` runs once
+  and `new EditorView` runs once. Everything that changes later is a `Compartment` or a `dispatch`.
+- **Callbacks are held in refs.** The view outlives the render that created it, so an
+  `updateListener` that captured the first `onChange` would call a stale closure forever.
+- **"Read the document" is a pull.** The readout state changes only when the button is pressed,
+  which is what makes the "keystrokes seen by React: 0" line true rather than rhetorical.
+- **One transaction for insert + cursor + scroll.** `dispatch` takes many specs at once; three
+  separate dispatches would be three undo steps and three re-draws.
+
+## Why the wrapper is 100 lines and not 500
+
+The lab's `CodeEditor` adds only what every editor in this lab needs: line numbers, history, search,
+bracket matching, indentation, a JS/TS language, wrapping, an `aria-label`, and two compartments
+(theme, read-only). Everything else — decorations, extra keymaps, custom commands — arrives through
+the `extensions` prop or the `onView` handle, so a demo can be as specific as it likes without
+touching the package.
+
+## Pitfalls
+
+- StrictMode mounts twice in development: the effect must destroy the view, or two editors end up
+  stacked in the same host element.
+- `EditorView.theme()` keys are selectors (`.cm-content`) **and** self-references (`&.cm-focused`).
+  Writing a plain CSS rule instead silently does nothing, because CodeMirror scopes its styles.
+- Without `EditorView.lineWrapping`, long lines scroll horizontally inside the editor — the demo
+  host's `overflow` does not help, the editor's `.cm-scroller` handles its own scrolling.
+
+## Next
+
+The next two experiments extend this: theme and keymaps through compartments and precedence, then
+decorations computed from a state field.

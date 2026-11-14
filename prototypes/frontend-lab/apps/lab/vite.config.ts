@@ -22,9 +22,20 @@ export default defineConfig({
     tailwindcss(),
   ],
   resolve: {
+    // Workspace packages are aliased to their source entry point: no build step, one module
+    // instance, and HMR reaches them. Keep this list in sync with `dependencies`.
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
       '@frontend-lab/ui': fileURLToPath(new URL('../../packages/ui/src/index.ts', import.meta.url)),
+      '@frontend-lab/editor': fileURLToPath(
+        new URL('../../packages/editor/src/index.ts', import.meta.url),
+      ),
+      '@frontend-lab/panels': fileURLToPath(
+        new URL('../../packages/panels/src/index.ts', import.meta.url),
+      ),
+      '@frontend-lab/state': fileURLToPath(
+        new URL('../../packages/state/src/index.ts', import.meta.url),
+      ),
     },
   },
   server: {

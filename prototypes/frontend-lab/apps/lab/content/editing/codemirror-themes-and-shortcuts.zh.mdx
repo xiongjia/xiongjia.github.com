@@ -1,0 +1,64 @@
+---
+title: 编辑器主题与快捷键
+summary: 用 Compartment 热替换配置，用优先级决定谁处理按键，而令牌主题根本不需要模式参数。
+---
+
+## 是重配置，不是重建
+
+`Compartment` 回答的是「主题变了，但编辑器还开着」这个场景。一段扩展槽只创建一次，之后靠
+`reconfigure` effect 换内容：
+
+```ts
+const themeSlot = new Compartment()
+
+// 创建时
+EditorState.create({ extensions: [themeSlot.of(tokenTheme)] })
+
+// 之后
+view.dispatch({ effects: themeSlot.reconfigure(oneDark) })
+```
+
+文档、选区、滚动位置、撤销栈全都不动——更新周期只重算样式。反过来重建 state，会得到一个看起来
+正确、但把用户做过的事全丢掉编辑器。
+
+试一下：[主题与快捷键](/demos/editing/theme-and-shortcuts)。
+
+## Keymap 是优先级问题
+
+`keymap.of([...])` 贡献到一个 facet；按键时**优先级最高且第一处匹配的绑定**生效。两个实际后果：
+
+- 追加在默认扩展之后的扩展优先级更低，所以 `Tab` 仍然先命中默认的 `indentWithTab`，除非示例把自己的
+  keymap 包进 `Prec.highest(...)`。
+- `preventDefault: true` 和 `run` 返回 `true` 是两件事：前者表示「浏览器不要再做别的」，后者表示
+  「这个键我处理了」。`Tab`、`Mod-Enter` 两个都要。
+
+同一个 `keymap.of` 数组内部的顺序只解决平级冲突：相关绑定放一起，覆盖默认值用优先级。
+
+## 主题即令牌
+
+实验室的编辑器主题刻意平淡：
+
+```ts
+EditorView.theme({
+  '.cm-content': { caretColor: 'var(--primary)' },
+  '.cm-gutters': { backgroundColor: 'var(--muted)', color: 'var(--muted-foreground)' },
+})
+```
+
+所有值都是 `tokens.css` 里的 CSS 变量，于是编辑器自动跟随 `data-theme`，也跟随 B6 的样式预设，
+不需要模式参数、不需要 `MutationObserver`、不需要第二套主题。语法高亮同理，因为
+`HighlightStyle` 的条目最终也是 CSS：
+
+```ts
+HighlightStyle.define([{ tag: tags.keyword, color: 'var(--primary)' }])
+```
+
+示例里的 one-dark 是反例：打包好的调色板是一串固定色值，跟着令牌走不了——页头一换模式就能看出来。
+
+## 只读是两个开关
+
+- `EditorState.readOnly` 拒绝改变文档的事务。
+- `EditorView.editable` 把 contenteditable 行为从 DOM 上摘掉。
+
+只设一个会得到半残状态：接受按键然后丢掉，或者看着可编辑却打不了字。两者放在同一个 compartment 里
+成对出现。
