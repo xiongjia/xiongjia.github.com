@@ -7,5 +7,5 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src", "demos", "plugins", "vite.config.ts"]
+  "include": ["src", "demos", "plugins", "tests", "e2e", "vite.config.ts", "playwright.config.ts"]
 }

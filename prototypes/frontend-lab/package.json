@@ -21,7 +21,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "check": "pnpm typecheck && pnpm content:check && pnpm style:check && pnpm lint && pnpm format:check && pnpm test",
-    "style:check": "pnpm --filter @frontend-lab/lab style:check"
+    "style:check": "pnpm --filter @frontend-lab/lab style:check",
+    "bundle:report": "pnpm --filter @frontend-lab/lab bundle:report",
+    "e2e": "pnpm --filter @frontend-lab/lab e2e",
+    "verify": "pnpm build && pnpm bundle:report && pnpm e2e"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

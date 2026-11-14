@@ -1,0 +1,82 @@
+---
+title: Kanban board
+summary: Multi-container sorting over a zustand store with debounced persistence — drag, keyboard and a reload all agree.
+order: 20
+---
+
+## What this proves
+
+A kanban board is the smallest real use of cross-container drag, and it fails in three different
+ways if any layer is missing:
+
+| Layer    | What it has to get right                                         |
+| -------- | ---------------------------------------------------------------- |
+| Model    | a card lives in exactly one column, at exactly one index         |
+| Drag     | move across columns _during_ the drag, reorder within at the end |
+| Store    | one board per provider, persisted and validated on the way back  |
+| Keyboard | reorder with Space + arrows, change column without a pointer     |
+
+## Cross-container sorting
+
+dnd-kit's `SortableContext` is per column, so the board renders one context per column and a single
+`DndContext` above them. The pattern that makes it work:
+
+- **Move in `onDragOver`, not in `onDragEnd`.** Crossing into another column has to change state
+  while the drag is still live, or the card visually returns to where it started until the drop.
+- **`onDragEnd` only reorders.** By then the card is already in the target column, so the remaining
+  work is `arrayMove` semantics inside that column.
+- **Columns are droppables too** (`useDroppable` with the column id), otherwise an empty column can
+  never receive a card.
+
+`closestCorners` is what makes the target feel right when cards have different heights: the pointer
+is not the only thing being measured, the dragged rectangle's corners are.
+
+## State, per instance
+
+The board is a `createStoreContext` instance (B11), so two boards on one page would be two boards —
+there is no module-level singleton to surprise the next demo. The component never reads the store
+directly; it selects `cards`, `columns` and the stable `actions` object separately, so adding a card
+does not re-render a component that only dispatches.
+
+Persistence lives outside the store on purpose:
+
+- The store stays a pure in-memory board; the write is a subscription in the demo.
+- The write is **debounced by 200ms**, because a drag emits an update per `onDragOver` and a reload
+  only needs the last one.
+- The stored payload is re-validated (`isBoard`) on the way in. A stale shape from an older board
+  version falls back to the defaults instead of crashing the first render.
+- Unmounting flushes the pending write, so a quick tab switch cannot lose the last move.
+
+## Animation without fighting drag
+
+Motion owns enter/exit (cards fading in and out, the overlay's rotate), and that is all. A `layout`
+animation on a sortable card would animate `transform` — the exact property dnd-kit writes for the
+drag — and the two would overwrite each other on every frame (B12's pitfall). The exit animation is
+still real because `AnimatePresence` keeps the removed card mounted for its 180ms fade.
+
+Reduced motion shortens both durations to zero instead of removing the animation, so the DOM shape
+stays the same.
+
+## The keyboard path
+
+Two paths, because they solve different problems:
+
+- **Reorder** — focus a card's ⠿ handle, `Space`, arrows, `Space`. `sortableKeyboardCoordinates`
+  turns an arrow into "the next sortable slot" inside the current `SortableContext`.
+- **Change column** — the ← / → buttons on every card. Arrow keys inside a sortable context stop at
+  the container edge; a cross-container keyboard move needs an explicit control (or a custom
+  coordinate getter, which is a much larger piece of code than a button).
+
+Both paths go through the same `actions.move`, and both echo the announcement text into the log, so
+the strings a screen reader receives are visible on screen.
+
+## Pitfalls
+
+- `activationConstraint: { distance: 4 }` keeps the ⠿ handle clickable and the ← / → buttons
+  clickable; without it a pointer-down on a button starts a drag.
+- The drag listeners belong on a handle, not the card: a card that is also a `role="button"` cannot
+  contain buttons without nesting interactive elements.
+- `CSS.Transform.toString(transform)` — `String(transform)` is `[object Object]` and the card simply
+  does not move.
+- Writing to `localStorage` inside the store setter (the naive `persist` wiring) writes once per
+  drag frame; the subscription + debounce is what keeps a drag from touching storage 60 times.

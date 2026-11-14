@@ -1,0 +1,100 @@
+---
+title: 收尾与验证
+summary: B17 之后守住实验室的三道闸门——Playwright 关键路径套件、覆盖「路由 × 配色 × 语言」的 axe 矩阵，以及带预算的 bundle 报告。
+order: 10
+---
+
+## 场景
+
+B1–B16 都是逐批验证的：一次性脚本和 DOM 断言，验完即丢。当作者是唯一读者时这没问题；一旦某次改动
+可能破坏没人复查的流程，这就不够了。B17 把一次性验证变成三件任何人可运行的产物。
+
+## 1. Playwright 关键路径
+
+`apps/lab/e2e/critical-paths.spec.ts` 跑的是**生产构建**（`vite preview`），不是 dev server；因此只在
+开发环境成立的懒加载分块或注册表问题会在这里失败。
+
+| 路径             | 证明什么                                     |
+| ---------------- | -------------------------------------------- |
+| 侧边栏 → 文章页  | 生成的导航、MDX 渲染、表格排版               |
+| 示例标签页       | 预览 / 源码 / 说明，且源码就是真实文件       |
+| 配色模式         | 控件持久化，且计算出的 token 值改变          |
+| 语言切换         | `lang`、控件文案，刷新后仍在                 |
+| IDE 工作区       | 打开文件、输入、脏标记、保存、活动日志       |
+| 看板键盘移动     | 在 → 控件上按 Enter 移动卡片，播报出现       |
+| 仪表盘渲染器切换 | `lazy()` 分块加载并画出 `data-renderer`      |
+| 命令面板         | `Mod+K` 打开、输入框获得焦点、Enter 完成导航 |
+| 命令面板焦点归位 | Esc 后焦点回到触发按钮，而不是 `<body>`      |
+| 未知路由         | 渲染 404 视图，而不是白屏                    |
+
+两个配置决定值得一提：
+
+- **`channel: 'chrome'`** 使用已安装的 Chrome，而不是下载 Playwright 专用浏览器：`pnpm install` 仍是
+  唯一安装步骤，且测试跑在与开发相同的引擎上。
+- **`reuseExistingServer: true`**：你已有的预览服务会被复用；没有时配置会自己起一个
+  （`pnpm preview --port 4173`）。
+
+## 2. axe 矩阵
+
+`apps/lab/e2e/a11y.spec.ts` 扫描 **5 条路由 × 2 种配色 × 2 种语言 = 20 个页面**，外加一个打开状态
+的对话框（命令面板）——模态状态无法靠导航到达。
+
+```ts
+const routes = [
+  '/',
+  '/foundations/design-tokens',
+  '/demos/scenarios/ide-workspace',
+  '/demos/scenarios/kanban-board',
+]
+for (const route of routes)
+  for (const mode of ['light', 'dark'])
+    for (const locale of ['en', 'zh']) {
+      /* axe，标签：wcag2a/aa + wcag21a/aa */
+    }
+```
+
+偏好通过 `addInitScript` 写入，也就是写与内联 bootstrap 相同的 `localStorage` 键：扫描看到的就是
+「带着这些偏好的读者」会得到的页面，不需要先点控件。
+
+**结果：21/21 全部通过。** 为了达到它需要改一个 token，而这正是只有矩阵才能抓到的问题：`demo`、`EN`
+徽章和命令面板的快捷键提示用 `text-muted-foreground` 压在 `bg-muted` 上，而 `--gray-500` 在
+`--gray-100` 上对 10px 文字略低于 4.5:1。浅色的 `--muted-foreground` 改为 `--gray-600`（深色本来就
+达标），所有页面一次修好——徽章、代码块、面板提示。逐页打补丁只会把这个 bug 留给下一个徽章。
+
+## 3. bundle 报告
+
+`pnpm bundle:report` 读取 `apps/lab/dist`，对每个产物 gzip，写出 `apps/lab/bundle-report.md`。
+只看一次构建日志不算闸门；有基线的文件才是。
+
+| 指标                | 记录值（B17） | 预算   |
+| ------------------- | ------------- | ------ |
+| JS 总量，gzip       | ≈723 kB       | 800 kB |
+| 单个最大分块，gzip  | 148.5 kB      | 200 kB |
+| CSS，gzip           | 7.9 kB        | —      |
+| Recharts 懒加载分块 | 102.8 kB      | —      |
+| Chart.js 懒加载分块 | 56.3 kB       | —      |
+
+总量包含所有懒加载示例分块，所以它是「整个实验室」的上限，而非首屏。分块按文件名归类：图表渲染器
+单独成项，正是为了让它的大小可见而不是藏在某个示例分块里。超出预算会以非零码退出——有意的增长就去
+更新数字，无意的增长会失败。
+
+## 怎么跑
+
+```bash
+pnpm build            # 检查 + tsc + vite build
+pnpm bundle:report    # 总量、共享分块、图表分块、预算检查
+pnpm e2e              # Playwright：关键路径 + axe 矩阵
+pnpm verify           # build && bundle:report && e2e
+```
+
+`pnpm check` 仍然负责类型、内容、样式 token、lint、格式与 `node:test` 套件；上面三条负责需要浏览器
+或构建产物的事情。
+
+## 刻意不覆盖的
+
+- **不做视觉回归快照。** AI 工作流读不了图片，而在一个设计 token 实验室里，像素差异只会带来噪音，
+  并不能证明行为；DOM 断言才是契约。
+- **不做跨浏览器矩阵。** 只跑 Chrome 是刻意的：加 Firefox/WebKit 会成倍增加运行时间，却不改变这些
+  断言证明的东西。
+- **不接 CI。** 按 `AGENTS.md` 的约定，这个原型不进主仓库 CI；`pnpm verify` 是等价的本地闸门。
+- **不对运行时性能设预算。** 仪表盘是交互式测量渲染耗时；把时间做成 CI 闸门需要比这台机器更安静的环境。

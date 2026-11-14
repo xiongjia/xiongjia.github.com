@@ -1,0 +1,89 @@
+---
+title: Command palette
+summary: A modal palette that keeps focus in one input, points at options with aria-activedescendant, traps Tab, restores focus on close and remembers what you ran.
+order: 40
+---
+
+## What this proves
+
+A palette is a search box that behaves like a dialog. Three contracts meet in it, and breaking any
+one of them makes it feel broken even when the filtering is perfect:
+
+1. **Dialog** — modal, labelled, closes on Escape or a backdrop click, restores focus.
+2. **Combobox** — one input owns focus; the options are never focused; `aria-activedescendant`
+   points at the active one.
+3. **Ranking** — the thing you typed is in the first slot, or the palette is a worse list.
+
+## Focus, in order of events
+
+| Event              | What happens                                                            |
+| ------------------ | ----------------------------------------------------------------------- |
+| open               | remember `document.activeElement`, focus the input, lock page scroll    |
+| Arrow / Home / End | move the active index, keep focus on the input, scroll it into view     |
+| Tab                | swallowed: the dialog has one focusable control and Tab cannot leave it |
+| Enter              | run the active command, then close                                      |
+| Escape / backdrop  | close                                                                   |
+| close (unmount)    | restore focus to the remembered element, unlock scroll                  |
+
+Restoring focus is the part that is usually missing. Without it the reader closes the palette and
+lands at the top of the document, with the keyboard path effectively reset.
+
+## The ARIA shape
+
+```text
+div[role=dialog][aria-modal=true][aria-label]
+└── input[role=combobox][aria-expanded][aria-controls][aria-activedescendant][aria-autocomplete=list]
+    └── div[role=listbox]
+        ├── div[role=group][aria-label=Actions]
+        │   └── div[role=option][aria-selected]
+        └── div[role=group][aria-label=Navigation]
+```
+
+- `aria-activedescendant` is a flat option id, even though the options are grouped — groups are
+  presentation for the eye and a labelled section for a screen reader.
+- `aria-selected` marks the active option. `aria-expanded` is true while the list has matches.
+- The demo deliberately does **not** use `aria-live` for the result count: an announcement per
+  keystroke is noise. The active option's `aria-selected` is what a screen reader reads out.
+
+## Ranking
+
+`match.ts` scores a title match in a different band from a keyword match, so a keyword that happens
+to start with the query can never outrank the command whose visible title you are typing:
+
+```text
+title:    exact > prefix > word start > substring > subsequence   (1000–1060)
+keyword:  the same five checks, in one low band                    (100–160)
+```
+
+Ties keep the input order, which is what lets the palette put recents first without a second sort.
+Matched characters come back as merged ranges, so the UI renders `<mark>`s over the real title
+instead of a separate highlighted string.
+
+## Recents
+
+The palette owns a small recent list (ids in `localStorage`, capped, revalidated on read). With an
+empty query the recent commands come first under their own heading; as soon as a query is typed,
+ranking takes over and the recent structure is ignored. That rule is what keeps the two features from
+arguing.
+
+## In the lab shell
+
+The same component is mounted in the app header, fed from the generated indexes: every content page,
+every demo, and the display preferences are commands, so adding an `.mdx` file adds a command with no
+code change. `Mod+K` opens it globally; the demo uses `Mod+J` because two handlers on the same window
+would race.
+
+## Pitfalls
+
+- **`aria-activedescendant` must reference an id that exists.** Clamping the active index is not
+  enough; the id is derived from the flat matched index, so filtering cannot leave a dangling
+  reference.
+- **Options styled with `onMouseEnter` flicker.** `onMouseMove` sets the active index only when the
+  pointer actually moves, which is the behaviour a mouse user expects.
+- **A backdrop click must not fire for clicks inside the dialog.** The handler checks
+  `event.target === event.currentTarget`; a wrapper with padding would otherwise close on every
+  option click.
+- **Two global shortcuts on one key race.** The listener order decides the winner, and neither
+  handler can cancel the other cleanly; pick a different key for a demo.
+- **Body scroll lock must be restored in the effect cleanup**, not after the close animation —
+  otherwise a second open finds the page already locked.

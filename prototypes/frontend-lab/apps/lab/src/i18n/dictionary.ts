@@ -14,8 +14,8 @@ export const en = {
   app: {
     name: 'Frontend Lab',
     tagline: 'MDX explains · React components interact · experiments prove',
-    progress: 'B12 / B17',
-    batch: 'Batch B12 · Motion + dnd-kit',
+    progress: 'B17 / B17',
+    batch: 'Batch B17 · Polish and verification',
     navLabel: 'Lab',
   },
   nav: {
@@ -35,6 +35,8 @@ export const en = {
     state: 'State',
     motion: 'Motion',
     interactions: 'Interactions',
+    scenarios: 'Scenarios',
+    quality: 'Quality',
     general: 'General',
   } as Record<string, string>,
   home: {
@@ -79,6 +81,20 @@ export const en = {
     body: 'There is no page at this path. Content pages are generated from content/, so a missing page usually means a typo in the URL or a deleted .mdx file.',
     back: 'Back to home',
   },
+  palette: {
+    label: 'Command palette',
+    trigger: 'Search',
+    placeholder: 'Search pages, demos and actions…',
+    empty: 'No matching command',
+    recent: 'Recent',
+    hint: '↑↓ move · Enter run · Esc close',
+    groups: { navigate: 'Go to', appearance: 'Appearance', language: 'Language' },
+    commands: {
+      theme: 'Theme: {mode}',
+      style: 'Style: {style}',
+      locale: 'Language: {locale}',
+    },
+  },
   controls: {
     colorMode: 'Color mode',
     stylePreset: 'Style preset',
@@ -94,8 +110,8 @@ export const zh: Dictionary = {
   app: {
     name: '前端实验室',
     tagline: 'MDX 讲原理 · 组件做交互 · 实验给结论',
-    progress: 'B12 / B17',
-    batch: '批次 B12 · 动效与拖拽',
+    progress: 'B17 / B17',
+    batch: '批次 B17 · 收尾与验证',
     navLabel: '实验室',
   },
   nav: {
@@ -115,6 +131,8 @@ export const zh: Dictionary = {
     state: '状态',
     motion: '动效',
     interactions: '交互',
+    scenarios: '综合场景',
+    quality: '质量',
     general: '通用',
   },
   home: {
@@ -157,6 +175,20 @@ export const zh: Dictionary = {
     title: '页面不存在',
     body: '该路径下没有页面。文章由 content/ 生成，缺页通常是 URL 拼写错误或 .mdx 文件已被删除。',
     back: '返回首页',
+  },
+  palette: {
+    label: '命令面板',
+    trigger: '搜索',
+    placeholder: '搜索页面、示例与操作…',
+    empty: '没有匹配的命令',
+    recent: '最近使用',
+    hint: '↑↓ 移动 · Enter 执行 · Esc 关闭',
+    groups: { navigate: '前往', appearance: '外观', language: '语言' },
+    commands: {
+      theme: '主题：{mode}',
+      style: '样式：{style}',
+      locale: '语言：{locale}',
+    },
   },
   controls: {
     colorMode: '配色模式',

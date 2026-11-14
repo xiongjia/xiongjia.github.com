@@ -1,0 +1,80 @@
+---
+title: IDE workspace
+summary: A file tree, a tab strip, an editor and a problems panel over one buffer — the composed scenario for the editor, panels and store packages.
+order: 10
+---
+
+## What this proves
+
+Four parts of an IDE-looking thing, wired to one buffer. The interesting part is not that it looks
+like an editor; it is that every view answers the same question from the same snapshot:
+
+| View       | Question                                  | Source                       |
+| ---------- | ----------------------------------------- | ---------------------------- |
+| File tree  | what exists, and which files have drafts  | saved files + dirty paths    |
+| Tab strip  | what is open, and which tab is visible    | open documents + `active`    |
+| Editor     | what text should the caret sit in         | `documentText(path)`         |
+| Problems   | what is wrong with the _current draft_    | `scan(documentText(active))` |
+| Status bar | how big is the buffer, how many are dirty | derived from the snapshot    |
+
+The editor is mounted with `initialDoc` and reports every change through `onChange`. The store owns
+the text across mounts, so switching tabs and coming back keeps the draft — and drops the undo
+history, which is the honest cost of a non-controlled editor.
+
+## The layout
+
+- The outer `SplitPane` holds the tree and the workspace; the inner one holds the editor and the
+  problems panel. Sizes are percentages in `localStorage`, so they survive a reload.
+- `minFirstPx` / `maxFirstPx` convert the pointer and keyboard input against the **live** container
+  size: a file tree must not collapse below its longest label, and a percentage alone cannot promise
+  that.
+- Hiding the tree remounts the layout without the outer split, so the editor gets the full width
+  without a fake 0% pane.
+
+## Diagnostics in the decoration slot
+
+Two `StateField`s rebuild their decoration set on `docChanged`: one adds a line class per affected
+line, the other marks the matched token. Keeping them separate avoids re-sorting line and mark
+decorations against each other.
+
+Clicking a problem dispatches a selection on the live view — a jump is a transaction, not a prop.
+Underlining is a class name the editor theme defines in token colours, so a diagnostic follows
+`data-theme` and `data-style` like everything else.
+
+## Editor themes
+
+`packages/editor` generates every theme from a palette: one `createTheme(palette)` call produces the
+chrome (caret, selection, gutters, search matches, panels) and the syntax highlight style. Adding a
+theme is six hex values, not another 60-line `EditorView.theme` object.
+
+Five choices in the toolbar, for two different reasons:
+
+| Theme           | Why it exists                                                           |
+| --------------- | ----------------------------------------------------------------------- |
+| Lab tokens      | Every colour is a CSS variable: follows `data-theme` and style presets  |
+| Dracula / Nord  | Fixed dark palettes; the editor stays dark while the page is light      |
+| Solarized Light | A fixed light palette, which makes the "fixed theme" trade-off visible  |
+| One Dark        | The packaged theme, kept as the control for "a theme you did not write" |
+
+Switching is a `Compartment` reconfigure, so it is live: the draft, the cursor and undo history all
+survive, which is exactly why the wrapper takes `theme` as a prop instead of a `key`. The diagnostics
+decoration classes are part of every generated theme, so a warning keeps its colour under Nord too.
+
+One consequence worth stating: only `Lab tokens` follows the site's light/dark switch. A fixed theme
+is a deliberate override — that is what a user picking Dracula is asking for.
+
+## Save and revert
+
+`Mod-s` is installed with `Prec.highest` on top of the editor's default keymap, because the demo
+takes precedence over `defaultKeymap` — the extension list a caller passes is appended, so it needs
+`Prec.highest` to win. The handler reads a ref: the keymap is captured when the view mounts and the
+component keeps re-rendering as the draft changes.
+
+## Pitfalls
+
+- `RangeSetBuilder` requires ranges added in ascending order, with no overlap. One builder for line
+  decorations and marks is therefore a trap; two fields keep each set sorted by construction.
+- Clicking a problem while a different file's editor is mounted must not jump into the old buffer.
+  The demo resets the jump target on every dispatch and remounts the editor by path.
+- A tab that is closed has its draft discarded. Real editors ask first; the contract says so, and
+  the test asserts it.

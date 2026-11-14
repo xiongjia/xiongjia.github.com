@@ -1,0 +1,110 @@
+---
+title: Command palette
+summary: A modal palette with a real focus contract — combobox ARIA, a Tab trap, focus restoration on close, ranked fuzzy matching and recent commands.
+order: 40
+---
+
+## The scenario
+
+Every app grows one eventually: a single input that can do anything. B16 builds it as a package
+(`@frontend-lab/command-palette`) and proves the part that is actually hard — not filtering, but
+focus.
+
+Two consumers share one implementation:
+
+- **The lab shell** mounts it in the header with `Mod+K`; its commands are generated from the content
+  and demo indexes plus the display preferences. Adding a page adds a command.
+- **The demo** uses the same component with its own command set and its own shortcut (`Mod+J`, so it
+  does not race the shell's handler).
+
+## What a palette has to get right
+
+### 1. It is a dialog
+
+`role="dialog"`, `aria-modal="true"`, an accessible name, Escape to close, a backdrop click that
+closes only when the click is on the backdrop itself. Opening locks page scroll; closing unlocks it
+in the same cleanup that restores focus.
+
+### 2. It is a combobox, not a search box next to a list
+
+The input keeps focus for the entire session. The active option is conveyed by
+`aria-activedescendant` + `aria-selected`, never by moving focus to the option. That is what makes
+"type while arrowing" work, and it is the difference between a palette and a filter list.
+
+Consequences that are easy to get wrong:
+
+- `aria-activedescendant` must always point at an existing option id. The active index is clamped to
+  the current match count, and the id is derived from the flat index, so filtering cannot leave a
+  dangling reference.
+- Arrow keys wrap, Home/End jump, and the active option is scrolled into view with
+  `scrollIntoView({ block: 'nearest' })` — never with a page scroll.
+- Tab is swallowed. A modal dialog that lets Tab escape into the page behind it is a trap bug, not a
+  feature.
+
+### 3. Closing restores focus
+
+The palette remembers `document.activeElement` when it opens and focuses it again on close. This is
+the single most common omission: without it, the reader closes the palette and the keyboard path
+starts over at the top of the document. The demo's trigger button is the evidence — close the palette
+and press Enter, and the palette opens again.
+
+### 4. Ranking is predictable
+
+Titles and keywords live in separate score bands:
+
+| Match kind  | Example                         | Band                              |
+| ----------- | ------------------------------- | --------------------------------- |
+| exact       | `Settings` for “settings”       | title                             |
+| prefix      | `Settings panel` for “settings” | title                             |
+| word start  | `Open settings` for “set”       | title                             |
+| substring   | `Preset` for “set”              | title                             |
+| subsequence | `Settings` for “stg”            | title                             |
+| keyword hit | `preferences` for “settings”    | keyword — below every title match |
+
+Every title match outranks every keyword match. Ties keep the caller's order, which is how recent
+commands get the first slots without a second sort. Matched characters come back as merged ranges,
+so the UI highlights the real title (`<mark>`) rather than rendering a second, synthetic string.
+
+### 5. Recents are a separate, small feature
+
+Ids are stored in `localStorage` (capped, validated on read). With an empty query the recent commands
+render first under their own heading; as soon as a query is typed, ranking takes over and the recent
+group disappears. The two features never argue because they only coexist in one state.
+
+## The API
+
+```tsx
+const commands: PaletteCommand[] = [
+  { id: 'settings', title: 'Open settings', group: 'Navigation', keywords: 'preferences' , run },
+]
+
+<CommandPalette
+  open={open}
+  onClose={close}
+  commands={commands}
+  label="Command palette"
+  recentLabel="Recent"
+  storageKey="app:palette-recent"
+  hint="↑↓ move · Enter run · Esc close"
+/>
+```
+
+`run` is the caller's; the palette calls it, closes, and records the id. The pure matcher is exported
+separately (`@frontend-lab/command-palette/match`), which is why its ranking rules are covered by
+`node:test` instead of a browser.
+
+## What is verified
+
+The demo and the shell integration are checked through the DOM, not screenshots: the dialog role and
+name, focus on open, Tab staying inside, `aria-activedescendant` following the arrow keys,
+filtering, Enter running and closing, focus returned to the trigger, recents appearing on reopen, and
+`Mod+K` navigating the shell to a demo.
+
+## Not built
+
+- **No nested commands or argument prompts.** A palette that can ask for input is a different
+  interaction model (and a different ARIA pattern).
+- **No virtualization.** The lab has fewer than 60 commands; a virtual list would hide the focus
+  behaviour this batch is about.
+- **No fuzzy scoring tuned against a corpus.** The rules are explainable on purpose — a palette whose
+  ranking nobody can predict feels random even when it is "better".

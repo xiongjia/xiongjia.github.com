@@ -41,7 +41,8 @@ useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
 
 ## 实验室刻意做小的部分
 
-- 不做跨列表排序（那是 B14 看板的问题，而且需要 store——B11 的工厂）。
+- 这里不做跨列表排序：B14 的看板做了，用 B11 工厂产出的 store，并在 `onDragOver` 里实时移动，而不是
+  等放下时才算。
 - 不做持久化：顺序放在 `useState` 里，因为这个实验讲的是机制。
 - 不做独立的拖拽把手：整行就是把手，是「保持键盘可达」的最简方案。独立把手要多一个
   `setActivatorNodeRef` 和第二个焦点目标。

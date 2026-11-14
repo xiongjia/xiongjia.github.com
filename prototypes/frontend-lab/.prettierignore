@@ -4,3 +4,4 @@ dist
 coverage
 .vite
 apps/lab/src/generated
+apps/lab/bundle-report.md

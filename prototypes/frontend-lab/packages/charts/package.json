@@ -1,0 +1,27 @@
+{
+  "name": "@frontend-lab/charts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./recharts": "./src/recharts-chart.tsx",
+    "./chartjs": "./src/chartjs-chart.tsx",
+    "./sankey-layout": "./src/sankey-layout.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "chart.js": "^4.6.1",
+    "react-chartjs-2": "^5.3.1",
+    "recharts": "^3.10.1"
+  }
+}

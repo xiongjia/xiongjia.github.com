@@ -61,6 +61,12 @@ HighlightStyle.define([{ tag: tags.keyword, color: 'var(--primary)' }])
 The one-dark theme in the demo exists as the counter-example: a packaged palette is a fixed list of
 hex values and cannot follow a token, which is visible the moment the header switches mode.
 
+B13 turned this into a small theme set: `packages/editor` generates Dracula, Nord and Solarized Light
+from palette objects with the _same_ `EditorView.theme` + `HighlightStyle` code (a theme is six hex
+values, not another 60-line object), and the IDE demo switches between five themes through the same
+compartment. Only `Lab tokens` follows the site's light/dark switch — a fixed palette is a deliberate
+override. See [the IDE workspace](/scenarios/ide-workspace) for the picker.
+
 ## Read-only is two switches
 
 - `EditorState.readOnly` rejects transactions that change the document.

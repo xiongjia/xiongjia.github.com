@@ -64,5 +64,6 @@ flexbox trick — the content has to be able to answer the new width.
 - No `ResizeObserver` on the container for the drag math: percentages make it unnecessary.
 - No state library: one number per split does not justify a store. B11 makes the same call in the
   opposite direction for state that several components share.
-- No collapsible panes or `min`/`max` per pane in pixels: both are B13's problem, where the IDE
-  layout needs them and the requirements are concrete.
+- No collapsible panes in the package: the IDE demo hides its tree pane by re-laying out without the
+  split, which needs no API. `minFirstPx` / `maxFirstPx` did land in the package when B13 needed a
+  file tree that cannot collapse below its longest label — a percentage alone cannot promise that.

@@ -1,0 +1,109 @@
+---
+title: Polish and verification
+summary: The gates that keep the lab honest after B17 — a Playwright critical-path suite, an axe matrix over routes × mode × locale, and a bundle report with budgets.
+order: 10
+---
+
+## The scenario
+
+B1–B16 were verified batch by batch, with one-off scripts and DOM assertions that were thrown away
+afterwards. That is fine while the author is the only reader; it stops being fine the moment a change
+can break a flow nobody re-checks. B17 turns the throwaway verification into three artifacts that
+anyone can run.
+
+## 1. Playwright critical paths
+
+`apps/lab/e2e/critical-paths.spec.ts` drives a **production build** (`vite preview`), not the dev
+server, so a broken lazy chunk or a registry that only works in dev fails here.
+
+| Path                      | What it proves                                             |
+| ------------------------- | ---------------------------------------------------------- |
+| sidebar → content page    | generated navigation, MDX render, table typography         |
+| demo shell tabs           | Preview / Source / Notes, and that Source is the real file |
+| colour mode               | the control persists and the computed token changes        |
+| language switch           | `lang`, translated controls, survives a reload             |
+| IDE workspace             | open a file, type, dirty marker, save, activity log        |
+| kanban keyboard move      | Enter on the → control moves a card, announcement appears  |
+| dashboard renderer switch | `lazy()` chunk loads and paints `data-renderer`            |
+| command palette           | `Mod+K` opens it, the input is focused, Enter navigates    |
+| palette focus restoration | Escape returns focus to the trigger, not to `<body>`       |
+| unknown route             | the 404 view instead of a blank page                       |
+
+Two configuration decisions matter:
+
+- **`channel: 'chrome'`** uses the installed Chrome instead of downloading a Playwright browser, so
+  `pnpm install` stays the only setup step and the suite runs on the same engine the lab is developed
+  against.
+- **`reuseExistingServer: true`** lets a preview server you already have running be reused; the
+  config boots one (`pnpm preview --port 4173`) when there is none.
+
+## 2. The axe matrix
+
+`apps/lab/e2e/a11y.spec.ts` scans **5 routes × 2 colour modes × 2 locales = 20 pages**, plus one
+open-dialog state (the command palette), because axe cannot reach a modal by navigation.
+
+```ts
+const routes = [
+  '/',
+  '/foundations/design-tokens',
+  '/demos/scenarios/ide-workspace',
+  '/demos/scenarios/kanban-board',
+]
+for (const route of routes)
+  for (const mode of ['light', 'dark'])
+    for (const locale of ['en', 'zh']) {
+      /* axe, tags: wcag2a/aa + wcag21a/aa */
+    }
+```
+
+Preferences are written with `addInitScript`, i.e. through the same `localStorage` keys the inline
+bootstrap reads — the scan sees the page a reader with those preferences would get, without clicking
+through controls first.
+
+**Result: 21/21 clean.** Getting there needed one token change, and it is the kind of thing only a
+matrix catches: the `demo` / `EN` badges and the palette's shortcut hints use
+`text-muted-foreground` on `bg-muted`, and `--gray-500` on `--gray-100` is just under 4.5:1 for
+10px text. The light `--muted-foreground` moved to `--gray-600` (dark mode was already fine), which
+fixed every page at once — the badge, the code block, the palette hints. A per-page patch would have
+hidden the same bug for the next badge.
+
+## 3. The bundle report
+
+`pnpm bundle:report` reads `apps/lab/dist`, gzips every asset and writes
+`apps/lab/bundle-report.md`. Reading the build log once is not a gate; a file with a baseline is.
+
+| Metric                     | Recorded (B17) | Budget |
+| -------------------------- | -------------- | ------ |
+| Total JS, gzip             | ≈723 kB        | 800 kB |
+| Largest single chunk, gzip | 148.5 kB       | 200 kB |
+| CSS, gzip                  | 7.9 kB         | —      |
+| Recharts, lazy chunk       | 102.8 kB       | —      |
+| Chart.js, lazy chunk       | 56.3 kB        | —      |
+
+The total includes every lazy demo chunk, so it is a ceiling on the whole lab rather than on first
+load. Chunks are attributed by name: the chart renderers get their own entries precisely so their
+cost is visible instead of hidden in a demo chunk. Exceeding a budget exits non-zero — a deliberate
+increase updates the number, an accidental one fails.
+
+## Running it
+
+```bash
+pnpm build            # checks + tsc + vite build
+pnpm bundle:report    # totals, shared chunks, chart chunks, budget check
+pnpm e2e              # Playwright: critical paths + axe matrix
+pnpm verify           # build && bundle:report && e2e
+```
+
+`pnpm check` still owns types, content, style tokens, lint, formatting and the `node:test` suites. The
+three commands above own the things that need a browser or a build.
+
+## What is deliberately not covered
+
+- **No visual regression snapshots.** The AI workflow cannot read images, and a pixel diff on a
+  design-token lab produces churn without proving behaviour; the DOM assertions are the contract.
+- **No cross-browser matrix.** Chrome only, by design: adding Firefox/WebKit would multiply runtime
+  without changing what these tests assert.
+- **No CI wiring.** The prototype is out of the repo's CI on purpose (see `AGENTS.md`); `pnpm verify`
+  is the local equivalent.
+- **No performance budgets on runtime cost.** The dashboard measures render time interactively; a
+  timing gate in CI needs a quieter machine than this one.

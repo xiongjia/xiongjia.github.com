@@ -8,8 +8,9 @@ Core principle: **MDX explains, React components interact, single-library experi
 technique, composed demos prove a real scenario.**
 
 - Created: 2026-11-02
-- Status: `experimental` (Wave 3 reached at B12: shell, content loop, demo system, quality gates,
-  theme, style presets, i18n, plus the single-library experiments B8–B12)
+- Status: `experimental` (roadmap complete at B17: shell, content loop, demo system, quality gates,
+  theme, style presets, i18n, the single-library experiments B8–B12, the composed scenarios B13–B16
+  and the verification stack B17)
 - Plan of record: the roadmap below (batches B1–B17). The discussion draft lives outside the repo.
 
 ## Quick start
@@ -24,13 +25,17 @@ pnpm style:check    # palette / tokens / style presets / preset list agreement
 pnpm check          # generate + typecheck + content/style checks + eslint + prettier + tests
 pnpm build          # generate + checks + tsc --noEmit + vite build (dist in apps/lab/dist)
 pnpm preview        # serve the production build
+pnpm bundle:report  # gzip every built asset, attribute chunks, check the size budgets
+pnpm e2e            # Playwright: critical paths + the axe matrix (needs a build)
+pnpm verify         # build + bundle:report + e2e
 ```
 
 Requires Node >= 22.12 (`.nvmrc` pins 24) and pnpm 11.
 
-## What works today (B12)
+## What works today (B17)
 
-- pnpm workspace with one app (`apps/lab`) and one shared package (`packages/ui`)
+- pnpm workspace with one app (`apps/lab`) and seven shared packages: `ui`, `editor`, `panels`,
+  `state`, `workspace`, `charts` and `command-palette`
 - React 19 + React Router 7 + Vite 8 + Tailwind v4, TypeScript strict
 - App shell: sidebar navigation (content and demos merged into one topic tree), header with language
   / style / color-mode controls, routed content area, 404 route
@@ -47,14 +52,15 @@ Requires Node >= 22.12 (`.nvmrc` pins 24) and pnpm 11.
   and a sidebar + home list derived from it — adding an `.mdx` file needs no code change
 - **Demo system**: demo folders under `demos/`, a generated registry, a Preview / Source / Notes shell
   (source is the real file, copyable), and a per-demo error boundary so one crash cannot take the page
-  down — 20 demos ship today
+  down — 24 demos ship today
 - **Quality gates**: `pnpm check` = generate + typecheck + `content:check` + `style:check` + eslint +
   prettier + `node:test`; `pnpm build` runs the same checks before `vite build`
 - **Tailwind deep dive (B8)**: five experiments — container queries, `has-*` / `peer-*`, variant
   rules, keyframes vs Motion, grid + subgrid
 - **CodeMirror (B9)**: `packages/editor`, a non-controlled editor wrapper with compartment-based
   theme and read-only, token-driven syntax colours, and three experiments (minimal editor, themes /
-  keymaps, decorations)
+  keymaps, decorations); five themes (lab tokens, One Dark, Dracula, Nord, Solarized Light) are
+  generated from palettes by one factory
 - **Panels (B10)**: `packages/panels`, a dependency-free split with pointer capture, keyboard resize
   (`role="separator"`), clamping and `localStorage` persistence; panes are `@container`s
 - **Zustand (B11)**: `packages/state`, a store factory (`createStoreContext`) with a vanilla store in
@@ -63,8 +69,23 @@ Requires Node >= 22.12 (`.nvmrc` pins 24) and pnpm 11.
 - **Motion + dnd-kit (B12)**: variants with orchestration, `layout`, `AnimatePresence`, drag
   constraints and motion values; a sortable list whose keyboard sensor and live announcements are
   first-class
-
-Not built yet: the composed scenarios (B13-B17).
+- **IDE workspace (B13)**: `packages/workspace` (pure model + zustand store + provider) behind a
+  composed demo — file tree, tabs, editor, diagnostics and a status bar over one buffer, plus an
+  editor-theme picker wired through a compartment; the contract is documented as a page and held by
+  an integration test in `pnpm test`
+- **Kanban (B14)**: cross-container drag, a per-instance store, debounced + validated
+  `localStorage` persistence, enter/exit animation and an explicit keyboard path for both reordering
+  and moving between columns
+- **Dashboard builder (B15)**: a reorderable, resizable dashboard over `packages/charts`; the same
+  dataset through hand-written SVG, Recharts and Chart.js, with load (bundle report) and render
+  (measured in the demo) costs recorded on the page; a hand-written fund-flow Sankey (none of the
+  renderers ships one) over a new `--chart-1..5` token set
+- **Command palette (B16)**: `packages/command-palette` — combobox ARIA, a Tab trap, focus
+  restoration on close, ranked fuzzy matching and recents; mounted in the shell with `Mod+K` over the
+  generated indexes, and demoed with its own command set
+- **Polish (B17)**: Playwright critical-path suite against a production build, an axe matrix over
+  5 routes × colour mode × locale (plus the open palette dialog), and `pnpm bundle:report` with size
+  budgets — recorded in `apps/lab/bundle-report.md`
 
 ## Adding a content page
 
@@ -138,28 +159,34 @@ frontend-lab/
 │   ├── content/              # MDX pages, grouped by folder (`.zh.mdx` = translation)
 │   ├── demos/                # <group>/<demo>/{demo.tsx,notes.mdx,notes.zh.mdx}
 │   ├── plugins/              # generators (content-index, demo-registry) + gates
-│   │   │                     #   (content-check, style-check) + their node:test files
+│   │   │                     #   (content-check, style-check, bundle-report) + node:test files
+│   ├── e2e/                  # Playwright: critical paths + the axe matrix
 │   ├── src/app/              # router, layout, nav builder, routes
 │   ├── src/components/       # DemoShell, DemoPreview, DemoSource, error boundary, header controls
+│   │                         #   (incl. the shell command palette)
 │   ├── src/generated/        # content-index.ts + demo-registry.ts (generated, git-ignored)
 │   ├── src/i18n/             # locales, typed dictionaries, provider + hook, locale selector
 │   ├── src/prefs/            # persisted preference store (theme, style, locale)
 │   ├── src/styles/           # app.css (Tailwind entry) + mdx.css (content typography)
+│   ├── tests/                # node:test integration suites (workspace contract, command matching)
+│   ├── bundle-report.md      # generated baseline of every built asset (committed)
+│   ├── playwright.config.ts
 │   └── vite.config.ts
 ├── packages/ui/              # shared components + token layer
 │   └── src/
 │       ├── components/       # button, segmented-control
 │       ├── lib/              # cn()
 │       └── styles/           # palette.css, tokens.css, styles.css
-├── packages/editor/          # CodeMirror wrapper: mount once, compartments, token theme
+├── packages/editor/          # CodeMirror wrapper: mount once, compartments, palette-driven themes
 ├── packages/panels/          # split pane + persisted split size (no dependencies)
 ├── packages/state/           # zustand store factory + useShallow re-export
+├── packages/workspace/       # IDE session contract: model + vanilla store + provider
+├── packages/charts/          # SVG baseline, fund-flow Sankey, lazy Recharts / Chart.js entries
+├── packages/command-palette/ # dialog + combobox + focus trap + ranked matcher
 ├── eslint.config.mjs         # incl. boundary zones between app / demos / packages / plugins
 ├── tsconfig.base.json
 └── pnpm-workspace.yaml
 ```
-
-Planned additions: `packages/{mdx-runtime,charts}` (B13-B17).
 
 ## Roadmap
 
@@ -198,11 +225,11 @@ B3 completion is the vertical-slice MVP: worth pausing and re-evaluating scope t
 
 | #   | Batch             | Goal                                            | Exit criteria                               | Status |
 | --- | ----------------- | ----------------------------------------------- | ------------------------------------------- | ------ |
-| B13 | IDE Workspace     | editor + panels + file tree + sync (splittable) | contract doc + integration test             | todo   |
-| B14 | Kanban            | drag + state + animation                        | drag, persistence and keyboard all work     | todo   |
-| B15 | Dashboard Builder | charts + drag layout, chart library comparison  | comparison experiment with recorded numbers | todo   |
-| B16 | Command Palette   | keyboard interaction, search, shortcuts         | focus management verified                   | todo   |
-| B17 | Polish            | Playwright suite, axe matrix, bundle report     | critical paths green, baseline recorded     | todo   |
+| B13 | IDE Workspace     | editor + panels + file tree + sync (splittable) | contract doc + integration test             | done   |
+| B14 | Kanban            | drag + state + animation                        | drag, persistence and keyboard all work     | done   |
+| B15 | Dashboard Builder | charts + drag layout, chart library comparison  | comparison experiment with recorded numbers | done   |
+| B16 | Command Palette   | keyboard interaction, search, shortcuts         | focus management verified                   | done   |
+| B17 | Polish            | Playwright suite, axe matrix, bundle report     | critical paths green, baseline recorded     | done   |
 
 ## Batch log
 
@@ -570,6 +597,153 @@ preview`), plus `pnpm check` / `pnpm build` green
   - Reduced motion is handled per interaction: durations collapse for variants, the drag is disabled
     entirely, because an instant drag leaves pointer and element disagreeing
 
+### B13 · IDE workspace — done
+
+- Goal: the first composed scenario — file tree, tabs, editor and diagnostics over one buffer
+- Built:
+  - `packages/workspace`: `model.ts` (pure open/edit/save/revert/close/tree/line count),
+    `store.ts` (the same model behind zustand, no React), `provider.tsx` / `use-workspace.ts` /
+    `context.ts` (one store per provider, split so Fast Refresh stays honest) — the contract is
+    documented on `scenarios/ide-workspace`
+  - `demos/scenarios/ide-workspace`: split layout (tree | editor+problems) with persisted sizes and
+    pixel bounds, a tab strip with dirty dots, `CodeEditor` keyed by path (draft survives a tab
+    switch, undo history does not), `Mod-s` via `Prec.highest`, a diagnostics StateField pair driving
+    line + mark decorations, a problems panel that jumps by dispatching a selection, and an activity
+    log
+  - `SplitPane` gained `minFirstPx` / `maxFirstPx`, converted against the live container so a
+    percentage stays usable at every width
+  - `apps/lab/tests/workspace-contract.test.ts`: 13 `node:test` cases driving the real store
+    (buffer rule, dirty derivation, inert unknown paths, neighbour activation on close, two
+    independent stores, tree projection, split clamping)
+  - an editor-theme picker: `packages/editor` now generates Dracula, Nord and Solarized Light from
+    palette objects (one `createTheme` factory, cached extensions) next to lab tokens and packaged
+    One Dark; the demo switches all five live through the theme `Compartment`, so draft, cursor and
+    undo history survive
+- Exit check: `pnpm check` green (40 tests); 20 CDP assertions over the production preview — tree
+  click switches the buffer, typing marks it dirty and paints the tree dot, `Mod-s` saves and logs,
+  the tab strip survives, `tree 31%` survives a reload, the tree collapses, three diagnostics render
+  as both line and mark decorations, and the contract page renders in both locales
+- Pitfalls / decisions:
+  - Dirty is `draft !== saved`, never a flag, so a save of identical text cannot leave a stale marker
+  - The editor is mounted with `initialDoc` and remounted by path: a controlled editor would lose
+    history on every parent render, an uncontrolled one cannot be kept in sync without a dispatch
+  - Two decoration fields instead of one: `RangeSetBuilder` needs ascending, non-overlapping ranges,
+    and line decorations sit at the line start while marks sit at the match
+  - Closing a tab discards its draft — documented, and asserted by the integration test
+
+### B14 · Kanban — done
+
+- Goal: cross-container drag over a real store, with persistence and a keyboard path that is not an
+  afterthought
+- Built:
+  - `demos/scenarios/kanban-board`: three columns, one `DndContext` with `closestCorners`, one
+    `SortableContext` per column, `PointerSensor` (4 px) + `KeyboardSensor`, `DragOverlay`, custom
+    announcements echoed into a log
+  - `onDragOver` moves the card between columns live, `onDragEnd` reorders inside the column
+  - per-instance store via `createStoreContext`; persistence is a debounced (200 ms) subscription
+    with a flush on unmount and an `isBoard` revalidation on read
+  - Motion for enter/exit opacity and the overlay only; `layout` is left to dnd-kit's transition
+  - per-card ← / → buttons move between columns, because arrow keys inside a sortable context stop at
+    the container edge
+- Exit check: 26 CDP assertions — Enter on a → button moves a card and announces it; `Space` +
+  `ArrowDown` + `Space` reorders and announces it; a reload restores order, span and column; a
+  pointer drag lands a card in the third column; add / remove / reset work and are announced; a
+  corrupt stored board falls back to the defaults
+- Pitfalls / decisions:
+  - The naive `persist` middleware writes once per drag frame; the demo's subscription debounces and
+    flushes, which is the pattern B15 reuses
+  - `activationConstraint: { distance: 4 }` keeps the card buttons clickable
+  - A card that is also `role="button"` cannot contain buttons: the drag listeners live on a ⠿
+    handle, and `setNodeRef` stays on the row
+  - dnd-kit auto-scrolls when the pointer nears the viewport edge; the CDP verification had to use a
+    desktop-sized viewport, otherwise the drop target moves out from under the pointer mid-drag
+
+### B15 · Dashboard builder — done
+
+- Goal: a drag-layout dashboard plus a chart-library comparison with recorded numbers
+- Built:
+  - `packages/charts`: deterministic seeded series, a zero-dependency SVG renderer, and two lazy
+    entry points (`./recharts`, `./chartjs`); every renderer reports its own render cost through a
+    shared `useMountCost` hook
+  - `demos/scenarios/dashboard-builder`: a store-backed grid (order, span, renderer persisted),
+    edit mode with drag handles + width buttons + per-card renderer select, Motion `layout` only
+    while not editing, and a live render-cost panel with a "Measure again" remount
+  - `apps/lab/plugins/bundle-report.ts` + `pnpm bundle:report`: gzips every built asset, attributes
+    the chart chunks by name, writes `apps/lab/bundle-report.md`, and fails on the size budgets
+  - a fund-flow Sankey (`packages/charts/src/sankey-layout.ts` + `sankey.tsx`): income → buckets →
+    funds, one shared vertical scale, per-node ribbon anchor slices, `max(in, out)` node values, and
+    nine `node:test` geometry cases. No compared renderer ships a Sankey, so it is hand-written SVG
+  - `--chart-1..5` categorical tokens in `tokens.css` (both modes) and the `default` preset, so the
+    diagram follows light/dark and the style presets without hard-coded hex values
+  - page `scenarios/dashboard-builder` with the recorded comparison: SVG ≈ 0 kB extra / 0.7–0.9 ms,
+    Recharts 102.8 kB gzip / 2.6–3.0 ms, Chart.js 56.3 kB gzip / 0.7–0.9 ms warm, Sankey 1.6–2.2 ms
+- Exit check: 25 CDP assertions — six cards, edit mode controls, lazy chunk load per renderer,
+  canvas present for Chart.js, recorded render costs, span change, keyboard reorder, persistence of
+  order + span + renderers across a reload, corrupt layout fallback, and both locales of the page
+- Pitfalls / decisions:
+  - Dynamic Tailwind class names (`col-span-${span}`) produce no CSS; the span map is explicit
+  - `layout={!editing}` is the whole fix for Motion vs dnd-kit fighting over `transform`
+  - Chart.js needs concrete colours: a canvas cannot read CSS variables, and a theme switch does not
+    repaint without a re-render — recorded as a finding rather than hidden
+  - The first measurement after a page load includes the page's own mount, which is why the panel has
+    a re-measure button and the recorded numbers come from warm remounts
+
+### B16 · Command palette — done
+
+- Goal: a palette that is a component, with the focus contract as the feature
+- Built:
+  - `packages/command-palette`: `match.ts` (pure, ranked, banded scoring with merged highlight
+    ranges), `command-palette.tsx` (portal dialog, combobox + listbox ARIA, Tab trap, focus
+    restoration, scroll lock, recents), `use-command-shortcut.ts` (`Mod+K`, configurable key)
+  - shell integration `src/components/command-menu.tsx`: commands generated from the content and
+    demo indexes plus theme/style/locale actions; page and demo commands carry a `page` / `demo`
+    hint so identical titles stay distinguishable
+  - `demos/scenarios/command-palette`: its own command set, `Mod+J` (the shell owns `Mod+K`),
+    recents, a run log, and instructions that double as the verification checklist
+  - `apps/lab/tests/command-match.test.ts`: 10 `node:test` cases on the ranking rules
+  - page `scenarios/command-palette` (English + Chinese)
+- Exit check: 29 CDP assertions — dialog role/name, focus on the input, Tab trapped, filtering,
+  `<mark>` highlighting, `aria-activedescendant` following the arrows with `aria-selected` matching,
+  Enter running + closing, focus restored to the trigger, recents on reopen, backdrop click, `Mod+J`,
+  `Mod+K` in the shell navigating to a demo, and the Chinese palette labels
+- Pitfalls / decisions:
+  - `aria-activedescendant` must reference an existing id; the active index is clamped to the match
+    count, and the id is derived from the flat index
+  - Opening resets the query: a palette that reopens with the last search hides its own commands
+  - A subsequence match must stay inside one word — otherwise "set" matches "Send a test message"
+  - Two global `Mod+K` handlers on one window race; a demo picks an unused key instead
+  - Tailwind had never scanned `packages/`; the palette's `fixed inset-0` was silently missing until
+    `app.css` gained `@source '../../../../packages'`. Any class that only a package uses was
+    affected
+
+### B17 · Polish and verification — done
+
+- Goal: turn the per-batch throwaway checks into artifacts anyone can run
+- Built:
+  - `apps/lab/e2e/critical-paths.spec.ts`: 12 Playwright tests against `vite preview` (sidebar
+    navigation, demo tabs, colour mode persistence, locale switch, IDE save, IDE theme switch,
+    kanban keyboard move, dashboard renderer, dashboard Sankey, `Mod+K` navigation, palette focus
+    restoration, 404)
+  - `apps/lab/e2e/a11y.spec.ts`: the axe matrix — 5 routes × 2 colour modes × 2 locales plus the open
+    palette dialog (21 scans), preferences injected through the same `localStorage` keys the
+    bootstrap reads
+  - `playwright.config.ts` with `channel: 'chrome'` (no browser download) and `reuseExistingServer`
+  - `pnpm e2e`, `pnpm bundle:report`, `pnpm verify` scripts; `apps/lab/bundle-report.md` committed as
+    the baseline
+- Exit check: `pnpm e2e` green (33 tests: 12 critical paths + 21 axe scans); `pnpm bundle:report`
+  reports ≈730 kB total JS gzip and stays inside the 800 kB / 200 kB budgets; `pnpm check` green
+  (49 `node:test` cases)
+- Pitfalls / decisions:
+  - The matrix earned its keep immediately: `--muted-foreground` (`gray-500`) on `--muted`
+    (`gray-100`) is just under 4.5:1 for 10px text, so badges and palette hints failed in light mode.
+    The token moved to `gray-600` (tokens + the `default` preset), which fixed every page at once
+  - `channel: 'chrome'` avoids a Playwright browser download and runs on the same engine the lab is
+    developed against; the trade-off is that the suite is Chrome-only by design
+  - No visual regression snapshots: the workflow cannot read images, and DOM assertions are the
+    actual contract (see the notes on vision verification in `AGENTS.md`)
+  - The axe matrix runs the dark-mode scans too: a light-only matrix would have missed nothing here,
+    but the reverse case (a dark-only contrast bug) is the common one
+
 ## Conventions
 
 ### File naming
@@ -598,18 +772,30 @@ blocks such as `login-01/`). This is a hard rule, not a preference:
 
 `pnpm check` is the gate, and it is composed of small checks that each own one failure mode:
 
-| Step            | Owns                                                                         |
-| --------------- | ---------------------------------------------------------------------------- |
-| `typecheck`     | types, and the generated index shape after `pnpm generate`                   |
-| `content:check` | frontmatter schema, naming, body rules, demo folder rules, translation pairs |
-| `style:check`   | palette / tokens / preset blocks / preset list agreement                     |
-| `lint`          | boundary zones (app / demos / ui / plugins) + React rules                    |
-| `format:check`  | Prettier                                                                     |
-| `test`          | `node:test` unit tests for both check modules, on temp fixtures              |
+| Step            | Owns                                                                                               |
+| --------------- | -------------------------------------------------------------------------------------------------- |
+| `typecheck`     | types, and the generated index shape after `pnpm generate`                                         |
+| `content:check` | frontmatter schema, naming, body rules, demo folder rules, translation pairs                       |
+| `style:check`   | palette / tokens / preset blocks / preset list agreement                                           |
+| `lint`          | boundary zones (app / demos / ui / plugins) + React rules                                          |
+| `format:check`  | Prettier                                                                                           |
+| `test`          | `node:test` unit tests for both check modules, plus the B13/B16 suites and the B15 Sankey geometry |
 
 A check is a module that exports a function returning problems plus a thin CLI wrapper; that is what
 lets the tests call the same code path as `pnpm check`. Every rule in the table exists because a real
 mistake got past the previous gate — add a rule only with a fixture that fails without it.
+
+`pnpm check` cannot see a rendered page or a built chunk, so B17 adds three gates that need a browser
+or a build:
+
+| Step            | Owns                                                                                     |
+| --------------- | ---------------------------------------------------------------------------------------- |
+| `e2e`           | ten critical paths in a real Chrome against `vite preview`                               |
+| axe matrix      | 4 routes × 2 colour modes × 2 locales + the open palette dialog, zero serious violations |
+| `bundle:report` | gzip sizes of every asset, per-chunk attribution, total + per-chunk budgets              |
+
+`pnpm verify` = `build && bundle:report && e2e`. It is the local equivalent of CI; the prototype stays
+out of the repo's CI on purpose.
 
 ### Display state
 
@@ -638,8 +824,8 @@ and a DOM assertion that it survives a reload.
 - `src/i18n/locales.ts` and `apps/lab/plugins/frontmatter.ts` both list the locales; `content:check`
   fails when they drift, because the generators and the app would otherwise disagree about which
   languages exist.
-- Translation coverage after B12: every content page has a `.zh.mdx`. The demo write-ups added in
-  B8-B12 are English-only on purpose — the sidebar's `EN` badge is the designed path for that, and
+- Translation coverage after B17: every content page has a `.zh.mdx`. The demo write-ups added in
+  B8-B16 are English-only on purpose — the sidebar's `EN` badge is the designed path for that, and
   keeping a visible set of untranslated demos is what stops the badge from rotting.
 
 ### Workflow

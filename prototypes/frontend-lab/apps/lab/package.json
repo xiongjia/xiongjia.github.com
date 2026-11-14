@@ -13,7 +13,10 @@
     "build": "pnpm generate && pnpm content:check && pnpm style:check && tsc --noEmit && vite build",
     "preview": "vite preview",
     "typecheck": "pnpm generate && tsc --noEmit",
-    "style:check": "node plugins/style-check.ts"
+    "style:check": "node plugins/style-check.ts",
+    "bundle:report": "node plugins/bundle-report.ts",
+    "e2e": "playwright test",
+    "e2e:report": "playwright show-report"
   },
   "dependencies": {
     "@codemirror/commands": "^6.11.1",
@@ -25,10 +28,13 @@
     "@dnd-kit/modifiers": "^9.0.0",
     "@dnd-kit/sortable": "^10.0.0",
     "@dnd-kit/utilities": "^3.2.2",
+    "@frontend-lab/charts": "workspace:*",
+    "@frontend-lab/command-palette": "workspace:*",
     "@frontend-lab/editor": "workspace:*",
     "@frontend-lab/panels": "workspace:*",
     "@frontend-lab/state": "workspace:*",
     "@frontend-lab/ui": "workspace:*",
+    "@frontend-lab/workspace": "workspace:*",
     "@lezer/highlight": "^1.2.5",
     "motion": "^14.14.0",
     "react": "^19.3.1",
@@ -37,7 +43,9 @@
     "zustand": "^5.1.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.14.0",
     "@mdx-js/rollup": "^3.1.1",
+    "@playwright/test": "^1.65.1",
     "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.6.6",
     "@types/react": "^19.3.0",
