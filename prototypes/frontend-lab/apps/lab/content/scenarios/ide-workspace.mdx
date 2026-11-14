@@ -1,0 +1,82 @@
+---
+title: IDE workspace contract
+summary: How a file tree, a tab strip, an editor and a diagnostics panel stay consistent — the buffer rule, the package boundary and the integration test that holds it.
+order: 10
+---
+
+## The scenario
+
+B8–B12 built single techniques: a split pane, an editor, a store, decorations. B13 is the first
+**composed** scenario, and the thing it has to prove is not that four components can be placed next
+to each other — it is that they can share one truth without any of them owning it.
+
+The answer is a small package, `@frontend-lab/workspace`, with three layers:
+
+```text
+packages/workspace/
+├── src/model.ts     pure functions: open, edit, save, revert, close, tree, line count
+├── src/store.ts     the same model behind zustand (no React)
+├── src/context.tsx  one store per provider, selectors for React
+└── src/index.ts     the package entry point
+```
+
+The demo (`demos/scenarios/ide-workspace`) composes it with `@frontend-lab/editor` and
+`@frontend-lab/panels`; the test (`apps/lab/tests/workspace-contract.test.ts`) drives the store
+directly.
+
+## The contract
+
+| Term           | Definition                                                                |
+| -------------- | ------------------------------------------------------------------------- |
+| snapshot       | `{ files, open, active }` — the only state the pieces may read            |
+| saved content  | `files[path].content`; what the tree shows and what a save commits        |
+| draft          | `open[i].draft`; what the editor shows                                    |
+| dirty          | `draft !== saved` — derived, never stored                                 |
+| `documentText` | draft for an open path, saved content otherwise; the editor's mount input |
+| `active`       | the path the editor shows; may be `undefined` when no tab is open         |
+
+Invariants the implementation holds:
+
+1. **One buffer per path.** Opening an open file only activates it; it never forks a second draft.
+2. **The draft never leaks into the tree.** `files` changes only when `save` runs, so a discardable
+   edit cannot make the sidebar lie.
+3. **Dirty is a comparison, not a flag.** Saving identical text, reverting, and re-editing cannot
+   leave a stale marker behind.
+4. **Closing discards the draft.** The saved text survives; the caller is responsible for asking.
+5. **An unknown path is inert.** `open` and `edit` return the same snapshot object, so subscribers
+   are not notified at all.
+6. **One store per provider.** Two `<WorkspaceProvider>` trees with the same file list are two
+   independent workspaces (B11's factory lesson, applied to real state).
+
+## Where each piece stops
+
+- **Panels** own geometry only. They know a percentage and a pixel bound, never a file.
+- **Editor** owns the text between mounting and unmounting. It is not controlled; the app reports
+  changes and the app decides what a mount starts with.
+- **Workspace store** owns tabs, buffers and the dirty rule. It has no idea an editor exists.
+- **Derived views** (problems, status bar, dirty dots) recompute from the snapshot; they never keep
+  a second copy of the text.
+
+That boundary is what makes the diagnostics panel a _view_: it reads `documentText(active)` and
+scans it, so it cannot disagree with what the editor shows. A panel that cached its own copy would
+be wrong one keystroke later.
+
+## The integration test
+
+`apps/lab/tests/workspace-contract.test.ts` runs in `pnpm test` (`node:test`, no browser). It drives
+the real store and asserts the invariants above, plus the layout contract from
+`@frontend-lab/panels/split-size`: a persisted percentage outside `[min, max]` — including `NaN`
+from a hand-edited `localStorage` — must still clamp to a usable pane.
+
+The parts it does not cover are the parts a DOM test would cover (focus, pointer resizing), and
+those live in the B17 Playwright suite rather than here.
+
+## What is deliberately missing
+
+- **No file system.** The "project" is a constant in `demo.tsx`; adding a save endpoint would say
+  nothing about the frontend contract.
+- **No language server.** Two `indexOf` rules are enough to prove the decoration slot; a real LSP
+  plugs into the same field.
+- **No undo across tab switches.** The editor owns history for its mount, and a remount is a new
+  history. Keeping it would mean an editor that is controlled, which is the trade documented in
+  `editing/codemirror-basics`.

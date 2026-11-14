@@ -22,7 +22,7 @@
   --card: var(--gray-0);
   --card-foreground: var(--foreground);
   --muted: var(--gray-100);
-  --muted-foreground: var(--gray-500);
+  --muted-foreground: var(--gray-600);
   --secondary: var(--gray-100);
   --secondary-foreground: var(--gray-700);
   --accent: var(--gray-200);
@@ -32,6 +32,13 @@
   --destructive-foreground: var(--gray-50);
   --border: var(--gray-300);
   --ring: var(--blue-500);
+
+  /* Categorical series: a chart with more than one series needs distinct hues, not one brand. */
+  --chart-1: var(--blue-500);
+  --chart-2: var(--amber-500);
+  --chart-3: var(--red-500);
+  --chart-4: var(--gray-500);
+  --chart-5: var(--blue-700);
 
   /* Native controls (scrollbars, form widgets, the canvas) follow the document, not the tokens. */
   color-scheme: light;
@@ -53,6 +60,12 @@
   --destructive-foreground: var(--gray-50);
   --border: var(--gray-700);
   --ring: var(--blue-400);
+
+  --chart-1: var(--blue-400);
+  --chart-2: var(--amber-400);
+  --chart-3: var(--red-500);
+  --chart-4: var(--gray-400);
+  --chart-5: var(--blue-700);
 
   color-scheme: dark;
 }
@@ -77,6 +90,11 @@
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
 
   --radius-md: var(--radius);
   --radius-lg: calc(var(--radius) + 0.25rem);

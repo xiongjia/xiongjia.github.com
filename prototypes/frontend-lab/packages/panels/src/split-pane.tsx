@@ -32,6 +32,10 @@ export type SplitPaneProps = {
   onSizeChange: (size: number) => void
   /** Step for a single arrow key, in percent. */
   step?: number
+  /** Lower bound for the first pane in pixels, measured against the live container. */
+  minFirstPx?: number
+  /** Upper bound for the first pane in pixels, measured against the live container. */
+  maxFirstPx?: number
   /** Label for the separator; a split without one is unreachable for a screen reader. */
   label: string
   /** Accessible name of the pane contents, announced instead of "group". */
@@ -47,6 +51,8 @@ export function SplitPane({
   size,
   onSizeChange,
   step = 4,
+  minFirstPx,
+  maxFirstPx,
   label,
   firstLabel,
   secondLabel,
@@ -61,6 +67,23 @@ export function SplitPane({
   const id = useId()
   const firstId = `${id}-first`
   const secondId = `${id}-second`
+
+  /**
+   * Pixel bounds, converted against the live container.
+   *
+   * A percentage-only model is right for persistence (it survives a viewport change) and wrong for
+   * a file tree that must never be narrower than its longest label. The conversion happens at event
+   * time, so resizing the window changes the bounds with it — the stored value stays a percentage.
+   */
+  const clamp = (percent: number): number => {
+    const container = containerRef.current
+    if (!container) return percent
+    const total = Math.max(horizontal ? container.clientWidth : container.clientHeight, 1)
+    let next = percent
+    if (minFirstPx !== undefined) next = Math.max(next, (minFirstPx / total) * 100)
+    if (maxFirstPx !== undefined) next = Math.min(next, (maxFirstPx / total) * 100)
+    return next
+  }
 
   const onPointerDown = (event: ReactPointerEvent<HTMLDivElement>) => {
     const container = containerRef.current
@@ -82,7 +105,7 @@ export function SplitPane({
     const drag = dragRef.current
     if (!drag || drag.pointerId !== event.pointerId) return
     const delta = (horizontal ? event.clientX : event.clientY) - drag.startPos
-    onSizeChange(drag.startSize + (delta / drag.total) * 100)
+    onSizeChange(clamp(drag.startSize + (delta / drag.total) * 100))
   }
 
   const endDrag = (event: ReactPointerEvent<HTMLDivElement>) => {
@@ -117,7 +140,7 @@ export function SplitPane({
 
     if (next === undefined) return
     event.preventDefault()
-    onSizeChange(next)
+    onSizeChange(clamp(next))
   }
 
   return (
@@ -156,7 +179,7 @@ export function SplitPane({
         onPointerUp={endDrag}
         onPointerCancel={endDrag}
         onKeyDown={onKeyDown}
-        onDoubleClick={() => onSizeChange(50)}
+        onDoubleClick={() => onSizeChange(clamp(50))}
         className={[
           'group relative shrink-0 touch-none outline-none select-none',
           horizontal ? 'w-1.5 cursor-col-resize' : 'h-1.5 cursor-row-resize',

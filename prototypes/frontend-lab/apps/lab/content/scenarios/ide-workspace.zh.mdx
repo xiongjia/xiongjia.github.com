@@ -1,0 +1,69 @@
+---
+title: IDE 工作区契约
+summary: 文件树、标签栏、编辑器与诊断面板如何保持一致——缓冲区规则、包边界，以及守住它们的集成测试。
+order: 10
+---
+
+## 场景
+
+B8–B12 各自打磨单一技术：分栏、编辑器、store、装饰。B13 是第一个**组合**场景，它要证明的不是
+四个组件能挨在一起摆放，而是它们能共享同一份真相，且没有任何一个组件独占这份真相。
+
+答案是一个小包 `@frontend-lab/workspace`，分成三层：
+
+```text
+packages/workspace/
+├── src/model.ts     纯函数：open / edit / save / revert / close、目录树、行数
+├── src/store.ts     同一个模型套上 zustand（不含 React）
+├── src/context.tsx  每个 Provider 一个 store，以及 React 选择器
+└── src/index.ts     包的入口
+```
+
+示例（`demos/scenarios/ide-workspace`）把它与 `@frontend-lab/editor`、`@frontend-lab/panels`
+组合起来；测试（`apps/lab/tests/workspace-contract.test.ts`）直接驱动这个 store。
+
+## 契约
+
+| 概念            | 定义                                                          |
+| --------------- | ------------------------------------------------------------- |
+| snapshot        | `{ files, open, active }`——各部件唯一可读的状态               |
+| 已保存内容      | `files[path].content`：文件树展示的内容，也是保存时提交的内容 |
+| 草稿            | `open[i].draft`：编辑器展示的内容                             |
+| 未保存（dirty） | `draft !== saved`，是推导出来的，绝不单独存一个标志位         |
+| `documentText`  | 已打开取草稿，否则取已保存内容——编辑器挂载时读的就是它        |
+| `active`        | 编辑器当前展示的路径；没有标签页时为 `undefined`              |
+
+实现必须守住的约束：
+
+1. **每个路径只有一个缓冲区。** 重复打开只切换激活标签，绝不会分叉出第二份草稿。
+2. **草稿不会渗进文件树。** 只有 `save` 会改 `files`，所以可丢弃的编辑不可能让侧边栏显示错内容。
+3. **未保存是比较，不是标志。** 保存同样文本、回滚、再编辑，都不可能留下过期的脏标记。
+4. **关闭即丢弃草稿。** 已保存内容保留；是否需要确认由调用方负责。
+5. **未知路径是惰性的。** `open` 与 `edit` 返回同一个 snapshot 对象，订阅者根本不会被通知。
+6. **一个 Provider 一个 store。** 同一份文件清单下，两个 `<WorkspaceProvider>` 是两套互不影响的
+   工作区（B11 的工厂经验，用在真实状态上）。
+
+## 各部件在哪里停下
+
+- **Panels** 只管几何：知道百分比和像素边界，永远不知道「文件」这个概念。
+- **Editor** 只管挂载到卸载之间的文本。它不是受控组件：应用上报变更，应用决定下一次挂载从哪里开始。
+- **Workspace store** 管标签、缓冲区和脏规则，完全不知道编辑器的存在。
+- **派生视图**（问题列表、状态栏、脏点）每次从 snapshot 重新计算，绝不缓存第二份文本。
+
+正是这条边界让诊断面板成为一个*视图*：它读 `documentText(active)` 再扫描，所以不可能和编辑器
+显示的内容打架。缓存自己那份文本的面板，一次击键之后就是错的。
+
+## 集成测试
+
+`apps/lab/tests/workspace-contract.test.ts` 由 `pnpm test` 运行（`node:test`，无浏览器）。它驱动真实
+store 校验上面每一条约束，并顺带覆盖 `@frontend-lab/panels/split-size` 的布局契约：存进
+`localStorage` 的百分比即使越界——包括手改出来的 `NaN`——也必须收敛到可用的面板宽度。
+
+它没有覆盖的是 DOM 层面的事情（焦点、指针拖拽），那些归 B17 的 Playwright 套件，不在这里。
+
+## 刻意没做的
+
+- **没有文件系统。** 「项目」是 `demo.tsx` 里的一个常量；加一个保存接口对前端契约毫无说明力。
+- **没有语言服务。** 两条 `indexOf` 规则足够证明装饰槽位；真正的 LSP 接进同一个 StateField。
+- **没有跨标签页撤销。** 编辑器只管自己这次挂载的历史，重挂载就是新历史。要保留就得把编辑器变成
+  受控组件，而这正是 `editing/codemirror-basics` 里写明的取舍。

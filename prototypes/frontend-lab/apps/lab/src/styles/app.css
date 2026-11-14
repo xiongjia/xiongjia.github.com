@@ -6,6 +6,14 @@
 @import './animations.css';
 
 /*
+ * Tailwind scans the app folder by default; the shared packages are outside it. Without this line a
+ * class that only a package uses (the command palette's `fixed inset-0`, say) is never generated —
+ * the component renders, but the utility does nothing. One directive covers every package because
+ * v4 walks a directory recursively.
+ */
+@source '../../../../packages';
+
+/*
  * `dark:` utilities follow the `data-theme` attribute the bootstrap script sets, not the OS media
  * query directly: the user's persisted choice has to win over the system preference.
  */

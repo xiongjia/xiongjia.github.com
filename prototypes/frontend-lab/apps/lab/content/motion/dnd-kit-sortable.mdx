@@ -46,7 +46,8 @@ about overlaps. The demo toggles between them so the difference is observable ra
 
 ## What the lab keeps small
 
-- No multi-container sorting (that is B14's kanban problem, and it needs a store — B11's factory).
+- No multi-container sorting here: B14's kanban board does it, with a store from B11's factory and a
+  live move in `onDragOver` rather than at drop time.
 - No persistence here: the order lives in `useState`, because the experiment is the mechanism.
 - No drag handle component: the whole row is the handle, which is the simplest thing that stays
   keyboard-reachable. A dedicated handle would add `setActivatorNodeRef` and a second focus target.

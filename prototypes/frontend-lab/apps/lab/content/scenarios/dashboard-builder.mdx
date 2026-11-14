@@ -1,0 +1,116 @@
+---
+title: Dashboard builder
+summary: A reorderable, resizable dashboard plus a chart-library comparison — the same 12 weeks of data through hand-written SVG, Recharts and Chart.js, with load and render costs recorded.
+order: 30
+---
+
+## The scenario
+
+B15 asks two questions that only look related:
+
+- **Layout** — can a grid of cards be reordered and resized by pointer _and_ keyboard, and does the
+  layout survive a reload?
+- **Charts** — what does each chart library actually cost, in bytes and in milliseconds, and where
+  does that cost buy something?
+
+The demo (`demos/scenarios/dashboard-builder`) answers the first with the same store + persistence
+contract as the kanban board, and the second by rendering one deterministic dataset through three
+renderers and measuring each mount. A fourth card is a fund-flow Sankey, which none of those
+renderers ships — the case where the layout is the work.
+
+## The layout contract
+
+| Concern   | Owner                                          | Stored as                        |
+| --------- | ---------------------------------------------- | -------------------------------- |
+| order     | the card array in the store                    | JSON array of cards              |
+| width     | `span: 1 \| 2 \| 3` per card                   | part of the card                 |
+| renderer  | per chart card                                 | part of the card                 |
+| editing   | local component state                          | not persisted (a session choice) |
+| animation | Motion `layout`, enabled only when not editing | —                                |
+
+Drag handles, width buttons and the renderer select exist only in edit mode. That is not a
+simplification: a dashboard you read should not be a dashboard you can break by accident, and the
+keyboard path (focus handle, `Space`, arrows, `Space`) only makes sense while arranging.
+
+## The comparison
+
+Data: 12 weeks from a seeded LCG, identical for every renderer. Load cost: the built chunk, gzip
+(`pnpm bundle:report`). Render cost: first render to committed DOM, measured by the demo's own
+`useMountCost` hook after a remount (`Measure again`), i.e. once the chunk is already warm.
+
+| Renderer         | Output | Extra load (gzip)                    | Render (12 points)                               | Theme follows tokens                         |
+| ---------------- | ------ | ------------------------------------ | ------------------------------------------------ | -------------------------------------------- |
+| hand-written SVG | SVG    | 0 kB (part of the demo chunk, ≈6 kB) | 0.7–0.9 ms                                       | yes, `var(--primary)`                        |
+| Recharts         | SVG    | **102.8 kB** (358.2 kB raw)          | 2.6–3.0 ms                                       | yes, `var(--primary)`                        |
+| Chart.js         | canvas | **56.3 kB** (162.2 kB raw)           | 0.7–0.9 ms warm; ≈293 ms on the first cold mount | no — tokens resolved with `getComputedStyle` |
+
+For context: the whole lab's JavaScript is ≈730 kB gzip across every lazy chunk; the two chart
+renderers are the two heaviest single additions in it.
+
+### What the numbers mean
+
+- **Load dominates for a small chart.** 12 points render in under 3 ms in all three; the difference
+  between 103 kB and 0 kB is two orders of magnitude larger than the difference between 0.8 ms and
+  3 ms. A dashboard that shows one small sparkline should not ship a chart library.
+- **Recharts is not slow to render, it is expensive to ship.** Its 103 kB is scales, ticks, tooltips,
+  responsive containers, and the React element layer around them — the features you would otherwise
+  write yourself.
+- **Chart.js looks cheapest to render and costs the most to integrate.** Manual registration, canvas
+  colours, and a theme switch that does not repaint without a re-render. Its cold first mount in this
+  environment was ≈293 ms — a one-off that a warm remount hides, which is exactly why the demo has a
+  "Measure again" button instead of trusting the first number.
+- **The hand-written SVG renderer is only cheap because the feature list is empty.** Axes, ticks,
+  tooltips, legends, brushing and date scales are still to build; that work is the real price of the
+  0 kB option.
+
+### The branching case: a fund-flow Sankey
+
+The fourth chart card is a Sankey — income → buckets → funds — and it is the counter-example to "a
+library is always cheaper than writing it". Recharts has no Sankey, Chart.js needs a community
+plugin, and the package you would install (`d3-sankey`) is a layout library, not a renderer. So the
+layout lives in `packages/charts/src/sankey-layout.ts`: a pure function that computes node values, one
+shared vertical scale and the ribbon anchor slices. `sankey.tsx` only turns the result into paths and
+labels, and nine `node:test` cases pin the geometry.
+
+Three choices make it read as a flow instead of equally thick arrows:
+
+- **One shared scale across stages**, so ¥8k flowing into a bucket is the same thickness leaving it.
+- **Anchors are slices of a node, not the node**: a node hands out its band in target order, so a ¥12k
+  and a ¥2k ribbon split it instead of overlapping.
+- **Middle nodes are `max(in, out)`**, so a node that loses flow (rounding, an unlisted link) keeps its
+  outgoing thickness.
+
+The colours come from `--chart-1..5`, a new categorical token set defined per mode — which is what lets
+the diagram follow light/dark and the style presets without hard-coded hex values. The Sankey has no
+renderer switch on purpose: it is a different chart type, not a different implementation of the same
+one.
+
+## Method
+
+- One renderer per chunk: `@frontend-lab/charts/recharts` and `@frontend-lab/charts/chartjs` are
+  separate entry points, loaded with `lazy()`. Selecting a renderer downloads its chunk; the default
+  dashboard pays for neither.
+- Render cost is measured inside each renderer with the same hook, so the numbers are comparable.
+  The first mount after a page load is excluded on purpose: it also pays for the page's own layout,
+  which is not the chart's cost.
+- The bundle report reads `apps/lab/dist` and gzips every asset. Budgets live in
+  `apps/lab/plugins/bundle-report.ts`; exceeding one fails the command.
+
+## Pitfalls
+
+- **Dynamic Tailwind class names do not exist.** `col-span-${span}` generates nothing; the span →
+  class map is explicit so the scanner can see the strings.
+- **Motion `layout` and dnd-kit both write `transform`.** `layout={!editing}` is the whole fix; a
+  layout animation during a drag produces jitter, not smoothness.
+- **Chart.js registration is silent when forgotten.** A missing `CategoryScale` renders axes-less.
+- **Canvas cannot read CSS variables.** `--primary` has to be resolved to a concrete colour at render
+  time, and a theme switch only repaints after a re-render.
+- **Recharts needs a sized parent.** `ResponsiveContainer` inside an unsized flex item has height 0.
+
+## Not built
+
+- **No data fetching, filters or time range.** The dataset is a constant so the comparison is stable.
+- **No drag-to-resize.** A pointer resize handle on a grid card needs pixel math that would drown the
+  library comparison; spans are buttons, and they stay keyboard-reachable.
+- **No second layout animation library.** Motion already proved the layer in B12; the interesting
+  conflict here is `layout` vs `drag`, not library vs library.

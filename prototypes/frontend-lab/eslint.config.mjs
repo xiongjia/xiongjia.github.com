@@ -103,7 +103,7 @@ export default tseslint.config(
 
   // Build-time plugins: node only, no app runtime.
   {
-    files: ['apps/lab/plugins/**/*.ts', '**/*.config.{ts,mjs,js}'],
+    files: ['apps/lab/plugins/**/*.ts', 'apps/lab/e2e/**/*.ts', '**/*.config.{ts,mjs,js}'],
     languageOptions: { globals: { ...globals.node } },
     rules: {
       'no-restricted-imports': restrictImports([
@@ -113,5 +113,11 @@ export default tseslint.config(
         },
       ]),
     },
+  },
+
+  // Tests: node, no DOM. They import the same modules the app does, so they run without a browser.
+  {
+    files: ['apps/lab/tests/**/*.ts'],
+    languageOptions: { globals: { ...globals.node } },
   },
 )

@@ -4,6 +4,9 @@ packages:
 
 minimumReleaseAgeExclude:
   - globals@17.14.0
+  - '@playwright/test@1.65.1'
+  - playwright-core@1.65.1
+  - playwright@1.65.1
 
 onlyBuiltDependencies:
   - esbuild

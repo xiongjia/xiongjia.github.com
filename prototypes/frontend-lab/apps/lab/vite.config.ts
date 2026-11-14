@@ -36,6 +36,12 @@ export default defineConfig({
       '@frontend-lab/state': fileURLToPath(
         new URL('../../packages/state/src/index.ts', import.meta.url),
       ),
+      '@frontend-lab/command-palette': fileURLToPath(
+        new URL('../../packages/command-palette/src/index.ts', import.meta.url),
+      ),
+      '@frontend-lab/workspace': fileURLToPath(
+        new URL('../../packages/workspace/src/index.ts', import.meta.url),
+      ),
     },
   },
   server: {

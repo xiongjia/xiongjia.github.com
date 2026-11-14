@@ -1,0 +1,76 @@
+---
+title: Kanban board
+summary: Cross-container drag, a per-instance store, debounced persistence and an explicit keyboard path — the second composed scenario, and the one where drag and state have to agree.
+order: 20
+---
+
+## The scenario
+
+B14 combines three techniques that were each proven alone: multi-container drag (B12's dnd-kit
+layer), per-instance state (B11's store factory) and enter/exit animation (B12's Motion layer). The
+combination is where the bugs live, because each one is happy to own the same `transform` or the
+same `localStorage` key.
+
+The deliverable is a board with three properties that can be checked independently:
+
+1. **Drag** moves a card across columns and reorders it inside one, with the visual state following
+   the pointer the whole way.
+2. **Persistence** survives a reload — and a corrupt stored board falls back to the defaults instead
+   of crashing.
+3. **Keyboard** can do everything the pointer can: reorder via the handle, change column via the
+   per-card buttons.
+
+## The model
+
+```text
+cards      Record<cardId, { id, title, tag }>
+columns    Record<'backlog' | 'doing' | 'done', cardId[]>
+```
+
+A card's column is _derived_ from the column arrays — there is no `card.column` field that can drift
+out of sync with the list. Every mutation goes through one function:
+
+```ts
+moveCard(board, cardId, toColumn, toIndex)
+```
+
+Cross-column drag is a sequence of `moveCard` calls: `onDragOver` moves the card into the hovered
+column, `onDragEnd` performs the final reorder. That split is the only reason the live preview works.
+
+## Where each layer stops
+
+| Layer | Owns                                                         | Does not own               |
+| ----- | ------------------------------------------------------------ | -------------------------- |
+| Model | which card is in which column, at which index                | rendering, timing, storage |
+| Drag  | sensors, collision, the overlay                              | the board itself           |
+| Store | the board instance + stable actions                          | persistence                |
+| Demo  | debounced writes, validation, announcements, keyboard extras | reorder math               |
+
+Keeping persistence out of the store is a deliberate deviation from `zustand/persist`: a drag emits
+an update per `onDragOver`, and the naive wiring writes to `localStorage` on every one of them. The
+subscription debounces, flushes on unmount, and validates on read.
+
+## What the checks are
+
+- Drag: a pointer drag from Backlog to Done leaves the card in Done and the counts agree.
+- Persistence: after a reload the stored board renders the same card in the same column, and the
+  stored JSON parses back into a valid board.
+- Keyboard: `Space` + `ArrowDown` + `Space` reorders within a column through the sortable handle,
+  and the ← / → buttons move a card across columns with focus alone.
+- Animation: a removed card leaves through `AnimatePresence`; a sortable card is never asked to
+  animate `transform`, because that is dnd-kit's property during a drag.
+
+## Pitfalls kept from B12
+
+- `layout` + `drag` both write `transform`. The board animates opacity, not layout.
+- `DragOverlay` renders the lifted copy, so the card in the list can stay put and keep its layout.
+- `activationConstraint: { distance: 4 }` is what keeps a click on a card button a click.
+
+## Not built here
+
+- **No swimlanes, filters or WIP limits.** Each one is a product decision that would hide the three
+  properties this batch is about.
+- **No server sync.** Persistence is a local storage contract; a remote board needs conflict
+  resolution, which is a different experiment.
+- **No drag between boards.** Cross-container sorting is the hard part; cross-_store_ sorting would
+  need a shared parent store, which is exactly what the per-instance factory forbids on purpose.

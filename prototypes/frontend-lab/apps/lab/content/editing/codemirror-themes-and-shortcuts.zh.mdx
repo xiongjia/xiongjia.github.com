@@ -55,6 +55,11 @@ HighlightStyle.define([{ tag: tags.keyword, color: 'var(--primary)' }])
 
 示例里的 one-dark 是反例：打包好的调色板是一串固定色值，跟着令牌走不了——页头一换模式就能看出来。
 
+B13 把它扩成了一小组主题：`packages/editor` 用**同一个** `EditorView.theme` + `HighlightStyle`
+生成器，从调色板对象产出 Dracula、Nord、Solarized Light——加一套主题只是六个色值，而不是再写 60 行
+对象；IDE 示例通过同一个 compartment 在五套主题间切换。只有「实验室令牌」会跟随站点的明暗切换，
+固定配色本身就是一次有意的覆盖。选择器见 [IDE 工作区](/scenarios/ide-workspace)。
+
 ## 只读是两个开关
 
 - `EditorState.readOnly` 拒绝改变文档的事务。

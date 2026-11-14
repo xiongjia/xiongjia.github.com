@@ -5,3 +5,5 @@ coverage/
 apps/lab/src/generated/
 *.local
 .DS_Store
+playwright-report/
+test-results/

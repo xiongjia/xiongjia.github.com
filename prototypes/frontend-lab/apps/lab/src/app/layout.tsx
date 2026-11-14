@@ -2,6 +2,7 @@ import { cn } from '@frontend-lab/ui'
 import { useMemo } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 
+import { CommandMenu } from '../components/command-menu'
 import { LanguageSwitch } from '../components/language-switch'
 import { StylePicker } from '../components/style-picker'
 import { ThemeToggle } from '../components/theme-toggle'
@@ -85,6 +86,7 @@ export function Layout() {
         <header className="flex h-14 items-center justify-between gap-3 border-b border-border px-4 md:px-6">
           <p className="hidden truncate text-sm text-muted-foreground sm:block">{t.app.tagline}</p>
           <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+            <CommandMenu />
             <LanguageSwitch />
             <StylePicker />
             <ThemeToggle />
