@@ -1,0 +1,24 @@
+/*
+ * Keyframes shared by the lab.
+ *
+ * A demo folder may only contain `demo.tsx` and its notes (`pnpm content:check` enforces that), so
+ * an experiment that needs a named CSS animation registers it here — once, as a theme token — and
+ * uses it as an ordinary utility (`animate-kick`). Declaring it under `@theme` is what makes
+ * Tailwind emit the `@keyframes` block for the utility that references it.
+ */
+
+@theme {
+  --animate-kick: kick 900ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes kick {
+  0% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-32px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}

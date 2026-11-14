@@ -1,0 +1,56 @@
+---
+title: dnd-kit 排序
+summary: 传感器、碰撞检测与播报——一个把键盘路径当作一等功能而不是兜底的可排序列表。
+---
+
+## 为什么拖拽要用库
+
+拖放看起来是指针事件，实际是一个状态机：拖拽可以开始、悬停过多个目标、被取消、被放下、被 `Escape`
+打断、悬停时容器还能滚动，或者完全用键盘完成。dnd-kit 把这一切建模成三层，这也是示例能诚实交代
+成本的原因。
+
+| 层       | 它回答的问题           | 换掉它就能换                         |
+| -------- | ---------------------- | ------------------------------------ |
+| 传感器   | 拖拽怎么开始？         | 指针 / 触摸 / 键盘                   |
+| 碰撞检测 | 现在悬停在哪个目标上？ | `closestCenter` / `rectIntersection` |
+| 策略     | 条目之间怎么重排？     | 垂直 / 水平 / 网格                   |
+
+## 键盘路径才是特性
+
+```ts
+useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+```
+
+`Tab` 到某一行，`Space` 拿起，方向键移动，`Space` 放下，`Esc` 取消——每一步都会通过 live region
+播报。这不是挂在指针路径上的补充功能：它是同一个状态机被另一种传感器驱动，所以条目组件里一行
+`if (isKeyboard)` 都不需要。
+
+让它真正可用的细节：
+
+- **把 `attributes` 铺在行上。** `useSortable` 提供 `role="button"`、`tabIndex`、
+  `aria-roledescription` 和说明文字的引用——不铺开，这一行根本不可达。
+- **用 `sortableKeyboardCoordinates` 作为 getter。** 没有它，方向键只是按像素挪动浮层；有了它，
+  条目会移到上一个/下一个可排序槽位。
+- **播报。** 默认值存在；示例自己提供一份，既能被评审，也能在这个实验室里回显到可见的日志框。
+
+## 碰撞检测是交互决策
+
+`closestCenter` 选中心最近的目标，`rectIntersection` 选矩形重叠最多的目标。等高列表里两者一致；
+卡片网格里不一定，哪种「手感对」取决于用户在想位置还是在想重叠。示例提供了切换，让差异可观察
+而不是靠争论。
+
+## 实验室刻意做小的部分
+
+- 不做跨列表排序（那是 B14 看板的问题，而且需要 store——B11 的工厂）。
+- 不做持久化：顺序放在 `useState` 里，因为这个实验讲的是机制。
+- 不做独立的拖拽把手：整行就是把手，是「保持键盘可达」的最简方案。独立把手要多一个
+  `setActivatorNodeRef` 和第二个焦点目标。
+
+## 坑
+
+- `activationConstraint: { distance: 4 }` 让点击还是点击。不加约束时，一次点击会开始并结束一次
+  拖拽，`onClick` 变得不可靠。
+- `DragOverlay` 应该渲染被拿起的副本；边移动边测量原元素会让可排序框抖动。
+- 必须写 `CSS.Transform.toString(transform)`：`transform` 是 `{ x, y, scaleX, scaleY }`，
+  `String(transform)` 只会得到 `[object Object]`。
+- 条目上要有 `touch-action: none`（Tailwind 的 `touch-none`），否则触摸拖拽会变成页面滚动。

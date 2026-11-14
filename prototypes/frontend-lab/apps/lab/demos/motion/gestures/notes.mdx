@@ -1,0 +1,49 @@
+---
+title: Gestures and drag
+summary: dragConstraints as a measured box, dragElastic for the edges, and motion values that update outside React's render loop.
+order: 20
+---
+
+## What this proves
+
+A drag is not a `mousedown` handler plus `style.transform`. Motion's gesture layer handles pointer
+capture, touch scrolling, momentum and constraints — and it updates `MotionValue`s that never enter
+React state, which is why a 60 fps drag does not cause 60 renders.
+
+## Decisions
+
+- **`dragConstraints={boxRef}` instead of numbers.** Passing a ref measures the element and its
+  container, so the drag area follows the layout — including a resized pane or a re-flowed card —
+  without a resize listener.
+- **`dragElastic` is exposed as a slider.** It is the one gesture parameter whose value is impossible
+  to judge from documentation alone: 0 is a hard wall, 0.4 feels rubbery, 1 lets the card follow the
+  pointer anywhere and spring back.
+- **`dragSnapToOrigin` as a toggle.** "Pick up a card and put it back" is a real interaction, and the
+  prop is a one-line version of it. Off, the card stays where it was dropped — the behaviour a
+  free-form canvas wants.
+- **The readout prints `MotionValue`s through `useSpring`.** The spring is what actually moves the
+  card; printing the raw `x`/`y` would show a different number from the one on screen.
+- **`touch-none` on the draggable.** Without it, a vertical drag on a phone scrolls the page instead
+  of moving the card, and the gesture layer never sees the move.
+
+## React's role
+
+`onDrag` / `onDragEnd` are used only to update a small text readout. That is deliberate: a drag that
+called `setState` per move would re-render the demo tree (and the editor above it, in a composed
+app). Motion values are the state; React reads snapshots.
+
+## Pitfalls
+
+- `drag` is disabled here under reduced motion rather than shortened: a drag that snaps instantly is
+  worse than a card that does not move, because the pointer and the card disagree.
+- The constraint element must not be `overflow: hidden` in a way that clips the card's shadow — the
+  demo keeps the clipping on the box and the shadow on the card, which is why the card is inset.
+- `dragMomentum={false}` is the right setting for a "pick up and place" interaction; with momentum on,
+  the card keeps sliding after release and the drop position is unpredictable.
+- Gesture props do not compose with `layout` automatically: a draggable element inside a `layout`
+  list needs the drag transform on an inner element, or the two animate the same transform.
+
+## Next
+
+dnd-kit takes over when the drag has to mean something to a list — sorting, cross-list moves and a
+keyboard path.

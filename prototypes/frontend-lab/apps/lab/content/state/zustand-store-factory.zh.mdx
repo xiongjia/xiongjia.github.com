@@ -1,0 +1,69 @@
+---
+title: Zustand 状态工厂
+summary: 把 vanilla store 放进 context 就有了「每实例一份」的状态；选择器与 useShallow 决定订阅有多窄。
+---
+
+## 默认写法的问题
+
+`import { create } from 'zustand'` 产出的是**模块级** store：所有 import 这个模块的组件共享同一个实例，
+直到标签页关闭。这对会话级状态（命令面板、主题覆盖）是合适的，对任何可能同时出现两份的东西就是缺陷
+——两个编辑器、两个看板、同一页上的两个示例。
+
+所以 `packages/state` 暴露的是工厂：
+
+```ts
+const todos = createStoreContext<TodoState>((set) => ({ … }), { name: 'todos' })
+
+<todos.Provider>…</todos.Provider>
+
+const visible = todos.useSelector((state) => state.filter)
+const store = todos.useStoreApi()
+```
+
+## 工厂里有什么
+
+| 成员          | 实现                                       | 为什么                               |
+| ------------- | ------------------------------------------ | ------------------------------------ |
+| `Provider`    | `useState(() => createStore(…))` + context | 每个挂载实例一个 store，不是每次渲染 |
+| `useSelector` | `useStore(api, selector)`                  | 只在选中的切片变化时重渲染           |
+| `useStoreApi` | 原始 `StoreApi`                            | 在 React 之外读取与订阅              |
+
+store 本身是 `zustand/vanilla` 的：`getState`、`setState`、`subscribe`。React 只是使用者之一，
+所以工厂能给出一个不依赖 React 的后门，而不需要第二套实现。
+
+## 选择器纪律
+
+Zustand v5 用 `Object.is` 比较选择器结果，不再替你浅比较：
+
+```ts
+// 每次 store 更新都重渲染：每次调用都是新数组
+const visible = store.useSelector((s) => s.todos.filter(matches).map((t) => t.id))
+
+// 稳定：对派生数组做浅比较
+const visible = store.useSelector(useShallow((s) => s.todos.filter(matches).map((t) => t.id)))
+```
+
+`useShallow` 由这个包再导出，这样示例（或应用模块）只依赖一个包。
+
+## 动作放在 state 里
+
+把 `actions` 作为 state 里的一个嵌套对象，所有使用者拿到的是同一个引用：
+
+```ts
+const actions = store.useSelector((state) => state.actions) // 永远不变
+```
+
+只负责派发的按钮从此不会因为数据变化而重渲染。反过来，在 `set()` 里重建 actions 对象——那种「全都
+写在一个字面量里」的写法——会让每次动作都重渲染全部订阅者。
+
+## 到这里为止
+
+- 实验室的包里没有中间件：`persist`、`devtools` 是 store 级别的关注点，需要时包一层
+  `createStore` 调用即可，两行改动。
+- 没有 `subscribeWithSelector`：`store.subscribe(listener)` 加手工过滤对 B11 足够了，而且让 React
+  与非 React 两条路径读起来一致。
+
+## 用测量代替信任
+
+第二个实验给每个组件打印渲染次数。选择器是性能机制；没有测量的话，「我用了选择器」和「我用了一个
+什么也不做的选择器」在代码评审里长得一模一样。

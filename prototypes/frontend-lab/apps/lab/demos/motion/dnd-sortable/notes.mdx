@@ -1,0 +1,63 @@
+---
+title: Sortable with dnd-kit
+summary: Sensors, collision detection and a sortable strategy — plus the keyboard path and announcements that make a drag accessible.
+order: 30
+---
+
+## What this proves
+
+Sorting a list by drag is an accessibility problem disguised as a pointer problem. dnd-kit is worth
+its bundle size because the keyboard sensor, the announcements and the drop-target state machine are
+all there; a hand-rolled `onDrag` cannot get there without rebuilding them.
+
+## The three layers
+
+| Layer     | What it decides                   | In the demo                                       |
+| --------- | --------------------------------- | ------------------------------------------------- |
+| Sensors   | how a drag starts                 | `PointerSensor` (4px threshold), `KeyboardSensor` |
+| Collision | which droppable is under the drag | `closestCenter` vs `rectIntersection`             |
+| Sortable  | the reorder math, per axis        | `SortableContext` + `verticalListSortingStrategy` |
+
+The layers are independent on purpose: swapping collision detection changes which row is targeted
+without touching the items, and adding a keyboard sensor changes nothing about the visuals.
+
+## The keyboard path
+
+```ts
+useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+```
+
+- `Tab` reaches each row because the drag listeners make it focusable (`attributes` includes
+  `tabIndex`, `role="button"`, `aria-roledescription="sortable"`).
+- `Space`/`Enter` picks the row up; **arrow keys** move it; `Space`/`Enter` drops; `Esc` cancels.
+- `sortableKeyboardCoordinates` is what converts an arrow key into "the next sortable slot" — without
+  it the arrows nudge a floating overlay by a few pixels, which is technically movement and
+  practically useless.
+- Announcements are made through a live region the library owns. A demo that does not supply
+  `announcements` still gets sensible defaults; this one supplies them because the log panel shows
+  the exact strings a screen reader receives.
+
+## Announcements as testable output
+
+`onDragStart` / `onDragOver` / `onDragEnd` / `onDragCancel` return the string to be announced. The
+demo echoes each into a `<ul>`, so the accessibility output is visible on screen — and assertable in
+a DOM test without a screen reader.
+
+## Guarding a click
+
+`activationConstraint: { distance: 4 }` means the pointer must move 4px before a drag begins. Without
+it, every click on an item starts and ends a drag, and the `onClick` handler never fires reliably.
+
+## Pitfalls
+
+- `useSortable` returns `setNodeRef` for the item element **and** `listeners`/`attributes` for the
+  handle. Putting the listeners on a separate handle while keeping `setNodeRef` on the row is fine;
+  putting `setNodeRef` on the handle measures the handle instead of the row and the sortable boxes
+  no longer line up.
+- `useSortable` is a hook: it cannot be called inside `.map()`. The mapped component is a separate
+  component, which is why `SortableItem` exists.
+- `rectIntersection` targets the droppable whose **rectangle** overlaps most, `closestCenter` the one
+  whose centre is nearest. For a list of equal-height rows they agree; for a grid of cards of
+  different heights they do not, and the "right" answer is a UX decision, not a technical one.
+- `DragOverlay` renders outside the list flow. Without it, the item is both moving and being measured
+  by the sortable strategy, which produces a visible flicker on fast drags.

@@ -1,0 +1,56 @@
+---
+title: CodeMirror 基础
+summary: 不可变的 EditorState、描述每次改动的事务，以及一个拒绝持有文档的轻量 React 包装。
+---
+
+## CodeMirror 6 的三个名词
+
+- **`EditorState`** —— 不可变的值：文档、选区，以及所有扩展计算出的结果。
+- **Transaction** —— 一次改动的描述（新的文档区间、选区、effect、注解）。`state.update(spec)`
+  返回事务，`view.dispatch(spec)` 应用它。
+- **`EditorView`** —— DOM。它渲染 state、派发事务，本身不持有文档。
+
+因为 state 是值，「文档有没有变」是一次比较，「撤销」是一串历史状态，扩展则是 state 的纯函数，
+而不是互相竞争的监听器。
+
+试一下：[最小编辑器示例](/demos/editing/minimal-editor)。
+
+## 扩展就是 API
+
+行号、历史、快捷键、语言、主题、装饰，全都是扩展。它们组合成一个数组，CodeMirror 把它们折叠成
+facet（多方贡献、一个解析值）或 state field（每个编辑器一个值）。后面会用到的两个机制：
+
+- **`Compartment`** —— 一段配置的稳定句柄。创建时 `compartment.of(...)`，之后用
+  `compartment.reconfigure(...)` 作为 effect 替换。主题、只读开关都靠它，不用重建 state。
+- **`Prec`** —— 显式优先级。扩展数组是有序的，对 keymap 这类 facet，靠前的先赢。
+
+## 与 React 的边界
+
+实验室的包装（`packages/editor`）只做一个取舍：
+
+```tsx
+<CodeEditor initialDoc={source} theme={theme} onChange={handleChange} onView={keepView} />
+```
+
+- 文档是**非受控**的：React 渲染容器，CodeMirror 渲染文字。
+- 运行时变化走 `Compartment.reconfigure` 或 `dispatch`，绝不重建 state。
+- `onView` 把 `EditorView` 交出去，命令（撤销、自定义事务、装饰）都由调用方决定。
+
+`value={doc}` 这种受控写法看着友好，却是最常见的错误：每次按键都变成一次 React 状态更新，父组件
+任何一次重渲染都把文档推回编辑器，最先牺牲的就是选区和撤销历史。
+
+## 代码在哪里
+
+| 文件                                  | 负责                                              |
+| ------------------------------------- | ------------------------------------------------- |
+| `packages/editor/src/code-editor.tsx` | 挂载 effect、compartment、默认扩展集              |
+| `packages/editor/src/theme.ts`        | `EditorView.theme` + `HighlightStyle`，全部用令牌 |
+| `apps/lab/demos/editing/*`            | 具体实验；只属于某个示例的逻辑留在示例里          |
+
+## 坑
+
+- 每个挂载的 view 只能 `EditorState.create` **一次**。StrictMode 会把 effect 跑两遍，清理函数
+  必须 `view.destroy()`，否则同一个宿主元素里会叠两个编辑器。
+- 空的 `dispatch` 依然会走一轮更新。放在渲染路径里的空派发是性能问题，不是「刷新」。
+- 尺寸来自容器，不来自编辑器：CodeMirror 铺满父元素。宿主没给高度就会得到一个 0px 高的编辑器，
+  这跟 CodeMirror 本身无关。

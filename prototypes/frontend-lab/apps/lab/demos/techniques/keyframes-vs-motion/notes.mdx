@@ -1,0 +1,53 @@
+---
+title: Keyframes vs Motion
+summary: Both engines end up as Web Animations on the compositor — the difference is what happens on interruption.
+order: 40
+---
+
+## What this proves
+
+The interesting difference between a CSS animation and Motion is not performance and not
+"declarative vs imperative". It is **what happens when a second gesture arrives while the first
+animation is still running**: keyframes restart their timeline, Motion continues from the current
+value.
+
+## Decisions
+
+- **`key={n}` is how a CSS animation is restarted.** Removing and re-adding the class in the same
+  frame does nothing — the browser coalesces it. Remounting the element is the reliable restart, and
+  it is also why the CSS side visibly "jumps back".
+- **Motion uses `y: [null, -32, 0]`.** In Motion, a `null` keyframe means "current value". That is
+  the one-word difference that makes interruption smooth, and it is easy to lose in a refactor.
+- **The readout prints `constructor.name`.** `CSSAnimation` vs `Animation` makes the relationship
+  obvious: Motion is not a renderer, it is a scheduler on top of WAAPI. Both animate `transform`, so
+  both stay off the main thread.
+- **Reduced motion is handled twice, deliberately.** `motion-reduce:animate-none` for the keyframes
+  and `useReducedMotion()` for the imperative path — a JS animation has no media query to inherit, so
+  the hook is the only way it can respect the preference.
+- **The keyframes live in `styles/animations.css`.** A demo folder is exactly `demo.tsx` + notes (a
+  check enforces it), so a named animation is registered once under `@theme` and consumed as
+  `animate-kick`.
+
+## When to pick which
+
+| Need                                                | Use                    |
+| --------------------------------------------------- | ---------------------- |
+| A simple, self-starting loop or entrance            | CSS `@keyframes`       |
+| Must interrupt, reverse or re-target mid-flight     | Motion                 |
+| Spring physics, drag momentum, velocity inheritance | Motion                 |
+| Layout changes that should animate (FLIP)           | Motion's `layout` prop |
+| Runs without JS (or before hydration)               | CSS                    |
+
+## Pitfalls
+
+- `transition` cannot animate from a `display: none` start state; `@starting-style` (Tailwind's
+  `starting:` variant) is the native answer, as the previous experiment showed.
+- Motion's `animate` returns a promise that **rejects** when the animation is cancelled by a newer
+  one; `void animate(...)` is right here, `await` without a catch is a crash.
+- A CSS animation on a property that triggers layout (`height`, `top`) is not composited, no matter
+  how smooth the keyframes look. `transform` and `opacity` are the two that are.
+
+## Next
+
+B12 uses Motion for gestures and layout animation, and dnd-kit for drag — the same
+interruption-versus-restart question shows up in both.

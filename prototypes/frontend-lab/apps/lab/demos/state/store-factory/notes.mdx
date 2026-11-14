@@ -1,0 +1,50 @@
+---
+title: Store factory
+summary: One factory, two independent instances — and the module-level store that is the wrong default for anything repeatable.
+order: 10
+---
+
+## What this proves
+
+"Per instance" is an architectural decision you make once, in the factory, not a rewrite of every
+component. The two counters on the left share one store definition and have two independent states;
+the pair on the right uses `zustand`'s module-level `create()` and therefore share one.
+
+## Decisions
+
+- **A vanilla store in a React context.** `createStore()` (from `zustand/vanilla`) is a plain object
+  with `getState`/`setState`/`subscribe`; the context supplies one per subtree. The React hook is
+  then a thin `useStore(store, selector)` — no module singleton anywhere in the path.
+- **The store is created in a `useState` initialiser.** `New store per render` is the classic bug
+  (`useRef(createStore(...))` re-creates on every render in StrictMode too); a lazy `useState` runs
+  once per mounted provider.
+- **`actions` live inside the state, as one stable object.** Components select
+  `(state) => state.actions` and get a reference that never changes, so a button that only dispatches
+  never re-renders when data changes. Splitting actions out of the store is the alternative; keeping
+  them in one nested object is the least code.
+- **The provider is the instance boundary.** `<counter.Provider>` twice is two counters; wrap a route
+  in it and the route's editor has its own store, which is what B13 will need.
+- **The shared example stays.** It is not a strawman: an app-wide session store is a legitimate
+  module-level singleton, and the demo is what makes "you chose this" visible instead of accidental.
+
+## Costs
+
+- Every consumer must be inside the provider; a missing one throws with the factory's `name`
+  (`[counter] no provider found`), which is a far better failure than a silently shared default store.
+- `useStoreApi()` is the escape hatch for code outside React (subscriptions, route loaders). It
+  returns the raw store, so mutations bypass React's batching — use it for reads and `subscribe`.
+- `useSyncExternalStore` under the hood means the selector must be cheap and stable. B11's second
+  experiment is entirely about that.
+
+## Pitfalls
+
+- Selecting the whole state (`useSelector((s) => s)`) makes every action re-render every consumer.
+  Select slices.
+- A selector returning a new array/object needs `useShallow`, exported by the same package for that
+  reason.
+- `set()` merges shallowly. Replacing a nested object means recreating it; mutating `state.todos` in
+  place and returning `{ todos: state.todos }` gives React the same reference and no update.
+
+## Next
+
+The selectors experiment measures what the subscription granularity actually buys.

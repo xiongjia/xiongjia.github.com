@@ -1,0 +1,52 @@
+---
+title: Motion 变体与手势
+summary: 由父级编排的变体、用 layout 动画化位置变化，以及从 DOM 量出来的拖拽约束。
+---
+
+## 为什么不是纯 CSS
+
+B8 的关键帧实验已经把小事说清了：循环、入场、`@starting-style`。Motion 的价值在 CSS 表达不了的
+地方：
+
+- **编排。** 父级声明 `staggerChildren`，子级只写状态名。替代方案是给每个子元素加
+  `style={{ transitionDelay: index * 60 }}`，而且每个列表都要维护一遍。
+- **位置动画（`layout`）。** 重排列表时，Motion 测量前后位置差，用 transform 补上。CSS 没有办法
+  表达「动画回它刚才所在的位置」。
+- **退场。** `AnimatePresence` 会把元素保留到退场动画结束；CSS 对被移除的元素一帧都不会动画。
+- **中断。** 弹簧从当前值和当前速度继续（B8 量过这个差异）；CSS 关键帧动画只能重新开始。
+
+## 词汇表
+
+| 概念                      | 用在哪                              |
+| ------------------------- | ----------------------------------- |
+| `variants`                | 命名的状态集，被父级继承            |
+| `layout`                  | 重渲染引起的位置/尺寸变化           |
+| `AnimatePresence`         | 挂载/卸载动画，靠 key 匹配          |
+| `whileHover` / `whileTap` | 覆盖动画值的手势状态                |
+| `useMotionValue`          | 在 React 渲染循环之外的值           |
+| `useSpring`               | 落后于源值、带物理感的 motion value |
+
+实验室的取舍是：**自成一体的动画交给 CSS，任何可能被手势中断或被列表重排影响的交给 Motion。**
+
+## 减少动态效果
+
+`useReducedMotion()` 返回一个布尔值，媒体查询变化时会触发重渲染。示例刻意用了两种处理：
+
+- 变体：保留组件，把时长压到 0，结束状态完全一致。
+- 拖拽：直接禁用整个手势，因为「瞬间拖拽」会让指针和元素互相错位。
+
+两种都不是「唯一正确答案」，但都必须逐个交互决定，而不是靠一条全局的 `* { animation: none }`。
+
+## 不要什么都动画
+
+`layout` 不是免费的：它要用 `getBoundingClientRect` 测量，并让它跟踪的元素同步布局。十个条目的列表
+看不出来，两千行的表格就是滚动的卡顿制造机。示例刻意做小——这是讲机制的实验，不是跑分。
+
+## 坑
+
+- `layout` 和 `drag` 都写 `transform`。动画列表里的可拖拽元素，要把拖拽 transform 放到内层元素上。
+- `AnimatePresence` 需要稳定的 key；用下标当 key 会动画「恰好落到这个位置的那个条目」。
+- 弹簧的 `stiffness`/`damping` 不是时长，动画在收敛时结束。在测试里断言「300ms 后结束」是等着
+  flaky——断言最终样式。
+- motion value 要通过 `useTransform`/`useMotionValueEvent` 读取；在渲染里 `value.get()` 然后期待重渲染
+  是最常见的误解。

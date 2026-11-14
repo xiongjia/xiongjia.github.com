@@ -1,0 +1,56 @@
+---
+title: Selectors and derived state
+summary: Render counters as evidence — a selector subscription updates only the components whose slice changed, if the selector is stable.
+order: 20
+---
+
+## What this proves
+
+A store subscription is only as narrow as its selector. Every component below prints its own render
+count, so the claim "toggling one todo re-renders one row" is observable instead of assumed.
+
+## The three selector shapes
+
+| Shape                                    | Example                                   | Needs         |
+| ---------------------------------------- | ----------------------------------------- | ------------- |
+| a primitive or a stable object reference | `(s) => s.filter`, `(s) => s.todos[i]`    | nothing       |
+| a derived array/object built per call    | `(s) => s.todos.filter(...).map(...)`     | `useShallow`  |
+| one item looked up by id                 | `(s) => s.todos.find((t) => t.id === id)` | a stable `id` |
+
+`useShallow` compares the result field by field, so a new array with equal contents does not
+re-render. Without it, every `set()` produces a new reference and every consumer updates — the
+subscription is still "correct", it just delivers nothing.
+
+## Actions as a stable slice
+
+`(state) => state.actions` returns the same object forever, so `<AddButton>` and `<FilterBar>` only
+re-render when their own slice changes. That is why the add button keeps `renders: 1` while todos are
+toggled — and why actions should not be recreated inside `set()`.
+
+## Derived state, or: where does the computation live
+
+- **In the selector** (this demo): no extra state to keep in sync, cost paid per consumer render.
+- **In the store** (a computed field updated by every action): fewer renders, two places to keep
+  correct, and a value that can go stale between actions.
+- **In `subscribe`** (`store.subscribe` writing a derived cache): useful for expensive derivations
+  that many components read.
+
+The demo also shows the middle ground most apps settle on: cheap derivations in selectors, expensive
+ones memoised outside the store.
+
+## Outside React
+
+`store.subscribe(listener)` sees every update without involving React — the log panel is the smallest
+possible version of a persistence or analytics subscriber. `store.getState()` in an event handler
+reads fresh state without subscribing at all; it is the right tool for "read once when clicked".
+
+## Pitfalls
+
+- A selector created inside render (`useSelector((s) => s.todos.filter(...))`) is fine as a function
+  but returns a new array every time; `useShallow` is not optional there.
+- Mutating an array in place (`state.todos.push(...)`) changes the reference React already has. Store
+  updates must produce new references for the slices that changed.
+- Selecting `(s) => s` is a legitimate shape when the component really uses everything — and a
+  performance bug the moment it does not.
+- Render counts are a demo device, not a metric: StrictMode's double render is development-only, so
+  compare counts between components rather than expecting exact numbers.

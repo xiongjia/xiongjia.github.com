@@ -1,0 +1,46 @@
+---
+title: Keyboard resizing
+summary: role="separator", ARIA value attributes and six keys — the part of a splitter that a pointer handler never covers.
+order: 20
+---
+
+## What this proves
+
+Every drag handle is also a control. `role="separator"` with `aria-valuenow` / `aria-valuemin` /
+`aria-valuemax` is the contract browsers and screen readers already understand for a splitter, and
+the keyboard steps are the equivalent of a native scrollbar's arrow keys. The demo reads the values
+back out of the DOM, which is what makes it checkable.
+
+## Decisions
+
+- **`role="separator"` on a focusable `div` with `tabIndex={0}`.** A button would be wrong: pressing
+  it does not "activate" anything, it adjusts a value. The separator role carries `aria-orientation`
+  and the value range for exactly this case.
+- **`aria-orientation` describes the separator, not the layout.** A horizontal layout (panes side by
+  side) has a **vertical** separator. Getting this backwards is the most common ARIA mistake in
+  splitters, because the two words are used from opposite points of view.
+- **Six keys, one clamp.** Arrows (±4%), PageUp/PageDown (±12%), Home/End (limits), Enter (reset).
+  Every one of them goes through `onSizeChange`, so the clamping lives in one place instead of in each
+  key handler.
+- **Rounded before announcing.** `aria-valuenow={Math.round(size)}` while the internal size keeps one
+  decimal: ARIA values are read out, and "fifty-four point zero zero zero zero one" is not a
+  sentence.
+- **`aria-valuetext` adds meaning.** `"55% / 45%"` says what the number is a percentage _of_; the raw
+  value alone is ambiguous in a nested layout.
+
+## What the demo prints, and why
+
+- The keys the separator actually received (captured on the wrapper), so a key that is handled by
+  something else is visible.
+- Every size change, read from the same state the separator uses.
+- `aria-valuenow` and `aria-orientation` **from the DOM**, not from React state.
+
+## Pitfalls
+
+- `aria-valuenow` requires `aria-valuemin` and `aria-valuemax` to be meaningful; a separator without
+  a range is announced as an unlabelled divider.
+- Focus rings on a 6px element are clipped by the neighbouring pane unless they are drawn inset.
+- `ArrowLeft`/`ArrowRight` only make sense for a vertical separator, and `ArrowUp`/`ArrowDown` for a
+  horizontal one. Handling both everywhere means a key that "does nothing visible" in one direction.
+- Testing this needs no screenshots: focus the separator, dispatch a key, assert `aria-valuenow` and
+  the pane's `flex-basis`. That is exactly what B17's Playwright pass will do.

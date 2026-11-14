@@ -1,0 +1,22 @@
+{
+  "name": "@frontend-lab/state",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.3.0",
+    "typescript": "~5.9.3"
+  },
+  "dependencies": {
+    "zustand": "^5.1.0"
+  }
+}

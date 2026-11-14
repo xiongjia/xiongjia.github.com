@@ -1,0 +1,63 @@
+---
+title: Motion variants and gestures
+summary: Orchestrated variants, layout animation for position changes, and drag constraints measured from the DOM.
+order: 10
+---
+
+## Why Motion and not CSS
+
+B8's keyframes experiment settled the small cases: loops, entrances, `@starting-style`. Motion earns
+its place for the cases CSS cannot express:
+
+- **Orchestration.** A parent declares `staggerChildren`; children only name states. The alternative
+  is a `style={{ transitionDelay: index * 60 }}` on every child, which has to be maintained in every
+  list.
+- **Position animation (`layout`).** Reorder a list and Motion measures before/after and animates the
+  difference with a transform. CSS has no way to animate "where this element used to be".
+- **Exit.** `AnimatePresence` keeps an element mounted until its leave animation finishes; CSS
+  animates a removed element for exactly zero frames.
+- **Interruption.** Springs continue from the current value and velocity (B8 measured the
+  difference); a CSS keyframe animation restarts.
+
+## The vocabulary
+
+| Concept                   | Used for                                                 |
+| ------------------------- | -------------------------------------------------------- |
+| `variants`                | named state sets, inherited by children                  |
+| `layout`                  | position/size changes caused by a re-render              |
+| `AnimatePresence`         | mount/unmount animation, keyed children                  |
+| `whileHover` / `whileTap` | gesture states that override the animated value          |
+| `useMotionValue`          | a value outside React's render loop                      |
+| `useSpring`               | a motion value that lags behind its source, with physics |
+
+The rule of thumb the lab settled on: **CSS for self-contained animation, Motion for anything a
+gesture can interrupt or a list can reflow.**
+
+## Reduced motion
+
+`useReducedMotion()` returns a boolean that re-renders on the media query change. The demos use it in
+two different ways on purpose:
+
+- Variants: keep the components and collapse the duration to zero, so the end state is identical.
+- Drag: disable the gesture entirely, because an instant drag leaves the pointer and the element
+  disagreeing.
+
+Neither is "the" correct answer; both are decisions that have to be made per interaction instead of
+inheriting a global `* { animation: none }`.
+
+## What not to animate
+
+`layout` is not free: it measures with `getBoundingClientRect` and forces a sync layout for the
+elements it tracks. On a list of ten items it is invisible; on a table of two thousand it is a
+scroll jank generator. The demos stay small deliberately — this is a lab about mechanism, not about
+winning a benchmark.
+
+## Pitfalls
+
+- `layout` and `drag` both own `transform`. A draggable inside an animated list needs the drag
+  transform on an inner element.
+- `AnimatePresence` needs stable keys; index keys animate whatever item ended up in that slot.
+- A spring's `stiffness`/`damping` are not a duration: the animation ends when it settles. Asserting
+  "it finished after 300ms" in a test is a flake waiting to happen — assert the final style instead.
+- Motion values must be read through `useTransform`/`useMotionValueEvent` in render; reading
+  `value.get()` during render and expecting a re-render is the common mistake.

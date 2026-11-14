@@ -3,7 +3,6 @@
   "compilerOptions": {
     "allowImportingTsExtensions": true,
     "types": ["vite/client", "node"],
-    "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }

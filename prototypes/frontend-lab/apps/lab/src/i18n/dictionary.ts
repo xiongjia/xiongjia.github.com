@@ -14,8 +14,8 @@ export const en = {
   app: {
     name: 'Frontend Lab',
     tagline: 'MDX explains · React components interact · experiments prove',
-    progress: 'B7 / B17',
-    batch: 'Batch B7 · i18n',
+    progress: 'B12 / B17',
+    batch: 'Batch B12 · Motion + dnd-kit',
     navLabel: 'Lab',
   },
   nav: {
@@ -29,6 +29,11 @@ export const en = {
   },
   groups: {
     foundations: 'Foundations',
+    techniques: 'Techniques',
+    editing: 'Editing',
+    layout: 'Layout',
+    state: 'State',
+    motion: 'Motion',
     interactions: 'Interactions',
     general: 'General',
   } as Record<string, string>,
@@ -89,8 +94,8 @@ export const zh: Dictionary = {
   app: {
     name: '前端实验室',
     tagline: 'MDX 讲原理 · 组件做交互 · 实验给结论',
-    progress: 'B7 / B17',
-    batch: '批次 B7 · 国际化',
+    progress: 'B12 / B17',
+    batch: '批次 B12 · 动效与拖拽',
     navLabel: '实验室',
   },
   nav: {
@@ -104,6 +109,11 @@ export const zh: Dictionary = {
   },
   groups: {
     foundations: '基础',
+    techniques: '技巧',
+    editing: '编辑器',
+    layout: '布局',
+    state: '状态',
+    motion: '动效',
     interactions: '交互',
     general: '通用',
   },

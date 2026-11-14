@@ -1,0 +1,68 @@
+---
+title: Resizable panels
+summary: Pointer capture, percentage sizes, localStorage and a real separator role — a split that survives a reload and the keyboard.
+order: 10
+---
+
+## The four requirements
+
+A resizable layout is easy to make feel right with a mouse and easy to make unusable without one.
+The lab's `packages/panels` targets four things, in this order:
+
+1. **The drag follows the pointer** — including outside the 6px handle.
+2. **The size is a percentage** and clamped, so no interaction can produce a zero-width pane.
+3. **The keyboard can do everything the pointer can** — independent resize, jump to limits, reset.
+4. **The choice survives a reload** without a flash of the default split.
+
+## Pointer capture
+
+```ts
+separator.setPointerCapture(event.pointerId)
+```
+
+Without capture the pointer leaves the handle during a fast drag, the browser sends `pointermove` to
+whatever is under the cursor, and the drag stops mid-way. Capture keeps the stream on the separator,
+and it removes the need for `user-select: none` on the body: a captured pointer does not select text.
+
+The delta is converted with the container's measured size, captured once at `pointerdown`:
+
+```ts
+size = startSize + (deltaPx / containerPx) * 100
+```
+
+Measuring on every move would work too, but it reads layout on the hot path for a value that cannot
+change during a drag.
+
+## Persistence without a flash
+
+`useSplitSize` reads `localStorage` **during the first render** (`useState` with a lazy initialiser),
+so the first paint already has the stored split — the same reasoning as the theme bootstrap in
+`index.html`, minus the inline script, because the split is rendered by React, not by the document.
+
+Corrupt values are clamped, not reported: a `localStorage` entry is not user input the app should
+argue with.
+
+## The separator is the control
+
+| Requirement | Implementation                                                  |
+| ----------- | --------------------------------------------------------------- |
+| Reachable   | `tabIndex={0}`, `role="separator"`                              |
+| Announced   | `aria-valuenow/min/max`, `aria-orientation`, `aria-valuetext`   |
+| Adjustable  | Arrows ±4%, PageUp/PageDown ±12%, Home/End, `Enter` resets      |
+| Described   | `aria-controls` pointing at both panes, both panes have a label |
+
+A `div` with `onPointerDown` implements the first row and none of the others.
+
+## Panes are containers
+
+Both panes get `@container`, which is the payoff from B8: a card inside a pane reflows when the
+_split_ moves, not when the window does. That is the whole reason a resizable layout is more than a
+flexbox trick — the content has to be able to answer the new width.
+
+## What is deliberately absent
+
+- No `ResizeObserver` on the container for the drag math: percentages make it unnecessary.
+- No state library: one number per split does not justify a store. B11 makes the same call in the
+  opposite direction for state that several components share.
+- No collapsible panes or `min`/`max` per pane in pixels: both are B13's problem, where the IDE
+  layout needs them and the requirements are concrete.
