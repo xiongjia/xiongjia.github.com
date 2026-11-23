@@ -10,3 +10,4 @@ Idea: poe collect-idea "content" (direct to plans.md)
 -->
 
 2026-11-19 https://huggingface.co/docs/course/chapter1/1
+2026-11-23 https://github.com/guofei9987/blind_watermark
